@@ -1,9 +1,10 @@
 <template>
   <ZySuperResponsive :break-points="breakPoints" :design-size="designSize">
     <NuxtLayout>
-      <ZySlideRouter>
+      <ZySlideRouterView :path-list="pathList">
         <NuxtPage />
-      </ZySlideRouter>
+      </ZySlideRouterView>
+      <!-- <ZyScrollView><NuxtPage /></ZyScrollView> -->
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -29,4 +30,5 @@ const designSize = {
   xl_max_v: 1080, //显示器竖屏
   xl_max_h: 1920, //显示器横屏
 };
+const pathList = ["/", "/text", "/multi-media"];
 </script>
