@@ -1,5 +1,9 @@
 <template>
-  <ZySuperResponsive :break-points="breakPoints" :design-size="designSize">
+  <ZySuperResponsive
+    :base-font-size="baseFontSize"
+    :break-points="breakPoints"
+    :design-size="designSize"
+  >
     <NuxtLayout>
       <ZySlideRouterView :path-list="pathList">
         <NuxtPage />
@@ -9,6 +13,7 @@
   </ZySuperResponsive>
 </template>
 <script setup lang="ts">
+const baseFontSize = 18;
 const breakPoints = {
   xs: 600,
   sm: 900,

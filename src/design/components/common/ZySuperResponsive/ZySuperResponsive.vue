@@ -12,6 +12,10 @@
 export default defineComponent({
   name: "zy-super-responsive",
   props: {
+    baseFontSize: {
+      type: Number,
+      default: 16,
+    },
     breakPoints: {
       default: {
         xs: 600,
@@ -44,6 +48,7 @@ export default defineComponent({
       script: [
         {
           innerHTML: `
+          window.ZySuperResponsiveBaseFontSize = ${props.baseFontSize};
           window.ZySuperResponsiveBreakPoints = ${JSON.stringify(
             props.breakPoints
           )};
@@ -130,57 +135,58 @@ export default defineComponent({
 
       const fontSizeInit = () => {
         var docEl = document.documentElement;
+        const fontSize = (window as any).ZySuperResponsiveBaseFontSize;
         const breakPoints = (window as any).ZySuperResponsiveBreakPoints;
         const designSize = (window as any).ZySuperResponsiveDesignSize;
         if (docEl) {
           var rem;
           if (docEl.clientWidth <= breakPoints.xs) {
             if (isVertical()) {
-              rem = 16 * (docEl.clientWidth / designSize.min_xs_v);
+              rem = fontSize * (docEl.clientWidth / designSize.min_xs_v);
             } else {
-              rem = 16 * (docEl.clientWidth / designSize.min_xs_h);
+              rem = fontSize * (docEl.clientWidth / designSize.min_xs_h);
             }
           } else if (
             breakPoints.xs < docEl.clientWidth &&
             docEl.clientWidth <= breakPoints.sm
           ) {
             if (isVertical()) {
-              rem = 16 * (docEl.clientWidth / designSize.xs_sm_v);
+              rem = fontSize * (docEl.clientWidth / designSize.xs_sm_v);
             } else {
-              rem = 16 * (docEl.clientWidth / designSize.xs_sm_h);
+              rem = fontSize * (docEl.clientWidth / designSize.xs_sm_h);
             }
           } else if (
             breakPoints.sm < docEl.clientWidth &&
             docEl.clientWidth <= breakPoints.md
           ) {
             if (isVertical()) {
-              rem = 16 * (docEl.clientWidth / designSize.sm_md_v);
+              rem = fontSize * (docEl.clientWidth / designSize.sm_md_v);
             } else {
-              rem = 16 * (docEl.clientWidth / designSize.sm_md_h);
+              rem = fontSize * (docEl.clientWidth / designSize.sm_md_h);
             }
           } else if (
             breakPoints.md < docEl.clientWidth &&
             docEl.clientWidth <= breakPoints.lg
           ) {
             if (isVertical()) {
-              rem = 16 * (docEl.clientWidth / designSize.md_lg_v);
+              rem = fontSize * (docEl.clientWidth / designSize.md_lg_v);
             } else {
-              rem = 16 * (docEl.clientWidth / designSize.md_lg_h);
+              rem = fontSize * (docEl.clientWidth / designSize.md_lg_h);
             }
           } else if (
             breakPoints.lg < docEl.clientWidth &&
             docEl.clientWidth <= breakPoints.xl
           ) {
             if (isVertical()) {
-              rem = 16 * (docEl.clientWidth / designSize.lg_xl_v);
+              rem = fontSize * (docEl.clientWidth / designSize.lg_xl_v);
             } else {
-              rem = 16 * (docEl.clientWidth / designSize.lg_xl_h);
+              rem = fontSize * (docEl.clientWidth / designSize.lg_xl_h);
             }
           } else if (breakPoints.xl < docEl.clientWidth) {
             if (isVertical()) {
-              rem = 16 * (docEl.clientWidth / designSize.xl_max_v);
+              rem = fontSize * (docEl.clientWidth / designSize.xl_max_v);
             } else {
-              rem = 16 * (docEl.clientWidth / designSize.xl_max_h);
+              rem = fontSize * (docEl.clientWidth / designSize.xl_max_h);
             }
           }
           docEl.style.fontSize = rem + "px";
