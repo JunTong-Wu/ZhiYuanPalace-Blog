@@ -169,7 +169,7 @@ export default {
                 moveDistanceX: moveDistanceX,
               });
             } else {
-              // 如果滑动距离未超过1/3，还原
+              // 如果滑动距离未超过1/3，取消
               emit("slideCancelLeft", {
                 moveDistanceX: moveDistanceX,
               });
@@ -182,7 +182,7 @@ export default {
                 moveDistanceX: moveDistanceX,
               });
             } else {
-              // 如果滑动距离未超过1/3，还原
+              // 如果滑动距离未超过1/3，取消
               emit("slideCancelRight", {
                 moveDistanceX: moveDistanceX,
               });
@@ -199,7 +199,7 @@ export default {
                 moveDistanceY: moveDistanceY,
               });
             } else {
-              // 如果滑动距离未超过1/3，还原
+              // 如果滑动距离未超过1/3，取消
               emit("slideCancelUp", {
                 moveDistanceY: moveDistanceY,
               });
@@ -212,7 +212,7 @@ export default {
                 moveDistanceY: moveDistanceY,
               });
             } else {
-              // 如果滑动距离未超过1/3，还原
+              // 如果滑动距离未超过1/3，取消
               emit("slideCanceDown", {
                 moveDistanceY: moveDistanceY,
               });
