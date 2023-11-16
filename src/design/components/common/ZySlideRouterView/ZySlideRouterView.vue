@@ -27,15 +27,15 @@ export default defineComponent({
       default: <Array<string>>[],
     },
   },
-  setup(props, ctx) {
+  setup(props) {
     const route = useRoute();
     const router = useRouter();
-    const transitionKey = ref(0);
-    const holdPress = ref(false); // 是否正在按住标记
-    const directionDetermination = ref(""); // 确定滑动方向标记
-    const isEmptyView = ref(""); // 到达两端空页面标记
-    const penetrate = ref(false); // 点击穿透效果标记
-    const isSlideControl = ref(false); // 通过滑动控制的标志
+    const transitionKey = ref<number>(0); // 刷新节点的Key
+    const holdPress = ref<boolean>(false); // 是否正在按住标记
+    const directionDetermination = ref<"left" | "right" | null>(null); // 确定滑动方向标记
+    const isEmptyView = ref<"left" | "right" | null>(null); // 到达两端空页面标记
+    const penetrate = ref<boolean>(false); // 点击穿透效果标记
+    const isSlideControl = ref<boolean>(false); // 通过滑动控制的标志
 
     /*
      * 过渡效果实现
@@ -100,7 +100,7 @@ export default defineComponent({
       const toPath = getPath(-1);
       if (toPath) {
         // 存在路由，调用切换路由方法
-        isEmptyView.value = "";
+        isEmptyView.value = null;
         router.replace(toPath);
       } else {
         // 不存在路由，渲染左侧空页面，标记到达左侧端点状态
@@ -114,7 +114,7 @@ export default defineComponent({
       const toPath = getPath(1);
       if (toPath) {
         // 存在路由，调用切换路由方法
-        isEmptyView.value = "";
+        isEmptyView.value = null;
         router.replace(toPath);
       } else {
         // 不存在路由，渲染右侧空页面，标记到达右侧端点状态
@@ -180,6 +180,10 @@ export default defineComponent({
       if (callback) {
         callback();
       }
+    };
+    // 通过外部点击切换路由时，初始化的样式
+    const initStyleFromLink = (position: "left" | "right") => {
+      console.log("initStyleFromLink:", position);
     };
     // 这是操作完成后的结束动作，清理DOM树，重置部分状态
     const clearOldPage = () => {
@@ -319,7 +323,7 @@ export default defineComponent({
         }
       }
       // 释放滑动后应该清除初始滑动方向标记，避免影响下一次的滑动方向的判断
-      directionDetermination.value = "";
+      directionDetermination.value = null;
     };
 
     /*
@@ -355,6 +359,7 @@ export default defineComponent({
           copyOldPage("left", next);
         } else {
           // 如果是通过外部点击控制的
+          initStyleFromLink("left");
         }
       } else if (toPathIndex < fromPathIndex) {
         if (isSlideControl.value) {
@@ -363,6 +368,7 @@ export default defineComponent({
           copyOldPage("right", next);
         } else {
           // 如果是通过外部点击控制的
+          initStyleFromLink("right");
         }
       }
     });
