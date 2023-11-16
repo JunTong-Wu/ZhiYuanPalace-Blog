@@ -35,6 +35,7 @@ export default defineComponent({
     const directionDetermination = ref(""); // 确定滑动方向标记
     const isEmptyView = ref(""); // 到达两端空页面标记
     const penetrate = ref(false); // 点击穿透效果标记
+    const isSlideControl = ref(false); // 通过滑动控制的标志
 
     /*
      * 过渡效果实现
@@ -210,6 +211,7 @@ export default defineComponent({
       } else {
         if (th) {
           th.style.pointerEvents = "auto";
+          isSlideControl.value = false;
         }
       }
     });
@@ -219,6 +221,7 @@ export default defineComponent({
      */
     // 渲染左侧页面
     const renderLeftView = (val: any) => {
+      isSlideControl.value = true;
       if (!holdPress.value) {
         // 防止同时执行左右两侧滑动过渡动画，标记初始滑动方向
         directionDetermination.value = "right";
@@ -241,6 +244,7 @@ export default defineComponent({
     };
     // 渲染右侧页面
     const renderRightView = (val: any) => {
+      isSlideControl.value = true;
       if (!holdPress.value) {
         // 防止同时执行左右两侧滑动过渡动画，标记初始滑动方向
         directionDetermination.value = "left";
@@ -345,11 +349,21 @@ export default defineComponent({
         });
       }
       if (toPathIndex > fromPathIndex) {
-        // to索引大于from索引，则代表期望在右侧展示新的路由页面，将旧的路由页面拷贝至左侧
-        copyOldPage("left", next);
+        if (isSlideControl.value) {
+          // 如果是通过滑动控制的
+          // to索引大于from索引，则代表期望在右侧展示新的路由页面，将旧的路由页面拷贝至左侧
+          copyOldPage("left", next);
+        } else {
+          // 如果是通过外部点击控制的
+        }
       } else if (toPathIndex < fromPathIndex) {
-        // to索引小于from索引，则代表期望在左侧展示新的路由页面，将旧的路由页面拷贝至右侧
-        copyOldPage("right", next);
+        if (isSlideControl.value) {
+          // 如果是通过滑动控制的
+          // to索引小于from索引，则代表期望在左侧展示新的路由页面，将旧的路由页面拷贝至右侧
+          copyOldPage("right", next);
+        } else {
+          // 如果是通过外部点击控制的
+        }
       }
     });
     // 后置守卫
