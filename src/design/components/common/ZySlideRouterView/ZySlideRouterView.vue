@@ -34,7 +34,6 @@ export default defineComponent({
     const holdPress = ref<boolean>(false); // 是否正在按住标记
     const directionDetermination = ref<"left" | "right" | null>(null); // 确定滑动方向标记
     const isEmptyView = ref<"left" | "right" | null>(null); // 到达两端空页面标记
-    const penetrate = ref<boolean>(false); // 点击穿透效果标记
     const isSlideControl = ref<boolean>(false); // 通过滑动控制的标志
 
     /*
@@ -122,7 +121,11 @@ export default defineComponent({
         copyEmptyPage("right");
       }
     };
-    // 插入一个空页面，传入插入的空页面位置
+
+    /*
+     * 上一个路由页面暂留方法
+     */
+    // 插入一个空页面，传入插入的空页面位置，当滑动到端点时，渲染超出的空白区域
     const copyEmptyPage = (position: "left" | "right", callback?: any) => {
       const root = document.getElementById("zy-slide-router__root");
       const lastOld = document.getElementById("zy-slide-router__old");
@@ -159,13 +162,12 @@ export default defineComponent({
       }
       const old = document.createElement("div");
       old.id = "zy-slide-router__old";
-
       const temp = document.getElementById("zy-slide-router__now");
       if (temp && root) {
         // 拷贝旧的路由页面到创建的节点内
         let oldPage = document.createElement("div");
         oldPage.appendChild(temp.getElementsByTagName("div")[0]);
-        old.innerHTML = "<div></div>";
+        old.innerHTML = "";
         old.appendChild(oldPage);
         if (position == "left") {
           // 旧页面在左边，将拷贝好的节点插入到当前页面节点的左侧位置
@@ -178,45 +180,53 @@ export default defineComponent({
         }
       }
       if (callback) {
-        callback();
+        callback;
       }
     };
-    // 通过外部点击切换路由时，初始化的样式
-    const initStyleFromLink = (position: "left" | "right") => {
-      console.log("initStyleFromLink:", position);
+    // 通过链接切换路由时，初始化的样式，初始化样式到相反的位置，以达到动画效果
+    const initStyleFromLink = (position: "left" | "right", callback?: any) => {
+      if (position == "left") {
+        // 旧页面在左边，将拷贝好的节点插入到当前页面节点的左侧位置，样式也显示左边的页面，达到初始显示旧的页面
+        copyOldPage("left", callback);
+        translateX(`calc(0%)`, false);
+      } else if (position == "right") {
+        // 旧页面在右边，将拷贝好的节点插入到当前页面节点的右侧位置，样式也显示右边的页面，达到初始显示旧的页面
+        copyOldPage("right", callback);
+        translateX(`calc(-33.333333%)`, false);
+      }
     };
     // 这是操作完成后的结束动作，清理DOM树，重置部分状态
     const clearOldPage = () => {
-      const old = document.getElementById("zy-slide-router__old");
-      if (old) {
-        // 开启点击穿透效果，不响应操作，防止动画被打断
-        penetrate.value = true;
-        // 配合过渡动画，延迟200毫秒
-        setTimeout(() => {
-          old.innerHTML = "<div></div>";
-          // 结束动作完成，关闭点击穿透效果，可以执行下一次操作
-          penetrate.value = false;
-        }, 200);
+      // 开启点击穿透效果，不响应操作，防止动画被打断
+      const template = document.getElementById("zy-slide-router");
+      if (template) {
+        template.style.pointerEvents = "none";
       }
+      // 配合过渡动画，延迟200毫秒
+      setTimeout(() => {
+        const root = document.getElementById("zy-slide-router__root");
+        const lastOld = document.getElementById("zy-slide-router__old");
+        // 删除上一次拷贝的页面
+        if (root && lastOld) {
+          root.removeChild(lastOld);
+        }
+        translateX(`calc(0%)`, false);
+        // 结束动作完成，关闭点击穿透效果，可以执行下一次操作
+        if (template) {
+          template.removeAttribute("style");
+        }
+        // 删除样式残留
+        if (root) {
+          root.removeAttribute("style");
+        }
+        // 重置通过滑动控制的标志
+        isSlideControl.value = false;
+      }, 200);
     };
     watch(holdPress, (newValue) => {
       // 监听释放滑动的标记，执行结束动作
       if (!newValue) {
         clearOldPage();
-      }
-    });
-    watch(penetrate, (newValue) => {
-      // 监听点击穿透的标记，给本组件根节点添加点击穿透样式，防止动画被打断
-      const th = document.getElementById("zy-slide-router");
-      if (newValue) {
-        if (th) {
-          th.style.pointerEvents = "none";
-        }
-      } else {
-        if (th) {
-          th.style.pointerEvents = "auto";
-          isSlideControl.value = false;
-        }
       }
     });
 
@@ -356,53 +366,69 @@ export default defineComponent({
         if (isSlideControl.value) {
           // 如果是通过滑动控制的
           // to索引大于from索引，则代表期望在右侧展示新的路由页面，将旧的路由页面拷贝至左侧
-          copyOldPage("left", next);
+          copyOldPage("left", next());
         } else {
-          // 如果是通过外部点击控制的
-          initStyleFromLink("left");
+          // 如果是通过链接控制的
+          initStyleFromLink("left", next());
         }
       } else if (toPathIndex < fromPathIndex) {
         if (isSlideControl.value) {
           // 如果是通过滑动控制的
           // to索引小于from索引，则代表期望在左侧展示新的路由页面，将旧的路由页面拷贝至右侧
-          copyOldPage("right", next);
+          copyOldPage("right", next());
         } else {
-          // 如果是通过外部点击控制的
-          initStyleFromLink("right");
+          // 如果是通过链接控制的
+          initStyleFromLink("right", next());
         }
       }
     });
     // 后置守卫
     router.afterEach((to, from) => {
-      if (!holdPress.value) {
-        let toPathIndex = 0;
-        let fromPathIndex = 0;
-        if (hasPathList()) {
-          // 如果传入了PathList，则使用PathList的索引
-          toPathIndex = props.pathList.findIndex((item) => {
-            return item == to.path;
-          });
-          fromPathIndex = props.pathList.findIndex((item) => {
-            return item == from.path;
-          });
-        } else {
-          // 如果没有传入PathList，则使用getRoutes()的索引
-          toPathIndex = router.getRoutes().findIndex((item) => {
-            return item.path == to.path;
-          });
-          fromPathIndex = router.getRoutes().findIndex((item) => {
-            return item.path == from.path;
-          });
+      let toPathIndex = 0;
+      let fromPathIndex = 0;
+      if (hasPathList()) {
+        // 如果传入了PathList，则使用PathList的索引
+        toPathIndex = props.pathList.findIndex((item) => {
+          return item == to.path;
+        });
+        fromPathIndex = props.pathList.findIndex((item) => {
+          return item == from.path;
+        });
+      } else {
+        // 如果没有传入PathList，则使用getRoutes()的索引
+        toPathIndex = router.getRoutes().findIndex((item) => {
+          return item.path == to.path;
+        });
+        fromPathIndex = router.getRoutes().findIndex((item) => {
+          return item.path == from.path;
+        });
+      }
+      if (isSlideControl.value) {
+        // 如果是通过滑动控制的
+        if (!holdPress.value) {
+          if (toPathIndex > fromPathIndex) {
+            // to索引大于from索引，则代表期望在右侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示右侧节点
+            translateX(`calc(-33.333333%)`, true);
+            clearOldPage();
+          } else if (toPathIndex < fromPathIndex) {
+            // to索引小于from索引，则代表期望在左侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示左侧节点
+            translateX(`calc(0%)`, true);
+            clearOldPage();
+          }
         }
-        if (toPathIndex > fromPathIndex) {
-          // to索引大于from索引，则代表期望在右侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示右侧节点
-          translateX(`calc(-33.333333%)`, true);
-          clearOldPage();
-        } else if (toPathIndex < fromPathIndex) {
-          // to索引小于from索引，则代表期望在左侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示左侧节点
-          translateX(`calc(0%)`, true);
-          clearOldPage();
-        }
+      } else {
+        // 如果是通过链接控制的，异步添加结束样式，给初始化通过链接控制的样式留出时间，达到成功过渡
+        setTimeout(() => {
+          if (toPathIndex > fromPathIndex) {
+            // to索引大于from索引，则代表期望在右侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示右侧节点
+            translateX(`calc(-33.333333%)`, true);
+            clearOldPage();
+          } else if (toPathIndex < fromPathIndex) {
+            // to索引小于from索引，则代表期望在左侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示左侧节点
+            translateX(`calc(0%)`, true);
+            clearOldPage();
+          }
+        });
       }
     });
 
@@ -411,7 +437,6 @@ export default defineComponent({
       renderLeftView,
       renderRightView,
       goView,
-      penetrate,
     };
   },
 });
