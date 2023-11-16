@@ -180,23 +180,6 @@ export default defineComponent({
         callback();
       }
     };
-    // 滑向两端空页面后，重置状态，达到兼容点击切换路由的效果
-    const reductionEmptyStatus = () => {
-      const old = document.getElementById("zy-slide-router__old");
-      const root = document.getElementById("zy-slide-router__root");
-      if (root && old) {
-        if (isEmptyView.value == "left") {
-          // 如果标记为左侧空页面，则重置为右侧包含页面的状态，并改变过渡动画位置
-          copyEmptyPage("right");
-          translateX(`calc(0%)`, false);
-        } else if (isEmptyView.value == "right") {
-          // 如果标记为右侧空页面，则重置为左侧包含页面的状态，并改变过渡动画位置
-          copyEmptyPage("left");
-          translateX(`calc(-33.333333%)`, false);
-        }
-      }
-      isEmptyView.value = "";
-    };
     // 这是操作完成后的结束动作，清理DOM树，重置部分状态
     const clearOldPage = () => {
       const old = document.getElementById("zy-slide-router__old");
@@ -205,13 +188,7 @@ export default defineComponent({
         penetrate.value = true;
         // 配合过渡动画，延迟200毫秒
         setTimeout(() => {
-          if (!isEmptyView.value) {
-            //如果没有被标记为到达两端，则只清空旧页面节点中的内容
-            old.innerHTML = "<div></div>";
-          } else {
-            //如果被标记为到达两端，则执行重置状态
-            reductionEmptyStatus();
-          }
+          old.innerHTML = "<div></div>";
           // 结束动作完成，关闭点击穿透效果，可以执行下一次操作
           penetrate.value = false;
         }, 200);
@@ -250,8 +227,16 @@ export default defineComponent({
         holdPress.value = true;
       }
       if (directionDetermination.value == "right") {
-        // 执行滑向右侧的动画
-        translateX(`calc(-33.333333% - ${val.moveDistanceX}px)`, false);
+        if (!isEmptyView.value) {
+          // 如果未达到端点，正常执行滑向右侧的动画
+          translateX(`calc(-33.333333% - ${val.moveDistanceX}px)`, false);
+        } else {
+          // 如果已经到端点，减弱执行滑向右侧的动画
+          translateX(`calc(-33.333333% - ${val.moveDistanceX / 4}px)`, false);
+        }
+      } else {
+        // 执行滑向左侧的动画
+        translateX(`calc(0% - ${val.moveDistanceX}px)`, false);
       }
     };
     // 渲染右侧页面
@@ -264,8 +249,16 @@ export default defineComponent({
         holdPress.value = true;
       }
       if (directionDetermination.value == "left") {
-        // 执行滑向左侧的动画
-        translateX(`calc(0% - ${val.moveDistanceX}px)`, false);
+        if (!isEmptyView.value) {
+          // 如果未达到端点，正常执行滑向左侧的动画
+          translateX(`calc(0% - ${val.moveDistanceX}px)`, false);
+        } else {
+          // 如果已经到端点，减弱执行滑向左侧的动画
+          translateX(`calc(0% - ${val.moveDistanceX / 4}px)`, false);
+        }
+      } else {
+        // 执行滑向右侧的动画
+        translateX(`calc(-33.333333% - ${val.moveDistanceX}px)`, false);
       }
     };
     // 释放滑动后的相关处理，传入状态分别为滑动结束或滑动取消
