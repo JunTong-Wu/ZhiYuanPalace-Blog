@@ -2,10 +2,10 @@
   <button
     type="button"
     v-zy-ripple
-    un-bg="transparent"
-    un-text="sm"
-    un-border="0"
-    un-color="text-1 dark:text-dark-1"
+    bg-transparent
+    text-sm
+    border-0
+    color="text-1 dark:text-dark-1"
     @click="$router.replace(to)"
   >
     <slot />

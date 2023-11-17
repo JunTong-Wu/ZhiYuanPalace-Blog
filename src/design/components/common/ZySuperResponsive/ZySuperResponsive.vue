@@ -1,9 +1,9 @@
 <template>
   <div
-    un-bg="bg-1 dark:bg-dark-1"
-    un-color="text-1 dark:text-dark-1"
-    un-position="fixed"
-    un-inset="0"
+    bg="bg-1 dark:bg-dark-1"
+    color="text-1 dark:text-dark-1"
+    position-fixed
+    inset-0
   >
     <slot />
   </div>

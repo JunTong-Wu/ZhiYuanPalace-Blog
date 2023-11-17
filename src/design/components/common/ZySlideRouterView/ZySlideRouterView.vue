@@ -1,8 +1,7 @@
 <template>
   <div id="zy-slide-router">
     <ZyTouch
-      un-w="full"
-      un-overflow="hidden"
+      w-full
       @slidingLeft="renderRightView"
       @slidingRight="renderLeftView"
       @slideEndLeft="goView('end')"
@@ -10,7 +9,7 @@
       @slideCancelLeft="goView('cancel')"
       @slideCancelRight="goView('cancel')"
     >
-      <div id="zy-slide-router__root">
+      <div flex relative id="zy-slide-router__root" w="[300%]">
         <div :key="transitionKey" id="zy-slide-router__now">
           <slot />
         </div>
@@ -443,9 +442,6 @@ export default defineComponent({
 </script>
 <style lang="scss">
 #zy-slide-router__root {
-  width: 300%;
-  position: relative;
-  display: flex;
   > div {
     width: 33.333333%;
   }

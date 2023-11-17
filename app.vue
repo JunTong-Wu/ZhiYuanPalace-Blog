@@ -13,6 +13,7 @@
   </ZySuperResponsive>
 </template>
 <script setup lang="ts">
+import "@/src/assets/css/style.scss";
 const baseFontSize = 18;
 const breakPoints = {
   xs: 600,

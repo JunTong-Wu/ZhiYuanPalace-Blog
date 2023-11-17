@@ -1,10 +1,10 @@
 <template>
-  <div un-h="full">
+  <div h-full>
     <zy-button @click="darkModeSwitch">Dark Mode</zy-button>
     <zy-bottom-navigation>
-      <zy-link to="/" un-h="full">HOME</zy-link>
-      <zy-link to="/text" un-h="full">TEXT</zy-link>
-      <zy-link to="/multi-media" un-h="full">Media</zy-link>
+      <zy-link to="/" h-full>Home</zy-link>
+      <zy-link to="/text" h-full>Text</zy-link>
+      <zy-link to="/multi-media" h-full>Media</zy-link>
     </zy-bottom-navigation>
     <slot />
   </div>

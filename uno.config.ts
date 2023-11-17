@@ -1,14 +1,32 @@
-import { defineConfig, presetUno, presetAttributify } from "unocss";
+import {
+  defineConfig,
+  presetUno,
+  presetAttributify,
+  presetWebFonts,
+  transformerDirectives,
+  transformerCompileClass,
+  transformerVariantGroup,
+} from "unocss";
+import { presetGrid } from "unocss-preset-grid";
 
 export default defineConfig({
   presets: [
     presetUno(),
-    presetAttributify({
-      /* preset options */
-      prefix: "un-",
-      prefixedOnly: true,
+    presetAttributify(),
+    presetWebFonts({
+      provider: "google", // default provider
+      fonts: {
+        // these will extend the default theme
+        sans: ["Roboto", "Roboto:400,500,600,700,800,900"],
+      },
     }),
+    presetGrid(),
     // ...
+  ],
+  transformers: [
+    transformerDirectives(),
+    transformerCompileClass(),
+    transformerVariantGroup(),
   ],
   theme: {
     darkMode: "class",

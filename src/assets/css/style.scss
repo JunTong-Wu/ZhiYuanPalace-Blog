@@ -1,0 +1,7 @@
+html,
+body {
+  @apply: font-sans min-h-full h-full m-0 p-0;
+}
+* {
+  @apply: box-border;
+}

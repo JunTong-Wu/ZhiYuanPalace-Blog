@@ -5,28 +5,28 @@
         type="button"
         v-for="i in children"
         v-zy-ripple
-        un-bg="transparent"
-        un-text="sm"
-        un-border="0"
-        un-color="text-1 dark:text-dark-1"
+        bg-transparent
+        text-sm
+        border-0
+        color="text-1 dark:text-dark-1"
         @click="switchTab(i.path)"
       >
         {{ i.name }}
       </button>
     </div>
-    <div un-w="full" un-overflow="hidden">
+    <div w-full>
       <div
+        flex
         ref="slideWrapper"
-        un-flex
-        un-text="sm"
+        text-sm
         :style="`width: ${
           100 * children.length
         }% ; transform: translateX(${initTranslateX}%)`"
       >
         <div
           v-for="i in children"
-          un-flex="none"
-          un-text="sm"
+          flex-none
+          text-sm
           :style="`width: ${100 / children.length}%`"
         >
           <slot :name="`key-${i.key}`"></slot>

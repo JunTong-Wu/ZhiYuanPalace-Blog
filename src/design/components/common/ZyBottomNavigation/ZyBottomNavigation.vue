@@ -1,12 +1,5 @@
 <template>
-  <div
-    un-bg="bg-4 dark:bg-dark-4"
-    un-position="fixed"
-    un-bottom="0"
-    un-left="0"
-    un-right="0"
-    un-h="16"
-  >
+  <div bg="bg-4 dark:bg-dark-4" position-fixed bottom-0 left-0 right-0 h-16>
     <slot />
   </div>
 </template>
