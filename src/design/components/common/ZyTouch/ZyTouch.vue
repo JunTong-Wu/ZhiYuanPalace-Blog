@@ -116,8 +116,8 @@ export default {
 
     // 正在拖动时
     const startTranslate = (moveDistanceX: number, moveDistanceY: number) => {
-      // 判断滑动距离超过10
-      if (Math.abs(moveDistanceX) > 10 || Math.abs(moveDistanceY) > 10) {
+      // 判断滑动距离超过40
+      if (Math.abs(moveDistanceX) > 40 || Math.abs(moveDistanceY) > 40) {
         // 判断是否越界
         if (!crossBorder()) {
           // 没有越界，判断X轴移动的距离是否大于Y轴移动的距离
@@ -155,8 +155,8 @@ export default {
     };
     // 释放拖动时
     const stopTranslate = (moveDistanceX: number, moveDistanceY: number) => {
-      // 判断滑动距离超过10
-      if (Math.abs(moveDistanceX) > 10 || Math.abs(moveDistanceY) > 10) {
+      // 判断滑动距离超过40
+      if (Math.abs(moveDistanceX) > 40 || Math.abs(moveDistanceY) > 40) {
         // 判断X轴移动的距离是否大于Y轴移动的距离
         if (Math.abs(moveDistanceX) > Math.abs(moveDistanceY)) {
           // 左右

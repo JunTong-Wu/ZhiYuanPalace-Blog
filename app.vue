@@ -6,7 +6,9 @@
   >
     <NuxtLayout>
       <ZySlideRouterView :path-list="pathList">
-        <NuxtPage />
+        <ZyScrollView :parentDivHeight="parentDivHeight">
+          <NuxtPage />
+        </ZyScrollView>
       </ZySlideRouterView>
       <!-- <ZyScrollView><NuxtPage /></ZyScrollView> -->
     </NuxtLayout>
@@ -37,4 +39,5 @@ const designSize = {
   xl_max_h: 1920, //显示器横屏
 };
 const pathList = ["/", "/text", "/multi-media"];
+const parentDivHeight = "calc(100vh - 7rem)";
 </script>
