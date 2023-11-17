@@ -44,7 +44,7 @@ export default defineComponent({
       if (root) {
         if (transition) {
           // 通常，正在滑动时不开启CSS过渡，释放滑动时开启CSS过渡
-          root.style.transition = `transform 200ms`;
+          root.style.transition = `transform 200ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
           setTimeout(() => {
             root.style.transition = `none`;
           }, 200);
