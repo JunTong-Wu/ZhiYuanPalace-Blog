@@ -1,5 +1,7 @@
 <template>
   <ZySuperResponsive
+    bg="bg-4 dark:bg-dark-4"
+    color="text-1 dark:text-dark-1"
     :base-font-size="baseFontSize"
     :break-points="breakPoints"
     :design-size="designSize"
@@ -7,7 +9,9 @@
     <NuxtLayout>
       <ZySlideRouterView :path-list="pathList">
         <ZyScrollView :parentDivHeight="parentDivHeight">
-          <NuxtPage />
+          <div h-full text-base>
+            <NuxtPage mx-auto p-4 class="lg:max-w-[90%] xl:max-w-[80%]" />
+          </div>
         </ZyScrollView>
       </ZySlideRouterView>
       <!-- <ZyScrollView><NuxtPage /></ZyScrollView> -->
@@ -16,6 +20,10 @@
 </template>
 <script setup lang="ts">
 import "@/src/assets/css/style.scss";
+import "@/src/assets/fonts/DFPKingGothicGB.css";
+import "@/src/assets/fonts/HarmonyOS.css";
+import "@/src/assets/fonts/MiSans.css";
+
 const baseFontSize = 18;
 const breakPoints = {
   xs: 600,
@@ -38,6 +46,6 @@ const designSize = {
   xl_max_v: 1080, //显示器竖屏
   xl_max_h: 1920, //显示器横屏
 };
-const pathList = ["/", "/text", "/media"];
-const parentDivHeight = "calc(100vh - 7rem)";
+const pathList = ["/", "/text", "/media", "/about"];
+const parentDivHeight = "calc(100vh - 6rem)";
 </script>

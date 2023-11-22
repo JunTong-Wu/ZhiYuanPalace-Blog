@@ -2,12 +2,12 @@
   <button
     type="button"
     v-zy-ripple
-    bg="primary-6 active:primary-7"
-    text="sm white"
+    bg="transparent"
+    text="sm"
     p-2
     border-0
-    rounded-lg
     transition-colors
+    color-inherit
   >
     <slot />
   </button>

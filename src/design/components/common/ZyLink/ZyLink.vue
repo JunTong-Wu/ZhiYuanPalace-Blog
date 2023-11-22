@@ -7,6 +7,9 @@
     border-0
     color="text-1 dark:text-dark-1"
     @click="$router.replace(to)"
+    flex
+    items-center
+    justify-center
   >
     <slot />
   </button>

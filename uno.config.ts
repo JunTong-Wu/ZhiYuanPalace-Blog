@@ -2,7 +2,6 @@ import {
   defineConfig,
   presetUno,
   presetAttributify,
-  presetWebFonts,
   transformerDirectives,
   transformerCompileClass,
   transformerVariantGroup,
@@ -13,13 +12,6 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
-    presetWebFonts({
-      provider: "google", // default provider
-      fonts: {
-        // these will extend the default theme
-        sans: ["Roboto", "Roboto:400,500,600,700,800,900"],
-      },
-    }),
     presetGrid(),
     // ...
   ],
@@ -90,6 +82,7 @@ export default defineConfig({
           5: "#25252b", //下拉弹出框、Tooltip 背景颜色
         },
       },
+      bordercolor: "rgba(127,127,127,0.1)",
     },
   },
 });

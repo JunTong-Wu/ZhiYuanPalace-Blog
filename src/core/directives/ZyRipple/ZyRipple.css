@@ -30,7 +30,7 @@
 .zy-ripple-animation-in {
   transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1),
     opacity 0.1s cubic-bezier(0, 0, 0.2, 1);
-  opacity: 0.25;
+  opacity: 0.1;
 }
 .zy-ripple-animation-out {
   transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);

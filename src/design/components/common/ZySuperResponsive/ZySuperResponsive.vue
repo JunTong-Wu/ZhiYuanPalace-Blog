@@ -1,10 +1,5 @@
 <template>
-  <div
-    bg="bg-1 dark:bg-dark-1"
-    color="text-1 dark:text-dark-1"
-    position-fixed
-    inset-0
-  >
+  <div position-fixed inset-0>
     <slot />
   </div>
 </template>

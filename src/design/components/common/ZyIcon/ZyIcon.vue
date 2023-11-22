@@ -1,7 +1,14 @@
 <template>
-  <div overflow-hidden :style="{ width: size, height: size }">
+  <div
+    overflow-hidden
+    relative
+    :style="{ width: size, height: size }"
+    class="zy-icon"
+    :class="{ filled: filled }"
+  >
     <img
-      v-if="!activateFlag"
+      absolute
+      inset-0
       :src="getSvgIconUrl(`${name}Regular`)"
       :style="{
         width: size,
@@ -12,12 +19,13 @@
       }"
     />
     <img
-      v-else
+      absolute
+      inset-0
       :src="getSvgIconUrl(`${name}Filled`)"
       :style="{
         width: size,
         height: size,
-        color: activateColor,
+        color: filledColor,
         filter: `drop-shadow(currentColor ${size} 0)`,
         transform: `translateX(-${size})`,
       }"
@@ -40,11 +48,11 @@ export default defineComponent({
       type: String,
       default: "inherit",
     },
-    activateFlag: {
+    filled: {
       type: Boolean,
       default: false,
     },
-    activateColor: {
+    filledColor: {
       type: String,
       default: "inherit",
     },
@@ -61,3 +69,21 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss" scoped>
+.zy-icon {
+  > img:first-of-type {
+    opacity: 1;
+  }
+  > img:nth-of-type(2) {
+    opacity: 0;
+  }
+  &.filled {
+    > img:first-of-type {
+      opacity: 0;
+    }
+    > img:nth-of-type(2) {
+      opacity: 1;
+    }
+  }
+}
+</style>

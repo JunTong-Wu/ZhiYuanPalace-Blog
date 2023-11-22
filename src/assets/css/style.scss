@@ -5,3 +5,15 @@ body {
 * {
   @apply: box-border;
 }
+//字体
+body {
+  font-size: 12px;
+  line-height: 1.5;
+  font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
+    "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica,
+    Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC",
+    "WenQuanYi Micro Hei", sans-serif !important;
+  color: var(--text-color);
+}
+:root {
+}

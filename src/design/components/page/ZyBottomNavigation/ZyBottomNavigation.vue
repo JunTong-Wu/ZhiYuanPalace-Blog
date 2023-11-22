@@ -7,6 +7,9 @@
     right-0
     h-12
     z-20
+    flex
+    justify-center
+    border="t solid bordercolor b-0 l-0 r-0"
   >
     <slot />
   </div>
