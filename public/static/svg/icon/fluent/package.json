@@ -1,0 +1,17 @@
+{
+  "name": "@sicons/fluent",
+  "version": "0.12.0",
+  "description": "SVG icons integrated from [`fluentui-system-icons`](https://github.com/microsoft/fluentui-system-icons)",
+  "keywords": [
+    "icon",
+    "svg",
+    "fluent"
+  ],
+  "author": "07akioni",
+  "license": "MIT",
+  "dependencies": {},
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts"
+}

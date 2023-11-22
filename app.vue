@@ -38,6 +38,6 @@ const designSize = {
   xl_max_v: 1080, //显示器竖屏
   xl_max_h: 1920, //显示器横屏
 };
-const pathList = ["/", "/text", "/multi-media"];
+const pathList = ["/", "/text", "/media"];
 const parentDivHeight = "calc(100vh - 7rem)";
 </script>
