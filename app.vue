@@ -14,7 +14,6 @@
           </div>
         </ZyScrollView>
       </ZySlideRouterView>
-      <!-- <ZyScrollView><NuxtPage /></ZyScrollView> -->
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -22,7 +21,6 @@
 import "@/src/assets/css/style.scss";
 import "@/src/assets/fonts/DFPKingGothicGB.css";
 import "@/src/assets/fonts/HarmonyOS.css";
-import "@/src/assets/fonts/MiSans.css";
 
 const baseFontSize = 18;
 const breakPoints = {
