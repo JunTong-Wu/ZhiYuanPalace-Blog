@@ -1,10 +1,10 @@
 <template>
-  <div bg="bg-2" position-fixed top-0 left-0 right-0 h-header z-20>
+  <div bg="bg-2" w-sidebar h-100vh relative z-20>
     <slot />
   </div>
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "zy-header",
+  name: "zy-side-bar",
 });
 </script>

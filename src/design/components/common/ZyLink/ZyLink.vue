@@ -5,7 +5,7 @@
     bg-transparent
     text-sm
     border-0
-    color="text-1 dark:text-dark-1"
+    color-text-1
     @click="$router.replace(to)"
     flex
     items-center

@@ -17,3 +17,9 @@ export default defineComponent({
   name: "zy-button",
 });
 </script>
+<style scoped>
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+</style>

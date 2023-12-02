@@ -1,11 +1,11 @@
 <template>
   <div
-    bg="bg-4 dark:bg-dark-4"
+    bg="bg-2"
     position-fixed
     bottom-0
     left-0
     right-0
-    h-12
+    h-footer
     z-20
     flex
     justify-center
@@ -13,7 +13,6 @@
   >
     <slot />
   </div>
-  <div h-16></div>
 </template>
 <script lang="ts">
 export default defineComponent({

@@ -67,6 +67,7 @@ export default defineComponent({
         return flag;
       };
       const isDarkmode = () => {
+        return false;
         const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
         if (isDarkTheme.matches) {
           return true;
@@ -198,3 +199,17 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss">
+.vertical-layout {
+  display: none;
+}
+.horizontal-layout {
+  display: none;
+}
+:root.vertical .vertical-layout {
+  display: block;
+}
+:root.horizontal .horizontal-layout {
+  display: block;
+}
+</style>

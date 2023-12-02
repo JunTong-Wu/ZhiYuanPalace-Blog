@@ -20,6 +20,11 @@ export default defineConfig({
     transformerCompileClass(),
     transformerVariantGroup(),
   ],
+  rules: [
+    ["h-header", { height: "var(--header-bar-height)" }],
+    ["h-footer", { height: "var(--footer-bar-height)" }],
+    ["w-sidebar", { width: "var(--side-bar-width)" }],
+  ],
   theme: {
     darkMode: "class",
     breakpoints: {
@@ -34,53 +39,29 @@ export default defineConfig({
       current: "currentColor",
       //主色
       primary: {
-        7: "#454de3", //点击
-        6: "#6269e7", //常规
-        5: "#7f85eb", //悬浮
-        4: "#9da1ef", //特殊场景
-        3: "#babcf3", //一般禁用
-        2: "#d7d8f7", //文字禁用
-        1: "#f4f4fb", //浅色/白底悬浮
-      },
-      //成功色
-      success: {
-        7: "#149a2f", //点击
-        6: "#19b332", //常规
-        5: "#2fc248", //悬浮
-        4: "#52d167", //特殊场景
-        3: "#7ee18a", //一般禁用
-        2: "#b1f0b6", //文字禁用
-        1: "#e9ffea", //浅色/白底悬浮
+        7: "var(--primary-7)",
+        6: "var(--primary-6)",
+        5: "var(--primary-5)",
+        4: "var(--primary-4)",
+        3: "var(--primary-3)",
+        2: "var(--primary-2)",
+        1: "var(--primary-1)",
       },
       //文字颜色
       text: {
-        1: "#1d2129", //强调/正文标题
-        2: "#4f5969", //次强调/正文标题
-        3: "#87909c", //次要信息
-        4: "#c9cdd4", //置灰信息
-        dark: {
-          1: "#f6f6f6", //强调/正文标题
-          2: "#c5c5c5", //次强调/正文标题
-          3: "#929293", //次要信息
-          4: "#5f5f60", //置灰信息
-        },
+        1: "var(--text-1)",
+        2: "var(--text-2)",
+        3: "var(--text-3)",
+        4: "var(--text-4)",
       },
       //背景颜色
       bg: {
-        0: "#ffffff", //最白
-        1: "#f4f6f8", //整体背景色
-        2: "#fafbfc", //一级容器背景
-        3: "#fafbfc", //二级容器背景
-        4: "#ffffff", //三级容器背景
-        5: "#ffffff", //下拉弹出框、Tooltip 背景颜色
-        dark: {
-          0: "#000000", //最黑
-          1: "#16161a", //整体背景色
-          2: "#1e1e23", //一级容器背景
-          3: "#1e1e23", //二级容器背景
-          4: "#25252b", //三级容器背景
-          5: "#25252b", //下拉弹出框、Tooltip 背景颜色
-        },
+        best: "var(--bg-best)",
+        1: "var(--bg-1)",
+        2: "var(--bg-2)",
+        3: "var(--bg-3)",
+        4: "var(--bg-4)",
+        5: "var(--bg-5)",
       },
       bordercolor: "rgba(127,127,127,0.1)",
     },

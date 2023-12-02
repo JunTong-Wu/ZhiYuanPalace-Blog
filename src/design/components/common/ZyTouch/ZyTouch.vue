@@ -40,9 +40,9 @@ export default {
     });
     // 越界判断函数
     const crossBorder = () => {
-      if (endX < viewLeft + 2 || endX > viewLeft + viewWidth - 2) {
+      if (endX < viewLeft + 10 || endX > viewLeft + viewWidth - 10) {
         return true;
-      } else if (endY < viewTop + 2 || endY > viewTop + viewHeight - 2) {
+      } else if (endY < viewTop + 10 || endY > viewTop + viewHeight - 10) {
         return true;
       } else {
         return false;

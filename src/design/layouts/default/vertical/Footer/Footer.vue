@@ -5,7 +5,8 @@
         <ZyIcon
           name="Home12"
           size="1.25rem"
-          filled-color="#686ae5"
+          color="var(--text-3)"
+          filled-color="var(--text-1)"
           :filled="routerActivate('/')"
         />
       </zy-link>
@@ -13,7 +14,8 @@
         <ZyIcon
           name="Notepad12"
           size="1.25rem"
-          filled-color="#686ae5"
+          color="var(--text-3)"
+          filled-color="var(--text-1)"
           :filled="routerActivate('/text')"
         />
       </zy-link>
@@ -22,7 +24,8 @@
         <ZyIcon
           name="ChannelShare12"
           size="1.25rem"
-          filled-color="#686ae5"
+          color="var(--text-3)"
+          filled-color="var(--text-1)"
           :filled="routerActivate('/media')"
         />
       </zy-link>
@@ -30,7 +33,8 @@
         <ZyIcon
           name="Person12"
           size="1.25rem"
-          filled-color="#686ae5"
+          color="var(--text-3)"
+          filled-color="var(--text-1)"
           :filled="routerActivate('/about')"
         />
       </zy-link>

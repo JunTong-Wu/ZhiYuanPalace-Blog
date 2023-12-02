@@ -16,4 +16,40 @@ body {
   color: var(--text-color);
 }
 :root {
+  --header-bar-height: 3rem;
+  --footer-bar-height: 3rem;
+  --side-bar-width: 12rem;
+}
+:root {
+  --primary-7: #454de3; //点击
+  --primary-6: #6269e7; //常规
+  --primary-5: #7f85eb; //悬浮
+  --primary-4: #9da1ef; //特殊场景
+  --primary-3: #babcf3; //一般禁用
+  --primary-2: #d7d8f7; //文字禁用
+  --primary-1: #f4f4fb; //浅色/白底悬浮
+}
+:root {
+  --bg-best: #ffffff; //最白
+  --bg-1: #f4f6f8; //整体背景色
+  --bg-2: #fafbfc; //一级容器背景
+  --bg-3: #fafbfc; //二级容器背景
+  --bg-4: #ffffff; //三级容器背景
+  --bg-5: #ffffff; //下拉弹出框、Tooltip 背景颜色
+  --text-1: #1d2129; //强调/正文标题
+  --text-2: #4f5969; //次强调/正文标
+  --text-3: #87909c; //次要信息
+  --text-4: #c9cdd4; //置灰信息
+}
+:root.dark {
+  --bg-best: #000000; //最黑
+  --bg-1: #16161a; //整体背景色
+  --bg-2: #1e1e23; //一级容器背景
+  --bg-3: #1e1e23; //二级容器背景
+  --bg-4: #25252b; //三级容器背景
+  --bg-5: #25252b; //下拉弹出框、Tooltip 背景颜色
+  --text-1: #f6f6f6; //强调/正文标题
+  --text-2: #c5c5c5; //次强调/正文标
+  --text-3: #929293; //次要信息
+  --text-4: #5f5f60; //置灰信息
 }
