@@ -1,13 +1,7 @@
 <template>
   <div h-full>
     <div class="bg_decoration">
-      <div
-        v-for="n in 3"
-        :id="`decoration${n}`"
-        :style="`background:${bg_color}`"
-      >
-        &nbsp;
-      </div>
+      <div v-for="n in 4" :id="`decoration-${n}`">&nbsp;</div>
     </div>
     <div class="vertical-layout">
       <verticalHeader />
@@ -33,8 +27,6 @@ import verticalHeader from "./default/vertical/Header/Header.vue";
 import verticalFooter from "./default/vertical/Footer/Footer.vue";
 import horizontalSideBar from "./default/horizontal/SideBar/SideBar.vue";
 import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
-
-const bg_color = ref("#00f2ff");
 </script>
 <style lang="scss" scoped>
 @keyframes transform-lr {
@@ -54,34 +46,59 @@ const bg_color = ref("#00f2ff");
   }
 }
 .bg_decoration {
-  filter: blur(200px) brightness(0.8);
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
-  opacity: 0.4;
   > div {
-    width: 110vmin;
-    height: 110vmin;
+    filter: blur(200px);
     border-radius: 50%;
     position: absolute;
+    z-index: -1;
+    opacity: 0.4;
     &:first-child {
-      top: -45vmin;
-      left: -45vmin;
-      animation: transform-lr 4s ease-in-out infinite alternate;
+      width: 70vmin;
+      height: 70vmin;
+      top: -35vmin;
+      left: -35vmin;
+      background-color: #00ffbf;
+      animation: transform-lr 3s ease-in-out infinite alternate;
     }
     &:nth-of-type(2) {
-      top: -60vmin;
-      right: -45vmin;
-      animation: transform-rl 6s 3s ease-in-out infinite alternate;
+      width: 100vmin;
+      height: 100vmin;
+      bottom: -50vmin;
+      right: -50vmin;
+      background-color: #ff6f00;
+      animation: transform-rl 3s ease-in-out infinite alternate;
     }
     &:nth-of-type(3) {
-      bottom: -80vmin;
-      right: 20vmin;
-      animation: transform-rl 5s 2s ease-in-out infinite alternate;
+      width: 50vmin;
+      height: 50vmin;
+      bottom: -10vmin;
+      right: 90vmin;
+      background-color: #7300ff;
+      animation: transform-lr 5s 1s ease-in-out infinite alternate;
     }
+    &:nth-of-type(4) {
+      width: 50vmin;
+      height: 50vmin;
+      top: 10vmin;
+      right: 10vmin;
+      background-color: #ff000d;
+      animation: transform-rl 5s 1s ease-in-out infinite alternate;
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(@/src/assets/image/noise.png);
+    opacity: 0.03;
   }
 }
 </style>
