@@ -97,11 +97,10 @@ const myLive2dConfig = () => {
     });
   }
 };
-if (process.client) {
-  // 如果是客户端运行
+onMounted(() => {
   const script = document.createElement("script");
   script.src = "/static/js/oh-my-live2d.min.js";
   document.body.appendChild(script);
   myLive2dConfig();
-}
+});
 </script>
