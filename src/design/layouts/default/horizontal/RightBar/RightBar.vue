@@ -3,7 +3,7 @@
     <div h-full flex flex-col justify-between>
       <div flex justify-end h-header>
         <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
-          <ZyIcon name="ArrowUp16" filled-color="var(--text-2)" />
+          <ZyIcon name="ChevronUp16" filled-color="var(--text-2)" />
         </zy-button>
         <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
           <ZyIcon name="FullScreenMaximize16" filled-color="var(--text-2)" />

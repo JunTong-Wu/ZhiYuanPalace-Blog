@@ -6,7 +6,6 @@
     text="sm"
     p-2
     border-0
-    transition-colors
     color-inherit
   >
     <slot />
