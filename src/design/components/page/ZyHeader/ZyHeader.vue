@@ -1,5 +1,5 @@
 <template>
-  <div bg="bg-2" position-fixed top-0 left-0 right-0 h-header z-20>
+  <div position-fixed top-0 left-0 right-0 h-header z-20>
     <slot />
   </div>
 </template>

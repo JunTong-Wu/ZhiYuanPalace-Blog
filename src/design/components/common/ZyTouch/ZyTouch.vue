@@ -1,6 +1,7 @@
 <template>
   <div
     ref="touchEvent"
+    cursor-grab
     @mousedown.prevent="onMouseDown($event)"
     @mousemove.prevent="onMouseMove($event)"
     @mouseup.prevent="onMouseUp()"

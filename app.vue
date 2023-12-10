@@ -1,6 +1,5 @@
 <template>
   <ZySuperResponsive
-    bg="bg-1"
     color="text-1"
     :base-font-size="baseFontSize"
     :break-points="breakPoints"
@@ -100,7 +99,7 @@ const myLive2dConfig = () => {
 onMounted(() => {
   const script = document.createElement("script");
   script.src = "/static/js/oh-my-live2d.min.js";
-  document.body.appendChild(script);
-  myLive2dConfig();
+  // document.body.appendChild(script);
+  // myLive2dConfig();
 });
 </script>

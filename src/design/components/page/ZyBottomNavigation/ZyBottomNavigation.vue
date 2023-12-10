@@ -1,6 +1,5 @@
 <template>
   <div
-    bg="bg-2"
     position-fixed
     bottom-0
     left-0

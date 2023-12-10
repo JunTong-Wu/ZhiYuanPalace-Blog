@@ -15,6 +15,9 @@ body {
     "WenQuanYi Micro Hei", sans-serif !important;
   color: var(--text-color);
 }
+:root.dark {
+  background-color: #000;
+}
 :root {
   --header-bar-height: 3rem;
   --footer-bar-height: 3rem;
@@ -31,11 +34,11 @@ body {
 }
 :root {
   --bg-best: #ffffff; //最白
-  --bg-1: #f4f6f8; //整体背景色
-  --bg-2: #fafbfc; //一级容器背景
-  --bg-3: #fafbfc; //二级容器背景
-  --bg-4: #ffffff; //三级容器背景
-  --bg-5: #ffffff; //下拉弹出框、Tooltip 背景颜色
+  --bg-1: #f4f6f8cc; //整体背景色
+  --bg-2: #fafbfccc; //一级容器背景
+  --bg-3: #fafbfccc; //二级容器背景
+  --bg-4: #ffffffcc; //三级容器背景
+  --bg-5: #ffffffcc; //下拉弹出框、Tooltip 背景颜色
   --text-1: #1d2129; //强调/正文标题
   --text-2: #4f5969; //次强调/正文标
   --text-3: #87909c; //次要信息
@@ -43,11 +46,11 @@ body {
 }
 :root.dark {
   --bg-best: #000000; //最黑
-  --bg-1: #10172a; //整体背景色
-  --bg-2: #192132; //一级容器背景
-  --bg-3: #222a39; //二级容器背景
-  --bg-4: #2b3441; //三级容器背景
-  --bg-5: #2b3441; //下拉弹出框、Tooltip 背景颜色
+  --bg-1: #10172acc; //整体背景色
+  --bg-2: #192132cc; //一级容器背景
+  --bg-3: #222a39cc; //二级容器背景
+  --bg-4: #2b3441cc; //三级容器背景
+  --bg-5: #2b3441cc; //下拉弹出框、Tooltip 背景颜色
   --text-1: #f6f6f6; //强调/正文标题
   --text-2: #c5c5c5; //次强调/正文标
   --text-3: #929293; //次要信息

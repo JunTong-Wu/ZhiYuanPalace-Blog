@@ -2,6 +2,7 @@
   <div id="zy-slide-router">
     <ZyTouch
       w-full
+      overflow-hidden
       @slidingLeft="renderRightView"
       @slidingRight="renderLeftView"
       @slideEndLeft="goView('end')"
