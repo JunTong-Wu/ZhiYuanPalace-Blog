@@ -1,11 +1,11 @@
 html,
 body {
-  @apply: font-sans min-h-full h-full m-0 p-0;
+  @apply: font-sans h-full m-0 p-0;
 }
 * {
   @apply: box-border;
 }
-//字体
+// 字体
 body {
   font-size: 12px;
   line-height: 1.5;
@@ -15,6 +15,11 @@ body {
     "WenQuanYi Micro Hei", sans-serif !important;
   color: var(--text-color);
 }
+// 禁用高亮
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 :root.dark {
   background-color: #000;
 }
