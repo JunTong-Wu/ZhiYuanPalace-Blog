@@ -96,10 +96,11 @@ const myLive2dConfig = () => {
     });
   }
 };
-onMounted(() => {
-  const script = document.createElement("script");
-  script.src = "/static/js/oh-my-live2d.min.js";
+
+if (process.client) {
+  // const script = document.createElement("script");
+  // script.src = "/static/js/oh-my-live2d.min.js";
   // document.body.appendChild(script);
   // myLive2dConfig();
-});
+}
 </script>
