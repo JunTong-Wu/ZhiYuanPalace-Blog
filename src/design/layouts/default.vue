@@ -1,25 +1,15 @@
 <template>
-  <div h-full>
-    <div class="bg_decoration">
+  <div h-full flex bg="bg-1" transition duration-500>
+    <aside class="bg_decoration">
       <div v-for="n in 4" :id="`decoration-${n}`">&nbsp;</div>
-    </div>
-    <div class="vertical-layout">
-      <verticalHeader />
-    </div>
-    <div flex bg="bg-1" transition duration-500>
-      <div class="horizontal-layout">
-        <horizontalSideBar />
-      </div>
-      <div flex-1>
-        <slot />
-      </div>
-      <div class="horizontal-layout">
-        <horizontalRightBar />
-      </div>
-    </div>
-    <div class="vertical-layout">
-      <verticalFooter />
-    </div>
+    </aside>
+    <verticalHeader class="vertical-layout" />
+    <horizontalSideBar class="horizontal-layout" />
+    <main flex-1>
+      <slot />
+    </main>
+    <horizontalRightBar class="horizontal-layout" />
+    <verticalFooter class="vertical-layout" />
   </div>
 </template>
 <script setup lang="ts">

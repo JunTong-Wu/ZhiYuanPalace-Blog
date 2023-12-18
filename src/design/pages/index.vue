@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>首页</div>
+    <ZyBanner></ZyBanner>
+    <ZyList></ZyList>
   </div>
 </template>
-<script setup lang="ts"></script>

@@ -1,7 +1,7 @@
 <template>
-  <div w-sidebar h-100vh relative z-20>
+  <aside w-sidebar h-100vh relative z-20>
     <slot />
-  </div>
+  </aside>
 </template>
 <script lang="ts">
 export default defineComponent({

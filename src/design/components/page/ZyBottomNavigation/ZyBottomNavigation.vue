@@ -1,5 +1,5 @@
 <template>
-  <div
+  <footer
     position-fixed
     bottom-0
     left-0
@@ -11,7 +11,7 @@
     border="t solid bordercolor b-0 l-0 r-0"
   >
     <slot />
-  </div>
+  </footer>
 </template>
 <script lang="ts">
 export default defineComponent({
