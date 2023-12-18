@@ -1,11 +1,11 @@
 <template>
-  <div h-full flex bg="bg-1" transition duration-500>
+  <div h-full flex bg="bg-1 xs:bg-3" transition duration-500>
     <aside class="bg_decoration horizontal-layout">
       <div v-for="n in 4" :id="`decoration-${n}`">&nbsp;</div>
     </aside>
     <verticalHeader class="vertical-layout" />
     <horizontalSideBar class="horizontal-layout" />
-    <main flex-1>
+    <main flex-1 bg="bg-5 xs:bg-transparent">
       <slot />
     </main>
     <horizontalRightBar class="horizontal-layout" />

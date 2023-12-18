@@ -1,6 +1,11 @@
 <template>
-  <zy-bottom-navigation>
-    <div h-full flex w="full xs:[80%] sm:[70%] md:[60%] lg:[50%] xl:[40%]">
+  <zy-bottom-navigation bg="xs:bg-5">
+    <div
+      h-full
+      flex
+      w="full xs:[80%] sm:[70%] md:[60%] lg:[50%] xl:[40%]"
+      mx-auto
+    >
       <zy-link to="/" h-full w="[20%]">
         <ZyIcon
           name="Home12"
