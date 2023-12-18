@@ -6,7 +6,7 @@
     <div class="vertical-layout">
       <verticalHeader />
     </div>
-    <div flex bg="bg-1">
+    <div flex bg="bg-1" transition duration-500>
       <div class="horizontal-layout">
         <horizontalSideBar />
       </div>
