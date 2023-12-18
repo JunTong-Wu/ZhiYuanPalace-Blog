@@ -14,7 +14,7 @@
       flex-col
       items-center
       justify-center
-      bg="bg-2"
+      bg="bg-5"
       rounded-xl
       backdrop-blur-xl
     >

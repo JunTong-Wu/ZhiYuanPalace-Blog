@@ -164,26 +164,26 @@ export default {
           // console.log(moveDistanceX > 0 ? "左" : "右");
           if (moveDistanceX > 0) {
             // 向左滑动
-            if (moveDistanceX > viewWidth / 3) {
-              // 如果滑动距离超过1/3，触发
+            if (moveDistanceX > viewWidth / 6) {
+              // 如果滑动距离超过1/6，触发
               emit("slideEndLeft", {
                 moveDistanceX: moveDistanceX,
               });
             } else {
-              // 如果滑动距离未超过1/3，取消
+              // 如果滑动距离未超过1/6，取消
               emit("slideCancelLeft", {
                 moveDistanceX: moveDistanceX,
               });
             }
           } else {
             // 向右滑动
-            if (moveDistanceX < 0 - viewWidth / 3) {
-              // 如果滑动距离超过1/3，触发
+            if (moveDistanceX < 0 - viewWidth / 6) {
+              // 如果滑动距离超过1/6，触发
               emit("slideEndRight", {
                 moveDistanceX: moveDistanceX,
               });
             } else {
-              // 如果滑动距离未超过1/3，取消
+              // 如果滑动距离未超过1/6，取消
               emit("slideCancelRight", {
                 moveDistanceX: moveDistanceX,
               });
@@ -194,26 +194,26 @@ export default {
           // console.log(moveDistanceY > 0 ? "上" : "下");
           if (moveDistanceY > 0) {
             // 向上滑动
-            if (moveDistanceY > viewHeight / 3) {
-              // 如果滑动距离超过1/3，触发
+            if (moveDistanceY > viewHeight / 6) {
+              // 如果滑动距离超过1/6，触发
               emit("slideEndUp", {
                 moveDistanceY: moveDistanceY,
               });
             } else {
-              // 如果滑动距离未超过1/3，取消
+              // 如果滑动距离未超过1/6，取消
               emit("slideCancelUp", {
                 moveDistanceY: moveDistanceY,
               });
             }
           } else {
             // 向下滑动
-            if (moveDistanceY < 0 - viewHeight / 3) {
-              // 如果滑动距离超过1/3，触发
+            if (moveDistanceY < 0 - viewHeight / 6) {
+              // 如果滑动距离超过1/6，触发
               emit("slideEndDown", {
                 moveDistanceY: moveDistanceY,
               });
             } else {
-              // 如果滑动距离未超过1/3，取消
+              // 如果滑动距离未超过1/6，取消
               emit("slideCanceDown", {
                 moveDistanceY: moveDistanceY,
               });

@@ -11,11 +11,11 @@
         </zy-button>
       </div>
       <div flex items-center justify-center px-4>
-        <img h-7 src="@/src/assets/image/logo.png" alt="logo" />
+        <img h-5 src="@/src/assets/image/logo.png" alt="logo" />
         <svg
           w-12
           fill-current
-          h="[60%]"
+          h-4
           ml-2
           xmlns="http://www.w3.org/2000/svg"
           id="uuid-a4d9451e-5c74-4a7b-8029-1c6b2343bf0b"

@@ -1,6 +1,6 @@
 <template>
   <div h-full flex bg="bg-1" transition duration-500>
-    <aside class="bg_decoration">
+    <aside class="bg_decoration horizontal-layout">
       <div v-for="n in 4" :id="`decoration-${n}`">&nbsp;</div>
     </aside>
     <verticalHeader class="vertical-layout" />

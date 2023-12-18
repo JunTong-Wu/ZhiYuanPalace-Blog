@@ -24,8 +24,8 @@ body {
   background-color: #000;
 }
 :root {
-  --header-bar-height: 3rem;
-  --footer-bar-height: 3rem;
+  --header-bar-height: 2.5rem;
+  --footer-bar-height: 2.5rem;
   --side-bar-width: 14rem;
 }
 :root {
@@ -39,11 +39,11 @@ body {
 }
 :root {
   --bg-best: #ffffff; //最白
-  --bg-1: #f4f6f870; //整体背景色
-  --bg-2: #fafbfc70; //一级容器背景
-  --bg-3: #fafbfc70; //二级容器背景
-  --bg-4: #ffffff70; //三级容器背景
-  --bg-5: #ffffff70; //下拉弹出框、Tooltip 背景颜色
+  --bg-1: #f4f6f8aa; //整体背景色
+  --bg-2: #fafbfcaa; //一级容器背景
+  --bg-3: #fafbfcaa; //二级容器背景
+  --bg-4: #ffffffaa; //三级容器背景
+  --bg-5: #ffffffaa; //下拉弹出框、Tooltip 背景颜色
   --text-1: #1d2129; //强调/正文标题
   --text-2: #4f5969; //次强调/正文标
   --text-3: #87909c; //次要信息
@@ -51,11 +51,11 @@ body {
 }
 :root.dark {
   --bg-best: #000000; //最黑
-  --bg-1: #10172a70; //整体背景色
-  --bg-2: #19213270; //一级容器背景
-  --bg-3: #222a3970; //二级容器背景
-  --bg-4: #2b344170; //三级容器背景
-  --bg-5: #2b344170; //下拉弹出框、Tooltip 背景颜色
+  --bg-1: #10172aaa; //整体背景色
+  --bg-2: #192132aa; //一级容器背景
+  --bg-3: #222a39aa; //二级容器背景
+  --bg-4: #2b3441aa; //三级容器背景
+  --bg-5: #2b3441aa; //下拉弹出框、Tooltip 背景颜色
   --text-1: #f6f6f6; //强调/正文标题
   --text-2: #c5c5c5; //次强调/正文标
   --text-3: #929293; //次要信息
