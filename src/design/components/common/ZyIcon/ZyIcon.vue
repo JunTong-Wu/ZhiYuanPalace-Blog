@@ -6,9 +6,18 @@
     class="zy-icon"
     :class="{ filled: filled }"
   >
-    <!-- <inline-svg :src="path" /> -->
-
-    <p>{{ getSvgIconUrl(name) }}</p>
+    <inline-svg
+      absolute
+      inset-0
+      :src="getSvgIconUrl(`${name}Regular`)"
+      :style="{ color: color }"
+    />
+    <inline-svg
+      absolute
+      inset-0
+      :src="getSvgIconUrl(`${name}Filled`)"
+      :style="{ color: filledColor }"
+    />
   </div>
 </template>
 <script lang="ts">
@@ -39,16 +48,7 @@ export default defineComponent({
   setup(props) {
     const path = ref("");
     const getSvgIconUrl = (name: string) => {
-      // const url = `/static/svg/icon/fluent/${name}.svg`;
-      // return url;
-      console.log(name);
-
-      // import(`@sicons/fluent/${name}Filled.svg`).then((res) => {
-      //   console.log(res.default);
-      //   path.value = res.default;
-      // });
-      const url = new URL(`./assets/image/logo-text.svg`, import.meta.url);
-      console.log(url);
+      const url = `/_nuxt/node_modules/@sicons/fluent/${name}.svg`;
       return url;
     };
     getSvgIconUrl(props.name);
@@ -62,17 +62,17 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .zy-icon {
-  > img:first-of-type {
+  > svg:first-of-type {
     opacity: 1;
   }
-  > img:nth-of-type(2) {
+  > svg:nth-of-type(2) {
     opacity: 0;
   }
   &.filled {
-    > img:first-of-type {
+    > svg:first-of-type {
       opacity: 0;
     }
-    > img:nth-of-type(2) {
+    > svg:nth-of-type(2) {
       opacity: 1;
     }
   }
