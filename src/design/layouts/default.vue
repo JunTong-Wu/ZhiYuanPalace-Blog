@@ -1,20 +1,24 @@
 <template>
-  <div h-full flex bg="bg-1 xs:bg-3" transition duration-500>
-    <aside class="bg_decoration horizontal-layout">
-      <div v-for="n in 4" :id="`decoration-${n}`">&nbsp;</div>
-    </aside>
-    <verticalHeader class="vertical-layout" />
-    <horizontalSideBar class="horizontal-layout" />
-    <main flex-1 bg="bg-5 xs:bg-transparent">
-      <slot />
-    </main>
-    <horizontalRightBar class="horizontal-layout" />
-    <verticalFooter class="vertical-layout" />
+  <div h-full bg="bg-3" transition duration-500>
+    <div flex max-w-7xl mx-auto>
+      <aside class="bg_decoration">
+        <div v-for="n in 4" :id="`decoration-${n}`">&nbsp;</div>
+      </aside>
+      <verticalHeader class="vertical-layout" />
+      <horizontalHeader class="horizontal-layout" />
+      <horizontalSideBar class="horizontal-layout" />
+      <main flex-1 bg="bg-transparent">
+        <slot />
+      </main>
+      <horizontalRightBar class="horizontal-layout" />
+      <verticalFooter class="vertical-layout" />
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import verticalHeader from "./default/vertical/Header/Header.vue";
 import verticalFooter from "./default/vertical/Footer/Footer.vue";
+import horizontalHeader from "./default/horizontal/Header/Header.vue";
 import horizontalSideBar from "./default/horizontal/SideBar/SideBar.vue";
 import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
 </script>
@@ -42,7 +46,7 @@ import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
   right: 0;
   bottom: 0;
   > div {
-    filter: blur(200px);
+    filter: blur(6rem);
     border-radius: 50%;
     position: absolute;
     z-index: -1;
@@ -53,7 +57,6 @@ import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
       top: -35vmin;
       left: -35vmin;
       background-color: #00ffbf;
-      animation: transform-lr 3s ease-in-out infinite alternate;
     }
     &:nth-of-type(2) {
       width: 100vmin;
@@ -61,7 +64,6 @@ import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
       bottom: -50vmin;
       right: -50vmin;
       background-color: #ff6f00;
-      animation: transform-rl 3s ease-in-out infinite alternate;
     }
     &:nth-of-type(3) {
       width: 50vmin;
@@ -69,7 +71,6 @@ import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
       bottom: -10vmin;
       right: 90vmin;
       background-color: #7300ff;
-      animation: transform-lr 5s 1s ease-in-out infinite alternate;
     }
     &:nth-of-type(4) {
       width: 50vmin;
@@ -77,7 +78,6 @@ import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
       top: 10vmin;
       right: 10vmin;
       background-color: #ff000d;
-      animation: transform-rl 5s 1s ease-in-out infinite alternate;
     }
   }
   &::after {
@@ -89,6 +89,25 @@ import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
     bottom: 0;
     background-image: url(@/src/assets/image/noise.png);
     opacity: 0.03;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bg_decoration {
+    > div {
+      &:first-child {
+        animation: transform-lr 3s ease-in-out infinite alternate;
+      }
+      &:nth-of-type(2) {
+        animation: transform-rl 3s ease-in-out infinite alternate;
+      }
+      &:nth-of-type(3) {
+        animation: transform-lr 5s 1s ease-in-out infinite alternate;
+      }
+      &:nth-of-type(4) {
+        animation: transform-rl 5s 1s ease-in-out infinite alternate;
+      }
+    }
   }
 }
 </style>

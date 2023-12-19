@@ -22,6 +22,7 @@ export default defineConfig({
   ],
   rules: [
     ["h-header", { height: "var(--header-bar-height)" }],
+    ["h-header-xl", { height: "var(--header-bar-height-xl)" }],
     ["h-footer", { height: "var(--footer-bar-height)" }],
     ["w-sidebar", { width: "var(--side-bar-width)" }],
   ],
