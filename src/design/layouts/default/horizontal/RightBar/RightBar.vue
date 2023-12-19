@@ -4,7 +4,10 @@
       <div>
         <div flex justify-end h-header>
           <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
-            <ZyIcon name="ChevronUp16" filled-color="var(--text-2)" />
+            <ZyIcon
+              lineName="icon-park-twotone:up-c"
+              lineColor="var(--text-2)"
+            />
           </zy-button>
           <zy-button
             w="[25%]"
@@ -17,13 +20,13 @@
           >
             <ZyIcon
               v-if="!fullScreenFlag"
-              name="FullScreenMaximize16"
-              filled-color="var(--text-2)"
+              lineName="mingcute:fullscreen-fill"
+              lineColor="var(--text-2)"
             />
             <ZyIcon
               v-else
-              name="FullScreenMinimize24"
-              filled-color="var(--text-2)"
+              lineName="mingcute:fullscreen-exit-fill"
+              lineColor="var(--text-2)"
             />
           </zy-button>
           <zy-button
@@ -37,29 +40,45 @@
           >
             <ZyIcon
               v-if="!darkModeFlag"
-              name="WeatherMoon16"
-              filled-color="var(--text-2)"
+              lineName="ph:moon-duotone"
+              lineColor="var(--text-2)"
             />
-            <ZyIcon v-else name="WeatherSunny16" filled-color="var(--text-2)" />
+            <ZyIcon
+              v-else
+              lineName="ph:sun-duotone"
+              lineColor="var(--text-2)"
+            />
           </zy-button>
           <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
-            <ZyIcon name="Settings16" filled-color="var(--text-2)" />
+            <ZyIcon
+              lineName="icon-park-twotone:setting-one"
+              lineColor="var(--text-2)"
+            />
           </zy-button>
         </div>
       </div>
       <div>
         <div flex justify-end h-header>
           <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
-            <ZyIcon name="Previous16" filled-color="var(--text-2)" />
+            <ZyIcon
+              lineName="solar:skip-previous-bold-duotone"
+              lineColor="var(--text-2)"
+            />
           </zy-button>
           <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
-            <ZyIcon name="Play16" filled-color="var(--text-2)" />
+            <ZyIcon lineName="ph:play-duotone" lineColor="var(--text-2)" />
           </zy-button>
           <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
-            <ZyIcon name="Next16" filled-color="var(--text-2)" />
+            <ZyIcon
+              lineName="solar:skip-next-bold-duotone"
+              lineColor="var(--text-2)"
+            />
           </zy-button>
           <zy-button w="[25%]" h-full px-4 flex items-center justify-center>
-            <ZyIcon name="List16" filled-color="var(--text-2)" />
+            <ZyIcon
+              lineName="solar:list-bold-duotone"
+              lineColor="var(--text-2)"
+            />
           </zy-button>
         </div>
       </div>

@@ -8,18 +8,18 @@
     >
       <zy-link to="/" h-full w="[20%]">
         <ZyIcon
-          name="Home12"
-          size="1rem"
-          color="var(--text-3)"
+          lineName="ant-design:home-outlined"
+          lineColor="var(--text-3)"
+          filledName="ant-design:home-twotone"
           filled-color="var(--text-1)"
           :filled="routerActivate('/')"
         />
       </zy-link>
       <zy-link to="/text" h-full w="[20%]">
         <ZyIcon
-          name="Notepad12"
-          size="1rem"
-          color="var(--text-3)"
+          lineName="ph:article"
+          lineColor="var(--text-3)"
+          filledName="ph:article-duotone"
           filled-color="var(--text-1)"
           :filled="routerActivate('/text')"
         />
@@ -27,18 +27,18 @@
       <div h-full w="[20%]"></div>
       <zy-link to="/media" h-full w="[20%]">
         <ZyIcon
-          name="ChannelShare12"
-          size="1rem"
-          color="var(--text-3)"
+          lineName="ic:outline-audio-file"
+          lineColor="var(--text-3)"
+          filledName="ic:twotone-audio-file"
           filled-color="var(--text-1)"
           :filled="routerActivate('/media')"
         />
       </zy-link>
       <zy-link to="/about" h-full w="[20%]">
         <ZyIcon
-          name="Person12"
-          size="1rem"
-          color="var(--text-3)"
+          lineName="ph:user"
+          lineColor="var(--text-3)"
+          filledName="ph:user-duotone"
           filled-color="var(--text-1)"
           :filled="routerActivate('/about')"
         />

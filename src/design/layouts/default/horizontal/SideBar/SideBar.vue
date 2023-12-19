@@ -30,7 +30,10 @@
         <zy-button h-header px-4 w-full>
           <div flex justify-between>
             <span text-xs color-text-3>全局搜索</span>
-            <ZyIcon name="Search16" filled-color="var(--text-2)" />
+            <ZyIcon
+              lineName="iconamoon:search-duotone"
+              lineColor="var(--text-1)"
+            />
           </div>
         </zy-button>
       </div>

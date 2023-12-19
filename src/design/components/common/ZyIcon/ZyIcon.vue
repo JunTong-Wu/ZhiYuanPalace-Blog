@@ -6,16 +6,18 @@
     class="zy-icon"
     :class="{ filled: filled }"
   >
-    <inline-svg
+    <Icon
       absolute
       inset-0
-      :src="getSvgIconUrl(`${name}Regular`)"
-      :style="{ color: color }"
+      :name="lineName"
+      :size="size"
+      :style="{ color: lineColor }"
     />
-    <inline-svg
+    <Icon
       absolute
       inset-0
-      :src="getSvgIconUrl(`${name}Filled`)"
+      :name="filledName"
+      :size="size"
       :style="{ color: filledColor }"
     />
   </div>
@@ -24,15 +26,23 @@
 export default defineComponent({
   name: "zy-icon",
   props: {
-    name: {
-      type: String,
-      default: "",
-    },
     size: {
       type: String,
       default: "1rem",
     },
-    color: {
+    lineName: {
+      type: String,
+      default: "",
+    },
+    lineColor: {
+      type: String,
+      default: "inherit",
+    },
+    filledName: {
+      type: String,
+      default: "",
+    },
+    filledColor: {
       type: String,
       default: "inherit",
     },
@@ -40,22 +50,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    filledColor: {
-      type: String,
-      default: "inherit",
-    },
   },
   setup(props) {
-    const path = ref("");
-    const getSvgIconUrl = (name: string) => {
-      const url = `/_nuxt/node_modules/@sicons/fluent/${name}.svg`;
-      return url;
-    };
-    getSvgIconUrl(props.name);
     return {
       props,
-      getSvgIconUrl,
-      path,
     };
   },
 });

@@ -10,7 +10,7 @@ Object.assign(process.env, envData); // 将环境配置信息，添加到process
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@unocss/nuxt", "@nuxtjs/i18n"],
+  modules: ["@unocss/nuxt", "@nuxtjs/i18n", "nuxt-icon"],
   i18n: {
     /* module options */
     vueI18n: "./nuxt-i18n.js", // custom path example
