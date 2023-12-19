@@ -6,30 +6,9 @@
     class="zy-icon"
     :class="{ filled: filled }"
   >
-    <img
-      absolute
-      inset-0
-      :src="getSvgIconUrl(`${name}Regular`)"
-      :style="{
-        width: size,
-        height: size,
-        color: color,
-        filter: `drop-shadow(currentColor ${size} 0)`,
-        transform: `translateX(-${size})`,
-      }"
-    />
-    <img
-      absolute
-      inset-0
-      :src="getSvgIconUrl(`${name}Filled`)"
-      :style="{
-        width: size,
-        height: size,
-        color: filledColor,
-        filter: `drop-shadow(currentColor ${size} 0)`,
-        transform: `translateX(-${size})`,
-      }"
-    />
+    <!-- <inline-svg :src="path" /> -->
+
+    <p>{{ getSvgIconUrl(name) }}</p>
   </div>
 </template>
 <script lang="ts">
@@ -58,13 +37,25 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const getSvgIconUrl = (name: string): string => {
-      const url = `/static/svg/icon/fluent/${name}.svg`;
+    const path = ref("");
+    const getSvgIconUrl = (name: string) => {
+      // const url = `/static/svg/icon/fluent/${name}.svg`;
+      // return url;
+      console.log(name);
+
+      // import(`@sicons/fluent/${name}Filled.svg`).then((res) => {
+      //   console.log(res.default);
+      //   path.value = res.default;
+      // });
+      const url = new URL(`./assets/image/logo-text.svg`, import.meta.url);
+      console.log(url);
       return url;
     };
+    getSvgIconUrl(props.name);
     return {
       props,
       getSvgIconUrl,
+      path,
     };
   },
 });
