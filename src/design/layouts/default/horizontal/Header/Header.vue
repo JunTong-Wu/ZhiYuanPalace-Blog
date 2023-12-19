@@ -48,13 +48,13 @@
           <ZyIcon
             v-if="!fullScreenFlag"
             size="1.2rem"
-            lineName="mingcute:fullscreen-fill"
+            lineName="mingcute:fullscreen-line"
             lineColor="var(--text-2)"
           />
           <ZyIcon
             v-else
             size="1.2rem"
-            lineName="mingcute:fullscreen-exit-fill"
+            lineName="mingcute:fullscreen-exit-line"
             lineColor="var(--text-2)"
           />
         </zy-button>
@@ -69,13 +69,13 @@
           <ZyIcon
             v-if="!darkModeFlag"
             size="1.2rem"
-            lineName="ph:moon-duotone"
+            lineName="ph:sun-duotone"
             lineColor="var(--text-2)"
           />
           <ZyIcon
             v-else
             size="1.2rem"
-            lineName="ph:sun-duotone"
+            lineName="ph:moon-duotone"
             lineColor="var(--text-2)"
           />
         </zy-button>
