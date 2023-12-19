@@ -1,5 +1,5 @@
 <template>
-  <div bg="bg-2" h-40 w-full rounded-2xl overflow-hidden relative transition>
+  <div bg="bg-2" h-40 w-full rounded-2xl overflow-hidden relative>
     <img
       src="@/src/assets/image/banner.png"
       alt=""

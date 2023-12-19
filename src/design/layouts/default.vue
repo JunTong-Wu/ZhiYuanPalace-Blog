@@ -1,13 +1,37 @@
 <template>
-  <div h-full bg="bg-3" transition duration-500>
+  <div h-full bg=" [#ffffff] dark:[#10102f]">
     <div flex max-w-7xl mx-auto>
-      <aside class="bg_decoration">
-        <div v-for="n in 4" :id="`decoration-${n}`">&nbsp;</div>
-      </aside>
       <verticalHeader class="vertical-layout" />
       <horizontalHeader class="horizontal-layout" />
       <horizontalSideBar class="horizontal-layout" />
       <main flex-1 bg="bg-transparent">
+        <section class="absolute inset-0">
+          <picture
+            class="pointer-events-none absolute inset-x-0 top-0 dark:hidden"
+          >
+            <img
+              src="@/src/assets/image/gradient.jpg"
+              alt="gradient"
+              class="w-full"
+            />
+          </picture>
+          <picture
+            class="pointer-events-none absolute inset-x-0 top-0 hidden dark:block"
+          >
+            <img
+              src="@/src/assets/image/gradient_dark.jpg"
+              alt="gradient dark"
+              class="w-full"
+            />
+          </picture>
+
+          <div class="container h-full">
+            <div class="grid h-full items-center gap-4 md:grid-cols-12">
+              <!-- Hero image -->
+              <div class="col-span-6 xl:col-span-8"></div>
+            </div>
+          </div>
+        </section>
         <slot />
       </main>
       <horizontalRightBar class="horizontal-layout" />
@@ -22,92 +46,3 @@ import horizontalHeader from "./default/horizontal/Header/Header.vue";
 import horizontalSideBar from "./default/horizontal/SideBar/SideBar.vue";
 import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
 </script>
-<style lang="scss" scoped>
-@keyframes transform-lr {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(30%);
-  }
-}
-@keyframes transform-rl {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-.bg_decoration {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  > div {
-    filter: blur(6rem);
-    border-radius: 50%;
-    position: absolute;
-    z-index: -1;
-    opacity: 0.4;
-    &:first-child {
-      width: 70vmin;
-      height: 70vmin;
-      top: -35vmin;
-      left: -35vmin;
-      background-color: #00ffbf;
-    }
-    &:nth-of-type(2) {
-      width: 100vmin;
-      height: 100vmin;
-      bottom: -50vmin;
-      right: -50vmin;
-      background-color: #ff6f00;
-    }
-    &:nth-of-type(3) {
-      width: 50vmin;
-      height: 50vmin;
-      bottom: -10vmin;
-      right: 90vmin;
-      background-color: #7300ff;
-    }
-    &:nth-of-type(4) {
-      width: 50vmin;
-      height: 50vmin;
-      top: 10vmin;
-      right: 10vmin;
-      background-color: #ff000d;
-    }
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(@/src/assets/image/noise.png);
-    opacity: 0.03;
-  }
-}
-
-@media (min-width: 1200px) {
-  .bg_decoration {
-    > div {
-      &:first-child {
-        animation: transform-lr 3s ease-in-out infinite alternate;
-      }
-      &:nth-of-type(2) {
-        animation: transform-rl 3s ease-in-out infinite alternate;
-      }
-      &:nth-of-type(3) {
-        animation: transform-lr 5s 1s ease-in-out infinite alternate;
-      }
-      &:nth-of-type(4) {
-        animation: transform-rl 5s 1s ease-in-out infinite alternate;
-      }
-    }
-  }
-}
-</style>
