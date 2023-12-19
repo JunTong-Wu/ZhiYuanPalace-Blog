@@ -7,8 +7,8 @@
   >
     <NuxtLayout>
       <ZySlideRouterView :path-list="pathList">
-        <ZyScrollView :parentDivHeight="parentDivHeight">
-          <div h-full text-base>
+        <ZyScrollView>
+          <div text-base>
             <div class="vertical-layout" h-header></div>
             <NuxtPage mx-auto p-4 class="lg:max-w-[95%] xl:max-w-[90%]" />
           </div>

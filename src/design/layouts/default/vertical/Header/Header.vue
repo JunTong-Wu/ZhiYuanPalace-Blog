@@ -1,6 +1,6 @@
 <template>
   <zy-header>
-    <div flex justify-between h-full bg="xs:bg-5">
+    <div flex justify-between h-full bg="xs:bg-5" backdrop-blur-xl>
       <div>
         <zy-button h-full px-4 @click="darkModeSwitch">
           <ZyIcon lineName="jam:menu" lineColor="var(--text-1)" />
