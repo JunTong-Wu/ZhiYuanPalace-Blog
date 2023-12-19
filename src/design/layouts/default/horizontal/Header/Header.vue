@@ -1,7 +1,7 @@
 <template>
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl max-w-7xl mx-auto>
-      <div flex items-center justify-center px-4>
+      <div flex items-center justify-center px-4 w-sidebar v-zy-ripple>
         <img h-5 md:h-8 src="@/src/assets/image/logo.png" alt="logo" />
         <svg
           w-12
@@ -28,12 +28,13 @@
           />
         </svg>
       </div>
+      <Navigation />
       <div flex justify-end h-full w-sidebar>
         <zy-button w="[25%]" h-full flex items-center justify-center>
           <ZyIcon
             size="1.2rem"
-            lineName="icon-park-twotone:up-c"
-            lineColor="var(--text-2)"
+            lineName="iconamoon:search-duotone"
+            lineColor="var(--text-1)"
           />
         </zy-button>
         <zy-button
@@ -90,6 +91,7 @@
   </zy-header>
 </template>
 <script setup lang="ts">
+import Navigation from "./Navigation/Navigation.vue";
 // 夜间模式
 const darkModeFlag = ref(false);
 const darkModeSwitch = () => {

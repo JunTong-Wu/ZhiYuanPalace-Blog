@@ -6,7 +6,7 @@
       w="full xs:[80%] sm:[70%] md:[60%] lg:[50%] xl:[40%]"
       mx-auto
     >
-      <zy-link to="/" h-full w="[20%]">
+      <zy-link to="/" v-zy-ripple h-full w="[20%]">
         <ZyIcon
           lineName="ant-design:home-outlined"
           lineColor="var(--text-3)"
@@ -15,7 +15,7 @@
           :filled="routerActivate('/')"
         />
       </zy-link>
-      <zy-link to="/text" h-full w="[20%]">
+      <zy-link to="/text" v-zy-ripple h-full w="[20%]">
         <ZyIcon
           lineName="ph:article"
           lineColor="var(--text-3)"
@@ -25,7 +25,7 @@
         />
       </zy-link>
       <div h-full w="[20%]"></div>
-      <zy-link to="/media" h-full w="[20%]">
+      <zy-link to="/media" v-zy-ripple h-full w="[20%]">
         <ZyIcon
           lineName="ic:outline-audio-file"
           lineColor="var(--text-3)"
@@ -34,7 +34,7 @@
           :filled="routerActivate('/media')"
         />
       </zy-link>
-      <zy-link to="/about" h-full w="[20%]">
+      <zy-link to="/about" v-zy-ripple h-full w="[20%]">
         <ZyIcon
           lineName="ph:user"
           lineColor="var(--text-3)"

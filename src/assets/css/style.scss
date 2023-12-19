@@ -1,6 +1,6 @@
 html,
 body {
-  @apply: font-sans h-full m-0 p-0;
+  @apply: h-full m-0 p-0;
 }
 * {
   @apply: box-border;
@@ -9,15 +9,23 @@ body {
 body {
   font-size: 12px;
   line-height: 1.5;
-  font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
-    "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica,
-    Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC",
-    "WenQuanYi Micro Hei", sans-serif !important;
+  // font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
+  //   "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica,
+  //   Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC",
+  //   "WenQuanYi Micro Hei", sans-serif;
   color: var(--text-color);
 }
 // 禁用高亮
 * {
   -webkit-tap-highlight-color: transparent;
+}
+
+menu,
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 :root.dark {

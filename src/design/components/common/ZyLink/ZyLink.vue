@@ -1,7 +1,6 @@
 <template>
   <button
     type="button"
-    v-zy-ripple
     bg-transparent
     text-sm
     border-0

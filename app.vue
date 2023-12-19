@@ -19,9 +19,6 @@
 </template>
 <script setup lang="ts">
 import "@/src/assets/css/style.scss";
-import "@/src/assets/css/common-to-live2d.scss";
-import "@/src/assets/fonts/DFPKingGothicGB.css";
-import "@/src/assets/fonts/HarmonyOS.css";
 
 const baseFontSize = 18;
 const breakPoints = {
