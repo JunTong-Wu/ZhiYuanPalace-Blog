@@ -13,6 +13,12 @@
 </template>
 <script lang="ts">
 export default {
+  props: {
+    init: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup(props, { emit }) {
     // 初始化
     let viewTop = 0;
@@ -38,11 +44,21 @@ export default {
         }, 100);
       });
     });
+    watch(
+      () => props.init,
+      (newValue) => {
+        if (newValue) {
+          setTimeout(() => {
+            initViewSize();
+          }, 100);
+        }
+      }
+    );
     // 越界判断函数
     const crossBorder = () => {
-      if (endX < viewLeft + 10 || endX > viewLeft + viewWidth - 10) {
+      if (endX < viewLeft + 20 || endX > viewLeft + viewWidth - 20) {
         return true;
-      } else if (endY < viewTop + 10 || endY > viewTop + viewHeight - 10) {
+      } else if (endY < viewTop + 20 || endY > viewTop + viewHeight - 20) {
         return true;
       } else {
         return false;
@@ -116,8 +132,8 @@ export default {
 
     // 正在拖动时
     const startTranslate = (moveDistanceX: number, moveDistanceY: number) => {
-      // 判断滑动距离超过40
-      if (Math.abs(moveDistanceX) > 40 || Math.abs(moveDistanceY) > 40) {
+      // 判断滑动距离超过10
+      if (Math.abs(moveDistanceX) > 10 || Math.abs(moveDistanceY) > 10) {
         // 判断是否越界
         if (!crossBorder()) {
           // 没有越界，判断X轴移动的距离是否大于Y轴移动的距离
@@ -155,8 +171,8 @@ export default {
     };
     // 释放拖动时
     const stopTranslate = (moveDistanceX: number, moveDistanceY: number) => {
-      // 判断滑动距离超过40
-      if (Math.abs(moveDistanceX) > 40 || Math.abs(moveDistanceY) > 40) {
+      // 判断滑动距离超过10
+      if (Math.abs(moveDistanceX) > 10 || Math.abs(moveDistanceY) > 10) {
         // 判断X轴移动的距离是否大于Y轴移动的距离
         if (Math.abs(moveDistanceX) > Math.abs(moveDistanceY)) {
           // 左右
@@ -213,7 +229,7 @@ export default {
               });
             } else {
               // 如果滑动距离未超过1/6，取消
-              emit("slideCanceDown", {
+              emit("slideCancelDown", {
                 moveDistanceY: moveDistanceY,
               });
             }

@@ -64,6 +64,7 @@ export default defineConfig({
         4: "var(--bg-4)",
         5: "var(--bg-5)",
         transparent: "transparent",
+        mask: "var(--bg-mask)",
       },
       bordercolor: "rgba(127,127,127,0.1)",
     },

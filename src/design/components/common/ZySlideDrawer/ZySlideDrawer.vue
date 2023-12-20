@@ -1,50 +1,88 @@
 <template>
-  <div class="drawer" v-show="display" :style="`z-index: ${zIndex};`">
-    <div :class="maskClass" @click="closeByMask"></div>
+  <aside
+    fixed
+    inset-0
+    v-show="display"
+    :style="`z-index: ${zIndex};`"
+    ref="el"
+    :class="{ dark: dark }"
+  >
     <div
-      :class="mainClass"
+      fixed
+      inset-0
+      bg="bg-mask"
+      transition
+      :class="maskClass"
+      @click="closeByMask"
+      v-if="mask"
+    ></div>
+    <ZyTouch
+      class="drawer-main"
+      cursor-grab
+      fixed
+      h-full
+      bg="bg-5"
+      backdrop-blur-xl
+      :init="touchInit"
       :style="mainStyle"
-      @mousedown.prevent="onDrawerMouseDown($event)"
-      @mousemove.prevent="onDrawerMouseMove($event)"
-      @mouseup.prevent="onDrawerMouseUp($event)"
-      @touchstart="onDrawerTouchStart($event)"
-      @touchmove.prevent="onDrawerTouchMove($event)"
-      @touchend="onDrawerTouchEnd($event)"
+      @slidingLeft="slidingLeft"
+      @slidingRight="slidingRight"
+      @slidingUp="slidingUp"
+      @slidingDown="slidingDown"
+      @slideEndLeft="slideEndLeft"
+      @slideEndRight="slideEndRight"
+      @slideEndUp="slideEndUp"
+      @slideEndDown="slideEndDown"
+      @slideCancelLeft="slideCancel"
+      @slideCancelRight="slideCancel"
+      @slideCancelUp="slideCancel"
+      @slideCancelDown="slideCancel"
     >
-      <div class="drawer-head" v-if="!hideHeader">
+      <div
+        v-if="!hideHeader"
+        flex
+        justify-between
+        items-center
+        h-header
+        md:h-header-xl
+        px-6
+        text-sm
+        color="text-1"
+        font-bold
+        border="b solid bordercolor t-0 l-0 r-0"
+      >
         <span>{{ title }}</span>
         <span
-          class="close-btn"
-          v-show="closable"
+          cursor-pointer
           @click="closeByButton"
+          v-show="closable"
+          v-if="display"
           @mousedown.stop
           @mousemove.stop
           @mouseup.stop
-          >×</span
         >
+          <ZyIcon
+            size="1.2rem"
+            lineName="line-md:close-small"
+            lineColor="var(--text-1)"
+          />
+        </span>
       </div>
-      <div class="drawer-body">
+      <div h-full overflow-auto>
         <slot />
       </div>
-    </div>
-  </div>
+    </ZyTouch>
+  </aside>
 </template>
 <script lang="ts">
-export default {
+export default defineComponent({
+  name: "zy-slide-drawer",
   data() {
     return {
       visible: false, // 是否视觉显示
-      startX: 0, // 触摸开始X轴位置
-      startY: 0, // 触摸开始Y轴位置
-      endX: 0, // 触摸结束X轴位置
-      endY: 0, // 触摸结束Y轴位置
-      moveDistanceX: 0, // 触摸移动X轴距离
-      moveDistanceY: 0, // 触摸移动Y轴距离
-      mouseDown: false, //定义一个变量判断是否执行移动函数
     };
   },
   props: {
-    teleport: { type: String, default: "" }, // 指定挂载位置
     display: { type: Boolean }, // 指定是否物理打开
     position: { type: String, default: "right" }, // 指定方向
     size: { type: String, default: "340px" }, // 指定宽度
@@ -54,13 +92,133 @@ export default {
     maskClosable: { type: Boolean, default: true }, // 指定是否点击遮罩关闭
     zIndex: { type: Number, default: 2000 }, // 指定显示层级
     hideHeader: { type: Boolean, default: false }, // 指定是否隐藏头部
-    theme: { type: String, default: "default" }, // 指定主题
+    dark: { type: Boolean, default: false }, // 指定是否独立开启暗色
   },
-  watch: {
-    display: {
-      handler(newVal) {
+  setup(props, { emit }) {
+    const visible = ref(false);
+    const touchInit = ref(false);
+
+    /*
+     * 样式初始化
+     */
+    const maskClass = ref({
+      "opacity-100": false,
+      "opacity-0": true,
+    });
+    const maskClassInit = () => {
+      maskClass.value = {
+        // 通过visible的真假切换类名
+        "opacity-100": props.mask && visible.value,
+        "opacity-0": !(props.mask && visible.value),
+      };
+    };
+    maskClassInit();
+
+    // 通过position的值确定位置，通过visible的真假改变transform过渡
+    const mainStyle = ref({
+      width: "auto",
+      height: "auto",
+      top: "auto",
+      bottom: "auto",
+      left: "auto",
+      right: "auto",
+      transform: "",
+    });
+    const mainStyleInit = () => {
+      let positionTop = "auto";
+      let positionBottom = "auto";
+      let positionLeft = "auto";
+      let positionRight = "auto";
+      let positionWidth = "auto";
+      let positionHeight = "auto";
+      let transform = "";
+
+      if (props.position == "right") {
+        // 如果从右边弹出
+        positionRight = "0";
+        positionTop = "0";
+        positionBottom = "0";
+        positionWidth = props.size;
+        if (visible.value) {
+          transform = "translateX(0px)";
+        } else {
+          transform = `translateX(calc(0px + ${props.size}))`;
+        }
+      } else if (props.position == "left") {
+        // 如果从左边弹出
+        positionLeft = "0";
+        positionTop = "0";
+        positionBottom = "0";
+        positionWidth = props.size;
+        if (visible.value) {
+          transform = "translateX(0px)";
+        } else {
+          transform = `translateX(calc(0px - ${props.size}))`;
+        }
+      } else if (props.position == "top") {
+        // 如果从上边弹出
+        positionTop = "0";
+        positionLeft = "0";
+        positionRight = "0";
+        positionHeight = props.size;
+        if (visible.value) {
+          transform = "translateY(0px)";
+        } else {
+          transform = `translateY(calc(0px - ${props.size}))`;
+        }
+      } else if (props.position == "bottom") {
+        // 如果从下边弹出
+        positionBottom = "0";
+        positionLeft = "0";
+        positionRight = "0";
+        positionHeight = props.size;
+        if (visible.value) {
+          transform = "translateY(0px)";
+        } else {
+          transform = `translateY(calc(0px + ${props.size}))`;
+        }
+      }
+      mainStyle.value = {
+        width: positionWidth,
+        height: positionHeight,
+        top: positionTop,
+        bottom: positionBottom,
+        left: positionLeft,
+        right: positionRight,
+        transform: transform,
+      };
+    };
+    mainStyleInit();
+
+    /*
+     * 过渡效果实现
+     */
+    // 过渡效果方法，传入变换CSS字符串，和是否开启CSS过渡效果
+    const el = ref(null);
+    const translate = (translate: string | null, transition: boolean) => {
+      if (el) {
+        const drawerMain = (el.value as any).querySelector(".drawer-main");
+        if (transition) {
+          // 通常，正在滑动时不开启CSS过渡，释放滑动时开启CSS过渡
+          drawerMain.style.transition = `transform 200ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
+          setTimeout(() => {
+            drawerMain.style.transition = `none`;
+          }, 200);
+        }
+        if (translate) {
+          drawerMain.style.transform = translate;
+        }
+      }
+    };
+
+    /*
+     * 打开逻辑
+     */
+    watch(
+      () => props.display,
+      (newValue) => {
         // 抽屉打开时阻止页面滚动
-        if (newVal) {
+        if (newValue) {
           const body = document.documentElement;
           if (body) {
             body.style.overflowY = "hidden";
@@ -73,324 +231,110 @@ export default {
         }
         // 打开时，先监听display，再异步改变visible，实现进入动画
         setTimeout(() => {
-          this.visible = newVal;
+          visible.value = newValue;
+          translate(null, true);
+          mainStyleInit();
+          maskClassInit();
         }, 0);
-      },
-      //  如果需要第一次就执行监听 则需要设置：immediate: true
-      immediate: true,
-    },
-  },
-  computed: {
-    maskClass() {
-      return {
-        "drawer-mask": true,
-        // 通过visible的真假切换类名
-        "drawer-mask-show": this.mask && this.visible,
-        "drawer-mask-hide": !(this.mask && this.visible),
-      };
-    },
-    mainClass() {
-      return {
-        "drawer-main": true,
-        // 通过visible的真假切换类名
-        "drawer-main-show": this.visible,
-        "drawer-main-hide": !this.visible,
-        // 添加方向类名
-        "drawer-main-position-left": this.position == "left",
-        "drawer-main-position-right": this.position == "right",
-        "drawer-main-position-top": this.position == "top",
-        "drawer-main-position-bottom": this.position == "bottom",
-      };
-    },
-    // 通过position的值确定位置，通过visible的真假改变transform过渡
-    mainStyle() {
-      let positionTop = "auto";
-      let positionBottom = "auto";
-      let positionLeft = "auto";
-      let positionRight = "auto";
-      let positionWidth = "auto";
-      let positionHeight = "auto";
-      let transform = "";
-
-      if (this.position == "right") {
-        // 如果从右边弹出
-        positionRight = "0";
-        positionTop = "0";
-        positionBottom = "0";
-        positionWidth = this.size;
-        if (this.visible) {
-          transform = "translateX(0px)";
-        } else {
-          transform = `translateX(calc(0px + ${this.size}))`;
-        }
-      } else if (this.position == "left") {
-        // 如果从左边弹出
-        positionLeft = "0";
-        positionTop = "0";
-        positionBottom = "0";
-        positionWidth = this.size;
-        if (this.visible) {
-          transform = "translateX(0px)";
-        } else {
-          transform = `translateX(calc(0px - ${this.size}))`;
-        }
-      } else if (this.position == "top") {
-        // 如果从上边弹出
-        positionTop = "0";
-        positionLeft = "0";
-        positionRight = "0";
-        positionHeight = this.size;
-        if (this.visible) {
-          transform = "translateY(0px)";
-        } else {
-          transform = `translateY(calc(0px - ${this.size}))`;
-        }
-      } else if (this.position == "bottom") {
-        // 如果从下边弹出
-        positionBottom = "0";
-        positionLeft = "0";
-        positionRight = "0";
-        positionHeight = this.size;
-        if (this.visible) {
-          transform = "translateY(0px)";
-        } else {
-          transform = `translateY(calc(0px + ${this.size}))`;
+        // 初始化触控区域
+        if (newValue) {
+          touchInit.value = true;
+          setTimeout(() => {
+            touchInit.value = false;
+          }, 0);
         }
       }
+    );
 
-      let background = "var(--bg-5)";
-
-      return {
-        width: positionWidth,
-        height: positionHeight,
-        top: positionTop,
-        bottom: positionBottom,
-        left: positionLeft,
-        right: positionRight,
-        transform: transform,
-        background: background,
-      };
-    },
-  },
-  mounted() {
-    // 如果指定了挂载位置
-    if (this.teleport != "") {
-      // 从组件标签所在位置删除节点
-      this.$el.parentNode.removeChild(this.$el);
-      // 往指定位置添加节点
-      const rootElement = document.querySelector(`${this.teleport}`);
-      if (rootElement) {
-        rootElement.appendChild(this.$el);
-      }
-    }
-  },
-  methods: {
-    // 点击遮罩
-    closeByMask() {
-      // 如果开启了点击遮罩关闭
-      if (this.maskClosable) {
-        this.close();
-      }
-    },
-    // 点击关闭按钮
-    closeByButton() {
-      this.close();
-    },
-    // 关闭逻辑
-    close() {
+    /*
+     * 关闭逻辑
+     */
+    const close = () => {
       // 关闭时，先改变visible，再延迟改变display，实现退出动画
-      this.visible = false;
+      visible.value = false;
+      translate(null, true);
+      mainStyleInit();
+      maskClassInit();
       setTimeout(() => {
-        this.$emit("cancel");
+        emit("cancel");
       }, 300);
-    },
-    // 鼠标按下
-    onDrawerMouseDown(e: MouseEvent) {
-      // console.log('MouseDown:', e.clientX, e.clientY);
-      this.startX = e.clientX;
-      this.startY = e.clientY;
-      this.mouseDown = true;
-    },
-    // 鼠标移动
-    onDrawerMouseMove(e: MouseEvent) {
-      if (this.mouseDown == true) {
-        this.endX = e.clientX;
-        this.endY = e.clientY;
-        this.moveDistanceX = this.startX - this.endX;
-        this.moveDistanceY = this.startY - this.endY;
-        // console.log('MouseMove:', this.moveDistanceX, this.moveDistanceY);
-        this.startTranslateByMove();
+    };
+    // 点击遮罩
+    const closeByMask = () => {
+      // 如果开启了点击遮罩关闭
+      if (props.maskClosable) {
+        close();
       }
-    },
-    // 鼠标松开
-    onDrawerMouseUp(e: MouseEvent) {
-      // console.log('MouseUp');
-      this.mouseDown = false;
-      this.stopTranslateByMove();
-      this.moveDistanceX = 0;
-      this.moveDistanceY = 0;
-    },
-    // 触屏按住
-    onDrawerTouchStart(e: TouchEvent) {
-      // console.log('TouchStart:', e.touches[0].clientX, e.touches[0].clientY);
-      this.startX = e.touches[0].clientX;
-      this.startY = e.touches[0].clientY;
-    },
-    // 触屏拖动
-    onDrawerTouchMove(e: TouchEvent) {
-      this.endX = e.changedTouches[0].clientX;
-      this.endY = e.changedTouches[0].clientY;
-      this.moveDistanceX = this.startX - this.endX;
-      this.moveDistanceY = this.startY - this.endY;
-      // console.log('TouchMove:', this.moveDistanceX, this.moveDistanceY);
-      this.startTranslateByMove();
-    },
-    // 触屏离开
-    onDrawerTouchEnd(e: TouchEvent) {
-      this.stopTranslateByMove();
-      this.moveDistanceX = 0;
-      this.moveDistanceY = 0;
-    },
-    // 修改正在拖动时的样式
-    startTranslateByMove() {
-      // 过渡时长设置为0
-      this.$el.querySelector(".drawer-main").style.transition = `none`;
+    };
+    // 点击关闭按钮
+    const closeByButton = () => {
+      close();
+    };
 
-      if (this.position == "right" && this.moveDistanceX < 0) {
-        // 如果从右边弹出，且向右滑动
-
-        this.$el.querySelector(
-          ".drawer-main"
-        ).style.transform = `translateX(calc(0px - ${this.moveDistanceX}px))`;
-      } else if (this.position == "left" && this.moveDistanceX > 0) {
-        // 如果从左边弹出，且向左滑动
-
-        this.$el.querySelector(
-          ".drawer-main"
-        ).style.transform = `translateX(calc(0px - ${this.moveDistanceX}px))`;
-      } else if (this.position == "top" && this.moveDistanceY > 0) {
-        // 如果从上边弹出，且向上滑动
-
-        this.$el.querySelector(
-          ".drawer-main"
-        ).style.transform = `translateY(calc(0px - ${this.moveDistanceY}px))`;
-      } else if (this.position == "bottom" && this.moveDistanceY < 0) {
-        // 如果从下边弹出，且向下滑动
-
-        this.$el.querySelector(
-          ".drawer-main"
-        ).style.transform = `translateY(calc(0px - ${this.moveDistanceY}px))`;
+    /*
+     * 交互接收
+     */
+    const slidingLeft = (val: any) => {
+      if (props.position == "left") {
+        translate(`translateX(calc(0px - ${val.moveDistanceX}px))`, false);
       }
-    },
-    // 修改释放拖动时的样式
-    stopTranslateByMove() {
-      // 过渡时长设置为0.3s
-      this.$el.querySelector(
-        ".drawer-main"
-      ).style.transition = `transform 0.3s`;
-
-      if (this.position == "left") {
-        // 如果从左边
-        if (this.moveDistanceX > 100) {
-          // 如果滑动距离超过100，关闭面板
-          this.close();
-        } else {
-          // 如果滑动距离未超过100，位移还原
-          this.$el.querySelector(
-            ".drawer-main"
-          ).style.transform = `translateX(0px)`;
-        }
-      } else if (this.position == "right") {
-        // 如果从右边弹出
-        if (this.moveDistanceX < -100) {
-          // 如果滑动距离超过100，关闭面板
-          this.close();
-        } else {
-          // 如果滑动距离未超过100，位移还原
-          this.$el.querySelector(
-            ".drawer-main"
-          ).style.transform = `translateX(0px)`;
-        }
-      } else if (this.position == "top") {
-        // 如果从上边弹出
-        if (this.moveDistanceY > 100) {
-          // 如果滑动距离超过100，关闭面板
-          this.close();
-        } else {
-          // 如果滑动距离未超过100，位移还原
-          this.$el.querySelector(
-            ".drawer-main"
-          ).style.transform = `translateY(0px)`;
-        }
-      } else if (this.position == "bottom") {
-        // 如果从下边弹出
-        if (this.moveDistanceY < -100) {
-          // 如果滑动距离超过100，关闭面板
-          this.close();
-        } else {
-          // 如果滑动距离未超过100，位移还原
-          this.$el.querySelector(
-            ".drawer-main"
-          ).style.transform = `translateY(0px)`;
-        }
+    };
+    const slidingRight = (val: any) => {
+      if (props.position == "right") {
+        translate(`translateX(calc(0px - ${val.moveDistanceX}px))`, false);
       }
-    },
+    };
+    const slidingUp = (val: any) => {
+      if (props.position == "top") {
+        translate(`translateY(calc(0px - ${val.moveDistanceY}px))`, false);
+      }
+    };
+    const slidingDown = (val: any) => {
+      if (props.position == "bottom") {
+        translate(`translateY(calc(0px - ${val.moveDistanceY}px))`, false);
+      }
+    };
+    const slideEndLeft = () => {
+      if (props.position == "left") {
+        close();
+      }
+    };
+    const slideEndRight = () => {
+      if (props.position == "right") {
+        close();
+      }
+    };
+    const slideEndUp = () => {
+      if (props.position == "top") {
+        close();
+      }
+    };
+    const slideEndDown = () => {
+      if (props.position == "bottom") {
+        close();
+      }
+    };
+    const slideCancel = () => {
+      translate(null, true);
+      mainStyleInit();
+    };
+    return {
+      el,
+      touchInit,
+      maskClass,
+      mainStyle,
+      closeByMask,
+      closeByButton,
+      slidingLeft,
+      slidingRight,
+      slidingUp,
+      slidingDown,
+      slideEndLeft,
+      slideEndRight,
+      slideEndUp,
+      slideEndDown,
+      slideCancel,
+    };
   },
-};
+});
 </script>
-<style lang="scss" scoped>
-.drawer {
-  user-select: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  /* 遮罩 */
-  .drawer-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg-mask);
-    transition: opacity 0.3s;
-  }
-  .drawer-mask-show {
-    opacity: 1;
-  }
-  .drawer-mask-hide {
-    opacity: 0;
-  }
-  /* 滑块 */
-  .drawer-main {
-    position: fixed;
-    top: 0;
-    height: 100%;
-    backdrop-filter: blur(40px);
-    transition: transform 0.3s;
-    cursor: grab;
-  }
-  /* 其他样式 */
-  .drawer-head {
-    display: flex;
-    justify-content: space-between;
-    height: var(--header-bar-height);
-    line-height: var(--header-bar-height);
-    padding: 0 var(--spacer-6);
-    font-size: var(--font-size-m);
-    font-weight: bold;
-    border-bottom: 1px solid var(--border-color);
-    .close-btn {
-      display: inline-block;
-      cursor: pointer;
-      height: 100%;
-      padding-left: var(--spacer-6);
-    }
-  }
-  .drawer-body {
-    height: 100%;
-    overflow: auto;
-  }
-}
-</style>

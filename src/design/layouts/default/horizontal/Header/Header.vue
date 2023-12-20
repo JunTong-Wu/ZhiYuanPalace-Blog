@@ -100,7 +100,6 @@
         @cancel="closeDrawer"
         position="right"
         size="20rem"
-        teleport="body"
       >
       </zy-slide-drawer>
     </ClientOnly>
