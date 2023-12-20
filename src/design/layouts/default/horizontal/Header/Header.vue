@@ -32,6 +32,7 @@
             size="1.2rem"
             lineName="line-md:search-twotone"
             lineColor="var(--text-1)"
+            @click="openSearchDrawer()"
           />
         </zy-button>
         <zy-button
@@ -82,7 +83,7 @@
           flex
           items-center
           justify-center
-          @click="openDrawer()"
+          @click="openMoreDrawer()"
         >
           <ZyIcon
             size="1.2rem"
@@ -92,14 +93,25 @@
         </zy-button>
       </div>
     </div>
-    <!-- 抽屉面板 -->
+    <!-- 搜索抽屉 -->
+    <ClientOnly>
+      <zy-slide-drawer
+        title="搜索"
+        :display="searchDisplay"
+        @cancel="closeSearchDrawer"
+        position="top"
+        size="20rem"
+      >
+      </zy-slide-drawer>
+    </ClientOnly>
+    <!-- 更多选项抽屉 -->
     <ClientOnly>
       <zy-slide-drawer
         title="更多选项"
-        :display="display"
-        @cancel="closeDrawer"
+        :display="moreDisplay"
+        @cancel="closeMoreDrawer"
         position="right"
-        size="20rem"
+        size="10rem"
       >
       </zy-slide-drawer>
     </ClientOnly>
@@ -197,11 +209,20 @@ const toggleFullScreen = () => {
 };
 
 // 抽屉
-const display = ref(false);
-const openDrawer = () => {
-  display.value = true;
+const searchDisplay = ref(false);
+const openSearchDrawer = () => {
+  searchDisplay.value = true;
 };
-const closeDrawer = () => {
-  display.value = false;
+const closeSearchDrawer = () => {
+  searchDisplay.value = false;
+};
+
+// 抽屉
+const moreDisplay = ref(false);
+const openMoreDrawer = () => {
+  moreDisplay.value = true;
+};
+const closeMoreDrawer = () => {
+  moreDisplay.value = false;
 };
 </script>

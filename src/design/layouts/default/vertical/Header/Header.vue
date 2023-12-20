@@ -2,7 +2,7 @@
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl>
       <div>
-        <zy-button h-full px-4 @click="darkModeSwitch">
+        <zy-button h-full px-4 @click="openDrawer">
           <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />
         </zy-button>
       </div>
@@ -34,16 +34,26 @@
         </zy-button>
       </div>
     </div>
+    <!-- 更多选项抽屉 -->
+    <ClientOnly>
+      <zy-slide-drawer
+        title="个人资料"
+        :display="display"
+        @cancel="closeDrawer"
+        position="left"
+        size="100%"
+      >
+      </zy-slide-drawer>
+    </ClientOnly>
   </zy-header>
 </template>
 <script setup lang="ts">
-const darkModeSwitch = () => {
-  if (!document.documentElement.classList.contains("dark")) {
-    //切换主题
-    document.documentElement.classList.add("dark");
-  } else {
-    //切换主题
-    document.documentElement.classList.remove("dark");
-  }
+// 抽屉
+const display = ref(false);
+const openDrawer = () => {
+  display.value = true;
+};
+const closeDrawer = () => {
+  display.value = false;
 };
 </script>

@@ -18,6 +18,8 @@
     ></div>
     <ZyTouch
       class="drawer-main"
+      backdrop-brightness-110
+      shadow-2xl
       cursor-grab
       fixed
       h-full
