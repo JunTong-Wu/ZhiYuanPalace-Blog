@@ -79,7 +79,14 @@
             lineColor="var(--text-2)"
           />
         </zy-button>
-        <zy-button w="[25%]" h-full flex items-center justify-center>
+        <zy-button
+          w="[25%]"
+          h-full
+          flex
+          items-center
+          justify-center
+          @click="openDrawer()"
+        >
           <ZyIcon
             size="1.2rem"
             lineName="line-md:grid-3-filled"
@@ -88,6 +95,18 @@
         </zy-button>
       </div>
     </div>
+    <!-- 抽屉面板 -->
+    <ClientOnly>
+      <zy-slide-drawer
+        title="更多选项"
+        :display="display"
+        @cancel="closeDrawer"
+        position="right"
+        size="20rem"
+        teleport="body"
+      >
+      </zy-slide-drawer>
+    </ClientOnly>
   </zy-header>
 </template>
 <script setup lang="ts">
@@ -179,5 +198,14 @@ const toggleFullScreen = () => {
     fullScreenFlag.value = false;
     fullExit();
   }
+};
+
+// 抽屉
+const display = ref(false);
+const openDrawer = () => {
+  display.value = true;
+};
+const closeDrawer = () => {
+  display.value = false;
 };
 </script>
