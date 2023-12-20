@@ -8,18 +8,18 @@
     >
       <zy-link to="/" v-zy-ripple h-full w="[20%]">
         <ZyIcon
-          lineName="ant-design:home-outlined"
+          lineName="solar:home-smile-angle-linear"
           lineColor="var(--text-3)"
-          filledName="ant-design:home-twotone"
+          filledName="solar:home-smile-angle-bold-duotone"
           filled-color="var(--text-1)"
           :filled="routerActivate('/')"
         />
       </zy-link>
       <zy-link to="/text" v-zy-ripple h-full w="[20%]">
         <ZyIcon
-          lineName="ph:article"
+          lineName="solar:bookmark-square-minimalistic-linear"
           lineColor="var(--text-3)"
-          filledName="ph:article-duotone"
+          filledName="solar:bookmark-square-minimalistic-bold-duotone"
           filled-color="var(--text-1)"
           :filled="routerActivate('/text')"
         />
@@ -27,18 +27,18 @@
       <div h-full w="[20%]"></div>
       <zy-link to="/media" v-zy-ripple h-full w="[20%]">
         <ZyIcon
-          lineName="ic:outline-audio-file"
+          lineName="solar:video-library-linear"
           lineColor="var(--text-3)"
-          filledName="ic:twotone-audio-file"
+          filledName="solar:video-library-bold-duotone"
           filled-color="var(--text-1)"
           :filled="routerActivate('/media')"
         />
       </zy-link>
       <zy-link to="/about" v-zy-ripple h-full w="[20%]">
         <ZyIcon
-          lineName="ph:user"
+          lineName="solar:user-linear"
           lineColor="var(--text-3)"
-          filledName="ph:user-duotone"
+          filledName="solar:user-bold-duotone"
           filled-color="var(--text-1)"
           :filled="routerActivate('/about')"
         />

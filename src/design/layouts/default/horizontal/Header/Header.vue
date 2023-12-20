@@ -33,7 +33,7 @@
         <zy-button w="[25%]" h-full flex items-center justify-center>
           <ZyIcon
             size="1.2rem"
-            lineName="iconamoon:search-duotone"
+            lineName="line-md:search-twotone"
             lineColor="var(--text-1)"
           />
         </zy-button>
@@ -48,13 +48,13 @@
           <ZyIcon
             v-if="!fullScreenFlag"
             size="1.2rem"
-            lineName="mingcute:fullscreen-line"
+            lineName="line-md:arrows-diagonal"
             lineColor="var(--text-2)"
           />
           <ZyIcon
             v-else
             size="1.2rem"
-            lineName="mingcute:fullscreen-exit-line"
+            lineName="mingcute:fullscreen-exit-2-line"
             lineColor="var(--text-2)"
           />
         </zy-button>
@@ -69,20 +69,20 @@
           <ZyIcon
             v-if="!darkModeFlag"
             size="1.2rem"
-            lineName="ph:sun-duotone"
+            lineName="line-md:moon-twotone-loop"
             lineColor="var(--text-2)"
           />
           <ZyIcon
             v-else
             size="1.2rem"
-            lineName="ph:moon-duotone"
+            lineName="line-md:sunny-outline-twotone-loop"
             lineColor="var(--text-2)"
           />
         </zy-button>
         <zy-button w="[25%]" h-full flex items-center justify-center>
           <ZyIcon
             size="1.2rem"
-            lineName="icon-park-twotone:setting-one"
+            lineName="line-md:grid-3-filled"
             lineColor="var(--text-2)"
           />
         </zy-button>

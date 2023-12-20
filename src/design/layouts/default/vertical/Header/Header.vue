@@ -3,7 +3,7 @@
     <div flex justify-between h-full backdrop-blur-xl>
       <div>
         <zy-button h-full px-4 @click="darkModeSwitch">
-          <ZyIcon lineName="jam:menu" lineColor="var(--text-1)" />
+          <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />
         </zy-button>
       </div>
       <div flex items-center justify-center px-4>
@@ -33,10 +33,7 @@
       </div>
       <div>
         <zy-button h-full px-4>
-          <ZyIcon
-            lineName="iconamoon:search-duotone"
-            lineColor="var(--text-1)"
-          />
+          <ZyIcon lineName="line-md:search-twotone" lineColor="var(--text-1)" />
         </zy-button>
       </div>
     </div>
