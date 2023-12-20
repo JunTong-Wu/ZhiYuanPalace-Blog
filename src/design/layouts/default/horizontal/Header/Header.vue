@@ -69,13 +69,13 @@
           <ZyIcon
             v-if="!darkModeFlag"
             size="1.2rem"
-            lineName="line-md:moon-twotone-loop"
+            lineName="line-md:sunny-outline-twotone-loop"
             lineColor="var(--text-2)"
           />
           <ZyIcon
             v-else
             size="1.2rem"
-            lineName="line-md:sunny-outline-twotone-loop"
+            lineName="line-md:moon-twotone-loop"
             lineColor="var(--text-2)"
           />
         </zy-button>
