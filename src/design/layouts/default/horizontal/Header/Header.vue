@@ -1,7 +1,7 @@
 <template>
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl max-w-7xl mx-auto>
-      <div flex items-center justify-center px-4 w-sidebar v-zy-ripple>
+      <div flex items-center px-4 w-sidebar v-zy-ripple>
         <img h-5 md:h-8 src="@/src/assets/image/logo.png" alt="logo" />
         <svg
           w-12
