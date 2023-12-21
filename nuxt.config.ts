@@ -9,6 +9,26 @@ Object.assign(process.env, envData); // 将环境配置信息，添加到process
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+  app: {
+    // head设置
+    head: {
+      htmlAttrs: {
+        lang: "zh-CN",
+      },
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+      link: [
+        {
+          rel: "shortcut icon",
+          type: "image/x-icon",
+          href: "/favicon.ico",
+        },
+      ],
+    },
+    // 过渡
+    // pageTransition: { name: 'page', mode: 'out-in' },
+    // layoutTransition: { name: "layout", mode: "out-in" },
+  },
   devtools: { enabled: false },
   modules: ["@unocss/nuxt", "@nuxtjs/i18n", "nuxt-icon"],
   i18n: {
