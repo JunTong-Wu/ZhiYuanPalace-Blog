@@ -43,7 +43,6 @@ ul {
   --header-bar-height-xl: 3.5rem;
   --footer-bar-height: 2.5rem;
   --side-bar-width: 14rem;
-  --bg-mask: rgba(0, 0, 0, 0.1);
 }
 :root {
   --primary-7: #454de3; //点击
@@ -56,11 +55,12 @@ ul {
 }
 :root {
   --bg-best: #ffffff; //最白
-  --bg-1: #f4f6f8aa; //整体背景色
-  --bg-2: #fafbfcaa; //一级容器背景
-  --bg-3: #fafbfcaa; //二级容器背景
-  --bg-4: #ffffffaa; //三级容器背景
-  --bg-5: #ffffffaa; //下拉弹出框、Tooltip 背景颜色
+  --bg-1: #f4f6f8; //整体背景色
+  --bg-2: #fafbfc; //一级容器背景
+  --bg-3: #fafbfc; //二级容器背景
+  --bg-4: #ffffff; //三级容器背景
+  --bg-5: #ffffff; //下拉弹出框、Tooltip 背景颜色
+  --bg-mask: rgba(244, 246, 248, 0.5); //遮罩层
   --text-1: #1d2129; //强调/正文标题
   --text-2: #4f5969; //次强调/正文标
   --text-3: #87909c; //次要信息
@@ -68,11 +68,12 @@ ul {
 }
 *.dark {
   --bg-best: #000000; //最黑
-  --bg-1: #0f0e2aaa; //整体背景色
-  --bg-2: #13122eaa; //一级容器背景
-  --bg-3: #181732aa; //二级容器背景
-  --bg-4: #1c1b36aa; //三级容器背景
-  --bg-5: #1c1b36aa; //下拉弹出框、Tooltip 背景颜色
+  --bg-1: #0f0e2a; //整体背景色
+  --bg-2: #13122e; //一级容器背景
+  --bg-3: #181732; //二级容器背景
+  --bg-4: #1c1b36; //三级容器背景
+  --bg-5: #1c1b36; //下拉弹出框、Tooltip 背景颜色
+  --bg-mask: rgba(15, 14, 42, 0.5); //遮罩层
   --text-1: #f6f6f6; //强调/正文标题
   --text-2: #c5c5c5; //次强调/正文标
   --text-3: #929293; //次要信息

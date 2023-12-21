@@ -2,7 +2,7 @@
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl>
       <div>
-        <zy-button h-full px-4 @click="openDrawer">
+        <zy-button h-full px-4 @click="openPersonalDrawer">
           <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />
         </zy-button>
       </div>
@@ -29,19 +29,31 @@
         </svg>
       </div>
       <div>
-        <zy-button h-full px-4>
+        <zy-button h-full px-4 @click="openSearchDrawer">
           <ZyIcon lineName="line-md:search-twotone" lineColor="var(--text-1)" />
         </zy-button>
       </div>
     </div>
-    <!-- 更多选项抽屉 -->
+    <!-- 搜索抽屉 -->
+    <ClientOnly>
+      <zy-slide-drawer
+        title="搜索"
+        :display="searchDisplay"
+        @cancel="closeSearchDrawer"
+        position="top"
+        size="100%"
+      >
+      </zy-slide-drawer>
+    </ClientOnly>
+    <!-- 个人资料抽屉 -->
     <ClientOnly>
       <zy-slide-drawer
         title="个人资料"
-        :display="display"
-        @cancel="closeDrawer"
+        :display="personalDisplay"
+        @cancel="closePersonalDrawer"
         position="left"
         size="100%"
+        background="var(--bg-5)"
       >
       </zy-slide-drawer>
     </ClientOnly>
@@ -49,11 +61,18 @@
 </template>
 <script setup lang="ts">
 // 抽屉
-const display = ref(false);
-const openDrawer = () => {
-  display.value = true;
+const searchDisplay = ref(false);
+const openSearchDrawer = () => {
+  searchDisplay.value = true;
 };
-const closeDrawer = () => {
-  display.value = false;
+const closeSearchDrawer = () => {
+  searchDisplay.value = false;
+};
+const personalDisplay = ref(false);
+const openPersonalDrawer = () => {
+  personalDisplay.value = true;
+};
+const closePersonalDrawer = () => {
+  personalDisplay.value = false;
 };
 </script>

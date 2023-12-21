@@ -12,19 +12,16 @@
       inset-0
       bg="bg-mask"
       transition
+      duration-500
       :class="maskClass"
       @click="closeByMask"
       v-if="mask"
     ></div>
     <ZyTouch
       class="drawer-main"
-      backdrop-brightness-110
-      shadow-2xl
       cursor-grab
       fixed
       h-full
-      bg="bg-5"
-      backdrop-blur-xl
       :init="touchInit"
       :style="mainStyle"
       @slidingLeft="slidingLeft"
@@ -95,6 +92,7 @@ export default defineComponent({
     zIndex: { type: Number, default: 2000 }, // 指定显示层级
     hideHeader: { type: Boolean, default: false }, // 指定是否隐藏头部
     dark: { type: Boolean, default: false }, // 指定是否独立开启暗色
+    background: { type: String, default: false }, // 指定是否拥有背景色
   },
   setup(props, { emit }) {
     const visible = ref(false);
@@ -106,15 +104,17 @@ export default defineComponent({
     const maskClass = ref({
       "opacity-100": false,
       "opacity-0": true,
+      "backdrop-blur": true,
     });
-    const maskClassInit = () => {
+    const classInit = () => {
       maskClass.value = {
         // 通过visible的真假切换类名
         "opacity-100": props.mask && visible.value,
         "opacity-0": !(props.mask && visible.value),
+        "backdrop-blur": props.mask && visible.value,
       };
     };
-    maskClassInit();
+    classInit();
 
     // 通过position的值确定位置，通过visible的真假改变transform过渡
     const mainStyle = ref({
@@ -125,6 +125,7 @@ export default defineComponent({
       left: "auto",
       right: "auto",
       transform: "",
+      background: "",
     });
     const mainStyleInit = () => {
       let positionTop = "auto";
@@ -134,6 +135,7 @@ export default defineComponent({
       let positionWidth = "auto";
       let positionHeight = "auto";
       let transform = "";
+      let background = "";
 
       if (props.position == "right") {
         // 如果从右边弹出
@@ -180,6 +182,10 @@ export default defineComponent({
           transform = `translateY(calc(0px + ${props.size}))`;
         }
       }
+
+      if (props.background && props.background != "") {
+        background = props.background;
+      }
       mainStyle.value = {
         width: positionWidth,
         height: positionHeight,
@@ -188,6 +194,7 @@ export default defineComponent({
         left: positionLeft,
         right: positionRight,
         transform: transform,
+        background: background,
       };
     };
     mainStyleInit();
@@ -202,10 +209,10 @@ export default defineComponent({
         const drawerMain = (el.value as any).querySelector(".drawer-main");
         if (transition) {
           // 通常，正在滑动时不开启CSS过渡，释放滑动时开启CSS过渡
-          drawerMain.style.transition = `transform 200ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
+          drawerMain.style.transition = `transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
           setTimeout(() => {
             drawerMain.style.transition = `none`;
-          }, 200);
+          }, 400);
         }
         if (translate) {
           drawerMain.style.transform = translate;
@@ -236,7 +243,7 @@ export default defineComponent({
           visible.value = newValue;
           translate(null, true);
           mainStyleInit();
-          maskClassInit();
+          classInit();
         }, 0);
         // 初始化触控区域
         if (newValue) {
@@ -256,7 +263,7 @@ export default defineComponent({
       visible.value = false;
       translate(null, true);
       mainStyleInit();
-      maskClassInit();
+      classInit();
       setTimeout(() => {
         emit("cancel");
       }, 300);

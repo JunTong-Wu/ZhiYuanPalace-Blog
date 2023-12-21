@@ -1,7 +1,7 @@
 <template>
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl max-w-7xl mx-auto>
-      <div flex items-center px-4 w-sidebar v-zy-ripple>
+      <div flex items-center px-4 w-sidebar>
         <img h-5 md:h-8 src="@/src/assets/image/logo.png" alt="logo" />
         <svg
           w-12
@@ -27,12 +27,18 @@
       </div>
       <Navigation />
       <div flex justify-end h-full w-sidebar>
-        <zy-button w="[25%]" h-full flex items-center justify-center>
+        <zy-button
+          w="[25%]"
+          h-full
+          flex
+          items-center
+          justify-center
+          @click="openSearchDrawer()"
+        >
           <ZyIcon
             size="1.2rem"
             lineName="line-md:search-twotone"
             lineColor="var(--text-1)"
-            @click="openSearchDrawer()"
           />
         </zy-button>
         <zy-button
@@ -100,7 +106,7 @@
         :display="searchDisplay"
         @cancel="closeSearchDrawer"
         position="top"
-        size="20rem"
+        size="100%"
       >
       </zy-slide-drawer>
     </ClientOnly>
@@ -111,7 +117,8 @@
         :display="moreDisplay"
         @cancel="closeMoreDrawer"
         position="right"
-        size="10rem"
+        size="20rem"
+        background="var(--bg-2)"
       >
       </zy-slide-drawer>
     </ClientOnly>
