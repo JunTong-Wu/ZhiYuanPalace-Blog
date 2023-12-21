@@ -7,6 +7,7 @@
     p-2
     border-0
     color-inherit
+    :title="title"
   >
     <slot />
   </button>
@@ -14,5 +15,8 @@
 <script lang="ts">
 export default defineComponent({
   name: "zy-button",
+  props: {
+    title: { type: String, default: "" },
+  },
 });
 </script>

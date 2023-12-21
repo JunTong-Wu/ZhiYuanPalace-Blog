@@ -9,6 +9,7 @@
     flex
     items-center
     justify-center
+    :title="title"
   >
     <slot />
   </button>
@@ -22,6 +23,7 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    title: { type: String, default: "" },
   },
   setup(props) {
     return {

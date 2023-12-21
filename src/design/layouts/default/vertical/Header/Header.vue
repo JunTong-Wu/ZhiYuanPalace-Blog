@@ -2,7 +2,7 @@
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl>
       <div>
-        <zy-button h-full px-4 @click="openPersonalDrawer">
+        <zy-button h-full px-4 @click="openPersonalDrawer" title="个人资料">
           <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />
         </zy-button>
       </div>
@@ -29,7 +29,7 @@
         </svg>
       </div>
       <div>
-        <zy-button h-full px-4 @click="openSearchDrawer">
+        <zy-button h-full px-4 @click="openSearchDrawer" title="搜索">
           <ZyIcon lineName="line-md:search-twotone" lineColor="var(--text-1)" />
         </zy-button>
       </div>

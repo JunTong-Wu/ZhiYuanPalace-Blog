@@ -34,6 +34,7 @@
           items-center
           justify-center
           @click="openSearchDrawer()"
+          title="搜索"
         >
           <ZyIcon
             size="1.2rem"
@@ -48,6 +49,7 @@
           items-center
           justify-center
           @click="toggleFullScreen"
+          title="全屏/退出全屏"
         >
           <ZyIcon
             v-if="!fullScreenFlag"
@@ -69,6 +71,7 @@
           items-center
           justify-center
           @click="darkModeSwitch"
+          title="日间模式/夜间模式"
         >
           <ZyIcon
             v-if="!darkModeFlag"
@@ -90,6 +93,7 @@
           items-center
           justify-center
           @click="openMoreDrawer()"
+          title="更多选项"
         >
           <ZyIcon
             size="1.2rem"

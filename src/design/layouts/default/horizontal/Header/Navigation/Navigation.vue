@@ -2,7 +2,12 @@
   <nav>
     <ul class="flex h-full items-center">
       <li h-full>
-        <zy-link to="/" h-full px-6 :class="{ activate: routerActivate('/') }"
+        <zy-link
+          to="/"
+          h-full
+          px-6
+          title="首页"
+          :class="{ activate: routerActivate('/') }"
           >首页</zy-link
         >
       </li>
@@ -11,6 +16,7 @@
           to="/text"
           h-full
           px-6
+          title="文字"
           :class="{ activate: routerActivate('/text') }"
           >文字</zy-link
         >
@@ -20,6 +26,7 @@
           to="/media"
           h-full
           px-6
+          title="媒体"
           :class="{ activate: routerActivate('/media') }"
           >媒体</zy-link
         >
@@ -29,6 +36,7 @@
           to="/about"
           h-full
           px-6
+          title="关于"
           :class="{ activate: routerActivate('/about') }"
           >关于</zy-link
         >
