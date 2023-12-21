@@ -81,7 +81,8 @@ export default defineComponent({
         }
       };
       const isVertical = () => {
-        if (window.innerWidth < window.innerHeight) {
+        var mql = window.matchMedia("(orientation: portrait)");
+        if (mql.matches) {
           return true;
         } else {
           return false;
@@ -89,13 +90,6 @@ export default defineComponent({
       };
 
       const classListInit = () => {
-        if (isVertical()) {
-          document.documentElement.classList.remove("horizontal");
-          document.documentElement.classList.add("vertical");
-        } else {
-          document.documentElement.classList.remove("vertical");
-          document.documentElement.classList.add("horizontal");
-        }
         if (isMobile()) {
           document.documentElement.classList.remove("pc");
           document.documentElement.classList.add("mobile");
@@ -206,10 +200,15 @@ export default defineComponent({
 .horizontal-layout {
   display: none;
 }
-:root.vertical .vertical-layout {
-  display: block;
+
+@media (orientation: landscape) {
+  .horizontal-layout {
+    display: block;
+  }
 }
-:root.horizontal .horizontal-layout {
-  display: block;
+@media (orientation: portrait) {
+  .vertical-layout {
+    display: block;
+  }
 }
 </style>

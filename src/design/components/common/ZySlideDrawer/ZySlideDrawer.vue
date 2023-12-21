@@ -92,7 +92,7 @@ export default defineComponent({
     zIndex: { type: Number, default: 2000 }, // 指定显示层级
     hideHeader: { type: Boolean, default: false }, // 指定是否隐藏头部
     dark: { type: Boolean, default: false }, // 指定是否独立开启暗色
-    background: { type: String, default: false }, // 指定是否拥有背景色
+    background: { type: String, default: "" }, // 指定是否拥有背景色
   },
   setup(props, { emit }) {
     const visible = ref(false);
