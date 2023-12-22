@@ -29,8 +29,6 @@ export default defineComponent({
   setup() {
     const button = ref();
     const animation = () => {
-      console.log(button.value);
-
       //延迟动画
       if (button.value) {
         button.value.classList.add("animation");

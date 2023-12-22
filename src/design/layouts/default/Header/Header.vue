@@ -98,20 +98,31 @@
               lineColor="var(--text-2)"
             />
           </zy-button>
-          <zy-button
-            w-header
-            h-full
-            flex
-            items-center
-            justify-center
-            title="切换语言"
-          >
-            <ZyIcon
-              size="1.2rem"
-              lineName="line-md:map-marker-twotone"
-              lineColor="var(--text-2)"
-            />
-          </zy-button>
+          <!-- 多语言抽屉 -->
+          <ClientOnly>
+            <zy-popover title="切换语言" background="var(--bg-2)">
+              <template #reference>
+                <zy-button
+                  w-header
+                  h-full
+                  flex
+                  items-center
+                  justify-center
+                  title="切换语言"
+                >
+                  <ZyIcon
+                    size="1.2rem"
+                    lineName="line-md:map-marker-twotone"
+                    lineColor="var(--text-2)"
+                  />
+                </zy-button>
+              </template>
+              <template #actions>
+                <div><p color="text-1">TEST</p></div>
+              </template>
+            </zy-popover>
+          </ClientOnly>
+
           <zy-button
             w-header
             h-full

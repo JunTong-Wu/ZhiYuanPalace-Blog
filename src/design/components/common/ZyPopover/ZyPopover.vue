@@ -1,4 +1,7 @@
 <template>
+  <div @click="showPopover" ref="listenElement">
+    <slot name="reference" />
+  </div>
   <Teleport to="body">
     <aside
       fixed
@@ -18,71 +21,26 @@
         @click="closeByMask"
         v-if="mask"
       ></div>
-      <ZyTouch
+      <div
         class="drawer-main"
-        cursor-grab
         fixed
         h-full
         will-change-transform
-        :init="touchInit"
         :style="mainStyle"
-        @slidingLeft="slidingLeft"
-        @slidingRight="slidingRight"
-        @slidingUp="slidingUp"
-        @slidingDown="slidingDown"
-        @slideEndLeft="slideEndLeft"
-        @slideEndRight="slideEndRight"
-        @slideEndUp="slideEndUp"
-        @slideEndDown="slideEndDown"
-        @slideCancelLeft="slideCancel"
-        @slideCancelRight="slideCancel"
-        @slideCancelUp="slideCancel"
-        @slideCancelDown="slideCancel"
       >
-        <div
-          v-if="!hideHeader"
-          flex
-          justify-between
-          items-center
-          h-header
-          px-6
-          text-sm
-          color="text-1"
-          font-bold
-          border="b solid bordercolor t-0 l-0 r-0"
-        >
-          <span>{{ title }}</span>
-          <span
-            cursor-pointer
-            @click="closeByButton"
-            v-show="closable"
-            v-if="display"
-            @mousedown.stop
-            @mousemove.stop
-            @mouseup.stop
-          >
-            <ZyIcon
-              size="1.2rem"
-              lineName="line-md:close-small"
-              lineColor="var(--text-1)"
-            />
-          </span>
-        </div>
         <div h-full overflow-auto>
-          <slot />
+          <slot name="actions" />
         </div>
-      </ZyTouch>
+      </div>
     </aside>
   </Teleport>
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "zy-slide-drawer",
-  emits: ["cancel"],
+  name: "zy-slide-popover",
   props: {
-    display: { type: Boolean }, // 指定是否物理打开
-    position: { type: String, default: "right" }, // 指定方向
-    size: { type: String, default: "340px" }, // 指定宽度
+    position: { type: String, default: "top" }, // 指定方向
+    size: { type: String, default: "auto" }, // 指定宽度
     title: { type: String, default: "标题" }, // 指定标题
     closable: { type: Boolean, default: true }, // 指定是否显示关闭按钮
     mask: { type: Boolean, default: true }, // 指定是否显示遮罩
@@ -92,9 +50,11 @@ export default defineComponent({
     dark: { type: Boolean, default: false }, // 指定是否独立开启暗色
     background: { type: String, default: "" }, // 指定背景色
   },
-  setup(props, { emit }) {
+  setup(props) {
+    const display = ref(false);
     const visible = ref(false);
-    const touchInit = ref(false);
+    const clientX = ref(0);
+    const clientY = ref(0);
 
     /*
      * 样式初始化
@@ -135,50 +95,12 @@ export default defineComponent({
       let transform = "";
       let background = "";
 
-      if (props.position == "right") {
-        // 如果从右边弹出
-        positionRight = "0";
-        positionTop = "0";
-        positionBottom = "0";
-        positionWidth = props.size;
-        if (visible.value) {
-          transform = "translateX(0px)";
-        } else {
-          transform = `translateX(calc(0px + ${props.size}))`;
-        }
-      } else if (props.position == "left") {
-        // 如果从左边弹出
-        positionLeft = "0";
-        positionTop = "0";
-        positionBottom = "0";
-        positionWidth = props.size;
-        if (visible.value) {
-          transform = "translateX(0px)";
-        } else {
-          transform = `translateX(calc(0px - ${props.size}))`;
-        }
-      } else if (props.position == "top") {
-        // 如果从上边弹出
-        positionTop = "0";
-        positionLeft = "0";
-        positionRight = "0";
-        positionHeight = props.size;
-        if (visible.value) {
-          transform = "translateY(0px)";
-        } else {
-          transform = `translateY(calc(0px - ${props.size}))`;
-        }
-      } else if (props.position == "bottom") {
-        // 如果从下边弹出
-        positionBottom = "0";
-        positionLeft = "0";
-        positionRight = "0";
-        positionHeight = props.size;
-        if (visible.value) {
-          transform = "translateY(0px)";
-        } else {
-          transform = `translateY(calc(0px + ${props.size}))`;
-        }
+      positionTop = `${clientY.value}px`;
+      positionLeft = `${clientX.value}px`;
+      if (visible.value) {
+        transform = "translateY(0px)";
+      } else {
+        transform = `translateY(-1rem)`;
       }
 
       if (props.background && props.background != "") {
@@ -221,8 +143,26 @@ export default defineComponent({
     /*
      * 打开逻辑
      */
+    const listenElement = ref(null);
+    const showPopover = (e: any) => {
+      if (listenElement.value) {
+        console.log(listenElement.value);
+        clientX.value =
+          (listenElement.value as any).offsetLeft +
+          (listenElement.value as any).offsetWidth;
+        clientY.value =
+          (listenElement.value as any).offsetTop +
+          (listenElement.value as any).offsetHeight;
+      } else {
+        clientX.value = e.clientX;
+        clientY.value = e.clientY;
+      }
+
+      display.value = true;
+    };
+
     watch(
-      () => props.display,
+      () => display.value,
       (newValue) => {
         // 抽屉打开时阻止页面滚动
         if (newValue) {
@@ -243,13 +183,6 @@ export default defineComponent({
           mainStyleInit();
           classInit();
         }, 0);
-        // 初始化触控区域
-        if (newValue) {
-          touchInit.value = true;
-          setTimeout(() => {
-            touchInit.value = false;
-          }, 0);
-        }
       }
     );
 
@@ -263,7 +196,7 @@ export default defineComponent({
       mainStyleInit();
       classInit();
       setTimeout(() => {
-        emit("cancel");
+        display.value = false;
       }, 300);
     };
     // 点击遮罩
@@ -278,69 +211,15 @@ export default defineComponent({
       close();
     };
 
-    /*
-     * 交互接收
-     */
-    const slidingLeft = (val: any) => {
-      if (props.position == "left") {
-        translate(`translateX(calc(0px - ${val.moveDistanceX}px))`, false);
-      }
-    };
-    const slidingRight = (val: any) => {
-      if (props.position == "right") {
-        translate(`translateX(calc(0px - ${val.moveDistanceX}px))`, false);
-      }
-    };
-    const slidingUp = (val: any) => {
-      if (props.position == "top") {
-        translate(`translateY(calc(0px - ${val.moveDistanceY}px))`, false);
-      }
-    };
-    const slidingDown = (val: any) => {
-      if (props.position == "bottom") {
-        translate(`translateY(calc(0px - ${val.moveDistanceY}px))`, false);
-      }
-    };
-    const slideEndLeft = () => {
-      if (props.position == "left") {
-        close();
-      }
-    };
-    const slideEndRight = () => {
-      if (props.position == "right") {
-        close();
-      }
-    };
-    const slideEndUp = () => {
-      if (props.position == "top") {
-        close();
-      }
-    };
-    const slideEndDown = () => {
-      if (props.position == "bottom") {
-        close();
-      }
-    };
-    const slideCancel = () => {
-      translate(null, true);
-      mainStyleInit();
-    };
     return {
+      display,
+      showPopover,
+      listenElement,
       el,
-      touchInit,
       maskClass,
       mainStyle,
       closeByMask,
       closeByButton,
-      slidingLeft,
-      slidingRight,
-      slidingUp,
-      slidingDown,
-      slideEndLeft,
-      slideEndRight,
-      slideEndUp,
-      slideEndDown,
-      slideCancel,
     };
   },
 });
