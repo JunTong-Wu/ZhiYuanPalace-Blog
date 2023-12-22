@@ -48,6 +48,11 @@ ul {
     --header-bar-height: 3.5rem;
   }
 }
+@media (min-width: 1200px) {
+  :root {
+    --side-bar-width: 15rem;
+  }
+}
 :root {
   --primary-7: #454de3; //点击
   --primary-6: #6269e7; //常规
