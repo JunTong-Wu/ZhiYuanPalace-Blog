@@ -1,12 +1,16 @@
 <template>
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl max-w-7xl mx-auto>
+      <div class="vertical-layout">
+        <zy-button h-full px-4 @click="openPersonalDrawer" title="个人资料">
+          <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />
+        </zy-button>
+      </div>
       <div flex items-center px-4 w-sidebar>
-        <img h-8 src="@/src/assets/image/logo.png" alt="logo" />
+        <img h="[60%]" src="@/src/assets/image/logo.png" alt="logo" />
         <svg
-          w-16
           fill-current
-          h-8
+          h="[40%]"
           ml-2
           id="uuid-2320505a-bbef-4a34-b902-2705747683ee"
           xmlns="http://www.w3.org/2000/svg"
@@ -23,82 +27,89 @@
           />
         </svg>
       </div>
-      <Navigation />
-      <div flex justify-end h-full w-sidebar>
-        <zy-button
-          w="[25%]"
-          h-full
-          flex
-          items-center
-          justify-center
-          @click="openSearchDrawer()"
-          title="搜索"
-        >
-          <ZyIcon
-            size="1.2rem"
-            lineName="line-md:search-twotone"
-            lineColor="var(--text-1)"
-          />
+      <Navigation class="horizontal-layout" />
+      <div class="vertical-layout">
+        <zy-button h-full px-4 @click="openSearchDrawer" title="搜索">
+          <ZyIcon lineName="line-md:search-twotone" lineColor="var(--text-1)" />
         </zy-button>
-        <zy-button
-          w="[25%]"
-          h-full
-          flex
-          items-center
-          justify-center
-          @click="toggleFullScreen"
-          title="全屏/退出全屏"
-        >
-          <ZyIcon
-            v-if="!fullScreenFlag"
-            size="1.2rem"
-            lineName="line-md:arrows-diagonal"
-            lineColor="var(--text-2)"
-          />
-          <ZyIcon
-            v-else
-            size="1.2rem"
-            lineName="mingcute:fullscreen-exit-2-line"
-            lineColor="var(--text-2)"
-          />
-        </zy-button>
-        <zy-button
-          w="[25%]"
-          h-full
-          flex
-          items-center
-          justify-center
-          @click="darkModeSwitch"
-          title="日间模式/夜间模式"
-        >
-          <ZyIcon
-            v-if="darkModeFlag == false"
-            size="1.2rem"
-            lineName="line-md:sunny-outline-twotone-loop"
-            lineColor="var(--text-2)"
-          />
-          <ZyIcon
-            v-else-if="darkModeFlag == true"
-            size="1.2rem"
-            lineName="line-md:moon-twotone-loop"
-            lineColor="var(--text-2)"
-          />
-        </zy-button>
-        <zy-button
-          w="[25%]"
-          h-full
-          flex
-          items-center
-          justify-center
-          @click="openMoreDrawer()"
-          title="更多选项"
-        >
-          <ZyIcon
-            size="1.2rem"
-            lineName="line-md:grid-3-filled"
-            lineColor="var(--text-2)"
-          />
-        </zy-button>
+      </div>
+      <div w-sidebar class="horizontal-layout">
+        <div flex justify-end h-full>
+          <zy-button
+            w-header
+            h-full
+            flex
+            items-center
+            justify-center
+            @click="openSearchDrawer()"
+            title="搜索"
+          >
+            <ZyIcon
+              size="1.2rem"
+              lineName="line-md:search-twotone"
+              lineColor="var(--text-1)"
+            />
+          </zy-button>
+          <zy-button
+            w-header
+            h-full
+            flex
+            items-center
+            justify-center
+            @click="toggleFullScreen"
+            title="全屏/退出全屏"
+          >
+            <ZyIcon
+              v-if="!fullScreenFlag"
+              size="1.2rem"
+              lineName="line-md:arrows-diagonal"
+              lineColor="var(--text-2)"
+            />
+            <ZyIcon
+              v-else
+              size="1.2rem"
+              lineName="mingcute:fullscreen-exit-2-line"
+              lineColor="var(--text-2)"
+            />
+          </zy-button>
+          <zy-button
+            w-header
+            h-full
+            flex
+            items-center
+            justify-center
+            @click="darkModeSwitch"
+            title="日间模式/夜间模式"
+          >
+            <ZyIcon
+              v-if="darkModeFlag == false"
+              size="1.2rem"
+              lineName="line-md:sunny-outline-twotone-loop"
+              lineColor="var(--text-2)"
+            />
+            <ZyIcon
+              v-else-if="darkModeFlag == true"
+              size="1.2rem"
+              lineName="line-md:moon-twotone-loop"
+              lineColor="var(--text-2)"
+            />
+          </zy-button>
+          <zy-button
+            w-header
+            h-full
+            flex
+            items-center
+            justify-center
+            @click="openMoreDrawer()"
+            title="更多选项"
+          >
+            <ZyIcon
+              size="1.2rem"
+              lineName="line-md:grid-3-filled"
+              lineColor="var(--text-2)"
+            />
+          </zy-button>
+        </div>
       </div>
     </div>
     <!-- 搜索抽屉 -->
@@ -121,6 +132,18 @@
         position="right"
         size="20rem"
         background="var(--bg-2)"
+      >
+      </zy-slide-drawer>
+    </ClientOnly>
+    <!-- 个人资料抽屉 -->
+    <ClientOnly>
+      <zy-slide-drawer
+        title="个人资料"
+        :display="personalDisplay"
+        @cancel="closePersonalDrawer"
+        position="left"
+        size="100%"
+        background="var(--bg-5)"
       >
       </zy-slide-drawer>
     </ClientOnly>
@@ -236,13 +259,18 @@ const openSearchDrawer = () => {
 const closeSearchDrawer = () => {
   searchDisplay.value = false;
 };
-
-// 抽屉
 const moreDisplay = ref(false);
 const openMoreDrawer = () => {
   moreDisplay.value = true;
 };
 const closeMoreDrawer = () => {
   moreDisplay.value = false;
+};
+const personalDisplay = ref(false);
+const openPersonalDrawer = () => {
+  personalDisplay.value = true;
+};
+const closePersonalDrawer = () => {
+  personalDisplay.value = false;
 };
 </script>

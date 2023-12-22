@@ -1,9 +1,8 @@
 <template>
   <div h-full bg=" [#ffffff] dark:[#10102f]">
     <div flex max-w-7xl mx-auto>
-      <verticalHeader class="vertical-layout" />
-      <horizontalHeader class="horizontal-layout" />
-      <horizontalSideBar class="horizontal-layout" />
+      <Header />
+      <SideBar class="horizontal-layout" />
       <main flex-1 bg="bg-transparent">
         <section class="absolute inset-0">
           <picture
@@ -34,15 +33,14 @@
         </section>
         <slot />
       </main>
-      <horizontalRightBar class="horizontal-layout" />
-      <verticalFooter class="vertical-layout" />
+      <RightBar class="horizontal-layout" />
+      <Footer class="vertical-layout" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import verticalHeader from "./default/vertical/Header/Header.vue";
-import verticalFooter from "./default/vertical/Footer/Footer.vue";
-import horizontalHeader from "./default/horizontal/Header/Header.vue";
-import horizontalSideBar from "./default/horizontal/SideBar/SideBar.vue";
-import horizontalRightBar from "./default/horizontal/RightBar/RightBar.vue";
+import Footer from "./default/Footer/Footer.vue";
+import Header from "./default/Header/Header.vue";
+import SideBar from "./default/SideBar/SideBar.vue";
+import RightBar from "./default/RightBar/RightBar.vue";
 </script>
