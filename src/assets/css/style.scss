@@ -45,7 +45,7 @@ ul {
 }
 @media (orientation: portrait) {
   :root {
-    --side-bar-width: unset;
+    --side-bar-width: auto;
   }
 }
 @media (orientation: landscape) {
