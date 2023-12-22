@@ -10,7 +10,13 @@
       @slideCancelLeft="goView('cancel')"
       @slideCancelRight="goView('cancel')"
     >
-      <div flex relative id="zy-slide-router__root" w="[300%]">
+      <div
+        flex
+        relative
+        id="zy-slide-router__root"
+        w="[300%]"
+        will-change-transform
+      >
         <div :key="transitionKey" id="zy-slide-router__now">
           <slot />
         </div>

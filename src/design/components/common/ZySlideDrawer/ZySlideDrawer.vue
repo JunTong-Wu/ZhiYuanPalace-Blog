@@ -22,6 +22,7 @@
       cursor-grab
       fixed
       h-full
+      will-change-transform
       :init="touchInit"
       :style="mainStyle"
       @slidingLeft="slidingLeft"
