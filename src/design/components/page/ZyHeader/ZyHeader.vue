@@ -1,5 +1,5 @@
 <template>
-  <header position-fixed top-0 left-0 right-0 h-header md:h-header-xl z-24>
+  <header position-fixed top-0 left-0 right-0 h-header z-24>
     <slot />
   </header>
 </template>

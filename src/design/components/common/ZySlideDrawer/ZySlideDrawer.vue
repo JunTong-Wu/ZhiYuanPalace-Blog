@@ -43,7 +43,6 @@
         justify-between
         items-center
         h-header
-        md:h-header-xl
         px-6
         text-sm
         color="text-1"

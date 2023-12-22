@@ -2,7 +2,7 @@
   <zy-side-bar>
     <div h-full flex flex-col justify-between>
       <div>
-        <div h-header md:h-header-xl></div>
+        <div h-header></div>
       </div>
     </div>
   </zy-side-bar>

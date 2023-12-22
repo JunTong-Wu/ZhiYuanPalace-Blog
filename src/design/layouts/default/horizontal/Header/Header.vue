@@ -2,13 +2,11 @@
   <zy-header>
     <div flex justify-between h-full backdrop-blur-xl max-w-7xl mx-auto>
       <div flex items-center px-4 w-sidebar>
-        <img h-5 md:h-8 src="@/src/assets/image/logo.png" alt="logo" />
+        <img h-8 src="@/src/assets/image/logo.png" alt="logo" />
         <svg
-          w-12
-          md:w-16
+          w-16
           fill-current
-          h-4
-          md:h-8
+          h-8
           ml-2
           id="uuid-2320505a-bbef-4a34-b902-2705747683ee"
           xmlns="http://www.w3.org/2000/svg"
