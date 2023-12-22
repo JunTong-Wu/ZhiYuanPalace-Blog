@@ -183,9 +183,9 @@ export default defineComponent({
 
       // 监听浏览器窗口变化
       window.addEventListener("resize", () => {
+        fontSizeInit();
         setTimeout(() => {
           classListChange();
-          fontSizeInit();
         }, 20);
       });
     }
