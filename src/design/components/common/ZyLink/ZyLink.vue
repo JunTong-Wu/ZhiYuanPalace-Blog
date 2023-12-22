@@ -32,3 +32,10 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss" scoped>
+@media (hover: hover) {
+  button {
+    cursor: pointer;
+  }
+}
+</style>

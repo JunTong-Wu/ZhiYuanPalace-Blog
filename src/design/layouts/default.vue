@@ -1,6 +1,6 @@
 <template>
   <div h-full bg=" [#ffffff] dark:[#10102f]">
-    <div flex max-w-7xl mx-auto>
+    <div flex w-centered mx-auto>
       <Header />
       <SideBar class="horizontal-layout" />
       <main flex-1 bg="bg-transparent">

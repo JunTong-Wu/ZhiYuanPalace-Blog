@@ -25,6 +25,7 @@ export default defineConfig({
     ["w-header", { width: "var(--header-bar-height)" }],
     ["h-footer", { height: "var(--footer-bar-height)" }],
     ["w-sidebar", { width: "var(--side-bar-width)" }],
+    ["w-centered", { width: "var(--centered-width)" }],
   ],
   theme: {
     darkMode: "class",

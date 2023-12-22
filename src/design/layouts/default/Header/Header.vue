@@ -1,6 +1,6 @@
 <template>
   <zy-header>
-    <div flex justify-between h-full backdrop-blur-xl max-w-7xl mx-auto>
+    <div flex justify-between h-full backdrop-blur-xl w-centered mx-auto>
       <div class="vertical-layout">
         <zy-button h-full px-4 @click="openPersonalDrawer" title="个人资料">
           <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />
@@ -83,7 +83,7 @@
             items-center
             justify-center
             @click="darkModeSwitch"
-            title="日间模式/夜间模式"
+            title="日间/夜间"
           >
             <ZyIcon
               v-if="darkModeFlag == false"
@@ -95,6 +95,20 @@
               v-else-if="darkModeFlag == true"
               size="1.2rem"
               lineName="line-md:moon-twotone-loop"
+              lineColor="var(--text-2)"
+            />
+          </zy-button>
+          <zy-button
+            w-header
+            h-full
+            flex
+            items-center
+            justify-center
+            title="切换语言"
+          >
+            <ZyIcon
+              size="1.2rem"
+              lineName="line-md:map-marker-twotone"
               lineColor="var(--text-2)"
             />
           </zy-button>

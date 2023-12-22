@@ -42,6 +42,7 @@ ul {
   --header-bar-height: 2.5rem;
   --footer-bar-height: 2.5rem;
   --side-bar-width: 25%;
+  --centered-width: 100%;
 }
 @media (orientation: portrait) {
   :root {
@@ -51,6 +52,7 @@ ul {
 @media (orientation: landscape) {
   :root {
     --header-bar-height: 3.5rem;
+    --centered-width: 90%;
   }
 }
 @media (min-width: 1200px) {
