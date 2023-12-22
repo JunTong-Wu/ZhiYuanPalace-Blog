@@ -4,6 +4,7 @@
     :base-font-size="baseFontSize"
     :break-points="breakPoints"
     :design-size="designSize"
+    @touchmove="preventTouchGesture($event)"
   >
     <NuxtLayout>
       <ZySlideRouterView :path-list="pathList">
@@ -100,6 +101,11 @@ if (process.client) {
   // document.body.appendChild(script);
   // myLive2dConfig();
 }
+
+// 阻止vivo浏览器手势
+const preventTouchGesture = (e: TouchEvent) => {
+  e.cancelable && e.preventDefault();
+};
 
 onMounted(() => {
   console.log("<SSR> Hydrate done.");
