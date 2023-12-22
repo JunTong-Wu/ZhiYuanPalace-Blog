@@ -100,4 +100,8 @@ if (process.client) {
   // document.body.appendChild(script);
   // myLive2dConfig();
 }
+
+onMounted(() => {
+  console.log("<SSR> Hydrate done.");
+});
 </script>

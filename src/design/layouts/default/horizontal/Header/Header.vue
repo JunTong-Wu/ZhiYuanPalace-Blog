@@ -74,13 +74,13 @@
           title="日间模式/夜间模式"
         >
           <ZyIcon
-            v-if="!darkModeFlag"
+            v-if="darkModeFlag == false"
             size="1.2rem"
             lineName="line-md:sunny-outline-twotone-loop"
             lineColor="var(--text-2)"
           />
           <ZyIcon
-            v-else
+            v-else-if="darkModeFlag == true"
             size="1.2rem"
             lineName="line-md:moon-twotone-loop"
             lineColor="var(--text-2)"
@@ -131,7 +131,18 @@
 <script setup lang="ts">
 import Navigation from "./Navigation/Navigation.vue";
 // 夜间模式
-const darkModeFlag = ref(false);
+const darkModeFlag = ref<null | boolean>(null);
+const darkModeInit = () => {
+  if (process.client) {
+    const isDarkmode = (window as any).isDarkmode;
+    if (isDarkmode) {
+      darkModeFlag.value = true;
+    }
+  }
+};
+onMounted(() => {
+  darkModeInit();
+});
 const darkModeSwitch = () => {
   if (!document.documentElement.classList.contains("dark")) {
     darkModeFlag.value = true;

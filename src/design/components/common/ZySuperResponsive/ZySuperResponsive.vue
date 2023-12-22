@@ -43,13 +43,9 @@ export default defineComponent({
       script: [
         {
           innerHTML: `
-          window.ZySuperResponsiveBaseFontSize = ${props.baseFontSize};
-          window.ZySuperResponsiveBreakPoints = ${JSON.stringify(
-            props.breakPoints
-          )};
-          window.ZySuperResponsiveDesignSize = ${JSON.stringify(
-            props.designSize
-          )}
+          window.ZyFontSize = ${props.baseFontSize};
+          window.ZyBreakPoints = ${JSON.stringify(props.breakPoints)};
+          window.ZyDesignSize = ${JSON.stringify(props.designSize)}
           `,
         },
         {
@@ -61,13 +57,14 @@ export default defineComponent({
     // 初始化
     function initZySuperResponsive() {
       const isMobile = () => {
-        let flag = navigator.userAgent.match(
-          /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
-        );
-        return flag;
+        var mql = window.matchMedia("(pointer: coarse)");
+        if (mql.matches) {
+          return true;
+        } else {
+          return false;
+        }
       };
       const isDarkmode = () => {
-        return false;
         const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
         if (isDarkTheme.matches) {
           return true;
@@ -106,14 +103,14 @@ export default defineComponent({
 
       classListInit();
 
-      const classListChange = () => {
-        if (isVertical()) {
-          document.documentElement.classList.remove("horizontal");
-          document.documentElement.classList.add("vertical");
-        } else {
-          document.documentElement.classList.remove("vertical");
-          document.documentElement.classList.add("horizontal");
+      const ssrBuryingPoint = () => {
+        if (isDarkmode()) {
+          (window as any).isDarkmode = true;
         }
+      };
+      ssrBuryingPoint();
+
+      const classListChange = () => {
         if (isMobile()) {
           document.documentElement.classList.remove("pc");
           document.documentElement.classList.add("mobile");
@@ -125,9 +122,9 @@ export default defineComponent({
 
       const fontSizeInit = () => {
         var docEl = document.documentElement;
-        const fontSize = (window as any).ZySuperResponsiveBaseFontSize;
-        const breakPoints = (window as any).ZySuperResponsiveBreakPoints;
-        const designSize = (window as any).ZySuperResponsiveDesignSize;
+        const fontSize = (window as any).ZyFontSize;
+        const breakPoints = (window as any).ZyBreakPoints;
+        const designSize = (window as any).ZyDesignSize;
         if (docEl) {
           var rem;
           if (docEl.clientWidth <= breakPoints.xs) {
@@ -186,8 +183,10 @@ export default defineComponent({
 
       // 监听浏览器窗口变化
       window.addEventListener("resize", () => {
-        classListChange();
-        fontSizeInit();
+        setTimeout(() => {
+          classListChange();
+          fontSizeInit();
+        }, 20);
       });
     }
   },
@@ -202,13 +201,27 @@ export default defineComponent({
 }
 
 @media (orientation: landscape) {
+  /* 横屏 */
   .horizontal-layout {
     display: block;
   }
 }
 @media (orientation: portrait) {
+  /* 竖屏 */
   .vertical-layout {
     display: block;
   }
+}
+@media (pointer: fine) {
+  /* 使用鼠标或手写笔 */
+}
+@media (pointer: coarse) {
+  /* 使用触摸屏 */
+}
+@media (hover: hover) {
+  /* 可以hover */
+}
+@media (hover: none) {
+  /* 不可以hover */
 }
 </style>
