@@ -34,7 +34,7 @@
         border="dark:border dark:solid dark:bordercolor"
       >
         <div h-full overflow-auto>
-          <div class="arrow" :style="`border-color: ${background};`"></div>
+          <div class="arrow"></div>
           <slot name="actions" />
         </div>
       </div>
@@ -232,6 +232,12 @@ export default defineComponent({
     const closeByButton = () => {
       close();
     };
+    // 监听浏览器窗口变化
+    window.addEventListener("resize", () => {
+      setTimeout(() => {
+        close();
+      }, 100);
+    });
 
     return {
       display,
@@ -261,10 +267,10 @@ export default defineComponent({
   left: 50%;
   transform: translateX(-50%);
   border: 0.7rem solid;
-  border-color: rgba(127, 127, 127, 0.2);
   border-top: none;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgba(127, 127, 127, 0.2);
   z-index: -1;
   display: none;
 }
@@ -278,10 +284,10 @@ export default defineComponent({
   left: 50%;
   transform: translateX(-50%);
   border: 0.6rem solid;
-  border-color: var(--bg-5);
   border-top: none;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: var(--bg-5);
   z-index: -1;
 }
 </style>
