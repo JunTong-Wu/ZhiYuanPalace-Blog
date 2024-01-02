@@ -34,7 +34,7 @@ export default defineComponent({
         button.value.classList.add("animation");
         setTimeout(() => {
           button.value.classList.remove("animation");
-        }, 280);
+        }, 100);
       }
     };
     return {

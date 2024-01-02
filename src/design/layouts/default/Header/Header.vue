@@ -100,7 +100,7 @@
           </zy-button>
           <!-- 多语言抽屉 -->
           <ClientOnly>
-            <zy-popover title="切换语言" background="var(--bg-2)">
+            <zy-popover title="切换语言" background="var(--bg-5)">
               <template #reference>
                 <zy-button
                   w-header
@@ -118,7 +118,12 @@
                 </zy-button>
               </template>
               <template #actions>
-                <div><p color="text-1">TEST</p></div>
+                <div p-2 color="text-1">
+                  <ul>
+                    <li>1</li>
+                    <li>2</li>
+                  </ul>
+                </div>
               </template>
             </zy-popover>
           </ClientOnly>
@@ -143,18 +148,18 @@
     </div>
     <!-- 搜索抽屉 -->
     <ClientOnly>
-      <zy-slide-drawer
+      <zy-drawer
         title="搜索"
         :display="searchDisplay"
         @cancel="closeSearchDrawer"
         position="top"
         size="100%"
       >
-      </zy-slide-drawer>
+      </zy-drawer>
     </ClientOnly>
     <!-- 更多选项抽屉 -->
     <ClientOnly>
-      <zy-slide-drawer
+      <zy-drawer
         title="更多选项"
         :display="moreDisplay"
         @cancel="closeMoreDrawer"
@@ -162,11 +167,11 @@
         size="20rem"
         background="var(--bg-2)"
       >
-      </zy-slide-drawer>
+      </zy-drawer>
     </ClientOnly>
     <!-- 个人资料抽屉 -->
     <ClientOnly>
-      <zy-slide-drawer
+      <zy-drawer
         title="个人资料"
         :display="personalDisplay"
         @cancel="closePersonalDrawer"
@@ -174,7 +179,7 @@
         size="100%"
         background="var(--bg-5)"
       >
-      </zy-slide-drawer>
+      </zy-drawer>
     </ClientOnly>
   </zy-header>
 </template>

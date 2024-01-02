@@ -14,7 +14,6 @@
       <div
         fixed
         inset-0
-        bg="bg-mask"
         transition
         duration-500
         :class="maskClass"
@@ -22,13 +21,20 @@
         v-if="mask"
       ></div>
       <div
+        ref="mainElement"
         class="drawer-main"
+        bg="bg-5"
         fixed
         h-full
         will-change-transform
+        rounded-lg
+        shadow
+        min-w-24
         :style="mainStyle"
+        border="dark:border dark:solid dark:bordercolor"
       >
         <div h-full overflow-auto>
+          <div class="arrow" :style="`border-color: ${background};`"></div>
           <slot name="actions" />
         </div>
       </div>
@@ -37,7 +43,7 @@
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "zy-slide-popover",
+  name: "zy-popover",
   props: {
     position: { type: String, default: "top" }, // 指定方向
     size: { type: String, default: "auto" }, // 指定宽度
@@ -62,14 +68,12 @@ export default defineComponent({
     const maskClass = ref({
       "opacity-100": false,
       "opacity-0": true,
-      "backdrop-blur": true,
     });
     const classInit = () => {
       maskClass.value = {
         // 通过visible的真假切换类名
         "opacity-100": props.mask && visible.value,
         "opacity-0": !(props.mask && visible.value),
-        "backdrop-blur": props.mask && visible.value,
       };
     };
     classInit();
@@ -83,7 +87,7 @@ export default defineComponent({
       left: "auto",
       right: "auto",
       transform: "",
-      background: "",
+      opacity: 0,
     });
     const mainStyleInit = () => {
       let positionTop = "auto";
@@ -93,19 +97,18 @@ export default defineComponent({
       let positionWidth = "auto";
       let positionHeight = "auto";
       let transform = "";
-      let background = "";
+      let opacity = 0;
 
       positionTop = `${clientY.value}px`;
       positionLeft = `${clientX.value}px`;
       if (visible.value) {
-        transform = "translateY(0px)";
+        transform = "translateY(0px) scale(1)";
+        opacity = 1;
       } else {
-        transform = `translateY(-1rem)`;
+        transform = `translateY(-1rem) scale(0.8)`;
+        opacity = 0;
       }
 
-      if (props.background && props.background != "") {
-        background = props.background;
-      }
       mainStyle.value = {
         width: positionWidth,
         height: positionHeight,
@@ -114,7 +117,7 @@ export default defineComponent({
         left: positionLeft,
         right: positionRight,
         transform: transform,
-        background: background,
+        opacity: opacity,
       };
     };
     mainStyleInit();
@@ -129,7 +132,7 @@ export default defineComponent({
         const drawerMain = (el.value as any).querySelector(".drawer-main");
         if (transition) {
           // 通常，正在滑动时不开启CSS过渡，释放滑动时开启CSS过渡
-          drawerMain.style.transition = `transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
+          drawerMain.style.transition = `transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1) , opacity 400ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
           setTimeout(() => {
             drawerMain.style.transition = `none`;
           }, 400);
@@ -143,21 +146,22 @@ export default defineComponent({
     /*
      * 打开逻辑
      */
-    const listenElement = ref(null);
-    const showPopover = (e: any) => {
-      if (listenElement.value) {
-        console.log(listenElement.value);
-        clientX.value =
-          (listenElement.value as any).offsetLeft +
-          (listenElement.value as any).offsetWidth;
-        clientY.value =
-          (listenElement.value as any).offsetTop +
-          (listenElement.value as any).offsetHeight;
-      } else {
-        clientX.value = e.clientX;
-        clientY.value = e.clientY;
+    const offset = (obj: any, direction: string) => {
+      //将top,left首字母大写,并拼接成offsetTop,offsetLeft
+      var offsetDir =
+        "offset" + direction[0].toUpperCase() + direction.substring(1);
+      var realNum = obj[offsetDir];
+      var positionParent = obj.offsetParent; //获取上一级定位元素对象
+      while (positionParent != null) {
+        realNum += positionParent[offsetDir];
+        positionParent = positionParent.offsetParent;
       }
+      return realNum;
+    };
 
+    const listenElement = ref(null);
+    const mainElement = ref(null);
+    const showPopover = () => {
       display.value = true;
     };
 
@@ -179,6 +183,24 @@ export default defineComponent({
         // 打开时，先监听display，再异步改变visible，实现进入动画
         setTimeout(() => {
           visible.value = newValue;
+          if (newValue) {
+            if (listenElement.value) {
+              clientY.value =
+                offset(listenElement.value, "top") +
+                (listenElement.value as any).offsetHeight;
+
+              const drawerMain = mainElement.value as any;
+              const drawerMainWidth = drawerMain.clientWidth;
+              const listenElementLeft = offset(listenElement.value, "left");
+              const listenElementWidth = (listenElement.value as any)
+                .offsetWidth;
+              clientX.value =
+                listenElementLeft +
+                listenElementWidth / 2 -
+                drawerMainWidth / 2;
+            }
+          }
+
           translate(null, true);
           mainStyleInit();
           classInit();
@@ -215,6 +237,7 @@ export default defineComponent({
       display,
       showPopover,
       listenElement,
+      mainElement,
       el,
       maskClass,
       mainStyle,
@@ -224,3 +247,41 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss" scoped>
+.arrow {
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: -0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0.7rem solid;
+  border-color: rgba(127, 127, 127, 0.2);
+  border-top: none;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  z-index: -1;
+  display: none;
+}
+.dark .arrow::before {
+  display: block;
+}
+.arrow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0.6rem solid;
+  border-color: var(--bg-5);
+  border-top: none;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  z-index: -1;
+}
+</style>

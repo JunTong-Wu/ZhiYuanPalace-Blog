@@ -67,7 +67,7 @@ export default defineConfig({
         transparent: "transparent",
         mask: "var(--bg-mask)",
       },
-      bordercolor: "rgba(127,127,127,0.1)",
+      bordercolor: "rgba(127,127,127,0.2)",
     },
   },
 });

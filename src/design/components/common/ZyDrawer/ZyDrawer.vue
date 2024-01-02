@@ -77,7 +77,7 @@
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "zy-slide-drawer",
+  name: "zy-drawer",
   emits: ["cancel"],
   props: {
     display: { type: Boolean }, // 指定是否物理打开
