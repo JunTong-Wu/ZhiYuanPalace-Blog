@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>知鸢宫</Title>
+  </Head>
   <ZySuperResponsive
     color="text-1"
     :base-font-size="baseFontSize"
