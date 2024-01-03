@@ -168,12 +168,19 @@
                 <div p-2 color="text-1">
                   <ul>
                     <li
-                      v-for="locale in (availableLocales as any)"
-                      :key="locale.code"
-                      :to="switchLocalePath(locale.code)"
-                      @click="switchLanguage(locale.code)"
+                      v-for="lang in (availableLocales as any)"
+                      :key="lang.code"
+                      :to="switchLocalePath(lang.code)"
+                      @click="switchLanguage(lang.code)"
                     >
-                      {{ locale.name }}
+                      <label inline-block w-full h-full flex justify-between>
+                        <span>{{ lang.name }}</span>
+                        <input
+                          type="radio"
+                          name="lang"
+                          :checked="lang.code == locale"
+                        />
+                      </label>
                     </li>
                   </ul>
                 </div>
@@ -244,7 +251,7 @@ const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 
 const availableLocales = computed(() => {
-  return locales.value.filter((i: any) => i.code !== locale.value);
+  return locales.value;
 });
 
 const switchLanguage = (code: any) => {
