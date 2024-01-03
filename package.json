@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "nuxt build --dotenv env/.env.production",
+    "dev": "nuxt dev --dotenv .env.dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/i18n": "^8.0.0-rc.6",
+    "@nuxtjs/strapi": "^1.10.1",
     "@unocss/nuxt": "^0.57.1",
     "nuxt": "^3.8.2",
     "nuxt-icon": "^0.6.7",

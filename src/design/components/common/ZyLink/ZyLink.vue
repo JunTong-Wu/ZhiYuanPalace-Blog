@@ -1,18 +1,19 @@
 <template>
-  <button
-    type="button"
+  <a
+    :href="to"
     bg-transparent
     text-sm
     border-0
     color-text-1
-    @click="$router.replace(to)"
+    @click.prevent="$router.replace(to)"
     flex
     items-center
     justify-center
+    no-underline
     :title="title"
   >
     <slot />
-  </button>
+  </a>
 </template>
 to
 <script lang="ts">

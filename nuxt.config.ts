@@ -30,10 +30,43 @@ export default defineNuxtConfig({
     // layoutTransition: { name: "layout", mode: "out-in" },
   },
   devtools: { enabled: false },
-  modules: ["@unocss/nuxt", "@nuxtjs/i18n", "nuxt-icon"],
+  modules: ["@unocss/nuxt", "@nuxtjs/i18n", "@nuxtjs/strapi", "nuxt-icon"],
+  strapi: {
+    url: import.meta.env.VITE_APP_API_BASE,
+  },
   i18n: {
-    /* module options */
-    vueI18n: "./nuxt-i18n.js", // custom path example
+    locales: [
+      {
+        code: "en",
+        name: "English",
+        iso: "en",
+        files: ["en/common.json", "en/tips.json"],
+        dir: "ltr",
+      },
+      {
+        code: "zh-CN",
+        name: "简体中文",
+        iso: "zh-CN",
+        files: ["zh/common.json", "zh/tips.json"],
+        dir: "ltr",
+      },
+      {
+        code: "de",
+        name: "Deutsch",
+        iso: "de",
+        files: ["de/common.json", "de/tips.json"],
+        dir: "ltr",
+      },
+    ],
+    defaultLocale: "zh-CN",
+    strategy: "prefix",
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+    },
+    vueI18n: "./i18n.config.ts",
+    lazy: true,
+    langDir: "src/core/language",
   },
   dir: {
     assets: "src/assets",

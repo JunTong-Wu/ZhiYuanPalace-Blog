@@ -3,42 +3,42 @@
     <ul class="flex h-full items-center">
       <li h-full>
         <zy-link
-          to="/"
+          :to="`/${locale}`"
           h-full
           px-6
-          title="首页"
+          :title="$t('home')"
           :class="{ activate: routerActivate('/') }"
-          >首页</zy-link
+          >{{ $t("home") }}</zy-link
         >
       </li>
       <li h-full>
         <zy-link
-          to="/text"
+          :to="`${localePath({ name: 'text' })}/`"
           h-full
           px-6
-          title="文字"
+          :title="$t('text')"
           :class="{ activate: routerActivate('/text') }"
-          >文字</zy-link
+          >{{ $t("text") }}</zy-link
         >
       </li>
       <li h-full>
         <zy-link
-          to="/media"
+          :to="`${localePath({ name: 'media' })}/`"
           h-full
           px-6
-          title="媒体"
+          :title="$t('media')"
           :class="{ activate: routerActivate('/media') }"
-          >媒体</zy-link
+          >{{ $t("media") }}</zy-link
         >
       </li>
       <li h-full>
         <zy-link
-          to="/about"
+          :to="`${localePath({ name: 'about' })}/`"
           h-full
           px-6
-          title="关于"
+          :title="$t('about')"
           :class="{ activate: routerActivate('/about') }"
-          >关于</zy-link
+          >{{ $t("about") }}</zy-link
         >
       </li>
     </ul>
@@ -47,11 +47,19 @@
 
 <script setup lang="ts">
 const route = useRoute();
+const localePath = useLocalePath();
+const { locale } = useI18n();
 const routerActivate = (path: string) => {
-  if (route.path == path) {
-    return true;
+  if (path != "/") {
+    if (route.path.includes(path)) {
+      return true;
+    } else {
+      return false;
+    }
   } else {
-    return false;
+    if (route.path == "/" || route.path == `/${locale.value}`) {
+      return true;
+    }
   }
 };
 </script>
