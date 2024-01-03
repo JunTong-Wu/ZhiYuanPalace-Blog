@@ -80,9 +80,13 @@ export default defineComponent({
         nowPathIndex = props.pathList.findIndex((item) => {
           return item == route.path;
         });
-        path = props.pathList[nowPathIndex + relativePosition];
-        if (path) {
-          return { path: path };
+        if (nowPathIndex != -1) {
+          path = props.pathList[nowPathIndex + relativePosition];
+          if (path) {
+            return { path: path };
+          } else {
+            return null;
+          }
         } else {
           return null;
         }
@@ -91,9 +95,13 @@ export default defineComponent({
         nowPathIndex = router.getRoutes().findIndex((item) => {
           return item.path == route.path;
         });
-        path = router.getRoutes()[nowPathIndex + relativePosition];
-        if (path) {
-          return path;
+        if (nowPathIndex != -1) {
+          path = router.getRoutes()[nowPathIndex + relativePosition];
+          if (path) {
+            return path;
+          } else {
+            return null;
+          }
         } else {
           return null;
         }
@@ -368,24 +376,29 @@ export default defineComponent({
           return item.path == from.path;
         });
       }
-      if (toPathIndex > fromPathIndex) {
-        if (isSlideControl.value) {
-          // 如果是通过滑动控制的
-          // to索引大于from索引，则代表期望在右侧展示新的路由页面，将旧的路由页面拷贝至左侧
-          copyOldPage("left", next());
-        } else {
-          // 如果是通过链接控制的
-          initStyleFromLink("left", next());
+      if (fromPathIndex != -1) {
+        if (toPathIndex > fromPathIndex) {
+          if (isSlideControl.value) {
+            // 如果是通过滑动控制的
+            // to索引大于from索引，则代表期望在右侧展示新的路由页面，将旧的路由页面拷贝至左侧
+            copyOldPage("left", next());
+          } else {
+            // 如果是通过链接控制的
+            initStyleFromLink("left", next());
+          }
+        } else if (toPathIndex < fromPathIndex) {
+          if (isSlideControl.value) {
+            // 如果是通过滑动控制的
+            // to索引小于from索引，则代表期望在左侧展示新的路由页面，将旧的路由页面拷贝至右侧
+            copyOldPage("right", next());
+          } else {
+            // 如果是通过链接控制的
+            initStyleFromLink("right", next());
+          }
         }
-      } else if (toPathIndex < fromPathIndex) {
-        if (isSlideControl.value) {
-          // 如果是通过滑动控制的
-          // to索引小于from索引，则代表期望在左侧展示新的路由页面，将旧的路由页面拷贝至右侧
-          copyOldPage("right", next());
-        } else {
-          // 如果是通过链接控制的
-          initStyleFromLink("right", next());
-        }
+      } else {
+        // 如果PathList发生改变，导致from索引为-1
+        next();
       }
     });
     // 后置守卫
@@ -425,14 +438,16 @@ export default defineComponent({
       } else {
         // 如果是通过链接控制的，异步添加结束样式，给初始化通过链接控制的样式留出时间，达到成功过渡
         setTimeout(() => {
-          if (toPathIndex > fromPathIndex) {
-            // to索引大于from索引，则代表期望在右侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示右侧节点
-            translateX(`calc(-33.333333%)`, true);
-            clearOldPage();
-          } else if (toPathIndex < fromPathIndex) {
-            // to索引小于from索引，则代表期望在左侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示左侧节点
-            translateX(`calc(0%)`, true);
-            clearOldPage();
+          if (fromPathIndex != -1) {
+            if (toPathIndex > fromPathIndex) {
+              // to索引大于from索引，则代表期望在右侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示右侧节点
+              translateX(`calc(-33.333333%)`, true);
+              clearOldPage();
+            } else if (toPathIndex < fromPathIndex) {
+              // to索引小于from索引，则代表期望在左侧展示新的路由页面，路由切换完成后，改变过渡动画位置，使其显示左侧节点
+              translateX(`calc(0%)`, true);
+              clearOldPage();
+            }
           }
         });
       }

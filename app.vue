@@ -15,6 +15,12 @@
           </div>
         </ZyScrollView>
       </ZySlideRouterView>
+      <!-- <div h-header></div>
+      <NuxtPage
+        mx-auto
+        p-4
+        class="lg:max-w-[95%] xl:max-w-[90%] absolute z-1 w-full"
+      /> -->
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -45,23 +51,21 @@ const designSize = {
 };
 
 const { locale } = useI18n();
-const localePath = useLocalePath();
 const pathList = ref([
   `/${locale.value}`,
-  `${localePath({ name: "text" })}/`,
-  `${localePath({ name: "media" })}/`,
-  `${localePath({ name: "about" })}/`,
+  `/${locale.value}/text`,
+  `/${locale.value}/media`,
+  `/${locale.value}/about`,
 ]);
 
 watch(
   () => locale.value,
   (newValue) => {
-    console.log(newValue);
     pathList.value.splice(0, pathList.value.length);
     pathList.value.push(`/${newValue}`);
-    pathList.value.push(`/${newValue}/text/`);
-    pathList.value.push(`/${newValue}/media/`);
-    pathList.value.push(`/${newValue}/about/`);
+    pathList.value.push(`/${newValue}/text`);
+    pathList.value.push(`/${newValue}/media`);
+    pathList.value.push(`/${newValue}/about`);
     // console.log(pathList.value);
   }
 );

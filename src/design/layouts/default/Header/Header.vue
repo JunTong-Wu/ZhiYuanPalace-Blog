@@ -250,8 +250,6 @@ const availableLocales = computed(() => {
 const switchLanguage = (code: any) => {
   const router = useRouter();
   const to = switchLocalePath(code);
-  console.log("to", to);
-
   router.replace({ path: to });
 };
 
