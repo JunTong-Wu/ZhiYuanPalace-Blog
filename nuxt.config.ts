@@ -50,13 +50,6 @@ export default defineNuxtConfig({
         files: ["zh/common.json", "zh/tips.json"],
         dir: "ltr",
       },
-      {
-        code: "de",
-        name: "Deutsch",
-        iso: "de",
-        files: ["de/common.json", "de/tips.json"],
-        dir: "ltr",
-      },
     ],
     defaultLocale: "zh-CN",
     strategy: "prefix",
