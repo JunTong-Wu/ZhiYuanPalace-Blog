@@ -159,7 +159,7 @@
                 >
                   <ZyIcon
                     size="1.2rem"
-                    lineName="line-md:map-marker-twotone"
+                    lineName="clarity:language-solid"
                     lineColor="var(--text-2)"
                   />
                 </zy-button>
