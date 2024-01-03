@@ -22,7 +22,7 @@
         />
       </zy-link>
       <zy-link
-        :to="`${localePath({ name: 'text' })}/`"
+        :to="`${localePath({ name: 'text' })}`"
         v-zy-ripple
         h-full
         w="[20%]"
@@ -38,7 +38,7 @@
       </zy-link>
       <div h-full w="[20%]"></div>
       <zy-link
-        :to="`${localePath({ name: 'media' })}/`"
+        :to="`${localePath({ name: 'media' })}`"
         v-zy-ripple
         h-full
         w="[20%]"
@@ -53,7 +53,7 @@
         />
       </zy-link>
       <zy-link
-        :to="`${localePath({ name: 'about' })}/`"
+        :to="`${localePath({ name: 'about' })}`"
         v-zy-ripple
         h-full
         w="[20%]"

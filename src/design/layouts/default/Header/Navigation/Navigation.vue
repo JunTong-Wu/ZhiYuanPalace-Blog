@@ -13,7 +13,7 @@
       </li>
       <li h-full>
         <zy-link
-          :to="`${localePath({ name: 'text' })}/`"
+          :to="`${localePath({ name: 'text' })}`"
           h-full
           px-6
           :title="$t('text')"
@@ -23,7 +23,7 @@
       </li>
       <li h-full>
         <zy-link
-          :to="`${localePath({ name: 'media' })}/`"
+          :to="`${localePath({ name: 'media' })}`"
           h-full
           px-6
           :title="$t('media')"
@@ -33,7 +33,7 @@
       </li>
       <li h-full>
         <zy-link
-          :to="`${localePath({ name: 'about' })}/`"
+          :to="`${localePath({ name: 'about' })}`"
           h-full
           px-6
           :title="$t('about')"
