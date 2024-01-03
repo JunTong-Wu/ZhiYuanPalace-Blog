@@ -37,17 +37,17 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       {
-        code: "en",
-        name: "English",
-        iso: "en",
-        files: ["en/common.json", "en/tips.json"],
-        dir: "ltr",
-      },
-      {
         code: "zh-CN",
         name: "简体中文",
         iso: "zh-CN",
         files: ["zh/common.json", "zh/tips.json"],
+        dir: "ltr",
+      },
+      {
+        code: "en",
+        name: "English",
+        iso: "en",
+        files: ["en/common.json", "en/tips.json"],
         dir: "ltr",
       },
     ],
