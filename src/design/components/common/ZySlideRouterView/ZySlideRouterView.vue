@@ -352,8 +352,6 @@ export default defineComponent({
       let toPathIndex = 0;
       let fromPathIndex = 0;
       if (hasPathList()) {
-        console.log(props.pathList);
-
         // 如果传入了PathList，则使用PathList的索引
         toPathIndex = props.pathList.findIndex((item) => {
           return item == to.path;

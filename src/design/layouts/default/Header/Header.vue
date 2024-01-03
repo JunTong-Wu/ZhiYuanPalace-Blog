@@ -167,8 +167,14 @@
               <template #actions>
                 <div p-2 color="text-1">
                   <ul>
-                    <li>1</li>
-                    <li>2</li>
+                    <li
+                      v-for="locale in (availableLocales as any)"
+                      :key="locale.code"
+                      :to="switchLocalePath(locale.code)"
+                      @click="switchLanguage(locale.code)"
+                    >
+                      {{ locale.name }}
+                    </li>
                   </ul>
                 </div>
               </template>
@@ -234,7 +240,20 @@
 import Navigation from "./Navigation/Navigation.vue";
 
 // 多语言
-const { locale } = useI18n();
+const { locale, locales } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
+
+const availableLocales = computed(() => {
+  return locales.value.filter((i: any) => i.code !== locale.value);
+});
+
+const switchLanguage = (code: any) => {
+  const router = useRouter();
+  const to = switchLocalePath(code);
+  console.log("to", to);
+
+  router.replace({ path: to });
+};
 
 // 夜间模式
 const darkModeFlag = ref<null | boolean>(null);

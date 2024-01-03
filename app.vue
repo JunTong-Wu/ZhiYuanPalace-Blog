@@ -46,12 +46,25 @@ const designSize = {
 
 const { locale } = useI18n();
 const localePath = useLocalePath();
-const pathList = [
+const pathList = ref([
   `/${locale.value}`,
   `${localePath({ name: "text" })}/`,
   `${localePath({ name: "media" })}/`,
   `${localePath({ name: "about" })}/`,
-];
+]);
+
+watch(
+  () => locale.value,
+  (newValue) => {
+    console.log(newValue);
+    pathList.value.splice(0, pathList.value.length);
+    pathList.value.push(`/${newValue}`);
+    pathList.value.push(`/${newValue}/text/`);
+    pathList.value.push(`/${newValue}/media/`);
+    pathList.value.push(`/${newValue}/about/`);
+    // console.log(pathList.value);
+  }
+);
 
 const myLive2dConfig = () => {
   const OML2D = (window as any).OML2D;
