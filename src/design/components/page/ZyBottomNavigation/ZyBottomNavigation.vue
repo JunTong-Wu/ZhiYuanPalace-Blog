@@ -1,6 +1,6 @@
 <template>
   <footer
-    position-fixed
+    fixed
     bottom-0
     left-0
     right-0

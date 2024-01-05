@@ -11,19 +11,12 @@
   >
     <NuxtLayout>
       <ZySlideRouterView :path-list="pathList">
-        <ZyScrollView>
-          <div text-base>
-            <div h-header></div>
-            <NuxtPage mx-auto p-4 class="lg:max-w-[95%] xl:max-w-[90%]" />
-          </div>
-        </ZyScrollView>
+        <div text-base h="[100vh]" overflow-auto scroll-view>
+          <div h-header></div>
+          <NuxtPage mx-auto p-4 class="lg:max-w-[95%] xl:max-w-[90%]" />
+          <div h-footer></div>
+        </div>
       </ZySlideRouterView>
-      <!-- <div h-header></div>
-      <NuxtPage
-        mx-auto
-        p-4
-        class="lg:max-w-[95%] xl:max-w-[90%] absolute z-1 w-full"
-      /> -->
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -130,8 +123,22 @@ if (process.client) {
 }
 
 // 阻止vivo浏览器手势
+function findAncestor(element: HTMLElement | null, ancestorSelector: string) {
+  if (!element || element.tagName.toLowerCase() === "html") {
+    return null;
+  }
+
+  if (element.matches(ancestorSelector)) {
+    return element;
+  }
+
+  return findAncestor(element.parentElement, ancestorSelector);
+}
 const preventTouchGesture = (e: TouchEvent) => {
-  e.cancelable && e.preventDefault();
+  const ancestorElement = findAncestor(e.target as any, "[scroll-view]");
+  if (!ancestorElement) {
+    e.cancelable && e.preventDefault();
+  }
 };
 
 onMounted(() => {

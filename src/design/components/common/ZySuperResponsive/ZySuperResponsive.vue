@@ -1,5 +1,5 @@
 <template>
-  <div position-fixed inset-0>
+  <div fixed inset-0>
     <slot />
   </div>
 </template>
