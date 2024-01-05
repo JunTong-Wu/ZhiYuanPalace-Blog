@@ -1,6 +1,15 @@
 <template>
   <zy-header>
-    <div flex justify-between h-full backdrop-blur-xl w-centered mx-auto>
+    <div
+      flex
+      justify-between
+      h-full
+      backdrop-blur-xl
+      w-centered
+      mx-auto
+      sm:px-6
+      lg:px-8
+    >
       <div class="vertical-layout">
         <zy-button h-full px-4 @click="openPersonalDrawer" title="个人资料">
           <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />

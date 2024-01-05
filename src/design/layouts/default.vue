@@ -1,8 +1,8 @@
 <template>
   <div h-full bg=" [#ffffff] dark:[#10102f]">
-    <div flex w-centered mx-auto>
+    <div>
       <Header />
-      <SideBar class="horizontal-layout" />
+      <!-- <SideBar class="horizontal-layout" /> -->
       <main flex-1 bg="bg-transparent">
         <section class="absolute inset-0">
           <picture
@@ -33,7 +33,7 @@
         </section>
         <slot />
       </main>
-      <RightBar class="horizontal-layout" />
+      <!-- <RightBar class="horizontal-layout" /> -->
       <Footer class="vertical-layout" />
     </div>
   </div>

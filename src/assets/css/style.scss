@@ -52,7 +52,7 @@ ul {
 @media (orientation: landscape) {
   :root {
     --header-bar-height: 3.5rem;
-    --centered-width: 90%;
+    --centered-width: 80rem;
   }
 }
 @media (min-width: 1200px) {
@@ -94,4 +94,33 @@ ul {
   --text-2: #c5c5c5; //次强调/正文标
   --text-3: #929293; //次要信息
   --text-4: #5f5f60; //置灰信息
+}
+
+// 滚动条
+
+@media (pointer: fine) {
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 0.6em; /* 设置滚动条的宽度 */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccd5e1; /* 设置滑块的颜色 */
+    border-radius: 100px; /* 设置滑块的边角半径 */
+  }
+
+  *.dark ::-webkit-scrollbar-thumb {
+    background-color: #344155; /* 设置滑块的颜色 */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #95a3b7; /* 设置滑块的颜色 */
+  }
+
+  *.dark ::-webkit-scrollbar-thumb:hover {
+    background-color: #485569; /* 设置滑块的颜色 */
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent; /* 设置滚动条的背景颜色 */
+  }
 }
