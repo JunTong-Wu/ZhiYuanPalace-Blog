@@ -10,6 +10,7 @@
       :style="`z-index: ${zIndex};`"
       ref="el"
       :class="{ dark: dark }"
+      @touchmove="preventTouchGesture($event)"
     >
       <div
         fixed
@@ -239,6 +240,11 @@ export default defineComponent({
       }, 100);
     });
 
+    // 阻止vivo浏览器手势
+    const preventTouchGesture = (e: TouchEvent) => {
+      e.cancelable && e.preventDefault();
+    };
+
     return {
       display,
       showPopover,
@@ -249,6 +255,7 @@ export default defineComponent({
       mainStyle,
       closeByMask,
       closeByButton,
+      preventTouchGesture,
     };
   },
 });

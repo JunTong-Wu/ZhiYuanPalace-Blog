@@ -7,6 +7,7 @@
       :style="`z-index: ${zIndex};`"
       ref="el"
       :class="{ dark: dark }"
+      @touchmove="preventTouchGesture($event)"
     >
       <div
         fixed
@@ -325,6 +326,12 @@ export default defineComponent({
       translate(null, true);
       mainStyleInit();
     };
+
+    // 阻止vivo浏览器手势
+    const preventTouchGesture = (e: TouchEvent) => {
+      e.cancelable && e.preventDefault();
+    };
+
     return {
       el,
       touchInit,
@@ -341,6 +348,7 @@ export default defineComponent({
       slideEndUp,
       slideEndDown,
       slideCancel,
+      preventTouchGesture,
     };
   },
 });
