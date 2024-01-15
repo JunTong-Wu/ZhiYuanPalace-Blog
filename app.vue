@@ -21,6 +21,9 @@
 </template>
 <script setup lang="ts">
 import "@/src/assets/css/style.scss";
+import "@/src/assets/fonts/DFPKingGothicGB.css";
+import "@/src/assets/fonts/HarmonyOS.css";
+import "@/src/assets/fonts/MiSans.css";
 
 const baseFontSize = 18;
 const breakPoints = {

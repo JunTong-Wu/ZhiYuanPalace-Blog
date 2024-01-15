@@ -17,7 +17,6 @@
           lineName="solar:home-smile-angle-linear"
           lineColor="var(--text-3)"
           filledName="solar:home-smile-angle-bold-duotone"
-          filled-color="var(--text-1)"
           :filled="routerActivate('/')"
         />
       </zy-link>
@@ -32,7 +31,6 @@
           lineName="solar:bookmark-square-minimalistic-linear"
           lineColor="var(--text-3)"
           filledName="solar:bookmark-square-minimalistic-bold-duotone"
-          filled-color="var(--text-1)"
           :filled="routerActivate('/text')"
         />
       </zy-link>
@@ -48,7 +46,6 @@
           lineName="solar:video-library-linear"
           lineColor="var(--text-3)"
           filledName="solar:video-library-bold-duotone"
-          filled-color="var(--text-1)"
           :filled="routerActivate('/media')"
         />
       </zy-link>
@@ -63,7 +60,6 @@
           lineName="solar:user-linear"
           lineColor="var(--text-3)"
           filledName="solar:user-bold-duotone"
-          filled-color="var(--text-1)"
           :filled="routerActivate('/about')"
         />
       </zy-link>

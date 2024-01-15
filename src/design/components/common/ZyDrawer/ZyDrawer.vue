@@ -45,12 +45,10 @@
           flex
           justify-between
           items-center
-          h-header
+          h-16
           px-6
           text-sm
           color="text-1"
-          font-bold
-          border="b solid bordercolor t-0 l-0 r-0"
         >
           <span>{{ title }}</span>
           <span
@@ -62,11 +60,7 @@
             @mousemove.stop
             @mouseup.stop
           >
-            <ZyIcon
-              size="1.2rem"
-              lineName="line-md:close-small"
-              lineColor="var(--text-1)"
-            />
+            <ZyIcon size="1.2rem" lineName="line-md:close-small" />
           </span>
         </div>
         <div h-full overflow-auto>

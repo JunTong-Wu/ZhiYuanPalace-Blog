@@ -29,7 +29,7 @@
         h-full
         will-change-transform
         rounded-lg
-        shadow
+        shadow-2xl
         min-w-24
         :style="mainStyle"
         border="dark:border dark:solid dark:bordercolor"

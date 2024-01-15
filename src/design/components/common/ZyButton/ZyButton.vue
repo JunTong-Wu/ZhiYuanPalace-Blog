@@ -1,30 +1,52 @@
 <template>
-  <div v-zy-ripple>
-    <button
-      ref="button"
-      type="button"
-      w-full
-      h-full
-      bg="transparent"
-      text="sm"
-      p-2
-      border-0
-      color-inherit
-      flex
-      items-center
-      justify-center
-      :title="title"
-      @click="animation()"
-    >
-      <slot />
-    </button>
-  </div>
+  <button
+    v-if="type == 'default'"
+    ref="button"
+    type="button"
+    h-9
+    w-9
+    bg="transparent dark:white/[.05] hover:bg-primary"
+    text="sm"
+    p-0
+    m-0
+    color="inherit hover:white"
+    flex
+    items-center
+    justify-center
+    rounded-full
+    border="1 solid bordercolor dark:none"
+    :title="title"
+    @click="animation()"
+  >
+    <slot />
+  </button>
+  <button
+    v-else-if="type == 'transparent'"
+    ref="button"
+    type="button"
+    h-9
+    w-9
+    bg="transparent"
+    text="sm"
+    p-0
+    m-0
+    color-inherit
+    flex
+    items-center
+    justify-center
+    border="none"
+    :title="title"
+    @click="animation()"
+  >
+    <slot />
+  </button>
 </template>
 <script lang="ts">
 export default defineComponent({
   name: "zy-button",
   props: {
     title: { type: String, default: "" },
+    type: { type: String, default: "default" },
   },
   setup() {
     const button = ref();
@@ -99,9 +121,6 @@ button {
   button {
     cursor: pointer;
     transition: all 0.2s;
-    &:hover {
-      transform: scale(1.3);
-    }
   }
 }
 </style>

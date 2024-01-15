@@ -5,7 +5,7 @@
         <zy-link
           :to="`/${locale}`"
           h-full
-          px-6
+          px-5
           :title="$t('home')"
           :class="{ activate: routerActivate('/') }"
           >{{ $t("home") }}</zy-link
@@ -15,7 +15,7 @@
         <zy-link
           :to="`${localePath({ name: 'text' })}`"
           h-full
-          px-6
+          px-5
           :title="$t('text')"
           :class="{ activate: routerActivate('/text') }"
           >{{ $t("text") }}</zy-link
@@ -25,7 +25,7 @@
         <zy-link
           :to="`${localePath({ name: 'media' })}`"
           h-full
-          px-6
+          px-5
           :title="$t('media')"
           :class="{ activate: routerActivate('/media') }"
           >{{ $t("media") }}</zy-link
@@ -35,7 +35,7 @@
         <zy-link
           :to="`${localePath({ name: 'about' })}`"
           h-full
-          px-6
+          px-5
           :title="$t('about')"
           :class="{ activate: routerActivate('/about') }"
           >{{ $t("about") }}</zy-link
@@ -66,6 +66,6 @@ const routerActivate = (path: string) => {
 
 <style lang="scss" scoped>
 .activate {
-  font-weight: bold;
+  color: var(--primary-6);
 }
 </style>

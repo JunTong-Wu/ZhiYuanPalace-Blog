@@ -8,15 +8,22 @@
       w-centered
       mx-auto
       sm:px-6
-      lg:px-8
+      lg:px-24
+      lg:py-3
+      xl:px-24
     >
       <div class="vertical-layout">
-        <zy-button h-full px-4 @click="openPersonalDrawer" title="个人资料">
-          <ZyIcon lineName="line-md:menu" lineColor="var(--text-1)" />
+        <zy-button
+          h-full
+          @click="openPersonalDrawer"
+          title="个人资料"
+          type="transparent"
+        >
+          <ZyIcon lineName="line-md:menu" />
         </zy-button>
       </div>
 
-      <div w-sidebar h-full>
+      <div h-full>
         <div flex items-center px-4 h-full>
           <img h="[60%]" src="@/src/assets/image/logo.png" alt="logo" />
           <svg
@@ -87,32 +94,29 @@
         </div>
       </div>
 
-      <Navigation class="horizontal-layout" />
       <div class="vertical-layout">
-        <zy-button h-full px-4 @click="openSearchDrawer" title="搜索">
-          <ZyIcon lineName="line-md:search-twotone" lineColor="var(--text-1)" />
+        <zy-button
+          h-full
+          @click="openSearchDrawer"
+          title="搜索"
+          type="transparent"
+        >
+          <ZyIcon lineName="line-md:search-twotone" />
         </zy-button>
       </div>
-      <div w-sidebar class="horizontal-layout">
-        <div flex justify-end h-full>
+      <div class="horizontal-layout">
+        <div flex justify-end h-full items-center gap-2>
+          <Navigation class="horizontal-layout" h-full mr-8 xl:mr-12 />
           <zy-button
-            w-header
-            h-full
             flex
             items-center
             justify-center
             @click="openSearchDrawer()"
             title="搜索"
           >
-            <ZyIcon
-              size="1.2rem"
-              lineName="line-md:search-twotone"
-              lineColor="var(--text-1)"
-            />
+            <ZyIcon size="0.75rem" lineName="line-md:search-twotone" />
           </zy-button>
           <zy-button
-            w-header
-            h-full
             flex
             items-center
             justify-center
@@ -121,20 +125,16 @@
           >
             <ZyIcon
               v-if="!fullScreenFlag"
-              size="1.2rem"
+              size="0.75rem"
               lineName="line-md:arrows-diagonal"
-              lineColor="var(--text-2)"
             />
             <ZyIcon
               v-else
-              size="1.2rem"
+              size="0.75rem"
               lineName="mingcute:fullscreen-exit-2-line"
-              lineColor="var(--text-2)"
             />
           </zy-button>
           <zy-button
-            w-header
-            h-full
             flex
             items-center
             justify-center
@@ -143,34 +143,21 @@
           >
             <ZyIcon
               v-if="darkModeFlag == false"
-              size="1.2rem"
+              size="0.75rem"
               lineName="line-md:sunny-outline-twotone-loop"
-              lineColor="var(--text-2)"
             />
             <ZyIcon
               v-else-if="darkModeFlag == true"
-              size="1.2rem"
+              size="0.75rem"
               lineName="line-md:moon-twotone-loop"
-              lineColor="var(--text-2)"
             />
           </zy-button>
           <!-- 多语言抽屉 -->
           <ClientOnly>
             <zy-popover title="切换语言" background="var(--bg-5)">
               <template #reference>
-                <zy-button
-                  w-header
-                  h-full
-                  flex
-                  items-center
-                  justify-center
-                  title="切换语言"
-                >
-                  <ZyIcon
-                    size="1.2rem"
-                    lineName="clarity:language-solid"
-                    lineColor="var(--text-2)"
-                  />
+                <zy-button flex items-center justify-center title="切换语言">
+                  <ZyIcon size="0.75rem" lineName="clarity:language-solid" />
                 </zy-button>
               </template>
               <template #actions>
@@ -198,19 +185,13 @@
           </ClientOnly>
 
           <zy-button
-            w-header
-            h-full
             flex
             items-center
             justify-center
             @click="openMoreDrawer()"
             title="更多选项"
           >
-            <ZyIcon
-              size="1.2rem"
-              lineName="line-md:grid-3-filled"
-              lineColor="var(--text-2)"
-            />
+            <ZyIcon lineName="line-md:grid-3-filled" />
           </zy-button>
         </div>
       </div>
@@ -234,7 +215,7 @@
         @cancel="closeMoreDrawer"
         position="right"
         size="20rem"
-        background="var(--bg-2)"
+        background="var(--bg-5)"
       >
       </zy-drawer>
     </ClientOnly>

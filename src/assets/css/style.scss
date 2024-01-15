@@ -9,10 +9,10 @@ body {
 body {
   font-size: 12px;
   line-height: 1.5;
-  // font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
-  //   "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica,
-  //   Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC",
-  //   "WenQuanYi Micro Hei", sans-serif;
+  font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
+    "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica,
+    Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC",
+    "WenQuanYi Micro Hei", sans-serif;
   color: var(--text-color);
 }
 // 禁用高亮
@@ -41,7 +41,7 @@ ul {
 :root {
   --header-bar-height: 2.5rem;
   --footer-bar-height: 2.5rem;
-  --side-bar-width: 25%;
+  --side-bar-width: 7.5rem;
   --centered-width: 100%;
 }
 @media (orientation: portrait) {
@@ -52,7 +52,13 @@ ul {
 @media (orientation: landscape) {
   :root {
     --header-bar-height: 3.5rem;
-    --centered-width: 80rem;
+    // --centered-width: 80rem;
+  }
+}
+@media (min-width: 1200px) and (orientation: landscape) {
+  :root {
+    --header-bar-height: 5rem;
+    // --centered-width: 80rem;
   }
 }
 @media (min-width: 1200px) {
@@ -60,6 +66,26 @@ ul {
     --side-bar-width: 15rem;
   }
 }
+
+//公共颜色变量
+:root {
+  --gray-color-1: #fff;
+  --gray-color-2: #fefdfe;
+  --gray-color-3: #fcfafd;
+  --gray-color-4: #e4e3e7;
+  --gray-color-5: #cccdd2;
+  --gray-color-6: #b4b6bc;
+  --gray-color-7: #9c9fa6;
+  --gray-color-8: #858991;
+  --gray-color-9: #6d727b;
+  --gray-color-10: #555b65;
+  --gray-color-11: #3d444f;
+  --gray-color-12: #252e3a;
+  --gray-color-13: #0d1724;
+  --gray-color-14: #070c12;
+  --gray-color-15: #000;
+}
+
 :root {
   --primary-7: #454de3; //点击
   --primary-6: #6269e7; //常规
@@ -70,30 +96,30 @@ ul {
   --primary-1: #f4f4fb; //浅色/白底悬浮
 }
 :root {
-  --bg-best: #ffffff; //最白
-  --bg-1: #f4f6f8; //整体背景色
-  --bg-2: #fafbfc; //一级容器背景
-  --bg-3: #fafbfc; //二级容器背景
-  --bg-4: #ffffff; //三级容器背景
-  --bg-5: #ffffff; //下拉弹出框、Tooltip 背景颜色
-  --bg-mask: rgba(244, 246, 248, 0.5); //遮罩层
-  --text-1: #1d2129; //强调/正文标题
-  --text-2: #4f5969; //次强调/正文标
-  --text-3: #87909c; //次要信息
-  --text-4: #c9cdd4; //置灰信息
+  --bg-best: var(--gray-color-1); //最白
+  --bg-1: var(--gray-color-3); //整体背景色
+  --bg-2: var(--gray-color-2); //一级容器背景
+  --bg-3: var(--gray-color-2); //二级容器背景
+  --bg-4: var(--gray-color-1); //三级容器背景
+  --bg-5: var(--gray-color-1); //下拉弹出框、Tooltip 背景颜色
+  --bg-mask: rgba(252, 250, 253, 0.5); //遮罩层
+  --text-1: var(--gray-color-14); //强调/正文标题
+  --text-2: var(--gray-color-12); //次强调/正文标
+  --text-3: var(--gray-color-10); //次要信息
+  --text-4: var(--gray-color-8); //置灰信息
 }
 *.dark {
-  --bg-best: #000000; //最黑
-  --bg-1: #0f0e2a; //整体背景色
-  --bg-2: #13122e; //一级容器背景
-  --bg-3: #181732; //二级容器背景
-  --bg-4: #1c1b36; //三级容器背景
-  --bg-5: #1c1b36; //下拉弹出框、Tooltip 背景颜色
-  --bg-mask: rgba(15, 14, 42, 0.5); //遮罩层
-  --text-1: #f6f6f6; //强调/正文标题
-  --text-2: #c5c5c5; //次强调/正文标
-  --text-3: #929293; //次要信息
-  --text-4: #5f5f60; //置灰信息
+  --bg-best: var(--gray-color-15); //最黑
+  --bg-1: var(--gray-color-13); //整体背景色
+  --bg-2: var(--gray-color-13); //一级容器背景
+  --bg-3: var(--gray-color-13); //二级容器背景
+  --bg-4: var(--gray-color-12); //三级容器背景
+  --bg-5: var(--gray-color-12); //下拉弹出框、Tooltip 背景颜色
+  --bg-mask: rgba(14, 23, 36, 0.5); //遮罩层
+  --text-1: var(--gray-color-2); //强调/正文标题
+  --text-2: var(--gray-color-4); //次强调/正文标
+  --text-3: var(--gray-color-6); //次要信息
+  --text-4: var(--gray-color-8); //置灰信息
 }
 
 // 滚动条
