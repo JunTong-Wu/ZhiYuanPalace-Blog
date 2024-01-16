@@ -32,7 +32,7 @@
         shadow-2xl
         min-w-24
         :style="mainStyle"
-        border="dark:border dark:solid dark:bordercolor"
+        border="none dark:1 dark:solid dark:bordercolor"
       >
         <div h-full overflow-auto>
           <div class="arrow"></div>
@@ -270,7 +270,7 @@ export default defineComponent({
 .arrow::before {
   content: "";
   position: absolute;
-  top: -0.2rem;
+  top: -2px;
   left: 50%;
   transform: translateX(-50%);
   border: 0.7rem solid;
