@@ -7,6 +7,7 @@
       backdrop-blur-xl
       w-centered
       mx-auto
+      px-4
       sm:px-6
       lg:px-24
       lg:py-3
