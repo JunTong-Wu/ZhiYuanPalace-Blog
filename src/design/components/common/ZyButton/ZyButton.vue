@@ -118,6 +118,10 @@ button.zy-button-default {
     background-color: var(--primary-5);
     color: white;
   }
+  .mobile button.zy-button-transparent:hover {
+    background-color: transparent;
+    color: inherit;
+  }
 }
 
 button.zy-button-transparent {
@@ -127,7 +131,9 @@ button.zy-button-transparent {
 @media (hover: hover) {
   button.zy-button-transparent:hover {
     background-color: rgb(255 255 255 / 0.05);
-    color: white;
+  }
+  .mobile button.zy-button-transparent:hover {
+    background-color: transparent;
   }
 }
 </style>
