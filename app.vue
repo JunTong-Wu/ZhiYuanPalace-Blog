@@ -7,6 +7,7 @@
     :base-font-size="baseFontSize"
     :break-points="breakPoints"
     :design-size="designSize"
+    @touchstart="initTouchStart($event)"
     @touchmove="preventTouchGesture($event)"
   >
     <NuxtLayout>
@@ -129,17 +130,27 @@ function findAncestor(element: HTMLElement | null, ancestorSelector: string) {
   if (!element || element.tagName.toLowerCase() === "html") {
     return null;
   }
-
   if (element.matches(ancestorSelector)) {
     return element;
   }
-
   return findAncestor(element.parentElement, ancestorSelector);
 }
+
+var startX: number, startY: number;
+const initTouchStart = (e: TouchEvent) => {
+  startX = e.targetTouches[0].pageX;
+  startY = e.targetTouches[0].pageY;
+};
 const preventTouchGesture = (e: TouchEvent) => {
   const ancestorElement = findAncestor(e.target as any, "[scroll-view]");
   if (!ancestorElement) {
     e.cancelable && e.preventDefault();
+  } else {
+    var moveX = e.targetTouches[0].pageX;
+    var moveY = e.targetTouches[0].pageY;
+    if (Math.abs(moveX - startX) > Math.abs(moveY - startY)) {
+      e.cancelable && e.preventDefault();
+    }
   }
 };
 
