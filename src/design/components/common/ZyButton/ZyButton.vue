@@ -1,40 +1,20 @@
 <template>
   <button
-    v-if="type == 'default'"
+    :class="{
+      'zy-button-default': type == 'default',
+      'zy-button-transparent': type == 'transparent',
+    }"
     ref="button"
     type="button"
     h-9
     w-9
-    bg="transparent dark:white/[.05] hover:bg-primary"
     text="sm"
     p-0
     m-0
-    color="inherit hover:white"
+    color="inherit"
     flex
     items-center
     justify-center
-    rounded-full
-    border="1 solid bordercolor dark:none"
-    :title="title"
-    @click="animation()"
-  >
-    <slot />
-  </button>
-  <button
-    v-else-if="type == 'transparent'"
-    ref="button"
-    type="button"
-    h-9
-    w-9
-    bg="transparent"
-    text="sm"
-    p-0
-    m-0
-    color-inherit
-    flex
-    items-center
-    justify-center
-    border="none"
     :title="title"
     @click="animation()"
   >
@@ -121,6 +101,33 @@ button {
   button {
     cursor: pointer;
     transition: all 0.2s;
+  }
+}
+
+button.zy-button-default {
+  background-color: transparent;
+  border: 1px solid rgba(127, 127, 127, 0.2);
+  border-radius: 9999px;
+}
+.dark button.zy-button-default {
+  background-color: rgb(255 255 255 / 0.05);
+  border: none;
+}
+@media (hover: hover) {
+  button.zy-button-default:hover {
+    background-color: var(--primary-5);
+    color: white;
+  }
+}
+
+button.zy-button-transparent {
+  background-color: transparent;
+  border: none;
+}
+@media (hover: hover) {
+  button.zy-button-transparent:hover {
+    background-color: rgb(255 255 255 / 0.05);
+    color: white;
   }
 }
 </style>
