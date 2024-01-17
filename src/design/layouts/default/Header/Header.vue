@@ -5,7 +5,7 @@
       flex
       justify-between
       h-full
-      backdrop-blur-xl
+      bg="bg-1"
       w-centered
       mx-auto
       sm:px-6
@@ -26,11 +26,12 @@
 
       <div h-full>
         <div flex items-center px-4 h-full>
-          <img h="[60%]" src="@/src/assets/image/logo.png" alt="logo" />
+          <img h-5 sm:h-7 src="@/src/assets/image/logo.png" alt="logo" />
           <svg
             v-if="locale == 'zh-CN'"
             fill-current
-            h="[40%]"
+            h-3
+            sm:h-5
             ml-2
             id="uuid-2320505a-bbef-4a34-b902-2705747683ee"
             xmlns="http://www.w3.org/2000/svg"

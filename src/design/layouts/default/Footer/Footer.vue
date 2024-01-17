@@ -1,5 +1,5 @@
 <template>
-  <zy-bottom-navigation backdrop-blur-xl>
+  <zy-bottom-navigation bg="bg-2">
     <div
       h-full
       flex
