@@ -5,7 +5,6 @@
       flex
       justify-between
       h-full
-      bg="bg-1"
       w-centered
       mx-auto
       sm:px-6
@@ -378,11 +377,18 @@ const closePersonalDrawer = () => {
 };
 </script>
 <style lang="scss" scoped>
+@media (orientation: portrait) {
+  /* 竖屏 */
+  .zy-header-inner {
+    background-color: var(--bg-2);
+  }
+}
 @media (orientation: landscape) {
   /* 横屏 */
   .zy-header-inner {
     padding-left: 1rem;
     padding-right: 1rem;
+    background-color: var(--bg-1);
   }
 }
 </style>
