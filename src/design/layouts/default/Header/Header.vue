@@ -29,8 +29,8 @@
           <svg
             v-if="locale == 'zh-CN'"
             fill-current
-            h-3
-            sm:h-5
+            h-3.5
+            sm:h-5.5
             ml-2
             id="uuid-2320505a-bbef-4a34-b902-2705747683ee"
             xmlns="http://www.w3.org/2000/svg"
@@ -380,7 +380,7 @@ const closePersonalDrawer = () => {
 @media (orientation: portrait) {
   /* 竖屏 */
   .zy-header-inner {
-    background-color: var(--bg-2);
+    background-color: var(--bg-4);
   }
 }
 @media (orientation: landscape) {
