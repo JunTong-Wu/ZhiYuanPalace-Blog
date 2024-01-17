@@ -99,9 +99,9 @@ ul {
 }
 :root {
   --bg-best: var(--gray-color-1); //最白
-  --bg-1: var(--gray-color-3); //整体背景色
-  --bg-2: var(--gray-color-2); //一级容器背景
-  --bg-3: var(--gray-color-2); //二级容器背景
+  --bg-1: var(--gray-color-1); //整体背景色
+  --bg-2: var(--gray-color-1); //一级容器背景
+  --bg-3: var(--gray-color-1); //二级容器背景
   --bg-4: var(--gray-color-1); //三级容器背景
   --bg-5: var(--gray-color-1); //下拉弹出框、Tooltip 背景颜色
   --bg-mask: rgba(232, 231, 235, 0.5); //遮罩层
@@ -114,9 +114,9 @@ ul {
   --bg-best: var(--gray-color-15); //最黑
   --bg-1: var(--gray-color-15); //整体背景色
   --bg-2: var(--gray-color-14); //一级容器背景
-  --bg-3: var(--gray-color-13); //二级容器背景
-  --bg-4: var(--gray-color-13); //三级容器背景
-  --bg-5: var(--gray-color-13); //下拉弹出框、Tooltip 背景颜色
+  --bg-3: var(--gray-color-14); //二级容器背景
+  --bg-4: var(--gray-color-14); //三级容器背景
+  --bg-5: var(--gray-color-14); //下拉弹出框、Tooltip 背景颜色
   --bg-mask: rgba(13, 16, 25, 0.5); //遮罩层
   --text-1: var(--gray-color-3); //强调/正文标题
   --text-2: var(--gray-color-5); //次强调/正文标

@@ -12,19 +12,8 @@
       lg:py-3
       xl:px-24
     >
-      <div class="vertical-layout">
-        <zy-button
-          h-full
-          @click="openPersonalDrawer"
-          title="个人资料"
-          type="transparent"
-        >
-          <ZyIcon lineName="line-md:menu" />
-        </zy-button>
-      </div>
-
-      <div h-full>
-        <div flex items-center px-4 h-full>
+      <div h-full class="horizontal-layout">
+        <div flex items-center px-2 h-full>
           <img h-5 sm:h-7 src="@/src/assets/image/logo.png" alt="logo" />
           <svg
             v-if="locale == 'zh-CN'"
@@ -95,16 +84,6 @@
         </div>
       </div>
 
-      <div class="vertical-layout">
-        <zy-button
-          h-full
-          @click="openSearchDrawer"
-          title="搜索"
-          type="transparent"
-        >
-          <ZyIcon lineName="line-md:search-twotone" />
-        </zy-button>
-      </div>
       <div class="horizontal-layout">
         <div flex justify-end h-full items-center gap-2>
           <Navigation class="horizontal-layout" h-full mr-8 xl:mr-12 />
@@ -196,6 +175,32 @@
           </zy-button>
         </div>
       </div>
+
+      <div class="vertical-layout">
+        <div h-full p-4 flex items-center justify-center text-base>Title</div>
+      </div>
+      <div class="vertical-layout">
+        <div flex>
+          <zy-button
+            flex
+            items-center
+            justify-center
+            @click="openSearchDrawer()"
+            title="搜索"
+            type="transparent"
+          >
+            <ZyIcon size="0.75rem" lineName="line-md:search-twotone" />
+          </zy-button>
+          <zy-button
+            h-full
+            @click="openMoreDrawer()"
+            title="更多选项"
+            type="transparent"
+          >
+            <ZyIcon lineName="mingcute:more-2-fill" />
+          </zy-button>
+        </div>
+      </div>
     </div>
     <!-- 搜索抽屉 -->
     <ClientOnly>
@@ -215,19 +220,7 @@
         :display="moreDisplay"
         @cancel="closeMoreDrawer"
         position="right"
-        size="20rem"
-        background="var(--bg-5)"
-      >
-      </zy-drawer>
-    </ClientOnly>
-    <!-- 个人资料抽屉 -->
-    <ClientOnly>
-      <zy-drawer
-        title="个人资料"
-        :display="personalDisplay"
-        @cancel="closePersonalDrawer"
-        position="left"
-        size="100%"
+        size="21rem"
         background="var(--bg-5)"
       >
       </zy-drawer>
@@ -380,7 +373,7 @@ const closePersonalDrawer = () => {
 @media (orientation: portrait) {
   /* 竖屏 */
   .zy-header-inner {
-    background-color: var(--bg-4);
+    background-color: var(--bg-1);
   }
 }
 @media (orientation: landscape) {
