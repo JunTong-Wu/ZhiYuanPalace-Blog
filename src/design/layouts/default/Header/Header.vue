@@ -1,13 +1,13 @@
 <template>
   <zy-header>
     <div
+      class="zy-header-inner"
       flex
       justify-between
       h-full
       backdrop-blur-xl
       w-centered
       mx-auto
-      px-4
       sm:px-6
       lg:px-24
       lg:py-3
@@ -376,3 +376,12 @@ const closePersonalDrawer = () => {
   personalDisplay.value = false;
 };
 </script>
+<style lang="scss" scoped>
+@media (orientation: landscape) {
+  /* 横屏 */
+  .zy-header-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+</style>

@@ -71,29 +71,29 @@ ul {
 :root {
   --gray-color-1: #fff;
   --gray-color-2: #fefdfe;
-  --gray-color-3: #fcfafd;
-  --gray-color-4: #e4e3e7;
-  --gray-color-5: #cccdd2;
-  --gray-color-6: #b4b6bc;
-  --gray-color-7: #9c9fa6;
-  --gray-color-8: #858991;
-  --gray-color-9: #6d727b;
-  --gray-color-10: #555b65;
-  --gray-color-11: #3d444f;
-  --gray-color-12: #252e3a;
-  --gray-color-13: #0d1724;
-  --gray-color-14: #070c12;
+  --gray-color-3: #e8e7eb;
+  --gray-color-4: #d3d2d8;
+  --gray-color-5: #bdbcc5;
+  --gray-color-6: #a7a7b2;
+  --gray-color-7: #91919f;
+  --gray-color-8: #7c7c8c;
+  --gray-color-9: #666679;
+  --gray-color-10: #505166;
+  --gray-color-11: #3a3b53;
+  --gray-color-12: #252640;
+  --gray-color-13: #0f102d;
+  --gray-color-14: #080817;
   --gray-color-15: #000;
 }
 
 :root {
-  --primary-7: #555e4d; //点击
-  --primary-6: #829d8e; //常规
-  --primary-5: #82a381; //悬浮
-  --primary-4: #a6af91; //特殊场景
-  --primary-3: #bfd2bc; //一般禁用
-  --primary-2: #bfd2bc; //文字禁用
-  --primary-1: #bfd2bc; //浅色/白底悬浮
+  --primary-7: #4d52ef; //点击
+  --primary-6: #6064f2; //常规
+  --primary-5: #7377f4; //悬浮
+  --primary-4: #8689f7; //特殊场景
+  --primary-3: #989bf9; //一般禁用
+  --primary-2: #abaefc; //文字禁用
+  --primary-1: #bec0fe; //浅色/白底悬浮
 }
 :root {
   --bg-best: var(--gray-color-1); //最白
@@ -102,7 +102,7 @@ ul {
   --bg-3: var(--gray-color-2); //二级容器背景
   --bg-4: var(--gray-color-1); //三级容器背景
   --bg-5: var(--gray-color-1); //下拉弹出框、Tooltip 背景颜色
-  --bg-mask: rgba(252, 250, 253, 0.5); //遮罩层
+  --bg-mask: rgba(232, 231, 235, 0.5); //遮罩层
   --text-1: var(--gray-color-14); //强调/正文标题
   --text-2: var(--gray-color-12); //次强调/正文标
   --text-3: var(--gray-color-10); //次要信息
@@ -115,7 +115,7 @@ ul {
   --bg-3: var(--gray-color-13); //二级容器背景
   --bg-4: var(--gray-color-12); //三级容器背景
   --bg-5: var(--gray-color-12); //下拉弹出框、Tooltip 背景颜色
-  --bg-mask: rgba(14, 23, 36, 0.5); //遮罩层
+  --bg-mask: rgba(15, 16, 45, 0.5); //遮罩层
   --text-1: var(--gray-color-2); //强调/正文标题
   --text-2: var(--gray-color-4); //次强调/正文标
   --text-3: var(--gray-color-6); //次要信息
