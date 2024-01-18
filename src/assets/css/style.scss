@@ -52,13 +52,13 @@ ul {
 @media (orientation: landscape) {
   :root {
     --header-bar-height: 3.5rem;
-    // --centered-width: 80rem;
+    --centered-width: 65rem;
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
   :root {
-    --header-bar-height: 4.5rem;
-    // --centered-width: 80rem;
+    --header-bar-height: 5rem;
+    --centered-width: 75rem;
   }
 }
 @media (min-width: 1200px) {
@@ -70,21 +70,21 @@ ul {
 //公共颜色变量
 :root {
   --gray-color-1: #fff;
-  --gray-color-2: #fafbfd;
-  --gray-color-3: #f5f7fb;
-  --gray-color-4: #f0f3f9;
-  --gray-color-5: #dbdee5;
-  --gray-color-6: #c5c9d1;
-  --gray-color-7: #b0b4bd;
-  --gray-color-8: #9a9fa9;
-  --gray-color-9: #858a95;
-  --gray-color-10: #707481;
-  --gray-color-11: #5a5f6d;
-  --gray-color-12: #454a59;
-  --gray-color-13: #2f3545;
-  --gray-color-14: #1a2031;
-  --gray-color-15: #111521;
-  --gray-color-16: #090b10;
+  --gray-color-2: #fcfafb;
+  --gray-color-3: #f0f3f9;
+  --gray-color-4: #dde0e8;
+  --gray-color-5: #cbcdd7;
+  --gray-color-6: #b8bac6;
+  --gray-color-7: #a5a7b5;
+  --gray-color-8: #9294a4;
+  --gray-color-9: #808293;
+  --gray-color-10: #6d6f82;
+  --gray-color-11: #5a5c71;
+  --gray-color-12: #474960;
+  --gray-color-13: #35364f;
+  --gray-color-14: #22233e;
+  --gray-color-15: #0f102d;
+  --gray-color-16: #060716;
   --gray-color-17: #000;
 }
 
@@ -99,12 +99,12 @@ ul {
 }
 :root {
   --bg-best: var(--gray-color-1); //最白
-  --bg-1: var(--gray-color-1); //整体背景色
-  --bg-2: var(--gray-color-1); //一级容器背景
+  --bg-1: var(--gray-color-2); //整体背景色
+  --bg-2: var(--gray-color-2); //一级容器背景
   --bg-3: var(--gray-color-1); //二级容器背景
   --bg-4: var(--gray-color-1); //三级容器背景
   --bg-5: var(--gray-color-1); //下拉弹出框、Tooltip 背景颜色
-  --bg-mask: rgba(232, 231, 235, 0.5); //遮罩层
+  --bg-mask: rgba(252, 250, 251, 0.5); //遮罩层
   --text-1: var(--gray-color-15); //强调/正文标题
   --text-2: var(--gray-color-13); //次强调/正文标
   --text-3: var(--gray-color-11); //次要信息
@@ -117,7 +117,7 @@ ul {
   --bg-3: var(--gray-color-14); //二级容器背景
   --bg-4: var(--gray-color-14); //三级容器背景
   --bg-5: var(--gray-color-14); //下拉弹出框、Tooltip 背景颜色
-  --bg-mask: rgba(13, 16, 25, 0.5); //遮罩层
+  --bg-mask: rgba(15, 16, 45, 0.5); //遮罩层
   --text-1: var(--gray-color-3); //强调/正文标题
   --text-2: var(--gray-color-5); //次强调/正文标
   --text-3: var(--gray-color-7); //次要信息
