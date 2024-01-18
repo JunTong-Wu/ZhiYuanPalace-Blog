@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="zy-navigation">
     <ul class="flex h-full items-center">
       <li h-full>
         <zy-link
@@ -65,6 +65,19 @@ const routerActivate = (path: string) => {
 </script>
 
 <style lang="scss" scoped>
+@keyframes an-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.zy-navigation {
+  animation: an-fade-in 0.7s;
+}
+
 .activate {
   color: var(--primary-6);
 }

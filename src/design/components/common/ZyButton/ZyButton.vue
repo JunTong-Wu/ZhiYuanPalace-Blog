@@ -74,6 +74,15 @@ export default defineComponent({
   }
 }
 
+@keyframes an-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes an-click {
   0% {
     transition: none;
@@ -91,7 +100,7 @@ export default defineComponent({
 }
 
 button {
-  animation: an-bounce 0.7s;
+  animation: an-fade-in 0.7s;
   &.animation {
     animation: an-click 0.3s;
   }

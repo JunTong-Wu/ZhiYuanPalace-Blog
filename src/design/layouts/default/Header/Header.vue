@@ -86,52 +86,64 @@
 
       <div class="horizontal-layout">
         <div flex justify-end h-full items-center gap-2>
-          <Navigation class="horizontal-layout" h-full mr-8 xl:mr-12 />
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="openSearchDrawer()"
-            title="搜索"
-          >
-            <ZyIcon size="0.75rem" lineName="line-md:search-twotone" />
-          </zy-button>
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="toggleFullScreen"
-            title="全屏/退出全屏"
-          >
-            <ZyIcon
-              v-if="!fullScreenFlag"
-              size="0.75rem"
-              lineName="line-md:arrows-diagonal"
-            />
-            <ZyIcon
-              v-else
-              size="0.75rem"
-              lineName="mingcute:fullscreen-exit-2-line"
-            />
-          </zy-button>
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="darkModeSwitch"
-            title="日间/夜间"
-          >
-            <ZyIcon
-              v-if="darkModeFlag == false"
-              size="0.75rem"
-              lineName="line-md:sunny-outline-twotone-loop"
-            />
-            <ZyIcon
-              v-else-if="darkModeFlag == true"
-              size="0.75rem"
-              lineName="line-md:moon-twotone-loop"
-            />
-          </zy-button>
+          <ClientOnly>
+            <Navigation class="horizontal-layout" h-full mr-8 xl:mr-12 />
+          </ClientOnly>
+
+          <ClientOnly>
+            <zy-button
+              flex
+              items-center
+              justify-center
+              @click="openSearchDrawer()"
+              title="搜索"
+            >
+              <ZyIcon size="0.75rem" lineName="line-md:search-twotone" />
+            </zy-button>
+          </ClientOnly>
+
+          <ClientOnly>
+            <zy-button
+              flex
+              items-center
+              justify-center
+              @click="toggleFullScreen"
+              title="全屏/退出全屏"
+            >
+              <ZyIcon
+                v-if="!fullScreenFlag"
+                size="0.75rem"
+                lineName="line-md:arrows-diagonal"
+              />
+              <ZyIcon
+                v-else
+                size="0.75rem"
+                lineName="mingcute:fullscreen-exit-2-line"
+              />
+            </zy-button>
+          </ClientOnly>
+
+          <ClientOnly>
+            <zy-button
+              flex
+              items-center
+              justify-center
+              @click="darkModeSwitch"
+              title="日间/夜间"
+            >
+              <ZyIcon
+                v-if="darkModeFlag == false"
+                size="0.75rem"
+                lineName="line-md:sunny-outline-twotone-loop"
+              />
+              <ZyIcon
+                v-else-if="darkModeFlag == true"
+                size="0.75rem"
+                lineName="line-md:moon-twotone-loop"
+              />
+            </zy-button>
+          </ClientOnly>
+
           <!-- 多语言抽屉 -->
           <ClientOnly>
             <zy-popover title="切换语言" background="var(--bg-5)">
@@ -164,15 +176,17 @@
             </zy-popover>
           </ClientOnly>
 
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="openMoreDrawer()"
-            title="更多选项"
-          >
-            <ZyIcon lineName="line-md:grid-3-filled" />
-          </zy-button>
+          <ClientOnly>
+            <zy-button
+              flex
+              items-center
+              justify-center
+              @click="openMoreDrawer()"
+              title="更多选项"
+            >
+              <ZyIcon lineName="line-md:grid-3-filled" />
+            </zy-button>
+          </ClientOnly>
         </div>
       </div>
 
