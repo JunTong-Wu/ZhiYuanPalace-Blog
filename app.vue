@@ -11,12 +11,16 @@
     @touchmove="preventTouchGesture($event)"
   >
     <NuxtLayout>
-      <ZySlideRouterView :path-list="pathList">
+      <!-- <ZySlideRouterView :path-list="pathList">
         <div text-base h="[100vh]" overflow-auto scroll-view>
           <NuxtPage mx-auto p-4 w-centered sm:px-6 lg:px-8 />
           <div h-footer></div>
         </div>
-      </ZySlideRouterView>
+      </ZySlideRouterView> -->
+      <div text-base h="[100vh]" overflow-auto scroll-view>
+        <NuxtPage mx-auto p-4 w-centered sm:px-6 lg:px-8 />
+        <div h-footer></div>
+      </div>
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
