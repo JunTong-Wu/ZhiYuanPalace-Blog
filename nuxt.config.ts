@@ -9,6 +9,12 @@ Object.assign(process.env, envData); // 将环境配置信息，添加到process
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+  hooks: {
+    "vite:extendConfig"(config) {
+      delete config.define!.window;
+      delete config.define!.document;
+    },
+  },
   app: {
     // head设置
     head: {

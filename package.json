@@ -7,14 +7,15 @@
     "dev": "nuxt dev --dotenv .env.dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "upgrade": "nuxi upgrade"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^1.0.8",
     "@nuxtjs/i18n": "^8.0.0-rc.6",
     "@nuxtjs/strapi": "^1.10.1",
     "@unocss/nuxt": "^0.57.1",
-    "nuxt": "^3.8.2",
+    "nuxt": "^3.9.3",
     "nuxt-icon": "^0.6.7",
     "sass": "^1.69.5",
     "vue": "^3.3.7",
