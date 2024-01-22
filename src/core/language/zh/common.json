@@ -1,6 +1,7 @@
 {
   "home": "主页",
-  "text": "文字",
-  "media": "媒体",
-  "about": "关于"
+  "article": "文章",
+  "shuoshuo": "说说",
+  "photo": "照片",
+  "video": "视频"
 }

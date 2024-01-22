@@ -45,7 +45,7 @@
           flex
           justify-between
           items-center
-          h-16
+          h-12
           px-6
           text-sm
           color="text-1"

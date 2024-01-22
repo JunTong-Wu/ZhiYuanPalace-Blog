@@ -3,6 +3,7 @@
     <div
       class="zy-header-inner"
       flex
+      items-center
       justify-between
       h-full
       w-centered
@@ -194,7 +195,7 @@
         <div h-full p-4 flex items-center justify-center text-base>Title</div>
       </div>
       <div class="vertical-layout">
-        <div flex>
+        <div flex items-center>
           <zy-button
             flex
             items-center

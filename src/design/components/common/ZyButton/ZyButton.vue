@@ -6,9 +6,9 @@
     }"
     ref="button"
     type="button"
-    min-h-9
-    min-w-9
-    text="sm"
+    min-h-10
+    min-w-10
+    text="base"
     p-0
     m-0
     color="inherit"
@@ -99,10 +99,12 @@ export default defineComponent({
   }
 }
 
-button {
-  animation: an-fade-in 0.7s;
-  &.animation {
-    animation: an-click 0.3s;
+@media screen {
+  button {
+    animation: an-fade-in 0.7s;
+    &.animation {
+      animation: an-click 0.3s;
+    }
   }
 }
 

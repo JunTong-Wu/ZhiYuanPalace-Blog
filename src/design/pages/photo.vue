@@ -1,5 +1,5 @@
 <template>
   <div>
-    <div>媒体类</div>
+    <div>照片</div>
   </div>
 </template>

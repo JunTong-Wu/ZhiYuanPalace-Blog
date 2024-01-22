@@ -1,6 +1,7 @@
 {
   "home": "Home",
-  "text": "Text",
-  "media": "Media",
-  "about": "About"
+  "article": "Article",
+  "shuoshuo": "Shuoshuo",
+  "photo": "Photo",
+  "video": "Video"
 }

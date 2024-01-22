@@ -13,32 +13,42 @@
       </li>
       <li h-full>
         <zy-link
-          :to="`${localePath({ name: 'text' })}`"
+          :to="`${localePath({ name: 'article' })}`"
           h-full
           px-5
-          :title="$t('text')"
-          :class="{ activate: routerActivate('/text') }"
-          >{{ $t("text") }}</zy-link
+          :title="$t('article')"
+          :class="{ activate: routerActivate('/article') }"
+          >{{ $t("article") }}</zy-link
         >
       </li>
       <li h-full>
         <zy-link
-          :to="`${localePath({ name: 'media' })}`"
+          :to="`${localePath({ name: 'shuoshuo' })}`"
           h-full
           px-5
-          :title="$t('media')"
-          :class="{ activate: routerActivate('/media') }"
-          >{{ $t("media") }}</zy-link
+          :title="$t('shuoshuo')"
+          :class="{ activate: routerActivate('/shuoshuo') }"
+          >{{ $t("shuoshuo") }}</zy-link
         >
       </li>
       <li h-full>
         <zy-link
-          :to="`${localePath({ name: 'about' })}`"
+          :to="`${localePath({ name: 'photo' })}`"
           h-full
           px-5
-          :title="$t('about')"
-          :class="{ activate: routerActivate('/about') }"
-          >{{ $t("about") }}</zy-link
+          :title="$t('photo')"
+          :class="{ activate: routerActivate('/photo') }"
+          >{{ $t("photo") }}</zy-link
+        >
+      </li>
+      <li h-full>
+        <zy-link
+          :to="`${localePath({ name: 'video' })}`"
+          h-full
+          px-5
+          :title="$t('video')"
+          :class="{ activate: routerActivate('/video') }"
+          >{{ $t("video") }}</zy-link
         >
       </li>
     </ul>

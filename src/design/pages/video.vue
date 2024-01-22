@@ -1,5 +1,5 @@
 <template>
   <div>
-    <div>文字类</div>
+    <div>视频</div>
   </div>
 </template>

@@ -11,16 +11,12 @@
     @touchmove="preventTouchGesture($event)"
   >
     <NuxtLayout>
-      <!-- <ZySlideRouterView :path-list="pathList">
+      <ZySlideRouterView :path-list="pathList">
         <div text-base h="[100vh]" overflow-auto scroll-view>
           <NuxtPage mx-auto p-4 w-centered sm:px-6 lg:px-8 />
           <div h-footer></div>
         </div>
-      </ZySlideRouterView> -->
-      <div text-base h="[100vh]" overflow-auto scroll-view>
-        <NuxtPage mx-auto p-4 w-centered sm:px-6 lg:px-8 />
-        <div h-footer></div>
-      </div>
+      </ZySlideRouterView>
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -56,9 +52,10 @@ const designSize = {
 const { locale } = useI18n();
 const pathList = ref([
   `/${locale.value}`,
-  `/${locale.value}/text`,
-  `/${locale.value}/media`,
-  `/${locale.value}/about`,
+  `/${locale.value}/article`,
+  `/${locale.value}/shuoshuo`,
+  `/${locale.value}/photo`,
+  `/${locale.value}/video`,
 ]);
 
 watch(
