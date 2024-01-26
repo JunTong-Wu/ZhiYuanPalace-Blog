@@ -12,7 +12,13 @@
   >
     <NuxtLayout>
       <ZySlideRouterView :path-list="pathList">
-        <div text-base h="[100vh]" overflow-auto scroll-view>
+        <div
+          text-base
+          h="[100vh]"
+          overflow-auto
+          scroll-view
+          class="scroll-view"
+        >
           <NuxtPage mx-auto p-4 w-centered sm:px-6 lg:px-8 />
           <div h-footer></div>
         </div>

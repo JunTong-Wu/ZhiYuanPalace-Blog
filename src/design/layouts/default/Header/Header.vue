@@ -400,3 +400,20 @@ const closePersonalDrawer = () => {
   }
 }
 </style>
+<style lang="scss" scoped>
+.zy-header-inner {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+    pointer-events: none;
+    background: url(https://www.logosc.cn/img/MulticolorGlows.png) no-repeat
+      top/900px;
+  }
+}
+</style>
