@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div></div>
+    <div bg="bg-2" w-full h-40>
+
+    </div>
   </div>
 </template>
 <script setup lang="ts">

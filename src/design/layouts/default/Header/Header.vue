@@ -1,5 +1,5 @@
 <template>
-  <header sticky top-0 left-0 right-0 h-header z-24>
+  <header fixed top-0 left-0 right-0 h-header z-24 class="zy-header">
     <div
       class="zy-header-inner"
       flex
@@ -424,9 +424,11 @@ const closePersonalDrawer = () => {
     opacity: 1;
   }
 }
+.zy-header {
+  background-color: var(--header-bar-background);
+}
 .zy-header-inner {
   position: relative;
-  background-color: var(--header-bar-background);
   &::after {
     //content: "";
     position: absolute;

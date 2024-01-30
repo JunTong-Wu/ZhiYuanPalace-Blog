@@ -19,7 +19,7 @@
           scroll-view
           class="scroll-view"
       >
-        <NuxtPage mx-auto p-4 w-centered sm:px-6 lg:px-8 />
+        <NuxtPage mx-auto />
         <div h-footer></div>
       </div>
     </NuxtLayout>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ZyBanner></ZyBanner>
+    <Hero></Hero>
   </div>
 </template>
 <script setup lang="ts">
