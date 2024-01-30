@@ -85,10 +85,8 @@ export default defineComponent({
 }
 
 #loading p {
-    font-family: sans-serif;
     font-size: 1rem;
     color: var(--text-1);
-    font-weight: 900;
     transition: 0.3s ease;
 }
 
