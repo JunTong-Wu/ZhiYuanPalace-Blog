@@ -201,7 +201,7 @@
           <ZyIcon lineName="line-md:grid-3-filled" />
         </zy-button>
           <div h-full flex items-center justify-center >
-            <h1 text-base>{{title}}</h1>
+            <h1 text-sm font-normal>{{title}}</h1>
           </div>
           <div flex items-center>
             <zy-button

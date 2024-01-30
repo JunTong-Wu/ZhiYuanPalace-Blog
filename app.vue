@@ -27,11 +27,7 @@
 </template>
 <script setup lang="ts">
 import Loading from "./src/design/components/common/ZyLoading/loading.vue";
-
 import "@/src/assets/css/style.scss";
-import "@/src/assets/fonts/DFPKingGothicGB.css";
-import "@/src/assets/fonts/HarmonyOS.css";
-import "@/src/assets/fonts/MiSans.css";
 
 const baseFontSize = 18;
 const breakPoints = {
