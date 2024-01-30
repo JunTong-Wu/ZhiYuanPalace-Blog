@@ -201,7 +201,7 @@
           <ZyIcon lineName="line-md:grid-3-filled" />
         </zy-button>
           <div h-full flex items-center justify-center >
-            <h1 text-sm font-normal v-show="titleDisable" class="mobile-title">{{$t(title)}}</h1>
+            <h1 text-sm font-normal v-if="titleDisable" class="mobile-title">{{$t(title)}}</h1>
           </div>
           <div flex items-center>
             <zy-button
@@ -370,12 +370,12 @@ const title = ref('')
 const titleDisable = ref(false)
 title.value = getTitle(route.fullPath)
 router.beforeEach((to, from, next) => {
-  next()
   titleDisable.value = false
+  next()
   setTimeout(()=>{
     title.value = getTitle(to.fullPath)
     titleDisable.value = true
-  },500)
+  },1000)
 })
 onMounted(() => {
   titleDisable.value = true
@@ -416,9 +416,11 @@ const closePersonalDrawer = () => {
 <style lang="scss" scoped>
 @keyframes an-fade-in {
   0% {
+    transform: translateY(-100%);
     opacity: 0;
   }
   100% {
+    transform: translateY(0%);
     opacity: 1;
   }
 }
