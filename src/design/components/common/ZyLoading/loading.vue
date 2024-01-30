@@ -1,5 +1,5 @@
 <template>
-    <div id="loading">
+    <div id="loading" class="loading_out">
         <svg viewBox='0 0 50 50'>
             <circle r='15' cx='25' cy='25'></circle>
         </svg>
@@ -11,7 +11,7 @@
 export default defineComponent({
   name: "zy-loading",
   props: {
-    display: { type: Boolean }, // 指定是否物理打开
+    display: { type: Boolean, defalut:false }, // 指定是否物理打开
   },
   setup(props){
     const Loading_in = () => {

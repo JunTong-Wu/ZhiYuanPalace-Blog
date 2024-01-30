@@ -165,7 +165,7 @@ const preventTouchGesture = (e: TouchEvent) => {
 
 // loading
 const loadingElement = ref(null)
-const loading = ref(true)
+const loading = ref(false)
 const check_loading = () => {
   let timer = setInterval(() => {
     if (document.readyState === "complete") {
@@ -176,11 +176,7 @@ const check_loading = () => {
 }
 const router = useRouter();
 onMounted(() => {
-  console.log("<SSR> Hydrate done.");
-  check_loading();
-
   router.beforeEach((to, from, next) => {
-    // loading.value.in(next);
     loading.value = true
     setTimeout(() => {
       check_loading()
