@@ -1,7 +1,7 @@
 <template>
     <div id="loading">
         <svg viewBox='0 0 50 50'>
-            <circle r='25' cx='25' cy='25'></circle>
+            <circle r='15' cx='25' cy='25'></circle>
         </svg>
         <p>LOADING</p>
     </div>
@@ -64,7 +64,6 @@ export default defineComponent({
 
 #loading svg {
     width: 5rem;
-    margin-bottom: 2rem;
     overflow: visible;
     transition: 0.3s ease;
 }
@@ -72,9 +71,9 @@ export default defineComponent({
 #loading svg circle {
     fill: none;
     stroke: var(--text-3);
-    stroke-width: 12;
-    stroke-dasharray: 160;
-    stroke-dashoffset: 160;
+    stroke-width: 4;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
     transform-origin: center;
     animation: circle_rotate 3s ease-in infinite;
 }
@@ -82,18 +81,18 @@ export default defineComponent({
 @keyframes circle_rotate {
     0% {
         transform: rotate(0deg);
-        stroke-dashoffset: 160;
+        stroke-dashoffset: 100;
     }
 
     100% {
         transform: rotate(360deg);
-        stroke-dashoffset: -160;
+        stroke-dashoffset: -100;
     }
 }
 
 #loading p {
     font-family: sans-serif;
-    font-size: 2rem;
+    font-size: 1rem;
     color: var(--text-1);
     font-weight: 900;
     transition: 0.3s ease;
