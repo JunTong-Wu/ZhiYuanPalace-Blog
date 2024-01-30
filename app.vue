@@ -10,6 +10,7 @@
     @touchstart="initTouchStart($event)"
     @touchmove="preventTouchGesture($event)"
   >
+    <Loading ref="loadingElement" :display="loading"/>
     <NuxtLayout>
       <div
           text-base
@@ -25,6 +26,8 @@
   </ZySuperResponsive>
 </template>
 <script setup lang="ts">
+import Loading from "./src/design/components/common/ZyLoading/loading.vue";
+
 import "@/src/assets/css/style.scss";
 import "@/src/assets/fonts/DFPKingGothicGB.css";
 import "@/src/assets/fonts/HarmonyOS.css";
@@ -160,7 +163,29 @@ const preventTouchGesture = (e: TouchEvent) => {
   }
 };
 
+// loading
+const loadingElement = ref(null)
+const loading = ref(true)
+const check_loading = () => {
+  let timer = setInterval(() => {
+    if (document.readyState === "complete") {
+      clearInterval(timer);
+      loading.value = false
+    }
+  }, 300);
+}
+const router = useRouter();
 onMounted(() => {
   console.log("<SSR> Hydrate done.");
+  check_loading();
+
+  router.beforeEach((to, from, next) => {
+    // loading.value.in(next);
+    loading.value = true
+    setTimeout(() => {
+      check_loading()
+      next()
+    }, 500);
+  });
 });
 </script>
