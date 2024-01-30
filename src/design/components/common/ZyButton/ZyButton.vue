@@ -6,8 +6,8 @@
     }"
     ref="button"
     type="button"
-    min-h-10
-    min-w-10
+    min-h-9
+    min-w-9
     text="base"
     p-0
     m-0
