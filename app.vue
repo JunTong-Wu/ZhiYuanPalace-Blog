@@ -10,7 +10,7 @@
     @touchstart="initTouchStart($event)"
     @touchmove="preventTouchGesture($event)"
   >
-    <Loading ref="loadingElement" :display="loading"/>
+    <Loading :display="loading"/>
     <NuxtLayout>
       <div
           text-base
@@ -160,7 +160,6 @@ const preventTouchGesture = (e: TouchEvent) => {
 };
 
 // loading
-const loadingElement = ref(null)
 const loading = ref(false)
 const check_loading = () => {
   let timer = setInterval(() => {

@@ -1,5 +1,5 @@
 <template>
-  <zy-header>
+  <header sticky top-0 left-0 right-0 h-header z-24>
     <div
       class="zy-header-inner"
       flex
@@ -201,7 +201,7 @@
           <ZyIcon lineName="line-md:grid-3-filled" />
         </zy-button>
           <div h-full flex items-center justify-center >
-            <h1 text-sm font-normal>{{title}}</h1>
+            <h1 text-sm font-normal v-show="titleDisable" class="mobile-title">{{$t(title)}}</h1>
           </div>
           <div flex items-center>
             <zy-button
@@ -241,7 +241,7 @@
       >
       </zy-drawer>
     </ClientOnly>
-  </zy-header>
+  </header>
 </template>
 <script setup lang="ts">
 import Navigation from "./Navigation/Navigation.vue"
@@ -367,13 +367,19 @@ const toggleFullScreen = () => {
 const route = useRoute();
 const router = useRouter();
 const title = ref('')
+const titleDisable = ref(false)
 title.value = getTitle(route.fullPath)
 router.beforeEach((to, from, next) => {
   next()
+  titleDisable.value = false
   setTimeout(()=>{
     title.value = getTitle(to.fullPath)
-  },300)
+    titleDisable.value = true
+  },500)
 })
+onMounted(() => {
+  titleDisable.value = true
+});
 
 // 抽屉
 const searchDisplay = ref(false);
@@ -408,6 +414,14 @@ const closePersonalDrawer = () => {
 }
 </style>
 <style lang="scss" scoped>
+@keyframes an-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .zy-header-inner {
   position: relative;
   background-color: var(--header-bar-background);
@@ -422,6 +436,10 @@ const closePersonalDrawer = () => {
     pointer-events: none;
     background: url(https://www.logosc.cn/img/MulticolorGlows.png) no-repeat
       top/900px;
+  }
+
+  .mobile-title {
+    animation: an-fade-in 0.7s;
   }
 }
 </style>

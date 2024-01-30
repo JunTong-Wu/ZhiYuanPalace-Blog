@@ -1,5 +1,5 @@
 <template>
-  <zy-bottom-navigation bg="bg-5">
+  <footer fixed bottom-0 left-0 right-0 h-footer z-20 flex justify-center bg="bg-5">
     <div
       h-full
       flex
@@ -7,79 +7,28 @@
       mx-auto
     >
       <zy-link
-        :to="`/${locale}`"
+        v-for="n in linkList"
+        :to="`/${locale}${n.path}`"
         v-zy-ripple
         h-full
         w="[20%]"
-        :title="$t('home')"
+        :title="$t(n.title)"
       >
         <ZyIcon
-          lineName="solar:home-smile-linear"
+          :lineName="n.lineIcon"
           lineColor="var(--text-3)"
-          filledName="solar:home-smile-bold"
-          :filled="routerActivate('/')"
-        />
-      </zy-link>
-      <zy-link
-        :to="`${localePath({ name: 'article' })}`"
-        v-zy-ripple
-        h-full
-        w="[20%]"
-        :title="$t('article')"
-      >
-        <ZyIcon
-          lineName="solar:notebook-minimalistic-linear"
-          lineColor="var(--text-3)"
-          filledName="solar:notebook-minimalistic-bold"
-          :filled="routerActivate('/article')"
-        />
-      </zy-link>
-      <zy-link
-        :to="`${localePath({ name: 'shuoshuo' })}`"
-        v-zy-ripple
-        h-full
-        w="[20%]"
-        :title="$t('shuoshuo')"
-      >
-        <ZyIcon
-          lineName="solar:star-linear"
-          lineColor="var(--text-3)"
-          filledName="solar:star-bold"
-          :filled="routerActivate('/shuoshuo')"
-        />
-      </zy-link>
-      <zy-link
-        :to="`${localePath({ name: 'photo' })}`"
-        v-zy-ripple
-        h-full
-        w="[20%]"
-        :title="$t('photo')"
-      >
-        <ZyIcon
-          lineName="solar:album-linear"
-          lineColor="var(--text-3)"
-          filledName="solar:album-bold"
-          :filled="routerActivate('/photo')"
-        />
-      </zy-link>
-      <zy-link
-        :to="`${localePath({ name: 'video' })}`"
-        v-zy-ripple
-        h-full
-        w="[20%]"
-        :title="$t('video')"
-      >
-        <ZyIcon
-          lineName="solar:videocamera-linear"
-          lineColor="var(--text-3)"
-          filledName="solar:videocamera-bold"
-          :filled="routerActivate('/video')"
+          :filledName="n.filledIcon"
+          :filled="routerActivate(n.path)"
         />
       </zy-link>
     </div>
-  </zy-bottom-navigation>
+  </footer>
 </template>
 <script setup lang="ts">
+import {getMap} from "@/src/core/function/urlTitleMap"
+
+const linkList = getMap()
+
 const route = useRoute();
 const localePath = useLocalePath();
 const { locale } = useI18n();
@@ -91,7 +40,7 @@ const routerActivate = (path: string) => {
       return false;
     }
   } else {
-    if (route.path == "/" || route.path == `/${locale.value}`) {
+    if (route.path == "/" || route.path == `/${locale.value}` || route.path == `/${locale.value}/`) {
       return true;
     }
   }

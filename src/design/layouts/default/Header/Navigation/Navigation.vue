@@ -1,61 +1,26 @@
 <template>
   <nav class="zy-navigation">
     <ul class="flex h-full items-center">
-      <li h-full>
+      <li h-full v-for="n in linkList">
         <zy-link
-          :to="`/${locale}`"
+          :to="`/${locale}${n.path}`"
           h-full
           px-5
-          :title="$t('home')"
-          :class="{ activate: routerActivate('/') }"
-          >{{ $t("home") }}</zy-link
+          :title="$t(n.title)"
+          :class="{ activate: routerActivate(n.path) }"
         >
-      </li>
-      <li h-full>
-        <zy-link
-          :to="`${localePath({ name: 'article' })}`"
-          h-full
-          px-5
-          :title="$t('article')"
-          :class="{ activate: routerActivate('/article') }"
-          >{{ $t("article") }}</zy-link
-        >
-      </li>
-      <li h-full>
-        <zy-link
-          :to="`${localePath({ name: 'shuoshuo' })}`"
-          h-full
-          px-5
-          :title="$t('shuoshuo')"
-          :class="{ activate: routerActivate('/shuoshuo') }"
-          >{{ $t("shuoshuo") }}</zy-link
-        >
-      </li>
-      <li h-full>
-        <zy-link
-          :to="`${localePath({ name: 'photo' })}`"
-          h-full
-          px-5
-          :title="$t('photo')"
-          :class="{ activate: routerActivate('/photo') }"
-          >{{ $t("photo") }}</zy-link
-        >
-      </li>
-      <li h-full>
-        <zy-link
-          :to="`${localePath({ name: 'video' })}`"
-          h-full
-          px-5
-          :title="$t('video')"
-          :class="{ activate: routerActivate('/video') }"
-          >{{ $t("video") }}</zy-link
-        >
+          {{ $t(n.title) }}
+        </zy-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
+import {getMap} from "@/src/core/function/urlTitleMap"
+
+const linkList = getMap()
+
 const route = useRoute();
 const localePath = useLocalePath();
 const { locale } = useI18n();
@@ -67,7 +32,7 @@ const routerActivate = (path: string) => {
       return false;
     }
   } else {
-    if (route.path == "/" || route.path == `/${locale.value}`) {
+    if (route.path == "/" || route.path == `/${locale.value}` || route.path == `/${locale.value}/`) {
       return true;
     }
   }
