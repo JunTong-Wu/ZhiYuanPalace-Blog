@@ -39,43 +39,37 @@ export default defineComponent({
     }
   }
 })
-
-
-
 </script>
 
 
-<style>
+<style lang="scss" scoped>
 #loading {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--bg-1);
-    backdrop-filter: blur(20px);
-    z-index: 100000000;
-    transition: 400ms ease;
-}
-
-#loading svg {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--header-bar-background);
+  z-index: 100000000;
+  transition: 400ms ease;
+  svg {
     width: 5rem;
     overflow: visible;
     transition: 0.3s ease;
-}
-
-#loading svg circle {
-    fill: none;
-    stroke: var(--primary-6);
-    stroke-width: 4;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    transform-origin: center;
-    animation: circle_rotate 3s ease-in infinite;
+    circle {
+      fill: none;
+      stroke: var(--primary-6);
+      stroke-width: 4;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      transform-origin: center;
+      animation: circle_rotate 3s ease-in infinite;
+    }
+  }
 }
 
 @keyframes circle_rotate {

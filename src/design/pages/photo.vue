@@ -1,5 +1,16 @@
 <template>
   <div>
-    <div>照片</div>
+    <div></div>
   </div>
 </template>
+<script setup lang="ts">
+useHead({
+  title: '照片',
+  meta: [
+    { name: 'description', content: '我的神奇网站。' }
+  ],
+  bodyAttrs: {
+    class: 'page-photo'
+  }
+})
+</script>

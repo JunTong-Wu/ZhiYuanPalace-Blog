@@ -184,4 +184,11 @@ onMounted(() => {
     }, 500);
   });
 });
+
+// head
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - 知鸢宫` : '知鸢宫';
+  }
+})
 </script>

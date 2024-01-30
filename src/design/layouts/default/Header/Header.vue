@@ -200,7 +200,9 @@
         >
           <ZyIcon lineName="line-md:grid-3-filled" />
         </zy-button>
-          <div h-full flex items-center justify-center text-base>Title</div>
+          <div h-full flex items-center justify-center >
+            <h1 text-base>{{title}}</h1>
+          </div>
           <div flex items-center>
             <zy-button
                 flex
@@ -242,7 +244,8 @@
   </zy-header>
 </template>
 <script setup lang="ts">
-import Navigation from "./Navigation/Navigation.vue";
+import Navigation from "./Navigation/Navigation.vue"
+import {getTitle} from "@/src/core/function/urlTitleMap"
 
 // 多语言
 const { locale, locales } = useI18n();
@@ -360,6 +363,18 @@ const toggleFullScreen = () => {
   }
 };
 
+// 标题
+const route = useRoute();
+const router = useRouter();
+const title = ref('')
+title.value = getTitle(route.fullPath)
+router.beforeEach((to, from, next) => {
+  next()
+  setTimeout(()=>{
+    title.value = getTitle(to.fullPath)
+  },300)
+})
+
 // 抽屉
 const searchDisplay = ref(false);
 const openSearchDrawer = () => {
@@ -384,24 +399,18 @@ const closePersonalDrawer = () => {
 };
 </script>
 <style lang="scss" scoped>
-@media (orientation: portrait) {
-  /* 竖屏 */
-  .zy-header-inner {
-    background-color: var(--bg-1);
-  }
-}
 @media (orientation: landscape) {
   /* 横屏 */
   .zy-header-inner {
     padding-left: 1rem;
     padding-right: 1rem;
-    background-color: var(--bg-1);
   }
 }
 </style>
 <style lang="scss" scoped>
 .zy-header-inner {
   position: relative;
+  background-color: var(--header-bar-background);
   &::after {
     //content: "";
     position: absolute;

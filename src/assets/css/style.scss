@@ -39,20 +39,21 @@ ul {
   background-color: #000;
 }
 :root {
-  --header-bar-height: 3rem;
   --footer-bar-height: 3rem;
   --side-bar-width: 7.5rem;
-  --centered-width: 100%;
 }
 @media (orientation: portrait) {
   :root {
-    --side-bar-width: auto;
+    --header-bar-height: 3rem;
+    --centered-width: 100%;
+    --header-bar-background: var(--bg-1);
   }
 }
 @media (orientation: landscape) {
   :root {
     --header-bar-height: 3.5rem;
     --centered-width: 65rem;
+    --header-bar-background: var(--bg-1);
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
