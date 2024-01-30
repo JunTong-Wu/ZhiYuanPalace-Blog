@@ -56,7 +56,7 @@ export default defineComponent({
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--bg-mask);
+    background-color: var(--bg-1);
     backdrop-filter: blur(20px);
     z-index: 100000000;
     transition: 400ms ease;
@@ -70,7 +70,7 @@ export default defineComponent({
 
 #loading svg circle {
     fill: none;
-    stroke: var(--text-3);
+    stroke: var(--primary-6);
     stroke-width: 4;
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
