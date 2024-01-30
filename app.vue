@@ -69,9 +69,10 @@ watch(
   (newValue) => {
     pathList.value.splice(0, pathList.value.length);
     pathList.value.push(`/${newValue}`);
-    pathList.value.push(`/${newValue}/text`);
-    pathList.value.push(`/${newValue}/media`);
-    pathList.value.push(`/${newValue}/about`);
+    pathList.value.push(`/${newValue}/article`);
+    pathList.value.push(`/${newValue}/shuoshuo`);
+    pathList.value.push(`/${newValue}/photo`);
+    pathList.value.push(`/${newValue}/video`);
     // console.log(pathList.value);
   }
 );
