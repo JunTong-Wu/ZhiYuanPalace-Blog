@@ -1,19 +1,12 @@
 <template>
-  <section class="relative pb-10 pt-20 md:pt-32 lg:h-[88vh]" w-centered mx-auto>
-    <picture class="pointer-events-none absolute inset-x-0 top-0 -z-10 dark:hidden">
-      <img src="@/src/assets/image/gradient.jpg" alt="gradient" class="w-full">
-    </picture>
-    <picture class="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden dark:block">
-      <img src="@/src/assets/image/gradient_dark.jpg" alt="gradient dark" class="w-full">
-    </picture>
-
-    <div class="container h-full">
-      <div class="grid h-full items-center gap-4 md:grid-cols-12">
-        <div class="col-span-6 flex h-full flex-col items-center justify-center py-10 md:items-start md:py-20 xl:col-span-4">
-          <h1 class="mb-6 text-center font-display text-5xl text-jacarta-700 dark:text-white md:text-left">
+  <section class="relative pb-10 pt-20 md:pt-32 md:h-[88vh]" w-centered mx-auto>
+    <div class="container h-full z-1">
+      <div class="grid h-full items-center justify-items-center gap-4 grid-cols-6 md:grid-cols-12">
+        <div class=" flex h-full flex-col items-center justify-center py-10 md:items-start md:py-20 col-span-6 md:col-span-7">
+          <h1 class="mb-6 text-center font-display text-xl xs:text-2xl sm:text-3xl md:text-4xl text-jacarta-700 dark:text-white md:text-left">
             {{ $t("welcome") }}
           </h1>
-          <p class="mb-8 text-center text-lg dark:text-jacarta-200 md:text-left">
+          <p class="mb-8 text-center text-xs xs:text-base sm:text-lg md:text-xl dark:text-jacarta-200 md:text-left">
             {{ $t("maintenanceLine1") }}<br/>{{ $t("maintenanceLine2") }}
           </p>
           <div class="flex space-x-4">
@@ -27,9 +20,9 @@
         </div>
 
         <!-- Hero image -->
-        <div class="col-span-6 xl:col-span-8">
-          <div class="relative text-center md:pl-8 md:text-right">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="mt-8 inline-block w-72 rotate-[8deg] sm:w-full lg:w-[24rem] xl:w-[35rem]">
+        <div class="col-span-6 md:col-span-5">
+          <div class="relative text-center">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="mt-8 inline-block w-72 rotate-[8deg] w-full">
               <defs>
                 <clipPath id="clipping" clipPathUnits="userSpaceOnUse">
                   <path d="
@@ -46,7 +39,7 @@
                 <image href="@/src/assets/image/hero/hero.jpg" width="200" height="200" clip-path="url(#clipping)"></image>
               </g>
             </svg>
-            <img src="@/src/assets/image/hero/3D_elements.png" alt="" class="absolute top-0 animate-fly md:-right-[10%]">
+            <img src="@/src/assets/image/hero/3D_elements.png" alt="" class="absolute top-0 -left-1/6 animate-fly w-4/3">
           </div>
         </div>
       </div>
