@@ -2,7 +2,7 @@
   <section class="relative pb-10 pt-20 md:pt-32 md:h-[88vh]" w-centered mx-auto>
     <div class="container h-full z-1">
       <div class="grid h-full items-center justify-items-center gap-4 grid-cols-6 md:grid-cols-12">
-        <div class=" flex h-full flex-col items-center justify-center py-10 md:items-start md:py-20 col-span-6 md:col-span-7">
+        <div class=" flex h-full flex-col items-center justify-center py-10 md:items-start md:py-20 col-span-6 md:col-span-6">
           <h1 class="mb-6 text-center font-display text-xl xs:text-2xl sm:text-3xl md:text-4xl text-jacarta-700 dark:text-white md:text-left">
             {{ $t("welcome") }}
           </h1>
@@ -20,8 +20,8 @@
         </div>
 
         <!-- Hero image -->
-        <div class="col-span-6 md:col-span-5">
-          <div class="relative text-center">
+        <div class="col-span-6 md:col-span-6">
+          <div class="relative text-center p-10">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="mt-8 inline-block w-72 rotate-[8deg] w-full">
               <defs>
                 <clipPath id="clipping" clipPathUnits="userSpaceOnUse">
@@ -39,7 +39,7 @@
                 <image href="@/src/assets/image/hero/hero.jpg" width="200" height="200" clip-path="url(#clipping)"></image>
               </g>
             </svg>
-            <img src="@/src/assets/image/hero/3D_elements.png" alt="" class="absolute top-0 -left-1/6 animate-fly w-4/3">
+            <img src="@/src/assets/image/hero/3D_elements.png" alt="" class="absolute top-1/8 left-0 animate-fly w-full">
           </div>
         </div>
       </div>
