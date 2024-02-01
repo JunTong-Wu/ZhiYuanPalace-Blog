@@ -4,7 +4,6 @@
       <div class="hero-wrapper" grid h-full items-center gap-4>
         <div class="hero-text" flex h-full flex-col justify-center
         items="center md:start"
-        p="y-10 md:y-20"
         >
           <h1 mb-6 text-center  text-xl xs:text-2xl sm:text-3xl md:text-4xl md:text-left>
             {{ $t("welcome") }}
