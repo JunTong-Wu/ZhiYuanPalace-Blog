@@ -18,7 +18,10 @@
     items-center
     justify-center
     :title="title"
-    @click="animation()"
+    @mousedown="animationStart()"
+    @mouseup="animationEnd()"
+    @touchstart.passive="animationStart()"
+    @touchend.passive="animationEnd()"
   >
     <slot />
   </button>
@@ -32,18 +35,20 @@ export default defineComponent({
   },
   setup() {
     const button = ref();
-    const animation = () => {
-      //延迟动画
+    const animationStart = () => {
       if (button.value) {
         button.value.classList.add("animation");
-        setTimeout(() => {
-          button.value.classList.remove("animation");
-        }, 100);
+      }
+    };
+    const animationEnd = () => {
+      if (button.value) {
+        button.value.classList.remove("animation");
       }
     };
     return {
       button,
-      animation,
+      animationStart,
+      animationEnd,
     };
   },
 });
@@ -53,7 +58,7 @@ export default defineComponent({
   0% {
     transition: none;
     opacity: 0.5;
-    transform: scale(0.5);
+    transform: scale(0.9);
   }
   15% {
     transform: scale(1.1);
@@ -75,16 +80,6 @@ export default defineComponent({
     transition: none;
   }
 }
-
-@keyframes an-fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes an-click {
   0% {
     transition: none;
@@ -92,12 +87,12 @@ export default defineComponent({
     transform: scale(1);
   }
   90% {
-    transform: scale(0.5);
+    transform: scale(0.9);
   }
   100% {
     transition: none;
     opacity: 0.5;
-    transform: scale(0.5);
+    transform: scale(0.9);
   }
 }
 
@@ -106,7 +101,7 @@ export default defineComponent({
     animation: an-bounce 0.7s;
     outline: none;
     &.animation {
-      animation: an-click 0.3s;
+      animation: an-click 0.3s forwards;
     }
   }
 }
