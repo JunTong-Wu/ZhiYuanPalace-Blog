@@ -14,3 +14,15 @@ useHead({
   }
 })
 </script>
+<style lang="scss">
+.page-home {
+  background-image: url('@/src/assets/image/gradient.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.dark .page-home {
+  background-image: url('@/src/assets/image/gradient_dark.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+</style>

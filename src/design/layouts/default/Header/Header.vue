@@ -22,6 +22,7 @@
                 justify-center
                 @click="openMoreDrawer()"
                 title="更多选项"
+                type="icon"
             >
               <ZyIcon lineName="line-md:grid-3-filled" />
             </zy-button>
@@ -109,6 +110,7 @@
               justify-center
               @click="openSearchDrawer()"
               title="搜索"
+              type="icon"
             >
               <ZyIcon size="0.75rem" lineName="line-md:search-twotone" />
             </zy-button>
@@ -121,6 +123,7 @@
               justify-center
               @click="toggleFullScreen"
               title="全屏/退出全屏"
+              type="icon"
             >
               <ZyIcon
                 v-if="!fullScreenFlag"
@@ -142,6 +145,7 @@
               justify-center
               @click="darkModeSwitch"
               title="日间/夜间"
+              type="icon"
             >
               <ZyIcon
                 v-if="darkModeFlag == false"
@@ -160,7 +164,7 @@
           <ClientOnly>
             <zy-popover title="切换语言" background="var(--bg-5)">
               <template #reference>
-                <zy-button flex items-center justify-center title="切换语言">
+                <zy-button flex items-center justify-center title="切换语言" type="icon">
                   <ZyIcon size="0.75rem" lineName="clarity:language-solid" />
                 </zy-button>
               </template>
@@ -174,7 +178,7 @@
                       @click="switchLanguage(lang.code)"
                     >
                       <label inline-block w-full h-full flex justify-between>
-                        <span>{{ lang.name }}</span>
+                        <span text-xs>{{ lang.name }}</span>
                         <input
                           type="radio"
                           name="lang"
@@ -246,6 +250,28 @@
 <script setup lang="ts">
 import Navigation from "./Navigation/Navigation.vue"
 import {getTitle} from "@/src/core/function/urlTitleMap"
+
+// 样式
+onMounted(()=>{
+  const mainScroll = document.querySelector('.main-scroll')
+  if(mainScroll){
+    mainScroll.addEventListener('scroll',()=>{
+      const top = mainScroll.scrollTop
+      if(top > 1){
+        const header = document.querySelector('.zy-header')
+        if(header){
+          header.classList.add('has-scroll')
+        }
+      }else{
+        const header = document.querySelector('.zy-header')
+        if(header){
+          header.classList.remove('has-scroll')
+        }
+      }
+    })
+  }
+})
+
 
 // 多语言
 const { locale, locales } = useI18n();
@@ -425,7 +451,11 @@ const closePersonalDrawer = () => {
   }
 }
 .zy-header {
-  background-color: var(--header-bar-background);
+  transition: all 400ms;
+}
+.zy-header.has-scroll {
+  background-color: var(--bg-mask);
+  backdrop-filter: blur(30px);
 }
 .zy-header-inner {
   position: relative;

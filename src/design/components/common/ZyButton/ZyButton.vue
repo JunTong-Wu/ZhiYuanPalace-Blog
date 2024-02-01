@@ -3,6 +3,8 @@
     :class="{
       'zy-button-default': type == 'default',
       'zy-button-transparent': type == 'transparent',
+      'zy-button-icon': type == 'icon',
+      'zy-button-primary': type == 'primary',
     }"
     ref="button"
     type="button"
@@ -101,7 +103,8 @@ export default defineComponent({
 
 @media screen {
   button {
-    animation: an-fade-in 0.7s;
+    animation: an-bounce 0.7s;
+    outline: none;
     &.animation {
       animation: an-click 0.3s;
     }
@@ -115,36 +118,79 @@ export default defineComponent({
   }
 }
 
+/**
+* Type Default
+**/
 button.zy-button-default {
-  background-color: transparent;
+  background-color: white;
+  color: var(--primary-6);
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(108,106,212,.25),inset 2px 2px 6px #eef1f9,inset -5px -5px 10px #dfe3ef;
+}
+@media (hover: hover) {
+  .pc button.zy-button-default:hover {
+    background-color: var(--primary-6);
+    color: white;
+    box-shadow: 5px 5px 10px rgba(108,106,212,.25),inset 2px 2px 6px var(--primary-7),inset -5px -5px 10px var(--primary-7);
+  }
+}
+
+/**
+* Type Primary
+**/
+button.zy-button-primary {
+  background-color: var(--primary-5);
+  color: white;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(108,106,212,.25),inset 2px 2px 6px var(--primary-6),inset -5px -5px 10px var(--primary-6);
+}
+@media (hover: hover) {
+  .pc button.zy-button-primary:hover {
+    background-color: var(--primary-6);
+    color: white;
+    box-shadow: 5px 5px 10px rgba(108,106,212,.25),inset 2px 2px 6px var(--primary-7),inset -5px -5px 10px var(--primary-7);
+  }
+}
+
+/**
+* Type Icon
+**/
+button.zy-button-icon {
+  background-color: rgb(255 255 255 / 0.5);
   border: 1px solid rgba(127, 127, 127, 0.2);
   border-radius: 9999px;
 }
-.dark button.zy-button-default {
+.dark button.zy-button-icon {
   background-color: rgb(255 255 255 / 0.05);
   border: none;
 }
 @media (hover: hover) {
-  button.zy-button-default:hover {
+  .pc button.zy-button-icon:hover {
     background-color: var(--primary-5);
     color: white;
   }
-  .mobile button.zy-button-transparent:hover {
-    background-color: transparent;
-    color: inherit;
-  }
 }
 
+/**
+* Type Transparent
+**/
 button.zy-button-transparent {
   background-color: transparent;
   border: none;
 }
 @media (hover: hover) {
-  button.zy-button-transparent:hover {
+  .pc button.zy-button-transparent:hover {
     background-color: rgb(255 255 255 / 0.05);
-  }
-  .mobile button.zy-button-transparent:hover {
-    background-color: transparent;
   }
 }
 </style>

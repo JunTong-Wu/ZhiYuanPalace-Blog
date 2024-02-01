@@ -2,22 +2,23 @@
   <Head>
     <Title>知鸢宫</Title>
   </Head>
+  <Loading :display="loading"/>
   <ZySuperResponsive
-    color="text-1"
+
     :base-font-size="baseFontSize"
     :break-points="breakPoints"
     :design-size="designSize"
     @touchstart="initTouchStart($event)"
     @touchmove="preventTouchGesture($event)"
   >
-    <Loading :display="loading"/>
+
     <NuxtLayout>
       <div
           text-base
           h="[100vh]"
           overflow-auto
           scroll-view
-          class="scroll-view"
+          class="main-scroll"
       >
         <NuxtPage mx-auto />
         <div h-footer></div>
@@ -187,3 +188,10 @@ useHead({
   }
 })
 </script>
+<style lang="scss">
+body{
+  background: var(--bg-1);
+  color: var(--text-1);
+  overflow: hidden;
+}
+</style>
