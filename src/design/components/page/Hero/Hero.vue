@@ -1,6 +1,6 @@
 <template>
-  <section relative pb-10 pt-20 md:pt-32 w-centered mx-auto p-6>
-    <div h-full z-1>
+  <section class="hero" relative pb-10 pt-20 md:pt-32  p-6>
+    <div w-centered mx-auto h-full z-1>
       <div class="hero-wrapper" grid h-full items-center gap-4>
         <div class="hero-text" flex h-full flex-col justify-center
         items="center md:start"
@@ -59,7 +59,18 @@
     </div>
   </section>
 </template>
-<style scoped lang="scss">
+
+<style lang="scss">
+.hero {
+  background-image: url('@/src/assets/image/gradient.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.dark .hero {
+  background-image: url('@/src/assets/image/gradient_dark.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
 @keyframes fly {
   0%,to {
     transform: translateY(5%)
@@ -98,3 +109,5 @@
   }
 }
 </style>
+<script setup lang="ts">
+</script>

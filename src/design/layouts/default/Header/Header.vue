@@ -452,10 +452,11 @@ const closePersonalDrawer = () => {
 }
 .zy-header {
   transition: all 400ms;
+  backdrop-filter: blur(8px);
 }
 .zy-header.has-scroll {
   background-color: var(--bg-mask);
-  backdrop-filter: blur(30px);
+
 }
 .zy-header-inner {
   position: relative;
