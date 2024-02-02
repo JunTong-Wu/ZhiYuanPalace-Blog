@@ -11,7 +11,19 @@
     @touchstart="initTouchStart($event)"
     @touchmove="preventTouchGesture($event)"
   >
-    <NuxtLayout></NuxtLayout>
+
+    <NuxtLayout>
+      <div
+          text-base
+          h="[100vh]"
+          overflow-auto
+          scroll-view
+          class="main-scroll"
+      >
+        <NuxtPage mx-auto />
+        <div h-footer></div>
+      </div>
+    </NuxtLayout>
   </ZySuperResponsive>
 </template>
 <script setup lang="ts">
