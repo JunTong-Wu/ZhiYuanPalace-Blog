@@ -2,7 +2,7 @@
   <footer bg="bg-2" px-6>
     <div w-centered mx-auto>
       <div grid grid-cols-6 gap-x-7 gap-y-14 pt-12 pb-6 md:grid-cols-12>
-        <div col-span-full sm:col-span-3 md:col-span-6>
+        <div col-span-full sm:col-span-3 md:col-span-4>
           <!-- Logo -->
           <div>
             <img src="@/src/assets/image/logo.png" class="max-h-7" alt="Xhibiter | NFT Marketplace">
@@ -73,7 +73,7 @@
             </svg>
           </div>
           <p text-sm xs:text-base my-6 md:my-12>
-            这里玉淇冰的个人收藏馆，用来存放原创文章、网络文案、照片等回忆。本站由Nuxt3框架驱动，腾讯云提供服务器支持。
+            这里是玉淇冰的个人收藏馆，用来存放原创文章、网络文案、照片等回忆。本站由Nuxt3框架驱动，腾讯云提供服务器支持。
           </p>
           <!-- Socials -->
           <div flex space-x-5>

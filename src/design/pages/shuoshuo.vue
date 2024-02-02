@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div></div>
+    <div bg="bg-1" w-full h-header></div>
+    <copyrightFooter></copyrightFooter>
   </div>
 </template>
 <script setup lang="ts">
