@@ -8,7 +8,7 @@
 useHead({
   title: '照片',
   meta: [
-    { name: 'description', content: '我的神奇网站。' }
+    { name: 'description', content: '知书达理，鸢飞鱼跃' }
   ],
   bodyAttrs: {
     class: 'page-photo'
