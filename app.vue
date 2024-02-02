@@ -21,7 +21,7 @@
           class="main-scroll"
       >
         <NuxtPage mx-auto />
-        <div h-footer></div>
+        <div h-footer class="vertical-layout" bg="bg-2"></div>
       </div>
     </NuxtLayout>
   </ZySuperResponsive>
@@ -30,7 +30,7 @@
 import Loading from "./src/design/components/common/ZyLoading/loading.vue";
 import "@/src/assets/css/style.scss";
 
-const baseFontSize = 18;
+const baseFontSize = 16;
 const breakPoints = {
   xs: 600,
   sm: 900,

@@ -31,6 +31,11 @@ ul {
   padding: 0;
 }
 
+a {
+  color: var(--primary-6);
+  text-decoration: none;
+}
+
 :root.dark {
   background-color: #000;
 }

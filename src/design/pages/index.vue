@@ -1,6 +1,7 @@
 <template>
   <div>
     <Hero></Hero>
+    <copyrightFooter></copyrightFooter>
   </div>
 </template>
 <script setup lang="ts">

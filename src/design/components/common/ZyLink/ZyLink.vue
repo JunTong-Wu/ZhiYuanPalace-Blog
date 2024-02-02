@@ -2,7 +2,7 @@
   <a
     :href="to"
     bg-transparent
-    text-sm
+    text-base
     border-0
     color-text-1
     @click.prevent="$router.replace(to)"

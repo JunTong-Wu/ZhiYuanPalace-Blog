@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <Title>知鸢宫{{error.statusCode}}</Title>
+    <Title>{{error.statusCode}}错误-知鸢宫</Title>
   </Head>
   <ZySuperResponsive
       :base-font-size="baseFontSize"
@@ -92,10 +92,10 @@
       </div>
     </header>
     <section absolute top="1/2" -translate-y="1/2" w-full>
-      <div class="mx-auto max-w-lg text-center">
-        <img v-if="error.statusCode == '404'" src="@/src/assets/image/404.png" alt="" w-50 inline-block>
-        <h1  v-if="error.statusCode == '404'" my-4 text-3xl md:text-4xl>Page Not Found!</h1>
-        <p v-if="error.statusCode == '404'" mb-12 text-base leading-normal>
+      <div v-if="error.statusCode == '404'" class="mx-auto max-w-lg text-center">
+        <img src="@/src/assets/image/404.png" alt="" w-50 inline-block>
+        <h1 my-4 text-3xl md:text-4xl>Page Not Found!</h1>
+        <p mb-12 text-base leading-normal>
           Oops! The page you are looking for does not exist. It might have been moved or deleted.
         </p>
         <zy-button
@@ -109,6 +109,12 @@
         >
           Navigate Back Home
         </zy-button>
+      </div>
+      <div v-if="error.statusCode != '404'" class="mx-auto max-w-lg text-center">
+        <h1 my-4 text-4xl md:text-5xl>ERROR {{error.statusCode}}</h1>
+        <p mb-12 text-base leading-normal>
+          {{error.message}}
+        </p>
       </div>
     </section>
   </ZySuperResponsive>

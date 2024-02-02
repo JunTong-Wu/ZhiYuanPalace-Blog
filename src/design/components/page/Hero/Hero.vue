@@ -8,7 +8,7 @@
           <h1 mb-6 text-center  text-xl xs:text-2xl sm:text-3xl md:text-4xl md:text-left>
             {{ $t("welcome") }}
           </h1>
-          <p mb-8 text-center text-xs xs:text-base sm:text-lg md:text-xl md:text-left>
+          <p mb-8 text-center text-sm xs:text-base sm:text-lg md:text-xl md:text-left>
             {{ $t("maintenanceLine1") }}<br/>{{ $t("maintenanceLine2") }}
           </p>
           <div flex space-x-4>

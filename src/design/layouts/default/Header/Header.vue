@@ -14,7 +14,6 @@
       xl:px-24
     >
       <div h-full class="horizontal-layout">
-        <ClientOnly>
           <div flex items-center px-2 h-full>
             <zy-button
                 flex
@@ -24,7 +23,7 @@
                 title="更多选项"
                 type="icon"
             >
-              <ZyIcon lineName="line-md:grid-3-filled" />
+              <ZyIcon lineName="icon-park-outline:more-app" />
             </zy-button>
             <img h-5 sm:h-8 ml-4 src="@/src/assets/image/logo.png" alt="logo" />
             <svg
@@ -94,103 +93,93 @@
               />
             </svg>
           </div>
-        </ClientOnly>
       </div>
 
       <div class="horizontal-layout">
         <div flex justify-end h-full items-center gap-2>
-          <ClientOnly>
-            <Navigation class="horizontal-layout" h-full mr-8 xl:mr-12 />
-          </ClientOnly>
-
-          <ClientOnly>
-            <zy-button
-              flex
-              items-center
-              justify-center
-              @click="openSearchDrawer()"
-              title="搜索"
-              type="icon"
-            >
-              <ZyIcon size="0.75rem" lineName="line-md:search-twotone" />
-            </zy-button>
-          </ClientOnly>
-
-          <ClientOnly>
-            <zy-button
-              flex
-              items-center
-              justify-center
-              @click="toggleFullScreen"
-              title="全屏/退出全屏"
-              type="icon"
-            >
-              <ZyIcon
-                v-if="!fullScreenFlag"
-                size="0.75rem"
-                lineName="line-md:arrows-diagonal"
-              />
-              <ZyIcon
-                v-else
-                size="0.75rem"
-                lineName="mingcute:fullscreen-exit-2-line"
-              />
-            </zy-button>
-          </ClientOnly>
-
-          <ClientOnly>
-            <zy-button
-              flex
-              items-center
-              justify-center
-              @click="darkModeSwitch"
-              title="日间/夜间"
-              type="icon"
-            >
-              <ZyIcon
-                v-if="darkModeFlag == false"
-                size="0.75rem"
-                lineName="line-md:sunny-outline-twotone-loop"
-              />
-              <ZyIcon
-                v-else-if="darkModeFlag == true"
-                size="0.75rem"
-                lineName="line-md:moon-twotone-loop"
-              />
-            </zy-button>
-          </ClientOnly>
-
+          <Navigation class="horizontal-layout" h-full mr-8 xl:mr-12 />
+          <zy-button
+            flex
+            items-center
+            justify-center
+            @click="openSearchDrawer()"
+            title="搜索"
+            type="icon"
+          >
+            <ZyIcon size="0.75rem" lineName="icon-park-outline:search" />
+          </zy-button>
+          <zy-button
+            flex
+            items-center
+            justify-center
+            @click="toggleFullScreen"
+            title="全屏/退出全屏"
+            type="icon"
+          >
+            <ZyIcon
+              v-if="!fullScreenFlag"
+              size="0.75rem"
+              lineName="mingcute:fullscreen-2-line"
+            />
+            <ZyIcon
+              v-else
+              size="0.75rem"
+              lineName="mingcute:fullscreen-exit-2-line"
+            />
+          </zy-button>
           <!-- 多语言抽屉 -->
-          <ClientOnly>
-            <zy-popover title="切换语言" background="var(--bg-5)">
-              <template #reference>
+          <zy-popover title="切换语言" background="var(--bg-5)">
+            <template #reference>
                 <zy-button flex items-center justify-center title="切换语言" type="icon">
-                  <ZyIcon size="0.75rem" lineName="clarity:language-solid" />
+                  <ZyIcon size="0.75rem" lineName="ion:language" />
                 </zy-button>
-              </template>
-              <template #actions>
-                <div p-2 color="text-1">
-                  <ul>
-                    <li
-                      v-for="lang in (availableLocales as any)"
-                      :key="lang.code"
-                      :to="switchLocalePath(lang.code)"
-                      @click="switchLanguage(lang.code)"
-                    >
-                      <label inline-block w-full h-full flex justify-between>
-                        <span text-xs>{{ lang.name }}</span>
-                        <input
-                          type="radio"
-                          name="lang"
-                          :checked="lang.code == locale"
-                        />
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-              </template>
-            </zy-popover>
-          </ClientOnly>
+            </template>
+            <template #actions>
+              <div p-2 color="text-1">
+                <ul>
+                  <li
+                    v-for="lang in (availableLocales as any)"
+                    :key="lang.code"
+                    :to="switchLocalePath(lang.code)"
+                    @click="switchLanguage(lang.code)"
+                  >
+                    <label inline-block w-full h-full flex justify-between>
+                      <span text-xs>{{ lang.name }}</span>
+                      <input
+                        type="radio"
+                        name="lang"
+                        :checked="lang.code == locale"
+                      />
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </template>
+          </zy-popover>
+            <zy-button
+                flex
+                items-center
+                justify-center
+                @click="darkModeSwitch"
+                title="日间/夜间"
+                type="icon"
+            >
+              <ZyIcon
+                  v-if="darkModeFlag == false"
+                  size="0.75rem"
+                  lineName="icon-park-outline:sun-one"
+              />
+              <ZyIcon
+                  v-else-if="darkModeFlag == true"
+                  size="0.75rem"
+                  lineName="icon-park-outline:moon"
+              />
+              <ZyIcon
+                  v-else
+                  size="0.75rem"
+                  lineName="eos-icons:loading"
+              />
+            </zy-button>
         </div>
       </div>
 
@@ -202,7 +191,7 @@
             title="更多选项"
             type="transparent"
         >
-          <ZyIcon lineName="line-md:grid-3-filled" />
+          <ZyIcon lineName="icon-park-outline:more-app" />
         </zy-button>
           <div h-full flex items-center justify-center >
             <h1 text-sm font-normal v-if="titleDisable" class="mobile-title">{{$t(title)}}</h1>
@@ -216,14 +205,13 @@
                 title="搜索"
                 type="transparent"
             >
-              <ZyIcon size="0.75rem" lineName="line-md:search-twotone" />
+              <ZyIcon size="0.75rem" lineName="icon-park-outline:search" />
             </zy-button>
           </div>
         </div>
       </div>
     </div>
     <!-- 搜索抽屉 -->
-    <ClientOnly>
       <zy-drawer
         title="搜索"
         :display="searchDisplay"
@@ -232,9 +220,7 @@
         size="100%"
       >
       </zy-drawer>
-    </ClientOnly>
     <!-- 更多选项抽屉 -->
-    <ClientOnly>
       <zy-drawer
         title="更多选项"
         :display="moreDisplay"
@@ -244,7 +230,6 @@
         background="var(--bg-5)"
       >
       </zy-drawer>
-    </ClientOnly>
   </header>
 </template>
 <script setup lang="ts">

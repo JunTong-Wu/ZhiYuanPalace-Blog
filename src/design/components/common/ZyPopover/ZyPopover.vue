@@ -233,12 +233,16 @@ export default defineComponent({
     const closeByButton = () => {
       close();
     };
+    
     // 监听浏览器窗口变化
-    window.addEventListener("resize", () => {
-      setTimeout(() => {
-        close();
-      }, 100);
-    });
+    if (process.client) {
+      window.addEventListener("resize", () => {
+        setTimeout(() => {
+          close();
+        }, 100);
+      });
+    }
+
 
     // 阻止vivo浏览器手势
     const preventTouchGesture = (e: TouchEvent) => {

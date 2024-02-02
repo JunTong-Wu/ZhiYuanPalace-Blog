@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div bg="bg-2" w-full h-40>
-
-    </div>
+    <div bg="bg-1" w-full h-header></div>
+    <copyrightFooter></copyrightFooter>
   </div>
 </template>
 <script setup lang="ts">
