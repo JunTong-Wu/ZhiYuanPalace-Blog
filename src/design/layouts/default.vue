@@ -1,15 +1,20 @@
 <template>
   <Header />
-  <!-- <SideBar class="horizontal-layout" /> -->
   <main flex-1 bg="bg-transparent">
-    <slot />
+    <div
+        text-base
+        h="[100vh]"
+        overflow-auto
+        scroll-view
+        class="main-scroll"
+    >
+      <NuxtPage mx-auto />
+      <div h-footer></div>
+    </div>
   </main>
-  <!-- <RightBar class="horizontal-layout" /> -->
   <Footer class="vertical-layout" />
 </template>
 <script setup lang="ts">
 import Footer from "./default/Footer/Footer.vue";
 import Header from "./default/Header/Header.vue";
-import SideBar from "./default/SideBar/SideBar.vue";
-import RightBar from "./default/RightBar/RightBar.vue";
 </script>
