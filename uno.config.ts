@@ -70,7 +70,7 @@ export default defineConfig({
         mask: "var(--bg-mask)",
         primary: "var(--primary-5)",
       },
-      bordercolor: "rgba(127,127,127,0.2)",
+      bordercolor: "var(--border-color)",
     },
   },
 });

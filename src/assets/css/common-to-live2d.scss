@@ -1,19 +1,26 @@
 #oml-stage {
-  left: -3% !important;
-  right: auto;
+  left: auto !important;
+  right: -3%;
   bottom: 0 !important;
-  z-index: 20 !important;
+  z-index: 40 !important;
 }
 #oml-controls,
 #oml-levitated-btn {
   display: none !important;
 }
 #oml-tips {
-  font-size: 0.6rem !important;
+  font-size: 0.8rem !important;
+  line-height: 1.5;
   width: auto !important;
+  min-width: 12rem;
   height: auto !important;
-  top: 5% !important;
-  background-color: #76a030 !important;
+  top: 0 !important;
+  background-color: var(--bg-4) !important;
+  color: var(--text-1) !important;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
+  filter: none !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.5rem !important;
 }
 
 /* 手机布局 */
