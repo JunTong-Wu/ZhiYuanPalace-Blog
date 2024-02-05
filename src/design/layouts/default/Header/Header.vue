@@ -313,7 +313,7 @@ const toggleFullScreen = () => {
 const route = useRoute();
 const router = useRouter();
 const title = ref("");
-const titleDisable = ref(false);
+const titleDisable = ref(true);
 title.value = getTitle(route.fullPath);
 router.beforeEach((to, from, next) => {
   titleDisable.value = false;
@@ -322,9 +322,6 @@ router.beforeEach((to, from, next) => {
     title.value = getTitle(to.fullPath);
     titleDisable.value = true;
   }, 400);
-});
-onMounted(() => {
-  titleDisable.value = true;
 });
 
 // 抽屉
