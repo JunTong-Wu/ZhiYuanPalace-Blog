@@ -1,5 +1,14 @@
 <template>
-  <aside fixed top-0 bottom-0 left-0 z-24 w-sidebar transition-width bg="bg-2">
+  <aside
+    fixed
+    top-0
+    bottom-0
+    left-0
+    z-24
+    w-sidebar
+    transition-width
+    bg="bg-mask"
+  >
     <div h-header flex items-center class="icon-wrapper">
       <img h-7 ml-6 src="@/src/assets/image/logo.png" alt="logo" />
       <svg

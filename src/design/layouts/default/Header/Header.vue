@@ -6,6 +6,7 @@
       items-center
       justify-between
       h-full
+      px-0
       sm:px-6
       lg:px-24
       lg:py-3
@@ -118,18 +119,24 @@
         </div>
       </div>
 
-      <div class="vertical-layout" w-full>
-        <div flex items-center w-full justify-between px-2>
+      <div class="vertical-layout" w-full h-full>
+        <div flex items-center w-full h-full justify-between>
           <div h-full flex items-center justify-center>
-            <h1 text-sm font-normal v-if="titleDisable" class="mobile-title">
+            <h1
+              text-sm
+              font-normal
+              ml-4
+              my-0
+              v-if="titleDisable"
+              class="mobile-title"
+            >
               {{ $t(title) }}
             </h1>
           </div>
-          <div flex items-center>
+          <div flex items-center h-full>
             <zy-button
-              flex
-              items-center
-              justify-center
+              w-header
+              h-header
               @click="openSearchDrawer()"
               title="搜索"
               type="transparent"
@@ -137,7 +144,8 @@
               <ZyIcon size="0.75rem" lineName="fluent:search-16-regular" />
             </zy-button>
             <zy-button
-              h-full
+              w-header
+              h-header
               @click="openMoreDrawer()"
               title="更多选项"
               type="transparent"
