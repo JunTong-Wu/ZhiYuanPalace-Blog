@@ -7,7 +7,7 @@
       :style="`z-index: ${zIndex};`"
       ref="el"
       :class="{ dark: dark }"
-      @touchmove="preventTouchGesture($event)"
+      @touchmove.passive="preventTouchGesture($event)"
     >
       <div
         fixed
