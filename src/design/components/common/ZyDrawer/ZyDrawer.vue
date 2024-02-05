@@ -223,12 +223,12 @@ export default defineComponent({
         if (newValue) {
           const body = document.documentElement;
           if (body) {
-            body.style.overflowY = "hidden";
+            body.style.overflow = "hidden";
           }
         } else {
           const body = document.documentElement;
           if (body) {
-            body.style.overflowY = "auto";
+            body.style.overflow = "auto";
           }
         }
         // 打开时，先监听display，再异步改变visible，实现进入动画

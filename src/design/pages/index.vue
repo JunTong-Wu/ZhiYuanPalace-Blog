@@ -1,5 +1,4 @@
 <template>
-  <Hero></Hero>
   <copyrightFooter></copyrightFooter>
 </template>
 <script setup lang="ts">

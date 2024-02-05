@@ -174,23 +174,20 @@ import { getTitle } from "@/src/core/function/urlTitleMap";
 
 // 样式
 onMounted(() => {
-  const mainScroll = document.querySelector(".main-scroll");
-  if (mainScroll) {
-    mainScroll.addEventListener("scroll", () => {
-      const top = mainScroll.scrollTop;
-      if (top > 1) {
-        const header = document.querySelector(".zy-header");
-        if (header) {
-          header.classList.add("has-scroll");
-        }
-      } else {
-        const header = document.querySelector(".zy-header");
-        if (header) {
-          header.classList.remove("has-scroll");
-        }
+  window.addEventListener("scroll", () => {
+    const top = window.scrollY;
+    if (top > 1) {
+      const header = document.querySelector(".zy-header");
+      if (header) {
+        header.classList.add("has-scroll");
       }
-    });
-  }
+    } else {
+      const header = document.querySelector(".zy-header");
+      if (header) {
+        header.classList.remove("has-scroll");
+      }
+    }
+  });
 });
 
 // 多语言
