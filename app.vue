@@ -79,6 +79,14 @@ if (process.client) {
 
 // 过渡
 const router = useRouter();
+const check_loading = () => {
+  let timer = setInterval(() => {
+    if (document.readyState === "complete") {
+      clearInterval(timer);
+      document.querySelector(".main-view")?.classList.add("transition-in");
+    }
+  }, 100);
+};
 onMounted(() => {
   router.beforeEach((to, from, next) => {
     document.querySelector(".main-view")?.classList.remove("transition-in");
@@ -87,11 +95,9 @@ onMounted(() => {
       document.querySelector(".main-view")?.classList.remove("transition-out");
       setTimeout(() => {
         next();
-        if (document.readyState === "complete") {
-          document.querySelector(".main-view")?.classList.add("transition-in");
-        }
-      }, 400);
-    }, 400);
+        check_loading();
+      }, 200);
+    }, 200);
   });
 });
 
@@ -104,7 +110,7 @@ useHead({
 </script>
 <style lang="scss" scoped>
 .main-view {
-  transform: translateY(200px);
+  transform: translateY(100px);
   opacity: 0;
 }
 .main-view.transition-in {
@@ -115,6 +121,6 @@ useHead({
 .main-view.transition-out {
   transform: translateY(0px);
   opacity: 0;
-  transition: opacity 400ms;
+  transition: opacity 200ms;
 }
 </style>

@@ -1,9 +1,10 @@
 html,
 body {
-  @apply: m-0 p-0;
+  margin: 0;
+  padding: 0;
 }
 * {
-  @apply: box-border;
+  box-sizing: border-box;
 }
 // 字体
 body {
