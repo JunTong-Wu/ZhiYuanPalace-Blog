@@ -1,17 +1,12 @@
 <template>
-  <div>
-    <Hero></Hero>
-    <copyrightFooter></copyrightFooter>
-  </div>
+  <div>HOME</div>
 </template>
 <script setup lang="ts">
 useHead({
-  title: '主页',
-  meta: [
-    { name: 'description', content: '知书达理，鸢飞鱼跃' }
-  ],
+  title: "主页",
+  meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
   bodyAttrs: {
-    class: 'page-home'
-  }
-})
+    class: "page-home",
+  },
+});
 </script>

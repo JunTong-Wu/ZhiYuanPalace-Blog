@@ -1,7 +1,5 @@
 <template>
-  <div fixed inset-0>
-    <slot />
-  </div>
+  <slot />
 </template>
 <script lang="ts">
 export default defineComponent({
@@ -193,6 +191,12 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+:root {
+  height: 100vh;
+  background: var(--bg-1);
+  color: var(--text-1);
+}
+
 .vertical-layout {
   display: none;
 }

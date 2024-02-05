@@ -2,33 +2,29 @@
   <Head>
     <Title>知鸢宫</Title>
   </Head>
-  <Loading :display="loading"/>
   <ZySuperResponsive
-
     :base-font-size="baseFontSize"
     :break-points="breakPoints"
     :design-size="designSize"
     @touchstart="initTouchStart($event)"
     @touchmove="preventTouchGesture($event)"
   >
-
     <NuxtLayout>
       <div
-          text-base
-          h="[100vh]"
-          overflow-auto
-          scroll-view
-          class="main-scroll"
+        text-base
+        overflow-auto
+        scroll-view
+        class="main-view transition-in"
+        p-4
       >
         <NuxtPage mx-auto />
-        <div h-footer class="vertical-layout" bg="bg-2"></div>
       </div>
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
 <script setup lang="ts">
-import Loading from "./src/design/components/common/ZyLoading/loading.vue";
 import "@/src/assets/css/style.scss";
+import "@/src/assets/css/common-to-live2d.scss";
 
 const baseFontSize = 16;
 const breakPoints = {
@@ -52,28 +48,6 @@ const designSize = {
   xl_max_v: 1080, //显示器竖屏
   xl_max_h: 1920, //显示器横屏
 };
-
-const { locale } = useI18n();
-const pathList = ref([
-  `/${locale.value}`,
-  `/${locale.value}/article`,
-  `/${locale.value}/shuoshuo`,
-  `/${locale.value}/photo`,
-  `/${locale.value}/video`,
-]);
-
-watch(
-  () => locale.value,
-  (newValue) => {
-    pathList.value.splice(0, pathList.value.length);
-    pathList.value.push(`/${newValue}`);
-    pathList.value.push(`/${newValue}/article`);
-    pathList.value.push(`/${newValue}/shuoshuo`);
-    pathList.value.push(`/${newValue}/photo`);
-    pathList.value.push(`/${newValue}/video`);
-    // console.log(pathList.value);
-  }
-);
 
 const myLive2dConfig = () => {
   const OML2D = (window as any).OML2D;
@@ -160,38 +134,44 @@ const preventTouchGesture = (e: TouchEvent) => {
   }
 };
 
-// loading
-const loading = ref(false)
-const check_loading = () => {
-  let timer = setInterval(() => {
-    if (document.readyState === "complete") {
-      clearInterval(timer);
-      loading.value = false
-    }
-  }, 300);
-}
+// 过渡
 const router = useRouter();
 onMounted(() => {
   router.beforeEach((to, from, next) => {
-    loading.value = true
+    document.querySelector(".main-view")?.classList.remove("transition-in");
+    document.querySelector(".main-view")?.classList.add("transition-out");
     setTimeout(() => {
-      check_loading()
-      next()
-    }, 500);
+      document.querySelector(".main-view")?.classList.remove("transition-out");
+      setTimeout(() => {
+        next();
+        if (document.readyState === "complete") {
+          document.querySelector(".main-view")?.classList.add("transition-in");
+        }
+      }, 400);
+    }, 400);
   });
 });
 
 // head
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - 知鸢宫` : '知鸢宫';
-  }
-})
+    return titleChunk ? `${titleChunk} - 知鸢宫` : "知鸢宫";
+  },
+});
 </script>
-<style lang="scss">
-body{
-  background: var(--bg-1);
-  color: var(--text-1);
-  overflow: hidden;
+<style lang="scss" scoped>
+.main-view {
+  transform: translateY(200px);
+  opacity: 0;
+}
+.main-view.transition-in {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 400ms;
+}
+.main-view.transition-out {
+  transform: translateY(0px);
+  opacity: 0;
+  transition: opacity 400ms;
 }
 </style>

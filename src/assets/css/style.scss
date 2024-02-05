@@ -1,6 +1,6 @@
 html,
 body {
-  @apply: h-full m-0 p-0;
+  @apply: m-0 p-0;
 }
 * {
   @apply: box-border;
@@ -36,18 +36,21 @@ a {
   text-decoration: none;
 }
 
-:root.dark {
-  background-color: #000;
-}
 :root {
   --footer-bar-height: 3rem;
-  --side-bar-width: 7.5rem;
+  --side-bar-width: 15rem;
+}
+@media (max-width: 1200px) {
+  :root {
+    --side-bar-width: 5rem;
+  }
 }
 @media (orientation: portrait) {
   :root {
     --header-bar-height: 3rem;
     --centered-width: 100%;
     --header-bar-background: var(--bg-1);
+    --side-bar-width: 0rem;
   }
 }
 @media (orientation: landscape) {
@@ -61,11 +64,6 @@ a {
   :root {
     --header-bar-height: 5rem;
     --centered-width: 75rem;
-  }
-}
-@media (min-width: 1200px) {
-  :root {
-    --side-bar-width: 15rem;
   }
 }
 
@@ -101,12 +99,12 @@ a {
 }
 :root {
   --bg-best: var(--gray-color-1); //最白
-  --bg-1: var(--gray-color-1); //整体背景色
-  --bg-2: var(--gray-color-3); //一级容器背景
-  --bg-3: var(--gray-color-3); //二级容器背景
-  --bg-4: var(--gray-color-3); //三级容器背景
-  --bg-5: var(--gray-color-1); //下拉弹出框、Tooltip 背景颜色
-  --bg-mask: rgba(255, 255, 255, 0.5); //遮罩层
+  --bg-1: var(--gray-color-3); //整体背景色
+  --bg-2: var(--gray-color-2); //一级容器背景
+  --bg-3: var(--gray-color-2); //二级容器背景
+  --bg-4: var(--gray-color-2); //三级容器背景
+  --bg-5: var(--gray-color-2); //下拉弹出框、Tooltip 背景颜色
+  --bg-mask: rgba(240, 243, 249, 0.5); //遮罩层
   --text-1: var(--gray-color-15); //强调/正文标题
   --text-2: var(--gray-color-13); //次强调/正文标
   --text-3: var(--gray-color-11); //次要信息
