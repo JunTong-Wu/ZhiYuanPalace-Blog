@@ -68,9 +68,11 @@
         />
       </svg>
     </div>
+    <Navigation />
   </aside>
 </template>
 <script setup>
+import Navigation from "./Navigation/Navigation.vue";
 // 多语言
 const { locale, locales } = useI18n();
 </script>

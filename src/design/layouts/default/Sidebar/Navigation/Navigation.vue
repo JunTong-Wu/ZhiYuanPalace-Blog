@@ -1,0 +1,7 @@
+<template>
+  <nav>
+    <ul>
+      <li>1</li>
+    </ul>
+  </nav>
+</template>
