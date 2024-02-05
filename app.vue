@@ -8,6 +8,7 @@
         text-base
         overflow-auto
         scroll-view
+        will-change-transform
         class="main-view transition-in"
         p-4
       >
