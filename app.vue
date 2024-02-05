@@ -2,13 +2,7 @@
   <Head>
     <Title>知鸢宫</Title>
   </Head>
-  <ZySuperResponsive
-    :base-font-size="baseFontSize"
-    :break-points="breakPoints"
-    :design-size="designSize"
-    @touchstart="initTouchStart($event)"
-    @touchmove="preventTouchGesture($event)"
-  >
+  <ZySuperResponsive>
     <NuxtLayout>
       <div
         text-base
@@ -25,29 +19,6 @@
 <script setup lang="ts">
 import "@/src/assets/css/style.scss";
 import "@/src/assets/css/common-to-live2d.scss";
-
-const baseFontSize = 16;
-const breakPoints = {
-  xs: 600,
-  sm: 900,
-  md: 1200,
-  lg: 1500,
-  xl: 1800,
-};
-const designSize = {
-  min_xs_v: 375, //手机竖屏
-  min_xs_h: 812, //手机横屏
-  xs_sm_v: 576, //小平板竖屏
-  xs_sm_h: 1024, //小平板横屏
-  sm_md_v: 720, //大平板竖屏
-  sm_md_h: 1280, //大平板横屏
-  md_lg_v: 768, //小笔记本竖屏
-  md_lg_h: 1366, //小笔记本横屏
-  lg_xl_v: 900, //大笔记本竖屏
-  lg_xl_h: 1600, //大笔记本横屏
-  xl_max_v: 1080, //显示器竖屏
-  xl_max_h: 1920, //显示器横屏
-};
 
 const myLive2dConfig = () => {
   const OML2D = (window as any).OML2D;
@@ -104,35 +75,6 @@ if (process.client) {
   // document.body.appendChild(script);
   // myLive2dConfig();
 }
-
-// 阻止vivo浏览器手势
-function findAncestor(element: HTMLElement | null, ancestorSelector: string) {
-  if (!element || element.tagName.toLowerCase() === "html") {
-    return null;
-  }
-  if (element.matches(ancestorSelector)) {
-    return element;
-  }
-  return findAncestor(element.parentElement, ancestorSelector);
-}
-
-var startX: number, startY: number;
-const initTouchStart = (e: TouchEvent) => {
-  startX = e.targetTouches[0].pageX;
-  startY = e.targetTouches[0].pageY;
-};
-const preventTouchGesture = (e: TouchEvent) => {
-  const ancestorElement = findAncestor(e.target as any, "[scroll-view]");
-  if (!ancestorElement) {
-    e.cancelable && e.preventDefault();
-  } else {
-    var moveX = e.targetTouches[0].pageX;
-    var moveY = e.targetTouches[0].pageY;
-    if (Math.abs(moveX - startX) > Math.abs(moveY - startY)) {
-      e.cancelable && e.preventDefault();
-    }
-  }
-};
 
 // 过渡
 const router = useRouter();

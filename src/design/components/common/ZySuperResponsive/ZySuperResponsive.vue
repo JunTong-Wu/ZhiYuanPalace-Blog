@@ -187,6 +187,22 @@ export default defineComponent({
         }, 20);
       });
     }
+
+    // 阻止vivo浏览器手势
+    var startX: number, startY: number;
+    onMounted(() => {
+      window.addEventListener("touchstart", (e) => {
+        startX = e.targetTouches[0].pageX;
+        startY = e.targetTouches[0].pageY;
+      });
+      window.addEventListener("touchmove", (e) => {
+        var moveX = e.targetTouches[0].pageX;
+        var moveY = e.targetTouches[0].pageY;
+        if (Math.abs(moveX - startX) > Math.abs(moveY - startY)) {
+          e.cancelable && e.preventDefault();
+        }
+      });
+    });
   },
 });
 </script>

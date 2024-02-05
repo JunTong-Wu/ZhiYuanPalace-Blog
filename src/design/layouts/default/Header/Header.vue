@@ -11,17 +11,7 @@
       lg:py-3
       xl:px-24
     >
-      <div class="horizontal-layout">
-        <zy-button
-          flex
-          items-center
-          justify-center
-          title="返回上一页"
-          type="icon"
-        >
-          <ZyIcon size="0.75rem" lineName="fluent:arrow-left-16-regular" />
-        </zy-button>
-      </div>
+      <div class="horizontal-layout"></div>
       <div class="horizontal-layout">
         <div flex justify-end h-full items-center gap-2>
           <zy-button
