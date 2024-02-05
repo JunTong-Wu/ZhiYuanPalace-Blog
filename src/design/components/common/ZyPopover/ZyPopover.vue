@@ -24,7 +24,7 @@
       <div
         ref="mainElement"
         class="drawer-main"
-        bg="bg-5"
+        bg="bg-4"
         fixed
         h-full
         will-change-transform
@@ -233,7 +233,7 @@ export default defineComponent({
     const closeByButton = () => {
       close();
     };
-    
+
     // 监听浏览器窗口变化
     if (process.client) {
       window.addEventListener("resize", () => {
@@ -242,7 +242,6 @@ export default defineComponent({
         }, 100);
       });
     }
-
 
     // 阻止vivo浏览器手势
     const preventTouchGesture = (e: TouchEvent) => {
@@ -298,7 +297,7 @@ export default defineComponent({
   border-top: none;
   border-left-color: transparent;
   border-right-color: transparent;
-  border-bottom-color: var(--bg-5);
+  border-bottom-color: var(--bg-4);
   z-index: -1;
 }
 </style>

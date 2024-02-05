@@ -44,7 +44,7 @@
             />
           </zy-button>
           <!-- 多语言抽屉 -->
-          <zy-popover title="切换语言" background="var(--bg-5)">
+          <zy-popover title="切换语言" background="var(--bg-4)">
             <template #reference>
               <zy-button
                 flex
