@@ -1,5 +1,5 @@
 <template>
-  <div>VIDEO</div>
+  <div>TEST</div>
 </template>
 <script setup lang="ts">
 useHead({

@@ -1,5 +1,6 @@
 <template>
-  <div>HOME</div>
+  <Hero></Hero>
+  <copyrightFooter></copyrightFooter>
 </template>
 <script setup lang="ts">
 useHead({

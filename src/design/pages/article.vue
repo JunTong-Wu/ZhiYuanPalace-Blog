@@ -1,8 +1,5 @@
 <template>
-  <div>
-    article
-    <p v-for="n in 100">TEST</p>
-  </div>
+  <div>TEST</div>
 </template>
 <script setup lang="ts">
 useHead({
