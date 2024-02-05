@@ -91,19 +91,15 @@
             type="icon"
           >
             <ZyIcon
-              v-if="darkModeFlag == false"
               size="0.75rem"
+              hidden
+              dark:inline-block
               lineName="fluent:weather-sunny-16-regular"
             />
             <ZyIcon
-              v-else-if="darkModeFlag == true"
               size="0.75rem"
+              dark:hidden
               lineName="fluent:weather-moon-16-regular"
-            />
-            <ZyIcon
-              v-else
-              size="0.75rem"
-              lineName="fluent:dark-theme-20-regular"
             />
           </zy-button>
           <zy-button
@@ -114,7 +110,7 @@
             title="更多选项"
             type="icon"
           >
-            <ZyIcon lineName="fluent:more-vertical-16-regular" />
+            <ZyIcon lineName="fluent:clover-16-regular" />
           </zy-button>
         </div>
       </div>
@@ -150,7 +146,7 @@
               title="更多选项"
               type="transparent"
             >
-              <ZyIcon lineName="fluent:more-vertical-16-regular" />
+              <ZyIcon lineName="fluent:clover-16-regular" />
             </zy-button>
           </div>
         </div>
@@ -213,14 +209,11 @@ const switchLanguage = (code: any) => {
 };
 
 // 夜间模式
-const darkModeFlag = ref<null | boolean>(null);
 const darkModeInit = () => {
   if (process.client) {
     const isDarkmode = (window as any).isDarkmode;
     if (isDarkmode) {
-      darkModeFlag.value = true;
     } else {
-      darkModeFlag.value = false;
     }
   }
 };
@@ -229,10 +222,8 @@ onMounted(() => {
 });
 const darkModeSwitch = () => {
   if (!document.documentElement.classList.contains("dark")) {
-    darkModeFlag.value = true;
     document.documentElement.classList.add("dark");
   } else {
-    darkModeFlag.value = false;
     document.documentElement.classList.remove("dark");
   }
 };

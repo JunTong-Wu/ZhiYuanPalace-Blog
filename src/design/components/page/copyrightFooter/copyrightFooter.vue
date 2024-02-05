@@ -81,19 +81,28 @@
           </p>
           <!-- Socials -->
           <div flex space-x-5>
-            <a href="#" color-text-4 hover:color-primary-5>
+            <a
+              href="https://user.qzone.qq.com/570446022/main"
+              target="_blank"
+              title="QQ空间"
+              color-text-4
+              hover:color-primary-5
+            >
               <ZyIcon size="1.5rem" lineName="simple-icons:qzone" />
             </a>
-            <a href="#" color-text-4 hover:color-primary-5>
+            <a href="#" title="QQ" color-text-4 hover:color-primary-5>
               <ZyIcon size="1.5rem" lineName="ri:qq-fill" />
             </a>
-            <a href="#" color-text-4 hover:color-primary-5>
+            <a href="#" title="微信" color-text-4 hover:color-primary-5>
               <ZyIcon size="1.5rem" lineName="ri:wechat-fill" />
             </a>
-            <a href="#" color-text-4 hover:color-primary-5>
-              <ZyIcon size="1.5rem" lineName="ri:weibo-fill" />
-            </a>
-            <a href="#" color-text-4 hover:color-primary-5>
+            <a
+              href="https://www.douyin.com/user/MS4wLjABAAAAHUJoO5Uez-qvqkf-UN99ezopCZuXSKDK3aoSDTlv3no"
+              target="_blank"
+              title="抖音"
+              color-text-4
+              hover:color-primary-5
+            >
               <ZyIcon size="1.5rem" lineName="ri:tiktok-fill" />
             </a>
           </div>
@@ -112,10 +121,12 @@
         <span text-xs xs:text-base> © 2024 知鸢宫 版权所有 </span>
         <ul flex flex-wrap space-x-4 text-xs xs:text-base>
           <li>
-            <a href="https://beian.miit.gov.cn/">鄂ICP备2022016355号-1</a>
+            <a href="https://beian.miit.gov.cn/" target="_blank"
+              >鄂ICP备2022016355号-1</a
+            >
           </li>
           <li>
-            <a href="https://icp.gov.moe/?keyword=20229918"
+            <a href="https://icp.gov.moe/?keyword=20229918" target="_blank"
               >萌ICP备20229918号</a
             >
           </li>
