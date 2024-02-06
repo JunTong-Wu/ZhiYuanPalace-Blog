@@ -317,7 +317,7 @@ router.beforeEach((to, from, next) => {
   setTimeout(() => {
     title.value = getTitle(to.fullPath);
     titleDisable.value = true;
-  }, 400);
+  }, 200);
 });
 
 // 抽屉
@@ -364,7 +364,7 @@ const closePersonalDrawer = () => {
   }
 }
 .zy-header {
-  transition: all 400ms;
+  transition: all 200ms;
   backdrop-filter: blur(8px);
 }
 .zy-header.has-scroll {
@@ -386,7 +386,7 @@ const closePersonalDrawer = () => {
   }
 
   .mobile-title {
-    animation: an-fade-in 0.7s;
+    animation: an-fade-in 0.2s;
   }
 }
 </style>

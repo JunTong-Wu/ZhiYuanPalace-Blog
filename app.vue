@@ -96,8 +96,8 @@ onMounted(() => {
       setTimeout(() => {
         next();
         check_loading();
-      }, 200);
-    }, 200);
+      }, 100);
+    }, 100);
   });
 });
 
@@ -116,11 +116,11 @@ useHead({
 .main-view.transition-in {
   transform: translateY(0px);
   opacity: 1;
-  transition: all 400ms;
+  transition: all 200ms;
 }
 .main-view.transition-out {
   transform: translateY(0px);
   opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 100ms;
 }
 </style>
