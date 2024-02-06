@@ -24,6 +24,7 @@
         h-full
         w="[20%]"
         :title="$t(n.title)"
+        justify-center
       >
         <ZyIcon
           :lineName="n.lineIcon"
@@ -42,7 +43,6 @@ import { getMap } from "@/src/core/function/urlTitleMap";
 const linkList = getMap();
 
 const route = useRoute();
-const localePath = useLocalePath();
 const { locale } = useI18n();
 const routerActivate = (path: string) => {
   if (path != "/") {

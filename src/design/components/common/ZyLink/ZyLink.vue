@@ -8,7 +8,6 @@
     @click.prevent="$router.replace(to)"
     flex
     items-center
-    justify-center
     no-underline
     :title="title"
   >
