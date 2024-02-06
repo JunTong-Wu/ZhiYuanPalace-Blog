@@ -1,5 +1,11 @@
 <template>
-  <div>TEST</div>
+  <div>
+    <div w-full h-40 bg="bg-2">
+      <zy-link :to="`/${locale}/article/1`" w-full h-full justify-center
+        >GO 1</zy-link
+      >
+    </div>
+  </div>
 </template>
 <script setup lang="ts">
 useHead({
@@ -9,4 +15,5 @@ useHead({
     class: "page-article",
   },
 });
+const { locale } = useI18n();
 </script>

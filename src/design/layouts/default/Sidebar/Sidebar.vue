@@ -6,7 +6,7 @@
         v-if="locale == 'zh-CN'"
         fill-current
         h-5
-        ml-4
+        ml-3
         id="uuid-2320505a-bbef-4a34-b902-2705747683ee"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 403.68 126.91"
@@ -25,7 +25,7 @@
         v-if="locale == 'en'"
         fill-current
         h-4
-        ml-4
+        ml-3
         id="uuid-1031c088-f5b4-41cd-bcb8-0f0b44c971cf"
         data-name="图层 1"
         xmlns="http://www.w3.org/2000/svg"
