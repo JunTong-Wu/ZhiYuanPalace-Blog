@@ -6,13 +6,11 @@ import {
   transformerCompileClass,
   transformerVariantGroup,
 } from "unocss";
-import { presetGrid } from "unocss-preset-grid";
 
 export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
-    presetGrid(),
     // ...
   ],
   transformers: [

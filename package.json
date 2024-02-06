@@ -3,28 +3,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build --dotenv env/.env.production",
-    "dev": "nuxt dev --dotenv .env.dev",
+    "build": "nuxt build",
+    "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "upgrade": "nuxi upgrade"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "^1.0.8",
-    "@nuxtjs/i18n": "^8.0.0-rc.6",
-    "@nuxtjs/strapi": "^1.10.1",
-    "@unocss/nuxt": "^0.57.1",
-    "nuxt": "^3.9.3",
-    "nuxt-icon": "^0.6.7",
-    "sass": "^1.69.5",
-    "vue": "^3.3.7",
-    "vue-router": "^4.2.5"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.201",
-    "better-scroll": "^2.5.1",
-    "lodash": "^4.17.21",
-    "unocss-preset-grid": "^1.4.2"
+    "nuxt": "^3.10.1",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/i18n": "^8.0.2",
+    "@unocss/nuxt": "^0.58.5",
+    "sass": "^1.70.0"
   }
 }
