@@ -1,6 +1,6 @@
 <template>
   <Header pl-sidebar />
-  <main flex-1 pl-sidebar pt-header transition-width bg="bg-transparent">
+  <main flex-1 pl-sidebar pt-header transition-padding bg="bg-transparent">
     <slot />
   </main>
   <Footer class="vertical-layout" />

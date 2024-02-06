@@ -108,6 +108,7 @@ a {
 }
 :root {
   --bg-best: var(--gray-color-1); //最白
+  --bg-0: var(--gray-color-4); //比背景色暗一级
   --bg-1: var(--gray-color-3); //整体背景色
   --bg-2: var(--gray-color-2); //一级容器背景
   --bg-3: var(--gray-color-1); //二级容器背景
@@ -121,6 +122,7 @@ a {
 }
 *.dark {
   --bg-best: var(--gray-color-24); //最黑
+  --bg-0: var(--gray-color-24); //比背景色暗一级
   --bg-1: var(--gray-color-23); //整体背景色
   --bg-2: var(--gray-color-22); //一级容器背景
   --bg-3: var(--gray-color-21); //二级容器背景

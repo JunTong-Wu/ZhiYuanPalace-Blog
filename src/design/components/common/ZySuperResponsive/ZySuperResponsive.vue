@@ -208,7 +208,6 @@ export default defineComponent({
 </script>
 <style lang="scss">
 :root {
-  height: 100vh;
   background: var(--bg-1);
   color: var(--text-1);
 }
