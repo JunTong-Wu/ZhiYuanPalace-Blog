@@ -39,12 +39,12 @@ a {
 
 :root {
   --footer-bar-height: 3rem;
-  --side-bar-width: 15rem;
+  --side-bar-width: 12rem;
   --border-color: rgba(127, 127, 127, 0.2);
 }
 @media (max-width: 1200px) {
   :root {
-    --side-bar-width: 5rem;
+    --side-bar-width: 4.75rem;
   }
 }
 @media (orientation: portrait) {

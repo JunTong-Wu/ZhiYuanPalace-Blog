@@ -1,25 +1,29 @@
 <template>
-  <nav>
+  <nav p-2>
     <ul>
-      <li v-for="n in linkList" h-14 flex>
+      <li v-for="n in linkList" h-14 flex mb-2>
         <zy-link
           :to="`/${locale}${n.path}`"
           v-zy-ripple
           w-full
           :title="$t(n.title)"
-          px-7
+          px-4
           class="sidebar-navigation"
+          rounded-lg
           :class="{ activate: routerActivate(n.path) }"
         >
-          <ZyIcon
-            size="1.5rem"
-            :lineName="n.lineIcon"
-            lineColor="var(--text-3)"
-            :filledName="n.filledIcon"
-            :filled="routerActivate(n.path)"
-            filled-color="var(--primary-6)"
-          />
-          <span ml-4>{{ $t(n.title) }}</span>
+          <div w-7 flex justify-center>
+            <ZyIcon
+              size="1.25rem"
+              :lineName="n.lineIcon"
+              lineColor="var(--text-3)"
+              :filledName="n.filledIcon"
+              :filled="routerActivate(n.path)"
+              filled-color="var(--primary-6)"
+            />
+          </div>
+
+          <span ml-2 text-sm>{{ $t(n.title) }}</span>
         </zy-link>
       </li>
     </ul>
@@ -52,9 +56,23 @@ const routerActivate = (path: string) => {
 </script>
 <style lang="scss" scoped>
 .sidebar-navigation {
+  overflow: hidden;
+  > div {
+    flex: none;
+  }
+  > span {
+    white-space: nowrap;
+  }
   &.activate {
     background-color: var(--bg-3);
-    box-shadow: -4rem 0 2rem rgba(0, 0, 0, 0.03);
+  }
+}
+
+@media (max-width: 1200px) {
+  .sidebar-navigation {
+    span {
+      display: none;
+    }
   }
 }
 </style>
