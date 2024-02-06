@@ -71,14 +71,15 @@ const myLive2dConfig = () => {
 };
 
 if (process.client) {
-  const script = document.createElement("script");
-  script.src = "/static/js/oh-my-live2d.min.js";
-  document.body.appendChild(script);
-  myLive2dConfig();
+  // const script = document.createElement("script");
+  // script.src = "/static/js/oh-my-live2d.min.js";
+  // document.body.appendChild(script);
+  // myLive2dConfig();
 }
 
 // 过渡
 const router = useRouter();
+const { locale } = useI18n();
 const check_loading = () => {
   let timer = setInterval(() => {
     if (document.readyState === "complete") {
@@ -87,17 +88,44 @@ const check_loading = () => {
     }
   }, 100);
 };
+function isSwitchLanguagePage(toStr: string, fromStr: string) {
+  const toParts = toStr.split("/");
+  const fromParts = fromStr.split("/");
+  let toRealPath = "";
+  let fromRealPath = "";
+  if (toParts.length > 2) {
+    toRealPath = toParts.slice(2).join("/");
+  }
+  if (fromParts.length > 2) {
+    fromRealPath = fromParts.slice(2).join("/");
+  }
+  if (toRealPath == fromRealPath) {
+    return true;
+  } else {
+    return false;
+  }
+}
 onMounted(() => {
   router.beforeEach((to, from, next) => {
-    document.querySelector(".main-view")?.classList.remove("transition-in");
-    document.querySelector(".main-view")?.classList.add("transition-out");
-    setTimeout(() => {
-      document.querySelector(".main-view")?.classList.remove("transition-out");
-      setTimeout(() => {
+    if (to.fullPath.split("/").filter(Boolean).length <= 2) {
+      if (!isSwitchLanguagePage(to.fullPath, from.fullPath)) {
+        document.querySelector(".main-view")?.classList.remove("transition-in");
+        document.querySelector(".main-view")?.classList.add("transition-out");
+        setTimeout(() => {
+          document
+            .querySelector(".main-view")
+            ?.classList.remove("transition-out");
+          setTimeout(() => {
+            next();
+            check_loading();
+          }, 100);
+        }, 100);
+      } else {
         next();
-        check_loading();
-      }, 100);
-    }, 100);
+      }
+    } else {
+      next();
+    }
   });
 });
 

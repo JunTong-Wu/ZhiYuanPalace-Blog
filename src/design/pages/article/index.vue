@@ -1,9 +1,7 @@
 <template>
   <div>
     <div w-full h-40 bg="bg-2">
-      <zy-link :to="`/${locale}/article/1`" w-full h-full justify-center
-        >GO 1</zy-link
-      >
+      <zy-store-style-card>GO 1</zy-store-style-card>
     </div>
   </div>
 </template>
