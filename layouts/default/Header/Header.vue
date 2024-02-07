@@ -23,7 +23,7 @@
             title="搜索"
             type="icon"
           >
-            <ZyIcon size="0.75rem" lineName="fluent:search-16-regular" />
+            <ZyIcon size="0.75rem" lineName="search" />
           </zy-button>
           <zy-button
             flex
@@ -33,16 +33,8 @@
             title="全屏/退出全屏"
             type="icon"
           >
-            <ZyIcon
-              v-if="!fullScreenFlag"
-              size="0.75rem"
-              lineName="fluent:full-screen-maximize-16-regular"
-            />
-            <ZyIcon
-              v-else
-              size="0.75rem"
-              lineName="fluent:full-screen-minimize-16-regular"
-            />
+            <ZyIcon v-if="!fullScreenFlag" size="0.75rem" lineName="maximize" />
+            <ZyIcon v-else size="0.75rem" lineName="minimize" />
           </zy-button>
           <!-- 多语言抽屉 -->
           <zy-popover title="切换语言" background="var(--bg-4)">
@@ -54,10 +46,7 @@
                 title="切换语言"
                 type="icon"
               >
-                <ZyIcon
-                  size="0.75rem"
-                  lineName="fluent:local-language-16-regular"
-                />
+                <ZyIcon size="0.75rem" lineName="language" />
               </zy-button>
             </template>
             <template #actions>
@@ -90,17 +79,8 @@
             title="日间/夜间"
             type="icon"
           >
-            <ZyIcon
-              size="0.75rem"
-              hidden
-              dark:inline-block
-              lineName="fluent:weather-sunny-16-regular"
-            />
-            <ZyIcon
-              size="0.75rem"
-              dark:hidden
-              lineName="fluent:weather-moon-16-regular"
-            />
+            <ZyIcon size="0.75rem" hidden dark:inline-block lineName="sun" />
+            <ZyIcon size="0.75rem" dark:hidden lineName="moon" />
           </zy-button>
           <zy-button
             flex
@@ -110,7 +90,7 @@
             title="更多选项"
             type="icon"
           >
-            <ZyIcon size="0.75rem" lineName="fluent:clover-16-regular" />
+            <ZyIcon size="0.75rem" lineName="more" />
           </zy-button>
         </div>
       </div>
@@ -128,7 +108,7 @@
               title="搜索"
               type="transparent"
             >
-              <ZyIcon size="0.75rem" lineName="fluent:search-16-regular" />
+              <ZyIcon size="0.75rem" lineName="search" />
             </zy-button>
             <zy-button
               w-header
@@ -137,7 +117,7 @@
               title="更多选项"
               type="transparent"
             >
-              <ZyIcon lineName="fluent:clover-16-regular" />
+              <ZyIcon lineName="more" />
             </zy-button>
           </div>
         </div>

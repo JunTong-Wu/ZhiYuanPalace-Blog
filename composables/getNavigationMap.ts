@@ -3,32 +3,32 @@ export const getNavigationMap = () => {
     {
       path: "/",
       title: "home",
-      lineIcon: "solar:home-smile-linear",
-      filledIcon: "solar:home-smile-bold",
+      lineIcon: "home-linear",
+      filledIcon: "home-bold",
     },
     {
       path: "/article",
       title: "article",
-      lineIcon: "solar:notebook-minimalistic-linear",
-      filledIcon: "solar:notebook-minimalistic-bold",
+      lineIcon: "article-linear",
+      filledIcon: "article-bold",
     },
     {
       path: "/shuoshuo",
       title: "shuoshuo",
-      lineIcon: "solar:star-linear",
-      filledIcon: "solar:star-bold",
+      lineIcon: "shuoshuo-linear",
+      filledIcon: "shuoshuo-bold",
     },
     {
       path: "/photo",
       title: "photo",
-      lineIcon: "solar:album-linear",
-      filledIcon: "solar:album-bold",
+      lineIcon: "photo-linear",
+      filledIcon: "photo-bold",
     },
     {
       path: "/video",
       title: "video",
-      lineIcon: "solar:videocamera-linear",
-      filledIcon: "solar:videocamera-bold",
+      lineIcon: "video-linear",
+      filledIcon: "video-bold",
     },
   ];
 };
