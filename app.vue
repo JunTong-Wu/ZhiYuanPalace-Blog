@@ -30,6 +30,14 @@ const head = useLocaleHead({
   identifierAttribute: "id",
   addSeoAttributes: true,
 });
+// const goLink = `/article/1`;
+// const router = useRouter();
+// router.beforeEach((to, from, next) => {
+//   if (to.fullPath == goLink) {
+//   } else {
+//     next();
+//   }
+// });
 
 // Live2D
 const myLive2dConfig = () => {
