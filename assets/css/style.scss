@@ -107,6 +107,15 @@ a {
   --primary-1: #7aadff; //浅色/白底悬浮
 }
 :root {
+  --secondary-7: #06c19c; //点击
+  --secondary-6: #21cbaa; //常规
+  --secondary-5: #3cd5b7; //悬浮
+  --secondary-4: #58e0c5; //特殊场景
+  --secondary-3: #73ead2; //一般禁用
+  --secondary-2: #8ef4e0; //文字禁用
+  --secondary-1: #a9feed; //浅色/白底悬浮
+}
+:root {
   --bg-best: var(--gray-color-1); //最白
   --bg-0: var(--gray-color-4); //比背景色暗一级
   --bg-1: var(--gray-color-3); //整体背景色
@@ -116,9 +125,9 @@ a {
   --bg-5: var(--gray-color-3); //下拉弹出框、Tooltip 背景颜色
   --bg-mask: rgba(229, 232, 238, 0.5); //遮罩层
   --text-1: var(--gray-color-24); //强调/正文标题
-  --text-2: var(--gray-color-20); //次强调/正文标
-  --text-3: var(--gray-color-16); //次要信息
-  --text-4: var(--gray-color-12); //置灰信息
+  --text-2: var(--gray-color-18); //次强调/正文标
+  --text-3: var(--gray-color-12); //次要信息
+  --text-4: var(--gray-color-6); //置灰信息
 }
 *.dark {
   --bg-best: var(--gray-color-24); //最黑
@@ -130,9 +139,9 @@ a {
   --bg-5: var(--gray-color-23); //下拉弹出框、Tooltip 背景颜色
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
   --text-1: var(--gray-color-1); //强调/正文标题
-  --text-2: var(--gray-color-5); //次强调/正文标
-  --text-3: var(--gray-color-9); //次要信息
-  --text-4: var(--gray-color-13); //置灰信息
+  --text-2: var(--gray-color-7); //次强调/正文标
+  --text-3: var(--gray-color-13); //次要信息
+  --text-4: var(--gray-color-19); //置灰信息
 }
 
 // 滚动条

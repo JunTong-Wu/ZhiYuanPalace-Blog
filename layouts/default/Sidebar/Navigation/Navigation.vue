@@ -13,12 +13,12 @@
         >
           <div w-7 flex justify-center>
             <ZyIcon
-              size="1.25rem"
+              size="1.5rem"
               :defaultName="n.defaultIcon"
-              defaultColor="var(--text-3)"
+              defaultColor="var(--text-4)"
               :activatedName="n.activatedIcon"
               :activated="routerActivate(n.path)"
-              activated-color="var(--primary-6)"
+              activated-color="var(--primary-3)"
             />
           </div>
 
