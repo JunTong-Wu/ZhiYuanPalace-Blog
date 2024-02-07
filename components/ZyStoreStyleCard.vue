@@ -58,10 +58,7 @@ const openCard = () => {
       element.style.height = windowHeight + "px";
       element.style.borderRadius = "0";
       setTimeout(() => {
-        // element.style.opacity = "0";
-        setTimeout(() => {
-          router.push(goLink);
-        }, 500);
+        router.push(goLink);
       }, 400);
     }, 4);
   }
