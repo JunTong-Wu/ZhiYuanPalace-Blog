@@ -2,14 +2,18 @@
   <div
     relative
     class="zy-icon"
-    :class="{ filled: filled }"
+    :class="{ activated: activated }"
     :style="{ '--size': size, width: size, height: size }"
   >
-    <div v-html="lineIcon" flex :style="{ '--icon-color': lineColor }"></div>
     <div
-      v-html="filledIcon"
+      v-html="defaultIcon"
       flex
-      :style="{ '--icon-color': filledColor }"
+      :style="{ '--icon-color': defaultColor }"
+    ></div>
+    <div
+      v-html="activatedIcon"
+      flex
+      :style="{ '--icon-color': activatedColor }"
     ></div>
   </div>
 </template>
@@ -21,34 +25,34 @@ export default defineComponent({
       type: String,
       default: "1rem",
     },
-    lineName: {
+    defaultName: {
       type: String,
       default: "",
     },
-    lineColor: {
+    defaultColor: {
       type: String,
       default: "inherit",
     },
-    filledName: {
+    activatedName: {
       type: String,
       default: "",
     },
-    filledColor: {
+    activatedColor: {
       type: String,
       default: "inherit",
     },
-    filled: {
+    activated: {
       type: Boolean,
       default: false,
     },
   },
   setup(props) {
-    const lineIcon = getSvgByName(props.lineName);
-    const filledIcon = getSvgByName(props.filledName);
+    const defaultIcon = getSvgByName(props.defaultName);
+    const activatedIcon = getSvgByName(props.activatedName);
     return {
       props,
-      lineIcon,
-      filledIcon,
+      defaultIcon,
+      activatedIcon,
     };
   },
 });
@@ -71,7 +75,7 @@ export default defineComponent({
   > div:nth-of-type(2) {
     opacity: 0;
   }
-  &.filled {
+  &.activated {
     > div:first-of-type {
       opacity: 0;
     }

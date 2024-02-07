@@ -14,11 +14,11 @@
           <div w-7 flex justify-center>
             <ZyIcon
               size="1.25rem"
-              :lineName="n.lineIcon"
-              lineColor="var(--text-3)"
-              :filledName="n.filledIcon"
-              :filled="routerActivate(n.path)"
-              filled-color="var(--primary-6)"
+              :defaultName="n.defaultIcon"
+              defaultColor="var(--text-3)"
+              :activatedName="n.activatedIcon"
+              :activated="routerActivate(n.path)"
+              activated-color="var(--primary-6)"
             />
           </div>
 

@@ -23,7 +23,7 @@
             title="搜索"
             type="icon"
           >
-            <ZyIcon size="0.75rem" lineName="search" />
+            <ZyIcon size="0.75rem" defaultName="search" />
           </zy-button>
           <zy-button
             flex
@@ -33,8 +33,12 @@
             title="全屏/退出全屏"
             type="icon"
           >
-            <ZyIcon v-if="!fullScreenFlag" size="0.75rem" lineName="maximize" />
-            <ZyIcon v-else size="0.75rem" lineName="minimize" />
+            <ZyIcon
+              v-if="!fullScreenFlag"
+              size="0.75rem"
+              defaultName="maximize"
+            />
+            <ZyIcon v-else size="0.75rem" defaultName="minimize" />
           </zy-button>
           <!-- 多语言抽屉 -->
           <zy-popover title="切换语言" background="var(--bg-4)">
@@ -46,7 +50,7 @@
                 title="切换语言"
                 type="icon"
               >
-                <ZyIcon size="0.75rem" lineName="language" />
+                <ZyIcon size="0.75rem" defaultName="language" />
               </zy-button>
             </template>
             <template #actions>
@@ -79,8 +83,8 @@
             title="日间/夜间"
             type="icon"
           >
-            <ZyIcon size="0.75rem" hidden dark:inline-block lineName="sun" />
-            <ZyIcon size="0.75rem" dark:hidden lineName="moon" />
+            <ZyIcon size="0.75rem" hidden dark:inline-block defaultName="sun" />
+            <ZyIcon size="0.75rem" dark:hidden defaultName="moon" />
           </zy-button>
           <zy-button
             flex
@@ -90,7 +94,7 @@
             title="更多选项"
             type="icon"
           >
-            <ZyIcon size="0.75rem" lineName="more" />
+            <ZyIcon size="0.75rem" defaultName="more" />
           </zy-button>
         </div>
       </div>
@@ -108,7 +112,7 @@
               title="搜索"
               type="transparent"
             >
-              <ZyIcon size="0.75rem" lineName="search" />
+              <ZyIcon size="0.75rem" defaultName="search" />
             </zy-button>
             <zy-button
               w-header
@@ -117,7 +121,7 @@
               title="更多选项"
               type="transparent"
             >
-              <ZyIcon lineName="more" />
+              <ZyIcon defaultName="more" />
             </zy-button>
           </div>
         </div>

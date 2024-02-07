@@ -60,7 +60,7 @@
             @mousemove.stop
             @mouseup.stop
           >
-            <ZyIcon size="1.2rem" lineName="line-md:close-small" />
+            <ZyIcon size="1.2rem" defaultName="line-md:close-small" />
           </span>
         </div>
         <div h-full overflow-auto>

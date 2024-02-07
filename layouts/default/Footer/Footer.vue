@@ -27,11 +27,11 @@
         justify-center
       >
         <ZyIcon
-          :lineName="n.lineIcon"
-          lineColor="var(--text-3)"
-          :filledName="n.filledIcon"
-          :filled="routerActivate(n.path)"
-          filled-color="var(--primary-6)"
+          :defaultName="n.defaultIcon"
+          defaultColor="var(--text-3)"
+          :activatedName="n.activatedIcon"
+          :activated="routerActivate(n.path)"
+          activatedColor="var(--primary-6)"
         />
       </zy-link>
     </div>
