@@ -117,23 +117,23 @@ export default defineComponent({
 * Type Default
 **/
 button.zy-button-default {
-  background-color: white;
-  color: var(--primary-6);
+  background-color: var(--bg-4);
+  color: var(--text-1);
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
   border-radius: 9999px;
   border: none;
-  box-shadow: 5px 5px 10px rgba(108, 106, 212, 0.25), inset 2px 2px 6px #eef1f9,
-    inset -5px -5px 10px #dfe3ef;
+  box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--bg-5),
+    inset -5px -5px 10px var(--bg-5);
 }
 @media (hover: hover) {
   .pc button.zy-button-default:hover {
-    background-color: var(--primary-6);
+    background-color: var(--primary-5);
     color: white;
-    box-shadow: 5px 5px 10px rgba(108, 106, 212, 0.25),
-      inset 2px 2px 6px var(--primary-7), inset -5px -5px 10px var(--primary-7);
+    box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--primary-7),
+      inset -5px -5px 10px var(--primary-7);
   }
 }
 
