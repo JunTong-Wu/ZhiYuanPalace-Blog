@@ -9,4 +9,7 @@ useHead({
     class: "page-shuoshuo",
   },
 });
+definePageMeta({
+  middleware: "transition",
+});
 </script>

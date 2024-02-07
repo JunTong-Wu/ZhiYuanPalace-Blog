@@ -9,4 +9,7 @@ useHead({
     class: "page-photo",
   },
 });
+definePageMeta({
+  middleware: "transition",
+});
 </script>

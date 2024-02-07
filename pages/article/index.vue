@@ -13,5 +13,7 @@ useHead({
     class: "page-article",
   },
 });
-const { locale } = useI18n();
+definePageMeta({
+  middleware: "transition",
+});
 </script>

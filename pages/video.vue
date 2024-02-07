@@ -9,4 +9,7 @@ useHead({
     class: "page-video",
   },
 });
+definePageMeta({
+  middleware: "transition",
+});
 </script>

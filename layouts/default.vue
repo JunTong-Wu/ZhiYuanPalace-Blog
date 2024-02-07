@@ -30,11 +30,6 @@ import Sidebar from "./default/Sidebar/Sidebar.vue";
 .main-view.transition-in {
   top: 0;
   opacity: 1;
-  transition: top 200ms;
-}
-.main-view.transition-out {
-  top: 0;
-  opacity: 0;
-  transition: opacity 100ms;
+  transition: top 200ms, opacity 200ms;
 }
 </style>
