@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout-default">
     <Header pl-sidebar />
     <main flex-1 pl-sidebar pt-header transition-padding bg="bg-transparent">
       <div

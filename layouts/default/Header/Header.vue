@@ -6,11 +6,7 @@
       items-center
       justify-between
       h-full
-      px-0
-      sm:px-6
-      lg:px-24
       lg:py-3
-      xl:px-24
     >
       <div class="horizontal-layout"></div>
       <div class="horizontal-layout">
@@ -79,7 +75,7 @@
             flex
             items-center
             justify-center
-            @click="darkModeSwitch"
+            @click="darkModeSwitch()"
             title="日间/夜间"
             type="icon"
           >
@@ -181,17 +177,6 @@ const switchLanguage = (code: any, iso: any) => {
 };
 
 // 夜间模式
-const darkModeInit = () => {
-  if (process.client) {
-    const isDarkmode = (window as any).isDarkmode;
-    if (isDarkmode) {
-    } else {
-    }
-  }
-};
-onMounted(() => {
-  darkModeInit();
-});
 const darkModeSwitch = () => {
   if (!document.documentElement.classList.contains("dark")) {
     document.documentElement.classList.add("dark");
@@ -337,10 +322,10 @@ const closePersonalDrawer = () => {
 }
 .zy-header {
   transition: all 200ms;
-  backdrop-filter: blur(8px);
+  /* backdrop-filter: blur(8px); */
 }
 .zy-header.has-scroll {
-  background-color: var(--bg-mask);
+  background-color: var(--bg-2);
 }
 .zy-header-inner {
   position: relative;

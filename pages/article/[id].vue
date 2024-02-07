@@ -6,7 +6,6 @@
 </template>
 <script setup lang="ts">
 definePageMeta({
-  layout: "article",
   middleware: "transition",
 });
 </script>
