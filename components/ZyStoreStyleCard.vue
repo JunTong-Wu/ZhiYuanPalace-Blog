@@ -1,18 +1,19 @@
-import type { add } from 'lodash';
 <template>
-  <div
+  <a
+    class="zy-store-style-card"
     id="cardElement1"
     bg="bg-2"
-    rounded-xl
+    rounded-2xl
     w-full
     h-full
     flex
     items-center
     justify-center
-    @click="openCard()"
+    :href="goLink"
+    @click.prevent="openCard()"
   >
     <div class="text">GO 1</div>
-  </div>
+  </a>
 </template>
 <script setup lang="ts">
 const goLink = `/article/1`;
@@ -57,7 +58,7 @@ const openCard = () => {
       element.style.height = windowHeight + "px";
       element.style.borderRadius = "0";
       setTimeout(() => {
-        element.style.background = "var(--bg-1)";
+        // element.style.opacity = "0";
         setTimeout(() => {
           router.push(goLink);
         }, 500);
@@ -67,3 +68,12 @@ const openCard = () => {
 };
 onMounted(() => {});
 </script>
+<style scoped>
+.zy-store-style-card {
+  color: var(--text-1);
+  cursor: pointer;
+}
+.zy-store-style-card.transition {
+  /* box-shadow: 0 0 150px rgb(0 0 0 / 0.15) !important; */
+}
+</style>

@@ -212,6 +212,10 @@ export default defineComponent({
   color: var(--text-1);
 }
 
+:root:has(.page-article-details) {
+  background: var(--bg-2);
+}
+
 .vertical-layout {
   display: none;
 }
