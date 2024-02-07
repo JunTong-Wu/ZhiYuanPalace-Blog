@@ -98,6 +98,12 @@ a {
 }
 
 :root {
+  --icon-color-1: #26affb;
+  --icon-color-2: #0f59ee;
+  --logo-color-1: #26affb;
+  --logo-color-2: #0f59ee;
+}
+:root {
   --primary-7: #0062ff; //点击
   --primary-6: #146fff; //常规
   --primary-5: #297bff; //悬浮
@@ -106,14 +112,23 @@ a {
   --primary-2: #66a1ff; //文字禁用
   --primary-1: #7aadff; //浅色/白底悬浮
 }
+// :root {
+//   --primary-7: #ff0033; //点击
+//   --primary-6: #ff204c; //常规
+//   --primary-5: #ff3f66; //悬浮
+//   --primary-4: #ff5f7f; //特殊场景
+//   --primary-3: #fe7f98; //一般禁用
+//   --primary-2: #fe9eb2; //文字禁用
+//   --primary-1: #febecb; //浅色/白底悬浮
+// }
 :root {
-  --secondary-7: #06c19c; //点击
-  --secondary-6: #21cbaa; //常规
-  --secondary-5: #3cd5b7; //悬浮
-  --secondary-4: #58e0c5; //特殊场景
-  --secondary-3: #73ead2; //一般禁用
-  --secondary-2: #8ef4e0; //文字禁用
-  --secondary-1: #a9feed; //浅色/白底悬浮
+  --secondary-7: #00d6d6; //点击
+  --secondary-6: #22dddd; //常规
+  --secondary-5: #44e4e4; //悬浮
+  --secondary-4: #66ebeb; //特殊场景
+  --secondary-3: #88f1f1; //一般禁用
+  --secondary-2: #aaf8f8; //文字禁用
+  --secondary-1: #ccffff; //浅色/白底悬浮
 }
 :root {
   --bg-best: var(--gray-color-1); //最白

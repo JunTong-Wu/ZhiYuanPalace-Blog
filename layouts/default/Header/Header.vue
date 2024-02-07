@@ -121,7 +121,7 @@
               title="更多选项"
               type="transparent"
             >
-              <ZyIcon defaultName="more" />
+              <ZyIcon size="0.75rem" defaultName="more" />
             </zy-button>
           </div>
         </div>

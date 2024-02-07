@@ -11,7 +11,7 @@
     overflow-hidden
   >
     <div h-header flex items-center class="icon-wrapper">
-      <img h-7 ml-6 src="@/assets/image/logo.png" alt="logo" />
+      <ZyIcon size="1.75rem" ml-6 defaultName="logo" />
       <svg
         v-if="locale == 'zh-CN'"
         fill-current

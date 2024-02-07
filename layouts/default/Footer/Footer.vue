@@ -27,6 +27,7 @@
         justify-center
       >
         <ZyIcon
+          size="1.3rem"
           :defaultName="n.defaultIcon"
           defaultColor="var(--text-4)"
           :activatedName="n.activatedIcon"
