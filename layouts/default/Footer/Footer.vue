@@ -8,8 +8,7 @@
     z-20
     flex
     justify-center
-    bg="bg-mask"
-    backdrop-blur
+    bg="bg-2"
   >
     <div
       h-full
