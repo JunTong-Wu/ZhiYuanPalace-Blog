@@ -1,7 +1,19 @@
 <template>
-  <Head>
-    <Title>知鸢宫</Title>
-  </Head>
+  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
+    <Head>
+      <template v-for="link in head.link" :key="link.id">
+        <Link
+          :id="link.id"
+          :rel="link.rel"
+          :href="link.href"
+          :hreflang="link.hreflang"
+        />
+      </template>
+      <template v-for="meta in head.meta" :key="meta.id">
+        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
+      </template>
+    </Head>
+  </Html>
   <ZySuperResponsive>
     <NuxtLayout>
       <NuxtPage mx-auto />
@@ -12,6 +24,14 @@
 import "@/assets/css/style.scss";
 import "@/assets/css/common-to-live2d.scss";
 
+// 多语言
+const head = useLocaleHead({
+  addDirAttribute: true,
+  identifierAttribute: "id",
+  addSeoAttributes: true,
+});
+
+// Live2D
 const myLive2dConfig = () => {
   const OML2D = (window as any).OML2D;
   if (!OML2D) {
@@ -60,7 +80,6 @@ const myLive2dConfig = () => {
     });
   }
 };
-
 if (process.client) {
   // const script = document.createElement("script");
   // script.src = "/static/js/oh-my-live2d.min.js";

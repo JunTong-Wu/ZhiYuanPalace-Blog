@@ -15,8 +15,7 @@ import type { add } from 'lodash';
   </zy-link>
 </template>
 <script setup lang="ts">
-const { locale } = useI18n();
-const goLink = `/${locale.value}/article/1`;
+const goLink = `/article/1`;
 const router = useRouter();
 // onMounted(() => {
 //   router.beforeEach((to, from, next) => {

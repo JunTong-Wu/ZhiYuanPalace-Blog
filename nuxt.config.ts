@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ["@unocss/nuxt", "@nuxtjs/i18n"],
   i18n: {
+    baseUrl: "https://www.yiru.love",
     locales: [
       {
         code: "zh-CN",
@@ -26,10 +27,11 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: "zh-CN",
-    strategy: "prefix",
+    strategy: "no_prefix",
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_redirected",
+      alwaysRedirect: true,
     },
     vueI18n: "./i18n.config.ts",
     lazy: true,

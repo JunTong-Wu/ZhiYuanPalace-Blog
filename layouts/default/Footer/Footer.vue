@@ -20,7 +20,7 @@
       <zy-link
         v-if="linkList"
         v-for="n in linkList"
-        :to="`/${locale}${n.path}`"
+        :to="`${n.path}`"
         h-full
         w="[20%]"
         :title="$t(n.title)"
@@ -41,7 +41,6 @@
 const linkList = getNavigationMap();
 
 const route = useRoute();
-const { locale } = useI18n();
 const routerActivate = (path: string) => {
   if (path != "/") {
     if (route.path.includes(path)) {
@@ -50,11 +49,7 @@ const routerActivate = (path: string) => {
       return false;
     }
   } else {
-    if (
-      route.path == "/" ||
-      route.path == `/${locale.value}` ||
-      route.path == `/${locale.value}/`
-    ) {
+    if (route.path == "/") {
       return true;
     }
   }

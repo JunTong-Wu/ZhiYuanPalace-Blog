@@ -3,7 +3,7 @@
     <ul>
       <li v-for="n in linkList" h-14 flex mb-2>
         <zy-link
-          :to="`/${locale}${n.path}`"
+          :to="`${n.path}`"
           w-full
           :title="$t(n.title)"
           px-4
@@ -32,7 +32,6 @@
 const linkList = getNavigationMap();
 
 const route = useRoute();
-const { locale } = useI18n();
 const routerActivate = (path: string) => {
   if (path != "/") {
     if (route.path.includes(path)) {
@@ -41,11 +40,7 @@ const routerActivate = (path: string) => {
       return false;
     }
   } else {
-    if (
-      route.path == "/" ||
-      route.path == `/${locale.value}` ||
-      route.path == `/${locale.value}/`
-    ) {
+    if (route.path == "/") {
       return true;
     }
   }

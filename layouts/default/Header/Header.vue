@@ -67,7 +67,7 @@
                     v-for="lang in (availableLocales as any)"
                     :key="lang.code"
                     :to="switchLocalePath(lang.code)"
-                    @click="switchLanguage(lang.code)"
+                    @click="switchLanguage(lang.code, lang.iso)"
                   >
                     <label inline-block w-full h-full flex justify-between>
                       <span text-xs>{{ lang.name }}</span>
@@ -184,17 +184,16 @@ onMounted(() => {
 });
 
 // 多语言
-const { locale, locales } = useI18n();
+const { locale, locales, setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 
 const availableLocales = computed(() => {
   return locales.value;
 });
 
-const switchLanguage = (code: any) => {
-  const router = useRouter();
-  const to = switchLocalePath(code);
-  router.replace({ path: to });
+const switchLanguage = (code: any, iso: any) => {
+  setLocale(code);
+  document.documentElement.lang = iso;
 };
 
 // 夜间模式
