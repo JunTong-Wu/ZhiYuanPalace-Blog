@@ -6,7 +6,7 @@
 .main-view.transition-in {
   top: 0;
   opacity: 1;
-  transition: top 600ms, opacity 600ms;
+  transition: top 400ms, opacity 400ms;
 }
 
 @keyframes an-fade-in {
@@ -21,11 +21,11 @@
 }
 .zy-header-inner {
   .mobile-title {
-    animation: an-fade-in 0.2s;
+    animation: an-fade-in 0.4s;
   }
 }
 .zy-header {
-  transition: transform 600ms;
+  transition: transform 400ms;
 }
 .zy-header.transition-translate-out {
   backdrop-filter: none;
@@ -89,6 +89,7 @@
       }
     }
   }
+  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.1);
 }
 @media (orientation: portrait) {
   .zy-store-style-card.transition {
