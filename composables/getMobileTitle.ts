@@ -1,5 +1,5 @@
 export const getMobileTitle = (path: string) => {
-  let title = "";
+  let title = "empty";
   const linkList = getNavigationMap();
   const getItem = linkList.find((item) => {
     return item.path == path;
