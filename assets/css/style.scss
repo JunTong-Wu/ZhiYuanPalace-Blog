@@ -64,7 +64,7 @@ a {
 }
 @media (min-width: 1200px) and (orientation: landscape) {
   :root {
-    --header-bar-height: 4rem;
+    --header-bar-height: 5rem;
     --centered-width: 75rem;
   }
 }
@@ -139,7 +139,7 @@ a {
   --bg-4: var(--gray-color-1); //三级容器背景
   --bg-5: var(--gray-color-2); //下拉弹出框、Tooltip 背景颜色
   --bg-mask: rgba(229, 232, 238, 0.5); //遮罩层
-  --bg-header-bar: rgba(248, 249, 252, 0.2); //Header栏背景
+  --bg-header-bar: rgba(248, 249, 252, 0.5); //Header栏背景
   --text-1: var(--gray-color-24); //强调/正文标题
   --text-2: var(--gray-color-18); //次强调/正文标
   --text-3: var(--gray-color-12); //次要信息

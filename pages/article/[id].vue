@@ -30,4 +30,12 @@ definePageMeta({
 });
 const route = useRoute();
 const id = route.params.id;
+
+// if (process.client) {
+//   const header = document.querySelector("header");
+//   if (header) {
+//     header.classList.add("dark");
+//   }
+// }
+onMounted(() => {});
 </script>

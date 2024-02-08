@@ -6,10 +6,10 @@
     right-0
     h-header
     z-24
-    class="zy-header"
-    bg="bg-header-bar"
-    color-text-1
     backdrop-blur-xl
+    color-text-1
+    class="zy-header transition-translate-in"
+    :class="{ dark: headerDark }"
   >
     <div
       class="zy-header-inner"
@@ -266,10 +266,13 @@ const toggleFullScreen = () => {
 
 // 标题
 const route = useRoute();
-const router = useRouter();
+const path = route.fullPath;
 const title = ref("");
+title.value = getMobileTitle(path);
+const router = useRouter();
 const titleDisable = ref(true);
-title.value = getMobileTitle(route.fullPath);
+const headerDark = ref(false);
+
 router.beforeEach((to, from, next) => {
   titleDisable.value = false;
   next();
@@ -294,13 +297,6 @@ const openMoreDrawer = () => {
 const closeMoreDrawer = () => {
   moreDisplay.value = false;
 };
-const personalDisplay = ref(false);
-const openPersonalDrawer = () => {
-  personalDisplay.value = true;
-};
-const closePersonalDrawer = () => {
-  personalDisplay.value = false;
-};
 </script>
 <style lang="scss" scoped>
 @media (orientation: landscape) {
@@ -310,21 +306,10 @@ const closePersonalDrawer = () => {
     padding-right: 1rem;
   }
 }
-</style>
-<style lang="scss" scoped>
-@keyframes an-fade-in {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
+.zy-header {
+  background-color: transparent;
 }
-.zy-header-inner {
-  .mobile-title {
-    animation: an-fade-in 0.2s;
-  }
+.zy-header.has-scroll {
+  background-color: var(--bg-header-bar);
 }
 </style>

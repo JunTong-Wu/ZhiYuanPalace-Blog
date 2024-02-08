@@ -20,12 +20,24 @@ export default defineNuxtRouteMiddleware((to, from) => {
             mainView.scrollTo({ top: 0, behavior: "smooth" });
           }, 40);
         }
-      } else if (isFirstLayer(from.fullPath) && !isFirstLayer(to.fullPath)) {
-        // const articleView = document.querySelector(".article-view");
-        // if (articleView) {
-        //   // console.log(22222);
-        // }
-        // return abortNavigation();
+      } else if (!isFirstLayer(from.fullPath) && isFirstLayer(to.fullPath)) {
+        const header = document.querySelector("header");
+        if (header) {
+          header.classList.remove("transition-translate-in");
+          header.classList.add("transition-translate-out");
+          setTimeout(() => {
+            header.classList.remove("transition-translate-out");
+            header.classList.add("transition-translate-in");
+          }, 600);
+        }
+        const mainView = document.querySelector(".main-view");
+        if (mainView) {
+          mainView.classList.remove("transition-in");
+          setTimeout(() => {
+            mainView.classList.add("transition-in");
+            mainView.scrollTo({ top: 0, behavior: "smooth" });
+          }, 40);
+        }
       }
     }
   } else {

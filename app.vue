@@ -23,6 +23,7 @@
 <script setup lang="ts">
 import "@/assets/css/style.scss";
 import "@/assets/css/common-to-live2d.scss";
+import "@/assets/css/transition.scss";
 
 // 多语言
 const head = useLocaleHead({
@@ -50,7 +51,7 @@ const myLive2dConfig = () => {
     OML2D.loadOhMyLive2D({
       sayHello: false,
       mobileShow: true,
-      transitionTime: 400,
+      transitionTime: 600,
       source: "https://pan.yiru.love/project-zhiyuanpalace/live2d/",
       models: {
         path: "/草神/草神.model3.json",

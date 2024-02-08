@@ -61,72 +61,23 @@ const openCard = (element: any) => {
         element.style.left = mainViewLeft + "px";
         element.style.width = windowWidth - mainViewLeft + "px";
         element.style.height = windowHeight + "px";
-        element.style.borderRadius = "0";
-        // element.classList.remove("transition");
+        const header = document.querySelector("header");
+        if (header) {
+          header.classList.remove("transition-translate-in");
+          header.classList.add("transition-translate-out");
+        }
         setTimeout(() => {
           let href = element.href;
           let url = new URL(href);
           let path = url.pathname;
           router.replace(path);
-        }, 400);
+          if (header) {
+            header.classList.remove("transition-translate-out");
+            header.classList.add("transition-translate-in");
+          }
+        }, 600);
       });
     });
   }
 };
-onMounted(() => {});
 </script>
-<style lang="scss">
-.zy-store-style-card {
-  .zy-store-style-card-inner {
-    width: 100%;
-    height: 100%;
-    .zy-card-image {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .zy-card-title {
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 0.5rem;
-        font-size: 1rem;
-        background-color: rgba(0, 0, 0, 0.3);
-        color: white;
-        * {
-          margin: 0;
-          text-shadow: 0 0 0.5rem black;
-        }
-      }
-    }
-  }
-}
-.zy-store-style-card.transition {
-  /* transform: scale(1.1); */
-  transition: all 400ms;
-  .zy-card-image {
-    width: 100%;
-    height: 18rem;
-    img {
-      height: 18rem;
-    }
-    .zy-card-title {
-      transition: all 400ms;
-      padding: 1rem;
-      font-size: 1.5rem;
-      background-color: transparent;
-      * {
-        margin: 0;
-      }
-    }
-  }
-  /* box-shadow: 0 0 150px rgb(0 0 0 / 0.15) !important; */
-}
-</style>

@@ -21,15 +21,3 @@ import Footer from "./default/Footer/Footer.vue";
 import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
 </script>
-<style lang="scss" scoped>
-.main-view {
-  position: relative;
-  top: 100px;
-  opacity: 0;
-}
-.main-view.transition-in {
-  top: 0;
-  opacity: 1;
-  transition: top 200ms, opacity 200ms;
-}
-</style>
