@@ -109,7 +109,16 @@
       <div class="vertical-layout" w-full h-full>
         <div flex items-center w-full h-full justify-between>
           <div h-full flex items-center justify-center>
-            <h1 text-sm font-normal ml-4 my-0 class="mobile-title">title</h1>
+            <h1
+              text-sm
+              font-normal
+              ml-4
+              my-0
+              class="mobile-title"
+              v-if="titleDisable"
+            >
+              {{ $t(title) }}
+            </h1>
           </div>
           <div flex items-center h-full>
             <zy-button
@@ -156,24 +165,6 @@
   </header>
 </template>
 <script setup lang="ts">
-// 样式
-onMounted(() => {
-  window.addEventListener("scroll", () => {
-    const top = window.scrollY;
-    if (top > 1) {
-      const header = document.querySelector(".zy-header");
-      if (header) {
-        header.classList.add("has-scroll");
-      }
-    } else {
-      const header = document.querySelector(".zy-header");
-      if (header) {
-        header.classList.remove("has-scroll");
-      }
-    }
-  });
-});
-
 // 多语言
 const { locale, locales, setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
@@ -274,19 +265,19 @@ const toggleFullScreen = () => {
 };
 
 // 标题
-// const route = useRoute();
-// const router = useRouter();
-// const title = ref("");
-// const titleDisable = ref(true);
-// title.value = getTitle(route.fullPath);
-// router.beforeEach((to, from, next) => {
-//   titleDisable.value = false;
-//   next();
-//   setTimeout(() => {
-//     title.value = getTitle(to.fullPath);
-//     titleDisable.value = true;
-//   }, 200);
-// });
+const route = useRoute();
+const router = useRouter();
+const title = ref("");
+const titleDisable = ref(true);
+title.value = getMobileTitle(route.fullPath);
+router.beforeEach((to, from, next) => {
+  titleDisable.value = false;
+  next();
+  setTimeout(() => {
+    title.value = getMobileTitle(to.fullPath);
+    titleDisable.value = true;
+  }, 200);
+});
 
 // 抽屉
 const searchDisplay = ref(false);
@@ -331,25 +322,7 @@ const closePersonalDrawer = () => {
     opacity: 1;
   }
 }
-.zy-header {
-  transition: all 200ms;
-  /* backdrop-filter: blur(8px); */
-}
 .zy-header-inner {
-  position: relative;
-  &::after {
-    //content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 10;
-    pointer-events: none;
-    background: url(https://www.logosc.cn/img/MulticolorGlows.png) no-repeat
-      top/40rem;
-  }
-
   .mobile-title {
     animation: an-fade-in 0.2s;
   }
