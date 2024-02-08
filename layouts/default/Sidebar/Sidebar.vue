@@ -6,9 +6,9 @@
     left-0
     z-60
     w-sidebar
-    transition-width
     bg="bg-1"
     overflow-hidden
+    class="zy-side-bar"
   >
     <div h-header flex items-center class="icon-wrapper">
       <ZyIcon size="1.75rem" ml-6 defaultName="logo" />

@@ -1,9 +1,9 @@
 <template>
   <div
-    class="zy-store-style-card transition"
+    class="zy-store-style-card transition-in"
     fixed
     inset-0
-    pl-sidebar
+    l-sidebar
     bg="bg-3"
     z-20
   >

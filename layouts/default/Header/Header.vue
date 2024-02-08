@@ -19,7 +19,19 @@
       h-full
       lg:py-3
     >
-      <div class="horizontal-layout"></div>
+      <div class="horizontal-layout">
+        <zy-button
+          v-if="gobackFlag"
+          flex
+          items-center
+          justify-center
+          @click="goback()"
+          title="返回"
+          type="icon"
+        >
+          <ZyIcon size="0.75rem" defaultName="arrow-left" />
+        </zy-button>
+      </div>
       <div class="horizontal-layout">
         <div flex justify-end h-full items-center gap-2>
           <zy-button
@@ -108,11 +120,22 @@
 
       <div class="vertical-layout" w-full h-full>
         <div flex items-center w-full h-full justify-between>
-          <div h-full flex items-center justify-center>
+          <div h-full flex items-center justify-center pl-2>
+            <zy-button
+              v-if="gobackFlag"
+              flex
+              items-center
+              justify-center
+              @click="goback()"
+              title="返回"
+              type="transparent"
+            >
+              <ZyIcon defaultName="arrow-left" />
+            </zy-button>
             <h1
               text-sm
               font-normal
-              ml-4
+              ml-2
               my-0
               class="mobile-title"
               v-if="titleDisable"
@@ -128,7 +151,7 @@
               title="搜索"
               type="transparent"
             >
-              <ZyIcon size="0.75rem" defaultName="search" />
+              <ZyIcon defaultName="search" />
             </zy-button>
             <zy-button
               w-header
@@ -137,7 +160,7 @@
               title="更多选项"
               type="transparent"
             >
-              <ZyIcon size="0.75rem" defaultName="more" />
+              <ZyIcon defaultName="more" />
             </zy-button>
           </div>
         </div>
@@ -252,7 +275,7 @@ const fullExit = () => {
   }
 };
 
-// 切换
+// 切换全屏
 const fullScreenFlag = ref(false);
 const toggleFullScreen = () => {
   if (fullScreenFlag.value == false) {
@@ -281,6 +304,58 @@ router.beforeEach((to, from, next) => {
     titleDisable.value = true;
   }, 200);
 });
+
+// 返回
+const isFirstLayer = (path: string) => {
+  // 移除路径两端的斜杠，然后分割路径
+  const parts = path
+    .trim()
+    .replace(/^\/+|\/+$/g, "")
+    .split("/");
+
+  // 如果路径是"/"或者分割后的部分数量等于1，则返回true
+  // 否则返回false
+  return path === "/" || (parts.length === 1 && parts[0] !== "");
+};
+const gobackFlag = ref(false);
+const gobackInit = (path: string) => {
+  if (isFirstLayer(path)) {
+    gobackFlag.value = false;
+  } else {
+    gobackFlag.value = true;
+  }
+};
+gobackInit(route.fullPath);
+router.beforeEach((to, from, next) => {
+  gobackInit(to.fullPath);
+  next();
+});
+const getParentPath = () => {
+  let currentPath = window.location.pathname;
+  let lastIndex = currentPath.lastIndexOf("/");
+  // 如果当前路径已经是根路径，或者只有一个斜杠，则没有上一级路径
+  if (lastIndex <= 0) {
+    return "/";
+  }
+  // 去掉最后一个路径段
+  let parentPath = currentPath.slice(0, lastIndex);
+  // 去掉尾部斜杠
+  return parentPath.replace(/\/+$/, "");
+};
+const goback = () => {
+  const cardView = document.querySelector(".zy-store-style-card.transition-in");
+  if (cardView) {
+    cardView.classList.add("transition-out");
+  }
+  const header = document.querySelector("header");
+  if (header) {
+    header.classList.remove("transition-translate-in");
+    header.classList.add("transition-translate-out");
+  }
+  setTimeout(() => {
+    router.replace(getParentPath());
+  }, 600);
+};
 
 // 抽屉
 const searchDisplay = ref(false);

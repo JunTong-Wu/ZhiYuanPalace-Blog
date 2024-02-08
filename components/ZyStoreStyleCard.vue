@@ -55,7 +55,7 @@ const openCard = (element: any) => {
     element.style.zIndex = "20";
 
     setTimeout(() => {
-      element.classList.add("transition");
+      element.classList.add("transition-in");
       setTimeout(() => {
         element.style.top = 0 + "px";
         element.style.left = mainViewLeft + "px";
