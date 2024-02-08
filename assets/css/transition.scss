@@ -90,6 +90,7 @@
     }
   }
   box-shadow: 0 0 5rem rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
 }
 @media (orientation: portrait) {
   .zy-store-style-card.transition-in {
@@ -105,10 +106,12 @@
         font-size: 1.25rem;
       }
     }
+    border-radius: 0.75rem;
   }
 }
 .zy-store-style-card.transition-out {
   transform: translateX(100%) scale(0.5);
+  border-radius: 1.5rem;
 }
 
 .zy-side-bar {
