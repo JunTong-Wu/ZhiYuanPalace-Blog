@@ -4,10 +4,10 @@
     top-0
     bottom-0
     left-0
-    z-24
+    z-60
     w-sidebar
     transition-width
-    bg="bg-2"
+    bg="bg-1"
     overflow-hidden
   >
     <div h-header flex items-center class="icon-wrapper">

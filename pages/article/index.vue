@@ -1,7 +1,12 @@
 <template>
   <div>
-    <div w-60 h-40>
-      <zy-store-style-card>GO 1</zy-store-style-card>
+    <div w-60 h-40 mb-4 v-for="n in 3">
+      <zy-store-style-card :href="`/article/${n}`">
+        <template #image>
+          <img :src="`https://pan.yiru.love/uploads/article/${n}.jpg`" alt="" />
+        </template>
+        <template #title> GO {{ n }} </template>
+      </zy-store-style-card>
     </div>
   </div>
 </template>

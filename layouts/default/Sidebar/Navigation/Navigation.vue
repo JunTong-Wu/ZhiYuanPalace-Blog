@@ -56,7 +56,7 @@ const routerActivate = (path: string) => {
     white-space: nowrap;
   }
   &.activate {
-    background-color: var(--bg-3);
+    background-color: var(--bg-2);
   }
 }
 

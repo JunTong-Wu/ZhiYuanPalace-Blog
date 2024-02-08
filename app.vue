@@ -102,3 +102,41 @@ useHead({
   },
 });
 </script>
+<style lang="scss">
+:root {
+  background: var(--bg-2);
+  color: var(--text-1);
+}
+
+.vertical-layout {
+  display: none;
+}
+.horizontal-layout {
+  display: none;
+}
+
+@media (orientation: landscape) {
+  /* 横屏 */
+  .horizontal-layout {
+    display: block;
+  }
+}
+@media (orientation: portrait) {
+  /* 竖屏 */
+  .vertical-layout {
+    display: block;
+  }
+}
+@media (pointer: fine) {
+  /* 使用鼠标或手写笔 */
+}
+@media (pointer: coarse) {
+  /* 使用触摸屏 */
+}
+@media (hover: hover) {
+  /* 可以hover */
+}
+@media (hover: none) {
+  /* 不可以hover */
+}
+</style>

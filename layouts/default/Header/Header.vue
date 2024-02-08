@@ -1,5 +1,16 @@
 <template>
-  <header fixed top-0 left-0 right-0 h-header z-24 class="zy-header">
+  <header
+    fixed
+    top-0
+    left-0
+    right-0
+    h-header
+    z-24
+    class="zy-header"
+    bg="bg-header-bar"
+    color-text-1
+    backdrop-blur-xl
+  >
     <div
       class="zy-header-inner"
       flex
@@ -324,9 +335,6 @@ const closePersonalDrawer = () => {
   transition: all 200ms;
   /* backdrop-filter: blur(8px); */
 }
-.zy-header.has-scroll {
-  background-color: var(--bg-2);
-}
 .zy-header-inner {
   position: relative;
   &::after {
@@ -336,10 +344,10 @@ const closePersonalDrawer = () => {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 9;
+    z-index: 10;
     pointer-events: none;
     background: url(https://www.logosc.cn/img/MulticolorGlows.png) no-repeat
-      top/900px;
+      top/40rem;
   }
 
   .mobile-title {

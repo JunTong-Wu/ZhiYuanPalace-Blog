@@ -68,6 +68,7 @@ export default defineConfig({
         transparent: "transparent",
         mask: "var(--bg-mask)",
         primary: "var(--primary-5)",
+        headerBar: "var(--bg-header-bar)",
       },
       bordercolor: "var(--border-color)",
     },

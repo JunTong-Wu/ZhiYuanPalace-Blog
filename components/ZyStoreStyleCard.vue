@@ -1,24 +1,31 @@
 <template>
   <a
     class="zy-store-style-card"
-    id="cardElement1"
-    bg="bg-2"
+    bg="bg-3"
     rounded-2xl
     w-full
     h-full
-    flex
-    items-center
-    justify-center
-    :href="goLink"
-    @click.prevent="openCard()"
+    inline-block
+    overflow-hidden
+    cursor-pointer
+    color-text-1
+    @click.prevent="openCard($el)"
   >
-    <div class="text">GO 1</div>
+    <div class="zy-store-style-card-inner">
+      <div class="zy-card-image">
+        <slot name="image" />
+        <div class="zy-card-title">
+          <p>
+            <slot name="title" />
+          </p>
+        </div>
+      </div>
+    </div>
   </a>
 </template>
 <script setup lang="ts">
-const goLink = `/article/1`;
 const router = useRouter();
-const openCard = () => {
+const openCard = (element: any) => {
   const mainViewElement = document.querySelector(".main-view");
   let mainViewTop = 0;
   let mainViewLeft = 0;
@@ -29,7 +36,6 @@ const openCard = () => {
     mainViewTop = view.top;
     mainViewLeft = view.left;
   }
-  const element = document.getElementById("cardElement1");
   if (element) {
     // 获取元素的位置
     const rect = element.getBoundingClientRect();
@@ -47,30 +53,80 @@ const openCard = () => {
     element.style.width = rect.width + "px";
     element.style.height = rect.height + "px";
     element.style.zIndex = "20";
-    element.classList.add("transition");
 
-    // 添加过渡
     setTimeout(() => {
-      element.style.transition = "all 400ms ease-in-out 0s";
-      element.style.top = 0 + "px";
-      element.style.left = mainViewLeft + "px";
-      element.style.width = windowWidth - mainViewLeft + "px";
-      element.style.height = windowHeight + "px";
-      element.style.borderRadius = "0";
+      element.classList.add("transition");
       setTimeout(() => {
-        router.push(goLink);
-      }, 400);
-    }, 4);
+        element.style.top = 0 + "px";
+        element.style.left = mainViewLeft + "px";
+        element.style.width = windowWidth - mainViewLeft + "px";
+        element.style.height = windowHeight + "px";
+        element.style.borderRadius = "0";
+        // element.classList.remove("transition");
+        setTimeout(() => {
+          let href = element.href;
+          let url = new URL(href);
+          let path = url.pathname;
+          router.replace(path);
+        }, 400);
+      });
+    });
   }
 };
 onMounted(() => {});
 </script>
-<style scoped>
+<style lang="scss">
 .zy-store-style-card {
-  color: var(--text-1);
-  cursor: pointer;
+  .zy-store-style-card-inner {
+    width: 100%;
+    height: 100%;
+    .zy-card-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .zy-card-title {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        font-size: 1rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        * {
+          margin: 0;
+          text-shadow: 0 0 0.5rem black;
+        }
+      }
+    }
+  }
 }
 .zy-store-style-card.transition {
+  /* transform: scale(1.1); */
+  transition: all 400ms;
+  .zy-card-image {
+    width: 100%;
+    height: 18rem;
+    img {
+      height: 18rem;
+    }
+    .zy-card-title {
+      transition: all 400ms;
+      padding: 1rem;
+      font-size: 1.5rem;
+      background-color: transparent;
+      * {
+        margin: 0;
+      }
+    }
+  }
   /* box-shadow: 0 0 150px rgb(0 0 0 / 0.15) !important; */
 }
 </style>

@@ -5,7 +5,7 @@
     left-0
     right-0
     h-footer
-    z-20
+    z-10
     flex
     justify-center
     bg="bg-2"
