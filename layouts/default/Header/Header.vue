@@ -354,7 +354,7 @@ const goback = () => {
   }
   setTimeout(() => {
     router.replace(getParentPath());
-  }, 600);
+  }, 200);
 };
 
 // 抽屉

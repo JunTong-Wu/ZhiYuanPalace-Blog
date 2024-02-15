@@ -110,7 +110,8 @@
   }
 }
 .zy-store-style-card.transition-out {
-  transform: translateX(100%) scale(0.5);
+  transition: all 200ms, background 0s;
+  transform: translateX(100%);
   border-radius: 1.5rem;
 }
 

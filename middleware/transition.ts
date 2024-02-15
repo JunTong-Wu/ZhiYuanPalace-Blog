@@ -29,7 +29,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
           setTimeout(() => {
             header.classList.remove("transition-translate-out");
             header.classList.add("transition-translate-in");
-          }, 400);
+          }, 200);
         }
         const mainView = document.querySelector(".main-view");
         if (mainView) {
