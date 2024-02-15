@@ -81,13 +81,15 @@ const openCard = (element: any) => {
                 header.classList.remove("transition-translate-out");
                 header.classList.add("transition-translate-in");
               }
-              // 动画结束，删除临时卡片
-              document.body.removeChild(copyElement);
+              setTimeout(() => {
+                // 动画结束，删除临时卡片
+                document.body.removeChild(copyElement);
+              }, 100);
             }, 600);
           });
         }, 20);
-      }, 100);
-    }, 100);
+      }, 80);
+    }, 80);
   }
 };
 </script>
