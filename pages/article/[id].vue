@@ -7,7 +7,9 @@
       l-sidebar
       r-sidebar
       bg="bg-3"
-      overflow-auto
+      overflow-y-auto
+      overflow-x-hidden
+      pb-50
     >
       <div class="zy-store-style-card-inner">
         <div class="zy-card-image">
@@ -19,8 +21,25 @@
       </div>
       <div class="zy-store-style-card-text" p-4>
         <h1>Title</h1>
-        <p v-for="n in 100">
-          texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
         </p>
       </div>
     </div>
