@@ -1,6 +1,6 @@
 <template>
   <div grid grid-cols-12 gap-4>
-    <zy-store-style-card :href="`/article/${n}`" v-for="n in 10">
+    <zy-store-style-card :href="`/article/${n}`" v-for="n in 3">
       <template #image>
         <img :src="`https://pan.yiru.love/uploads/article/${n}.jpg`" alt="" />
       </template>

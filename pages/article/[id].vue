@@ -1,18 +1,27 @@
 <template>
-  <div
-    class="zy-store-style-card transition-in"
-    fixed
-    inset-0
-    l-sidebar
-    bg="bg-3"
-    z-20
-  >
-    <div class="zy-store-style-card-inner">
-      <div class="zy-card-image">
-        <img :src="`https://pan.yiru.love/uploads/article/${id}.jpg`" alt="" />
-        <div class="zy-card-title">
-          <p>GO {{ id }}</p>
+  <div>
+    <div
+      class="zy-store-style-card transition-in"
+      fixed
+      inset-0
+      l-sidebar
+      r-sidebar
+      bg="bg-3"
+      overflow-auto
+    >
+      <div class="zy-store-style-card-inner">
+        <div class="zy-card-image">
+          <img
+            :src="`https://pan.yiru.love/uploads/article/${id}.jpg`"
+            alt=""
+          />
         </div>
+      </div>
+      <div class="zy-store-style-card-text" p-4>
+        <h1>Title</h1>
+        <p v-for="n in 100">
+          texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
+        </p>
       </div>
     </div>
   </div>

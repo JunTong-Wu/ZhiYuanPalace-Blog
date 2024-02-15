@@ -1,7 +1,14 @@
 <template>
   <div class="layout-default">
-    <Header pl-sidebar />
-    <main flex-1 pl-sidebar pt-header transition-padding bg="bg-transparent">
+    <Header pl-sidebar pr-sidebar />
+    <main
+      flex-1
+      pl-sidebar
+      pr-sidebar
+      pt-header
+      transition-padding
+      bg="bg-transparent"
+    >
       <div
         text-base
         overflow-auto
@@ -14,10 +21,12 @@
     </main>
     <Footer class="vertical-layout" />
     <Sidebar class="horizontal-layout" />
+    <Toolbar class="horizontal-layout" />
   </div>
 </template>
 <script setup lang="ts">
 import Footer from "./default/Footer/Footer.vue";
 import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
+import Toolbar from "./default/Toolbar/Toolbar.vue";
 </script>

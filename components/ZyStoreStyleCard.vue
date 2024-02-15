@@ -65,7 +65,7 @@ const openCard = (element: any) => {
           setTimeout(() => {
             copyElement.style.top = 0 + "px";
             copyElement.style.left = mainViewLeft + "px";
-            copyElement.style.width = windowWidth - mainViewLeft + "px";
+            copyElement.style.width = windowWidth - mainViewLeft * 2 + "px";
             copyElement.style.height = windowHeight + "px";
             const header = document.querySelector("header");
             if (header) {

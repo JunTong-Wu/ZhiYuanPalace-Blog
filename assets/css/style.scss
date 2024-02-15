@@ -64,7 +64,6 @@ a {
 }
 @media (min-width: 1200px) and (orientation: landscape) {
   :root {
-    --header-bar-height: 5rem;
     --centered-width: 75rem;
   }
 }
@@ -98,19 +97,35 @@ a {
 }
 
 :root {
-  --icon-color-1: #26affb;
-  --icon-color-2: #0f59ee;
-  --logo-color-1: #26affb;
-  --logo-color-2: #0f59ee;
+  --icon-color-1: #00f168;
+  --icon-color-2: var(--text-1);
+  --logo-color-1: var(--text-1);
+  --logo-color-2: transparent;
 }
+
+*.dark {
+  --icon-color-1: #00f168;
+  --icon-color-2: var(--text-4);
+  --logo-color-1: #00f168;
+  --logo-color-2: transparent;
+}
+// :root {
+//   --primary-7: #0062ff; //点击
+//   --primary-6: #146fff; //常规
+//   --primary-5: #297bff; //悬浮
+//   --primary-4: #3d88ff; //特殊场景
+//   --primary-3: #5194ff; //一般禁用
+//   --primary-2: #66a1ff; //文字禁用
+//   --primary-1: #7aadff; //浅色/白底悬浮
+// }
 :root {
-  --primary-7: #0062ff; //点击
-  --primary-6: #146fff; //常规
-  --primary-5: #297bff; //悬浮
-  --primary-4: #3d88ff; //特殊场景
-  --primary-3: #5194ff; //一般禁用
-  --primary-2: #66a1ff; //文字禁用
-  --primary-1: #7aadff; //浅色/白底悬浮
+  --primary-7: #009a29; //点击
+  --primary-6: #00b42a; //常规
+  --primary-5: #23c343; //悬浮
+  --primary-4: #4cd263; //特殊场景
+  --primary-3: #7be188; //一般禁用
+  --primary-2: #aff0b5; //文字禁用
+  --primary-1: #e8ffea; //浅色/白底悬浮
 }
 // :root {
 //   --primary-7: #ff0033; //点击
