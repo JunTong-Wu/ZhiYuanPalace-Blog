@@ -39,6 +39,7 @@
   --card-height: 7rem;
   height: var(--card-height);
   border-radius: 1rem;
+  transition: transform 100ms;
   .zy-store-style-card-inner {
     height: var(--card-height);
     position: relative;
@@ -72,6 +73,9 @@
       }
     }
   }
+}
+.zy-store-style-card.transition-prepare {
+  transform: scale(0.9);
 }
 .zy-store-style-card.transition-in {
   height: auto;
