@@ -2,23 +2,27 @@
   <a
     class="zy-store-style-card"
     bg="bg-3"
-    rounded-2xl
     w-full
     h-full
     inline-block
     overflow-hidden
     cursor-pointer
     color-text-1
+    col-span-12
+    xs:col-span-6
+    sm:col-span-4
+    md:col-span-3
+    lg:col-span-3
     @click.prevent="openCard($el)"
   >
     <div class="zy-store-style-card-inner">
+      <div class="zy-card-title">
+        <p>
+          <slot name="title" />
+        </p>
+      </div>
       <div class="zy-card-image">
         <slot name="image" />
-        <div class="zy-card-title">
-          <p>
-            <slot name="title" />
-          </p>
-        </div>
       </div>
     </div>
   </a>
