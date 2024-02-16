@@ -10,6 +10,7 @@
       overflow-y-auto
       overflow-x-hidden
       pb-50
+      z-20
     >
       <div class="zy-store-style-card-inner">
         <div class="zy-card-image">

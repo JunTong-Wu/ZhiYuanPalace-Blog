@@ -50,6 +50,7 @@ const openCard = (element: any) => {
       setTimeout(() => {
         // 获取元素的位置
         const rect = element.getBoundingClientRect();
+        
         // 复制一个绝对定位的卡片，制作动画
         const copyElement = element.cloneNode(true);
         copyElement.style.position = "fixed";
@@ -59,6 +60,7 @@ const openCard = (element: any) => {
         copyElement.style.height = rect.height + "px";
         copyElement.style.zIndex = "20";
         document.body.appendChild(copyElement);
+        element.style.opacity = 0;
 
         setTimeout(() => {
           copyElement.classList.add("transition-in");
@@ -81,10 +83,8 @@ const openCard = (element: any) => {
                 header.classList.remove("transition-translate-out");
                 header.classList.add("transition-translate-in");
               }
-              setTimeout(() => {
-                // 动画结束，删除临时卡片
-                document.body.removeChild(copyElement);
-              }, 100);
+              // 动画结束，删除临时卡片
+              document.body.removeChild(copyElement);
             }, 600);
           });
         }, 20);
