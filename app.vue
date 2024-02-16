@@ -90,10 +90,10 @@ const myLive2dConfig = () => {
   }
 };
 if (process.client) {
-  const script = document.createElement("script");
-  script.src = "/static/js/oh-my-live2d.min.js";
-  document.body.appendChild(script);
-  myLive2dConfig();
+  // const script = document.createElement("script");
+  // script.src = "/static/js/oh-my-live2d.min.js";
+  // document.body.appendChild(script);
+  // myLive2dConfig();
 }
 
 // head
@@ -105,7 +105,7 @@ useHead({
 </script>
 <style lang="scss">
 :root {
-  background: var(--bg-2);
+  background: var(--bg-1);
   color: var(--text-1);
 }
 

@@ -31,7 +31,7 @@
           defaultColor="var(--text-4)"
           :activatedName="n.activatedIcon"
           :activated="routerActivate(n.path)"
-          activatedColor="var(--primary-6)"
+          activatedColor="var(--text-1)"
         />
       </zy-link>
     </div>

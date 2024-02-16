@@ -6,8 +6,10 @@
     right-0
     z-60
     w-sidebar
-    bg="bg-1"
+    bg="bg-2"
     overflow-hidden
     class="zy-side-bar"
-  ></aside>
+  >
+  <img w-full src="@/assets/image/LooperGroup.png" alt="">
+  </aside>
 </template>

@@ -13,12 +13,12 @@
         >
           <div w-7 flex justify-center>
             <ZyIcon
-              size="1.5rem"
+              size="1.25rem"
               :defaultName="n.defaultIcon"
-              defaultColor="var(--text-4)"
+              defaultColor="var(--text-1)"
               :activatedName="n.activatedIcon"
               :activated="routerActivate(n.path)"
-              activated-color="var(--primary-3)"
+              activated-color="var(--text-1)"
             />
           </div>
 
@@ -56,7 +56,7 @@ const routerActivate = (path: string) => {
     white-space: nowrap;
   }
   &.activate {
-    background-color: var(--bg-2);
+    background-color: var(--bg-3);
   }
 }
 
