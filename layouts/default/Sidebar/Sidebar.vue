@@ -7,6 +7,7 @@
     z-60
     w-sidebar
     bg="bg-2"
+    color="text-1"
     overflow-hidden
     class="zy-side-bar"
   >

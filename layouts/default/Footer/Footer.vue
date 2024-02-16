@@ -8,7 +8,7 @@
     z-10
     flex
     justify-center
-    bg="bg-2"
+    bg="bg-3"
   >
     <div
       h-full

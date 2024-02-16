@@ -382,7 +382,7 @@ const closeMoreDrawer = () => {
   }
 }
 .zy-header {
-  background-color: var(--bg-2);
+  background-color: var(--bg-1);
 }
 .zy-header.has-scroll {
   background-color: var(--bg-header-bar);

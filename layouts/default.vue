@@ -1,6 +1,6 @@
 <template>
   <div class="layout-default">
-    <Header pl-sidebar pr-sidebar />
+    <Header pl-sidebar pr-sidebar/>
     <main
       flex-1
       pl-sidebar
