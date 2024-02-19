@@ -62,11 +62,11 @@
   transition: all 200ms, background 0ms;
 }
 .zy-header.transition-translate-out {
-  backdrop-filter: none;
+  // backdrop-filter: none;
   transform: translateY(-100%);
 }
 .zy-header.transition-translate-in {
-  backdrop-filter: none;
+  // backdrop-filter: none;
 }
 
 .zy-store-style-card {

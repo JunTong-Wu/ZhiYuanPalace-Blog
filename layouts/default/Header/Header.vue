@@ -16,7 +16,6 @@
       items-center
       justify-between
       h-full
-      lg:py-3
     >
       <div class="horizontal-layout">
         <zy-button
@@ -31,6 +30,66 @@
           <ZyIcon size="0.75rem" defaultName="arrow-left" />
         </zy-button>
       </div>
+
+      <div class="vertical-layout" h-full>
+        <div h-full flex items-center justify-center pl-2  w-18>
+          <zy-button
+            v-if="gobackFlag"
+            flex
+            items-center
+            justify-center
+            @click="goback()"
+            title="返回"
+            type="transparent"
+          >
+            <ZyIcon defaultName="arrow-left" />
+          </zy-button>
+          <div>
+            <h1
+              text-base
+              font-normal
+              ml-2
+              my-0
+              class="mobile-title"
+              v-if="titleDisable"
+            >
+              {{ $t(title) }}
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <div h-full py-2 w="[50%]">
+        <div h-full border="1 solid bordercolor" bg="bg-headerBar" w="[1/2]" rounded-xl>
+          <div h-full w-full flex items-center justify-center color="text-4">Music Bar</div>
+        </div>
+      </div>
+
+      <div class="vertical-layout" h-full>
+        <div flex items-center w-full h-full justify-between>
+          <div flex items-center h-full>
+            <zy-button
+              w-header
+              h-header
+              @click="openSearchDrawer()"
+              title="搜索"
+              type="transparent"
+            >
+              <ZyIcon defaultName="search" />
+            </zy-button>
+            <zy-button
+              w-header
+              h-header
+              @click="openMoreDrawer()"
+              title="更多选项"
+              type="transparent"
+            >
+              <ZyIcon defaultName="more" />
+            </zy-button>
+          </div>
+        </div>
+      </div>
+
       <div class="horizontal-layout">
         <div flex justify-end h-full items-center gap-2>
           <zy-button
@@ -114,54 +173,6 @@
           >
             <ZyIcon size="0.75rem" defaultName="more" />
           </zy-button>
-        </div>
-      </div>
-
-      <div class="vertical-layout" w-full h-full>
-        <div flex items-center w-full h-full justify-between>
-          <div h-full flex items-center justify-center pl-2>
-            <zy-button
-              v-if="gobackFlag"
-              flex
-              items-center
-              justify-center
-              @click="goback()"
-              title="返回"
-              type="transparent"
-            >
-              <ZyIcon defaultName="arrow-left" />
-            </zy-button>
-            <h1
-              text-base
-              font-normal
-              ml-2
-              my-0
-              class="mobile-title"
-              v-if="titleDisable"
-            >
-              {{ $t(title) }}
-            </h1>
-          </div>
-          <div flex items-center h-full>
-            <zy-button
-              w-header
-              h-header
-              @click="openSearchDrawer()"
-              title="搜索"
-              type="transparent"
-            >
-              <ZyIcon defaultName="search" />
-            </zy-button>
-            <zy-button
-              w-header
-              h-header
-              @click="openMoreDrawer()"
-              title="更多选项"
-              type="transparent"
-            >
-              <ZyIcon defaultName="more" />
-            </zy-button>
-          </div>
         </div>
       </div>
     </div>
@@ -370,7 +381,7 @@ const closeMoreDrawer = () => {
   }
 }
 .zy-header {
-  background-color: var(--bg-3);
+  background-color: var(--bg-header-bar);
 }
 .zy-header.has-scroll {
   background-color: var(--bg-header-bar);
