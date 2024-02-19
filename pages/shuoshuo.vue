@@ -10,6 +10,10 @@ useHead({
   },
 });
 definePageMeta({
+  pageTransition: {
+    name: 'first-layer',
+    mode: 'out-in'
+  },
   middleware: "transition",
 });
 </script>

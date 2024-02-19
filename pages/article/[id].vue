@@ -54,9 +54,6 @@ useHead({
     class: "page-article-details",
   },
 });
-definePageMeta({
-  middleware: "transition",
-});
 const route = useRoute();
 const id = route.params.id;
 
@@ -67,4 +64,12 @@ const id = route.params.id;
 //   }
 // }
 onMounted(() => {});
+
+definePageMeta({
+  pageTransition: {
+    name: 'first-layer',
+    mode: 'out-in'
+  },
+  middleware: "transition",
+});
 </script>

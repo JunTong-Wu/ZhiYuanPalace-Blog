@@ -28,6 +28,10 @@
 <script setup lang="ts">
 const router = useRouter();
 const openCard = (element: any) => {
+  let href = element.href;
+  let url = new URL(href);
+  let path = url.pathname;
+  // router.replace(path);
   const mainViewElement = document.querySelector(".main-view");
   let mainViewTop = 0;
   let mainViewLeft = 0;
@@ -53,6 +57,7 @@ const openCard = (element: any) => {
 
         // 复制一个绝对定位的卡片，制作动画
         const copyElement = element.cloneNode(true);
+        copyElement.id = "temp-element";
         copyElement.style.position = "fixed";
         copyElement.style.top = rect.top + "px";
         copyElement.style.left = rect.left + "px";
@@ -63,28 +68,24 @@ const openCard = (element: any) => {
         element.style.opacity = 0;
 
         setTimeout(() => {
+          const header = document.querySelector("header");
+          if (header) {
+            header.classList.add("transition-translate-out");
+            header.classList.remove("transition-translate-in");
+          }
           copyElement.classList.add("transition-in");
           setTimeout(() => {
             copyElement.style.top = 0 + "px";
             copyElement.style.left = mainViewLeft + "px";
             copyElement.style.width = mainViewRight - mainViewLeft + "px";
             copyElement.style.height = windowHeight + "px";
-            const header = document.querySelector("header");
-            if (header) {
-              header.classList.remove("transition-translate-in");
-              header.classList.add("transition-translate-out");
-            }
             setTimeout(() => {
               let href = copyElement.href;
               let url = new URL(href);
               let path = url.pathname;
               router.replace(path);
-              if (header) {
-                header.classList.remove("transition-translate-out");
-                header.classList.add("transition-translate-in");
-              }
               // 动画结束，删除临时卡片
-              document.body.removeChild(copyElement);
+              // document.body.removeChild(copyElement);
             }, 600);
           });
         }, 20);

@@ -11,10 +11,8 @@
     >
       <div
         text-base
-        overflow-auto
-        scroll-view
+        relative
         class="main-view transition-in"
-        p-4
       >
         <slot />
       </div>

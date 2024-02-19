@@ -343,18 +343,7 @@ const getParentPath = () => {
   return parentPath.replace(/\/+$/, "");
 };
 const goback = () => {
-  const cardView = document.querySelector(".zy-store-style-card.transition-in");
-  if (cardView) {
-    cardView.classList.add("transition-out");
-  }
-  const header = document.querySelector("header");
-  if (header) {
-    header.classList.remove("transition-translate-in");
-    header.classList.add("transition-translate-out");
-  }
-  setTimeout(() => {
-    router.replace(getParentPath());
-  }, 200);
+  router.replace(getParentPath());
 };
 
 // 抽屉

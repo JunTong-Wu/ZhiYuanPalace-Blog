@@ -41,19 +41,38 @@
 
     <div grid grid-cols-12 gap-4 bg="bg-3" p-4 rounded-xl mb-4>
       <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
-      <zy-store-style-card :href="`/article/${n}`" v-for="n in 3" rounded-lg>
+      <zy-store-style-card
+        :href="`/article/${n}`"
+        v-for="n in 3"
+        rounded-lg
+      >
         <template #image>
           <img :src="`https://pan.yiru.love/uploads/article/${n}.jpg`" alt="" />
         </template>
         <template #title>
-          <p text-sm> GO {{ n }}</p>
-          <p text-xs pt-1 color="text-2">text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+          <p text-sm>GO {{ n }}</p>
+          <p text-xs pt-1 color="text-2">
+            text text text text text text text text text text text text text
+            text text text text text text text text text text text text text
+            text text text text text text text text text text
+          </p>
         </template>
       </zy-store-style-card>
     </div>
 
     <div mb-4 flex gap-4>
-      <div bg="bg-3" h-10 w-10 rounded-lg flex items-center justify-center v-for="n in 3">{{ n }}</div>
+      <div
+        bg="bg-3"
+        h-10
+        w-10
+        rounded-lg
+        flex
+        items-center
+        justify-center
+        v-for="n in 3"
+      >
+        {{ n }}
+      </div>
     </div>
   </div>
 </template>
@@ -66,6 +85,10 @@ useHead({
   },
 });
 definePageMeta({
+  pageTransition: {
+    name: 'first-layer',
+    mode: 'out-in'
+  },
   middleware: "transition",
 });
 </script>

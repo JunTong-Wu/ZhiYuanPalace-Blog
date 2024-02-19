@@ -1,13 +1,13 @@
-.main-view {
-  position: relative;
-  top: 100px;
-  opacity: 0;
-}
-.main-view.transition-in {
-  top: 0;
-  opacity: 1;
-  transition: top 400ms, opacity 400ms;
-}
+// .main-view {
+//   position: relative;
+//   top: 100px;
+//   opacity: 0;
+// }
+// .main-view.transition-in {
+//   top: 0;
+//   opacity: 1;
+//   transition: top 400ms, opacity 400ms;
+// }
 
 @keyframes an-fade-in-from-up {
   0% {
