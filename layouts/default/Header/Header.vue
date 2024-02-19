@@ -133,7 +133,7 @@
               <ZyIcon defaultName="arrow-left" />
             </zy-button>
             <h1
-              text-sm
+              text-base
               font-normal
               ml-2
               my-0
@@ -382,7 +382,7 @@ const closeMoreDrawer = () => {
   }
 }
 .zy-header {
-  background-color: var(--bg-1);
+  background-color: var(--bg-3);
 }
 .zy-header.has-scroll {
   background-color: var(--bg-header-bar);

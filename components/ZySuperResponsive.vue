@@ -7,7 +7,7 @@ export default defineComponent({
   props: {
     baseFontSize: {
       type: Number,
-      default: 16,
+      default: 14,
     },
     breakPoints: {
       default: {

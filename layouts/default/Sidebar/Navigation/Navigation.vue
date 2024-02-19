@@ -15,7 +15,7 @@
             <ZyIcon
               size="1.25rem"
               :defaultName="n.defaultIcon"
-              defaultColor="var(--text-1)"
+              defaultColor="var(--text-2)"
               :activatedName="n.activatedIcon"
               :activated="routerActivate(n.path)"
               activated-color="var(--text-1)"
@@ -56,7 +56,7 @@ const routerActivate = (path: string) => {
     white-space: nowrap;
   }
   &.activate {
-    background-color: var(--bg-3);
+    background-color: var(--bg-2);
   }
 }
 

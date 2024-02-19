@@ -5,8 +5,7 @@
     bottom-0
     left-0
     z-60
-    w-sidebar
-    bg="bg-2"
+    bg="bg-3"
     color="text-1"
     overflow-hidden
     class="zy-side-bar"

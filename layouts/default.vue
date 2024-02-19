@@ -1,10 +1,10 @@
 <template>
   <div class="layout-default">
-    <Header pl-sidebar pr-sidebar/>
+    <Header pl-sidebar />
     <main
       flex-1
       pl-sidebar
-      pr-sidebar
+      pr-toolbar
       pt-header
       transition-padding
       bg="bg-transparent"
@@ -20,8 +20,8 @@
       </div>
     </main>
     <Footer class="vertical-layout" />
-    <Sidebar class="horizontal-layout" />
-    <Toolbar class="horizontal-layout" />
+    <Sidebar w-sidebar class="horizontal-layout" />
+    <Toolbar w-toolbar pt-header class="horizontal-layout" />
   </div>
 </template>
 <script setup lang="ts">

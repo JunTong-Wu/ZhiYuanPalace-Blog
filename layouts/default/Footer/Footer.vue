@@ -28,7 +28,7 @@
         <ZyIcon
           size="1.3rem"
           :defaultName="n.defaultIcon"
-          defaultColor="var(--text-4)"
+          defaultColor="var(--text-2)"
           :activatedName="n.activatedIcon"
           :activated="routerActivate(n.path)"
           activatedColor="var(--text-1)"

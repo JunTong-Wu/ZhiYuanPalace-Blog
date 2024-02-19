@@ -5,7 +5,7 @@
       fixed
       inset-0
       l-sidebar
-      r-sidebar
+      r-toolbar
       bg="bg-3"
       overflow-y-auto
       overflow-x-hidden

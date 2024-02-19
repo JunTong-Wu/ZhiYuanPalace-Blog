@@ -17,9 +17,7 @@
   >
     <div class="zy-store-style-card-inner">
       <div class="zy-card-title">
-        <p>
-          <slot name="title" />
-        </p>
+        <slot name="title" />
       </div>
       <div class="zy-card-image">
         <slot name="image" />
@@ -33,12 +31,14 @@ const openCard = (element: any) => {
   const mainViewElement = document.querySelector(".main-view");
   let mainViewTop = 0;
   let mainViewLeft = 0;
+  let mainViewRight = 0;
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
   if (mainViewElement) {
     const view = mainViewElement.getBoundingClientRect();
     mainViewTop = view.top;
     mainViewLeft = view.left;
+    mainViewRight = view.right;
   }
   if (element) {
     // 预备动画
@@ -50,7 +50,7 @@ const openCard = (element: any) => {
       setTimeout(() => {
         // 获取元素的位置
         const rect = element.getBoundingClientRect();
-        
+
         // 复制一个绝对定位的卡片，制作动画
         const copyElement = element.cloneNode(true);
         copyElement.style.position = "fixed";
@@ -67,7 +67,7 @@ const openCard = (element: any) => {
           setTimeout(() => {
             copyElement.style.top = 0 + "px";
             copyElement.style.left = mainViewLeft + "px";
-            copyElement.style.width = windowWidth - mainViewLeft * 2 + "px";
+            copyElement.style.width = mainViewRight - mainViewLeft + "px";
             copyElement.style.height = windowHeight + "px";
             const header = document.querySelector("header");
             if (header) {
