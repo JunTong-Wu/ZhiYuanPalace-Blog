@@ -4,7 +4,7 @@
     top-0
     bottom-0
     right-0
-    z-20
+    z-10
     bg="bg-3"
     overflow-hidden
     class="zy-side-bar"

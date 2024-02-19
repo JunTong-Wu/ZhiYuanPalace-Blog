@@ -1,6 +1,6 @@
 <template>
   <div class="layout-default">
-    <Header pl-sidebar />
+    <Header l-sidebar />
     <main
       flex-1
       pl-sidebar
@@ -12,7 +12,7 @@
       <div
         text-base
         relative
-        class="main-view transition-in"
+        class="main-view"
       >
         <slot />
       </div>

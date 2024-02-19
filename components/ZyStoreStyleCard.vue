@@ -86,7 +86,7 @@ const openCard = (element: any) => {
               router.replace(path);
               // 动画结束，删除临时卡片
               // document.body.removeChild(copyElement);
-            }, 600);
+            }, 400);
           });
         }, 20);
       }, 80);

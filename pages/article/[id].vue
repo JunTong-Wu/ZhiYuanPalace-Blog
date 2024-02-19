@@ -10,7 +10,7 @@
       overflow-y-auto
       overflow-x-hidden
       pb-50
-      z-20
+      z-40
     >
       <div class="zy-store-style-card-inner">
         <div class="zy-card-image">
@@ -67,7 +67,7 @@ onMounted(() => {});
 
 definePageMeta({
   pageTransition: {
-    name: 'first-layer',
+    name: 'second-layer',
     mode: 'out-in'
   },
   middleware: "transition",

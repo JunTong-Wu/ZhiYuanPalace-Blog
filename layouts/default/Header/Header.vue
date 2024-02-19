@@ -2,10 +2,9 @@
   <header
     fixed
     top-0
-    left-0
     right-0
     h-header
-    z-24
+    z-60
     backdrop-blur-xl
     color-text-1
     class="zy-header transition-translate-in"

@@ -51,7 +51,7 @@ const myLive2dConfig = () => {
     OML2D.loadOhMyLive2D({
       sayHello: false,
       mobileShow: true,
-      transitionTime: 600,
+      transitionTime: 400,
       source: "https://pan.yiru.love/project-zhiyuanpalace/live2d/",
       models: {
         path: "/草神/草神.model3.json",
@@ -139,39 +139,5 @@ useHead({
 }
 @media (hover: none) {
   /* 不可以hover */
-}
-</style>
-<style lang="scss">
-.first-layer-enter-active {
-  transition: all 0.4s;
-}
-.first-layer-leave-active {
-  transition: all 0.2s;
-}
-.first-layer-enter-from {
-  opacity: 0;
-  transform: translateY(100px);
-  filter: blur(8px);
-}
-.first-layer-leave-to {
-  opacity: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-.second-layer-enter-active {
-  transition: all 0s;
-}
-.second-layer-leave-active {
-  transition: all 0.4s;
-}
-.second-layer-enter-from {
-  opacity: 0;
-}
-.second-layer-leave-to {
-  .zy-store-style-card {
-    transform: translateX(100%);
-    opacity: 0;
-  }
 }
 </style>
