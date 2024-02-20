@@ -113,13 +113,32 @@ a {
   --logo-color-2: transparent;
 }
 :root {
-  --blue-7: #0062ff; //点击
-  --blue-6: #146fff; //常规
-  --blue-5: #297bff; //悬浮
-  --blue-4: #3d88ff; //特殊场景
-  --blue-3: #5194ff; //一般禁用
-  --blue-2: #66a1ff; //文字禁用
-  --blue-1: #7aadff; //浅色/白底悬浮
+  --primary-7: var(--blue-7); //点击
+  --primary-6: var(--blue-6); //常规
+  --primary-5: var(--blue-5); //悬浮
+  --primary-4: var(--blue-4); //特殊场景
+  --primary-3: var(--blue-3); //一般禁用
+  --primary-2: var(--blue-2); //文字禁用
+  --primary-1: var(--blue-1); //浅色/白底悬浮
+}
+
+:root {
+  --purple-7: #5d00ff; //点击
+  --purple-6: #7425ff; //常规
+  --purple-5: #8b49ff; //悬浮
+  --purple-4: #a36eff; //特殊场景
+  --purple-3: #ba92ff; //一般禁用
+  --purple-2: #d1b6ff; //文字禁用
+  --purple-1: #e8dbff; //浅色/白底悬浮
+}
+:root {
+  --blue-7: #0e42d2; //点击
+  --blue-6: #165dff; //常规
+  --blue-5: #4080ff; //悬浮
+  --blue-4: #6aa1ff; //特殊场景
+  --blue-3: #94bfff; //一般禁用
+  --blue-2: #bedaff; //文字禁用
+  --blue-1: #e8f3ff; //浅色/白底悬浮
 }
 :root {
   --green-7: #009a29; //点击
@@ -131,22 +150,22 @@ a {
   --green-1: #e8ffea; //浅色/白底悬浮
 }
 :root {
-  --primary-7: #ff0033; //点击
-  --primary-6: #ff204c; //常规
-  --primary-5: #ff3f66; //悬浮
-  --primary-4: #ff5f7f; //特殊场景
-  --primary-3: #fe7f98; //一般禁用
-  --primary-2: #fe9eb2; //文字禁用
-  --primary-1: #febecb; //浅色/白底悬浮
+  --red-7: #ff0033; //点击
+  --red-6: #ff204c; //常规
+  --red-5: #ff3f66; //悬浮
+  --red-4: #ff5f7f; //特殊场景
+  --red-3: #fe7f98; //一般禁用
+  --red-2: #fe9eb2; //文字禁用
+  --red-1: #febecb; //浅色/白底悬浮
 }
 :root {
-  --cyan-7: #00d6d6; //点击
-  --cyan-6: #22dddd; //常规
-  --cyan-5: #44e4e4; //悬浮
-  --cyan-4: #66ebeb; //特殊场景
-  --cyan-3: #88f1f1; //一般禁用
-  --cyan-2: #aaf8f8; //文字禁用
-  --cyan-1: #ccffff; //浅色/白底悬浮
+  --cyan-7: #0da5aa; //点击
+  --cyan-6: #14c9c9; //常规
+  --cyan-5: #37d4cf; //悬浮
+  --cyan-4: #5edfd6; //特殊场景
+  --cyan-3: #89e9e0; //一般禁用
+  --cyan-2: #b7f4ec; //文字禁用
+  --cyan-1: #e8fffb; //浅色/白底悬浮
 }
 :root {
   --bg-best: var(--gray-color-1); //最白

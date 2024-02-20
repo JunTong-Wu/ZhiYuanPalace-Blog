@@ -1,5 +1,8 @@
 <template>
-  <nav p-4>
+  <nav px-4 relative>
+    <div class="indicator-layer" id="indicator-layer">
+      <Indicator :msg="getNavigationMap()" />
+    </div>
     <ul>
       <li v-for="n in linkList" h-14 flex mb-2>
         <zy-link
@@ -29,6 +32,8 @@
   </nav>
 </template>
 <script setup lang="ts">
+import Indicator from "./Indicator/Indicator.vue";
+
 const linkList = getNavigationMap();
 
 const route = useRoute();
@@ -47,6 +52,12 @@ const routerActivate = (path: string) => {
 };
 </script>
 <style lang="scss" scoped>
+.indicator-layer {
+  position: absolute;
+  top: 0;
+  width: 1rem;
+  height: 100%;
+}
 .sidebar-navigation {
   overflow: hidden;
   > div {
