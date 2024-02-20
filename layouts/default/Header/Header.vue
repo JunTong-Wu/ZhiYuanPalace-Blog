@@ -10,14 +10,8 @@
     class="zy-header transition-translate-in"
     :class="{ dark: headerDark }"
   >
-    <div
-      class="zy-header-inner"
-      flex
-      items-center
-      justify-between
-      h-full
-    >
-      <div class="horizontal-layout">
+    <div class="zy-header-inner" flex items-center justify-between h-full>
+      <div class="horizontal-layout" w-50>
         <zy-button
           v-if="gobackFlag"
           flex
@@ -29,10 +23,22 @@
         >
           <ZyIcon size="0.75rem" defaultName="arrow-left" />
         </zy-button>
+        <div>
+          <h1
+            text-base
+            font-normal
+            ml-2
+            my-0
+            class="mobile-title"
+            v-if="titleDisable"
+          >
+            {{ $t(title) }}
+          </h1>
+        </div>
       </div>
 
       <div class="vertical-layout" h-full>
-        <div h-full flex items-center justify-center pl-2  w-18>
+        <div h-full flex items-center justify-center pl-2 w-18>
           <zy-button
             v-if="gobackFlag"
             flex
@@ -60,9 +66,7 @@
       </div>
 
       <div h-full py-2 w="[50%]">
-        <div h-full border="1 solid bordercolor" bg="bg-headerBar" w="[1/2]" rounded-xl>
-          <div h-full w-full flex items-center justify-center color="text-4">Music Bar</div>
-        </div>
+        <Music />
       </div>
 
       <div class="vertical-layout" h-full>
@@ -198,6 +202,8 @@
   </header>
 </template>
 <script setup lang="ts">
+import Music from "../Music/Music.vue";
+
 // 多语言
 const { locale, locales, setLocale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();

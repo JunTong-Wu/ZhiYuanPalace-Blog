@@ -1,6 +1,6 @@
 <template>
   <div class="layout-default">
-    <Header l-sidebar />
+    <Header l-sidebar r-toolbar/>
     <main
       flex-1
       pl-sidebar
@@ -19,7 +19,7 @@
     </main>
     <Footer class="vertical-layout" />
     <Sidebar w-sidebar class="horizontal-layout" />
-    <Toolbar w-toolbar pt-header class="horizontal-layout" />
+    <Toolbar w-toolbar  class="horizontal-layout" />
     <!-- <Music /> -->
   </div>
 </template>

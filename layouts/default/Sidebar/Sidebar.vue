@@ -11,7 +11,7 @@
     class="zy-side-bar"
   >
     <div h-header flex items-center class="icon-wrapper">
-      <img ml-6 w-7 src="@/assets/image/logo.png" alt="">
+      <img ml-8 w-8 src="@/assets/image/logo.png" alt="">
       <svg
         v-if="locale == 'zh-CN'"
         fill-current
@@ -78,11 +78,13 @@
         />
       </svg>
     </div>
+    <AboutMe />
     <Navigation />
   </aside>
 </template>
 <script setup>
 import Navigation from "./Navigation/Navigation.vue";
+import AboutMe from "./AboutMe/AboutMe.vue";
 // 多语言
 const { locale, locales } = useI18n();
 </script>

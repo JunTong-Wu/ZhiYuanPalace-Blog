@@ -62,18 +62,15 @@
   transition: all 200ms, background 0ms;
 }
 .zy-header.transition-translate-out {
-  // backdrop-filter: none;
   transform: translateY(-100%);
-}
-.zy-header.transition-translate-in {
-  // backdrop-filter: none;
 }
 
 .zy-store-style-card {
   --card-height: 6rem;
   height: var(--card-height);
   transition: transform 100ms;
-  border: 0px solid var(--border-color);
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   .zy-store-style-card-inner {
     height: var(--card-height);
     position: relative;
@@ -138,9 +135,8 @@
       }
     }
   }
-  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.03);
   // border: 1px solid var(--border-color);
-  border-width: 1px;
+  border-color: var(--border-color);
 }
 @media (orientation: portrait) {
   .zy-store-style-card.transition-in {

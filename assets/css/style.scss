@@ -39,14 +39,14 @@ a {
 
 :root {
   --footer-bar-height: 3.5rem;
-  --side-bar-width: 13rem;
-  --tool-bar-width: 18rem;
+  --side-bar-width: 15rem;
+  --tool-bar-width: 15rem;
   --border-color: rgba(127, 127, 127, 0.2);
 }
 @media (max-width: 1200px) {
   :root {
-    --side-bar-width: 4.75rem;
-    // --tool-bar-width: 4.75rem;
+    --side-bar-width: 5.75rem;
+    --tool-bar-width: 12rem;
   }
 }
 @media (orientation: portrait) {
@@ -172,7 +172,7 @@ a {
   --bg-4: var(--gray-color-21); //三级容器背景
   --bg-5: var(--gray-color-21); //下拉弹出框、Tooltip 背景颜色
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
-  --bg-header-bar: rgba(24, 30, 45, 0.2); //Header栏背景
+  --bg-header-bar: rgba(35, 42, 56, 0.5); //Header栏背景
   --text-1: var(--gray-color-1); //强调/正文标题
   --text-2: var(--gray-color-7); //次强调/正文标
   --text-3: var(--gray-color-13); //次要信息

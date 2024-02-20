@@ -1,5 +1,5 @@
 <template>
-  <nav p-2>
+  <nav p-4>
     <ul>
       <li v-for="n in linkList" h-14 flex mb-2>
         <zy-link

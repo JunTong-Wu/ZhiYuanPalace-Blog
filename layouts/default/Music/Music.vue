@@ -1,16 +1,13 @@
 <template>
   <div
-  fixed
-  top-0
-  left-0
-  w-full
-  h-header
-  z-60
-  pointer-events-none
-  p-2
+    h-full
+    border="1 solid bordercolor"
+    bg="bg-headerBar"
+    w="[1/2]"
+    rounded-xl
   >
-  <div w-150  mx-auto h-full bg="bg-3" rounded-xl border="1 solid color-bordercolor">
-
-  </div>
+    <div h-full w-full flex items-center justify-center color="text-2">
+      Music Bar
+    </div>
   </div>
 </template>
