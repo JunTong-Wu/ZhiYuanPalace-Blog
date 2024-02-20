@@ -5,7 +5,8 @@
     bottom-0
     left-0
     z-20
-    bg="bg-3"
+    bg="bg-headerBar"
+    backdrop-blur-xl
     color="text-1"
     overflow-hidden
     class="zy-side-bar"

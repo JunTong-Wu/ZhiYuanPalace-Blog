@@ -113,13 +113,13 @@ a {
   --logo-color-2: transparent;
 }
 :root {
-  --primary-7: var(--blue-7); //点击
-  --primary-6: var(--blue-6); //常规
-  --primary-5: var(--blue-5); //悬浮
-  --primary-4: var(--blue-4); //特殊场景
-  --primary-3: var(--blue-3); //一般禁用
-  --primary-2: var(--blue-2); //文字禁用
-  --primary-1: var(--blue-1); //浅色/白底悬浮
+  --primary-7: var(--red-7); //点击
+  --primary-6: var(--red-6); //常规
+  --primary-5: var(--red-5); //悬浮
+  --primary-4: var(--red-4); //特殊场景
+  --primary-3: var(--red-3); //一般禁用
+  --primary-2: var(--red-2); //文字禁用
+  --primary-1: var(--red-1); //浅色/白底悬浮
 }
 
 :root {
@@ -166,6 +166,24 @@ a {
   --cyan-3: #89e9e0; //一般禁用
   --cyan-2: #b7f4ec; //文字禁用
   --cyan-1: #e8fffb; //浅色/白底悬浮
+}
+:root {
+  --orange-7: #d25f00; //点击
+  --orange-6: #ff7d00; //常规
+  --orange-5: #ff9a2e; //悬浮
+  --orange-4: #ffb65d; //特殊场景
+  --orange-3: #ffcf8b; //一般禁用
+  --orange-2: #ffe4ba; //文字禁用
+  --orange-1: #fff7e8; //浅色/白底悬浮
+}
+:root {
+  --magenta-7: #cb1e83; //点击
+  --magenta-6: #f5319d; //常规
+  --magenta-5: #f754a8; //悬浮
+  --magenta-4: #f979b7; //特殊场景
+  --magenta-3: #fb9dc7; //一般禁用
+  --magenta-2: #fdc2db; //文字禁用
+  --magenta-1: #ffe8f1; //浅色/白底悬浮
 }
 :root {
   --bg-best: var(--gray-color-1); //最白

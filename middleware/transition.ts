@@ -14,7 +14,9 @@ const isFirstLayer = (path: string) => {
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.client) {
     NProgress.start();
-    NProgress.done();
+    setTimeout(() => {
+      NProgress.done();
+    }, 100);
   }
   if (isFirstLayer(from.fullPath) && isFirstLayer(to.fullPath)) {
     to.meta.pageTransition.name = "first-layer";

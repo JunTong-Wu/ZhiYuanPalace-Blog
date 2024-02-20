@@ -38,7 +38,7 @@
       </div>
 
       <div class="vertical-layout" h-full>
-        <div h-full flex items-center pl-2 w-24>
+        <div h-full flex items-center pl-2 w-28>
           <zy-button
             v-if="gobackFlag"
             flex
@@ -135,20 +135,24 @@
               </zy-button>
             </template>
             <template #actions>
-              <div p-2 color="text-1">
+              <div color="text-1" w-40>
                 <ul>
                   <li
                     v-for="lang in (availableLocales as any)"
                     :key="lang.code"
                     :to="switchLocalePath(lang.code)"
                     @click="switchLanguage(lang.code, lang.iso)"
+                    p-4
+                    h-14
+                    border="t-0 l-0 r-0 b-1 solid bordercolor"
                   >
                     <label inline-block w-full h-full flex justify-between>
-                      <span text-xs>{{ lang.name }}</span>
+                      <span text-sm>{{ lang.name }}</span>
                       <input
                         type="radio"
                         name="lang"
                         :checked="lang.code == locale"
+                        hidden
                       />
                     </label>
                   </li>
@@ -387,9 +391,6 @@ const closeMoreDrawer = () => {
   }
 }
 .zy-header {
-  background-color: var(--bg-header-bar);
-}
-.zy-header.has-scroll {
   background-color: var(--bg-header-bar);
 }
 </style>

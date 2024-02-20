@@ -137,8 +137,8 @@ export default {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 0.25rem;
-  background: var(--primary-5);
+  width: 0.4rem;
+  background: var(--cyan-6);
   z-index: 2;
   border-radius: 100px;
   display: none;

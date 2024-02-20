@@ -5,7 +5,8 @@
     bottom-0
     right-0
     z-40
-    bg="bg-3"
+    bg="bg-headerBar"
+    backdrop-blur-xl
     overflow-hidden
     class="zy-side-bar"
   >

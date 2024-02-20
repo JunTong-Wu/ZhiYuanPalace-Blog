@@ -1,6 +1,6 @@
 <template>
   <div @click="showPopover" ref="listenElement">
-    <slot name="reference" />
+    <slot name="reference"/>
   </div>
   <Teleport to="body">
     <aside
@@ -11,6 +11,7 @@
       ref="el"
       :class="{ dark: dark }"
       @touchmove="preventTouchGesture($event)"
+      @click="close"
     >
       <div
         fixed
@@ -258,6 +259,7 @@ export default defineComponent({
       mainStyle,
       closeByMask,
       closeByButton,
+      close,
       preventTouchGesture,
     };
   },
