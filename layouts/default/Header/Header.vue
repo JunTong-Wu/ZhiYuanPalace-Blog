@@ -11,7 +11,7 @@
     :class="{ dark: headerDark }"
   >
     <div class="zy-header-inner" flex items-center justify-between h-full>
-      <div class="horizontal-layout" w-50>
+      <div class="horizontal-layout" w-40>
         <zy-button
           v-if="gobackFlag"
           flex
@@ -38,7 +38,7 @@
       </div>
 
       <div class="vertical-layout" h-full>
-        <div h-full flex items-center justify-center pl-2 w-18>
+        <div h-full flex items-center pl-2 w-24>
           <zy-button
             v-if="gobackFlag"
             flex
