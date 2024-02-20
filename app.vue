@@ -24,6 +24,7 @@
 import "@/assets/css/style.scss";
 import "@/assets/css/common-to-live2d.scss";
 import "@/assets/css/transition.scss";
+import "@/assets/css/common-to-nprogress.scss"
 
 // 多语言
 const head = useLocaleHead({

@@ -10,12 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "nprogress": "^0.2.0",
     "nuxt": "^3.10.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@nuxtjs/i18n": "^8.0.2",
+    "@types/nprogress": "^0.2.3",
     "@unocss/nuxt": "^0.58.5",
     "sass": "^1.70.0"
   }
