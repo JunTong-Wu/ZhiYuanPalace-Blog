@@ -1,29 +1,16 @@
 <template>
+  <Logo />
+  <Sidebar w-sidebar top-header class="horizontal-layout" />
+  <Toolbar w-toolbar top-header class="horizontal-layout" />
   <div class="layout-default">
-    <Logo />
-    <Header left-sidebar-toolbar/>
-    <main
-      flex-1
-      pl-sidebar-toolbar
-      
-      transition-padding
-    >
-      <div
-        text-base
-        relative
-        class="main-view"
-        bg="bg-3"
-        h="[100vh]"
-        pt-header
-      >
-      <div></div>
+    <Header left-sidebar-toolbar />
+    <main flex-1 pl-sidebar-toolbar transition-padding>
+      <div text-base relative class="main-view" bg="bg-3" h="[100vh]" pt-header>
+        <div></div>
         <slot />
       </div>
     </main>
     <Footer class="vertical-layout" />
-    <Sidebar w-sidebar top-header class="horizontal-layout" />
-    <Toolbar w-toolbar top-header class="horizontal-layout" />
-    <!-- <Music /> -->
   </div>
 </template>
 <script setup lang="ts">

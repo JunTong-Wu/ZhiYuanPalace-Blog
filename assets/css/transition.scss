@@ -116,7 +116,7 @@
 .zy-store-style-card.transition-in {
   height: auto;
   border-radius: 0rem;
-  transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s;
+  transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,box-shadow 0s;
   .zy-store-style-card-inner {
     height: 18rem;
     .zy-card-title {
@@ -150,4 +150,11 @@
 
 .zy-side-bar {
   transition: width 400ms;
+}
+
+.layout-default.transition {
+  transition: all 600ms, background 0s;
+  filter: blur(8px);
+  transform: scale(0.8);
+  overflow: hidden;
 }

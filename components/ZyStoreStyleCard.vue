@@ -31,7 +31,7 @@ const openCard = (element: any) => {
   let url = new URL(href);
   let path = url.pathname;
   // router.replace(path);
-  const mainViewElement = document.querySelector(".main-view");
+  const mainViewElement = document.querySelector(".main-view") as any;
   let mainViewTop = 0;
   let mainViewLeft = 0;
   let mainViewRight = 0;
@@ -65,6 +65,11 @@ const openCard = (element: any) => {
         copyElement.style.zIndex = "20";
         document.body.appendChild(copyElement);
         element.style.opacity = 0;
+
+        const layoutDefault = document.querySelector(".layout-default") as any;
+        if(layoutDefault){
+          layoutDefault.classList.add("transition");
+        }
 
         setTimeout(() => {
           const header = document.querySelector("header");
