@@ -69,8 +69,6 @@
   --card-height: 6rem;
   height: var(--card-height);
   transition: transform 100ms;
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
   .zy-store-style-card-inner {
     height: var(--card-height);
     position: relative;
@@ -135,8 +133,6 @@
       }
     }
   }
-  // border: 1px solid var(--border-color);
-  border-color: var(--border-color);
 }
 @media (orientation: portrait) {
   .zy-store-style-card.transition-in {

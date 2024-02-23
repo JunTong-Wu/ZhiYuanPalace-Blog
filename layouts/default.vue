@@ -1,10 +1,10 @@
 <template>
   <div class="layout-default">
-    <Header l-sidebar r-toolbar/>
+    <Logo />
+    <Header left-sidebar-toolbar/>
     <main
       flex-1
-      pl-sidebar
-      pr-toolbar
+      pl-sidebar-toolbar
       pt-header
       transition-padding
       bg="bg-transparent"
@@ -14,19 +14,21 @@
         relative
         class="main-view"
       >
+      <div></div>
         <slot />
       </div>
     </main>
     <Footer class="vertical-layout" />
-    <Sidebar w-sidebar class="horizontal-layout" />
-    <Toolbar w-toolbar  class="horizontal-layout" />
+    <Sidebar w-sidebar top-header class="horizontal-layout" />
+    <Toolbar w-toolbar top-header class="horizontal-layout" />
     <!-- <Music /> -->
   </div>
 </template>
 <script setup lang="ts">
-import Footer from "./default/Footer/Footer.vue";
+import Logo from "./default/Logo/Logo.vue";
 import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
 import Toolbar from "./default/Toolbar/Toolbar.vue";
+import Footer from "./default/Footer/Footer.vue";
 // import Music from "./default/Music/Music.vue";
 </script>

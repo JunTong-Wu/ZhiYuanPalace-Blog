@@ -39,15 +39,9 @@ a {
 
 :root {
   --footer-bar-height: 3.5rem;
-  --side-bar-width: 15rem;
-  --tool-bar-width: 15rem;
+  --side-bar-width: 5rem;
+  --tool-bar-width: 18rem;
   --border-color: rgba(127, 127, 127, 0.2);
-}
-@media (max-width: 1200px) {
-  :root {
-    --side-bar-width: 5.75rem;
-    --tool-bar-width: 12rem;
-  }
 }
 @media (orientation: portrait) {
   :root {
@@ -60,7 +54,7 @@ a {
 }
 @media (orientation: landscape) {
   :root {
-    --header-bar-height: 4.5rem;
+    --header-bar-height: 4rem;
     --centered-width: 65rem;
     --header-bar-background: var(--bg-1);
   }
@@ -113,6 +107,7 @@ a {
   --logo-color-2: transparent;
 }
 :root {
+  --theme-color:#5b5fc7;
   --primary-7: var(--red-7); //点击
   --primary-6: var(--red-6); //常规
   --primary-5: var(--red-5); //悬浮
@@ -120,6 +115,9 @@ a {
   --primary-3: var(--red-3); //一般禁用
   --primary-2: var(--red-2); //文字禁用
   --primary-1: var(--red-1); //浅色/白底悬浮
+}
+*.dark {
+  --theme-color:#7f85f5;
 }
 
 :root {

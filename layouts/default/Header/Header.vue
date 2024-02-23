@@ -5,15 +5,21 @@
     right-0
     h-header
     z-60
-    backdrop-blur-xl
     color-text-1
     class="zy-header transition-translate-in"
     :class="{ dark: headerDark }"
   >
-    <div class="zy-header-inner" flex items-center justify-between h-full>
-      <div class="horizontal-layout" w-40>
+    <div
+      class="zy-header-inner"
+      pl-4
+      pr-4
+      flex
+      items-center
+      justify-between
+      h-full
+    >
+      <div class="horizontal-layout" v-if="gobackFlag">
         <zy-button
-          v-if="gobackFlag"
           flex
           items-center
           justify-center
@@ -23,46 +29,32 @@
         >
           <ZyIcon size="0.75rem" defaultName="arrow-left" />
         </zy-button>
-        <div>
-          <h1
-            text-base
-            font-normal
-            ml-2
-            my-0
-            class="mobile-title"
-            v-if="titleDisable"
-          >
-            {{ $t(title) }}
-          </h1>
-        </div>
+      </div>
+      <div class="vertical-layout" v-if="gobackFlag">
+        <zy-button
+          v-if="gobackFlag"
+          flex
+          items-center
+          justify-center
+          @click="goback()"
+          title="返回"
+          type="transparent"
+        >
+          <ZyIcon defaultName="arrow-left" />
+        </zy-button>
       </div>
 
-      <div class="vertical-layout" h-full>
-        <div h-full flex items-center pl-2 w-28>
-          <zy-button
-            v-if="gobackFlag"
-            flex
-            items-center
-            justify-center
-            @click="goback()"
-            title="返回"
-            type="transparent"
-          >
-            <ZyIcon defaultName="arrow-left" />
-          </zy-button>
-          <div>
-            <h1
-              text-base
-              font-normal
-              ml-2
-              my-0
-              class="mobile-title"
-              v-if="titleDisable"
-            >
-              {{ $t(title) }}
-            </h1>
-          </div>
-        </div>
+      <div w-20>
+        <h1
+          text-base
+          font-normal
+          ml-2
+          my-0
+          class="mobile-title"
+          v-if="titleDisable"
+        >
+          {{ $t(title) }}
+        </h1>
       </div>
 
       <div h-full py-2 w="[50%]">
@@ -382,15 +374,3 @@ const closeMoreDrawer = () => {
   moreDisplay.value = false;
 };
 </script>
-<style lang="scss" scoped>
-@media (orientation: landscape) {
-  /* 横屏 */
-  .zy-header-inner {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-.zy-header {
-  background-color: var(--bg-header-bar);
-}
-</style>

@@ -1,31 +1,30 @@
 <template>
-  <nav px-4 relative>
+  <nav relative>
     <div class="indicator-layer" id="indicator-layer">
       <Indicator :msg="getNavigationMap()" />
     </div>
     <ul>
-      <li v-for="n in linkList" h-14 flex mb-2>
-        <zy-link
-          :to="`${n.path}`"
-          w-full
-          :title="$t(n.title)"
-          px-4
-          class="sidebar-navigation"
-          rounded-lg
-          :class="{ activate: routerActivate(n.path) }"
-        >
+      <li
+        v-for="n in linkList"
+        h-20
+        flex
+        py-4
+        class="sidebar-navigation"
+        :class="{ activate: routerActivate(n.path) }"
+      >
+        <zy-link :to="`${n.path}`" w-full :title="$t(n.title)" flex-col justify-center>
           <div w-7 flex justify-center>
             <ZyIcon
-              size="1.25rem"
+              size="1.5rem"
               :defaultName="n.defaultIcon"
               defaultColor="var(--text-2)"
               :activatedName="n.activatedIcon"
               :activated="routerActivate(n.path)"
-              activated-color="var(--text-1)"
+              activated-color="var(--theme-color)"
             />
           </div>
 
-          <span ml-2 text-sm>{{ $t(n.title) }}</span>
+          <span mt-1 text-xs>{{ $t(n.title) }}</span>
         </zy-link>
       </li>
     </ul>
@@ -59,22 +58,10 @@ const routerActivate = (path: string) => {
   height: 100%;
 }
 .sidebar-navigation {
-  overflow: hidden;
-  > div {
-    flex: none;
-  }
-  > span {
-    white-space: nowrap;
-  }
   &.activate {
-    background-color: var(--bg-2);
-  }
-}
-
-@media (max-width: 1200px) {
-  .sidebar-navigation {
+    /* background-color: var(--bg-4); */
     span {
-      display: none;
+      color: var(--theme-color);
     }
   }
 }
