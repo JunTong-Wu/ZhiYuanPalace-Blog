@@ -9,7 +9,7 @@
 // 标题
 const route = useRoute();
 const path = route.fullPath;
-const title = ref("empty");
+const title = ref("");
 title.value = getMobileTitle(path);
 const router = useRouter();
 const titleDisable = ref(true);

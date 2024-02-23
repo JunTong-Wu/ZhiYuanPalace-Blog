@@ -25,11 +25,12 @@
       <div
         ref="mainElement"
         class="drawer-main"
-        bg="bg-4"
+        bg="bg-5"
         fixed
         h-full
         will-change-transform
         rounded-lg
+        overflow-hidden
         shadow-2xl
         min-w-24
         :style="mainStyle"
@@ -265,41 +266,3 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
-.arrow {
-  position: absolute;
-  top: -0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.arrow::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 0.7rem solid;
-  border-top: none;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: rgba(127, 127, 127, 0.2);
-  z-index: -1;
-  display: none;
-}
-.dark .arrow::before {
-  display: block;
-}
-.arrow::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 0.6rem solid;
-  border-top: none;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: var(--bg-4);
-  z-index: -1;
-}
-</style>

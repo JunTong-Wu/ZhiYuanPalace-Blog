@@ -44,6 +44,7 @@ export default defineConfig({
     colors: {
       transparent: "transparent",
       current: "currentColor",
+      theme:"var(--theme-color)",
       //主色
       primary: {
         7: "var(--primary-7)",

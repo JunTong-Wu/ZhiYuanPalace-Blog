@@ -175,7 +175,7 @@ button.zy-button-icon {
 }
 @media (hover: hover) {
   .pc button.zy-button-icon:hover {
-    background-color: var(--primary-5);
+    background-color: var(--theme-color);
     color: white;
   }
 }

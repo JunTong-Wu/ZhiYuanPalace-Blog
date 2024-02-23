@@ -10,15 +10,7 @@
     backdrop-blur-xl
     class="zy-header transition-translate-in"
   >
-    <div
-      class="zy-header-inner"
-      pl-4
-      pr-4
-      flex
-      items-center
-      justify-between
-      h-full
-    >
+    <div class="zy-header-inner" px-2 flex items-center justify-between h-full>
       <GoBackButton />
       <HeaderTitle />
 
@@ -99,11 +91,20 @@
                     :key="lang.code"
                     :to="switchLocalePath(lang.code)"
                     @click="switchLanguage(lang.code, lang.iso)"
-                    p-4
-                    h-14
                     border="t-0 l-0 r-0 b-1 solid bordercolor"
                   >
-                    <label inline-block w-full h-full flex justify-between>
+                    <label
+                      inline-block
+                      w-full
+                      h-full
+                      flex
+                      justify-between
+                      p-4
+                      h-14
+                      bg="hover:theme"
+                      color="hover:white"
+                      cursor-pointer
+                    >
                       <span text-sm>{{ lang.name }}</span>
                       <input
                         type="radio"

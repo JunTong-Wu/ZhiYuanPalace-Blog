@@ -16,7 +16,7 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
-      <NuxtPage mx-auto p-6 />
+      <NuxtPage mx-auto p-4 />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
