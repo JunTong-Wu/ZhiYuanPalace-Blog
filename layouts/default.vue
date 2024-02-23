@@ -5,7 +5,7 @@
   <div class="layout-default">
     <Header left-sidebar-toolbar />
     <main flex-1 pl-sidebar-toolbar transition-padding>
-      <div text-base relative class="main-view" bg="bg-3" h="[100vh]" pt-header>
+      <div text-base relative class="main-view" bg="bg-3" min-h="[100vh]" pt-header>
         <div></div>
         <slot />
       </div>
