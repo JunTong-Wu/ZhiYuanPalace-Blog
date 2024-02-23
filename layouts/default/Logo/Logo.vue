@@ -2,12 +2,14 @@
   <div
     class="horizontal-layout logo-box"
     fixed
+    z-40
     left-0
     top-0
     h-header
     w-sidebar-toolbar
-    bg="bg-1"
-    border="t-0 l-0 r-1 b-1 solid bordercolor"
+    color="text-1"
+    bg="bg-headerBar"
+    backdrop-blur-xl
   >
     <div h-full w-full flex items-center>
       <img ml-8 w-8 src="@/assets/image/logo.png" alt="" />
@@ -82,3 +84,9 @@
 <script setup lang="ts">
 const { locale } = useI18n();
 </script>
+<style lang="scss" scoped>
+.logo-box {
+  box-shadow: -5px 0px 5px rgba(0,0,0,0.05) inset;
+  border-bottom:1px solid var(--border-color);
+}
+</style>

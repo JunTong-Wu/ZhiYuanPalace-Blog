@@ -16,7 +16,7 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
-      <NuxtPage mx-auto p-4 />
+      <NuxtPage mx-auto p-6 />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -106,7 +106,7 @@ useHead({
 </script>
 <style lang="scss">
 :root {
-  background: var(--bg-2);
+  background: var(--bg-1);
   color: var(--text-1);
 }
 

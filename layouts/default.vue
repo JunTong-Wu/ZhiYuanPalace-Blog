@@ -5,14 +5,16 @@
     <main
       flex-1
       pl-sidebar-toolbar
-      pt-header
+      
       transition-padding
-      bg="bg-transparent"
     >
       <div
         text-base
         relative
         class="main-view"
+        bg="bg-3"
+        h="[100vh]"
+        pt-header
       >
       <div></div>
         <slot />

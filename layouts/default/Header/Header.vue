@@ -6,6 +6,8 @@
     h-header
     z-60
     color-text-1
+    bg="bg-headerBar"
+    backdrop-blur-xl
     class="zy-header transition-translate-in"
     :class="{ dark: headerDark }"
   >

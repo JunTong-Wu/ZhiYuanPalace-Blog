@@ -1,7 +1,6 @@
 <template>
   <a
     class="zy-store-style-card"
-    bg="bg-3"
     w-full
     h-full
     inline-block
