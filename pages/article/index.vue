@@ -7,7 +7,7 @@
         sm:col-span-4
         md:col-span-6
         lg:col-span-6
-        bg="bg-3"
+        bg="bg-4"
         p-4
         rounded-xl
       >
@@ -19,7 +19,7 @@
         sm:col-span-4
         md:col-span-3
         lg:col-span-3
-        bg="bg-3"
+        bg="bg-4"
         p-4
         rounded-xl
       >
@@ -31,7 +31,7 @@
         sm:col-span-4
         md:col-span-3
         lg:col-span-3
-        bg="bg-3"
+        bg="bg-4"
         p-4
         rounded-xl
       >
@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <div grid grid-cols-12 gap-4 bg="bg-3" p-4 rounded-xl mb-4>
+    <div grid grid-cols-12 gap-4 bg="bg-4" p-4 rounded-xl mb-4>
       <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
       <zy-store-style-card
         bg="bg-5"
@@ -63,7 +63,7 @@
 
     <div mb-4 flex gap-4>
       <div
-        bg="bg-3"
+        bg="bg-4"
         h-10
         w-10
         rounded-lg
