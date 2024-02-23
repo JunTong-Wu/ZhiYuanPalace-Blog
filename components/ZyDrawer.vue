@@ -202,10 +202,10 @@ export default defineComponent({
         const drawerMain = (el.value as any).querySelector(".drawer-main");
         if (transition) {
           // 通常，正在滑动时不开启CSS过渡，释放滑动时开启CSS过渡
-          drawerMain.style.transition = `transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
+          drawerMain.style.transition = `transform 600ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
           setTimeout(() => {
             drawerMain.style.transition = `none`;
-          }, 400);
+          }, 600);
         }
         if (translate) {
           drawerMain.style.transform = translate;

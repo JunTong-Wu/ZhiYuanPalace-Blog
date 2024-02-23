@@ -52,7 +52,7 @@ const myLive2dConfig = () => {
     OML2D.loadOhMyLive2D({
       sayHello: false,
       mobileShow: true,
-      transitionTime: 400,
+      transitionTime: 600,
       source: "https://pan.yiru.love/project-zhiyuanpalace/live2d/",
       models: {
         path: "/草神/草神.model3.json",
