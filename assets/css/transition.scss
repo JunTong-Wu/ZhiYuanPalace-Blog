@@ -54,12 +54,12 @@
 }
 
 .zy-header-inner {
-  .mobile-title {
+  .header-title {
     animation: an-fade-in-from-up 400ms;
   }
 }
 .zy-header {
-  transition: all 400ms, background 0ms;
+  transition: transform 400ms, background 0ms;
 }
 .zy-header.transition-translate-out {
   transform: translateY(-100%);
@@ -146,10 +146,6 @@
       }
     }
   }
-}
-
-.zy-side-bar {
-  transition: width 400ms;
 }
 
 .layout-default.transition {

@@ -2,7 +2,7 @@
   <div
     class="horizontal-layout logo-box"
     fixed
-    z-40
+    z-60
     left-0
     top-0
     h-header
