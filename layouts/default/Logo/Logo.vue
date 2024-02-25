@@ -6,14 +6,13 @@
     left-0
     top-0
     h-header
-    w-sidebar-toolbar
     color="text-1"
-    bg="bg-headerBar"
+    bg="bg-1"
     backdrop-blur-xl
   >
     <div h-full w-full flex items-center>
-      <img ml-8 w-8 src="@/assets/image/logo.png" alt="" />
-      <svg
+      <img ml-6 w-8 src="@/assets/image/logo.png" alt="" />
+      <!-- <svg
         v-if="locale == 'zh-CN'"
         fill-current
         h-5
@@ -77,7 +76,7 @@
         <path
           d="m352.17,41.03V6.67h20.95v5.68h-14.89v8.59h13.65v5.58h-13.65v8.78h15.27v5.73h-21.33Z"
         />
-      </svg>
+      </svg> -->
     </div>
   </div>
 </template>
@@ -86,7 +85,7 @@ const { locale } = useI18n();
 </script>
 <style lang="scss" scoped>
 .logo-box {
-  box-shadow: -5px 0px 5px rgba(0,0,0,0.05) inset;
-  border-bottom:1px solid var(--border-color);
+  /* box-shadow: -5px 0px 5px rgba(0,0,0,0.05) inset; */
+  /* border-bottom:1px solid var(--border-color); */
 }
 </style>

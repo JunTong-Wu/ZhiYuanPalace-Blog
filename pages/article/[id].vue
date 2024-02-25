@@ -4,12 +4,13 @@
       class="zy-store-style-card transition-in"
       fixed
       inset-0
-      left-sidebar-toolbar
+      left-sidebar
+      right-toolbar
       bg="bg-3"
       overflow-y-auto
       overflow-x-hidden
       pb-50
-      z-40
+      z-20
     >
       <div class="zy-store-style-card-inner">
         <div class="zy-card-image">

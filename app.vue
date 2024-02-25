@@ -106,7 +106,7 @@ useHead({
 </script>
 <style lang="scss">
 :root {
-  background: var(--bg-1);
+  background: var(--bg-3);
   color: var(--text-1);
 }
 

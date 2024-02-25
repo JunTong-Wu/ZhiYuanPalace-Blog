@@ -3,10 +3,11 @@
     fixed
     top-0
     bottom-0
-    left-sidebar
-    bg="bg-2"
+    right-0
+    bg="bg-3"
     overflow-hidden
     class="zy-tool-bar"
+    z-40
   >
     <!-- <img w-full src="@/assets/image/LooperGroup.png" alt=""> -->
     <div p-4>
@@ -16,6 +17,6 @@
 </template>
 <style lang="scss" scoped>
 .zy-tool-bar {
-  box-shadow: -5px 5px 5px rgba(0,0,0,0.05),-5px -5px 5px rgba(0,0,0,0.05) inset;
+  /* box-shadow: -5px 5px 5px rgba(0,0,0,0.05),-5px -5px 5px rgba(0,0,0,0.05) inset; */
 }
 </style>

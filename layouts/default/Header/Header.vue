@@ -10,11 +10,11 @@
     backdrop-blur-xl
     class="zy-header transition-translate-in"
   >
-    <div class="zy-header-inner" px-2 flex items-center justify-between h-full>
+    <div class="zy-header-inner" flex items-center justify-between h-full>
       <GoBackButton />
       <HeaderTitle />
 
-      <div h-full py-2 w="[50%]">
+      <div h-header py-2 absolute left-0 right-0 pointer-events-none>
         <Music />
       </div>
 
@@ -285,3 +285,19 @@ const closeMoreDrawer = () => {
   moreDisplay.value = false;
 };
 </script>
+<style scoped lang="scss">
+@media (orientation: landscape) {
+  /* 横屏 */
+  .zy-header-inner {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+@media (orientation: portrait) {
+  /* 竖屏 */
+  .zy-header-inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+</style>

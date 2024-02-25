@@ -1,16 +1,16 @@
 <template>
-  <Logo />
+  <Logo w-sidebar />
   <Sidebar w-sidebar top-header class="horizontal-layout" />
-  <Toolbar w-toolbar top-header class="horizontal-layout" />
+  <Header left-sidebar/>
   <div class="layout-default">
-    <Header left-sidebar-toolbar />
-    <main flex-1 pl-sidebar-toolbar>
+    <main flex-1 pl-sidebar pr-toolbar>
       <div text-base relative class="main-view" bg="bg-5" min-h="[100vh]" pt-header>
         <slot />
       </div>
     </main>
     <Footer class="vertical-layout" />
   </div>
+  <Toolbar w-toolbar pt-header class="horizontal-layout" />
 </template>
 <script setup lang="ts">
 import Logo from "./default/Logo/Logo.vue";
