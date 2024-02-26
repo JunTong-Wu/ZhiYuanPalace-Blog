@@ -1,5 +1,8 @@
 <template>
-  <div>TEST</div>
+  <div mt-header>
+    TEST
+    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar bg="bg-3" />
+  </div>
 </template>
 <script setup lang="ts">
 useHead({

@@ -1,5 +1,5 @@
 <template>
-  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
+  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" overflow-x-hidden>
     <Head>
       <template v-for="link in head.link" :key="link.id">
         <Link
@@ -16,7 +16,12 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
-      <NuxtPage mx-auto p="4 xs:5 sm:6 md:7 lg:8" />
+      <NuxtPage
+        mx-auto
+        p="4 xs:5 sm:6 md:7 lg:8"
+        min-h="[100vh]"
+        class="pr-toolbar!"
+      />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -24,7 +29,7 @@
 import "@/assets/css/style.scss";
 import "@/assets/css/common-to-live2d.scss";
 import "@/assets/css/transition.scss";
-import "@/assets/css/common-to-nprogress.scss"
+import "@/assets/css/common-to-nprogress.scss";
 
 // 多语言
 const head = useLocaleHead({

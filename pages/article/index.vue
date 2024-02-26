@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div mt-header >
     <div
       grid
       grid-cols-12
@@ -85,6 +85,7 @@
         </div>
       </div>
     </div>
+    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar bg="bg-3" />
   </div>
 </template>
 <script setup lang="ts">

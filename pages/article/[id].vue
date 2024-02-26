@@ -2,13 +2,11 @@
   <div>
     <div
       class="zy-store-style-card transition-in"
-      fixed
-      inset-0
-      left-sidebar
-      right-toolbar
+      absolute
+      left-0
+      right-0
+      top-0
       bg="bg-3"
-      overflow-y-auto
-      overflow-x-hidden
       pb-50
       z-20
     >
@@ -42,9 +40,99 @@
           text text text text text text text text text text text text text text
           text text text text text text text text
         </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
+        <p>
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text text text text text text text
+          text text text text text text text text
+        </p>
       </div>
     </div>
-    <Toolbar fixed top-0 bottom-0 right-0 w-toolbar pt-header bg="bg-3"/>
+    <Toolbar absolute top-0 bottom-0 z-40 right-0 w-toolbar pt-header bg="bg-3" />
   </div>
 </template>
 <script setup lang="ts">
@@ -68,8 +156,8 @@ onMounted(() => {});
 
 definePageMeta({
   pageTransition: {
-    name: 'second-layer',
-    mode: 'out-in'
+    name: "second-layer",
+    mode: "out-in",
   },
   middleware: "transition",
 });

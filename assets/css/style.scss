@@ -220,6 +220,7 @@ a {
   /* 自定义滚动条 */
   ::-webkit-scrollbar {
     width: 0.6em; /* 设置滚动条的宽度 */
+    height: 0.6em;
   }
 
   ::-webkit-scrollbar-thumb {

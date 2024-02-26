@@ -12,17 +12,14 @@
     backdrop-blur-xl
   />
   <div class="layout-default">
-    <main flex-1 pl-sidebar pr-toolbar>
+    <main flex-1 pl-sidebar >
       <div
         text-base
         relative
         class="main-view"
         bg="bg-5"
-        min-h="[100vh]"
-        pt-header
       >
         <slot />
-        <!-- <Toolbar fixed top-0 bottom-0 right-0 w-toolbar pt-header bg="bg-3" /> -->
       </div>
     </main>
     <Footer fixed bottom-0 left-0 right-0 z-10 bg="bg-3" />

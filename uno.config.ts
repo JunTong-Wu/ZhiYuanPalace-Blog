@@ -32,6 +32,7 @@ export default defineConfig({
     ["pl-sidebar-toolbar", { "padding-left": "calc( var(--side-bar-width) + var(--tool-bar-width) )" }],
     ["pr-toolbar", {"padding-right": "var(--tool-bar-width)"}],
     ["pt-header", { "padding-top": "var(--header-bar-height)" }],
+    ["mt-header", { "margin-top": "var(--header-bar-height)" }],
     ["top-header", { top: "var(--header-bar-height)" }],
     ["w-centered", { "max-width": "var(--centered-width)" }],
   ],
