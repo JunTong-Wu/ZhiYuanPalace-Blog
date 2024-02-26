@@ -1,14 +1,5 @@
 <template>
-  <aside
-    fixed
-    top-0
-    bottom-0
-    left-0
-    bg="bg-1"
-    color="text-1"
-    overflow-hidden
-    class="zy-side-bar"
-  >
+  <aside color="text-1" overflow-hidden class="zy-side-bar horizontal-layout">
     <Navigation />
   </aside>
 </template>

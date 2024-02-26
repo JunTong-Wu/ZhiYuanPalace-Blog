@@ -1,13 +1,7 @@
 <template>
   <aside
-    fixed
-    top-0
-    bottom-0
-    right-0
-    bg="bg-3"
     overflow-hidden
-    class="zy-tool-bar"
-    z-40
+    class="zy-tool-bar horizontal-layout"
   >
     <!-- <img w-full src="@/assets/image/LooperGroup.png" alt=""> -->
     <div p-4>

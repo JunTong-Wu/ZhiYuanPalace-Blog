@@ -44,6 +44,7 @@
         </p>
       </div>
     </div>
+    <Toolbar fixed top-0 bottom-0 right-0 w-toolbar pt-header bg="bg-3"/>
   </div>
 </template>
 <script setup lang="ts">

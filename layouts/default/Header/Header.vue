@@ -1,15 +1,5 @@
 <template>
-  <header
-    fixed
-    top-0
-    right-0
-    h-header
-    z-60
-    color-text-1
-    bg="bg-headerBar"
-    backdrop-blur-xl
-    class="zy-header transition-translate-in"
-  >
+  <header h-header color-text-1 class="zy-header transition-translate-in">
     <div class="zy-header-inner" flex items-center justify-between h-full>
       <GoBackButton />
       <HeaderTitle />

@@ -1,15 +1,5 @@
 <template>
-  <div
-    class="horizontal-layout logo-box"
-    fixed
-    z-60
-    left-0
-    top-0
-    h-header
-    color="text-1"
-    bg="bg-1"
-    backdrop-blur-xl
-  >
+  <div class="horizontal-layout logo-box" color="text-1">
     <div h-full w-full flex items-center>
       <img ml-6 w-8 src="@/assets/image/logo.png" alt="" />
       <!-- <svg

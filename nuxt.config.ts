@@ -11,6 +11,13 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: false },
   modules: ["@unocss/nuxt", "@nuxtjs/i18n"],
+  components: [
+    {
+      path: "components",
+      pathPrefix: false,
+      extensions: [".vue"],
+    },
+  ],
   i18n: {
     baseUrl: "https://www.yiru.love",
     locales: [

@@ -1,15 +1,5 @@
 <template>
-  <footer
-    fixed
-    bottom-0
-    left-0
-    right-0
-    h-footer
-    z-10
-    flex
-    justify-center
-    bg="bg-3"
-  >
+  <footer h-footer flex justify-center class="vertical-layout">
     <div
       h-full
       flex
