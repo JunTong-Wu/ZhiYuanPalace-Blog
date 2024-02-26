@@ -1,6 +1,6 @@
 <template>
-  <Logo fixed left-0 top-0 h-header w-sidebar bg="bg-1" z-80 />
-  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar top-header bg="bg-1" />
+  <Logo fixed left-0 top-0 h-header w-sidebar bg="bg-2" z-80 />
+  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar top-header bg="bg-2" />
   <Header
     fixed
     top-0

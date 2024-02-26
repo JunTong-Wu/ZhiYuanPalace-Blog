@@ -33,11 +33,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
         header.classList.remove("transition-translate-out");
         header.classList.add("transition-translate-in");
       }
-      const footer = document.querySelector("footer");
-      if (footer) {
-        footer.classList.remove("transition-translate-out");
-        footer.classList.add("transition-translate-in");
-      }
       const layoutDefault = document.querySelector(".layout-default") as any;
       if (layoutDefault) {
         layoutDefault.classList.remove("transition");
