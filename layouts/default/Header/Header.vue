@@ -1,8 +1,10 @@
 <template>
   <header h-header color-text-1 class="zy-header transition-translate-in">
     <div class="zy-header-inner" flex items-center justify-between h-full>
-      <GoBackButton />
-      <HeaderTitle />
+      <div flex items-center gap-4>
+        <GoBackButton />
+        <HeaderTitle />
+      </div>
 
       <div h-header py-2 absolute left-0 right-0 pointer-events-none>
         <Music />
@@ -148,7 +150,7 @@
       @cancel="closeMoreDrawer"
       position="right"
       size="21rem"
-      background="var(--bg-5)"
+      background="var(--bg-3)"
     >
     </zy-drawer>
   </header>
@@ -279,8 +281,8 @@ const closeMoreDrawer = () => {
 @media (orientation: landscape) {
   /* 横屏 */
   .zy-header-inner {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 @media (orientation: portrait) {

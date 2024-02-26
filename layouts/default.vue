@@ -1,6 +1,6 @@
 <template>
-  <Logo fixed left-0 top-0 h-header w-sidebar bg="bg-3" z-80 />
-  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar top-header bg="bg-3" />
+  <Logo fixed left-0 top-0 h-header w-sidebar bg="bg-1" z-80 />
+  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar top-header bg="bg-1" />
   <Header
     fixed
     top-0
@@ -17,14 +17,14 @@
         text-base
         relative
         class="main-view"
-        bg="bg-5"
+        bg="bg-1"
+        pr-toolbar
       >
         <slot />
       </div>
     </main>
-    <Footer fixed bottom-0 left-0 right-0 z-10 bg="bg-3" />
   </div>
-  
+  <Footer fixed bottom-0 left-0 right-0 z-60 bg="bg-1" />
 </template>
 <script setup lang="ts">
 import Logo from "./default/Logo/Logo.vue";

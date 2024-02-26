@@ -1,5 +1,5 @@
 <template>
-  <div mt-header >
+  <div mt-header overflow-x-hidden>
     <div
       grid
       grid-cols-12
@@ -46,7 +46,7 @@
         <div grid grid-cols-12 gap-4 bg="bg-4" p-4 rounded-2xl>
           <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
           <zy-store-style-card
-            bg="bg-5"
+            bg="bg-2"
             :href="`/article/${n}`"
             v-for="n in 3"
             rounded-lg
@@ -85,7 +85,7 @@
         </div>
       </div>
     </div>
-    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar bg="bg-3" />
+    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar />
   </div>
 </template>
 <script setup lang="ts">

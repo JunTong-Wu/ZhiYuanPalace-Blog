@@ -14,13 +14,13 @@
       </template>
     </Head>
   </Html>
-  <ZySuperResponsive>
-    <NuxtLayout>
+  <ZySuperResponsive  overflow-x-hidden>
+    <NuxtLayout  overflow-x-hidden>
       <NuxtPage
         mx-auto
         p="4 xs:5 sm:6 md:7 lg:8"
         min-h="[100vh]"
-        class="pr-toolbar!"
+        class="nuxt-page"  overflow-x-hidden
       />
     </NuxtLayout>
   </ZySuperResponsive>
@@ -111,7 +111,7 @@ useHead({
 </script>
 <style lang="scss">
 :root {
-  background: var(--bg-3);
+  background: var(--bg-1);
   color: var(--text-1);
 }
 

@@ -171,18 +171,6 @@ export default defineComponent({
     watch(
       () => display.value,
       (newValue) => {
-        // 抽屉打开时阻止页面滚动
-        if (newValue) {
-          const body = document.documentElement;
-          if (body) {
-            body.style.overflowY = "hidden";
-          }
-        } else {
-          const body = document.documentElement;
-          if (body) {
-            body.style.overflowY = "auto";
-          }
-        }
         // 打开时，先监听display，再异步改变visible，实现进入动画
         setTimeout(() => {
           visible.value = newValue;

@@ -27,21 +27,41 @@
 }
 
 /* Remove these to get rid of the spinner */
-#nprogress .spinner {
-  position: fixed;
-  z-index: 1031;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
+
+@media (orientation: landscape) {
+  /* 横屏 */
+  #nprogress .spinner {
+    position: fixed;
+    z-index: 1031;
+    inset: 0;
+    top: 0;
+    padding-top: 0.75rem;
+    padding-left: 11rem;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+  }
+}
+@media (orientation: portrait) {
+  /* 竖屏 */
+  #nprogress .spinner {
+    position: fixed;
+    z-index: 1031;
+    inset: 0;
+    top: 0;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+  }
 }
 
 #nprogress .spinner-icon {
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
   box-sizing: border-box;
-  border: solid 0.5rem transparent;
+  border: solid 0.2rem transparent;
   border-top-color: var(--progress-color);
   border-left-color: var(--progress-color);
   border-radius: 50%;

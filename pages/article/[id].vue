@@ -6,7 +6,7 @@
       left-0
       right-0
       top-0
-      bg="bg-3"
+      bg="bg-2"
       pb-50
       z-20
     >
@@ -18,7 +18,7 @@
           />
         </div>
       </div>
-      <div class="zy-store-style-card-text" p-4>
+      <div class="zy-store-style-card-text" mt-12>
         <h1>Title</h1>
         <p>
           text text text text text text text text text text text text text text
@@ -132,7 +132,7 @@
         </p>
       </div>
     </div>
-    <Toolbar absolute top-0 bottom-0 z-40 right-0 w-toolbar pt-header bg="bg-3" />
+    <Toolbar absolute top-0 bottom-0 z-40 right-0 w-toolbar pt-header />
   </div>
 </template>
 <script setup lang="ts">

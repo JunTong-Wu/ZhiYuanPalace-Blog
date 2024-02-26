@@ -77,6 +77,11 @@ const openCard = (element: any) => {
             header.classList.add("transition-translate-out");
             header.classList.remove("transition-translate-in");
           }
+          const footer = document.querySelector("footer");
+          if (footer) {
+            footer.classList.add("transition-translate-out");
+            footer.classList.remove("transition-translate-in");
+          }
           copyElement.classList.add("transition-in");
           setTimeout(() => {
             copyElement.style.top = 0 + "px";
