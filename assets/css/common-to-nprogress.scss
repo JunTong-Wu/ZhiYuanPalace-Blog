@@ -5,14 +5,13 @@
 }
 
 #nprogress .bar {
-  background: rgba(255,255,255,0.2);
+  background: var(--progress-color);
   position: fixed;
   z-index: 1;
-  top: auto;
-  bottom: 0;
+  top: var(--header-bar-height);
   left: 0;
   width: 100%;
-  height: var(--footer-bar-height);
+  height: 0.2rem;
   .peg {
     display: none;
   }
