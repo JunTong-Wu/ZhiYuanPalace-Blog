@@ -2,8 +2,8 @@ footer {
   transition: bottom 400ms, background 0ms;
 }
 footer.transition-translate-out {
-  bottom:-100%;
+  bottom: calc(0rem - var(--footer-bar-height));
 }
 .page-article-details footer {
-  bottom:-100%;
+  bottom: calc(0rem - var(--footer-bar-height));
 }

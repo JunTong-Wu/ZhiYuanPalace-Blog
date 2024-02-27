@@ -2,5 +2,5 @@ header {
   transition: top 400ms, background 0ms;
 }
 header.transition-translate-out {
-  top: -100%;
+  top: calc(0rem - var(--header-bar-height));
 }
