@@ -1,7 +1,6 @@
 <template>
   <div
     h-full
-    border="1 solid bordercolor"
     bg="bg-card"
     w="[40%]"
     mx-auto
