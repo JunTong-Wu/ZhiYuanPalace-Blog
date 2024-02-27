@@ -138,7 +138,7 @@ export default {
   bottom: 0;
   left: 0.1rem;
   width: 0.2rem;
-  background: var(--theme-color);
+  background: var(--text-1);
   z-index: 2;
   border-radius: 100px;
   display: none;

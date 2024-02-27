@@ -6,7 +6,6 @@
       left-0
       right-0
       top-0
-      bg="bg-2"
       pb-50
       z-20
     >

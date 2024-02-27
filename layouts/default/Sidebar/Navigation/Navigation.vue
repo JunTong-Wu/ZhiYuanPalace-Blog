@@ -20,7 +20,7 @@
               defaultColor="var(--text-2)"
               :activatedName="n.activatedIcon"
               :activated="routerActivate(n.path)"
-              activated-color="var(--theme-color)"
+              activated-color="var(--text-1)"
             />
           </div>
 
@@ -61,7 +61,7 @@ const routerActivate = (path: string) => {
   &.activate {
     /* background-color: var(--bg-4); */
     span {
-      color: var(--theme-color);
+      color: var(--text-1);
     }
   }
 }

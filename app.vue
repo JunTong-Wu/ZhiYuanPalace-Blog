@@ -95,12 +95,12 @@ const myLive2dConfig = () => {
     });
   }
 };
-if (process.client) {
-  const script = document.createElement("script");
-  script.src = "/static/js/oh-my-live2d.min.js";
-  document.body.appendChild(script);
-  myLive2dConfig();
-}
+// if (process.client) {
+//   const script = document.createElement("script");
+//   script.src = "/static/js/oh-my-live2d.min.js";
+//   document.body.appendChild(script);
+//   myLive2dConfig();
+// }
 
 // head
 useHead({
@@ -111,9 +111,13 @@ useHead({
 </script>
 <style lang="scss">
 :root {
-  background: var(--bg-1);
+  background: var(--bg-1) url('@/assets/image/bg33.jpg') fixed no-repeat center/cover;
   color: var(--text-1);
 }
+
+/* :root.dark {
+  background: var(--bg-1) url('@/assets/image/bg5.png');
+} */
 
 .vertical-layout {
   display: none;

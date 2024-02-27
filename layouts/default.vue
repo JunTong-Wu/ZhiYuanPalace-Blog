@@ -1,6 +1,6 @@
 <template>
-  <Logo fixed left-0 top-0 h-header w-sidebar bg="bg-2" z-80 />
-  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar top-header bg="bg-2" />
+  <Logo fixed left-0 top-0 h-header w-sidebar  z-80 />
+  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar top-header />
   <Header
     fixed
     top-0
@@ -8,8 +8,6 @@
     right-0
     z-60
     pl-sidebar
-    bg="bg-headerBar"
-    backdrop-blur-xl
   />
   <div class="layout-default">
     <main flex-1 pl-sidebar >
@@ -17,14 +15,13 @@
         text-base
         relative
         class="main-view"
-        bg="bg-1"
         pr-toolbar
       >
         <slot />
       </div>
     </main>
   </div>
-  <Footer fixed bottom-0 left-0 right-0 z-60 bg="bg-1" />
+  <Footer fixed bottom-0 left-0 right-0 z-60 />
 </template>
 <script setup lang="ts">
 import Logo from "./default/Logo/Logo.vue";
