@@ -157,7 +157,6 @@
 </template>
 <script setup lang="ts">
 import Music from "../Music/Music.vue";
-import GoBackButton from "./GoBackButton/GoBackButton.vue";
 import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
 
 // 多语言

@@ -6,10 +6,10 @@
 </template>
 <script setup lang="ts">
 useHead({
-  title: "说说",
+  title: "媒体类",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
   bodyAttrs: {
-    class: "page-shuoshuo",
+    class: "page-audio",
   },
 });
 definePageMeta({

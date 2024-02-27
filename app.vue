@@ -99,6 +99,7 @@ useHead({
 <style lang="scss">
 .nuxt-page {
   min-height: calc(100vh - var(--header-bar-height));
+  will-change: transform;
 }
 .page-article-details .nuxt-page {
   min-height: 100vh;

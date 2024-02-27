@@ -16,7 +16,6 @@
         text-base
         relative
         class="main-view"
-        pr-toolbar
       >
         <slot />
       </div>

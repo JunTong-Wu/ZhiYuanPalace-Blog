@@ -13,10 +13,9 @@
   </div>
   <div class="vertical-layout" v-if="gobackFlag">
     <zy-button
-      v-if="gobackFlag"
-      flex
-      items-center
-      justify-center
+    v-if="gobackFlag"
+      w-header
+      h-header
       @click="goback()"
       title="返回"
       type="transparent"
@@ -36,9 +35,9 @@ const isFirstLayer = (path: string) => {
     .replace(/^\/+|\/+$/g, "")
     .split("/");
 
-  // 如果路径是"/"或者分割后的部分数量等于1，则返回true
+  // 如果路径是"/"或者分割后的部分数量小于等于2，则返回true
   // 否则返回false
-  return path === "/" || (parts.length === 1 && parts[0] !== "");
+  return path === "/" || (parts.length <= 2 && parts[0] !== "");
 };
 const gobackFlag = ref(false);
 const gobackInit = (path: string) => {

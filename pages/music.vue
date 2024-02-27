@@ -6,16 +6,16 @@
 </template>
 <script setup lang="ts">
 useHead({
-  title: "视频",
+  title: "音乐",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
   bodyAttrs: {
-    class: "page-video",
+    class: "page-photo",
   },
 });
 definePageMeta({
   pageTransition: {
-    name: 'first-layer',
-    mode: 'out-in'
+    name: "first-layer",
+    mode: "out-in",
   },
   middleware: "transition",
 });
