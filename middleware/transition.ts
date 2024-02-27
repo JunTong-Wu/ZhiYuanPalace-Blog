@@ -15,15 +15,14 @@ const isFirstLayer = (path: string) => {
   return path === "/" || (parts.length === 1 && parts[0] !== "");
 };
 export default defineNuxtRouteMiddleware((to, from) => {
-  if (process.client) {
-    NProgress.start();
-    setTimeout(() => {
-      NProgress.done();
-    }, 100);
-  }
-
   if (isFirstLayer(from.fullPath) && isFirstLayer(to.fullPath)) {
     to.meta.pageTransition.name = "first-layer";
+    if (process.client) {
+      NProgress.start();
+      setTimeout(() => {
+        NProgress.done();
+      }, 100);
+    }
   }
   if (isFirstLayer(from.fullPath) && !isFirstLayer(to.fullPath)) {
     to.meta.pageTransition.name = "second-layer";

@@ -47,9 +47,9 @@
   transform: scale(0.9);
 }
 .zy-store-style-card.transition-in {
-  padding-right: calc(var(--tool-bar-width) + 1rem);
-  padding-left: 1rem;
-  padding-top: calc(var(--header-bar-height) + 1rem);
+  padding-right: calc(var(--tool-bar-width) + 2rem);
+  padding-left: 2rem;
+  padding-top: calc(var(--header-bar-height) + 2rem);
   height: auto;
   border-radius: 0rem;
   transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,box-shadow 0s;

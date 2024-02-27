@@ -100,6 +100,9 @@ useHead({
 .nuxt-page {
   min-height: calc(100vh - var(--header-bar-height));
 }
+.page-article-details .nuxt-page {
+  min-height: 100vh;
+}
 :root {
   background: #fff url("@/assets/image/gradient.jpg") fixed no-repeat
     center/cover;
