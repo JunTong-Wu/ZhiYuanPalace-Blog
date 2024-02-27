@@ -1,5 +1,5 @@
 <template>
-  <div mt-header overflow-x-hidden>
+  <div mt-header>
     <div
       grid
       grid-cols-12
@@ -12,7 +12,7 @@
         sm:col-span-4
         md:col-span-6
         lg:col-span-6
-        bg="bg-headerBar"
+        bg="bg-card"
         p-4
         rounded-2xl
       >
@@ -24,7 +24,7 @@
         sm:col-span-4
         md:col-span-3
         lg:col-span-3
-        bg="bg-headerBar"
+        bg="bg-card"
         p-4
         rounded-2xl
       >
@@ -36,14 +36,14 @@
         sm:col-span-4
         md:col-span-3
         lg:col-span-3
-        bg="bg-headerBar"
+        bg="bg-card"
         p-4
         rounded-2xl
       >
         <h3 col-span-12 m-0 font-normal text-sm>标签</h3>
       </div>
       <div col-span-12>
-        <div grid grid-cols-12 gap-4 bg="bg-headerBar" p-4 rounded-2xl>
+        <div grid grid-cols-12 gap-4 bg="bg-card" p-4 rounded-2xl>
           <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
           <storeStyleCard
             :href="`/article/${n}`"
@@ -71,7 +71,7 @@
     <div col-span-12>
       <div flex gap-4>
         <div
-          bg="bg-4"
+          bg="bg-card"
           h-10
           w-10
           rounded-lg

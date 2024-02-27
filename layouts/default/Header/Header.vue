@@ -63,7 +63,7 @@
             <ZyIcon v-else size="0.75rem" defaultName="minimize" />
           </zy-button>
           <!-- 多语言抽屉 -->
-          <zy-popover title="切换语言" background="var(--bg-4)">
+          <zy-popover title="切换语言" background="var(--bg-panel)">
             <template #reference>
               <zy-button
                 flex
@@ -150,7 +150,7 @@
       @cancel="closeMoreDrawer"
       position="right"
       size="21rem"
-      background="var(--bg-3)"
+      background="var(--bg-panel)"
     >
     </zy-drawer>
   </header>

@@ -25,7 +25,7 @@
       <div
         ref="mainElement"
         class="drawer-main"
-        bg="bg-5"
+        bg="bg-panel"
         fixed
         h-full
         will-change-transform

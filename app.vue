@@ -1,5 +1,5 @@
 <template>
-  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" overflow-x-hidden>
+  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
     <Head>
       <template v-for="link in head.link" :key="link.id">
         <Link
@@ -14,14 +14,9 @@
       </template>
     </Head>
   </Html>
-  <ZySuperResponsive  overflow-x-hidden>
-    <NuxtLayout  overflow-x-hidden>
-      <NuxtPage
-        mx-auto
-        p="4 xs:5 sm:6 md:7 lg:8"
-        min-h="[100vh]"
-        class="nuxt-page"  overflow-x-hidden
-      />
+  <ZySuperResponsive>
+    <NuxtLayout>
+      <NuxtPage mx-auto p="4 xs:5 sm:6 md:7 lg:8" class="nuxt-page" />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -37,14 +32,6 @@ const head = useLocaleHead({
   identifierAttribute: "id",
   addSeoAttributes: true,
 });
-// const goLink = `/article/1`;
-// const router = useRouter();
-// router.beforeEach((to, from, next) => {
-//   if (to.fullPath == goLink) {
-//   } else {
-//     next();
-//   }
-// });
 
 // Live2D
 const myLive2dConfig = () => {
@@ -95,12 +82,12 @@ const myLive2dConfig = () => {
     });
   }
 };
-// if (process.client) {
-//   const script = document.createElement("script");
-//   script.src = "/static/js/oh-my-live2d.min.js";
-//   document.body.appendChild(script);
-//   myLive2dConfig();
-// }
+if (process.client) {
+  const script = document.createElement("script");
+  script.src = "/static/js/oh-my-live2d.min.js";
+  document.body.appendChild(script);
+  myLive2dConfig();
+}
 
 // head
 useHead({
@@ -110,13 +97,27 @@ useHead({
 });
 </script>
 <style lang="scss">
+.nuxt-page {
+  min-height: calc(100vh - var(--header-bar-height));
+}
 :root {
-  background: var(--bg-1) url('@/assets/image/gradient.jpg') fixed no-repeat center/cover;
+  background: #fff url("@/assets/image/gradient.jpg") fixed no-repeat
+    center/cover;
   color: var(--text-1);
 }
 
 :root.dark {
-  background: var(--bg-1) url('@/assets/image/gradient_dark.jpg') fixed no-repeat center/cover;
+  background: #000 url("@/assets/image/gradient_dark.jpg") fixed no-repeat
+    center/cover;
+}
+
+.background-img {
+  background: url("@/assets/image/gradient.jpg") fixed no-repeat center/cover;
+}
+
+:root.dark .background-img {
+  background: url("@/assets/image/gradient_dark.jpg") fixed no-repeat
+    center/cover;
 }
 
 .vertical-layout {

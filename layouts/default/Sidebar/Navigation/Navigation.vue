@@ -59,7 +59,7 @@ const routerActivate = (path: string) => {
 }
 .sidebar-navigation {
   &.activate {
-    /* background-color: var(--bg-4); */
+    /* background-color: var(--bg-card); */
     span {
       color: var(--text-1);
     }

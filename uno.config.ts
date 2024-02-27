@@ -69,12 +69,8 @@ export default defineConfig({
       //背景颜色
       bg: {
         best: "var(--bg-best)",
-        0: "var(--bg-0)",
-        1: "var(--bg-1)",
-        2: "var(--bg-2)",
-        3: "var(--bg-3)",
-        4: "var(--bg-4)",
-        5: "var(--bg-5)",
+        card:"var(--bg-card)",
+        panel:"var(--bg-panel)",
         transparent: "transparent",
         mask: "var(--bg-mask)",
         primary: "var(--primary-5)",

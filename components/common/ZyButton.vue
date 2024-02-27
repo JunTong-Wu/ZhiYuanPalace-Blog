@@ -117,7 +117,7 @@ export default defineComponent({
 * Type Default
 **/
 button.zy-button-default {
-  background-color: var(--bg-4);
+  background-color: var(--bg-card);
   color: var(--text-1);
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
@@ -125,8 +125,8 @@ button.zy-button-default {
   padding-right: 2rem;
   border-radius: 9999px;
   border: none;
-  box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--bg-5),
-    inset -5px -5px 10px var(--bg-5);
+  box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--bg-card),
+    inset -5px -5px 10px var(--bg-card);
 }
 @media (hover: hover) {
   .pc button.zy-button-default:hover {

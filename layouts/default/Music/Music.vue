@@ -2,8 +2,8 @@
   <div
     h-full
     border="1 solid bordercolor"
-    bg="bg-headerBar"
-    w="[50%]"
+    bg="bg-card"
+    w="[40%]"
     mx-auto
     rounded-xl
     pointer-events-auto

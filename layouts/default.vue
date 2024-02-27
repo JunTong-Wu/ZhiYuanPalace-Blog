@@ -8,6 +8,7 @@
     right-0
     z-60
     pl-sidebar
+    class="background-img"
   />
   <div class="layout-default">
     <main flex-1 pl-sidebar >
@@ -21,7 +22,7 @@
       </div>
     </main>
   </div>
-  <Footer fixed bottom-0 left-0 right-0 z-60 />
+  <Footer fixed bottom-0 left-0 right-0 z-60 class="background-img"/>
 </template>
 <script setup lang="ts">
 import Logo from "./default/Logo/Logo.vue";
