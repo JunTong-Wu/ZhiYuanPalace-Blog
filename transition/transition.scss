@@ -1,0 +1,45 @@
+@import url('./pageTransition/pageTransition.scss');
+@import url('./headerBar/headerBar.scss');
+@import url('./storeStyleCard/storeStyleCard.scss');
+
+
+@keyframes an-fade-in-from-up {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+@keyframes an-fade-in-from-down {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes an-fade-in-from-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.zy-header-inner {
+  .header-title {
+    animation: an-fade-in-from-up 400ms;
+  }
+}
+.zy-tool-bar {
+  animation: an-fade-in-from-right 400ms;
+}

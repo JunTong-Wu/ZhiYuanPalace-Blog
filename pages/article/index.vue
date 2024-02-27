@@ -45,7 +45,7 @@
       <div col-span-12>
         <div grid grid-cols-12 gap-4 bg="bg-headerBar" p-4 rounded-2xl>
           <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
-          <zy-store-style-card
+          <storeStyleCard
             :href="`/article/${n}`"
             v-for="n in 3"
             rounded-lg
@@ -64,7 +64,7 @@
                 text text text text text text text text text text
               </p>
             </template>
-          </zy-store-style-card>
+          </storeStyleCard>
         </div>
       </div>
     </div>
@@ -88,6 +88,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import storeStyleCard from '@/transition/storeStyleCard/storeStyleCard.vue'
+
 useHead({
   title: "文章",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],

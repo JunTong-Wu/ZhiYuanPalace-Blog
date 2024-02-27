@@ -1,5 +1,5 @@
 <template>
-  <header h-header color-text-1 class="zy-header transition-translate-in">
+  <header h-header color-text-1>
     <div class="zy-header-inner" flex items-center justify-between h-full>
       <div flex items-center gap-4>
         <GoBackButton />

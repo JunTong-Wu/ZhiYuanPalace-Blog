@@ -1,4 +1,7 @@
 import NProgress from "nprogress";
+import { headerBarHide, headerBarShow } from "@/transition/headerBar/headerBar";
+import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
+import { cardTransitionEnd } from "@/transition/storeStyleCard/storeStyleCard";
 
 const isFirstLayer = (path: string) => {
   // 移除路径两端的斜杠，然后分割路径
@@ -24,43 +27,16 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (isFirstLayer(from.fullPath) && !isFirstLayer(to.fullPath)) {
     to.meta.pageTransition.name = "second-layer";
     to.meta.pageTransition.onAfterEnter = (el, done) => {
-      const tempElement = document.getElementById("temp-element");
-      if (tempElement) {
-        document.body.removeChild(tempElement);
-      }
-      const header = document.querySelector("header");
-      if (header) {
-        header.classList.remove("transition-translate-out");
-        header.classList.add("transition-translate-in");
-      }
-      const layoutDefault = document.querySelector(".layout-default") as any;
-      if (layoutDefault) {
-        layoutDefault.classList.remove("transition");
-      }
+      cardTransitionEnd();
+      headerBarShow();
     };
   }
   if (!isFirstLayer(from.fullPath) && isFirstLayer(to.fullPath)) {
-    const header = document.querySelector("header");
-    if (header) {
-      header.classList.remove("transition-translate-in");
-      header.classList.add("transition-translate-out");
-    }
-    const footer = document.querySelector("footer");
-    if (footer) {
-      footer.classList.remove("transition-translate-in");
-      footer.classList.add("transition-translate-out");
-    }
+    headerBarHide();
+    footerBarHide();
     to.meta.pageTransition.onEnter = (el, done) => {
-      const header = document.querySelector("header");
-      if (header) {
-        header.classList.remove("transition-translate-out");
-        header.classList.add("transition-translate-in");
-      }
-      const footer = document.querySelector("footer");
-      if (footer) {
-        footer.classList.remove("transition-translate-out");
-        footer.classList.add("transition-translate-in");
-      }
+      headerBarShow();
+      footerBarShow();
     };
   }
 });

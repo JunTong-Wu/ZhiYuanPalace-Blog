@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import "@/assets/css/style.scss";
 import "@/assets/css/common-to-live2d.scss";
-import "@/assets/css/transition.scss";
+import "@/transition/transition.scss";
 import "@/assets/css/common-to-nprogress.scss";
 
 // 多语言
@@ -111,13 +111,13 @@ useHead({
 </script>
 <style lang="scss">
 :root {
-  background: var(--bg-1) url('@/assets/image/bg33.jpg') fixed no-repeat center/cover;
+  background: var(--bg-1) url('@/assets/image/gradient.jpg') fixed no-repeat center/cover;
   color: var(--text-1);
 }
 
-/* :root.dark {
-  background: var(--bg-1) url('@/assets/image/bg5.png');
-} */
+:root.dark {
+  background: var(--bg-1) url('@/assets/image/gradient_dark.jpg') fixed no-repeat center/cover;
+}
 
 .vertical-layout {
   display: none;

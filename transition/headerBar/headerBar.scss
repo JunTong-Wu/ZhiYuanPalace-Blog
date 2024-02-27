@@ -1,0 +1,6 @@
+header {
+  transition: transform 400ms, background 0ms;
+}
+header.transition-translate-out {
+  transform: translateY(-100%);
+}
