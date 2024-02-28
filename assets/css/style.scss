@@ -43,6 +43,7 @@ a {
   --side-bar-width: 5rem;
   --tool-bar-width: 20rem;
   --border-color: rgba(127, 127, 127, 0.2);
+  --tabs-bar-height: 4rem;
 }
 @media (orientation: portrait) {
   :root {
@@ -145,7 +146,7 @@ a {
   --magenta-1: #ffe8f1; //浅色/白底悬浮
 }
 :root {
-  --bg-card: rgba(255, 255, 255, 0.2); //卡片
+  --bg-card: rgba(255, 255, 255, 0.4); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(240, 243, 249, 0.5); //遮罩层
   --text-1: rgba(0, 0, 0, 1); //强调/正文标题
@@ -154,7 +155,7 @@ a {
   --text-4: rgba(0, 0, 0, 0.1); //置灰信息
 }
 *.dark {
-  --bg-card: rgba(15, 16, 46, 0.2); //卡片
+  --bg-card: rgba(15, 16, 46, 0.4); //卡片
   --bg-panel: rgba(15, 16, 46, 0.6); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
   --text-1: rgba(255, 255, 255, 1); //强调/正文标题

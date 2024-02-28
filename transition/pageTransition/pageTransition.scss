@@ -11,17 +11,33 @@
 .first-layer-leave-to {
   opacity: 0;
 }
-.second-layer-enter-active {
-  transition: all 0.4s;
+.second-layer-prev-enter-active {
+  transition: all 0.2s;
 }
-.second-layer-leave-active {
-  transition: all 0.1s;
+.second-layer-prev-leave-active {
+  transition: all 0.2s;
 }
-.second-layer-enter-from {
+.second-layer-prev-enter-from {
   opacity: 0;
+  transform: translateX(-50vw);
 }
-.second-layer-leave-to {
+.second-layer-prev-leave-to {
   opacity: 0;
+  transform: translateX(-50vw);
+}
+.second-layer-next-enter-active {
+  transition: all 0.2s;
+}
+.second-layer-next-leave-active {
+  transition: all 0.2s;
+}
+.second-layer-next-enter-from {
+  opacity: 0;
+  transform: translateX(50vw);
+}
+.second-layer-next-leave-to {
+  opacity: 0;
+  transform: translateX(50vw);
 }
 .third-layer-enter-active {
   transition: all 0s;

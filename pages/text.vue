@@ -7,13 +7,34 @@
         route.fullPath == '/text/shuoshuo'
       "
       pt-header
+      pr-toolbar
     >
-      <ul>
-        <li>
-          <zy-link to="/text/article">文章</zy-link>
+      <ul flex h-tabs gap-4 p="4 xs:5 sm:6 md:7 lg:8 b-0!">
+        <li h-full>
+          <zy-link
+            to="/text/article"
+            w-20
+            h-full
+            flex
+            justify-center
+            items-center
+            bg="bg-card!"
+            rounded-2xl
+            >文章</zy-link
+          >
         </li>
-        <li>
-          <zy-link to="/text/shuoshuo">说说</zy-link>
+        <li h-full>
+          <zy-link
+            to="/text/shuoshuo"
+            w-20
+            h-full
+            flex
+            justify-center
+            items-center
+            bg="bg-card!"
+            rounded-2xl
+            >说说</zy-link
+          >
         </li>
       </ul>
     </div>
@@ -37,9 +58,9 @@ definePageMeta({
 });
 const route = useRoute();
 const router = useRouter();
-onMounted(()=>{
-  if(route.fullPath == '/text'){
-    router.replace('/text/article')
+onBeforeMount(() => {
+  if (route.fullPath == "/text") {
+    router.replace("/text/article");
   }
-})
+});
 </script>

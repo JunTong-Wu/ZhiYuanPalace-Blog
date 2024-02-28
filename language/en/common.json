@@ -4,5 +4,7 @@
   "text": "TEXT",
   "audio": "AUDIO",
   "music": "MUSIC",
-  "about": "ABOUT"
+  "about": "ABOUT",
+  "article":"ARTICLE",
+  "shuoshuo":"SHUOSHUO"
 }

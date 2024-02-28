@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div absolute left-0 right-0 top-0 >
     <div
       class="zy-store-style-card transition-in"
       absolute
@@ -131,7 +131,7 @@
         </p>
       </div>
     </div>
-    <Toolbar absolute top-0 bottom-0 z-40 right-0 w-toolbar pt-header />
+    <Toolbar absolute top-0 z-40 right-0 w-toolbar pt-header />
   </div>
 </template>
 <script setup lang="ts">

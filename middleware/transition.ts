@@ -26,12 +26,26 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }, 100);
   }
   if (isFirstLayer(from.fullPath) == 1 && isFirstLayer(to.fullPath) == 1) {
+    from.meta.pageTransition.name = "first-layer";
+    to.meta.pageTransition.name = "first-layer";
+  }
+  if (isFirstLayer(from.fullPath) == 1 && isFirstLayer(to.fullPath) == 2) {
+    from.meta.pageTransition.name = "first-layer";
     to.meta.pageTransition.name = "first-layer";
   }
   if (isFirstLayer(from.fullPath) == 2 && isFirstLayer(to.fullPath) == 2) {
-    to.meta.pageTransition.name = "second-layer";
+    if (from.meta.meta && to.meta.meta) {
+      if ((from.meta.meta as any).order > (to.meta.meta as any).order) {
+        from.meta.pageTransition.name = "second-layer-next";
+        to.meta.pageTransition.name = "second-layer-prev";
+      } else {
+        from.meta.pageTransition.name = "second-layer-prev";
+        to.meta.pageTransition.name = "second-layer-next";
+      }
+    }
   }
   if (isFirstLayer(from.fullPath) == 2 && isFirstLayer(to.fullPath) == 3) {
+    from.meta.pageTransition.name = "third-layer";
     to.meta.pageTransition.name = "third-layer";
     to.meta.pageTransition.onAfterEnter = (el, done) => {
       cardTransitionEnd();
@@ -41,9 +55,15 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (isFirstLayer(from.fullPath) == 3 && isFirstLayer(to.fullPath) == 2) {
     headerBarHide();
     footerBarHide();
+    from.meta.pageTransition.name = "third-layer";
+    to.meta.pageTransition.name = "second-layer-prev";
     to.meta.pageTransition.onEnter = (el, done) => {
       headerBarShow();
       footerBarShow();
     };
+  }
+  if (isFirstLayer(from.fullPath) == 2 && isFirstLayer(to.fullPath) == 1) {
+    from.meta.pageTransition.name = "first-layer";
+    to.meta.pageTransition.name = "first-layer";
   }
 });

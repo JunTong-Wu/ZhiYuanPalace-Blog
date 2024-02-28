@@ -16,7 +16,7 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
-      <NuxtPage mx-auto p="4 xs:5 sm:6 md:7 lg:8" class="nuxt-page" />
+      <NuxtPage mx-auto class="nuxt-page" />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -82,12 +82,12 @@ const myLive2dConfig = () => {
     });
   }
 };
-if (process.client) {
-  const script = document.createElement("script");
-  script.src = "/static/js/oh-my-live2d.min.js";
-  document.body.appendChild(script);
-  myLive2dConfig();
-}
+// if (process.client) {
+//   const script = document.createElement("script");
+//   script.src = "/static/js/oh-my-live2d.min.js";
+//   document.body.appendChild(script);
+//   myLive2dConfig();
+// }
 
 // head
 useHead({

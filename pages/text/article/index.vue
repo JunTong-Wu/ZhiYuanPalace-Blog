@@ -1,5 +1,5 @@
 <template>
-  <div mt-header>
+  <div absolute left-0 right-0 top-header-tabs p="4 xs:5 sm:6 md:7 lg:8">
     <div pr-toolbar>
       <div
         grid
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar pt-header />
+    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar />
   </div>
 </template>
 <script setup lang="ts">
@@ -106,5 +106,8 @@ definePageMeta({
     mode: "out-in",
   },
   middleware: "transition",
+  meta: {
+    order: 1,
+  },
 });
 </script>
