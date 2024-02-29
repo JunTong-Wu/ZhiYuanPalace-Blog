@@ -49,7 +49,7 @@
               <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
               <storeStyleCard
                 :href="`/text/article/${n}`"
-                v-for="n in 3"
+                v-for="n in 13"
                 rounded-lg
               >
                 <template #image>

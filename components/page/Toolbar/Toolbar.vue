@@ -1,12 +1,11 @@
 <template>
   <aside
-    overflow-hidden
     class="zy-tool-bar horizontal-layout"
     bg="bg-card"
     backdrop-blur-3xl
   >
     <!-- <img w-full src="@/assets/image/LooperGroup.png" alt=""> -->
-    <div>
+    <div sticky top-header>
       <div h-50 w-full flex items-center justify-center color="text-2">Tool Bar</div>
     </div>
   </aside>

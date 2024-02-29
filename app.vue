@@ -16,7 +16,7 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
-      <NuxtPage mx-auto class="nuxt-page" />
+      <NuxtPage mx-auto pb-50 class="nuxt-page" />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -105,27 +105,27 @@ useHead({
   min-height: 100vh;
 }
 :root {
-  background: #fff url("@/assets/image/gradient.jpg") fixed no-repeat
+  background: #f5f6f7 url("@/assets/image/gradient.jpg") fixed no-repeat
     center/cover;
   background: #f5f6f7;
   color: var(--text-1);
 }
 
 :root.dark {
-  background: #000 url("@/assets/image/gradient_dark.jpg") fixed no-repeat
+  background: #0a0a1d url("@/assets/image/gradient_dark.jpg") fixed no-repeat
     center/cover;
-  background: #060612;
+  background: #0a0a1d;
 }
 
 .background-img {
-  background: url("@/assets/image/gradient.jpg") fixed no-repeat center/cover;
+  background: #f5f6f7 url("@/assets/image/gradient.jpg") fixed no-repeat center/cover;
   background: #f5f6f7;
 }
 
 :root.dark .background-img {
-  background: url("@/assets/image/gradient_dark.jpg") fixed no-repeat
+  background: #0a0a1d url("@/assets/image/gradient_dark.jpg") fixed no-repeat
     center/cover;
-  background: #060612;
+  background: #0a0a1d;
 }
 
 .vertical-layout {

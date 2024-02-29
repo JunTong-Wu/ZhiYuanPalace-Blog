@@ -60,10 +60,26 @@ const getNewLinkList = () => {
 };
 const linkList = getNewLinkList();
 
+const getRootPath = (path: string) => {
+  // 移除路径两端的斜杠，然后分割路径
+  const parts = path
+    .trim()
+    .replace(/^\/+|\/+$/g, "")
+    .split("/");
+
+  const rootPath = `/${parts[0]}`;
+  const linkList = getNavigationMap() as Route[];
+  for (const route of linkList) {
+    if (route.path === rootPath) {
+      return route.path;
+    }
+  }
+  return '/';
+};
 const route = useRoute();
 const routerActivate = (path: string) => {
   if (path != "/") {
-    if (route.path.includes(path)) {
+    if (getRootPath(route.fullPath) == getRootPath(path)) {
       return true;
     } else {
       return false;

@@ -7,7 +7,7 @@
     left-0
     w-sidebar
     z-60
-    top-header
+    pt-header
     bg="bg-card"
     backdrop-blur-3xl
   />
@@ -16,7 +16,7 @@
     top-0
     left-0
     right-0
-    z-70
+    z-50
     pl-sidebar
     bg="bg-headerBar"
     backdrop-blur-3xl
@@ -28,7 +28,7 @@
       </div>
     </main>
   </div>
-  <Footer fixed bottom-0 left-0 right-0 z-60 bg="bg-card" backdrop-blur-3xl />
+  <Footer fixed bottom-0 left-0 right-0 z-60 bg="bg-headerBar" backdrop-blur-3xl />
 </template>
 <script setup lang="ts">
 import Logo from "./default/Logo/Logo.vue";

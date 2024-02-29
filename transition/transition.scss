@@ -4,13 +4,13 @@
 @import url('./storeStyleCard/storeStyleCard.scss');
 
 
-@keyframes an-fade-in-from-up {
+@keyframes an-fade-in-from-left {
   0% {
-    transform: translateY(-50%);
+    transform: translateX(-50%);
     opacity: 0;
   }
   100% {
-    transform: translateY(0%);
+    transform: translateX(0%);
     opacity: 1;
   }
 }
@@ -38,7 +38,7 @@
 
 .zy-header-inner {
   .header-title {
-    animation: an-fade-in-from-up 400ms;
+    animation: an-fade-in-from-left 400ms;
   }
 }
 .zy-tool-bar {

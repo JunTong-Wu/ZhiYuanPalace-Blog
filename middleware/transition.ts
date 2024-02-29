@@ -1,4 +1,5 @@
 // import NProgress from "nprogress";
+import { headerBarHide, headerBarShow } from "@/transition/headerBar/headerBar";
 import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
 import { cardTransitionEnd } from "@/transition/storeStyleCard/storeStyleCard";
 
@@ -115,15 +116,18 @@ export default defineNuxtRouteMiddleware((to, from) => {
     from.meta.pageTransition.name = "third-layer";
     to.meta.pageTransition.name = "third-layer";
     to.meta.pageTransition.onAfterEnter = (el, done) => {
+      headerBarShow();
       cardTransitionEnd();
     };
   }
   if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) == 2) {
     footerBarHide();
+    headerBarHide();
     from.meta.pageTransition.name = "third-layer";
     to.meta.pageTransition.name = "second-layer-prev";
     to.meta.pageTransition.onEnter = (el, done) => {
       footerBarShow();
+      headerBarShow();
     };
   }
 });

@@ -1,14 +1,14 @@
 <template>
   <header h-header color-text-1>
     <div class="zy-header-inner" flex items-center justify-between h-full>
-      <div flex items-center gap-4>
-        <GoBackButton />
+      <div flex items-center h-full>
         <HeaderTitle />
+        <GoBackButton />
       </div>
 
-      <div h-header absolute left-0 right-0 pointer-events-none>
+      <!-- <div h-header absolute left-0 right-0 pointer-events-none>
         <Music />
-      </div>
+      </div> -->
 
       <div class="vertical-layout" h-full>
         <div flex items-center w-full h-full justify-between>
