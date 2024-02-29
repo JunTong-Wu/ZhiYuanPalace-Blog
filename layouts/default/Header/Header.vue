@@ -1,13 +1,12 @@
 <template>
   <header h-header color-text-1>
-    <Logo absolute left-0 top-0 h-header/>
     <div class="zy-header-inner" flex items-center justify-between h-full>
       <div flex items-center gap-4>
         <GoBackButton />
         <HeaderTitle />
       </div>
 
-      <div h-header py-2 absolute left-0 right-0 pointer-events-none>
+      <div h-header absolute left-0 right-0 pointer-events-none>
         <Music />
       </div>
 
@@ -157,7 +156,6 @@
   </header>
 </template>
 <script setup lang="ts">
-import Logo from "../Logo/Logo.vue";
 import Music from "../Music/Music.vue";
 import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
 

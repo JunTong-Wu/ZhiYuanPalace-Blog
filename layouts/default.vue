@@ -1,29 +1,37 @@
 <template>
-  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar z-80 top-header class="background-img"/>
+  <Logo absolute left-0 top-0 h-header w-sidebar z-80 />
+  <Sidebar
+    fixed
+    top-0
+    bottom-0
+    left-0
+    w-sidebar
+    z-60
+    top-header
+    bg="bg-card"
+    backdrop-blur-3xl
+  />
   <Header
     fixed
     top-0
     left-0
     right-0
-    z-60
+    z-70
     pl-sidebar
-    class="dark"
-    bg="[#1867c0] dark:[#060612]"
+    bg="bg-headerBar"
+    backdrop-blur-3xl
   />
   <div class="layout-default">
-    <main flex-1 pl-sidebar >
-      <div
-        text-base
-        relative
-        class="main-view"
-      >
+    <main flex-1 pl-sidebar>
+      <div text-base relative class="main-view">
         <slot />
       </div>
     </main>
   </div>
-  <Footer fixed bottom-0 left-0 right-0 z-60 class="background-img"/>
+  <Footer fixed bottom-0 left-0 right-0 z-60 bg="bg-card" backdrop-blur-3xl />
 </template>
 <script setup lang="ts">
+import Logo from "./default/Logo/Logo.vue";
 import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
 // import Toolbar from "./default/Toolbar/Toolbar.vue";

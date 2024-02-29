@@ -1,6 +1,6 @@
 <template>
   <div flex items-center>
-    <div pt-1 mb="-0.5" class="horizontal-layout">
+    <!-- <div pt-1 mb="-0.5" class="horizontal-layout">
       <svg
         v-if="locale == 'zh-CN'"
         fill-current
@@ -64,7 +64,7 @@
           d="m352.17,41.03V6.67h20.95v5.68h-14.89v8.59h13.65v5.58h-13.65v8.78h15.27v5.73h-21.33Z"
         />
       </svg>
-    </div>
+    </div> -->
 
     <h1
       class="header-title"

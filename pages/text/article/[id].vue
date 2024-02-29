@@ -17,7 +17,7 @@
           />
         </div>
       </div>
-      <div class="zy-store-style-card-text" mt-12>
+      <div class="zy-store-style-card-text" mt-12 px-6>
         <h1>Title</h1>
         <p>
           text text text text text text text text text text text text text text

@@ -1,4 +1,4 @@
-import NProgress from "nprogress";
+// import NProgress from "nprogress";
 import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
 import { cardTransitionEnd } from "@/transition/storeStyleCard/storeStyleCard";
 
@@ -66,10 +66,10 @@ const getSelfPathOrder = (routes: Route[], path: string): number => {
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.client) {
-    NProgress.start();
-    setTimeout(() => {
-      NProgress.done();
-    }, 100);
+    // NProgress.start();
+    // setTimeout(() => {
+    //   NProgress.done();
+    // }, 100);
   }
   if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
     if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {

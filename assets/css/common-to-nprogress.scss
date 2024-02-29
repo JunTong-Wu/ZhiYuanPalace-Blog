@@ -1,17 +1,17 @@
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
-  --progress-color: rgba(255,255,255,0.5);
+  --progress-color: var(--text-1);
 }
 
 #nprogress .bar {
   background: var(--progress-color);
   position: fixed;
-  z-index: 1000;
-  top: 0;
+  z-index: 0;
+  top: var(--header-bar-height);
   left: 0;
   width: 100%;
-  height: 0.4rem;
+  height: 0.2rem;
   .peg {
     display: none;
   }

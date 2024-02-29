@@ -1,10 +1,8 @@
 <template>
   <div
     h-full
-    bg="bg-card"
     w="[40%]"
     mx-auto
-    rounded-xl
     pointer-events-auto
   >
     <div h-full w-full flex items-center justify-center color="text-2">
