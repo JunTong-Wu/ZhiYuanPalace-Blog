@@ -178,6 +178,10 @@ button.zy-button-icon {
     background-color: var(--theme-color);
     color: white;
   }
+  .pc .dark button.zy-button-icon:hover {
+    background-color: rgb(255 255 255 / 0.2);
+    border: none;
+  }
 }
 
 /**

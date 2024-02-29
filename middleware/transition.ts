@@ -72,16 +72,14 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }, 100);
   }
   if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
-    if (from.meta.meta && to.meta.meta) {
-      if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-        from.meta.pageTransition.name = "first-layer-next";
-        to.meta.pageTransition.name = "first-layer-prev";
-      } else if (
-        getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
-      ) {
-        from.meta.pageTransition.name = "first-layer-prev";
-        to.meta.pageTransition.name = "first-layer-next";
-      }
+    if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
+      from.meta.pageTransition.name = "first-layer-next";
+      to.meta.pageTransition.name = "first-layer-prev";
+    } else if (
+      getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
+    ) {
+      from.meta.pageTransition.name = "first-layer-prev";
+      to.meta.pageTransition.name = "first-layer-next";
     }
   }
   if (

@@ -8,7 +8,7 @@
     z-60
     pl-sidebar
     class="dark"
-    bg="[#1867c0]"
+    bg="[#1867c0] dark:[#060612]"
   />
   <div class="layout-default">
     <main flex-1 pl-sidebar >

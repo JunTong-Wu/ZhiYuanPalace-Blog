@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: 'first-layer', mode: 'out-in' }
+    pageTransition: {  mode: 'out-in' }
   },
   hooks: {
     "vite:extendConfig"(config) {

@@ -1,5 +1,5 @@
 <template>
-  <div mt-header>
+  <div p="4 xs:5 sm:6 md:7 lg:8" mt-header>
     TEST
     <Toolbar absolute top-0 bottom-0 right-0 w-toolbar />
   </div>
@@ -14,12 +14,8 @@ useHead({
 });
 definePageMeta({
   pageTransition: {
-    name: 'first-layer',
-    mode: 'out-in'
+    mode: "out-in",
   },
   middleware: "transition",
-  meta: {
-    order: 3,
-  },
 });
 </script>

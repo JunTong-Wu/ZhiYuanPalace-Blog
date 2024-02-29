@@ -1,5 +1,5 @@
 <template>
-  <div absolute left-0 right-0 top-header-tabs p="4 xs:5 sm:6 md:7 lg:8">
+  <div p="4 xs:5 sm:6 md:7 lg:8" mt-header>
     shuoshuo
   </div>
 </template>
@@ -13,12 +13,8 @@ useHead({
 });
 definePageMeta({
   pageTransition: {
-    name: "first-layer",
     mode: "out-in",
   },
   middleware: "transition",
-  meta: {
-    order: 2,
-  },
 });
 </script>

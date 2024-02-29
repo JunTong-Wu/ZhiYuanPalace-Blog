@@ -1,5 +1,5 @@
 <template>
-  <div absolute left-0 right-0 top-header-tabs p="4 xs:5 sm:6 md:7 lg:8">
+  <div p="4 xs:5 sm:6 md:7 lg:8" mt-header>
     <div pr-toolbar>
       <div
         grid
@@ -101,12 +101,8 @@ useHead({
 });
 definePageMeta({
   pageTransition: {
-    name: "first-layer",
     mode: "out-in",
   },
   middleware: "transition",
-  meta: {
-    order: 1,
-  },
 });
 </script>

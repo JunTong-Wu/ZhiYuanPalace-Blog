@@ -13,7 +13,13 @@
         class="sidebar-navigation"
         :class="{ activate: routerActivate(n.path) }"
       >
-        <zy-link :to="`${n.path}`" w-full :title="$t(n.title)" flex-col justify-center>
+        <zy-link
+          :to="`${n.path}`"
+          w-full
+          :title="$t(n.title)"
+          flex-col
+          justify-center
+        >
           <div w-7 flex justify-center>
             <ZyIcon
               size="1.5rem"
@@ -34,7 +40,25 @@
 <script setup lang="ts">
 import Indicator from "./Indicator/Indicator.vue";
 
-const linkList = getNavigationMap();
+type Route = {
+  path: string;
+  title: string;
+  defaultIcon?: string;
+  activatedIcon?: string;
+  order: number;
+  children?: Route[];
+};
+
+const getNewLinkList = () => {
+  let linkList = getNavigationMap() as Route[];
+  for (const route of linkList) {
+    if (route.children) {
+      route.path = route.children[0].path;
+    }
+  }
+  return linkList;
+};
+const linkList = getNewLinkList();
 
 const route = useRoute();
 const routerActivate = (path: string) => {

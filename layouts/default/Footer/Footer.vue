@@ -29,7 +29,25 @@
   </footer>
 </template>
 <script setup lang="ts">
-const linkList = getNavigationMap();
+type Route = {
+  path: string;
+  title: string;
+  defaultIcon?: string;
+  activatedIcon?: string;
+  order: number;
+  children?: Route[];
+};
+
+const getNewLinkList = () => {
+  let linkList = getNavigationMap() as Route[];
+  for (const route of linkList) {
+    if (route.children) {
+      route.path = route.children[0].path;
+    }
+  }
+  return linkList;
+};
+const linkList = getNewLinkList();
 
 const route = useRoute();
 const routerActivate = (path: string) => {
