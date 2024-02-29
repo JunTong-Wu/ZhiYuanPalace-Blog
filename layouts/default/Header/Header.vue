@@ -1,5 +1,6 @@
 <template>
   <header h-header color-text-1>
+    <Logo absolute left-0 top-0 h-header/>
     <div class="zy-header-inner" flex items-center justify-between h-full>
       <div flex items-center gap-4>
         <GoBackButton />
@@ -156,6 +157,7 @@
   </header>
 </template>
 <script setup lang="ts">
+import Logo from "../Logo/Logo.vue";
 import Music from "../Music/Music.vue";
 import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
 

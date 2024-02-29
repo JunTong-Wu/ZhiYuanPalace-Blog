@@ -55,6 +55,9 @@ definePageMeta({
     mode: "out-in",
   },
   middleware: "transition",
+  meta: {
+    order: 2,
+  },
 });
 const route = useRoute();
 const router = useRouter();

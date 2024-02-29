@@ -3,9 +3,10 @@ type Route = {
   title: string;
   defaultIcon?: string;
   activatedIcon?: string;
+  order: number;
   children?: Route[];
 };
-function findTitleByPath(routes: Route[], path: string): string {
+const findTitleByPath = (routes: Route[], path: string): string => {
   // 首先检查顶级路由
   for (const route of routes) {
     if (!route.children || !route.children.length) {
@@ -26,7 +27,7 @@ function findTitleByPath(routes: Route[], path: string): string {
   }
 
   return "empty";
-}
+};
 export const getMobileTitle = (path: string) => {
   let title = "empty";
   const linkList = getNavigationMap() as Route[];

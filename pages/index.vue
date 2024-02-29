@@ -11,5 +11,8 @@ definePageMeta({
     mode: 'out-in'
   },
   middleware: "transition",
+  meta: {
+    order: 1,
+  },
 });
 </script>

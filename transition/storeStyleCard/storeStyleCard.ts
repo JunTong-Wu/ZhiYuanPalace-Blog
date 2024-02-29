@@ -1,4 +1,3 @@
-import { headerBarHide } from "@/transition/headerBar/headerBar";
 import { footerBarHide } from "@/transition/footerBar/footerBar";
 
 export function cardTransitionStart(element: any, callback: () => void) {
@@ -42,7 +41,6 @@ export function cardTransitionStart(element: any, callback: () => void) {
       }
 
       setTimeout(() => {
-        headerBarHide();
         footerBarHide();
         copyElement.classList.add("transition-in");
         setTimeout(() => {
