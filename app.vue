@@ -107,21 +107,25 @@ useHead({
 :root {
   background: #fff url("@/assets/image/gradient.jpg") fixed no-repeat
     center/cover;
+  background: #f5f6f7;
   color: var(--text-1);
 }
 
 :root.dark {
   background: #000 url("@/assets/image/gradient_dark.jpg") fixed no-repeat
     center/cover;
+  background: #060612;
 }
 
 .background-img {
   background: url("@/assets/image/gradient.jpg") fixed no-repeat center/cover;
+  background: #f5f6f7;
 }
 
 :root.dark .background-img {
   background: url("@/assets/image/gradient_dark.jpg") fixed no-repeat
     center/cover;
+  background: #060612;
 }
 
 .vertical-layout {

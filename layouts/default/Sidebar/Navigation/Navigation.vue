@@ -6,6 +6,7 @@
     <ul>
       <li
         v-for="n in linkList"
+        v-zy-ripple
         h-20
         flex
         py-4

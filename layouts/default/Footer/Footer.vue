@@ -9,6 +9,7 @@
       <zy-link
         v-if="linkList"
         v-for="n in linkList"
+        v-zy-ripple
         :to="`${n.path}`"
         h-full
         w="[20%]"
