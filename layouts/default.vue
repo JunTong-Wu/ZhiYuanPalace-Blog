@@ -8,7 +8,7 @@
     w-sidebar
     z-60
     pt-header
-    bg="bg-card"
+    bg="bg-headerBar"
     backdrop-blur-3xl
   />
   <Header
@@ -22,7 +22,7 @@
   />
   <div class="layout-default">
     <main flex-1 pl-sidebar>
-      <div text-base relative class="main-view" bg="bg-card">
+      <div text-base relative class="main-view">
         <div class="main-view-inner">
           <slot />
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Toolbar absolute top-0 z-40 right-0 h-full w-toolbar pt-header />
+    <Toolbar absolute top-0 z-40 right-0 h-full w-toolbar pt-header bg="bg-card" />
     <div class="zy-article-card transition-in">
       <div class="zy-article-card-inner">
         <div class="zy-card-image">

@@ -1,5 +1,5 @@
 <template>
-  <aside class="zy-tool-bar horizontal-layout" bg="bg-card" backdrop-blur-3xl>
+  <aside class="zy-tool-bar horizontal-layout">
     <div>
       <div w-full h-40 flex justify-center items-center color="text-4">
         ToolBar
