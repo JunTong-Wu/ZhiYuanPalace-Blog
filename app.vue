@@ -102,7 +102,7 @@ useHead({
   will-change: transform;
 }
 :root {
-  background: #f2f4fb;
+  background: #eaecf1;
   color: var(--text-1);
 }
 
