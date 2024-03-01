@@ -22,7 +22,7 @@
           defaultColor="var(--text-2)"
           :activatedName="n.activatedIcon"
           :activated="routerActivate(n.path)"
-          activatedColor="var(--text-1)"
+          activatedColor="var(--theme-color)"
         />
       </zy-link>
     </div>

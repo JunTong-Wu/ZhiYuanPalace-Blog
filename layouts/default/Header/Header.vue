@@ -1,5 +1,5 @@
 <template>
-  <header h-header color-text-1>
+  <header h-header color-text-1 overflow-hidden>
     <div class="zy-header-inner" flex items-center justify-between h-full>
       <div flex items-center h-full>
         <HeaderTitle />

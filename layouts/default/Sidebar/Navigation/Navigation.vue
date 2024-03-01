@@ -27,7 +27,7 @@
               defaultColor="var(--text-2)"
               :activatedName="n.activatedIcon"
               :activated="routerActivate(n.path)"
-              activated-color="var(--text-1)"
+              activated-color="var(--theme-color)"
             />
           </div>
 

@@ -108,7 +108,10 @@ router.beforeEach((to, from, next) => {
   li {
     border-bottom: 0.2rem solid transparent;
     &.activate {
-      border-color: var(--text-1);
+      border-color: var(--theme-color);
+      * {
+        font-weight: bold;
+      }
     }
   }
 }

@@ -98,34 +98,31 @@ useHead({
 </script>
 <style lang="scss">
 .nuxt-page {
-  min-height: calc(100vh - var(--header-bar-height));
+  min-height: 100vh;
   will-change: transform;
 }
-.page-article-details .nuxt-page {
-  min-height: 100vh;
-}
 :root {
-  background: #f5f6f7 url("@/assets/image/gradient.jpg") fixed no-repeat
+  background: #f2f4fb url("@/assets/image/gradient.jpg") fixed no-repeat
     center/cover;
-  /* background: #f5f6f7; */
+  background: #f2f4fb;
   color: var(--text-1);
 }
 
 :root.dark {
-  background: #0a0a1d url("@/assets/image/gradient_dark.jpg") fixed no-repeat
+  background: #0d0d26 url("@/assets/image/gradient_dark.jpg") fixed no-repeat
     center/cover;
-  /* background: #0a0a1d; */
+  background: #0d0d26;
 }
 
 .background-img {
-  background: #f5f6f7 url("@/assets/image/gradient.jpg") fixed no-repeat center/cover;
-  background: #f5f6f7;
+  background: #f2f4fb url("@/assets/image/gradient.jpg") fixed no-repeat center/cover;
+  background: #f2f4fb;
 }
 
 :root.dark .background-img {
-  background: #0a0a1d url("@/assets/image/gradient_dark.jpg") fixed no-repeat
+  background: #0d0d26 url("@/assets/image/gradient_dark.jpg") fixed no-repeat
     center/cover;
-  background: #0a0a1d;
+  background: #0d0d26;
 }
 
 .vertical-layout {
