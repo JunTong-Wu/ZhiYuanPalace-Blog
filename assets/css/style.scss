@@ -48,7 +48,6 @@ a {
   :root {
     --header-bar-height: 3.5rem;
     --centered-width: 100%;
-    --header-bar-background: var(--bg-card);
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
   }
@@ -57,7 +56,6 @@ a {
   :root {
     --header-bar-height: 4rem;
     --centered-width: 65rem;
-    --header-bar-background: var(--bg-card);
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
