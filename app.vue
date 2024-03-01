@@ -102,15 +102,11 @@ useHead({
   will-change: transform;
 }
 :root {
-  background: #f2f4fb url("@/assets/image/b53cf6c316087811719bfe6e4b3b29a4.jpg") fixed no-repeat
-    center/cover;
   background: #f2f4fb;
   color: var(--text-1);
 }
 
 :root.dark {
-  background: #0d0d26 url("@/assets/image/ac3f71e9e3d0cc844ea4c53e0515dda9.jpg") fixed no-repeat
-    center/cover;
   background: #0d0d26;
 }
 
