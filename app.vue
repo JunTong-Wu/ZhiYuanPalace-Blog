@@ -114,7 +114,7 @@ useHead({
 :root.dark {
   background: #0a0a1d url("@/assets/image/gradient_dark.jpg") fixed no-repeat
     center/cover;
-  background: #0a0a1d;
+  /* background: #0a0a1d; */
 }
 
 .background-img {
