@@ -66,7 +66,7 @@ a {
 
 //公共颜色变量
 :root {
-  --theme-color: #5b5fc7;
+  --theme-color: #1ecc94;
   --primary-7: var(--red-7); //点击
   --primary-6: var(--red-6); //常规
   --primary-5: var(--red-5); //悬浮
@@ -76,7 +76,7 @@ a {
   --primary-1: var(--red-1); //浅色/白底悬浮
 }
 *.dark {
-  --theme-color: #7f85f5;
+  --theme-color: #00dc82;
 }
 
 :root {
@@ -146,7 +146,7 @@ a {
   --bg-card: rgba(255, 255, 255, 0.4); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
-  --bg-header-bar: rgba(246, 247, 252, 0.7); //顶栏
+  --bg-header-bar: rgba(247, 248, 253, 0.7); //顶栏
   --text-1: rgba(0, 0, 0, 8); //强调/正文标题
   --text-2: rgba(0, 0, 0, 0.6); //次强调/正文标
   --text-3: rgba(0, 0, 0, 0.4); //次要信息
@@ -156,7 +156,7 @@ a {
   --bg-card: rgba(33, 34, 63, 0.4); //卡片
   --bg-panel: rgba(15, 16, 46, 0.6); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
-  --bg-header-bar: rgba(15, 16, 46, 0.7); //顶栏
+  --bg-header-bar: rgba(21, 22, 48, 0.7); //顶栏
   --text-1: rgba(255, 255, 255, 0.8); //强调/正文标题
   --text-2: rgba(255, 255, 255, 0.6); //次强调/正文标
   --text-3: rgba(255, 255, 255, 0.4); //次要信息

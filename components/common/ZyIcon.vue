@@ -18,6 +18,8 @@
   </div>
 </template>
 <script lang="ts">
+import { getSvgByName } from "@/models/menu/function";
+
 export default defineComponent({
   name: "zy-icon",
   props: {

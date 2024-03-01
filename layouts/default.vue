@@ -17,7 +17,7 @@
     left-sidebar
     right-0
     z-50
-    bg="bg-card"
+    bg="bg-headerBar"
     backdrop-blur-3xl
   />
   <div class="layout-default">
@@ -35,7 +35,7 @@
     left-0
     right-0
     z-60
-    bg="bg-card"
+    bg="bg-headerBar"
     backdrop-blur-3xl
   />
 </template>

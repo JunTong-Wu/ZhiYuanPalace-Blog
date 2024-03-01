@@ -26,6 +26,7 @@
         ref="mainElement"
         class="drawer-main"
         bg="bg-panel"
+        backdrop-blur-3xl
         fixed
         h-full
         will-change-transform

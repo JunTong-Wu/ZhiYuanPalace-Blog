@@ -40,7 +40,7 @@ export default {
         //top变化，通过正数order确定
         const top = order * averageHeight;
         // 边距
-        const padding = averageHeight * 0.1;
+        const padding = averageHeight * 0.25;
 
         indicator.style.bottom = `${bottom + padding}px`;
         indicator.style.top = `${top + padding}px`;
@@ -114,7 +114,7 @@ export default {
         //top变化，通过正数order确定
         const top = this.toOrder * averageHeight;
         // 边距
-        const padding = averageHeight * 0.1;
+        const padding = averageHeight * 0.25;
 
         indicator.style.bottom = `${bottom + padding}px`;
         indicator.style.top = `${top + padding}px`;
@@ -136,8 +136,8 @@ export default {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0.1rem;
-  width: 0.2rem;
+  left: 0.3rem;
+  width: 0.3rem;
   background: var(--theme-color);
   z-index: 2;
   border-radius: 100px;

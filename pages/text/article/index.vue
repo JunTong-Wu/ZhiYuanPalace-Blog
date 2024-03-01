@@ -8,46 +8,10 @@
           gap="4 xs:5 sm:6 md:7 lg:8"
           mb="4 xs:5 sm:6 md:7 lg:8"
         >
-          <div
-            col-span-12
-            xs:col-span-12
-            sm:col-span-4
-            md:col-span-6
-            lg:col-span-6
-            bg="bg-card"
-            p-4
-            rounded
-          >
-            <h3 col-span-12 m-0 font-normal text-sm>最新</h3>
-          </div>
-          <div
-            col-span-12
-            xs:col-span-6
-            sm:col-span-4
-            md:col-span-3
-            lg:col-span-3
-            bg="bg-card"
-            p-4
-            rounded
-          >
-            <h3 col-span-12 m-0 font-normal text-sm>分类</h3>
-          </div>
-          <div
-            col-span-12
-            xs:col-span-6
-            sm:col-span-4
-            md:col-span-3
-            lg:col-span-3
-            bg="bg-card"
-            p-4
-            rounded
-          >
-            <h3 col-span-12 m-0 font-normal text-sm>标签</h3>
-          </div>
           <div col-span-12>
             <div grid grid-cols-12 gap-4 bg="bg-card" p-4 rounded>
               <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
-              <storeStyleCard
+              <articleCard
                 :href="`/text/article/${n}`"
                 v-for="n in 13"
                 rounded-lg
@@ -66,7 +30,7 @@
                     text text text text text text text text text text text text
                   </p>
                 </template>
-              </storeStyleCard>
+              </articleCard>
             </div>
           </div>
         </div>
@@ -92,7 +56,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import storeStyleCard from "@/transition/storeStyleCard/storeStyleCard.vue";
+import articleCard from "@/transition/articleCard/articleCard.vue";
 
 useHead({
   title: "文章",

@@ -1,6 +1,6 @@
 <template>
   <a
-    class="zy-store-style-card"
+    class="zy-article-card"
     w-full
     h-full
     inline-block
@@ -14,7 +14,7 @@
     lg:col-span-3
     @click.prevent="openCard($el)"
   >
-    <div class="zy-store-style-card-inner">
+    <div class="zy-article-card-inner">
       <div class="zy-card-title">
         <slot name="title" />
       </div>
@@ -25,7 +25,7 @@
   </a>
 </template>
 <script setup lang="ts">
-import { cardTransitionStart } from "@/transition/storeStyleCard/storeStyleCard";
+import { cardTransitionStart } from "@/transition/articleCard/articleCard";
 
 const router = useRouter();
 const openCard = (element: any) => {
