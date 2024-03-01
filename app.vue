@@ -107,7 +107,7 @@ useHead({
 :root {
   background: #f5f6f7 url("@/assets/image/gradient.jpg") fixed no-repeat
     center/cover;
-  background: #f5f6f7;
+  /* background: #f5f6f7; */
   color: var(--text-1);
 }
 

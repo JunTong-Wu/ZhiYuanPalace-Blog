@@ -14,21 +14,30 @@
   <Header
     fixed
     top-0
-    left-0
+    left-sidebar
     right-0
     z-50
-    pl-sidebar
     bg="bg-headerBar"
     backdrop-blur-3xl
   />
   <div class="layout-default">
     <main flex-1 pl-sidebar>
       <div text-base relative class="main-view">
-        <slot />
+        <div class="main-view-inner">
+          <slot />
+        </div>
       </div>
     </main>
   </div>
-  <Footer fixed bottom-0 left-0 right-0 z-60 bg="bg-headerBar" backdrop-blur-3xl />
+  <Footer
+    fixed
+    bottom-0
+    left-0
+    right-0
+    z-60
+    bg="bg-headerBar"
+    backdrop-blur-3xl
+  />
 </template>
 <script setup lang="ts">
 import Logo from "./default/Logo/Logo.vue";
