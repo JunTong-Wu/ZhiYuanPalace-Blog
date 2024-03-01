@@ -9,11 +9,11 @@
           mb="4 xs:5 sm:6 md:7 lg:8"
         >
           <div col-span-12>
-            <div grid grid-cols-12 gap-4 bg="bg-card" p-4 rounded>
-              <h3 col-span-12 m-0 font-normal text-sm>所有文章</h3>
+            <div grid grid-cols-12 gap="4 xs:5 sm:6 md:7 lg:8" bg="bg-card" p="4 xs:5 sm:6 md:7 lg:8" rounded-3xl>
+              <h3 col-span-12 m-0 font-normal text-base>所有文章</h3>
               <articleCard
                 :href="`/text/article/${n}`"
-                v-for="n in 13"
+                v-for="n in 12"
                 rounded-lg
               >
                 <template #image>

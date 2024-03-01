@@ -33,9 +33,10 @@
       border-radius: 0.5rem;
       overflow: hidden;
       img {
-        width: 100%;
-        height: 8rem;
+        width: var(--card-height);
+        height: var(--card-height);
         object-fit: cover;
+        border-radius: 1rem;
       }
     }
   }
@@ -46,6 +47,28 @@
 .zy-article-card.transition-prepare {
   transform: scale(0.9);
 }
+
+@media (min-width: 900px) {
+  .zy-article-card {
+    --card-height: 18rem;
+    .zy-article-card-inner {
+      .zy-card-title {
+        width: 100%;
+        top: auto;
+        bottom: 0;
+      }
+      .zy-card-image {
+        width: 100%;
+        left: 0;
+        img {
+          width: 100%;
+          height: 12rem;
+        }
+      }
+    }
+  }
+}
+
 .zy-article-card.transition-in {
   padding-right: var(--tool-bar-width);
   padding-left: 0;
@@ -56,7 +79,7 @@
   .zy-article-card-inner {
     height: 33vh;
     .zy-card-title {
-      opacity: 0;
+      display: none;
     }
     .zy-card-image {
       left: 0;
@@ -66,6 +89,7 @@
       img {
         width: 100%;
         height: 33vh;
+        border-radius: 0rem;
       }
     }
   }
@@ -83,6 +107,8 @@
     }
   }
 }
+
+
 
 .layout-default.transition .main-view-inner {
   transition: all 600ms, background 0s;
