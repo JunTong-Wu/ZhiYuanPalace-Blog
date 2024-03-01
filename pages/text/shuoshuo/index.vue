@@ -1,6 +1,6 @@
 <template>
-  <div p="4 xs:5 sm:6 md:7 lg:8" mt-header>
-    shuoshuo
+  <div pr-toolbar pt-header>
+    <div p="4 xs:5 sm:6 md:7 lg:8">shuoshuo</div>
   </div>
 </template>
 <script setup lang="ts">

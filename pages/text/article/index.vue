@@ -1,6 +1,6 @@
 <template>
-  <div pr-toolbar>
-    <div p="4 xs:5 sm:6 md:7 lg:8" mt-header>
+  <div pr-toolbar pt-header>
+    <div p="4 xs:5 sm:6 md:7 lg:8">
       <div>
         <div
           grid
