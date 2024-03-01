@@ -6,7 +6,7 @@
         v-zy-ripple
         :class="{ activate: routerActivate(tabs.path) }"
       >
-        <zy-link :to="tabs.path" h-full flex items-center justify-center px-4>
+        <zy-link :to="tabs.path" h-full flex items-center justify-center px-6>
           <span>{{ $t(tabs.title) }}</span>
         </zy-link>
       </li>

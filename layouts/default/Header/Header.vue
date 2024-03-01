@@ -280,7 +280,7 @@ const closeMoreDrawer = () => {
 @media (orientation: landscape) {
   /* 横屏 */
   .zy-header-inner {
-    padding-left: 1rem;
+    padding-left: 0;
     padding-right: 1rem;
   }
 }

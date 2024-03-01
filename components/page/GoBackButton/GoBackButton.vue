@@ -1,5 +1,5 @@
 <template>
-  <div class="horizontal-layout" v-if="gobackFlag">
+  <div class="horizontal-layout" ml-4 v-if="gobackFlag">
     <zy-button
       flex
       items-center

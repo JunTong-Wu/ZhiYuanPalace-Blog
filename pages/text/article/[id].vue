@@ -1,15 +1,7 @@
 <template>
-  <div absolute left-0 right-0 top-0 >
-    <div
-      class="zy-store-style-card transition-in"
-      absolute
-      left-0
-      right-0
-      top-0
-      pb-50
-      z-20
-    >
-    <Toolbar absolute top-0 z-40 right-0 h-full w-toolbar pt-header />
+  <div>
+    <div class="zy-store-style-card transition-in" pb-50>
+      <Toolbar absolute top-0 z-40 right-0 h-full w-toolbar pt-header />
       <div class="zy-store-style-card-inner">
         <div class="zy-card-image">
           <img

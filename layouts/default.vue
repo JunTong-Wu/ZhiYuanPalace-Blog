@@ -1,5 +1,5 @@
 <template>
-  <Logo absolute left-0 top-0 h-header w-sidebar z-80 />
+  <Logo fixed left-0 top-0 h-header w-sidebar z-80 />
   <Sidebar
     fixed
     top-0
