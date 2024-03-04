@@ -124,6 +124,11 @@ useHead({
   }
 }
 @media (orientation: portrait) {
+  :root {
+    background: #f7f8fa;
+    --bg-header-bar: rgba(255, 255, 255, 0.9); //顶栏
+    --bg-card: rgba(255, 255, 255, 1); //卡片
+  }
   /* 竖屏 */
   .vertical-layout {
     display: block;
