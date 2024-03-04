@@ -17,12 +17,12 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 // 禁止选择
-* {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none;
-}
+// * {
+//   -webkit-user-select: none; /* Safari */
+//   -moz-user-select: none; /* Firefox */
+//   -ms-user-select: none; /* IE 10+ */
+//   user-select: none;
+// }
 
 menu,
 ol,

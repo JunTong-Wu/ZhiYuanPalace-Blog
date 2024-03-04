@@ -16,7 +16,7 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
-      <NuxtPage mx-auto pb-50 class="nuxt-page" />
+      <NuxtPage mx-auto class="nuxt-page" />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
@@ -25,6 +25,7 @@ import "@/assets/css/style.scss";
 import "@/assets/css/common-to-live2d.scss";
 import "@/transition/transition.scss";
 import "@/assets/css/common-to-nprogress.scss";
+import "@/assets/css/common-to-markdown.scss"
 
 // 多语言
 const head = useLocaleHead({
@@ -99,7 +100,11 @@ useHead({
 <style lang="scss">
 .nuxt-page {
   min-height: 100vh;
+  padding-bottom: 10rem;
   will-change: transform;
+}
+.page-article-details .nuxt-page {
+  padding-bottom: 0;
 }
 :root {
   background: #eaecf1;
@@ -127,7 +132,7 @@ useHead({
   :root {
     background: #f7f8fa;
     --bg-header-bar: rgba(255, 255, 255, 0.9); //顶栏
-    --bg-card: rgba(255, 255, 255, 1); //卡片
+    --bg-card: rgba(255, 255, 255, 0.7); //卡片
   }
   /* 竖屏 */
   .vertical-layout {

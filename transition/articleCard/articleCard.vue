@@ -7,11 +7,6 @@
     overflow-hidden
     cursor-pointer
     color-text-1
-    col-span-12
-    xs:col-span-6
-    sm:col-span-4
-    md:col-span-3
-    lg:col-span-3
     @click.prevent="openCard($el)"
   >
     <div class="zy-article-card-inner">

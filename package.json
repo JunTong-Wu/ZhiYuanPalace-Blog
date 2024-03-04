@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@kangc/v-md-editor": "^2.3.18",
     "nprogress": "^0.2.0",
     "nuxt": "^3.10.1",
     "vue": "^3.4.15",

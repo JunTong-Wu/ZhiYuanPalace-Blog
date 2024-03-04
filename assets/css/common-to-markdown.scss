@@ -1,0 +1,29 @@
+.github-markdown-body,
+.vuepress-markdown-body {
+  padding: 0 !important;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 2;
+  color: var(--text-1);
+  background-color: transparent;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  li,
+  dl,
+  dt,
+  dd {
+    line-height: inherit;
+  }
+  blockquote{
+    color: inherit;
+    border-left-color: inherit;
+    font-size: inherit;
+  }
+}
