@@ -83,38 +83,24 @@
   border-radius: 0rem;
   transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,box-shadow 0s;
   .zy-article-card-inner {
-    height: 33vw;
+    height: calc(var(--header-bar-height) + 33vh + 1.5rem);
     .zy-card-title {
       display: none;
     }
     .zy-card-image {
-      left: 0;
-      right: 0;
-      height: 33vw;
-      border-radius: 0;
+      top:calc(var(--header-bar-height) + 1.5rem);
+      left: 1.5rem;
+      right: 1.5rem;
+      width: calc(100% - 1.5rem * 2);
+      height: 33vh;
       img {
         width: 100%;
-        height: 33vw;
-        border-radius: 0rem;
+        height: 33vh;
+        border-radius: 1rem;
       }
     }
   }
 }
-@media (orientation: portrait) {
-  .zy-article-card.transition-in {
-    .zy-article-card-inner {
-      height: 100vw;
-      .zy-card-image {
-        height: 100vw;
-        img {
-          height: 100vw;
-        }
-      }
-    }
-  }
-}
-
-
 
 .layout-default.transition .main-view-inner {
   transition: all 600ms, background 0s;

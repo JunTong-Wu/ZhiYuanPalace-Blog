@@ -143,7 +143,7 @@ a {
   --magenta-1: #ffe8f1; //浅色/白底悬浮
 }
 :root {
-  --bg-card: rgba(255, 255, 255, 0.5); //卡片
+  --bg-card: rgba(255, 255, 255, 0.4); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
   --bg-header-bar: rgba(234, 236, 241, 0.7); //顶栏
@@ -168,13 +168,13 @@ a {
 @media (pointer: fine) {
   /* 自定义滚动条 */
   ::-webkit-scrollbar {
-    width: 0.6em; /* 设置滚动条的宽度 */
-    height: 0.6em;
+    width: 1rem; /* 设置滚动条的宽度 */
+    height: 1rem;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #ccd5e1; /* 设置滑块的颜色 */
-    border-radius: 100px; /* 设置滑块的边角半径 */
+    background-color: #c9d1db; /* 设置滑块的颜色 */
+    border-radius: 0px; /* 设置滑块的边角半径 */
   }
 
   *.dark ::-webkit-scrollbar-thumb {
@@ -182,13 +182,17 @@ a {
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #95a3b7; /* 设置滑块的颜色 */
+    background-color: var(--theme-color); /* 设置滑块的颜色 */
   }
 
-  *.dark ::-webkit-scrollbar-thumb:hover {
-    background-color: #485569; /* 设置滑块的颜色 */
-  }
   ::-webkit-scrollbar-track {
     background-color: transparent; /* 设置滚动条的背景颜色 */
+  }
+}
+
+// 图片
+*.dark {
+  img {
+    filter: brightness(0.8);
   }
 }

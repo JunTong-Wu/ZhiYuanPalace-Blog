@@ -8,7 +8,6 @@
       h-full
       w-toolbar
       pt-header
-      bg="bg-card"
     />
     <div class="zy-article-card transition-in">
       <zy-fetch-loading :fetchData="articleData">
@@ -22,8 +21,8 @@
               />
             </div>
           </div>
-          <div class="zy-article-card-text" pt="8 xs:10 sm:12 md:14 lg:16" px="8 xs:10 sm:12 md:14 lg:16" bg="bg-card">
-            <h1 text="2xl xs:2xl sm:3xl md:3xl lg:3xl" mb="8 xs:10 sm:12 md:14 lg:16">{{ item.article_title }}</h1>
+          <div class="zy-article-card-text" pt="8 xs:10 sm:12 md:14 lg:16" px="8 xs:10 sm:12 md:14 lg:16">
+            <h1 text="2xl xs:2xl sm:3xl md:3xl lg:3xl" mb="8 xs:10 sm:12 md:14 lg:16" mt-0>{{ item.article_title }}</h1>
             <v-md-preview
               class="text-lg xs:text-lg sm:text-xl md:text-xl lg:text-xl  pb-40"
               ref="preview"
@@ -67,14 +66,11 @@ const articleData = search_article_by_id(id);
     opacity: 0;
   }
   100% {
-    transform: translateY(-10rem);
+    transform: translateY(0rem);
     opacity: 1;
   }
 }
 .zy-article-card-text {
   animation: an-article-card-text 400ms;
-  transform: translateY(-10rem);
-  backdrop-filter: blur(100px);
-  margin-bottom: -10rem;
 }
 </style>

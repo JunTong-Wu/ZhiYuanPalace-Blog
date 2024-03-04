@@ -21,7 +21,7 @@
                 <template v-slot:onload="{ row: item }">
                   <articleCard
                     :href="`/text/article/${item.article_id}`"
-                    rounded-lg
+                    rounded-2xl
                     bg="bg-card"
                   >
                     <template #image>
