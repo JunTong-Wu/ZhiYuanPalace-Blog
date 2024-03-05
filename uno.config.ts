@@ -37,6 +37,8 @@ export default defineConfig({
     ["h-tabs", { height: "var(--tabs-bar-height)" }],
     ["top-header-tabs", { top: "calc(var(--header-bar-height) + var(--tabs-bar-height))" }],
     ["w-centered", { "max-width": "var(--centered-width)" }],
+    ["h-music",{height:"var(--music-bar-height)"}],
+    ["bottom-footer",{bottom:"var(--footer-bar-height)"}]
   ],
   theme: {
     darkMode: "class",

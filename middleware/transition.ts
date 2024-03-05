@@ -4,10 +4,11 @@ import {
   getNavigationMap,
   getPageLevel,
   getRootPathOrder,
-  getSelfPathOrder
+  getSelfPathOrder,
 } from "@/models/menu/function";
 import { headerBarHide, headerBarShow } from "@/transition/headerBar/headerBar";
 import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
+import { musicBarHide, musicBarShow } from "@/transition/music/music";
 import { cardTransitionEnd } from "~/transition/articleCard/articleCard";
 
 const linkList = getNavigationMap() as Route[];
@@ -21,13 +22,17 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }, 100);
     }
     if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-      from.meta.pageTransition.name = "first-layer-next";
-      to.meta.pageTransition.name = "first-layer-prev";
+      if (from.meta.pageTransition && to.meta.pageTransition) {
+        (from.meta.pageTransition as any).name = "first-layer-next";
+        (to.meta.pageTransition as any).name = "first-layer-prev";
+      }
     } else if (
       getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
     ) {
-      from.meta.pageTransition.name = "first-layer-prev";
-      to.meta.pageTransition.name = "first-layer-next";
+      if (from.meta.pageTransition && to.meta.pageTransition) {
+        (from.meta.pageTransition as any).name = "first-layer-prev";
+        (to.meta.pageTransition as any).name = "first-layer-next";
+      }
     }
   }
   if (
@@ -41,13 +46,17 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }, 100);
     }
     if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-      from.meta.pageTransition.name = "first-layer-next";
-      to.meta.pageTransition.name = "first-layer-prev";
+      if (from.meta.pageTransition && to.meta.pageTransition) {
+        (from.meta.pageTransition as any).name = "first-layer-next";
+        (to.meta.pageTransition as any).name = "first-layer-prev";
+      }
     } else if (
       getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
     ) {
-      from.meta.pageTransition.name = "first-layer-prev";
-      to.meta.pageTransition.name = "first-layer-next";
+      if (from.meta.pageTransition && to.meta.pageTransition) {
+        (from.meta.pageTransition as any).name = "first-layer-prev";
+        (to.meta.pageTransition as any).name = "first-layer-next";
+      }
     }
   }
   if (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 2) {
@@ -61,32 +70,42 @@ export default defineNuxtRouteMiddleware((to, from) => {
       getSelfPathOrder(linkList, from.fullPath) >
       getSelfPathOrder(linkList, to.fullPath)
     ) {
-      from.meta.pageTransition.name = "second-layer-next";
-      to.meta.pageTransition.name = "second-layer-prev";
+      if (from.meta.pageTransition && to.meta.pageTransition) {
+        (from.meta.pageTransition as any).name = "second-layer-next";
+        (to.meta.pageTransition as any).name = "second-layer-prev";
+      }
     } else if (
       getSelfPathOrder(linkList, from.fullPath) <
       getSelfPathOrder(linkList, to.fullPath)
     ) {
-      from.meta.pageTransition.name = "second-layer-prev";
-      to.meta.pageTransition.name = "second-layer-next";
+      if (from.meta.pageTransition && to.meta.pageTransition) {
+        (from.meta.pageTransition as any).name = "second-layer-prev";
+        (to.meta.pageTransition as any).name = "second-layer-next";
+      }
     }
   }
   if (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 3) {
-    from.meta.pageTransition.name = "third-layer";
-    to.meta.pageTransition.name = "third-layer";
-    to.meta.pageTransition.onAfterEnter = (el, done) => {
-      headerBarShow();
-      cardTransitionEnd();
-    };
+    if (from.meta.pageTransition && to.meta.pageTransition) {
+      (from.meta.pageTransition as any).name = "third-layer";
+      (to.meta.pageTransition as any).name = "third-layer";
+      (to.meta.pageTransition as any).onAfterEnter = () => {
+        headerBarShow();
+        cardTransitionEnd();
+      };
+    }
   }
   if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) == 2) {
     footerBarHide();
     headerBarHide();
-    from.meta.pageTransition.name = "third-layer";
-    to.meta.pageTransition.name = "second-layer-prev";
-    to.meta.pageTransition.onEnter = (el, done) => {
-      footerBarShow();
-      headerBarShow();
-    };
+    musicBarHide();
+    if (from.meta.pageTransition && to.meta.pageTransition) {
+      (from.meta.pageTransition as any).name = "third-layer";
+      (to.meta.pageTransition as any).name = "second-layer-prev";
+      (to.meta.pageTransition as any).onEnter = () => {
+        footerBarShow();
+        headerBarShow();
+        musicBarShow();
+      };
+    }
   }
 });

@@ -57,6 +57,7 @@ a {
   --tool-bar-width: 20rem;
   --border-color: rgba(127, 127, 127, 0.2);
   --tabs-bar-height: 4rem;
+  --music-bar-height: 5rem;
 }
 @media (orientation: portrait) {
   :root {
@@ -64,12 +65,14 @@ a {
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
+    --music-bar-height: 4rem;
   }
 }
 @media (orientation: landscape) {
   :root {
     --header-bar-height: 4rem;
     --centered-width: 65rem;
+    --footer-bar-height: 0rem;
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
@@ -221,7 +224,6 @@ a {
     display: block;
   }
 }
-
 
 // 滚动条
 

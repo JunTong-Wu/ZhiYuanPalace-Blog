@@ -29,6 +29,15 @@
       </div>
     </main>
   </div>
+  <Music
+    fixed
+    bottom-footer
+    left-0
+    right-0
+    z-60
+    bg="bg-headerBar"
+    backdrop-blur-3xl
+  />
   <Footer
     fixed
     bottom-0
@@ -44,5 +53,5 @@ import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
 // import Toolbar from "./default/Toolbar/Toolbar.vue";
 import Footer from "./default/Footer/Footer.vue";
-// import Music from "./default/Music/Music.vue";
+import Music from "./default/Music/Music.vue";
 </script>

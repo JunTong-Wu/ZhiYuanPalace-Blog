@@ -56,13 +56,13 @@
 
 @media (min-width: 900px) {
   .zy-article-card {
-    --card-height: 20rem;
+    --card-height: 17rem;
     .zy-article-card-inner {
       .zy-card-title {
         width: 100%;
         top: auto;
         bottom: 0;
-        padding-bottom: 2rem;
+        padding-bottom: 1.5rem;
       }
       .zy-card-image {
         width: 100%;
@@ -70,7 +70,7 @@
         padding: 0;
         img {
           width: 100%;
-          height: 11rem;
+          height: 10rem;
           border-radius: 0;
         }
       }

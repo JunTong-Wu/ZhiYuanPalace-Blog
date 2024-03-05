@@ -14,14 +14,14 @@
               <zy-fetch-loading
                 :fetchData="articleListData"
                 rowClass="grid grid-cols-12 gap-0 xs:gap-0 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8"
-                cloClass="col-span-12 xs:col-span-6 sm:col-span-6 md:col-span-4 lg:col-span-4 xl:col-span-3"
+                cloClass="col-span-12 xs:col-span-6 sm:col-span-6 md:col-span-4 lg:col-span-3 xl:col-span-3"
                 :minLoadingNumber="3"
               >
                 <template v-slot:loading> loading... </template>
                 <template v-slot:onload="{ row: item }">
                   <articleCard
                     :href="`/text/article/${item.article_id}`"
-                    bg="bg-card md:bg-card" sm:rounded-xl
+                    bg="bg-card" sm:rounded-xl
                   >
                     <template #image>
                       <img
@@ -30,8 +30,8 @@
                       />
                     </template>
                     <template #title>
-                      <h4 m-0 text-base sm:text-xl font-normal>{{ item.article_title }}</h4>
-                      <p m-0 mt-2 text-sm sm:text-base color="text-2">
+                      <h4 m-0 text-base font-normal>{{ item.article_title }}</h4>
+                      <p m-0 mt-2 text-sm color="text-2">
                         {{ item.article_text.replace(/\r\n/g, "") }}
                       </p>
                     </template>
