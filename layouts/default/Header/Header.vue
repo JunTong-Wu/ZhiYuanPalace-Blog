@@ -1,7 +1,8 @@
 <template>
   <header h-header color-text-1 overflow-hidden>
+    <Logo fixed left-0 top-0 h-header w-sidebar z-80 />
     <div class="zy-header-inner" flex items-center justify-between h-full>
-      <div flex items-center h-full>
+      <div flex items-center h-full overflow-hidden >
         <HeaderTitle />
         <GoBackButton />
       </div>
@@ -158,6 +159,7 @@
 <script setup lang="ts">
 import Music from "../Music/Music.vue";
 import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
+import Logo from "../Logo/Logo.vue";
 
 // 多语言
 const { locale, locales, setLocale } = useI18n();

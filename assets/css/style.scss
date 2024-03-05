@@ -1,9 +1,18 @@
-@import url('../fonts/DFPKingGothicGB.css');
-@import url('../fonts/HarmonyOS.css');
+@import url("../fonts/DFPKingGothicGB.css");
+@import url("../fonts/HarmonyOS.css");
 // 字体
+:root.pc {
+  font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
+    "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica,
+    Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC",
+    "WenQuanYi Micro Hei", sans-serif;
+}
+:root.mobile {
+  font-family: sans-serif;
+}
 body {
   line-height: 1.2;
-  font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC", "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif !important;
+  font-family: inherit !important;
 }
 
 html,
@@ -14,7 +23,7 @@ body {
 }
 * {
   box-sizing: border-box;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 // 禁用高亮
@@ -167,6 +176,52 @@ a {
   --text-3: rgba(255, 255, 255, 0.4); //次要信息
   --text-4: rgba(255, 255, 255, 0.2); //置灰信息
 }
+
+//背景色
+:root {
+  background: #eaecf1;
+  // background: url('@/assets/image/bg4.png');
+  color: var(--text-1);
+}
+:root.dark {
+  background: #0d0d26;
+}
+@media (orientation: portrait) {
+  /* 竖屏 */
+  :root {
+    background: #eff2f5;
+    --bg-header-bar: rgba(255, 255, 255, 0.9); //顶栏
+    --bg-card: rgba(255, 255, 255, 0.7); //卡片
+  }
+  :root.dark {
+    background: #0d0d26;
+    --bg-header-bar: rgba(13, 13, 38, 0.7); //顶栏
+    --bg-card: rgba(31, 31, 54, 0.7); //卡片
+  }
+
+  .vertical-layout {
+    display: block;
+  }
+}
+
+// 显示隐藏
+.vertical-layout {
+  display: none;
+}
+.horizontal-layout {
+  display: none;
+}
+@media (orientation: landscape) {
+  .horizontal-layout {
+    display: block;
+  }
+}
+@media (orientation: portrait) {
+  .vertical-layout {
+    display: block;
+  }
+}
+
 
 // 滚动条
 

@@ -6,8 +6,8 @@
         v-zy-ripple
         :class="{ activate: routerActivate(tabs.path) }"
       >
-        <zy-link :to="tabs.path" h-full flex items-center justify-center px-6>
-          <span>{{ $t(tabs.title) }}</span>
+        <zy-link :to="tabs.path" h-full flex items-center justify-center px-4>
+          <span text-base sm:text-xl>{{ $t(tabs.title) }}</span>
         </zy-link>
       </li>
     </ul>
@@ -56,11 +56,24 @@ router.beforeEach((to, from, next) => {
 .headerbar-tabs {
   transition: all 400ms;
   li {
-    border-bottom: 0.3rem solid transparent;
+    a {
+      position: relative;
+    }
     &.activate {
-      border-color: var(--theme-color);
       * {
         font-weight: bold;
+      }
+      a {
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          bottom: 1.25rem;
+          left: 1rem;
+          right: 1rem;
+          height: 0.3rem;
+          background: var(--theme-color);
+        }
       }
     }
   }

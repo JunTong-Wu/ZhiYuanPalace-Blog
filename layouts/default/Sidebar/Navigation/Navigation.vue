@@ -30,6 +30,7 @@
               activated-color="var(--text-1)"
             />
           </div>
+          <span text-xs mt-2>{{ $t(n.title) }}</span>
         </zy-link>
       </li>
     </ul>

@@ -1,12 +1,11 @@
 <template>
-  <Logo fixed left-0 top-0 h-header w-sidebar z-80 />
   <Sidebar
     fixed
     top-0
     bottom-0
     left-0
     w-sidebar
-    z-60
+    z-50
     pt-header
     bg="bg-headerBar"
     backdrop-blur-3xl
@@ -14,9 +13,10 @@
   <Header
     fixed
     top-0
-    left-sidebar
+    left-0
     right-0
-    z-50
+    z-60
+    pl-sidebar
     bg="bg-headerBar"
     backdrop-blur-3xl
   />
@@ -40,7 +40,6 @@
   />
 </template>
 <script setup lang="ts">
-import Logo from "./default/Logo/Logo.vue";
 import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
 // import Toolbar from "./default/Toolbar/Toolbar.vue";

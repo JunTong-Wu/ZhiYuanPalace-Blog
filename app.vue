@@ -106,44 +106,7 @@ useHead({
 .page-article-details .nuxt-page {
   padding-bottom: 0;
 }
-:root {
-  background: #eaecf1;
-  color: var(--text-1);
-}
 
-:root.dark {
-  background: #0d0d26;
-}
-
-.vertical-layout {
-  display: none;
-}
-.horizontal-layout {
-  display: none;
-}
-
-@media (orientation: landscape) {
-  /* 横屏 */
-  .horizontal-layout {
-    display: block;
-  }
-}
-@media (orientation: portrait) {
-  :root {
-    background: #eff2f5;
-    --bg-header-bar: rgba(255, 255, 255, 0.9); //顶栏
-    --bg-card: rgba(255, 255, 255, 0.7); //卡片
-  }
-  :root.dark {
-    background: #0d0d26;
-    --bg-header-bar: rgba(13, 13, 38, 0.7); //顶栏
-    --bg-card: rgba(31, 31, 54, 0.7); //卡片
-  }
-  /* 竖屏 */
-  .vertical-layout {
-    display: block;
-  }
-}
 @media (pointer: fine) {
   /* 使用鼠标或手写笔 */
 }

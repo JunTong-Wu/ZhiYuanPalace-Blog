@@ -1,6 +1,8 @@
 .zy-article-card {
-  --card-height: 8.5rem;
+  --card-height: 7rem;
+  --image-size: 4rem;
   height: var(--card-height);
+  vertical-align: middle;
   transition: transform 100ms;
   .zy-article-card-inner {
     height: var(--card-height);
@@ -10,12 +12,12 @@
       position: absolute;
       z-index: 1;
       top: 0;
-      left: 0;
-      width: calc(100% - var(--card-height));
-      padding: 1.5rem;
+      right: 0;
+      width: calc(100% - var(--image-size) - 1rem);
+      padding: 1rem;
+      padding-bottom:1rem;
       font-size: 1rem;
       h4 {
-        margin: 0;
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
@@ -24,9 +26,8 @@
         white-space: normal;
       }
       p {
-        margin: 0;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -36,16 +37,15 @@
     .zy-card-image {
       transition: all cubic-bezier(0.63, 0, 0.32, 1) 400ms;
       position: absolute;
-      left: calc(100% - var(--card-height));
-      right: 0;
-      height: var(--card-height);
-      border-radius: 0rem;
+      left: 0;
+      height: 100%;
       overflow: hidden;
+      padding: 1rem;
       img {
-        width: var(--card-height);
-        height: var(--card-height);
+        width: var(--image-size);
+        height: var(--image-size);
         object-fit: cover;
-        border-radius: 0rem;
+        border-radius: 100%;
       }
     }
   }
@@ -62,13 +62,15 @@
         width: 100%;
         top: auto;
         bottom: 0;
+        padding-bottom: 2rem;
       }
       .zy-card-image {
         width: 100%;
         left: 0;
+        padding: 0;
         img {
           width: 100%;
-          height: 10.5rem;
+          height: 11rem;
           border-radius: 0;
         }
       }
@@ -81,23 +83,24 @@
   padding-left: 0;
   padding-top: 0;
   height: auto;
-  border-radius: 0rem;
-  transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,box-shadow 0s;
+  transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,
+    box-shadow 0s;
   .zy-article-card-inner {
     height: calc(var(--header-bar-height) + 33vh + 1.5rem);
     .zy-card-title {
       display: none;
     }
     .zy-card-image {
-      top:calc(var(--header-bar-height) + 1.5rem);
+      top: calc(var(--header-bar-height) + 1.5rem);
       left: 1.5rem;
       right: 1.5rem;
       width: calc(100% - 1.5rem * 2);
       height: 33vh;
+      padding: 0;
       img {
         width: 100%;
         height: 33vh;
-        border-radius: 1rem;
+        border-radius: 0.75rem;
       }
     }
   }
