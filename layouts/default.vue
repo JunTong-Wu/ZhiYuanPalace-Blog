@@ -22,7 +22,7 @@
   />
   <div class="layout-default">
     <main flex-1 pl-sidebar>
-      <div text-base relative class="main-view">
+      <div text-base relative class="main-view" overflow-hidden>
         <div class="main-view-inner">
           <slot />
         </div>

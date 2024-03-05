@@ -1,3 +1,11 @@
+@import url('../fonts/DFPKingGothicGB.css');
+@import url('../fonts/HarmonyOS.css');
+// 字体
+body {
+  line-height: 1.2;
+  font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC", "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif !important;
+}
+
 html,
 body {
   margin: 0;
@@ -6,12 +14,9 @@ body {
 }
 * {
   box-sizing: border-box;
+  letter-spacing: 0.5px;
 }
-// 字体
-body {
-  line-height: 1.2;
-  font-family: sans-serif;
-}
+
 // 禁用高亮
 * {
   -webkit-tap-highlight-color: transparent;
