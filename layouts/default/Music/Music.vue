@@ -8,14 +8,16 @@
       flex
       items-center
       color="text-2"
+      bg="[#3f3f4b]"
       :style="`background:${bg_color}`"
       rounded-3xl
     >
-      <div h="[130%]" absolute bottom="[-2%]">
+      <div h="[130%]" flex relative>
         <img
           h="[90%]"
           absolute
-          bottom="[2%]"
+          bottom="[5%]"
+          drop-shadow-md
           left-5
           src="@/assets/image/record-128.png"
           alt=""
@@ -23,7 +25,8 @@
         />
         <img
           h-full
-          absolute
+          relative
+          left-0
           rounded-md
           shadow-md
           :src="musicNowCover"
@@ -34,18 +37,17 @@
         />
       </div>
       <div
-        ml-2
+        ml-6
         class="dark"
         color="text-1"
         flex
         h-full
         w-full
         items-center
-        pr-4
+        pr-2
       >
-        <div h="[130%]" aspect-square mr-5></div>
         <span flex-1 line-clamp-1>你说的话 有心的吗 刺痛我了 无意的吧</span>
-        <div flex>
+        <div flex gap-2>
           <div class="horizontal-layout">
             <zy-button
               h-music
