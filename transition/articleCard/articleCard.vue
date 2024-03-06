@@ -19,18 +19,29 @@
     </div>
   </a>
 </template>
-<script setup lang="ts">
+<script lang="ts">
 import { cardTransitionStart } from "@/transition/articleCard/articleCard";
-
-const router = useRouter();
-const openCard = (element: any) => {
-  if (element) {
-    let href = element.href;
-    let url = new URL(href);
-    let path = url.pathname;
-    cardTransitionStart(element, () => {
-      router.replace(path);
-    });
-  }
+export default {
+  props: {
+    skeleton: { type: Boolean, default: false }, // 指定是否是骨架屏
+  },
+  setup(props) {
+    const router = useRouter();
+    const openCard = (element: any) => {
+      if (!props.skeleton) {
+        if (element) {
+          let href = element.href;
+          let url = new URL(href);
+          let path = url.pathname;
+          cardTransitionStart(element, () => {
+            router.replace(path);
+          });
+        }
+      }
+    };
+    return {
+      openCard,
+    };
+  },
 };
 </script>

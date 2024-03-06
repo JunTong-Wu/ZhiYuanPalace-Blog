@@ -9,7 +9,6 @@ import {
 import { headerBarHide, headerBarShow } from "@/transition/headerBar/headerBar";
 import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
 import { musicBarHide, musicBarShow } from "@/transition/music/music";
-import { cardTransitionEnd } from "~/transition/articleCard/articleCard";
 
 const linkList = getNavigationMap() as Route[];
 
@@ -90,7 +89,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
       (to.meta.pageTransition as any).name = "third-layer";
       (to.meta.pageTransition as any).onAfterEnter = () => {
         headerBarShow();
-        cardTransitionEnd();
       };
     }
   }

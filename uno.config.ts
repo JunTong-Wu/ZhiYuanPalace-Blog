@@ -67,6 +67,7 @@ export default defineConfig({
         2: "var(--text-2)",
         3: "var(--text-3)",
         4: "var(--text-4)",
+        5: "var(--text-5)",
       },
       //背景颜色
       bg: {
