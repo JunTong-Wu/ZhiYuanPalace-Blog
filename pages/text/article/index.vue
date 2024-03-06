@@ -30,8 +30,8 @@
                       />
                     </template>
                     <template #title>
-                      <h4 m-0 text-base font-normal>{{ item.article_title }}</h4>
-                      <p m-0 mt-2 text-sm color="text-2">
+                      <h4 m-0 text-base font-normal line-clamp-1>{{ item.article_title }}</h4>
+                      <p m-0 mt-2 text-sm line-clamp-2 color="text-2">
                         {{ item.article_text.replace(/\r\n/g, "") }}
                       </p>
                     </template>

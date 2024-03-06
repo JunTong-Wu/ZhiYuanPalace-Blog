@@ -31,12 +31,10 @@
   </div>
   <Music
     fixed
-    bottom-footer
+    bottom-music
     left-0
     right-0
-    z-60
-    bg="bg-headerBar"
-    backdrop-blur-3xl
+    z-70
   />
   <Footer
     fixed

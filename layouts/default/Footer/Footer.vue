@@ -1,5 +1,5 @@
 <template>
-  <footer h-footer flex justify-center class="zy-footer vertical-layout">
+  <footer h-footer flex justify-center pt-4 class="zy-footer vertical-layout">
     <div
       h-full
       flex
