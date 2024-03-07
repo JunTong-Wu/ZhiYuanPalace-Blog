@@ -2,167 +2,87 @@
   <header h-header color-text-1 overflow-hidden>
     <Logo fixed left-0 top-0 h-header w-sidebar z-80 />
     <div class="zy-header-inner" flex items-center justify-between h-full>
-      <div flex items-center h-full overflow-hidden >
+      <div flex items-center h-full overflow-hidden>
         <HeaderTitle />
         <GoBackButton />
       </div>
 
-      <!-- <div h-header absolute left-0 right-0 pointer-events-none>
-        <Music />
-      </div> -->
-
       <div class="vertical-layout" h-full>
         <div flex items-center w-full h-full justify-between>
           <div flex items-center h-full>
-            <zy-button
-              w-header
-              h-header
-              @click="openSearchDrawer()"
-              title="搜索"
-              type="transparent"
-            >
+            <ZyButton w-header h-header @click="openSearchDrawer()" title="搜索" type="transparent">
               <ZyIcon defaultName="search" />
-            </zy-button>
-            <zy-button
-              w-header
-              h-header
-              @click="openMoreDrawer()"
-              title="更多选项"
-              type="transparent"
-            >
+            </ZyButton>
+            <ZyButton w-header h-header @click="openMoreDrawer()" title="更多选项" type="transparent">
               <ZyIcon defaultName="more" />
-            </zy-button>
+            </ZyButton>
           </div>
         </div>
       </div>
 
       <div class="horizontal-layout">
         <div flex justify-end h-full items-center gap-2>
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="openSearchDrawer()"
-            title="搜索"
-            type="icon"
-          >
+          <ZyButton flex items-center justify-center @click="openSearchDrawer()" title="搜索" type="icon">
             <ZyIcon size="0.75rem" defaultName="search" />
-          </zy-button>
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="toggleFullScreen"
-            title="全屏/退出全屏"
-            type="icon"
-          >
-            <ZyIcon
-              v-if="!fullScreenFlag"
-              size="0.75rem"
-              defaultName="maximize"
-            />
+          </ZyButton>
+          <ZyButton flex items-center justify-center @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
+            <ZyIcon v-if="!fullScreenFlag" size="0.75rem" defaultName="maximize" />
             <ZyIcon v-else size="0.75rem" defaultName="minimize" />
-          </zy-button>
+          </ZyButton>
           <!-- 多语言抽屉 -->
-          <zy-popover title="切换语言" background="var(--bg-panel)">
+          <ZyPopover title="切换语言" background="var(--bg-panel)">
             <template #reference>
-              <zy-button
-                flex
-                items-center
-                justify-center
-                title="切换语言"
-                type="icon"
-              >
+              <ZyButton flex items-center justify-center title="切换语言" type="icon">
                 <ZyIcon size="0.75rem" defaultName="language" />
-              </zy-button>
+              </ZyButton>
             </template>
             <template #actions>
               <div color="text-1" w-40>
                 <ul>
-                  <li
-                    v-for="lang in (availableLocales as any)"
-                    :key="lang.code"
-                    :to="switchLocalePath(lang.code)"
-                    @click="switchLanguage(lang.code, lang.iso)"
-                    border="t-0 l-0 r-0 b-1 solid bordercolor"
-                  >
-                    <label
-                      inline-block
-                      w-full
-                      h-full
-                      flex
-                      justify-between
-                      p-4
-                      h-14
-                      bg="hover:theme"
-                      color="hover:white"
-                      cursor-pointer
-                    >
+                  <li v-for="lang in availableLocales" :key="lang.code" :to="switchLocalePath(lang.code)"
+                    @click="switchLanguage(lang.code, lang.iso)" border="t-0 l-0 r-0 b-1 solid bordercolor">
+                    <label inline-block w-full h-full flex justify-between p-4 h-14 bg="hover:theme" color="hover:white"
+                      cursor-pointer>
                       <span text-sm>{{ lang.name }}</span>
-                      <input
-                        type="radio"
-                        name="lang"
-                        :checked="lang.code == locale"
-                        hidden
-                      />
+                      <input type="radio" name="lang" :checked="lang.code == locale" hidden />
                     </label>
                   </li>
                 </ul>
               </div>
             </template>
-          </zy-popover>
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="darkModeSwitch()"
-            title="日间/夜间"
-            type="icon"
-          >
+          </ZyPopover>
+          <ZyButton flex items-center justify-center @click="darkModeSwitch()" title="日间/夜间" type="icon">
             <ZyIcon size="0.75rem" hidden dark:inline-block defaultName="sun" />
             <ZyIcon size="0.75rem" dark:hidden defaultName="moon" />
-          </zy-button>
-          <zy-button
-            flex
-            items-center
-            justify-center
-            @click="openMoreDrawer()"
-            title="更多选项"
-            type="icon"
-          >
+          </ZyButton>
+          <ZyButton flex items-center justify-center @click="openMoreDrawer()" title="更多选项" type="icon">
             <ZyIcon size="0.75rem" defaultName="more" />
-          </zy-button>
+          </ZyButton>
         </div>
       </div>
     </div>
     <!-- 搜索抽屉 -->
-    <zy-drawer
-      title="搜索"
-      :display="searchDisplay"
-      @cancel="closeSearchDrawer"
-      position="top"
-      size="100%"
-    >
-    </zy-drawer>
+    <ZyDrawer title="搜索" :display="searchDisplay" @cancel="closeSearchDrawer" position="top" size="100%">
+    </ZyDrawer>
     <!-- 更多选项抽屉 -->
-    <zy-drawer
-      title="更多选项"
-      :display="moreDisplay"
-      @cancel="closeMoreDrawer"
-      position="right"
-      size="21rem"
-      background="var(--bg-panel)"
-    >
-    </zy-drawer>
+    <ZyDrawer title="更多选项" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="21rem"
+      background="var(--bg-panel)">
+    </ZyDrawer>
   </header>
 </template>
 <script setup lang="ts">
-import Music from "../Music/Music.vue";
 import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
 import Logo from "../Logo/Logo.vue";
 
+// 使用类型断言来处理 TypeScript 的类型检查
+declare global {
+  interface Window {
+    ActiveXObject?: any;
+  }
+}
+
 // 多语言
-const { locale, locales, setLocale } = useI18n();
+const { locale, locales, setLocale } = useI18n() as any;
 const switchLocalePath = useSwitchLocalePath();
 
 const availableLocales = computed(() => {
@@ -188,7 +108,7 @@ const fullScreen = () => {
   const element = document.documentElement as any; //若要全屏页面div
   //IE 10及以下ActiveXObject
   if (window.ActiveXObject) {
-    const WsShell = new ActiveXObject("WScript.Shell");
+    const WsShell = new window.ActiveXObject("WScript.Shell");
     WsShell.SendKeys("{F11}");
     //写全屏后的执行函数
   }
@@ -222,7 +142,7 @@ const fullExit = () => {
   const doc = document as any;
   //IE ActiveXObject
   if (window.ActiveXObject) {
-    const WsShell = new ActiveXObject("WScript.Shell");
+    const WsShell = new window.ActiveXObject("WScript.Shell");
     WsShell.SendKeys("{F11}");
     //写退出全屏后的执行函数
   }
@@ -280,13 +200,16 @@ const closeMoreDrawer = () => {
 </script>
 <style scoped lang="scss">
 @media (orientation: landscape) {
+
   /* 横屏 */
   .zy-header-inner {
     padding-left: 0;
     padding-right: 1rem;
   }
 }
+
 @media (orientation: portrait) {
+
   /* 竖屏 */
   .zy-header-inner {
     padding-left: 0;

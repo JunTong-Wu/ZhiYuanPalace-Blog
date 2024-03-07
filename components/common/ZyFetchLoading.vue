@@ -1,18 +1,14 @@
 <template>
-  <div
-    v-if="
-      fetchData.pending.value ||
-      fetchData.error.value ||
-      fetchData.res.value?.code != 200
-    "
-    :class="rowClass"
-  >
-    <div v-for="i in minLoadingNumber" :class="cloClass">
+  <div v-if="fetchData.pending.value ||
+    fetchData.error.value ||
+    fetchData.res.value?.code != 200
+    " :class="rowClass">
+    <div v-for="i in minLoadingNumber" :key="`loading-${i}`" :class="cloClass">
       <slot name="loading"></slot>
     </div>
   </div>
   <div v-else :class="rowClass">
-    <div v-for="i in item?.data" :class="cloClass">
+    <div v-for="i in item?.data" :key="`success-${i}`" :class="cloClass">
       <slot name="onload" :row="i"></slot>
     </div>
     <slot name="onload_noForeach" :row="item.data"></slot>
@@ -20,6 +16,7 @@
 </template>
 <script lang="ts">
 export default {
+  name: "ZyFetchLoading",
   props: {
     fetchData: {
       default: {
@@ -57,7 +54,7 @@ export default {
     }
 
     // 客户端获取参数
-    watch(props.fetchData.pending, (newValue) => {
+    watch(props.fetchData.pending, (newValue: any) => {
       if (!newValue) {
         if (
           props.fetchData.res.value &&
@@ -72,7 +69,7 @@ export default {
     if (process.client) {
       watch(
         props.fetchData.error,
-        (newValue) => {
+        (newValue: any) => {
           if (newValue) {
             // showErrorMsg("408", "服务端响应超时");
           }
@@ -81,7 +78,7 @@ export default {
       );
       watch(
         props.fetchData.res,
-        (newValue) => {
+        (newValue: { code: number; }) => {
           if (newValue && newValue.code != 200) {
             // showErrorMsg(newValue.code, newValue.message);
           }

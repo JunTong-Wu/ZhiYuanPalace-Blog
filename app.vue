@@ -1,18 +1,15 @@
 <template>
   <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
-    <Head>
-      <template v-for="link in head.link" :key="link.id">
-        <Link
-          :id="link.id"
-          :rel="link.rel"
-          :href="link.href"
-          :hreflang="link.hreflang"
-        />
-      </template>
-      <template v-for="meta in head.meta" :key="meta.id">
-        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
-      </template>
-    </Head>
+
+  <Head>
+    <template v-for="link in head.link" :key="link.id">
+      <Link :id="link.id" :rel="link.rel" :href="link.href" :hreflang="link.hreflang" />
+    </template>
+    <template v-for="meta in head.meta" :key="meta.id">
+      <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
+    </template>
+  </Head>
+
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
@@ -103,6 +100,7 @@ useHead({
   padding-bottom: 10rem;
   will-change: transform;
 }
+
 .page-article-details .nuxt-page {
   padding-bottom: 0;
 }
@@ -110,12 +108,15 @@ useHead({
 @media (pointer: fine) {
   /* 使用鼠标或手写笔 */
 }
+
 @media (pointer: coarse) {
   /* 使用触摸屏 */
 }
+
 @media (hover: hover) {
   /* 可以hover */
 }
+
 @media (hover: none) {
   /* 不可以hover */
 }

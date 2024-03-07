@@ -1,7 +1,7 @@
 <template>
   <ZySuperResponsive>
     <NuxtLayout>
-      <div  mt-header>
+      <div mt-header>
         <h1>Error {{ error.statusCode }}</h1>
         <p>{{ error }}</p>
       </div>

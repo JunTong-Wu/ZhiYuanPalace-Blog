@@ -1,9 +1,3 @@
-export interface ApiDataTypes {
-  res: globalThis.Ref<any>;
-  pending: globalThis.Ref<any>;
-  error: globalThis.Ref<any>;
-  refresh: any;
-}
 export const useMyFetch = function (
   method: string,
   url: string,

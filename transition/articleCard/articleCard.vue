@@ -1,14 +1,6 @@
 <template>
-  <a
-    class="zy-article-card"
-    w-full
-    h-full
-    inline-block
-    overflow-hidden
-    cursor-pointer
-    color-text-1
-    @click.prevent="openCard($el)"
-  >
+  <a class="zy-article-card" w-full h-full inline-block overflow-hidden cursor-pointer color-text-1
+    @click.prevent="openCard($el)">
     <div class="zy-article-card-inner">
       <div class="zy-card-title">
         <slot name="title" />

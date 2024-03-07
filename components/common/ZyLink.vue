@@ -1,23 +1,13 @@
 <template>
-  <a
-    :href="to"
-    bg-transparent
-    text-base
-    border-0
-    color-text-1
-    @click.prevent="swichRouter(to)"
-    flex
-    items-center
-    no-underline
-    :title="title"
-  >
+  <a :href="to" bg-transparent text-base border-0 color-text-1 @click.prevent="swichRouter(to)" flex items-center
+    no-underline :title="title">
     <slot />
   </a>
 </template>
 to
 <script lang="ts">
 export default defineComponent({
-  name: "zy-link",
+  name: "ZyLink",
   props: {
     to: {
       type: String,

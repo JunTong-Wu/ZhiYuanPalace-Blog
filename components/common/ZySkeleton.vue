@@ -1,19 +1,14 @@
 <template>
-  <div
-    v-if="type == 'text'"
-    v-for="i in row"
-    class="zy-skeleton-text"
-    :class="{ animation: animation }"
-  ></div>
-  <div
-    v-if="type == 'image'"
-    v-for="i in row"
-    class="zy-skeleton-image"
-    :class="{ animation: animation }"
-  ></div>
+  <template v-if="type == 'text'">
+    <div v-for="i in row" :key="`skeleton-text${i}`" class="ZySkeleton-text" :class="{ animation: animation }"></div>
+  </template>
+  <template v-if="type == 'image'">
+    <div v-for="i in row" :key="`skeleton-image${i}`" class="ZySkeleton-image" :class="{ animation: animation }"></div>
+  </template>
 </template>
 <script lang="ts">
 export default {
+  name: "ZySkeleton",
   props: {
     row: { type: Number, default: 1 }, // 指定行数
     type: { type: String, default: "text" }, // 指定种类
@@ -22,7 +17,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.zy-skeleton-text {
+.ZySkeleton-text {
   position: relative;
   width: 100%;
   height: 1rem;
@@ -30,28 +25,33 @@ export default {
   border-radius: 1rem;
   margin-bottom: 0.75rem;
   overflow: hidden;
+
   &:last-of-type {
     margin-bottom: 0;
   }
 }
-.zy-skeleton-image {
+
+.ZySkeleton-image {
   position: relative;
   width: 100%;
   height: 100%;
   background-color: var(--text-5);
   margin-bottom: 0.75rem;
   overflow: hidden;
+
   &:last-of-type {
     margin-bottom: 0;
   }
 }
+
 @keyframes loading {
   100% {
     transform: translateX(100%);
   }
 }
-.zy-skeleton-text.animation,
-.zy-skeleton-image.animation {
+
+.ZySkeleton-text.animation,
+.ZySkeleton-image.animation {
   &::after {
     content: "";
     position: absolute;
@@ -60,12 +60,10 @@ export default {
     width: 100%;
     height: 100%;
     animation: loading 1.5s infinite;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0)
-    );
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0));
     transform: translateX(-100%);
     z-index: 1;
   }

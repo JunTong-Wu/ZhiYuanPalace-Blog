@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "zy-super-responsive",
+  name: "ZySuperResponsive",
   props: {
     baseFontSize: {
       type: Number,

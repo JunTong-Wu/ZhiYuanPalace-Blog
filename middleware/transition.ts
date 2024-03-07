@@ -1,11 +1,4 @@
 import NProgress from "nprogress";
-import type { Route } from "@/models/menu/index";
-import {
-  getNavigationMap,
-  getPageLevel,
-  getRootPathOrder,
-  getSelfPathOrder,
-} from "@/models/menu/function";
 import { headerBarHide, headerBarShow } from "@/transition/headerBar/headerBar";
 import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
 import { musicBarHide, musicBarShow } from "@/transition/music/music";

@@ -1,27 +1,13 @@
 <template>
-  <div
-    relative
-    class="zy-icon"
-    :class="{ activated: activated }"
-    :style="{ '--size': size, width: size, height: size }"
-  >
-    <div
-      v-html="defaultIcon"
-      flex
-      :style="{ '--icon-color': defaultColor }"
-    ></div>
-    <div
-      v-html="activatedIcon"
-      flex
-      :style="{ '--icon-color': activatedColor }"
-    ></div>
+  <div relative class="ZyIcon" :class="{ activated: activated }" :style="{ '--size': size, width: size, height: size }">
+    <div v-html="defaultIcon" flex :style="{ '--icon-color': defaultColor }"></div>
+    <div v-html="activatedIcon" flex :style="{ '--icon-color': activatedColor }"></div>
   </div>
 </template>
 <script lang="ts">
-import { getSvgByName } from "@/models/menu/function";
 
 export default defineComponent({
-  name: "zy-icon",
+  name: "ZyIcon",
   props: {
     size: {
       type: String,
@@ -60,28 +46,33 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-.zy-icon {
+.ZyIcon {
   svg {
     width: var(--size);
     height: var(--size);
     font-size: var(--size);
     color: var(--icon-color);
   }
-  > div {
+
+  >div {
     position: absolute;
     top: 0;
   }
-  > div:first-of-type {
+
+  >div:first-of-type {
     opacity: 1;
   }
-  > div:nth-of-type(2) {
+
+  >div:nth-of-type(2) {
     opacity: 0;
   }
+
   &.activated {
-    > div:first-of-type {
+    >div:first-of-type {
       opacity: 0;
     }
-    > div:nth-of-type(2) {
+
+    >div:nth-of-type(2) {
       opacity: 1;
     }
   }

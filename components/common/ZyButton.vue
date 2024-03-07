@@ -1,34 +1,18 @@
 <template>
-  <button
-    :class="{
-      'zy-button-default': type == 'default',
-      'zy-button-transparent': type == 'transparent',
-      'zy-button-icon': type == 'icon',
-      'zy-button-primary': type == 'primary',
-    }"
-    ref="button"
-    type="button"
-    min-h-9
-    min-w-9
-    text="base"
-    p-0
-    m-0
-    color="inherit"
-    flex
-    items-center
-    justify-center
-    :title="title"
-    @mousedown="animationStart()"
-    @mouseup="animationEnd()"
-    @touchstart.passive="animationStart()"
-    @touchend.passive="animationEnd()"
-  >
+  <button :class="{
+    'ZyButton-default': type == 'default',
+    'ZyButton-transparent': type == 'transparent',
+    'ZyButton-icon': type == 'icon',
+    'ZyButton-primary': type == 'primary',
+  }" ref="button" type="button" min-h-9 min-w-9 text="base" p-0 m-0 color="inherit" flex items-center justify-center
+    :title="title" @mousedown="animationStart()" @mouseup="animationEnd()" @touchstart.passive="animationStart()"
+    @touchend.passive="animationEnd()">
     <slot />
   </button>
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "zy-button",
+  name: "ZyButton",
   props: {
     title: { type: String, default: "" },
     type: { type: String, default: "default" },
@@ -60,35 +44,44 @@ export default defineComponent({
     opacity: 0.5;
     transform: scale(0.9);
   }
+
   15% {
     transform: scale(1.1);
   }
+
   30% {
     transform: scale(0.8);
   }
+
   45% {
     transform: scale(1);
   }
+
   60% {
     opacity: 1;
     transform: scale(0.94);
   }
+
   75% {
     transform: scale(1);
   }
+
   100% {
     transition: none;
   }
 }
+
 @keyframes an-click {
   0% {
     transition: none;
     opacity: 1;
     transform: scale(1);
   }
+
   90% {
     transform: scale(0.9);
   }
+
   100% {
     transition: none;
     opacity: 0.5;
@@ -100,6 +93,7 @@ export default defineComponent({
   button {
     animation: an-bounce 0.7s;
     outline: none;
+
     &.animation {
       animation: an-click 0.3s forwards;
     }
@@ -116,7 +110,7 @@ export default defineComponent({
 /**
 * Type Default
 **/
-button.zy-button-default {
+button.ZyButton-default {
   background-color: var(--bg-card);
   color: var(--text-1);
   padding-bottom: 0.5rem;
@@ -128,8 +122,9 @@ button.zy-button-default {
   box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--bg-card),
     inset -5px -5px 10px var(--bg-card);
 }
+
 @media (hover: hover) {
-  .pc button.zy-button-default:hover {
+  .pc button.ZyButton-default:hover {
     background-color: var(--primary-5);
     color: white;
     box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--primary-7),
@@ -140,7 +135,7 @@ button.zy-button-default {
 /**
 * Type Primary
 **/
-button.zy-button-primary {
+button.ZyButton-primary {
   background-color: var(--primary-5);
   color: white;
   padding-bottom: 0.5rem;
@@ -152,8 +147,9 @@ button.zy-button-primary {
   box-shadow: 5px 5px 10px rgba(108, 106, 212, 0.25),
     inset 2px 2px 6px var(--primary-6), inset -5px -5px 10px var(--primary-6);
 }
+
 @media (hover: hover) {
-  .pc button.zy-button-primary:hover {
+  .pc button.ZyButton-primary:hover {
     background-color: var(--primary-6);
     color: white;
     box-shadow: 5px 5px 10px rgba(108, 106, 212, 0.25),
@@ -164,21 +160,24 @@ button.zy-button-primary {
 /**
 * Type Icon
 **/
-button.zy-button-icon {
+button.ZyButton-icon {
   background-color: rgb(255 255 255 / 0.5);
   border: 1px solid rgba(127, 127, 127, 0.2);
   border-radius: 9999px;
 }
-.dark button.zy-button-icon {
+
+.dark button.ZyButton-icon {
   background-color: rgb(255 255 255 / 0.05);
   border: none;
 }
+
 @media (hover: hover) {
-  .pc button.zy-button-icon:hover {
+  .pc button.ZyButton-icon:hover {
     background-color: var(--theme-color);
     color: white;
   }
-  .pc .dark button.zy-button-icon:hover {
+
+  .pc .dark button.ZyButton-icon:hover {
     background-color: rgb(255 255 255 / 0.2);
     border: none;
   }
@@ -187,12 +186,13 @@ button.zy-button-icon {
 /**
 * Type Transparent
 **/
-button.zy-button-transparent {
+button.ZyButton-transparent {
   background-color: transparent;
   border: none;
 }
+
 @media (hover: hover) {
-  .pc button.zy-button-transparent:hover {
+  .pc button.ZyButton-transparent:hover {
     background-color: rgb(255 255 255 / 0.05);
   }
 }

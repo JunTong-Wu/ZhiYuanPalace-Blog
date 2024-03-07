@@ -128,10 +128,12 @@ export default {
   0% {
     transform: scaleY(0%);
   }
+
   100% {
     transform: scaleY(100%);
   }
 }
+
 .indicator {
   position: absolute;
   top: 0;

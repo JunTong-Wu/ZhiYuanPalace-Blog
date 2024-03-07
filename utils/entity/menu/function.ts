@@ -1,7 +1,7 @@
 import type { RouteLocationNormalizedLoaded } from "vue-router";
-import type { Route } from "./index";
+import type { Route } from "./common";
 
-const findTitleByPath = (routes: Route[], path: string): string => {
+export const findTitleByPath = (routes: Route[], path: string): string => {
   // 首先检查顶级路由
   for (const route of routes) {
     if (!route.children || !route.children.length) {

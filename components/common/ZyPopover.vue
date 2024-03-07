@@ -1,42 +1,14 @@
 <template>
   <div @click="showPopover" ref="listenElement">
-    <slot name="reference"/>
+    <slot name="reference" />
   </div>
   <Teleport to="body">
-    <aside
-      fixed
-      inset-0
-      v-if="display"
-      :style="`z-index: ${zIndex};`"
-      ref="el"
-      :class="{ dark: dark }"
-      @touchmove="preventTouchGesture($event)"
-      @click="close"
-    >
-      <div
-        fixed
-        inset-0
-        transition
-        duration-500
-        :class="maskClass"
-        @click="closeByMask"
-        v-if="mask"
-      ></div>
-      <div
-        ref="mainElement"
-        class="drawer-main"
-        bg="bg-panel"
-        backdrop-blur-3xl
-        fixed
-        h-full
-        will-change-transform
-        rounded-lg
-        overflow-hidden
-        shadow-2xl
-        min-w-24
-        :style="mainStyle"
-        border="none dark:1 dark:solid dark:bordercolor"
-      >
+    <aside fixed inset-0 v-if="display" :style="`z-index: ${zIndex};`" ref="el" :class="{ dark: dark }"
+      @touchmove="preventTouchGesture($event)" @click="close">
+      <div fixed inset-0 transition duration-500 :class="maskClass" @click="closeByMask" v-if="mask"></div>
+      <div ref="mainElement" class="drawer-main" bg="bg-panel" backdrop-blur-3xl fixed h-full will-change-transform
+        rounded-lg overflow-hidden shadow-2xl min-w-24 :style="mainStyle"
+        border="none dark:1 dark:solid dark:bordercolor">
         <div h-full overflow-auto>
           <div class="arrow"></div>
           <slot name="actions" />
@@ -47,7 +19,7 @@
 </template>
 <script lang="ts">
 export default defineComponent({
-  name: "zy-popover",
+  name: "ZyPopover",
   props: {
     position: { type: String, default: "top" }, // 指定方向
     size: { type: String, default: "auto" }, // 指定宽度
@@ -171,7 +143,7 @@ export default defineComponent({
 
     watch(
       () => display.value,
-      (newValue) => {
+      (newValue: any) => {
         // 打开时，先监听display，再异步改变visible，实现进入动画
         setTimeout(() => {
           visible.value = newValue;

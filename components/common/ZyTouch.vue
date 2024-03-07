@@ -1,18 +1,13 @@
 <template>
-  <div
-    ref="touchEvent"
-    @mousedown.prevent="onMouseDown($event)"
-    @mousemove.prevent="onMouseMove($event)"
-    @mouseup.prevent="onMouseUp()"
-    @touchstart.passive="onTouchStart($event)"
-    @touchmove.passive="onTouchMove($event)"
-    @touchend.passive="onTouchEnd()"
-  >
+  <div ref="touchEvent" @mousedown.prevent="onMouseDown($event)" @mousemove.prevent="onMouseMove($event)"
+    @mouseup.prevent="onMouseUp()" @touchstart.passive="onTouchStart($event)" @touchmove.passive="onTouchMove($event)"
+    @touchend.passive="onTouchEnd()">
     <slot />
   </div>
 </template>
 <script lang="ts">
 export default {
+  name: "ZyTouch",
   props: {
     init: {
       type: Boolean,
@@ -46,7 +41,7 @@ export default {
     });
     watch(
       () => props.init,
-      (newValue) => {
+      (newValue: any) => {
         if (newValue) {
           setTimeout(() => {
             initViewSize();
