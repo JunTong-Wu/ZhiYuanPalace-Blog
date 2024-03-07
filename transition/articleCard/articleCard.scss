@@ -32,6 +32,10 @@
       }
     }
   }
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.05);
+  }
 }
 .zy-article-card.transition-prepare {
   transform: scale(0.9);
@@ -66,6 +70,8 @@
   padding-left: 0;
   padding-top: 0;
   height: auto;
+  transform: none;
+  box-shadow: none;
   transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,
     box-shadow 0s;
   .zy-article-card-inner {
