@@ -82,6 +82,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       (to.meta.pageTransition as any).name = "third-layer";
       (to.meta.pageTransition as any).onAfterEnter = () => {
         headerBarShow();
+        musicBarShow();
       };
     }
   }

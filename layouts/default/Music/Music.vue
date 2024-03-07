@@ -1,8 +1,7 @@
 <template>
   <aside id="zy-music-bar" h-music>
-    <div relative h-full w="[90%]" mx-auto flex items-center color="text-2" bg="[#3f3f4b]"
-      :style="`background:${bg_color}`" rounded-3xl>
-      <div h="[130%]" flex relative>
+    <div relative h-full flex items-center color="text-2" bg="[#3f3f4b]" :style="`background:${bg_color}`" rounded-3xl>
+      <div h="[120%]" flex relative>
         <img h="[90%]" absolute bottom="[5%]" drop-shadow-md left-5 src="@/assets/image/record-128.png" alt=""
           srcset="" />
         <img h-full relative left-0 rounded-md shadow-md :src="musicNowCover" alt="" srcset="" ref="bg_image"

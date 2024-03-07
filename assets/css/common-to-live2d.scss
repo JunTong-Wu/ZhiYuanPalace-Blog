@@ -14,8 +14,9 @@
   width: auto !important;
   min-width: 12rem;
   height: auto !important;
-  top: 0 !important;
-  background-color: var(--bg-card) !important;
+  top: 2.5% !important;
+  background-color: var(--bg-header-bar) !important;
+  backdrop-filter: blur(30px);
   color: var(--text-1) !important;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
   filter: none !important;

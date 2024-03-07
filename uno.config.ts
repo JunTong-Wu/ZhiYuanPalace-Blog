@@ -26,17 +26,35 @@ export default defineConfig({
     ["w-toolbar", { width: "var(--tool-bar-width)" }],
     ["left-sidebar", { left: "var(--side-bar-width)" }],
     ["right-toolbar", { right: "var(--tool-bar-width)" }],
-    ["w-sidebar-toolbar", { width: "calc( var(--side-bar-width) + var(--tool-bar-width) )" }],
-    ["left-sidebar-toolbar", { left: "calc( var(--side-bar-width) + var(--tool-bar-width) )" }],
+    [
+      "w-sidebar-toolbar",
+      { width: "calc( var(--side-bar-width) + var(--tool-bar-width) )" },
+    ],
+    [
+      "left-sidebar-toolbar",
+      { left: "calc( var(--side-bar-width) + var(--tool-bar-width) )" },
+    ],
     ["pl-sidebar", { "padding-left": "var(--side-bar-width)" }],
-    ["pl-sidebar-toolbar", { "padding-left": "calc( var(--side-bar-width) + var(--tool-bar-width) )" }],
-    ["pr-toolbar", {"padding-right": "var(--tool-bar-width)"}],
-    ["pt-header", { "padding-top": "var(--header-bar-height)" }],
+    [
+      "pl-sidebar-toolbar",
+      {
+        "padding-left": "calc( var(--side-bar-width) + var(--tool-bar-width) )",
+      },
+    ],
+    ["pr-toolbar", { "padding-right": "var(--tool-bar-width)" }],
+    [
+      "pt-header-music",
+      {
+        "padding-top":
+          "calc( var(--header-bar-height) + var(--music-bar-height) )",
+      },
+    ],
     ["mt-header", { "margin-top": "var(--header-bar-height)" }],
     ["top-header", { top: "var(--header-bar-height)" }],
     ["w-centered", { "max-width": "var(--centered-width)" }],
-    ["h-music",{height:"var(--music-bar-height)"}],
-    ["bottom-music",{bottom:"var(--music-bar-bottom)"}]
+    ["h-music", { height: "var(--music-bar-height)" }],
+    ["w-music", { width: "var(--music-bar-width)" }],
+    ["top-music", { top: "var(--music-bar-top)" }],
   ],
   theme: {
     darkMode: "class",
@@ -50,7 +68,7 @@ export default defineConfig({
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      theme:"var(--theme-color)",
+      theme: "var(--theme-color)",
       //主色
       primary: {
         7: "var(--primary-7)",
@@ -72,8 +90,8 @@ export default defineConfig({
       //背景颜色
       bg: {
         best: "var(--bg-best)",
-        card:"var(--bg-card)",
-        panel:"var(--bg-panel)",
+        card: "var(--bg-card)",
+        panel: "var(--bg-panel)",
         transparent: "transparent",
         mask: "var(--bg-mask)",
         primary: "var(--primary-5)",

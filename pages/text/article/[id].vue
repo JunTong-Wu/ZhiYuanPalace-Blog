@@ -1,6 +1,6 @@
 <template>
   <div bg="bg-card" overflow-hidden>
-    <Toolbar absolute top-0 z-40 right-0 h-full w-toolbar pt-header />
+    <Toolbar absolute top-0 z-40 right-0 h-full w-toolbar pt-header-music />
     <div class="zy-article-card transition-in">
       <ZyFetchLoading :fetchData="(articleData as any)">
         <template v-slot:loading></template>

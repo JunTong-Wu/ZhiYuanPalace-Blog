@@ -80,12 +80,12 @@ const myLive2dConfig = () => {
     });
   }
 };
-// if (process.client) {
-//   const script = document.createElement("script");
-//   script.src = "/static/js/oh-my-live2d.min.js";
-//   document.body.appendChild(script);
-//   myLive2dConfig();
-// }
+if (process.client) {
+  const script = document.createElement("script");
+  script.src = "/static/js/oh-my-live2d.min.js";
+  document.body.appendChild(script);
+  myLive2dConfig();
+}
 
 // head
 useHead({

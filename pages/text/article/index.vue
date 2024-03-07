@@ -1,5 +1,5 @@
 <template>
-  <div pr-toolbar pt-header>
+  <div pr-toolbar pt-header-music>
     <div p="0 sm:6 md:7 lg:8">
       <div>
         <div grid grid-cols-12 gap="4 xs:5 sm:6 md:7 lg:8" mb="4 xs:5 sm:6 md:7 lg:8">
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar pt-header />
+    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar pt-header-music />
   </div>
 </template>
 <script setup lang="ts">

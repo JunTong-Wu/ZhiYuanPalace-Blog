@@ -52,29 +52,30 @@ a {
 }
 
 :root {
-  --footer-bar-height: 3.5rem;
-  --side-bar-width: 5rem;
-  --tool-bar-width: 20rem;
   --border-color: rgba(127, 127, 127, 0.2);
 }
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 3.5rem;
-    --footer-bar-height: 4.5rem;
+    --header-bar-height: 4rem;
+    --footer-bar-height: 4rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
     --music-bar-height: 3rem;
-    --music-bar-bottom: calc(var(--footer-bar-height) - 1rem);
+    --music-bar-width: 100%;
+    --music-bar-top: var(--header-bar-height);
   }
 }
 @media (orientation: landscape) {
   :root {
-    --header-bar-height: 4rem;
-    --centered-width: 65rem;
+    --header-bar-height: 4.5rem;
     --footer-bar-height: 0rem;
-    --music-bar-height: 4rem;
-    --music-bar-bottom: 0rem;
+    --centered-width: 65rem;
+    --side-bar-width: 5rem;
+    --tool-bar-width: 20rem;
+    --music-bar-height: 3rem;
+    --music-bar-width: 40%;
+    --music-bar-top: 0.75rem;
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
