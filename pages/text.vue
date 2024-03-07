@@ -5,7 +5,7 @@
 </template>
 <script setup lang="ts">
 useHead({
-  title: "文字类",
+  title: "文字",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
   bodyAttrs: {
     class: "page-text",

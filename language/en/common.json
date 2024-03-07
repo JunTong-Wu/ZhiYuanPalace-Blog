@@ -5,6 +5,10 @@
   "audio": "AUDIO",
   "music": "MUSIC",
   "about": "ABOUT",
-  "article":"ARTICLE",
-  "shuoshuo":"SHUOSHUO"
+  "article": "ARTICLE",
+  "shuoshuo": "SHUOSHUO",
+  "photo": "PHOTO",
+  "video": "VIDEO",
+  "information": "INFORMATION",
+  "friend": "FRIEND"
 }

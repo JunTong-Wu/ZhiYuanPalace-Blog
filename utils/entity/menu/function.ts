@@ -1,27 +1,6 @@
 import type { RouteLocationNormalizedLoaded } from "vue-router";
 import type { Route } from "./common";
 
-export const findTitleByPath = (routes: Route[], path: string): string => {
-  // 首先检查顶级路由
-  for (const route of routes) {
-    if (!route.children || !route.children.length) {
-      if (route.path === path) {
-        return route.title;
-      }
-    }
-  }
-  // 如果没有找到顶级路由匹配，则递归检查子路由
-  for (const route of routes) {
-    if (route.children) {
-      const result = findTitleByPath(route.children, path);
-      if (result !== undefined) {
-        return result;
-      }
-    }
-  }
-  return "empty";
-};
-
 export const getNavigationMap = (): Route[] => {
   return [
     {
@@ -43,14 +22,14 @@ export const getNavigationMap = (): Route[] => {
           title: "article",
           defaultIcon: "article-default",
           activatedIcon: "article-activated",
-          order: 1,
+          order: 10,
         },
         {
           path: "/text/shuoshuo",
           title: "shuoshuo",
           defaultIcon: "shuoshuo-default",
           activatedIcon: "shuoshuo-activated",
-          order: 2,
+          order: 20,
         },
       ],
     },
@@ -67,6 +46,22 @@ export const getNavigationMap = (): Route[] => {
       defaultIcon: "audio-default",
       activatedIcon: "audio-activated",
       order: 4,
+      children: [
+        {
+          path: "/audio/photo",
+          title: "photo",
+          defaultIcon: "photo-default",
+          activatedIcon: "photo-activated",
+          order: 30,
+        },
+        {
+          path: "/audio/video",
+          title: "video",
+          defaultIcon: "video-default",
+          activatedIcon: "video-activated",
+          order: 40,
+        },
+      ],
     },
     {
       path: "/about",
@@ -74,8 +69,80 @@ export const getNavigationMap = (): Route[] => {
       defaultIcon: "about-default",
       activatedIcon: "about-activated",
       order: 5,
+      children: [
+        {
+          path: "/about/information",
+          title: "information",
+          defaultIcon: "information-default",
+          activatedIcon: "information-activated",
+          order: 50,
+        },
+        {
+          path: "/about/friend",
+          title: "friend",
+          defaultIcon: "friend-default",
+          activatedIcon: "friend-activated",
+          order: 60,
+        },
+      ],
     },
   ];
+};
+
+export const findTitleByPath = (routes: Route[], path: string): string => {
+  // 首先检查顶级路由
+  for (const route of routes) {
+    if (!route.children || !route.children.length) {
+      if (route.path === path) {
+        return route.title;
+      }
+    }
+  }
+  // 如果没有找到顶级路由匹配，则递归检查子路由
+  for (const route of routes) {
+    if (route.children) {
+      const result = findTitleByPath(route.children, path);
+      if (result !== undefined) {
+        return result;
+      }
+    }
+  }
+  return "empty";
+};
+
+export const getMobileTitle = (path: string) => {
+  let title = "empty";
+  const linkList = getNavigationMap() as Route[];
+  title = findTitleByPath(linkList, path);
+  return title;
+};
+
+export const findOrderByPath = (routes: Route[], path: string): number => {
+  // 首先检查顶级路由
+  for (const route of routes) {
+    if (!route.children || !route.children.length) {
+      if (route.path === path) {
+        return route.order;
+      }
+    }
+  }
+  //如果没有找到顶级路由匹配，则递归检查子路由
+  for (const route of routes) {
+    if (route.children) {
+      const result = findOrderByPath(route.children, path);
+      if (result !== 0) {
+        return result;
+      }
+    }
+  }
+  return 0;
+};
+
+export const getSelfPathOrder = (path: string) => {
+  let order = 0;
+  const linkList = getNavigationMap() as Route[];
+  order = findOrderByPath(linkList, path);
+  return order;
 };
 
 export const getNavigationMapForMenu = () => {
@@ -118,13 +185,6 @@ export const getRootPath = (path: string) => {
   return "/";
 };
 
-export const getMobileTitle = (path: string) => {
-  let title = "empty";
-  const linkList = getNavigationMap() as Route[];
-  title = findTitleByPath(linkList, path);
-  return title;
-};
-
 export const getChildrenTabs = (path: string) => {
   const linkList = getNavigationMap() as Route[];
   for (const routeItem of linkList) {
@@ -157,27 +217,6 @@ export const getRootPathOrder = (path: string) => {
   for (const route of linkList) {
     if (route.path === rootPath) {
       return route.order;
-    }
-  }
-  return 0;
-};
-
-export const getSelfPathOrder = (routes: Route[], path: string): number => {
-  // 首先检查顶级路由
-  for (const route of routes) {
-    if (!route.children || !route.children.length) {
-      if (route.path === path) {
-        return route.order;
-      }
-    }
-  }
-  // 如果没有找到顶级路由匹配，则递归检查子路由
-  for (const route of getNavigationMap()) {
-    if (route.children) {
-      const result = getSelfPathOrder(route.children, path);
-      if (result !== undefined) {
-        return result;
-      }
     }
   }
   return 0;

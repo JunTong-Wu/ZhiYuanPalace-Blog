@@ -5,6 +5,10 @@
   "audio": "媒体",
   "music": "音乐",
   "about": "关于",
-  "article":"文章",
-  "shuoshuo":"说说"
+  "article": "文章",
+  "shuoshuo": "说说",
+  "photo": "相册",
+  "video": "视频",
+  "information": "资料",
+  "friend": "友链"
 }
