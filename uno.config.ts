@@ -42,19 +42,13 @@ export default defineConfig({
       },
     ],
     ["pr-toolbar", { "padding-right": "var(--tool-bar-width)" }],
-    [
-      "pt-header-music",
-      {
-        "padding-top":
-          "calc( var(--header-bar-height) + var(--music-bar-height) )",
-      },
-    ],
     ["mt-header", { "margin-top": "var(--header-bar-height)" }],
     ["top-header", { top: "var(--header-bar-height)" }],
     ["w-centered", { "max-width": "var(--centered-width)" }],
     ["h-music", { height: "var(--music-bar-height)" }],
     ["w-music", { width: "var(--music-bar-width)" }],
     ["top-music", { top: "var(--music-bar-top)" }],
+    ["pt-main", { "padding-top": "var(--pt-main)" }],
   ],
   theme: {
     darkMode: "class",

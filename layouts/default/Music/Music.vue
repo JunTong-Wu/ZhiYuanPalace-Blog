@@ -8,24 +8,24 @@
           @load="createDecoration()" />
       </div>
       <div ml-6 class="dark" color="text-1" flex h-full w-full items-center pr-2>
-        <span flex-1 line-clamp-1>你说的话 有心的吗 刺痛我了 无意的吧</span>
-        <div flex gap-2>
+        <span flex-1 line-clamp-1 text-xs>你说的话 有心的吗 刺痛我了 无意的吧</span>
+        <div flex>
           <div class="horizontal-layout">
             <ZyButton h-music aspect-square title="上一曲" type="transparent">
-              <ZyIcon size="1.2rem" defaultName="music-prev" />
+              <ZyIcon size="1rem" defaultName="music-prev" />
             </ZyButton>
           </div>
           <ZyButton h-music aspect-square title="播放" type="transparent">
-            <ZyIcon size="2.5rem" defaultName="music-play" />
+            <ZyIcon size="2rem" defaultName="music-play" />
           </ZyButton>
           <div class="horizontal-layout">
             <ZyButton h-music aspect-square title="下一曲" type="transparent">
-              <ZyIcon size="1.2rem" defaultName="music-next" />
+              <ZyIcon size="1rem" defaultName="music-next" />
             </ZyButton>
           </div>
 
           <ZyButton h-music aspect-square title="播放列表" type="transparent">
-            <ZyIcon size="1.2rem" defaultName="music-list" />
+            <ZyIcon size="1rem" defaultName="music-list" />
           </ZyButton>
         </div>
       </div>
@@ -38,7 +38,9 @@ const musicNowCover =
 
 const bg_image = ref();
 watch(bg_image, (newValue: any) => {
-  createDecoration();
+  if (newValue) {
+    createDecoration();
+  }
 });
 const bg_color = ref("");
 const createDecoration = () => {
@@ -48,9 +50,4 @@ const createDecoration = () => {
     bg_color.value = `rgb(${rgb})`;
   }
 };
-watch(bg_color, (newValue: string) => {
-  if (newValue != "hsl(0,0%,0%)") {
-    console.log(newValue);
-  }
-});
 </script>

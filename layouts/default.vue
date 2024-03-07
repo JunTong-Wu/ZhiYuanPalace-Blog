@@ -1,5 +1,5 @@
 <template>
-  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar z-50 pt-header-music bg="bg-headerBar" backdrop-blur-3xl />
+  <Sidebar fixed top-0 bottom-0 left-0 w-sidebar z-50 pt-main bg="bg-headerBar" backdrop-blur-3xl />
   <Header fixed top-0 left-0 right-0 z-60 pl-sidebar bg="bg-headerBar" backdrop-blur-3xl />
   <div class="layout-default">
     <main flex-1 pl-sidebar>

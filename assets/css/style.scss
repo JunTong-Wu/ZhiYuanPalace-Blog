@@ -64,6 +64,7 @@ a {
     --music-bar-height: 3rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
+    --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
   }
 }
 @media (orientation: landscape) {
@@ -76,6 +77,7 @@ a {
     --music-bar-height: 3rem;
     --music-bar-width: 40%;
     --music-bar-top: 0.75rem;
+    --pt-main: var(--header-bar-height);
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
