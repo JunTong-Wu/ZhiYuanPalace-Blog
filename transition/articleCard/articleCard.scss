@@ -40,6 +40,10 @@
 .zy-article-card.transition-prepare {
   transform: scale(0.9);
 }
+.pc .zy-article-card.transition-prepare:hover {
+  transform: scale(0.9);
+  box-shadow: none;
+}
 
 @media (min-width: 900px) {
   .zy-article-card {
@@ -93,6 +97,11 @@
       }
     }
   }
+}
+
+.pc .zy-article-card.transition-in:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 .layout-default.transition .main-view-inner {

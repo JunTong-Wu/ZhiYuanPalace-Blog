@@ -1,13 +1,13 @@
 <template>
   <aside id="zy-music-bar" h-music>
-    <div relative h-full flex items-center color="text-2" bg="bg-headerBar">
+    <div relative h-full flex items-center color="text-2">
       <div h="[120%]" flex relative>
         <img h="[90%]" absolute bottom="[5%]" drop-shadow-md left-5 src="@/assets/image/record-128.png" alt=""
           srcset="" />
         <img h-full relative left-0 rounded-md shadow-md :src="musicNowCover" alt="" srcset="" ref="bg_image"
           @load="createDecoration()" />
       </div>
-      <div ml-6 class="dark" color="text-1" flex h-full w-full items-center pr-2>
+      <div ml-6 color="text-1" flex h-full w-full items-center pr-2>
         <span flex-1 line-clamp-1 text-xs>你说的话 有心的吗 刺痛我了 无意的吧</span>
         <div flex>
           <div class="horizontal-layout">
@@ -16,7 +16,7 @@
             </ZyButton>
           </div>
           <ZyButton h-music aspect-square title="播放" type="transparent">
-            <ZyIcon size="2rem" defaultName="music-play" />
+            <ZyIcon size="1rem" defaultName="music-play" />
           </ZyButton>
           <div class="horizontal-layout">
             <ZyButton h-music aspect-square title="下一曲" type="transparent">
@@ -34,7 +34,7 @@
 </template>
 <script setup lang="ts">
 const musicNowCover =
-  "https://pan.yiru.love/project-zhiyuanpalace/uploads/music/cover/许嵩 - 断桥残雪.jpg";
+  "https://pan.yiru.love/project-zhiyuanpalace/uploads/music/cover/本兮 - 有心无意.jpg";
 
 const bg_image = ref();
 watch(bg_image, (newValue: any) => {
@@ -42,13 +42,13 @@ watch(bg_image, (newValue: any) => {
     createDecoration();
   }
 });
-const bg_color = ref("");
 const createDecoration = () => {
   const img = bg_image.value;
   if (img) {
-    const rgb = darkenRgbWhilePreservingHue(getImageColor(img), 40);
-    bg_color.value = `rgb(${rgb})`;
-    document.body.setAttribute('style', `--bg-header-bar: ${bg_color.value}`)
+    const rgb = adjustBrightnessWhilePreservingHue(getImageColor(img), 80, 80);
+    const themeColorTranslucent = `rgba(${rgb},0.4)`;
+    const themeColor = `rgb(${rgb})`;
+    document.body.setAttribute('style', `--theme-color-translucent: ${themeColorTranslucent};--theme-color: ${themeColor}`)
   }
 };
 </script>

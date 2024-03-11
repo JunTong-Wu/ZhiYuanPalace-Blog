@@ -156,17 +156,19 @@ const hsvToRgb = (
 };
 
 /**
- * @description: 降低亮度的同时保持颜色的色调和饱和度不变
+ * @description: 保持颜色的色调和饱和度不变,限制亮度区间
  * @param {*} rgb [r:number, g:number, b:number]
  * @param {*} maxBrightness number(0~100)
+ * @param {*} minBrightness number(0~100)
  * @return {*} [r:number, g:number, b:number]
  */
-export const darkenRgbWhilePreservingHue = (
+export const adjustBrightnessWhilePreservingHue = (
   rgb: [number, number, number],
-  maxBrightness: number
+  maxBrightness: number,
+  minBrightness: number
 ): [number, number, number] => {
   const [h, s, v] = rgbToHsv(...rgb);
-  const newV = Math.min(v, maxBrightness);
+  const newV = Math.max(minBrightness, Math.min(v, maxBrightness)); // 确保newV在minBrightness和maxBrightness之间
   return hsvToRgb(h, s, newV);
 };
 

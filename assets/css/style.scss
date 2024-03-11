@@ -60,7 +60,7 @@ a {
     --tool-bar-width: 0rem;
     --music-bar-height: 2.75rem;
     --music-bar-width: 100%;
-    --music-bar-top: calc(var(--header-bar-height) - 1px);
+    --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
   }
 }
@@ -85,7 +85,6 @@ a {
 
 //公共颜色变量
 :root {
-  --theme-color: #1ecc94;
   --primary-7: var(--red-7); //点击
   --primary-6: var(--red-6); //常规
   --primary-5: var(--red-5); //悬浮
@@ -93,9 +92,6 @@ a {
   --primary-3: var(--red-3); //一般禁用
   --primary-2: var(--red-2); //文字禁用
   --primary-1: var(--red-1); //浅色/白底悬浮
-}
-*.dark {
-  --theme-color: #00dc82;
 }
 
 :root {
@@ -163,10 +159,11 @@ a {
 }
 :root {
   --border-color: rgba(127, 127, 127, 0.2);
-  --bg-header-bar: rgb(63, 63, 75); //顶栏
+  --theme-color: rgb(63, 63, 75);
+  --theme-color-translucent: transparent; //顶栏
 }
 :root {
-  --bg-card: rgba(255, 255, 255, 0.4); //卡片
+  --bg-card: rgba(255, 255, 255, 0.5); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
   --bg-side-bar: rgba(234, 236, 241, 0.7); //顶栏
@@ -175,9 +172,11 @@ a {
   --text-3: rgba(15, 16, 46, 0.4); //次要信息
   --text-4: rgba(15, 16, 46, 0.2); //置灰信息
   --text-5: rgba(15, 16, 46, 0.05); //骨架
+  --bg-music-bar: transparent;
+  --bg-opaque: #eff2f5;
 }
 *.dark {
-  --bg-card: rgba(50, 51, 69, 0.3); //卡片
+  --bg-card: rgba(50, 51, 69, 0.5); //卡片
   --bg-panel: rgba(15, 16, 46, 0.6); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
   --bg-side-bar: rgba(13, 13, 38, 0.7); //顶栏
@@ -186,11 +185,12 @@ a {
   --text-3: rgba(255, 255, 255, 0.4); //次要信息
   --text-4: rgba(255, 255, 255, 0.2); //置灰信息
   --text-5: rgba(255, 255, 255, 0.05); //骨架
+  --bg-opaque: #0d0d26;
 }
 
 //背景色
 :root {
-  background: #eaecf1;
+  background: #eff2f5;
   color: var(--text-1);
 }
 :root.dark {
@@ -199,12 +199,12 @@ a {
 @media (orientation: portrait) {
   /* 竖屏 */
   :root {
-    background: #eff2f5;
-    --bg-card: rgba(255, 255, 255, 0.7); //卡片
+    --bg-music-bar: var(--bg-opaque);
+    --bg-opaque: #f7f9fa;
   }
   :root.dark {
     background: #0d0d26;
-    --bg-card: rgba(31, 31, 54, 0.7); //卡片
+    --bg-opaque: #1f2036;
   }
 
   .vertical-layout {
