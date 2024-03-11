@@ -1,6 +1,8 @@
 header {
-  transition: top 400ms, background 0ms;
+  transition: transform 400ms, background 0ms;
 }
 header.transition-translate-out {
-  top: calc(0rem - var(--header-bar-height));
+  transform: translateY(
+    calc(0rem - var(--header-bar-height) - var(--music-bar-height))
+  );
 }

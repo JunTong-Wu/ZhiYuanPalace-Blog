@@ -51,19 +51,16 @@ a {
   text-decoration: none;
 }
 
-:root {
-  --border-color: rgba(127, 127, 127, 0.2);
-}
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 4rem;
-    --footer-bar-height: 4rem;
+    --header-bar-height: 3.25rem;
+    --footer-bar-height: 3.25rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
-    --music-bar-height: 3rem;
+    --music-bar-height: 2.75rem;
     --music-bar-width: 100%;
-    --music-bar-top: var(--header-bar-height);
+    --music-bar-top: calc(var(--header-bar-height) - 1px);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
   }
 }
@@ -165,10 +162,14 @@ a {
   --magenta-1: #ffe8f1; //浅色/白底悬浮
 }
 :root {
+  --border-color: rgba(127, 127, 127, 0.2);
+  --bg-header-bar: rgb(63, 63, 75); //顶栏
+}
+:root {
   --bg-card: rgba(255, 255, 255, 0.4); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
-  --bg-header-bar: rgba(234, 236, 241, 0.7); //顶栏
+  --bg-side-bar: rgba(234, 236, 241, 0.7); //顶栏
   --text-1: rgba(15, 16, 46, 1); //强调/正文标题
   --text-2: rgba(15, 16, 46, 0.6); //次强调/正文标
   --text-3: rgba(15, 16, 46, 0.4); //次要信息
@@ -179,8 +180,8 @@ a {
   --bg-card: rgba(50, 51, 69, 0.3); //卡片
   --bg-panel: rgba(15, 16, 46, 0.6); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
-  --bg-header-bar: rgba(13, 13, 38, 0.7); //顶栏
-  --text-1: rgba(255, 255, 255, 0.8); //强调/正文标题
+  --bg-side-bar: rgba(13, 13, 38, 0.7); //顶栏
+  --text-1: rgba(255, 255, 255, 1); //强调/正文标题
   --text-2: rgba(255, 255, 255, 0.6); //次强调/正文标
   --text-3: rgba(255, 255, 255, 0.4); //次要信息
   --text-4: rgba(255, 255, 255, 0.2); //置灰信息
@@ -199,12 +200,10 @@ a {
   /* 竖屏 */
   :root {
     background: #eff2f5;
-    --bg-header-bar: rgba(255, 255, 255, 0.9); //顶栏
     --bg-card: rgba(255, 255, 255, 0.7); //卡片
   }
   :root.dark {
     background: #0d0d26;
-    --bg-header-bar: rgba(13, 13, 38, 0.7); //顶栏
     --bg-card: rgba(31, 31, 54, 0.7); //卡片
   }
 
@@ -255,12 +254,5 @@ a {
 
   ::-webkit-scrollbar-track {
     background-color: transparent; /* 设置滚动条的背景颜色 */
-  }
-}
-
-// 图片
-*.dark {
-  img {
-    filter: brightness(0.8);
   }
 }

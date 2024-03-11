@@ -90,6 +90,7 @@ export default defineConfig({
         mask: "var(--bg-mask)",
         primary: "var(--primary-5)",
         headerBar: "var(--bg-header-bar)",
+        sideBar: "var(--bg-side-bar)",
       },
       bordercolor: "var(--border-color)",
     },

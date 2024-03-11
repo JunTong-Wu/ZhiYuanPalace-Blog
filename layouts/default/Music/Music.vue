@@ -1,6 +1,6 @@
 <template>
   <aside id="zy-music-bar" h-music>
-    <div relative h-full flex items-center color="text-2" bg="[#3f3f4b]" :style="`background:${bg_color}`" rounded-3xl>
+    <div relative h-full flex items-center color="text-2" bg="bg-headerBar">
       <div h="[120%]" flex relative>
         <img h="[90%]" absolute bottom="[5%]" drop-shadow-md left-5 src="@/assets/image/record-128.png" alt=""
           srcset="" />
@@ -34,7 +34,7 @@
 </template>
 <script setup lang="ts">
 const musicNowCover =
-  "https://pan.yiru.love/project-zhiyuanpalace/uploads/music/cover/本兮 - 有心无意.jpg";
+  "https://pan.yiru.love/project-zhiyuanpalace/uploads/music/cover/许嵩 - 断桥残雪.jpg";
 
 const bg_image = ref();
 watch(bg_image, (newValue: any) => {
@@ -46,8 +46,9 @@ const bg_color = ref("");
 const createDecoration = () => {
   const img = bg_image.value;
   if (img) {
-    const rgb = darkenRgb(getImageColor(img));
+    const rgb = darkenRgbWhilePreservingHue(getImageColor(img), 40);
     bg_color.value = `rgb(${rgb})`;
+    document.body.setAttribute('style', `--bg-header-bar: ${bg_color.value}`)
   }
 };
 </script>

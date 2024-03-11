@@ -62,11 +62,11 @@ router.beforeEach(
           content: "";
           position: absolute;
           z-index: -1;
-          bottom: 1.25rem;
+          bottom: 1rem;
           left: 1rem;
           right: 1rem;
-          height: 0.3rem;
-          background: var(--theme-color);
+          height: 0.2rem;
+          background: var(--text-3);
         }
       }
     }

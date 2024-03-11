@@ -49,63 +49,125 @@ export const getImageColor = (img: any): [number, number, number] => {
 };
 
 /**
- * @description: 将每个颜色通道的值减少到其原始值的80%
+ * @description: 将RGB转换为HSV
  * @param {*} rgb [r:number, g:number, b:number]
- * @return {*} [r:number, g:number, b:number]
+ * @return {*} hsv [h:number, s:number, v:number]
  */
-export const darkenRgb = (
-  rgb: [number, number, number]
+// RGB到HSV的转换
+const rgbToHsv = (
+  r: number,
+  g: number,
+  b: number
 ): [number, number, number] => {
-  // 确保输入值在0-255范围内
-  const ensureRange = (value: number): number =>
-    Math.max(0, Math.min(255, value));
+  r = r / 255;
+  g = g / 255;
+  b = b / 255;
 
-  const darkenedR = ensureRange(Math.round(rgb[0] * 0.6));
-  const darkenedG = ensureRange(Math.round(rgb[1] * 0.6));
-  const darkenedB = ensureRange(Math.round(rgb[2] * 0.6));
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0;
+  const v = max;
 
-  return [darkenedR, darkenedG, darkenedB];
+  const d = max - min;
+  const s = max === 0 ? 0 : d / max;
+
+  if (max !== min) {
+    if (max === r) {
+      h = (g - b) / d + (g < b ? 6 : 0);
+    } else if (max === g) {
+      h = (b - r) / d + 2;
+    } else {
+      h = (r - g) / d + 4;
+    }
+    h /= 6;
+  }
+
+  return [h * 360, s * 100, v * 100];
 };
 
 /**
- * @description: 将RGB转换为HSL
- * @param {*} rgb [r:number, g:number, b:number]
- * @return {*} string
+ * @description: 将HSV转换为RGB
+ * @param {*} hsv [h:number, s:number, v:number]
+ * @return {*} rgb [r:number, g:number, b:number]
  */
-export const rgbtohsl = (rgb: any) => {
-  const r = rgb[0] / 255;
-  const g = rgb[1] / 255;
-  const b = rgb[2] / 255;
+const hsvToRgb = (
+  h: number,
+  s: number,
+  v: number
+): [number, number, number] => {
+  h = h % 360;
+  s = s / 100;
+  v = v / 100;
 
-  const min = Math.min(r, g, b);
-  const max = Math.max(r, g, b);
-  let l = (min + max) / 2;
-  const difference = max - min;
-  let h, s;
-  if (max == min) {
-    h = 0;
-    s = 0;
+  let r = 0,
+    g = 0,
+    b = 0;
+
+  if (s === 0) {
+    r = v;
+    g = v;
+    b = v;
   } else {
-    s = l > 0.5 ? difference / (2.0 - max - min) : difference / (max + min);
-    switch (max) {
-      case r:
-        h = (g - b) / difference + (g < b ? 6 : 0);
+    const i = Math.trunc(h / 60);
+    const f = h / 60 - i;
+    const p = v * (1.0 - s);
+    const q = v * (1.0 - s * f);
+    const t = v * (1.0 - s * (1.0 - f));
+
+    switch (i) {
+      case 0:
+        r = v;
+        g = t;
+        b = p;
         break;
-      case g:
-        h = 2.0 + (b - r) / difference;
+      case 1:
+        r = q;
+        g = v;
+        b = p;
         break;
-      case b:
-        h = 4.0 + (r - g) / difference;
+      case 2:
+        r = p;
+        g = v;
+        b = t;
+        break;
+      case 3:
+        r = p;
+        g = q;
+        b = v;
+        break;
+      case 4:
+        r = t;
+        g = p;
+        b = v;
         break;
       default:
-        h = 0;
+        r = v;
+        g = p;
+        b = q;
+        break;
     }
-    h = Math.round(h * 60);
   }
-  s = Math.round(s * 100 * 1.5);
-  l = Math.round(l * 100 * 0.8);
-  const str = "hsl(" + h + "," + s + "%," + l + "%)";
-  return str;
+
+  r = Math.round(r * 255);
+  g = Math.round(g * 255);
+  b = Math.round(b * 255);
+
+  return [r, g, b];
+};
+
+/**
+ * @description: 降低亮度的同时保持颜色的色调和饱和度不变
+ * @param {*} rgb [r:number, g:number, b:number]
+ * @param {*} maxBrightness number(0~100)
+ * @return {*} [r:number, g:number, b:number]
+ */
+export const darkenRgbWhilePreservingHue = (
+  rgb: [number, number, number],
+  maxBrightness: number
+): [number, number, number] => {
+  const [h, s, v] = rgbToHsv(...rgb);
+  const newV = Math.min(v, maxBrightness);
+  return hsvToRgb(h, s, newV);
 };
 
 /**

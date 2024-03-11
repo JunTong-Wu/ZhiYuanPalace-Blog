@@ -32,10 +32,10 @@
       }
     }
   }
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.05);
-  }
+}
+.pc .zy-article-card:hover {
+  transform: scale(1.05);
+  box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.05);
 }
 .zy-article-card.transition-prepare {
   transform: scale(0.9);

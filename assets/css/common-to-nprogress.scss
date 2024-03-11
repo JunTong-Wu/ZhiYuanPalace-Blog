@@ -7,11 +7,11 @@
 #nprogress .bar {
   background: var(--progress-color);
   position: fixed;
-  z-index: 0;
-  top: var(--header-bar-height);
+  z-index: 1000;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 0.2rem;
+  height: 0.3rem;
   .peg {
     display: none;
   }
