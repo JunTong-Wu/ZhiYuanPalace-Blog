@@ -10,7 +10,8 @@
       </div>
     </main>
   </div>
-  <Music fixed top-music left-0 right-0 w-music mx-auto z-70 bg="musicBar" />
+  <Music fixed top-music left-0 right-0 w-music mx-auto z-70 bg="landscape:bg-card portrait:bg-opaque"
+    rounded="landscape:full" />
   <Footer fixed bottom-0 left-0 right-0 z-60 bg="bg-opaque" />
 </template>
 <script setup lang="ts">

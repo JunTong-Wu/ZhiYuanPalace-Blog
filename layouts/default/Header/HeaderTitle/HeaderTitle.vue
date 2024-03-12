@@ -66,7 +66,7 @@ router.beforeEach(
           left: 1rem;
           right: 1rem;
           height: 0.2rem;
-          background: var(--text-3);
+          background: var(--theme-color);
         }
       }
     }

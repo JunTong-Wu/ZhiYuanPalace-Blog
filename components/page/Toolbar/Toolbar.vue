@@ -1,5 +1,5 @@
 <template>
-  <aside class="zy-tool-bar horizontal-layout">
+  <aside portrait:hidden class="zy-tool-bar">
     <div>
       <div w-full h-40 flex justify-center items-center color="text-4">
         ToolBar

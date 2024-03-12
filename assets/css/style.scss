@@ -83,80 +83,6 @@ a {
   }
 }
 
-//公共颜色变量
-:root {
-  --primary-7: var(--red-7); //点击
-  --primary-6: var(--red-6); //常规
-  --primary-5: var(--red-5); //悬浮
-  --primary-4: var(--red-4); //特殊场景
-  --primary-3: var(--red-3); //一般禁用
-  --primary-2: var(--red-2); //文字禁用
-  --primary-1: var(--red-1); //浅色/白底悬浮
-}
-
-:root {
-  --purple-7: #5d00ff; //点击
-  --purple-6: #7425ff; //常规
-  --purple-5: #8b49ff; //悬浮
-  --purple-4: #a36eff; //特殊场景
-  --purple-3: #ba92ff; //一般禁用
-  --purple-2: #d1b6ff; //文字禁用
-  --purple-1: #e8dbff; //浅色/白底悬浮
-}
-:root {
-  --blue-7: #0e42d2; //点击
-  --blue-6: #165dff; //常规
-  --blue-5: #4080ff; //悬浮
-  --blue-4: #6aa1ff; //特殊场景
-  --blue-3: #94bfff; //一般禁用
-  --blue-2: #bedaff; //文字禁用
-  --blue-1: #e8f3ff; //浅色/白底悬浮
-}
-:root {
-  --green-7: #009a29; //点击
-  --green-6: #00b42a; //常规
-  --green-5: #23c343; //悬浮
-  --green-4: #4cd263; //特殊场景
-  --green-3: #7be188; //一般禁用
-  --green-2: #aff0b5; //文字禁用
-  --green-1: #e8ffea; //浅色/白底悬浮
-}
-:root {
-  --red-7: #ff0033; //点击
-  --red-6: #ff204c; //常规
-  --red-5: #ff3f66; //悬浮
-  --red-4: #ff5f7f; //特殊场景
-  --red-3: #fe7f98; //一般禁用
-  --red-2: #fe9eb2; //文字禁用
-  --red-1: #febecb; //浅色/白底悬浮
-}
-:root {
-  --cyan-7: #0da5aa; //点击
-  --cyan-6: #14c9c9; //常规
-  --cyan-5: #37d4cf; //悬浮
-  --cyan-4: #5edfd6; //特殊场景
-  --cyan-3: #89e9e0; //一般禁用
-  --cyan-2: #b7f4ec; //文字禁用
-  --cyan-1: #e8fffb; //浅色/白底悬浮
-}
-:root {
-  --orange-7: #d25f00; //点击
-  --orange-6: #ff7d00; //常规
-  --orange-5: #ff9a2e; //悬浮
-  --orange-4: #ffb65d; //特殊场景
-  --orange-3: #ffcf8b; //一般禁用
-  --orange-2: #ffe4ba; //文字禁用
-  --orange-1: #fff7e8; //浅色/白底悬浮
-}
-:root {
-  --magenta-7: #cb1e83; //点击
-  --magenta-6: #f5319d; //常规
-  --magenta-5: #f754a8; //悬浮
-  --magenta-4: #f979b7; //特殊场景
-  --magenta-3: #fb9dc7; //一般禁用
-  --magenta-2: #fdc2db; //文字禁用
-  --magenta-1: #ffe8f1; //浅色/白底悬浮
-}
 :root {
   --border-color: rgba(127, 127, 127, 0.2);
   --theme-color: rgb(63, 63, 75);
@@ -172,7 +98,6 @@ a {
   --text-3: rgba(15, 16, 46, 0.4); //次要信息
   --text-4: rgba(15, 16, 46, 0.2); //置灰信息
   --text-5: rgba(15, 16, 46, 0.05); //骨架
-  --bg-music-bar: transparent;
   --bg-opaque: #eff2f5;
 }
 *.dark {
@@ -190,16 +115,13 @@ a {
 
 //背景色
 :root {
-  background: #eff2f5;
+  background: var(--bg-opaque);
   color: var(--text-1);
 }
-:root.dark {
-  background: #0d0d26;
-}
+
 @media (orientation: portrait) {
   /* 竖屏 */
   :root {
-    --bg-music-bar: var(--bg-opaque);
     --bg-opaque: #f7f9fa;
   }
   :root.dark {
@@ -207,24 +129,6 @@ a {
     --bg-opaque: #1f2036;
   }
 
-  .vertical-layout {
-    display: block;
-  }
-}
-
-// 显示隐藏
-.vertical-layout {
-  display: none;
-}
-.horizontal-layout {
-  display: none;
-}
-@media (orientation: landscape) {
-  .horizontal-layout {
-    display: block;
-  }
-}
-@media (orientation: portrait) {
   .vertical-layout {
     display: block;
   }

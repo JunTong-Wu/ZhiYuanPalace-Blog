@@ -1,5 +1,5 @@
 <template>
-  <footer h-footer flex justify-center class="zy-footer vertical-layout">
+  <footer h-footer flex justify-center landscape:hidden class="zy-footer">
     <div h-full flex w="full xs:[80%] sm:[70%] md:[60%] lg:[50%] xl:[40%]" mx-auto>
       <ZyLink v-for="n in linkList" :key="n.title" v-zy-ripple :to="`${n.path}`" h-full w="[20%]" :title="$t(n.title)"
         justify-center>

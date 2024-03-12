@@ -63,16 +63,6 @@ export default defineConfig({
       transparent: "transparent",
       current: "currentColor",
       theme: "var(--theme-color)",
-      //主色
-      primary: {
-        7: "var(--primary-7)",
-        6: "var(--primary-6)",
-        5: "var(--primary-5)",
-        4: "var(--primary-4)",
-        3: "var(--primary-3)",
-        2: "var(--primary-2)",
-        1: "var(--primary-1)",
-      },
       //文字颜色
       text: {
         1: "var(--text-1)",
@@ -94,7 +84,6 @@ export default defineConfig({
       bordercolor: "var(--border-color)",
       themeColorTranslucent: "var(--theme-color-translucent)",
       sideBar: "var(--bg-side-bar)",
-      musicBar: "var(--bg-music-bar)",
     },
   },
 });

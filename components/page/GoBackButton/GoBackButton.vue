@@ -1,10 +1,10 @@
 <template>
-  <div class="horizontal-layout" ml-4 v-if="gobackFlag">
+  <div portrait:hidden ml-4 v-if="gobackFlag">
     <ZyButton flex items-center justify-center @click="goback()" title="返回" type="icon">
       <ZyIcon size="0.75rem" defaultName="arrow-left" />
     </ZyButton>
   </div>
-  <div class="vertical-layout" v-if="gobackFlag">
+  <div landscape:hidden v-if="gobackFlag">
     <ZyButton v-if="gobackFlag" w-header h-header @click="goback()" title="返回" type="transparent">
       <ZyIcon defaultName="arrow-left" />
     </ZyButton>

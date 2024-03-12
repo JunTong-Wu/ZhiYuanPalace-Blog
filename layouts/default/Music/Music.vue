@@ -10,7 +10,7 @@
       <div ml-6 color="text-1" flex h-full w-full items-center pr-2>
         <span flex-1 line-clamp-1 text-xs>你说的话 有心的吗 刺痛我了 无意的吧</span>
         <div flex>
-          <div class="horizontal-layout">
+          <div portrait:hidden>
             <ZyButton h-music aspect-square title="上一曲" type="transparent">
               <ZyIcon size="1rem" defaultName="music-prev" />
             </ZyButton>
@@ -18,7 +18,7 @@
           <ZyButton h-music aspect-square title="播放" type="transparent">
             <ZyIcon size="1rem" defaultName="music-play" />
           </ZyButton>
-          <div class="horizontal-layout">
+          <div portrait:hidden>
             <ZyButton h-music aspect-square title="下一曲" type="transparent">
               <ZyIcon size="1rem" defaultName="music-next" />
             </ZyButton>

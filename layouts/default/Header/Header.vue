@@ -2,13 +2,13 @@
   <header h-header color-text-1 overflow-hidden>
     <div w-full h-full absolute top-0 left-0 bg-gradient-to-b from="themeColorTranslucent" to="musicBar"></div>
     <Logo fixed left-0 top-0 h-header w-sidebar z-80 />
-    <div class="zy-header-inner" flex items-center justify-between h-full>
+    <div class="zy-header-inner" flex items-center justify-between h-full landscape:pr-4 portrait:pr-0>
       <div flex items-center h-full overflow-hidden>
         <HeaderTitle />
         <GoBackButton />
       </div>
 
-      <div class="vertical-layout" h-full>
+      <div h-full landscape:hidden>
         <div flex items-center w-full h-full justify-between>
           <div flex items-center h-full>
             <ZyButton w-header h-header @click="openSearchDrawer()" title="搜索" type="transparent">
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="horizontal-layout">
+      <div portrait:hidden>
         <div flex justify-end h-full items-center gap-2>
           <ZyButton flex items-center justify-center @click="openSearchDrawer()" title="搜索" type="icon">
             <ZyIcon size="0.75rem" defaultName="search" />
@@ -199,22 +199,3 @@ const closeMoreDrawer = () => {
   moreDisplay.value = false;
 };
 </script>
-<style scoped lang="scss">
-@media (orientation: landscape) {
-
-  /* 横屏 */
-  .zy-header-inner {
-    padding-left: 0;
-    padding-right: 1rem;
-  }
-}
-
-@media (orientation: portrait) {
-
-  /* 竖屏 */
-  .zy-header-inner {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-</style>
