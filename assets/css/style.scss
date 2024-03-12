@@ -72,7 +72,7 @@ a {
     --side-bar-width: 5rem;
     --tool-bar-width: 20rem;
     --music-bar-height: 3rem;
-    --music-bar-width: 36rem;
+    --music-bar-width: 33%;
     --music-bar-top: 0.75rem;
     --pt-main: var(--header-bar-height);
   }
@@ -117,21 +117,6 @@ a {
 :root {
   background: var(--bg-opaque);
   color: var(--text-1);
-}
-
-@media (orientation: portrait) {
-  /* 竖屏 */
-  :root {
-    --bg-opaque: #f7f9fa;
-  }
-  :root.dark {
-    background: #0d0d26;
-    --bg-opaque: #1f2036;
-  }
-
-  .vertical-layout {
-    display: block;
-  }
 }
 
 // 滚动条
