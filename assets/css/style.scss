@@ -89,7 +89,7 @@ a {
   --theme-color-translucent: transparent; //顶栏
 }
 :root {
-  --bg-card: rgba(255, 255, 255, 0.5); //卡片
+  --bg-card: rgba(255, 255, 255, 0.3); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
   --bg-side-bar: rgba(234, 236, 241, 0.7); //顶栏
@@ -101,7 +101,7 @@ a {
   --bg-opaque: #eff2f5;
 }
 *.dark {
-  --bg-card: rgba(50, 51, 69, 0.5); //卡片
+  --bg-card: rgba(50, 51, 69, 0.3); //卡片
   --bg-panel: rgba(15, 16, 46, 0.6); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
   --bg-side-bar: rgba(13, 13, 38, 0.7); //顶栏
@@ -110,13 +110,21 @@ a {
   --text-3: rgba(255, 255, 255, 0.4); //次要信息
   --text-4: rgba(255, 255, 255, 0.2); //置灰信息
   --text-5: rgba(255, 255, 255, 0.05); //骨架
-  --bg-opaque: #0d0d26;
+  --bg-opaque: #050524;
 }
 
 //背景色
 :root {
   background: var(--bg-opaque);
   color: var(--text-1);
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  :root {
+    --bg-opaque: #ffffff;
+  }
+  *.dark {
+    --bg-opaque: #050524;
+  }
 }
 
 // 滚动条
