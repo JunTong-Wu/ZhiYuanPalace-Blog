@@ -1,12 +1,21 @@
 <template>
-  <button :class="{
-    'ZyButton-default': type == 'default',
-    'ZyButton-transparent': type == 'transparent',
-    'ZyButton-icon': type == 'icon',
-    'ZyButton-primary': type == 'primary',
-  }" ref="button" type="button" min-h-9 min-w-9 text="base" p-0 m-0 color="inherit" flex items-center justify-center
-    :title="title" @mousedown="animationStart()" @mouseup="animationEnd()" @touchstart.passive="animationStart()"
-    @touchend.passive="animationEnd()">
+  <button
+    :class="{
+      'ZyButton-default': type == 'default',
+      'ZyButton-transparent': type == 'transparent',
+      'ZyButton-icon': type == 'icon',
+      'ZyButton-primary': type == 'primary',
+    }"
+    class="min-h-9 min-w-9 text-base p-0 m-0 flex items-center justify-center"
+    ref="button"
+    type="button"
+    color="inherit"
+    :title="title"
+    @mousedown="animationStart()"
+    @mouseup="animationEnd()"
+    @touchstart.passive="animationStart()"
+    @touchend.passive="animationEnd()"
+  >
     <slot />
   </button>
 </template>

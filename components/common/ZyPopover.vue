@@ -3,13 +3,27 @@
     <slot name="reference" />
   </div>
   <Teleport to="body">
-    <aside fixed inset-0 v-if="display" :style="`z-index: ${zIndex};`" ref="el" :class="{ dark: dark }"
-      @touchmove="preventTouchGesture($event)" @click="close">
-      <div fixed inset-0 transition duration-500 :class="maskClass" @click="closeByMask" v-if="mask"></div>
-      <div ref="mainElement" class="drawer-main" bg="bg-panel" backdrop-blur-3xl fixed h-full will-change-transform
-        rounded-lg overflow-hidden shadow-2xl min-w-24 :style="mainStyle"
-        border="none dark:1 dark:solid dark:bordercolor">
-        <div h-full overflow-auto>
+    <aside
+      class="fixed inset-0"
+      v-if="display"
+      :style="`z-index: ${zIndex};`"
+      ref="el"
+      :class="{ dark: dark }"
+      @touchmove="preventTouchGesture($event)"
+      @click="close"
+    >
+      <div
+        class="fixed inset-0 transition duration-500"
+        :class="maskClass"
+        @click="closeByMask"
+        v-if="mask"
+      ></div>
+      <div
+        ref="mainElement"
+        class="drawer-main backdrop-blur-3xl fixed h-full will-change-transform rounded-lg overflow-hidden shadow-2xl min-w-24 border-none dark:border-1 dark:border-solid dark:border-bordercolor bg-bg-panel"
+        :style="mainStyle"
+      >
+        <div class="h-full overflow-auto">
           <div class="arrow"></div>
           <slot name="actions" />
         </div>

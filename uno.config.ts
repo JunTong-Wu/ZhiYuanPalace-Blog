@@ -1,7 +1,7 @@
 import {
   defineConfig,
   presetUno,
-  presetAttributify,
+  //presetAttributify,
   transformerDirectives,
   transformerCompileClass,
   transformerVariantGroup,
@@ -10,7 +10,7 @@ import {
 export default defineConfig({
   presets: [
     presetUno(),
-    presetAttributify(),
+    // presetAttributify(),
     // ...
   ],
   transformers: [

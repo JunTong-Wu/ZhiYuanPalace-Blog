@@ -1,73 +1,144 @@
 <template>
-  <header h-header color-text-1 overflow-hidden>
-    <div w-full h-full absolute top-0 left-0 bg-gradient-to-b from="themeColorTranslucent" to="musicBar"></div>
-    <Logo fixed left-0 top-0 h-header w-sidebar z-80 />
-    <div class="zy-header-inner" flex items-center justify-between h-full landscape:pr-4 portrait:pr-0>
-      <div flex items-center h-full overflow-hidden>
+  <header class="h-header color-text-1 overflow-hidden">
+    <div
+      class="w-full h-full absolute top-0 left-0 bg-gradient-to-b"
+      from="themeColorTranslucent"
+      to="musicBar"
+    ></div>
+    <Logo class="fixed left-0 top-0 h-header w-sidebar z-80" />
+    <div
+      class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0"
+    >
+      <div class="flex items-center h-full overflow-hidden">
         <HeaderTitle />
         <GoBackButton />
       </div>
 
-      <div h-full landscape:hidden>
-        <div flex items-center w-full h-full justify-between>
-          <div flex items-center h-full>
-            <ZyButton w-header h-header @click="openSearchDrawer()" title="搜索" type="transparent">
+      <div class="h-full landscape:hidden">
+        <div class="flex items-center w-full h-full justify-between">
+          <div class="flex items-center h-full">
+            <ZyButton
+              class="w-header h-header"
+              @click="openSearchDrawer()"
+              title="搜索"
+              type="transparent"
+            >
               <ZyIcon defaultName="search" />
             </ZyButton>
-            <ZyButton w-header h-header @click="openMoreDrawer()" title="更多选项" type="transparent">
+            <ZyButton
+              class="w-header h-header"
+              @click="openMoreDrawer()"
+              title="更多选项"
+              type="transparent"
+            >
               <ZyIcon defaultName="more" />
             </ZyButton>
           </div>
         </div>
       </div>
 
-      <div portrait:hidden>
-        <div flex justify-end h-full items-center gap-2>
-          <ZyButton flex items-center justify-center @click="openSearchDrawer()" title="搜索" type="icon">
+      <div class="portrait:hidden">
+        <div class="flex justify-end h-full items-center gap-2">
+          <ZyButton
+            class="flex items-center justify-center"
+            @click="openSearchDrawer()"
+            title="搜索"
+            type="icon"
+          >
             <ZyIcon size="0.75rem" defaultName="search" />
           </ZyButton>
-          <ZyButton flex items-center justify-center @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-            <ZyIcon v-if="!fullScreenFlag" size="0.75rem" defaultName="maximize" />
+          <ZyButton
+            class="flex items-center justify-center"
+            @click="toggleFullScreen"
+            title="全屏/退出全屏"
+            type="icon"
+          >
+            <ZyIcon
+              v-if="!fullScreenFlag"
+              size="0.75rem"
+              defaultName="maximize"
+            />
             <ZyIcon v-else size="0.75rem" defaultName="minimize" />
           </ZyButton>
           <!-- 多语言抽屉 -->
           <ZyPopover title="切换语言" background="var(--bg-panel)">
             <template #reference>
-              <ZyButton flex items-center justify-center title="切换语言" type="icon">
+              <ZyButton
+                class="flex items-center justify-center"
+                title="切换语言"
+                type="icon"
+              >
                 <ZyIcon size="0.75rem" defaultName="language" />
               </ZyButton>
             </template>
             <template #actions>
-              <div color="text-1" w-40>
+              <div class="color-text-1 w-40">
                 <ul>
-                  <li v-for="lang in availableLocales" :key="lang.code" :to="switchLocalePath(lang.code)"
-                    @click="switchLanguage(lang.code, lang.iso)" border="t-0 l-0 r-0 b-1 solid bordercolor">
-                    <label inline-block w-full h-full flex justify-between p-4 h-14 bg="hover:theme" color="hover:white"
-                      cursor-pointer>
-                      <span text-sm>{{ lang.name }}</span>
-                      <input type="radio" name="lang" :checked="lang.code == locale" hidden />
+                  <li
+                    v-for="lang in availableLocales"
+                    :key="lang.code"
+                    :to="switchLocalePath(lang.code)"
+                    @click="switchLanguage(lang.code, lang.iso)"
+                    class="border-t-0 border-l-0 border-r-0 border-b-1 border-solid border-bordercolor"
+                  >
+                    <label
+                      class="inline-block w-full h-full flex justify-between p-4 h-14 hover:bg-theme hover:color-white cursor-pointer"
+                    >
+                      <span class="text-sm">{{ lang.name }}</span>
+                      <input
+                        type="radio"
+                        name="lang"
+                        :checked="lang.code == locale"
+                        class="hidden"
+                      />
                     </label>
                   </li>
                 </ul>
               </div>
             </template>
           </ZyPopover>
-          <ZyButton flex items-center justify-center @click="darkModeSwitch()" title="日间/夜间" type="icon">
-            <ZyIcon size="0.75rem" hidden dark:inline-block defaultName="sun" />
-            <ZyIcon size="0.75rem" dark:hidden defaultName="moon" />
+          <ZyButton
+            class="flex items-center justify-center"
+            @click="darkModeSwitch()"
+            title="日间/夜间"
+            type="icon"
+          >
+            <ZyIcon
+              size="0.75rem"
+              class="hidden dark:inline-block"
+              defaultName="sun"
+            />
+            <ZyIcon size="0.75rem" class="dark:hidden" defaultName="moon" />
           </ZyButton>
-          <ZyButton flex items-center justify-center @click="openMoreDrawer()" title="更多选项" type="icon">
+          <ZyButton
+            class="flex items-center justify-center"
+            @click="openMoreDrawer()"
+            title="更多选项"
+            type="icon"
+          >
             <ZyIcon size="0.75rem" defaultName="more" />
           </ZyButton>
         </div>
       </div>
     </div>
     <!-- 搜索抽屉 -->
-    <ZyDrawer title="搜索" :display="searchDisplay" @cancel="closeSearchDrawer" position="top" size="100%">
+    <ZyDrawer
+      title="搜索"
+      :display="searchDisplay"
+      @cancel="closeSearchDrawer"
+      position="top"
+      size="100%"
+    >
     </ZyDrawer>
     <!-- 更多选项抽屉 -->
-    <ZyDrawer title="更多选项" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="21rem"
-      background="var(--bg-panel)">
+    <ZyDrawer
+      title="更多选项"
+      :display="moreDisplay"
+      @cancel="closeMoreDrawer"
+      position="right"
+      size="21rem"
+      background="var(--bg-panel)"
+    >
     </ZyDrawer>
   </header>
 </template>

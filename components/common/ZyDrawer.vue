@@ -1,21 +1,54 @@
 <template>
   <Teleport to="body">
-    <aside fixed inset-0 v-if="display" :style="`z-index: ${zIndex};`" ref="el" :class="{ dark: dark }"
-      @touchmove.passive="preventTouchGesture($event)">
-      <div fixed inset-0 bg="bg-mask" transition duration-500 :class="maskClass" @click="closeByMask" v-if="mask"></div>
-      <ZyTouch class="drawer-main" cursor-grab fixed h-full will-change-transform :init="touchInit" :style="mainStyle"
-        @slidingLeft="slidingLeft" @slidingRight="slidingRight" @slidingUp="slidingUp" @slidingDown="slidingDown"
-        @slideEndLeft="slideEndLeft" @slideEndRight="slideEndRight" @slideEndUp="slideEndUp" @slideEndDown="slideEndDown"
-        @slideCancelLeft="slideCancel" @slideCancelRight="slideCancel" @slideCancelUp="slideCancel"
-        @slideCancelDown="slideCancel">
-        <div v-if="!hideHeader" flex justify-between items-center h-14 px-6 text-base color="text-1">
+    <aside
+      class="fixed inset-0"
+      v-if="display"
+      :style="`z-index: ${zIndex};`"
+      ref="el"
+      :class="{ dark: dark }"
+      @touchmove.passive="preventTouchGesture($event)"
+    >
+      <div
+        class="fixed inset-0 transition duration-500 bg-bg-mask"
+        :class="maskClass"
+        @click="closeByMask"
+        v-if="mask"
+      ></div>
+      <ZyTouch
+        class="drawer-main cursor-grab fixed h-full will-change-transform"
+        :init="touchInit"
+        :style="mainStyle"
+        @slidingLeft="slidingLeft"
+        @slidingRight="slidingRight"
+        @slidingUp="slidingUp"
+        @slidingDown="slidingDown"
+        @slideEndLeft="slideEndLeft"
+        @slideEndRight="slideEndRight"
+        @slideEndUp="slideEndUp"
+        @slideEndDown="slideEndDown"
+        @slideCancelLeft="slideCancel"
+        @slideCancelRight="slideCancel"
+        @slideCancelUp="slideCancel"
+        @slideCancelDown="slideCancel"
+      >
+        <div
+          v-if="!hideHeader"
+          class="flex justify-between items-center h-14 px-6 text-base color-text-1"
+        >
           <span>{{ title }}</span>
-          <span cursor-pointer @click="closeByButton" v-show="closable" v-if="display" @mousedown.stop @mousemove.stop
-            @mouseup.stop>
+          <span
+            class="cursor-pointer"
+            @click="closeByButton"
+            v-show="closable"
+            v-if="display"
+            @mousedown.stop
+            @mousemove.stop
+            @mouseup.stop
+          >
             <ZyIcon size="1.5rem" defaultName="close" />
           </span>
         </div>
-        <div h-full overflow-auto>
+        <div class="h-full overflow-auto">
           <slot />
         </div>
       </ZyTouch>

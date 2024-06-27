@@ -1,19 +1,27 @@
 <template>
-  <div pr-toolbar pt-main>
-    <div p="portrait:0 landscape:4 xs:4 sm:6 md:7 lg:8">
+  <div class="pr-toolbar pt-main">
+    <div class="portrait:p-0 landscape:p-4 xs:p-4 sm:p-6 md:p-7 lg:p-8">
       <div>
-        <div grid grid-cols-12 gap="4 xs:5 sm:6 md:7 lg:8" mb="4 xs:5 sm:6 md:7 lg:8">
-          <div col-span-12>
-            <div bg="bg-card" p="portrait:0 landscape:4 xs:4 sm:6 md:7 lg:8" rounded-xl>
-              <h3 col-span-12 m-0 font-normal text-base sm:text-xl lg:text-2xl pt-4 pl-4>
+        <div
+          class="grid grid-cols-12 gap-4 xs:gap-5 sm:gap-6 md:gap-7 lg:gap-8 mb-4 xs:mb-5 sm:mb-6 md:mb-7 lg:mb-8"
+        >
+          <div class="col-span-12">
+            <div
+              class="bg-bg-card portrait:p-0 landscape:p-4 xs:p-4 sm:p-6 md:p-7 lg:p-8 rounded-xl"
+            >
+              <h3
+                class="col-span-12 m-0 font-normal text-base sm:text-xl lg:text-2xl pt-4 pl-4"
+              >
                 所有文章
               </h3>
-              <ZyFetchLoading :fetchData="(articleListData as any)"
+              <ZyFetchLoading
+                :fetchData="(articleListData as any)"
                 rowClass="grid grid-cols-12 portrait:gap-0 landscape:gap-4 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8"
                 cloClass="portrait:col-span-12 landscape:col-span-4 portrait:xs:col-span-6 landscape:xs:col-span-4 portrait:sm:col-span-6 landscape:sm:col-span-4 portrait:md:col-span-4 landscape:md:col-span-4 portrait:lg:col-span-4 landscape:lg:col-span-3 portrait:xl:col-span-3 landscape:xl:col-span-2"
-                :minLoadingNumber="12">
+                :minLoadingNumber="12"
+              >
                 <template v-slot:loading>
-                  <articleCard skeleton bg="bg-card" rounded-xl>
+                  <articleCard skeleton class="bg-bg-card rounded-xl">
                     <template #image>
                       <ZySkeleton type="image" />
                     </template>
@@ -23,15 +31,21 @@
                   </articleCard>
                 </template>
                 <template v-slot:onload="{ row: item }">
-                  <articleCard :href="`/text/article/${item.article_id}`" bg="bg-card" sm:rounded-xl>
+                  <articleCard
+                    :href="`/text/article/${item.article_id}`"
+                    class="bg-bg-card sm:rounded-xl"
+                  >
                     <template #image>
-                      <img :src="`https://pan.yiru.love${item.article_title_image}`" alt="" />
+                      <img
+                        :src="`https://pan.yiru.love${item.article_title_image}`"
+                        alt=""
+                      />
                     </template>
                     <template #title>
-                      <h4 m-0 text-base font-normal line-clamp-1>
+                      <h4 class="m-0 text-base font-normal line-clamp-1">
                         {{ item.article_title }}
                       </h4>
-                      <p m-0 mt-2 text-sm line-clamp-2 color="text-2">
+                      <p class="m-0 mt-2 text-sm line-clamp-2 color-text-2">
                         {{ item.article_text.replace(/\r\n/g, "") }}
                       </p>
                     </template>
@@ -43,7 +57,7 @@
         </div>
       </div>
     </div>
-    <Toolbar absolute top-0 bottom-0 right-0 w-toolbar pt-main />
+    <Toolbar class="absolute top-0 bottom-0 right-0 w-toolbar pt-main" />
   </div>
 </template>
 <script setup lang="ts">

@@ -1,9 +1,17 @@
 <template>
-  <nav flex items-center h-full class="header-title" v-if="titleDisable">
-    <ul flex h-full class="headerbar-tabs">
-      <li v-for="tabs in childrenTabs" :key="tabs.title" v-zy-ripple :class="{ activate: routerActivate(tabs.path) }">
-        <ZyLink :to="tabs.path" h-full flex items-center justify-center px-4>
-          <span text-base sm:text-xl>{{ $t(tabs.title) }}</span>
+  <nav class="header-title flex items-center h-full" v-if="titleDisable">
+    <ul class="headerbar-tabs flex h-full">
+      <li
+        v-for="tabs in childrenTabs"
+        :key="tabs.title"
+        v-zy-ripple
+        :class="{ activate: routerActivate(tabs.path) }"
+      >
+        <ZyLink
+          :to="tabs.path"
+          class="h-full flex items-center justify-center px-4"
+        >
+          <span class="text-base sm:text-xl">{{ $t(tabs.title) }}</span>
         </ZyLink>
       </li>
     </ul>

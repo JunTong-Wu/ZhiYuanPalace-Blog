@@ -1,6 +1,10 @@
 <template>
-  <a :href="to" bg-transparent text-base border-0 color-text-1 @click.prevent="swichRouter(to)" flex items-center
-    no-underline :title="title">
+  <a
+    :href="to"
+    class="bg-transparent text-base border-0 color-text-1 flex items-center no-underline"
+    @click.prevent="swichRouter(to)"
+    :title="title"
+  >
     <slot />
   </a>
 </template>

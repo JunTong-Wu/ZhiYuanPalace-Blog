@@ -1,7 +1,7 @@
 <template>
-  <aside portrait:hidden class="zy-tool-bar">
+  <aside class="zy-tool-bar portrait:hidden">
     <div>
-      <div w-full h-40 flex justify-center items-center color="text-4">
+      <div class="w-full h-40 flex justify-center items-center color-text-4">
         ToolBar
       </div>
     </div>

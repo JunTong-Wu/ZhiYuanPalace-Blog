@@ -1,8 +1,12 @@
 <template>
-  <div v-if="fetchData.pending.value ||
-    fetchData.error.value ||
-    fetchData.res.value?.code != 200
-    " :class="rowClass">
+  <div
+    v-if="
+      fetchData.pending.value ||
+      fetchData.error.value ||
+      fetchData.res.value?.code != 200
+    "
+    :class="rowClass"
+  >
     <div v-for="i in minLoadingNumber" :key="`loading-${i}`" :class="cloClass">
       <slot name="loading"></slot>
     </div>
@@ -78,7 +82,7 @@ export default {
       );
       watch(
         props.fetchData.res,
-        (newValue: { code: number; }) => {
+        (newValue: { code: number }) => {
           if (newValue && newValue.code != 200) {
             // showErrorMsg(newValue.code, newValue.message);
           }

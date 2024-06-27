@@ -1,11 +1,22 @@
 <template>
-  <div portrait:hidden ml-4 v-if="gobackFlag">
-    <ZyButton flex items-center justify-center @click="goback()" title="返回" type="icon">
+  <div class="portrait:hidden ml-4" v-if="gobackFlag">
+    <ZyButton
+      class="flex items-center justify-center"
+      @click="goback()"
+      title="返回"
+      type="icon"
+    >
       <ZyIcon size="0.75rem" defaultName="arrow-left" />
     </ZyButton>
   </div>
-  <div landscape:hidden v-if="gobackFlag">
-    <ZyButton v-if="gobackFlag" w-header h-header @click="goback()" title="返回" type="transparent">
+  <div class="landscape:hidden" v-if="gobackFlag">
+    <ZyButton
+      v-if="gobackFlag"
+      class="w-header h-header"
+      @click="goback()"
+      title="返回"
+      type="transparent"
+    >
       <ZyIcon defaultName="arrow-left" />
     </ZyButton>
   </div>
@@ -34,7 +45,7 @@ const gobackInit = (path: string) => {
   }
 };
 gobackInit(route.fullPath);
-router.beforeEach((to: { fullPath: string; }, from: any, next: () => void) => {
+router.beforeEach((to: { fullPath: string }, from: any, next: () => void) => {
   gobackInit(to.fullPath);
   next();
 });
