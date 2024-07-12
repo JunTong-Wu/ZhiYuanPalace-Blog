@@ -1,7 +1,7 @@
 <template>
   <header class="h-header color-text-1 overflow-hidden">
     <div
-      class="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-themeColorTranslucent to-musicBar dark:filter-brightness-050"
+      class="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-themeColorTranslucent to-musicBar dark:brightness-50"
     ></div>
     <Logo class="fixed left-0 top-0 h-header w-sidebar z-80" />
     <div

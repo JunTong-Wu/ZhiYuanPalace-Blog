@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: false },
-  modules: ["@unocss/nuxt", "@nuxtjs/i18n"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
   components: [
     {
       path: "components",

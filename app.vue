@@ -13,7 +13,7 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
-      <NuxtPage mx-auto class="nuxt-page" />
+      <NuxtPage class="nuxt-page mx-auto" />
     </NuxtLayout>
   </ZySuperResponsive>
 </template>

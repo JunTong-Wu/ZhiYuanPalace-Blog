@@ -21,7 +21,7 @@
                 :minLoadingNumber="12"
               >
                 <template v-slot:loading>
-                  <articleCard skeleton class="bg-bg-card rounded-xl">
+                  <articleCard skeleton class="rounded-xl">
                     <template #image>
                       <ZySkeleton type="image" />
                     </template>
@@ -33,7 +33,7 @@
                 <template v-slot:onload="{ row: item }">
                   <articleCard
                     :href="`/text/article/${item.article_id}`"
-                    class="bg-bg-card sm:rounded-xl"
+                    class="sm:rounded-xl"
                   >
                     <template #image>
                       <img
