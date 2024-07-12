@@ -20,7 +20,6 @@
 <script setup lang="ts">
 import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
-// import Toolbar from "./default/Toolbar/Toolbar.vue";
 import Footer from "./default/Footer/Footer.vue";
 import Music from "./default/Music/Music.vue";
 </script>
