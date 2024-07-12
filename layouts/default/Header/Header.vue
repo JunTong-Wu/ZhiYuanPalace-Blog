@@ -5,7 +5,7 @@
     ></div>
     <Logo class="fixed left-0 top-0 h-header w-sidebar z-80" />
     <div
-      class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0"
+      class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
     >
       <div class="flex items-center h-full overflow-hidden">
         <HeaderTitle />
