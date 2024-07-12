@@ -97,7 +97,7 @@
           </ZyPopover>
           <ZyButton
             class="flex items-center justify-center"
-            @click="darkModeSwitch()"
+            @click="darkModeSwitch"
             title="日间/夜间"
             type="icon"
           >
@@ -165,11 +165,41 @@ const switchLanguage = (code: any, iso: any) => {
 };
 
 // 夜间模式
-const darkModeSwitch = () => {
-  if (!document.documentElement.classList.contains("dark")) {
-    document.documentElement.classList.add("dark");
+const darkModeSwitch = (e) => {
+  // 检查是否支持 startViewTransition API
+  if (typeof document.startViewTransition === "function") {
+    // 支持 startViewTransition API，使用过渡动画
+    const transition = document.startViewTransition(() => {
+      if (!document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    });
+
+    const x = e.clientX;
+    const y = e.clientY;
+
+    const tragetRadius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+          {
+            clipPath: [`circle(0% at ${x}px ${y}px)`, `circle(${tragetRadius}px at ${x}px ${y}px)`],
+          },
+          {
+            duration: 400,
+            pseudoElement: "::view-transition-new(root)",
+          }
+      );
+    });
   } else {
-    document.documentElement.classList.remove("dark");
+    // 不支持 startViewTransition API，直接切换暗模式
+    if (!document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }
 };
 

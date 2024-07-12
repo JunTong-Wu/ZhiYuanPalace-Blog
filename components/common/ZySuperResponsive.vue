@@ -67,7 +67,6 @@ export default defineComponent({
         if (isDarkTheme.matches) {
           return true;
         } else {
-          return false;
           let currdate = new Date();
           if (currdate.getHours() >= 19 || currdate.getHours() < 7) {
             return true;
