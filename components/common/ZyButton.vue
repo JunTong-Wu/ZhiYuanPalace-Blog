@@ -171,6 +171,7 @@ button.ZyButton-primary {
 **/
 button.ZyButton-icon {
   background-color: rgb(255 255 255 / 0.5);
+  color: var(--text-1);
   border: 1px solid rgba(127, 127, 127, 0.2);
   border-radius: 9999px;
 }
@@ -198,6 +199,7 @@ button.ZyButton-icon {
 button.ZyButton-transparent {
   background-color: transparent;
   border: none;
+  color: var(--text-1);
 }
 
 @media (hover: hover) {
