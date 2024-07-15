@@ -1,9 +1,8 @@
 <template>
   <header class="h-header color-text-1 overflow-hidden">
     <div
-      class="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-themeColorTranslucent to-musicBar dark:brightness-50"
+      class="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-themeColorTranslucent to-musicBar portrait:hidden"
     ></div>
-    <Logo class="fixed left-0 top-0 h-header w-sidebar z-80" />
     <div
       class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
     >
@@ -80,7 +79,7 @@
                     class="border-t-0 border-l-0 border-r-0 border-b-1 border-solid border-bordercolor"
                   >
                     <label
-                      class="inline-block w-full h-full flex justify-between p-4 h-14 hover:bg-theme hover:color-white cursor-pointer"
+                      class="w-full flex justify-between p-4 h-14 hover:bg-theme hover:text-white cursor-pointer"
                     >
                       <span class="text-sm">{{ lang.name }}</span>
                       <input
@@ -142,7 +141,6 @@
 </template>
 <script setup lang="ts">
 import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
-import Logo from "../Logo/Logo.vue";
 
 // 使用类型断言来处理 TypeScript 的类型检查
 declare global {

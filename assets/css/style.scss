@@ -53,12 +53,12 @@ a {
 
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 3.25rem;
-    --footer-bar-height: 3.25rem;
+    --header-bar-height: 4rem;
+    --footer-bar-height: 4rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
-    --music-bar-height: 2.75rem;
+    --music-bar-height: 3rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
@@ -69,7 +69,7 @@ a {
     --header-bar-height: 4.5rem;
     --footer-bar-height: 0rem;
     --centered-width: 65rem;
-    --side-bar-width: 5rem;
+    --side-bar-width: 5.5rem;
     --tool-bar-width: 20rem;
     --music-bar-height: 3rem;
     --music-bar-width: 33%;
@@ -87,30 +87,35 @@ a {
   --border-color: rgba(127, 127, 127, 0.2);
   --theme-color: rgb(63, 63, 75);
   --theme-color-translucent: transparent; //顶栏
+  --theme-color-rgb: 63, 63, 75;
 }
 :root {
   --bg-card: rgba(255, 255, 255, 0.3); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
-  --bg-side-bar: rgba(234, 236, 241, 0.7); //顶栏
+  --bg-head-bar: rgba(244, 246, 248, 0.7); //顶栏
+  --bg-gray: rgba(231, 231, 231, 0.5); //灰色背景
   --text-1: rgba(15, 16, 46, 1); //强调/正文标题
   --text-2: rgba(15, 16, 46, 0.6); //次强调/正文标
   --text-3: rgba(15, 16, 46, 0.4); //次要信息
   --text-4: rgba(15, 16, 46, 0.2); //置灰信息
   --text-5: rgba(15, 16, 46, 0.05); //骨架
   --bg-opaque: #eff2f5;
+  --bg-best: rgb(241, 243, 245);
 }
 *.dark {
   --bg-card: rgba(50, 51, 69, 0.3); //卡片
   --bg-panel: rgba(15, 16, 46, 0.6); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
-  --bg-side-bar: rgba(13, 13, 38, 0.7); //顶栏
+  --bg-head-bar: rgba(18, 18, 46, 0.7); //顶栏
+  --bg-gray: rgba(18, 18, 46, 0.5); //灰色背景
   --text-1: rgba(255, 255, 255, 1); //强调/正文标题
   --text-2: rgba(255, 255, 255, 0.6); //次强调/正文标
   --text-3: rgba(255, 255, 255, 0.4); //次要信息
   --text-4: rgba(255, 255, 255, 0.2); //置灰信息
   --text-5: rgba(255, 255, 255, 0.05); //骨架
   --bg-opaque: #050524;
+  --bg-best: rgb(14, 14, 42);
 }
 
 //背景色

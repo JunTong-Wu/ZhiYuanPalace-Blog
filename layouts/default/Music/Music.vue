@@ -1,7 +1,7 @@
 <template>
   <aside id="zy-music-bar" class="h-music">
     <div class="relative h-full flex items-center color-text-2">
-      <div class="flex relative h-[120%]">
+      <div class="flex relative h-[100%]">
         <img
           class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5"
           src="@/assets/image/record-128.png"
@@ -73,12 +73,13 @@ watch(bg_image, (newValue: any) => {
 const createDecoration = () => {
   const img = bg_image.value;
   if (img) {
-    const rgb = adjustBrightnessWhilePreservingHue(getImageColor(img), 80, 80);
-    const themeColorTranslucent = `rgba(${rgb},0.4)`;
+    const rgb = increaseSaturation(adjustBrightnessWhilePreservingHue(getImageColor(img), 60, 60),5);
+    const themeColorTranslucent = `rgba(${rgb},0.2)`;
     const themeColor = `rgb(${rgb})`;
+    const themeColorRGB = `${rgb}`;
     document.body.setAttribute(
       "style",
-      `--theme-color-translucent: ${themeColorTranslucent};--theme-color: ${themeColor}`
+      `--theme-color-translucent: ${themeColorTranslucent};--theme-color: ${themeColor};--theme-color-rgb: ${themeColorRGB};`
     );
   }
 };

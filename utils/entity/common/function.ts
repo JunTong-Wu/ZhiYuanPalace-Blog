@@ -86,6 +86,37 @@ const rgbToHsv = (
 };
 
 /**
+ * @description: 将RGB转换为HSL
+ * @param {*} rgb [r:number, g:number, b:number]
+ * @return {*} hsv [h:number, s:number, l:number]
+ */
+const rgbToHsl = (r: number, g: number, b: number): [number, number, number] => {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0, s = 0, l = (max + min) / 2;
+
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+
+    h /= 6;
+  }
+
+  return { h, s, l };
+}
+
+
+/**
  * @description: 将HSV转换为RGB
  * @param {*} hsv [h:number, s:number, v:number]
  * @return {*} rgb [r:number, g:number, b:number]
@@ -156,6 +187,37 @@ const hsvToRgb = (
 };
 
 /**
+ * @description: 将HSL转换为RGB
+ * @param {*} rgb [k:number, s:number, l:number]
+ * @return {*} hsv [r:number, g:number, b:number]
+ */
+const hslToRgb = (h: number, s: number, l: number): [number, number, number] => {
+  let r: number, g: number, b: number;
+
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    const hue2rgb = (p: number, q: number, t: number): number => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
+  }
+
+  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+/**
  * @description: 保持颜色的色调和饱和度不变,限制亮度区间
  * @param {*} rgb [r:number, g:number, b:number]
  * @param {*} maxBrightness number(0~100)
@@ -180,6 +242,22 @@ export const adjustBrightnessWhilePreservingHue = (
 export const isObject = (obj: any) => {
   return obj !== null && typeof obj === "object";
 };
+
+/**
+ * @description: 增加颜色饱和度
+ * @param rgb - [r:number, g:number, b:number]
+ * @param factor - 饱和度增加的比例，范围是 0 到 1 之间
+ * @returns [r:number, g:number, b:number]
+ */
+export const increaseSaturation = ([r, g, b]: [number, number, number], factor: number): [number, number, number] => {
+  // 将 RGB 转换为 HSL
+  const { h, s, l } = rgbToHsl(r, g, b);
+  // 调整饱和度
+  const newS = Math.min(1, Math.max(0, s * factor));
+  // 将 HSL 转换回 RGB
+  const [newR, newG, newB] = hslToRgb(h, newS, l);
+  return [newR, newG, newB];
+}
 
 /**
  * @description: 判断两个对象是否相同（包含绝对相等和他们是否有相同的形状）

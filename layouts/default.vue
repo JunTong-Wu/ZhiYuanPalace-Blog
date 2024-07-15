@@ -1,11 +1,11 @@
 <template>
   <Sidebar
-    class="fixed top-0 bottom-0 left-0 w-sidebar z-30 pt-main bg-bg-opaque"
+    class="fixed top-0 bottom-0 left-0 w-sidebar z-30 pt-main bg-bg-opaque border-r border-bordercolor"
   />
-  <Header class="fixed top-0 left-0 right-0 z-40 pl-sidebar bg-bg-opaque" />
+  <Header class="fixed top-0 left-sidebar right-0 z-40 landscape:backdrop-blur-3xl landscape:bg-headBar portrait:bg-bg-opaque" />
   <div class="layout-default">
     <main class="flex-1 pl-sidebar">
-      <div class="main-view text-base relative overflow-hidden">
+      <div class="main-view text-base relative overflow-hidden bg-bg-card">
         <div class="main-view-inner">
           <slot />
         </div>

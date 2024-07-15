@@ -62,10 +62,11 @@ export default <Partial<Config>>{
           mask: "var(--bg-mask)",
           primary: "var(--primary-5)",
           opaque: "var(--bg-opaque)",
+          gray: "var(--bg-gray)",
         },
         bordercolor: "var(--border-color)",
         themeColorTranslucent: "var(--theme-color-translucent)",
-        sideBar: "var(--bg-side-bar)",
+        headBar: "var(--bg-head-bar)",
       },
       screens: {
         xs: "600px",

@@ -7,7 +7,7 @@
         >
           <div class="col-span-12">
             <div
-              class="bg-bg-card portrait:p-0 landscape:p-4 xs:p-4 sm:p-6 md:p-7 lg:p-8 rounded-xl"
+              class="portrait:p-0 landscape:p-4 xs:p-4 sm:p-6 md:p-7 lg:p-8 rounded-xl"
             >
               <h3
                 class="col-span-12 m-0 font-normal text-base sm:text-xl lg:text-2xl pt-4 pl-4"
@@ -16,7 +16,7 @@
               </h3>
               <ZyFetchLoading
                 :fetchData="(articleListData as any)"
-                rowClass="grid grid-cols-12 portrait:gap-0 landscape:gap-4 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8"
+                rowClass="grid grid-cols-12 portrait:gap-0 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8"
                 cloClass="portrait:col-span-12 landscape:col-span-4 portrait:xs:col-span-6 landscape:xs:col-span-4 portrait:sm:col-span-6 landscape:sm:col-span-4 portrait:md:col-span-4 landscape:md:col-span-4 portrait:lg:col-span-4 landscape:lg:col-span-3 portrait:xl:col-span-3 landscape:xl:col-span-2"
                 :minLoadingNumber="12"
               >
