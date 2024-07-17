@@ -7,9 +7,9 @@
 #nprogress .bar {
   background: var(--progress-color);
   position: fixed;
-  z-index: 1000;
-  top: auto;
-  bottom: var(--footer-bar-height);
+  z-index: 20;
+  top: var(--header-bar-height);
+  bottom: auto;
   left: 0;
   width: 100%;
   height: 0.3rem;

@@ -63,6 +63,9 @@ export default <Partial<Config>>{
           primary: "var(--primary-5)",
           opaque: "var(--bg-opaque)",
           gray: "var(--bg-gray)",
+          level: {
+            1: "var(--bg-level-1)",
+          }
         },
         bordercolor: "var(--border-color)",
         themeColorTranslucent: "var(--theme-color-translucent)",

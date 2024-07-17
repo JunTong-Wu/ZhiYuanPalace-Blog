@@ -1,7 +1,7 @@
 <template>
   <aside id="zy-music-bar" class="h-music">
-    <div class="relative h-full flex items-center color-text-2">
-      <div class="flex relative h-[100%] portrait:left-4">
+    <div class="relative h-full flex items-center">
+      <div class="flex relative h-[120%]">
         <img
           class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5"
           src="@/assets/image/record-128.png"
@@ -17,7 +17,7 @@
           @load="createDecoration()"
         />
       </div>
-      <div class="ml-8 portrait:ml-12 color-text-1 flex h-full w-full items-center pr-2">
+      <div class="ml-8 flex h-full w-full items-center pr-2">
         <span class="flex-1 line-clamp-1 text-xs"
           >你说的话 有心的吗 刺痛我了 无意的吧</span
         >
@@ -73,7 +73,7 @@ watch(bg_image, (newValue: any) => {
 const createDecoration = () => {
   const img = bg_image.value;
   if (img) {
-    const rgb = increaseSaturation(adjustBrightnessWhilePreservingHue(getImageColor(img), 60, 60),5);
+    const rgb = increaseSaturation(adjustBrightnessWhilePreservingHue(getImageColor(img), 60, 60),3);
     const themeColorTranslucent = `rgba(${rgb},0.2)`;
     const themeColor = `rgb(${rgb})`;
     const themeColorRGB = `${rgb}`;

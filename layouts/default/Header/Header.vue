@@ -1,14 +1,11 @@
 <template>
   <header class="h-header color-text-1 overflow-hidden">
     <div
-      class="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-themeColorTranslucent to-musicBar portrait:hidden"
-    ></div>
-    <div
       class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
     >
       <div class="flex items-center h-full overflow-hidden">
-        <HeaderTitle />
         <GoBackButton />
+        <HeaderTitle />
       </div>
 
       <div class="h-full landscape:hidden">

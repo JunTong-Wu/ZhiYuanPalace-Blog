@@ -1,21 +1,29 @@
 <template>
-  <Sidebar
-    class="fixed top-0 bottom-0 left-0 w-sidebar z-30 pt-main bg-bg-opaque border-r border-bordercolor"
-  />
-  <Header class="fixed top-0 left-sidebar right-0 z-40 landscape:backdrop-blur-3xl landscape:bg-headBar portrait:bg-bg-opaque" />
-  <div class="layout-default">
-    <main class="flex-1 pl-sidebar">
-      <div class="main-view text-base relative overflow-hidden bg-bg-card">
-        <div class="main-view-inner">
-          <slot />
+  <div class=" bg-bg-best">
+    <Sidebar
+        class="fixed top-0 bottom-0 left-0 w-sidebar z-30 pt-main bg-bg-level-1"
+    />
+    <div
+        class="w-sidebar h-full fixed z-30 top-0 left-0  portrait:hidden pointer-events-none"
+    >
+      <div class="absolute right-0 h-full w-10 bg-gradient-to-l from-themeColorTranslucent to-musicBar opacity-30"></div>
+    </div>
+    <Header class="fixed top-0 left-sidebar right-0 z-40 landscape:backdrop-blur-3xl landscape:bg-headBar portrait:bg-bg-opaque" />
+    <div class="layout-default relative z-20">
+      <main class="flex-1 pl-sidebar">
+        <div class="main-view text-base relative overflow-hidden">
+          <div class="main-view-inner">
+            <slot />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
+    <Music
+        class="fixed top-music left-0 right-0 w-music mx-auto z-50 bg-theme dark:bg-bg-best text-white landscape:rounded-2xl landscape:shadow-sm"
+    />
+    <Footer class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-bg-opaque" />
+
   </div>
-  <Music
-    class="fixed top-music left-0 right-0 w-music mx-auto z-50 landscape:bg-bg-card portrait:bg-bg-opaque landscape:rounded-full landscape:shadow-sm"
-  />
-  <Footer class="fixed bottom-0 left-0 right-0 z-60 bg-bg-opaque" />
 </template>
 <script setup lang="ts">
 import Header from "./default/Header/Header.vue";

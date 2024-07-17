@@ -121,7 +121,7 @@ export default defineComponent({
 **/
 button.ZyButton-default {
   background-color: var(--bg-card);
-  color: var(--text-1);
+  color: inherit;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   padding-left: 2rem;
@@ -171,7 +171,7 @@ button.ZyButton-primary {
 **/
 button.ZyButton-icon {
   background-color: rgb(255 255 255 / 0.5);
-  color: var(--text-1);
+  color: inherit;
   border: 1px solid rgba(127, 127, 127, 0.2);
   border-radius: 9999px;
 }
@@ -199,7 +199,7 @@ button.ZyButton-icon {
 button.ZyButton-transparent {
   background-color: transparent;
   border: none;
-  color: var(--text-1);
+  color: inherit;
 }
 
 @media (hover: hover) {

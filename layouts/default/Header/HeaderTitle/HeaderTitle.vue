@@ -16,7 +16,7 @@
       </li>
     </ul>
     <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1" class="headerbar-title px-3">
-      <span class="text-xl">{{ $t(childrenTabs[0].title) }}</span>
+      <span class="text-2xl font-bold portrait:text-xl portrait:font-normal text-theme">{{ $t(childrenTabs[0].title) }}</span>
     </div>
   </nav>
 </template>
@@ -66,7 +66,7 @@ router.beforeEach(
 
     &.activate {
       a {
-        color: var(--text-1);
+        color: var(--theme-color);
         &::after {
           content: "";
           position: absolute;
