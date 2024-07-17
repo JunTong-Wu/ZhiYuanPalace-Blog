@@ -60,7 +60,7 @@ const route = useRoute();
 
   &.activate {
     a {
-      background-color: rgba(var(--theme-color-rgb), 0.05);
+      background-color: rgba(var(--theme-color-rgb), 0.1);
       span {
         color: var(--theme-color);
       }

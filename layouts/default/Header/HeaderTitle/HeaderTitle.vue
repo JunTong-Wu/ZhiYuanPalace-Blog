@@ -1,6 +1,6 @@
 <template>
   <nav class="header-title flex items-center h-full p-3 portrait:p-3" v-if="titleDisable">
-    <ul v-if="childrenTabs.length > 1" class="headerbar-tabs flex h-full rounded-full border border-bordercolor overflow-hidden">
+    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full rounded-full border border-bordercolor overflow-hidden">
       <li
         v-for="tabs in childrenTabs"
         :key="tabs.title"
@@ -15,7 +15,7 @@
         </ZyLink>
       </li>
     </ul>
-    <div v-else class="headerbar-title px-3">
+    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1" class="headerbar-title px-3">
       <span class="text-xl">{{ $t(childrenTabs[0].title) }}</span>
     </div>
   </nav>
