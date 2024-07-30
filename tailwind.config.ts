@@ -63,13 +63,14 @@ export default <Partial<Config>>{
           primary: "var(--primary-5)",
           opaque: "var(--bg-opaque)",
           gray: "var(--bg-gray)",
+          headBar: "var(--bg-head-bar)",
+          sideBar: "var(--bg-side-bar)",
           level: {
             1: "var(--bg-level-1)",
           }
         },
         bordercolor: "var(--border-color)",
         themeColorTranslucent: "var(--theme-color-translucent)",
-        headBar: "var(--bg-head-bar)",
       },
       screens: {
         xs: "600px",

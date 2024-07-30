@@ -3,6 +3,7 @@ export type Route = {
   title: string;
   defaultIcon?: string;
   activatedIcon?: string;
+  iconImage?: string;
   order: number;
   children?: Route[];
 };

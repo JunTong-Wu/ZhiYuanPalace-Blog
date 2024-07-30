@@ -1,5 +1,5 @@
 <template>
-  <div class="indicator" id="side-bar-nav-indicator"></div>
+  <div class="indicator dark" id="side-bar-nav-indicator"></div>
 </template>
 <script lang="ts">
 export default {
@@ -40,7 +40,7 @@ export default {
         //top变化，通过正数order确定
         const top = order * averageHeight;
         // 边距
-        const padding = averageHeight * 0.3;
+        const padding = averageHeight * 0.35;
 
         indicator.style.bottom = `${bottom + padding}px`;
         indicator.style.top = `${top + padding}px`;
@@ -114,7 +114,7 @@ export default {
         //top变化，通过正数order确定
         const top = this.toOrder * averageHeight;
         // 边距
-        const padding = averageHeight * 0.3;
+        const padding = averageHeight * 0.35;
 
         indicator.style.bottom = `${bottom + padding}px`;
         indicator.style.top = `${top + padding}px`;
@@ -139,8 +139,8 @@ export default {
   top: 0;
   bottom: 0;
   left: 0.3rem;
-  width: 0.3rem;
-  background: var(--theme-color);
+  width: 0.25rem;
+  background: var(--text-1);
   z-index: 2;
   border-radius: 100px;
   display: none;
