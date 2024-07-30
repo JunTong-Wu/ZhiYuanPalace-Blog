@@ -3,7 +3,7 @@
     v-if="
       fetchData.pending.value ||
       fetchData.error.value ||
-      fetchData.res.value?.code != 200
+      fetchData.res.value?.code !== 0
     "
     :class="rowClass"
   >
@@ -53,7 +53,7 @@ export default {
     };
 
     // 服务端获取参数
-    if (props.fetchData.res.value && props.fetchData.res.value.code == 200) {
+    if (props.fetchData.res.value && props.fetchData.res.value.code === 0) {
       item.value = props.fetchData.res.value;
     }
 
@@ -62,7 +62,7 @@ export default {
       if (!newValue) {
         if (
           props.fetchData.res.value &&
-          props.fetchData.res.value.code == 200
+          props.fetchData.res.value.code === 0
         ) {
           item.value = props.fetchData.res.value;
         }
@@ -83,7 +83,7 @@ export default {
       watch(
         props.fetchData.res,
         (newValue: { code: number }) => {
-          if (newValue && newValue.code != 200) {
+          if (newValue && newValue.code !== 0) {
             // showErrorMsg(newValue.code, newValue.message);
           }
         },

@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev --host",
-    "generate": "nuxt generate",
+    "build": "nuxt build --dotenv .env.production",
+    "dev": "nuxt dev --host --dotenv .env.development",
+    "generate": "nuxt generate --dotenv .env.production",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -13,6 +13,7 @@
     "@kangc/v-md-editor": "^2.3.18",
     "nprogress": "^0.2.0",
     "nuxt": "^3.10.1",
+    "vite-plugin-compression": "^0.5.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

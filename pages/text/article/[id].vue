@@ -58,7 +58,7 @@ const articleData = ApiArticle.search_article_by_id(id);
 
 watch(articleData.pending, (newValue: any) => {
   if (!newValue) {
-    if (articleData.res.value && (articleData.res.value as any).code == 200) {
+    if (articleData.res.value && (articleData.res.value as any).code === 0) {
       setTimeout(() => {
         cardTransitionEnd();
       }, 200);
