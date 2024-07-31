@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-bg-best">
+  <div class="">
     <Sidebar
         class="fixed top-0 bottom-0 left-0 w-sidebar z-30 pt-main bg-bg-sideBar text-white"
     />
@@ -18,9 +18,9 @@
         </div>
       </main>
     </div>
-    <div class="fixed top-header landscape:right-8 w-music z-50 bg-bg-best h-64 portrait:hidden"></div>
+
     <Music
-        class="fixed top-music landscape:right-8 w-music z-50 portrait:bg-bg-opaque landscape:bg-bg-bestCard landscape:rounded-2xl overflow-hidden landscape:shadow-sm"
+        class="fixed top-music landscape:right-8 w-music z-50 portrait:bg-bg-opaque landscape:rounded-2xl overflow-hidden landscape:shadow-sm"
     />
     <Footer class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-bg-opaque" />
 

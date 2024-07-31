@@ -1,6 +1,7 @@
 <template>
   <aside id="zy-music-bar" class="h-music">
-    <div class="relative h-full portrait:flex items-center">
+    <div class="fixed top-header landscape:right-8 w-music z-0 bg-bg-opaque h-64 portrait:hidden"></div>
+    <div class="relative z-10 h-full portrait:flex items-center landscape:bg-bg-bestCard">
       <div class="flex relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4">
         <img
           class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5 landscape:hidden"
@@ -50,7 +51,7 @@
                 type="transparent"
             >
               <ZyIcon class="landscape:hidden" size="1rem" defaultName="music-play" />
-              <ZyIcon class="portrait:hidden invert -hue-rotate-15" size="2rem" defaultName="music-play" defaultColor="var(--theme-color)" />
+              <ZyIcon class="portrait:hidden invert -hue-rotate-15" size="2.5rem" defaultName="music-play" defaultColor="var(--theme-color)" />
             </ZyButton>
           </div>
           <div class="portrait:hidden order-4">
@@ -70,7 +71,7 @@
                 type="transparent"
             >
               <ZyIcon class="landscape:hidden" size="1rem" defaultName="music-list" />
-              <ZyIcon class="portrait:hidden" size="1.5rem" defaultName="music-list" />
+              <ZyIcon class="portrait:hidden" size="1.25rem" defaultName="music-list" />
             </ZyButton>
           </div>
         </div>

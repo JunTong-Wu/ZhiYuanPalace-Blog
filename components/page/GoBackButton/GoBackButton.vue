@@ -6,7 +6,7 @@
       title="返回"
       type="icon"
     >
-      <ZyIcon size="0.75rem" defaultName="arrow-left" />
+      <ZyIcon size="1.5rem" defaultName="arrow-left" />
     </ZyButton>
   </div>
   <div class="landscape:hidden" v-if="gobackFlag">
@@ -17,7 +17,7 @@
       title="返回"
       type="transparent"
     >
-      <ZyIcon defaultName="arrow-left" />
+      <ZyIcon size="1.25rem" defaultName="arrow-left" />
     </ZyButton>
   </div>
 </template>

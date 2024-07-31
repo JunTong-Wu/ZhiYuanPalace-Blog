@@ -1,22 +1,30 @@
 <template>
-  <nav class="header-title flex items-center h-full p-3 portrait:p-3" v-if="titleDisable">
-    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full rounded-full border border-bordercolor overflow-hidden">
+  <nav id="header-tabs" class="header-title flex items-center h-full p-3 portrait:p-3 relative" v-if="titleDisable">
+    <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="top-3 bottom-3 left-3 right-3 absolute bg-bg-gray rounded-lg overflow-hidden">
+      <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
+        <div class="h-full bg-bg-best rounded-lg overflow-hidden"></div>
+      </div>
+    </div>
+
+    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">
       <li
         v-for="tabs in childrenTabs"
         :key="tabs.title"
-        class="landscape:bg-bg-gray"
-        :class="{ activate: routerActivate(tabs.path) }"
       >
         <ZyLink
           :to="tabs.path"
-          class="h-full flex items-center justify-center px-8 portrait:px-6"
+          class="h-full flex items-center justify-center px-8 portrait:px-6 text-text-3"
         >
-          <span class="text-base">{{ $t(tabs.title) }}</span>
+          <div class="flex items-center text-base gap-2 portrait:text-sm">
+            <ZyIcon class="landscape:hidden" size="1rem" :defaultName="tabs.activatedIcon" />
+            <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.activatedIcon" />
+            {{ $t(tabs.title) }}
+          </div>
         </ZyLink>
       </li>
     </ul>
-    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1" class="headerbar-title px-3">
-      <span class="text-2xl font-bold portrait:text-xl portrait:font-normal text-theme">{{ $t(childrenTabs[0].title) }}</span>
+    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1" class="headerbar-title ml-2 px-4 py-1 border-l-4 border-theme">
+      <span class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1">{{ $t(childrenTabs[0].title) }}</span>
     </div>
   </nav>
 </template>
@@ -26,12 +34,56 @@ const route = useRoute();
 const router = useRouter();
 const titleDisable = ref(true);
 const childrenTabs = ref<Array<Route>>();
+const activeTab = ref<string>("");
+const { locale } = useI18n();
+
 childrenTabs.value = getChildrenTabs(route.fullPath);
-const routerActivate = (path: string) => {
-  if (route.fullPath == path) {
-    return true;
-  } else {
-    return false;
+
+watch(
+  () => activeTab.value,
+  (newVal) => {
+    initIndicator(newVal);
+  }
+);
+
+watch(
+    () => childrenTabs.value,
+    (newVal) => {
+      if(Array.isArray(newVal) && newVal.length > 1){
+        nextTick(() => {
+          initIndicator(activeTab.value);
+        });
+      }
+    }
+)
+
+const initIndicator = (path: string) => {
+  if (path && Array.isArray(childrenTabs.value) && childrenTabs.value.length > 1) {
+    const tabIndex =  childrenTabs.value.findIndex((item) => {
+      return item.path === path;
+    });
+    indicatorMove(tabIndex);
+  }
+};
+
+const indicatorMove = (index: number) => {
+  const allTabs = document.querySelectorAll("#header-tabs li") as NodeListOf<HTMLLIElement>;
+  const tab = allTabs[index];
+  let tabWidth = [];
+  for (let i = 0; i < allTabs.length; i++) {
+    tabWidth.push(allTabs[i].getBoundingClientRect().width);
+  }
+  for (let i = 0; i < allTabs.length; i++) {
+    allTabs[i].classList.remove("activate");
+  }
+  const indicator = document.querySelector("#header-tabs-indicator");
+  if (tab && indicator) {
+    const width = tab.getBoundingClientRect().width;
+    const left = tabWidth.slice(0, index).reduce((acc, cur) => acc + cur, 0);
+    indicator.style.left = `${left}px`;
+    indicator.style.width = `${width}px`;
+    indicator.style.opacity = "1";
+    tab.classList.add("activate");
   }
 };
 
@@ -46,39 +98,54 @@ router.beforeEach(
       setTimeout(() => {
         childrenTabs.value = getChildrenTabs(to.fullPath);
         titleDisable.value = true;
+        activeTab.value = to.fullPath;
       }, 200);
     } else {
       childrenTabs.value = getChildrenTabs(to.fullPath);
+      activeTab.value = to.fullPath;
       next();
     }
   }
 );
+
+onMounted(() => {
+  activeTab.value = route.fullPath;
+  initIndicator(activeTab.value);
+  // 监听浏览器窗口变化
+  window.addEventListener("resize", function () {
+    initIndicator(activeTab.value);
+  });
+});
+
+onActivated(() => {
+  activeTab.value = route.fullPath;
+  initIndicator(activeTab.value);
+});
+
+/**
+ * 语言切换时
+ */
+watch(
+    () => locale.value,
+    () => {
+      nextTick().then(() => {
+        initIndicator(activeTab.value);
+      });
+    }
+);
+
 </script>
 <style lang="scss" scoped>
 .headerbar-tabs {
   transition: all 400ms;
-
   li {
     a {
       position: relative;
       color: var(--text-3);
     }
-
     &.activate {
       a {
         color: var(--theme-color);
-        &::after {
-          content: "";
-          position: absolute;
-          z-index: 1;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 100%;
-          background: var(--bg-best);
-          border-radius: 10rem;
-          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        }
         span {
           position: relative;
           z-index: 2;
