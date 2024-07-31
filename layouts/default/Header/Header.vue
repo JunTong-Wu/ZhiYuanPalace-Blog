@@ -293,3 +293,9 @@ const closeMoreDrawer = () => {
   moreDisplay.value = false;
 };
 </script>
+<style>
+::view-transition-new(root),
+::view-transition-old(root) {
+  animation: none;
+}
+</style>
