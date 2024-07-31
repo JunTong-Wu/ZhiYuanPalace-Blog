@@ -170,24 +170,22 @@ button.ZyButton-primary {
 * Type Icon
 **/
 button.ZyButton-icon {
-  background-color: rgb(255 255 255 / 0.5);
+  background-color: transparent;
   color: inherit;
-  border: 1px solid rgba(127, 127, 127, 0.2);
-  border-radius: 9999px;
+  border-radius: 0.5rem;
 }
 
 .dark button.ZyButton-icon {
-  background-color: rgb(255 255 255 / 0.05);
+  background-color: transparent;
   border: none;
 }
 
 @media (hover: hover) {
   .pc button.ZyButton-icon:hover {
-    background-color: var(--theme-color);
-    color: white;
+    background-color: rgba(127, 127, 127, 0.2);
   }
 
-  .pc .dark button.ZyButton-icon:hover {
+  .pc.dark button.ZyButton-icon:hover {
     background-color: rgb(255 255 255 / 0.2);
     border: none;
   }

@@ -17,7 +17,7 @@
               title="搜索"
               type="transparent"
             >
-              <ZyIcon defaultName="search" />
+              <ZyIcon defaultName="search" size="1.25rem" />
             </ZyButton>
             <ZyButton
               class="w-header h-header"
@@ -25,21 +25,21 @@
               title="更多选项"
               type="transparent"
             >
-              <ZyIcon defaultName="more" />
+              <ZyIcon defaultName="more" size="1.25rem" />
             </ZyButton>
           </div>
         </div>
       </div>
 
       <div class="portrait:hidden">
-        <div class="flex justify-end h-full items-center gap-2">
+        <div class="flex justify-end h-full items-center gap-4">
           <ZyButton
             class="flex items-center justify-center"
             @click="openSearchDrawer()"
             title="搜索"
             type="icon"
           >
-            <ZyIcon size="0.75rem" defaultName="search" />
+            <ZyIcon size="1.5rem" defaultName="search" />
           </ZyButton>
           <ZyButton
             class="flex items-center justify-center"
@@ -49,10 +49,10 @@
           >
             <ZyIcon
               v-if="!fullScreenFlag"
-              size="0.75rem"
+              size="1.5rem"
               defaultName="maximize"
             />
-            <ZyIcon v-else size="0.75rem" defaultName="minimize" />
+            <ZyIcon v-else size="1.5rem" defaultName="minimize" />
           </ZyButton>
           <!-- 多语言抽屉 -->
           <ZyPopover title="切换语言" background="var(--bg-panel)">
@@ -62,7 +62,7 @@
                 title="切换语言"
                 type="icon"
               >
-                <ZyIcon size="0.75rem" defaultName="language" />
+                <ZyIcon size="1.5rem" defaultName="language" />
               </ZyButton>
             </template>
             <template #actions>
@@ -98,11 +98,11 @@
             type="icon"
           >
             <ZyIcon
-              size="0.75rem"
+              size="1.5rem"
               class="hidden dark:inline-block"
               defaultName="sun"
             />
-            <ZyIcon size="0.75rem" class="dark:hidden" defaultName="moon" />
+            <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
           </ZyButton>
           <ZyButton
             class="flex items-center justify-center"
@@ -110,7 +110,7 @@
             title="更多选项"
             type="icon"
           >
-            <ZyIcon size="0.75rem" defaultName="more" />
+            <ZyIcon size="1.5rem" defaultName="more" />
           </ZyButton>
         </div>
       </div>
