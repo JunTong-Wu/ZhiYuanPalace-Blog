@@ -19,7 +19,7 @@
               class="w-full py-4 flex-col justify-center"
           >
             <div class="w-full flex justify-center dark" >
-              <img v-if="n.iconImage" :src="setBaseSrc(`/images/icons/${n.iconImage}.png`)" :alt="$t(n.title)" class="w-12 h-12" />
+              <img v-if="n.iconImage" :src="`/static/images/icons/${n.iconImage}.png`" :alt="$t(n.title)" class="w-12 h-12" />
             </div>
           </ZyLink>
         </li>
@@ -31,7 +31,6 @@
 <script setup lang="ts">
 import Indicator from "./Indicator/Indicator.vue";
 import Logo from "../../Logo/Logo.vue";
-import {setBaseSrc} from "~/utils";
 
 const linkList = getNavigationMapForMenu();
 const route = useRoute();

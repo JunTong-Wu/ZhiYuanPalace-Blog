@@ -1,8 +1,3 @@
-export const setBaseSrc = (src: string): string => {
-  const baseSrc = import.meta.env.VITE_APP_WEB_BASE || "/";
-  return baseSrc + '/static' + src;
-};
-
 /**
  * @description: 获取图片的主颜色
  * @param {*} img 图片元素
