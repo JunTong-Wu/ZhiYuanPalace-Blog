@@ -98,7 +98,15 @@
 .third-layer-enter-from {
   opacity: 0;
 }
-.third-layer-leave-to {
-  transform: translateX(calc(100vw - var(--side-bar-width)));
-  opacity: 0;
+@media (orientation: portrait) {
+  .third-layer-leave-to {
+    transform: translateX(calc(100vw - var(--side-bar-width)));
+    opacity: 0;
+  }
+}
+@media (orientation: landscape) {
+  .third-layer-leave-to {
+    transform: translateY(calc(100vw - var(--side-bar-width)));
+    opacity: 0;
+  }
 }

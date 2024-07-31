@@ -52,8 +52,10 @@ const route = useRoute();
 
     img {
       transition: all 0.1s ease-in-out;
-      &:hover {
-        transform: scale(1.2);
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
       }
     }
   }

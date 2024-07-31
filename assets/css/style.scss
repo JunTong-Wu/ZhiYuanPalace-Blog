@@ -71,9 +71,9 @@ a {
     --centered-width: 65rem;
     --side-bar-width: 5.5rem;
     --tool-bar-width: 20rem;
-    --music-bar-height: 3rem;
-    --music-bar-width: 33%;
-    --music-bar-top: 0.75rem;
+    --music-bar-height: 12rem;
+    --music-bar-width: calc(var(--tool-bar-width) - 2rem);
+    --music-bar-top: calc(var(--header-bar-height) + 2rem);
     --pt-main: var(--header-bar-height);
   }
 }
@@ -87,9 +87,9 @@ a {
   --border-color: rgba(127, 127, 127, 0.2);
 }
 :root {
-  --theme-color: rgb(63, 63, 75);
+  --theme-color: rgb(0, 186, 242);
   --theme-color-translucent: transparent;
-  --theme-color-rgb: 63, 63, 75;
+  --theme-color-rgb: 0, 186, 242;
   --bg-card: rgba(255, 255, 255, 0.3); //卡片
   --bg-best-card: rgba(241, 243, 245, 0.8); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
@@ -107,9 +107,9 @@ a {
   --bg-best: rgb(255, 255, 255);
 }
 *.dark {
-  --theme-color: rgb(35, 36, 61);
+  --theme-color: rgb(0, 186, 242);
   --theme-color-translucent: transparent;
-  --theme-color-rgb: 35, 36, 61;
+  --theme-color-rgb: 0, 186, 242;
   --bg-card: rgba(50, 51, 69, 0.3); //卡片
   --bg-best-card: rgba(35, 36, 61, 0.8); //卡片
   --bg-panel: rgba(15, 16, 46, 0.6); //面板

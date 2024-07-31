@@ -57,6 +57,7 @@ export default <Partial<Config>>{
         bg: {
           best: "var(--bg-best)",
           card: "var(--bg-card)",
+          bestCard: "var(--bg-best-card)",
           panel: "var(--bg-panel)",
           transparent: "transparent",
           mask: "var(--bg-mask)",
