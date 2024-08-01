@@ -69,9 +69,9 @@ a {
   :root {
     --header-bar-height: 4.5rem;
     --footer-bar-height: 0rem;
-    --centered-width: 65rem;
+    --centered-width: 86rem;
     --side-bar-width: 5.5rem;
-    --tool-bar-width: 20rem;
+    --tool-bar-width: 24rem;
     --music-bar-height: 12rem;
     --music-bar-width: calc(var(--tool-bar-width) - 2rem);
     --music-bar-top: calc(var(--header-bar-height) + 2rem);
@@ -167,4 +167,9 @@ a {
   ::-webkit-scrollbar-track {
     background-color: transparent; /* 设置滚动条的背景颜色 */
   }
+}
+
+.container {
+  max-width: var(--centered-width);
+  margin: 0 auto;
 }
