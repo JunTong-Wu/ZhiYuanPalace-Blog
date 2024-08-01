@@ -1,5 +1,5 @@
 <template>
-  <aside class="zy-side-bar color-text-1 px-1 overflow-hidden portrait:hidden">
+  <aside class="zy-side-bar color-text-1 px-1 overflow-hidden portrait:hidden select-none">
     <Avatar class="mb-8" />
     <Navigation />
   </aside>

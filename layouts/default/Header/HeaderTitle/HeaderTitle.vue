@@ -15,7 +15,7 @@
           :to="tabs.path"
           class="h-full flex items-center justify-center px-8 portrait:px-6 text-text-3"
         >
-          <div class="flex items-center text-base gap-2 portrait:text-sm">
+          <div class="flex items-center text-base gap-2 portrait:text-sm select-none">
             <ZyIcon class="landscape:hidden" size="1rem" :defaultName="tabs.activatedIcon" />
             <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.activatedIcon" />
             {{ $t(tabs.title) }}

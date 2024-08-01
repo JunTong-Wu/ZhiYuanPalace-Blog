@@ -1,6 +1,6 @@
 <template>
   <header class="h-header color-text-1 overflow-hidden">
-    <div class="absolute top-0 z-0 h-header w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"></div>
+<!--    <div class="absolute top-0 z-0 h-header w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"></div>-->
     <div class="zy-header-logo-wrapper portrait:hidden absolute top-1/2 z-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center h-header">
       <Logo class="px-4 select-none" />
       <h1 class="font-vivo text-xl font-bold text-center opacity-50 pointer-events-none select-none">
