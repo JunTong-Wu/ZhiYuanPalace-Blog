@@ -1,0 +1,9 @@
+@font-face {
+    font-family: vivoTypeRegular;
+    font-weight: 700;
+    font-display: swap;
+    src: url("./vivoTypeCNRegular.woff2") format("woff2"),
+    url("./vivoTypeCNRegular.woff") format("woff"),
+    url("./vivoTypeCNRegular.ttf") format("truetype"),
+    url("./vivoTypeCNRegular.eot") format("embedded-opentype");
+}

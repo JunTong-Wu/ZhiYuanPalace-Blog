@@ -4,11 +4,12 @@
   "text": "TEXT",
   "audio": "AUDIO",
   "music": "MUSIC",
-  "about": "ABOUT",
-  "article": "ARTICLE",
-  "shuoshuo": "SHUOSHUO",
-  "photo": "PHOTO",
-  "video": "VIDEO",
-  "information": "INFORMATION",
-  "friend": "FRIEND"
+  "about": "About",
+  "article": "Article",
+  "shuoshuo": "Microblog",
+  "photo": "Photo",
+  "video": "Video",
+  "information": "Info",
+  "friend": "Friend",
+  "zhiYuanPalace": "ZhiYuanPalace"
 }

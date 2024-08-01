@@ -10,6 +10,9 @@ import type { Config } from "tailwindcss";
 export default <Partial<Config>>{
   darkMode: "selector",
   theme: {
+    fontFamily: {
+      'vivo':["vivoTypeRegular", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+    },
     extend: {
       height: {
         header: "var(--header-bar-height)",
@@ -38,6 +41,7 @@ export default <Partial<Config>>{
         "sidebar-toolbar":
           "calc(var(--side-bar-width) + var(--tool-bar-width))",
         toolbar: "var(--tool-bar-width)",
+        header: "var(--header-bar-height)",
         main: "var(--pt-main)",
       },
       margin: {

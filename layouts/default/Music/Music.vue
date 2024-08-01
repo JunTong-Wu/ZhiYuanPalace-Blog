@@ -1,6 +1,8 @@
 <template>
   <aside id="zy-music-bar" class="h-music">
-    <div class="fixed top-header landscape:right-8 w-music z-0 bg-bg-opaque h-64 portrait:hidden"></div>
+    <div class="fixed top-0 landscape:right-0 w-toolbar z-0 pt-header bg-bg-opaque portrait:hidden">
+      <div class="h-64"></div>
+    </div>
     <div class="relative z-10 h-full portrait:flex items-center landscape:bg-bg-bestCard">
       <div class="flex relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4">
         <img

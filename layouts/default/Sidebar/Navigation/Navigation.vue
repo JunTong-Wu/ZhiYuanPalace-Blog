@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Logo class="fixed left-0 top-0 h-header w-sidebar z-80" />
     <nav class="relative">
       <div class="indicator-layer" id="indicator-layer">
         <Indicator :msg="getNavigationMap()" />
@@ -9,17 +8,18 @@
         <li
             v-for="n in linkList"
 
-            class="sidebar-navigation h-20 flex"
+            class="sidebar-navigation h-24 flex py-2"
             :class="{ activate: routerActivate(route, n.path) }"
         >
           <ZyLink
               v-zy-ripple
               :to="`${n.path}`"
               :title="$t(n.title)"
-              class="w-full py-4 flex-col justify-center"
+              class="w-full flex-col justify-center"
           >
-            <div class="w-full flex justify-center dark" >
-              <img v-if="n.iconImage" :src="`/static/images/icons/${n.iconImage}.png`" :alt="$t(n.title)" class="w-12 h-12" />
+            <div class="w-full flex justify-center dark relative" >
+              <img v-if="n.iconImage" :src="`/static/images/icons/${n.iconImage}.png`" :alt="$t(n.title)" class="w-10 h-10" />
+              <span class="absolute -bottom-5 text-xs">{{ $t(n.title) }}</span>
             </div>
           </ZyLink>
         </li>
@@ -30,7 +30,6 @@
 </template>
 <script setup lang="ts">
 import Indicator from "./Indicator/Indicator.vue";
-import Logo from "../../Logo/Logo.vue";
 
 const linkList = getNavigationMapForMenu();
 const route = useRoute();
@@ -44,10 +43,8 @@ const route = useRoute();
 }
 
 .sidebar-navigation {
-  padding: 0.25rem;
   a {
     border-radius: 1rem;
-    overflow: hidden;
 
     img {
       transition: all 0.1s ease-in-out;

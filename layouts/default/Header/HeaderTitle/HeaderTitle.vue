@@ -24,7 +24,7 @@
       </li>
     </ul>
     <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1" class="headerbar-title ml-2 px-4 py-1 border-l-4 border-theme">
-      <span class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1">{{ $t(childrenTabs[0].title) }}</span>
+      <span class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo">{{ $t(childrenTabs[0].title) }}</span>
     </div>
   </nav>
 </template>
