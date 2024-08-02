@@ -8,8 +8,8 @@
       <div class="card-inner h-full relative rounded-3xl shadow-sm" >
         <div class="border-layout absolute inset-0 overflow-hidden rounded-3xl"></div>
         <div class="content-layout h-full overflow-hidden p-1 relative rounded-3xl z-1" >
-          <div class="h-full p-6 pt-12 rounded-[1.25rem] text-center bg-bg-bestCard" >
-            <h3 class="text-text-1 text-3xl my-2 font-bold portrait:text-2xl portrait:font-normal" >{{ $t(item.title) }}</h3>
+          <div class="h-full px-6 pt-12 pb-8 rounded-[1.25rem] text-center bg-bg-bestCard" >
+            <h3 class="text-text-1 text-3xl my-2 font-bold portrait:text-2xl portrait:font-normal font-vivo" >{{ $t(item.title) }}</h3>
             <p class="text-text-2 text-base portrait:text-sm whitespace-pre-line">{{ $t(item.text) }}</p>
           </div>
         </div>
@@ -38,11 +38,6 @@
   </div>
 </template>
 <script setup>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 const items = ref([
   {
     title: "article",
@@ -83,42 +78,10 @@ const items = ref([
 ]);
 
 onMounted(() => {
-  let cardsAllScrollTrigger = [];
-  const cards = document.querySelectorAll(".service-card");
-  for (let i = 0; i < cards.length; i++) {
-    const animation = gsap.fromTo(
-        cards[i],
-        {
-          opacity: 0,
-          y: 100,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay: (100 * i) / 1000,
-          ease: "ease-in-out",
-        }
-    );
-    cardsAllScrollTrigger[i] = ScrollTrigger.create({
-      trigger: cards[i],
-      animation: animation,
-      start: "top bottom",
-      end: "bottom top",
-      toggleActions: "play none none reverse",
-    });
-  }
-
-  const refreshScrollTriggers = debounce(() => {
-    cardsAllScrollTrigger.forEach((trigger) => {
-      trigger.refresh();
-    });
-  }, 400);
 
   const mouse = { x: 0, y: 0 };
 
   function onWindowResize() {
-    refreshScrollTriggers();
     setTimeout(() => {
       if (isMobileDevice()) {
         mouse.x = 0;
