@@ -6,7 +6,7 @@
       <p class="text-lg text-text-2 portrait:text-base mb-4">{{ $t("bannerSlogan1") }}</p>
       <p class="text-lg text-text-2 portrait:text-base mb-4 portrait:hidden">{{ $t("bannerSlogan2") }}</p>
     </div>
-    <div class="absolute -right-32 -bottom-24 portrait:hidden">
+    <div v-zy-parallax-translation class="absolute -right-32 -bottom-24 portrait:hidden">
       <img class="landscape:h-[32rem]" src="@/assets/image/banner.png" alt="">
     </div>
   </div>

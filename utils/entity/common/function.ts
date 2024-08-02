@@ -355,7 +355,8 @@ export const isVertical = () => {
  */
 export const getAncestorSectionByElement = (element: HTMLElement | null): HTMLElement | null => {
   let ancestor: HTMLElement | null = element?.parentNode as HTMLElement | null;
-  while (ancestor !== null && ancestor.tagName.toLowerCase() !== "section") {
+  while (ancestor !== null && ancestor.tagName.toLowerCase() !== "section" && ancestor.tagName.toLowerCase() !== "body") {
+    console.log(ancestor)
     ancestor = ancestor.parentNode as HTMLElement | null;
   }
   return ancestor;
