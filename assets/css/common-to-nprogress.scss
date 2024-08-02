@@ -7,8 +7,8 @@
 #nprogress .bar {
   background: var(--progress-color);
   position: fixed;
-  z-index: 9999;
-  top: 0;
+  z-index: 20;
+  top: var(--header-bar-height);
   bottom: auto;
   left: 0;
   width: 100%;
@@ -39,35 +39,30 @@
     z-index: 1031;
     inset: 0;
     top: 0;
-    padding-top: 0.75rem;
-    padding-left: 11rem;
+    padding-top: 1rem;
+    padding-left: calc(var(--side-bar-width));
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
+  }
+  #nprogress .bar {
+    box-shadow: 0 0 10px var(--progress-color), 0 0 5px var(--progress-color);
   }
 }
 @media (orientation: portrait) {
   /* 竖屏 */
   #nprogress .spinner {
-    position: fixed;
-    z-index: 1031;
-    inset: 0;
-    top: 0;
-    padding-top: 0.5rem;
-    padding-left: 1rem;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    display: none;
+  }
+  #nprogress .bar {
+    z-index: 40;
+    top: calc(var(--header-bar-height) + var(--music-bar-height));
   }
 }
 
-#nprogress .spinner {
-  display: none;
-}
-
 #nprogress .spinner-icon {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   box-sizing: border-box;
   border: solid 0.2rem transparent;
   border-top-color: var(--progress-color);
