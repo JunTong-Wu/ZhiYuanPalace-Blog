@@ -1,10 +1,12 @@
 <template>
-  <div class="pt-main">
-    <div class="p-4 xs:p-5 sm:p-6 md:p-7 lg:p-8">TEST</div>
+  <CommonMainSection>
+    TEST
     <Toolbar />
-  </div>
+  </CommonMainSection>
 </template>
 <script setup lang="ts">
+import CommonMainSection from "~/components/other/CommonMainSection/CommonMainSection.vue";
+
 useHead({
   title: "相册",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
