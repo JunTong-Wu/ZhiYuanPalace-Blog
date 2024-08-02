@@ -1,5 +1,5 @@
 <template>
-  <div class="pr-toolbar pt-main">
+  <div class="pt-main">
     <div class="portrait:p-0 landscape:p-4 xs:p-4 sm:p-6 md:p-7 lg:p-8">
       <div>
         <div
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <Toolbar class="absolute top-0 bottom-0 right-0 w-toolbar pt-main" />
+    <Toolbar />
   </div>
 </template>
 <script setup lang="ts">

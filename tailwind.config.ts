@@ -46,6 +46,7 @@ export default <Partial<Config>>{
       },
       margin: {
         header: "var(--header-bar-height)",
+        toolbar: "var(--tool-bar-width)",
       },
       colors: {
         transparent: "transparent",
