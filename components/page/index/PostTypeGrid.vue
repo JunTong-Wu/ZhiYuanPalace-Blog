@@ -9,8 +9,8 @@
         <div class="border-layout absolute inset-0 overflow-hidden rounded-3xl"></div>
         <div class="content-layout h-full overflow-hidden p-1 relative rounded-3xl z-1" >
           <div class="h-full p-6 pt-12 rounded-[1.25rem] text-center bg-bg-bestCard" >
-            <h3 class="text-text-1 text-2xl my-2 font-bold" >{{ $t(item.title) }}</h3>
-            <p class="text-text-2 text-sm whitespace-pre-line">{{ $t(item.text) }}</p>
+            <h3 class="text-text-1 text-3xl my-2 font-bold portrait:text-2xl portrait:font-normal" >{{ $t(item.title) }}</h3>
+            <p class="text-text-2 text-base portrait:text-sm whitespace-pre-line">{{ $t(item.text) }}</p>
           </div>
         </div>
         <div class="absolute h-16 left-1/2 -ml-8 overflow-hidden shadow-sm -top-8 w-16 z-2 rounded-3xl rounded-tr-none">
