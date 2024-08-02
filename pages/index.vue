@@ -10,6 +10,7 @@
         <PostTypeGrid />
       </div>
     </div>
+    <Toolbar />
   </CommonMainSection>
 </template>
 <script setup lang="ts">

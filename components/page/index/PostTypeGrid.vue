@@ -3,17 +3,17 @@
     <div
         v-for="(item, i) in items"
         :data-index="i"
-        class="service-card pt-8 portrait:col-span-12 portrait:xs:col-span-6 landscape:col-span-4 relative"
+        class="service-card pt-8 portrait:col-span-6 landscape:col-span-4 relative"
     >
-      <div class="card-inner h-full relative rounded-3xl shadow-sm" >
+      <NuxtLink :to="item.path" class="card-inner h-full relative rounded-3xl shadow-sm" >
         <div class="border-layout absolute inset-0 overflow-hidden rounded-3xl"></div>
         <div class="content-layout h-full overflow-hidden p-1 relative rounded-3xl z-1" >
-          <div class="h-full px-6 pt-12 pb-8 rounded-[1.25rem] text-center bg-bg-bestCard" >
+          <div class="h-full px-6 portrait:px-2 pt-12 pb-8 rounded-[1.25rem] text-center bg-bg-bestCard" >
             <h3 class="text-text-1 text-3xl my-2 font-bold portrait:text-2xl portrait:font-normal font-vivo" >{{ $t(item.title) }}</h3>
-            <p class="text-text-2 text-base portrait:text-sm whitespace-pre-line">{{ $t(item.text) }}</p>
+            <p class="text-text-2 text-base portrait:text-xs whitespace-pre-line">{{ $t(item.text) }}</p>
           </div>
         </div>
-        <div class="absolute h-16 left-1/2 -ml-8 overflow-hidden shadow-sm -top-8 w-16 z-2 rounded-3xl rounded-tr-none">
+        <div class="absolute h-16 w-16 left-1/2 -ml-8 -top-8 overflow-hidden shadow-sm z-2 rounded-2xl rounded-tr-none">
           <div class="absolute bg-bg-opaque flex h-full inset-0 items-center justify-center" >
             <div class="flex h-16 items-center justify-center w-full">
               <ZyIcon
@@ -33,7 +33,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -44,36 +44,42 @@ const items = ref([
     text: "articleModuleSlogan",
     defaultIcon: "article-default",
     activatedIcon: "article-activated",
+    path: "/text/article",
   },
   {
     title: "shuoshuo",
     text: "shuoshuoModuleSlogan",
     defaultIcon: "shuoshuo-default",
     activatedIcon: "shuoshuo-activated",
+    path: "/text/shuoshuo",
   },
   {
     title: "music",
     text: "musicModuleSlogan",
     defaultIcon: "music-default",
     activatedIcon: "music-activated",
+    path: "/music",
   },
   {
     title: "photo",
     text: "photoModuleSlogan",
     defaultIcon: "photo-default",
     activatedIcon: "photo-activated",
+    path: "/audio/photo",
   },
   {
     title: "video",
     text: "videoModuleSlogan",
     defaultIcon: "video-default",
     activatedIcon: "video-activated",
+    path: "/audio/video",
   },
   {
     title: "friend",
     text: "friendModuleSlogan",
     defaultIcon: "friend-default",
     activatedIcon: "friend-activated",
+    path: "/about/friend",
   },
 ]);
 
