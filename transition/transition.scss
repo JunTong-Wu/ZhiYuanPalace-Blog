@@ -3,6 +3,7 @@
 @import url("./footerBar/footerBar.scss");
 @import url("./articleCard/articleCard.scss");
 @import url("./music/music.scss");
+@import url("./toolBar/toolBar.scss");
 
 @keyframes an-fade-in-from-left {
   0% {
@@ -40,7 +41,4 @@
   .header-title {
     animation: an-fade-in-from-left 400ms;
   }
-}
-.zy-tool-bar {
-  animation: an-fade-in-from-right 400ms;
 }

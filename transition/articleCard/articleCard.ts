@@ -1,6 +1,7 @@
 import { headerBarHide } from "@/transition/headerBar/headerBar";
 import { footerBarHide } from "@/transition/footerBar/footerBar";
 import { musicBarHide } from "@/transition/music/music";
+import { toolBarHide } from "@/transition/toolBar/toolBar";
 
 export function cardTransitionStart(element: any, callback: () => void) {
   const mainViewElement = document.querySelector(".main-view") as any;
@@ -46,6 +47,7 @@ export function cardTransitionStart(element: any, callback: () => void) {
         footerBarHide();
         headerBarHide();
         musicBarHide();
+        toolBarHide();
         copyElement.classList.add("transition-in");
         setTimeout(() => {
           copyElement.style.top = 0 + "px";

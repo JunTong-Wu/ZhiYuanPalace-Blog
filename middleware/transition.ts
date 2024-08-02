@@ -2,6 +2,7 @@ import NProgress from "nprogress";
 import { headerBarHide, headerBarShow } from "@/transition/headerBar/headerBar";
 import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
 import { musicBarHide, musicBarShow } from "@/transition/music/music";
+import { toolBarHide, toolBarShow } from "@/transition/toolBar/toolBar";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
@@ -93,6 +94,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       (to.meta.pageTransition as any).onAfterEnter = () => {
         headerBarShow();
         musicBarShow();
+        toolBarShow();
       };
     }
   }
@@ -100,6 +102,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     footerBarHide();
     headerBarHide();
     musicBarHide();
+    toolBarHide();
     if (from.meta.pageTransition && to.meta.pageTransition) {
       (from.meta.pageTransition as any).name = "third-layer";
       (to.meta.pageTransition as any).name = "second-layer-prev";
@@ -107,6 +110,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         footerBarShow();
         headerBarShow();
         musicBarShow();
+        toolBarShow();
       };
     }
   }

@@ -1,0 +1,17 @@
+@keyframes an-tool-bar-fade-in {
+  0% {
+    transform: translateX(calc(100% + 2rem));
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+#zy-tool-bar {
+  animation: an-tool-bar-fade-in 400ms;
+  transition: transform 400ms, background 0ms;
+}
+#zy-tool-bar.transition-translate-out {
+  transform: translateX(calc(100% + 2rem));
+}
