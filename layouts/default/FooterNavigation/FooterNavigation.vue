@@ -1,5 +1,5 @@
 <template>
-  <footer class="zy-footer h-footer flex justify-center landscape:hidden">
+  <footer class="zy-footer-navigation h-footer flex justify-center landscape:hidden">
     <div
       class="h-full flex mx-auto w-full xs:w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%]"
     >

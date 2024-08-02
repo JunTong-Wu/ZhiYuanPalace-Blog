@@ -1,8 +1,10 @@
 import NProgress from "nprogress";
 import { headerBarHide, headerBarShow } from "@/transition/headerBar/headerBar";
 import { footerBarHide, footerBarShow } from "@/transition/footerBar/footerBar";
+import { footerColumnsHide, footerColumnsShow } from "@/transition/footerColumns/footerColumns";
 import { musicBarHide, musicBarShow } from "@/transition/music/music";
 import { toolBarHide, toolBarShow } from "@/transition/toolBar/toolBar";
+
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
@@ -95,11 +97,13 @@ export default defineNuxtRouteMiddleware((to, from) => {
         headerBarShow();
         musicBarShow();
         toolBarShow();
+        footerColumnsShow();
       };
     }
   }
   if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) == 2) {
     footerBarHide();
+    footerColumnsHide();
     headerBarHide();
     musicBarHide();
     toolBarHide();
@@ -108,6 +112,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       (to.meta.pageTransition as any).name = "second-layer-prev";
       (to.meta.pageTransition as any).onEnter = () => {
         footerBarShow();
+        footerColumnsShow();
         headerBarShow();
         musicBarShow();
         toolBarShow();

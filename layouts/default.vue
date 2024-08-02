@@ -1,7 +1,7 @@
 <template>
-  <div id="layout-default">
+  <div id="layout-default" class="relative overflow-hidden">
     <Sidebar
-        class="fixed top-0 bottom-0 left-0 w-sidebar z-30 pt-main bg-bg-sideBar text-white"
+        class="fixed top-0 bottom-0 left-0 w-sidebar z-40 pt-main bg-bg-sideBar text-white"
     />
     <div
         class="w-sidebar h-full fixed z-30 top-0 left-0  portrait:hidden pointer-events-none"
@@ -9,11 +9,12 @@
     </div>
     <Header class="fixed top-0 left-sidebar right-0 z-40 landscape:backdrop-blur-3xl landscape:bg-bg-headBar portrait:bg-bg-opaque" />
 
-    <div class="layout-default-main relative z-20 mr-toolbar">
+    <div id="layout-default-main" class="layout-default-main relative z-20 mr-toolbar">
       <main class="flex-1 pl-sidebar">
         <div class="main-view text-base relative overflow-hidden">
           <div class="main-view-inner">
             <slot />
+
           </div>
         </div>
       </main>
@@ -21,12 +22,14 @@
     <Music
         class="fixed top-music landscape:right-8 w-music portrait:z-50 landscape:z-30 portrait:bg-bg-opaque landscape:rounded-3xl landscape:overflow-hidden landscape:shadow-sm"
     />
-    <Footer class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-bg-opaque" />
+    <FooterColumns />
+    <FooterNavigation class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-bg-opaque" />
   </div>
 </template>
 <script setup lang="ts">
 import Header from "./default/Header/Header.vue";
 import Sidebar from "./default/Sidebar/Sidebar.vue";
-import Footer from "./default/Footer/Footer.vue";
+import FooterNavigation from "./default/FooterNavigation/FooterNavigation.vue";
+import FooterColumns from "./default/FooterColumns/FooterColumns.vue";
 import Music from "./default/Music/Music.vue";
 </script>

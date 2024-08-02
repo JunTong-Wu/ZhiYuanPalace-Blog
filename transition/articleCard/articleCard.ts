@@ -2,6 +2,7 @@ import { headerBarHide } from "@/transition/headerBar/headerBar";
 import { footerBarHide } from "@/transition/footerBar/footerBar";
 import { musicBarHide } from "@/transition/music/music";
 import { toolBarHide } from "@/transition/toolBar/toolBar";
+import { footerColumnsHide } from "@/transition/footerColumns/footerColumns";
 
 export function cardTransitionStart(element: any, callback: () => void) {
   const mainViewElement = document.querySelector(".main-view") as any;
@@ -45,6 +46,7 @@ export function cardTransitionStart(element: any, callback: () => void) {
 
       setTimeout(() => {
         footerBarHide();
+        footerColumnsHide();
         headerBarHide();
         musicBarHide();
         toolBarHide();
