@@ -19,7 +19,7 @@
       </main>
     </div>
     <Music
-        class="fixed top-music landscape:right-8 w-music portrait:z-50 landscape:z-30 portrait:bg-bg-opaque landscape:rounded-2xl landscape:overflow-hidden landscape:shadow-sm"
+        class="fixed top-music landscape:right-8 w-music portrait:z-50 landscape:z-30 portrait:bg-bg-opaque landscape:rounded-3xl landscape:overflow-hidden landscape:shadow-sm"
     />
     <Footer class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-bg-opaque" />
   </div>

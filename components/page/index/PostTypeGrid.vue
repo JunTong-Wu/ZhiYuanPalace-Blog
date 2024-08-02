@@ -3,33 +3,33 @@
     <div
         v-for="(item, i) in items"
         :data-index="i"
-        class="service-card pt-7.5 portrait:col-span-12 portrait:xs:col-span-6 landscape:col-span-4 relative"
+        class="service-card pt-8 portrait:col-span-12 portrait:xs:col-span-6 landscape:col-span-4 relative"
     >
-      <div class="card-inner h-full relative rounded-2xl shadow-sm" >
-        <div class="border-layout absolute inset-0 overflow-hidden rounded-2xl"></div>
-        <div class="content-layout h-full overflow-hidden p-1 relative rounded-2xl z-1" >
-          <div class="h-full p-6 pt-12 rounded-[0.75rem] text-center bg-bg-bestCard" >
-            <h3 class="color-text-1 text-2xl my-2" >{{ $t(item.title) }}</h3>
-            <p class="color-text-2 text-lg">{{ $t(item.text) }}</p>
+      <div class="card-inner h-full relative rounded-3xl shadow-sm" >
+        <div class="border-layout absolute inset-0 overflow-hidden rounded-3xl"></div>
+        <div class="content-layout h-full overflow-hidden p-1 relative rounded-3xl z-1" >
+          <div class="h-full p-6 pt-12 rounded-[1.25rem] text-center bg-bg-bestCard" >
+            <h3 class="text-text-1 text-2xl my-2 font-bold" >{{ $t(item.title) }}</h3>
+            <p class="text-text-2 text-sm whitespace-pre-line">{{ $t(item.text) }}</p>
           </div>
         </div>
-        <div class="absolute h-16 left-1/2 -ml-8 overflow-hidden shadow-sm -top-8 w-16 z-2 rounded-2xl rounded-tr-none">
+        <div class="absolute h-16 left-1/2 -ml-8 overflow-hidden shadow-sm -top-8 w-16 z-2 rounded-3xl rounded-tr-none">
           <div class="absolute bg-bg-opaque flex h-full inset-0 items-center justify-center" >
             <div class="flex h-16 items-center justify-center w-full">
               <ZyIcon
                   :default-linear-gradient="{
                   direction: 'bottom',
-                  from: 'var(--theme-linear-gradient-color-2)',
-                  to: 'var(--theme-linear-gradient-color-1)',
+                  from: 'var(--theme-color)',
+                  to: 'var(--text-1)',
                 }"
-                  :default-name="item.icon"
+                  :default-name="item.defaultIcon"
                   size="2rem"
               />
             </div>
           </div>
           <div class="active-layout absolute bg-theme h-full inset-0">
             <div class="flex h-16 items-center justify-center w-full">
-              <ZyIcon :activated="true" :activated-name="item.icon" activated-color="white" size="2rem" />
+              <ZyIcon :activated="true" :activated-name="item.activatedIcon" activated-color="white" size="2rem" />
             </div>
           </div>
         </div>
@@ -45,34 +45,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 const items = ref([
   {
-    title: "serviceGrid1Title",
-    text: "serviceGrid1Content",
-    icon: "coins",
+    title: "article",
+    text: "articleModuleSlogan",
+    defaultIcon: "article-default",
+    activatedIcon: "article-activated",
   },
   {
-    title: "serviceGrid2Title",
-    text: "serviceGrid2Content",
-    icon: "seal",
+    title: "shuoshuo",
+    text: "shuoshuoModuleSlogan",
+    defaultIcon: "shuoshuo-default",
+    activatedIcon: "shuoshuo-activated",
   },
   {
-    title: "serviceGrid3Title",
-    text: "serviceGrid3Content",
-    icon: "form-seal",
+    title: "music",
+    text: "musicModuleSlogan",
+    defaultIcon: "music-default",
+    activatedIcon: "music-activated",
   },
   {
-    title: "serviceGrid4Title",
-    text: "serviceGrid4Content",
-    icon: "analysis",
+    title: "photo",
+    text: "photoModuleSlogan",
+    defaultIcon: "photo-default",
+    activatedIcon: "photo-activated",
   },
   {
-    title: "serviceGrid5Title",
-    text: "serviceGrid5Content",
-    icon: "handshake",
+    title: "video",
+    text: "videoModuleSlogan",
+    defaultIcon: "video-default",
+    activatedIcon: "video-activated",
   },
   {
-    title: "serviceGrid6Title",
-    text: "serviceGrid6Content",
-    icon: "api",
+    title: "friend",
+    text: "friendModuleSlogan",
+    defaultIcon: "friend-default",
+    activatedIcon: "friend-activated",
   },
 ]);
 

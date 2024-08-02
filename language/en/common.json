@@ -4,12 +4,18 @@
   "text": "TEXT",
   "audio": "AUDIO",
   "music": "MUSIC",
+  "musicModuleSlogan": "Music Module",
   "about": "About",
   "article": "Article",
+  "articleModuleSlogan": "Article Module",
   "shuoshuo": "Microblog",
+  "shuoshuoModuleSlogan": "Microblog Module",
   "photo": "Photo",
+  "photoModuleSlogan": "Photo Module",
   "video": "Video",
+  "videoModuleSlogan": "Video Module",
   "information": "Info",
   "friend": "Friend",
+  "friendModuleSlogan": "Friend Module",
   "zhiYuanPalace": "ZhiYuanPalace"
 }

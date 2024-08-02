@@ -4,12 +4,18 @@
   "text": "文字",
   "audio": "媒体",
   "music": "音乐",
+  "musicModuleSlogan": "音乐歌单\n宴酣之乐\n余音绕梁\n感心动耳",
   "about": "关于",
   "article": "文章",
+  "articleModuleSlogan": "生活感想\n学习笔记\n当太阳升起投生事业\n当夕阳西下与爱人相拥",
   "shuoshuo": "说说",
+  "shuoshuoModuleSlogan": "网络文案\n便签收藏\n万般滋味\n皆是生活",
   "photo": "相册",
+  "photoModuleSlogan": "分享你的想法",
   "video": "视频",
+  "videoModuleSlogan": "短视频\n常回忆\n竹影摇曳\n水波映月",
   "information": "资料",
   "friend": "友链",
+  "friendModuleSlogan": "分享你的想法",
   "zhiYuanPalace": "知鸢宫"
 }
