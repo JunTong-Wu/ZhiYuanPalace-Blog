@@ -2,7 +2,7 @@
   <button
     :class="{
       'ZyButton-default': type == 'default',
-      'ZyButton-transparent': type == 'transparent',
+      'ZyButton-text': type == 'text',
       'ZyButton-icon': type == 'icon',
       'ZyButton-primary': type == 'primary',
     }"
@@ -192,17 +192,17 @@ button.ZyButton-icon {
 }
 
 /**
-* Type Transparent
+* Type Text
 **/
-button.ZyButton-transparent {
+button.ZyButton-text {
   background-color: transparent;
   border: none;
   color: inherit;
 }
 
 @media (hover: hover) {
-  .pc button.ZyButton-transparent:hover {
-    background-color: rgb(255 255 255 / 0.05);
+  .pc button.ZyButton-text:hover {
+    color: var(--theme-color);
   }
 }
 </style>

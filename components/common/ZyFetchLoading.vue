@@ -1,5 +1,5 @@
 <template>
-  <div
+  <ul
     v-if="
       fetchData.pending.value ||
       fetchData.error.value ||
@@ -7,16 +7,23 @@
     "
     :class="rowClass"
   >
-    <div v-for="i in minLoadingNumber" :key="`loading-${i}`" :class="cloClass">
+    <li v-for="i in minLoadingNumber" :key="`loading-${i}`" :class="cloClass">
       <slot name="loading"></slot>
-    </div>
-  </div>
-  <div v-else :class="rowClass">
-    <div v-for="i in item?.data" :key="`success-${i}`" :class="cloClass">
-      <slot name="onload" :row="i"></slot>
-    </div>
+    </li>
+  </ul>
+  <ul v-else :class="rowClass">
+    <template v-for="(i,index) in item?.data" :key="`success-${i}`">
+      <template v-if="localMaxDataLength > 0">
+        <li v-if="index < localMaxDataLength" :class="cloClass">
+          <slot name="onload" :row="i"></slot>
+        </li>
+      </template>
+      <li v-else :class="cloClass">
+        <slot name="onload" :row="i"></slot>
+      </li>
+    </template>
     <slot name="onload_noForeach" :row="item.data"></slot>
-  </div>
+  </ul>
 </template>
 <script lang="ts">
 export default {
@@ -42,15 +49,23 @@ export default {
       type: Number,
       default: 1,
     },
+    maxDataLength: {
+      type: Number,
+      default: 0,
+    },
   },
   setup(props) {
     const item = ref();
+    const localMaxDataLength = ref(0);
 
     // 初始化
     item.value = {
       data: [],
       code: 0,
     };
+    if (props.maxDataLength > 0) {
+      localMaxDataLength.value = props.maxDataLength;
+    }
 
     // 服务端获取参数
     if (props.fetchData.res.value && props.fetchData.res.value.code === 0) {
@@ -93,6 +108,7 @@ export default {
 
     return {
       item,
+      localMaxDataLength,
     };
   },
 };

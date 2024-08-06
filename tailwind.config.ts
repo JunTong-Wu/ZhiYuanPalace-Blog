@@ -43,6 +43,7 @@ export default <Partial<Config>>{
         toolbar: "var(--tool-bar-width)",
         header: "var(--header-bar-height)",
         main: "var(--pt-main)",
+        footer: "var(--footer-bar-height)",
       },
       margin: {
         header: "var(--header-bar-height)",
