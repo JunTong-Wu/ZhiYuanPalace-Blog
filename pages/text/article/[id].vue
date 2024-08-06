@@ -1,6 +1,5 @@
 <template>
   <div class="overflow-hidden">
-    <Toolbar class="absolute top-0 z-40 right-0 h-full w-toolbar pt-main" />
     <div class="zy-article-card transition-in">
       <ZyFetchLoading :fetchData="(articleData as any)">
         <template v-slot:loading></template>
@@ -30,6 +29,7 @@
         </template>
       </ZyFetchLoading>
     </div>
+    <Toolbar />
   </div>
 </template>
 <script setup lang="ts">

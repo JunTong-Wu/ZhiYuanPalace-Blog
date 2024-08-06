@@ -12,7 +12,7 @@ export const useMyFetch = function (
     onRequest({ request, options }) {
       options.method = method;
       options.baseURL = import.meta.env.VITE_APP_API_BASE;
-      console.log('请求接口：' + options.baseURL + url);
+      // console.log('请求接口：' + options.baseURL + url);
       if (method == "get") {
         // 如果是get请求，把参数传到query
         // console.log('reqquery:', parameter);
