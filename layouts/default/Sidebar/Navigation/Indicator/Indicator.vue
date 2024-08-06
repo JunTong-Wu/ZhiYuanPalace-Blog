@@ -140,10 +140,11 @@ export default {
   bottom: 0;
   left: 0.3rem;
   width: 0.25rem;
-  background: var(--text-1);
+  background: var(--theme-color);
   z-index: 2;
   border-radius: 100px;
   display: none;
   animation: Init 200ms forwards;
+  box-shadow: 0.1rem 0.2rem 0.5rem var(--theme-color);
 }
 </style>

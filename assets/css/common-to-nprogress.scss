@@ -67,6 +67,7 @@
   border: solid 0.2rem transparent;
   border-top-color: var(--progress-color);
   border-left-color: var(--progress-color);
+  box-shadow: 0 0 10px var(--progress-color), 0 0 5px var(--progress-color);
   border-radius: 50%;
   animation: nprogress-spinner 400ms linear infinite;
 }

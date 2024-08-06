@@ -14,10 +14,10 @@
         <ZyIcon
           size="1.3rem"
           :defaultName="n.defaultIcon"
-          defaultColor="var(--text-2)"
+          defaultColor="var(--text-3)"
           :activatedName="n.activatedIcon"
           :activated="routerActivate(route, n.path)"
-          activatedColor="var(--text-1)"
+          activatedColor="var(--theme-color)"
         />
       </ZyLink>
     </div>

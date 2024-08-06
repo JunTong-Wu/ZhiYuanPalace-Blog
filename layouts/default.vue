@@ -1,7 +1,7 @@
 <template>
   <div id="layout-default" class="relative overflow-hidden">
     <Sidebar
-        class="fixed top-0 bottom-0 left-0 w-sidebar z-40 pt-main bg-bg-sideBar text-white"
+        class="fixed top-0 bottom-0 left-0 w-sidebar z-40 pt-main border-r border-borderColor bg-bg-opaque"
     />
     <div
         class="w-sidebar h-full fixed z-30 top-0 left-0  portrait:hidden pointer-events-none"

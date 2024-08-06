@@ -76,7 +76,7 @@ export default <Partial<Config>>{
             1: "var(--bg-level-1)",
           }
         },
-        bordercolor: "var(--border-color)",
+        borderColor: "var(--border-color)",
         themeColorTranslucent: "var(--theme-color-translucent)",
       },
       screens: {

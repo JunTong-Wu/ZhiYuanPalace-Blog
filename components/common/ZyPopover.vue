@@ -20,7 +20,7 @@
       ></div>
       <div
         ref="mainElement"
-        class="drawer-main backdrop-blur-3xl fixed h-full will-change-transform rounded-lg overflow-hidden shadow-2xl min-w-24 border-none dark:border-1 dark:border-solid dark:border-bordercolor bg-bg-panel"
+        class="drawer-main backdrop-blur-3xl fixed h-full will-change-transform rounded-lg overflow-hidden shadow-2xl min-w-24 border-none dark:border-1 dark:border-solid dark:border-borderColor bg-bg-panel"
         :style="mainStyle"
       >
         <div class="h-full overflow-auto">
