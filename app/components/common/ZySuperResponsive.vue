@@ -20,8 +20,8 @@ export default defineComponent({
     },
     designSize: {
       default: {
-        min_xs_v: 375, //手机竖屏
-        min_xs_h: 812, //手机横屏
+        min_xs_v: 430, //手机竖屏
+        min_xs_h: 764, //手机横屏
         xs_sm_v: 576, //小平板竖屏
         xs_sm_h: 1024, //小平板横屏
         sm_md_v: 720, //大平板竖屏

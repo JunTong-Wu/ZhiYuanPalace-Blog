@@ -140,3 +140,9 @@
   overflow: hidden;
   filter: blur(30px);
 }
+
+@media (orientation: portrait) {
+  .zy-article-card.transition-in {
+    --image-height: 14rem;
+  }
+}
