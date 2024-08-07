@@ -21,7 +21,7 @@ import { cardTransitionStart } from "./ArticleCard";
 export default {
   props: {
     skeleton: { type: Boolean, default: false }, // 指定是否是骨架屏
-    href: { type: String, default: "" }, // 文章链接
+    href: { type: String, default: "" }, // 点击跳转的链接
   },
   setup(props) {
     const router = useRouter();

@@ -1,11 +1,11 @@
 <template>
-  <div class="zy-shuoshuo-card">
+  <div class="zy-album-card">
     <a
-      class="w-full h-full inline-block overflow-hidden cursor-pointer color-text-1"
-      :href="href"
-      @click.prevent="openCard($el)"
+        class="w-full h-full inline-block overflow-hidden cursor-pointer color-text-1"
+        :href="href"
+        @click.prevent="openCard($el)"
     >
-      <div class="zy-shuoshuo-card-inner">
+      <div class="zy-album-card-inner">
         <div class="zy-card-title">
           <slot name="title" />
         </div>
@@ -17,7 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-import { cardTransitionStart } from "./ShuoShuoCard";
+import { cardTransitionStart } from "./AlbumCard";
 export default {
   props: {
     skeleton: { type: Boolean, default: false }, // 指定是否是骨架屏
