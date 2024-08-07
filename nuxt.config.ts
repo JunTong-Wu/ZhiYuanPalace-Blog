@@ -9,6 +9,9 @@ Object.assign(process.env, envData); // 将环境配置信息，添加到process
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import compression from "vite-plugin-compression";
 export default defineNuxtConfig({
+  future: {
+    compatibilityVersion: 4
+  },
   app: {
     pageTransition: { mode: "out-in" },
   },

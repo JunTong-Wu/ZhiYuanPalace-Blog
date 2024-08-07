@@ -84,13 +84,13 @@
   }
 }
 .zy-shuoshuo-card.transition-in {
-  &:hover {
-    transform: none !important;
-  }
   padding: 4rem;
   padding-top: calc(var(--pt-main) + 2rem);
   transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,
   box-shadow 0s;
+  &:hover {
+    transform: none !important;
+  }
   .zy-card-title {
     padding: 2rem;
     font-size: 1.5rem;
