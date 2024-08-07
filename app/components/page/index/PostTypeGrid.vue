@@ -17,19 +17,14 @@
           <div class="absolute bg-bg-opaque flex h-full inset-0 items-center justify-center" >
             <div class="flex h-16 items-center justify-center w-full">
               <ZyIcon
-                  :default-linear-gradient="{
-                  direction: 'bottom',
-                  from: 'var(--theme-color)',
-                  to: 'var(--text-1)',
-                }"
-                  :default-name="item.defaultIcon"
-                  size="2rem"
+                  :default-name="item.activatedIcon"
+                  size="1.5rem"
               />
             </div>
           </div>
           <div class="active-layout absolute bg-theme h-full inset-0">
             <div class="flex h-16 items-center justify-center w-full">
-              <ZyIcon :activated="true" :activated-name="item.activatedIcon" activated-color="white" size="2rem" />
+              <ZyIcon :activated="true" :activated-name="item.activatedIcon" activated-color="white" size="1.5rem" />
             </div>
           </div>
         </div>
