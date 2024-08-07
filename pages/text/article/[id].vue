@@ -33,7 +33,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { cardTransitionEnd } from "~/transition/articleCard/articleCard";
+import { cardTransitionEnd } from "~/components/layout/ArticleCard/ArticleCard";
 
 useHead({
   title: "文章详情",
@@ -67,6 +67,7 @@ watch(articleData.pending, (newValue: any) => {
 });
 </script>
 <style>
+@import url("~/components/layout/ArticleCard/ArticleCard.scss");
 @keyframes an-article-card-text {
   0% {
     transform: translateY(10rem);

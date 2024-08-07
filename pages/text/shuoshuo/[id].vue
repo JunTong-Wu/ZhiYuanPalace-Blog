@@ -12,10 +12,7 @@
             </div>
             <div class="zy-card-image">
               <div v-for="n in item.shuoshuo_images">
-                <img
-                    :src="`https://pan.yiru.love${n}`"
-                    alt=""
-                />
+                <img :src="`https://pan.yiru.love${n}`" alt="" />
               </div>
             </div>
           </div>
@@ -26,8 +23,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import shuoshuoCard from "@/transition/shuoshuoCard/shuoshuoCard.vue";
-import { cardTransitionEnd } from "~/transition/shuoshuoCard/shuoshuoCard";
+import { cardTransitionEnd } from "~/components/layout/ShuoShuoCard/ShuoShuoCard";
 
 useHead({
   title: "说说详情",
@@ -61,19 +57,5 @@ watch(shuoshuoData.pending, (newValue: any) => {
 });
 </script>
 <style>
-@keyframes an-shuoshuo-card-text {
-  0% {
-    transform: translateY(10rem);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0rem);
-    opacity: 1;
-  }
-}
-
-.zy-shuoshuo-card-text {
-  animation: an-shuoshuo-card-text 400ms;
-}
+@import url("~/components/layout/ShuoShuoCard/ShuoShuoCard.scss");
 </style>
