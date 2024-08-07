@@ -17,7 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-import { cardTransitionStart } from "~/components/layout/articleCard/articleCard";
+import { cardTransitionStart } from "~/components/layout/ArticleCard/ArticleCard";
 export default {
   props: {
     skeleton: { type: Boolean, default: false }, // 指定是否是骨架屏
