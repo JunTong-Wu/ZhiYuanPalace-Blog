@@ -1,7 +1,8 @@
 <template>
   <div ref="imageWrapperRef" class="relative" :class="className">
     <div v-if="!isLoading && lazyUrl">
-      <img :src="lazyUrl" :alt="alt" :class="className" :style="style">
+      <img v-if="!preview" :src="lazyUrl" :alt="alt" :style="style">
+      <ZyImagePreview v-else :thumbnailSrc="lazyUrl" :sourceSrc="sourceSrc" :alt="alt" :style="style"></ZyImagePreview>
     </div>
     <div v-else class="loading">
       <ZySkeleton type="image" />
@@ -17,6 +18,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  sourceSrc: {
+    type: String,
+    required: false,
+  },
   alt: {
     type: String,
     default: '',
@@ -29,6 +34,10 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
+  preview: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const isLoading = ref(true);

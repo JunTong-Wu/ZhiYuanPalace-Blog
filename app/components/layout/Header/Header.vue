@@ -125,6 +125,7 @@
       @cancel="closeSearchDrawer"
       position="top"
       size="100%"
+      maskColor="var(--bg-mask)"
     >
     </ZyDrawer>
     <!-- 更多选项抽屉 -->
@@ -134,6 +135,7 @@
       @cancel="closeMoreDrawer"
       position="right"
       size="21rem"
+      maskColor="var(--bg-mask)"
       background="var(--bg-panel)"
     >
     </ZyDrawer>

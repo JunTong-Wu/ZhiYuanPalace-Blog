@@ -9,7 +9,7 @@
       @touchmove.passive="preventTouchGesture($event)"
     >
       <div
-        class="fixed inset-0 transition duration-500 bg-bg-mask"
+        class="fixed inset-0 transition-opacity duration-200 bg-bg-mask"
         :class="maskClass"
         :style="maskStyle"
         @click="closeByMask"
@@ -88,14 +88,14 @@ const requestQueue = ref<Function[]>([]); // 用于存储状态变化的请求�
 const maskClass = ref({
   "opacity-100": false,
   "opacity-0": true,
-  "backdrop-blur": true,
+  "backdrop-blur-xl": true,
 });
 
 const classInit = () => {
   maskClass.value = {
     "opacity-100": props.mask && visible.value,
     "opacity-0": !(props.mask && visible.value),
-    "backdrop-blur": props.mask && visible.value,
+    "backdrop-blur-xl": props.mask && visible.value,
   };
 };
 classInit();

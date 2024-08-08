@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="zy-card-image">
-              <ZyLazyImage :src="`https://pan.yiru.love${item.album_cover}`" alt="" />
+              <ZyLazyImage :src="`https://pan.yiru.love${item.album_cover}`" alt=""/>
             </div>
           </div>
         </template>
@@ -36,7 +36,13 @@
         <template v-slot:loading>test</template>
         <template v-slot:onload="{ row: item }">
           <div>
-            <ZyLazyImage className="w-full rounded-lg overflow-hidden aspect-square" :src="`https://pan.yiru.love${item.photo_thumbnail_path}`" alt="" />
+            <ZyLazyImage
+              className="w-full rounded-lg overflow-hidden aspect-square"
+              :src="`https://pan.yiru.love${item.photo_thumbnail_path}`"
+              :sourceSrc="`https://pan.yiru.love${item.photo_source_path}`"
+              alt=""
+              preview
+            />
           </div>
         </template>
       </ZyFetchLoading>
@@ -62,11 +68,11 @@ definePageMeta({
 });
 
 const route = useRoute();
-const path = route.params.path as string;
+const albumPath = route.params.album as string;
 
 // 获取相册内容
-const albumDetailData = ApiPhotos.search_album_title_by_album_path(path);
-const albumData = ApiPhotos.search_photos_by_album_path(path);
+const albumDetailData = ApiPhotos.search_album_title_by_album_path(albumPath);
+const albumData = ApiPhotos.search_photos_by_album_path(albumPath);
 </script>
 <style>
 @import url("~/components/layout/AlbumCard/AlbumCard.scss");
