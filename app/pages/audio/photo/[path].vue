@@ -21,7 +21,7 @@
         </template>
       </ZyFetchLoading>
     </div>
-    <CommonMainSection noPaddingTop>
+    <CommonMainSection noPaddingTop class="album-data-grid">
       <ZyFetchLoading
           :fetchData="(albumData as any)"
           rowClass="grid grid-cols-12 portrait:gap-2 portrait:xs:gap-4 gap-4"
@@ -70,4 +70,19 @@ const albumData = ApiPhotos.search_photos_by_album_path(path);
 </script>
 <style>
 @import url("~/components/layout/AlbumCard/AlbumCard.scss");
+@keyframes an-album-data-grid {
+  0% {
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+
+.album-data-grid {
+  animation: an-article-card-text 400ms;
+}
 </style>
