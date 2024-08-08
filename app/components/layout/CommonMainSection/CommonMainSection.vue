@@ -1,6 +1,6 @@
 <template>
   <section class="root pt-main">
-    <div class="p-4 xs:p-5 sm:p-6 md:p-7 lg:p-8">
+    <div class="p-8 portrait:px-4 portrait:sm:px-6 portrait:lg:px-8">
       <slot></slot>
     </div>
   </section>

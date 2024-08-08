@@ -23,7 +23,10 @@
           <template v-slot:loading>
             <ShuoShuoCard skeleton>
               <template #image>
-                <ZySkeleton type="image" />
+                <div v-for="n in 3">
+                  <ZySkeleton type="image" />
+                </div>
+
               </template>
               <template #title>
                 <ZySkeleton :row="3" />

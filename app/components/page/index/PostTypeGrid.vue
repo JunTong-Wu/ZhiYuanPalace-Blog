@@ -1,5 +1,5 @@
 <template>
-  <div id="service-grid" class="gap-4 grid grid-cols-12 pt-8" >
+  <div id="service-grid" class="gap-8  portrait:gap-4 portrait:sm:gap-6 portrait:lg:gap-8 grid grid-cols-12 pt-8" >
     <div
         v-for="(item, i) in items"
         :data-index="i"

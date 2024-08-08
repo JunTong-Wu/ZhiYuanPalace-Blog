@@ -33,8 +33,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { cardTransitionEnd } from "~/components/layout/ArticleCard/ArticleCard";
-
 useHead({
   title: "文章详情",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
@@ -55,16 +53,6 @@ const id = route.params.id as string;
 
 // 获取文章内容
 const articleData = ApiArticle.search_article_by_id(id);
-
-watch(articleData.pending, (newValue: any) => {
-  if (!newValue) {
-    if (articleData.res.value && (articleData.res.value as any).code === 0) {
-      setTimeout(() => {
-        cardTransitionEnd();
-      }, 200);
-    }
-  }
-});
 </script>
 <style>
 @import url("~/components/layout/ArticleCard/ArticleCard.scss");

@@ -35,7 +35,7 @@
       transform: scale(0.95);
     }
     .zy-card-image > div:hover {
-      filter: brightness(1.1) contrast(1.1);
+      filter:contrast(1.1);
     }
   }
   .pc .zy-shuoshuo-card.transition-in:hover {

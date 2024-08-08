@@ -1,15 +1,18 @@
 <template>
   <ZySuperResponsive>
     <NuxtLayout>
-      <div mt-header>
+      <CommonMainSection>
         <h1>Error {{ error.statusCode }}</h1>
         <p>{{ error }}</p>
-      </div>
+      </CommonMainSection>
     </NuxtLayout>
   </ZySuperResponsive>
 </template>
 
 <script>
+import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/ArticleCard";
+import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/ShuoShuoCard";
+
 export default {
   name: "TestError",
   props: {
@@ -20,6 +23,8 @@ export default {
     },
   },
   mounted() {
+    ArticleCardTransitionEnd();
+    ShuoShuoCardTransitionEnd();
     console.log(this.error);
   },
 };

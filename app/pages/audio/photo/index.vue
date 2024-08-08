@@ -16,7 +16,7 @@
             :fetchData="(albumListData as any)"
             rowClass="grid grid-cols-12 gap-4 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8"
             cloClass="
-            portrait:col-span-12 landscape:col-span-12
+            portrait:col-span-6 landscape:col-span-12
             portrait:xs:col-span-6 landscape:xs:col-span-6
             portrait:sm:col-span-6 landscape:sm:col-span-6
             portrait:md:col-span-4 landscape:md:col-span-4

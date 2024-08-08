@@ -1,4 +1,6 @@
 import NProgress from "nprogress";
+import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/ArticleCard";
+import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/ShuoShuoCard";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
@@ -92,6 +94,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
         musicBarShow();
         toolBarShow();
         footerColumnsShow();
+        ArticleCardTransitionEnd();
+        ShuoShuoCardTransitionEnd();
       };
     }
   }
@@ -110,6 +114,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
         headerBarShow();
         musicBarShow();
         toolBarShow();
+        ArticleCardTransitionEnd();
+        ShuoShuoCardTransitionEnd();
       };
     }
   }

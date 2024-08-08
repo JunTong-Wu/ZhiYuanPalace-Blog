@@ -23,8 +23,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { cardTransitionEnd } from "~/components/layout/ShuoShuoCard/ShuoShuoCard";
-
 useHead({
   title: "说说详情",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
@@ -45,16 +43,6 @@ const id = route.params.id as string;
 
 // 获取文章内容
 const shuoshuoData = ApiShuoShuo.search_shuoshuo_by_id(id);
-
-watch(shuoshuoData.pending, (newValue: any) => {
-  if (!newValue) {
-    if (shuoshuoData.res.value && (shuoshuoData.res.value as any).code === 0) {
-      setTimeout(() => {
-        cardTransitionEnd();
-      }, 200);
-    }
-  }
-});
 </script>
 <style>
 @import url("~/components/layout/ShuoShuoCard/ShuoShuoCard.scss");
