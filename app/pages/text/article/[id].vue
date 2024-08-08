@@ -6,7 +6,7 @@
         <template v-slot:onload="{ row: item }">
           <div class="zy-article-card-inner">
             <div class="zy-card-image">
-              <img
+              <ZyLazyImage
                 :src="`https://pan.yiru.love${item.article_title_image}`"
                 alt=""
               />

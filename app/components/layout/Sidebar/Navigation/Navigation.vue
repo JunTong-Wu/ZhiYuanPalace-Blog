@@ -4,11 +4,10 @@
       <div class="indicator-layer" id="indicator-layer">
         <Indicator :msg="getNavigationMap()" />
       </div>
-      <ul>
+      <ul class="flex flex-col gap-2">
         <li
             v-for="n in linkList"
-
-            class="sidebar-navigation h-20 flex"
+            class="sidebar-navigation h-16 flex"
             :class="{ activate: routerActivate(route, n.path) }"
         >
           <ZyLink
@@ -18,7 +17,7 @@
               class="w-full flex-col justify-center pl-8"
           >
             <div class="w-full flex items-center gap-4 relative" >
-              <img v-if="n.iconImage" :src="`/static/images/icons/${n.iconImage}.png`" :alt="$t(n.title)" class="w-10 h-10" />
+              <ZyLazyImage v-if="n.iconImage" :src="`/static/images/icons/${n.iconImage}.png`" :alt="$t(n.title)" className="w-10 h-10 rounded-full overflow-hidden" />
               <span>{{ $t(n.title) }}</span>
             </div>
           </ZyLink>
@@ -43,6 +42,10 @@ const route = useRoute();
 }
 
 .sidebar-navigation {
+  &.activate {
+    border-radius: 1rem;
+    background-color: var(--bg-best-card);
+  }
   a {
     border-radius: 1rem;
 

@@ -28,7 +28,6 @@ export const getAncestorSectionByElement = (
     ancestor.tagName.toLowerCase() !== "section" &&
     ancestor.tagName.toLowerCase() !== "body"
   ) {
-    console.log(ancestor);
     ancestor = ancestor.parentNode as HTMLElement | null;
   }
   return ancestor;

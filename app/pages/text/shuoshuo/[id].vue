@@ -12,7 +12,7 @@
             </div>
             <div class="zy-card-image">
               <div v-for="n in item.shuoshuo_images">
-                <img :src="`https://pan.yiru.love${n}`" alt="" />
+                <ZyLazyImage :src="`https://pan.yiru.love${n}`" alt="" />
               </div>
             </div>
           </div>

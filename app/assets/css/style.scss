@@ -168,7 +168,7 @@ a {
 
   ::-webkit-scrollbar-thumb {
     background-color: #c9d1db; /* 设置滑块的颜色 */
-    border-radius: 0px; /* 设置滑块的边角半径 */
+    border-radius: 1rem; /* 设置滑块的边角半径 */
   }
 
   *.dark ::-webkit-scrollbar-thumb {

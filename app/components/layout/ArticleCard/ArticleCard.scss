@@ -28,7 +28,6 @@
       height: var(--image-size);
       overflow: hidden;
       border-radius: 100%;
-      background: var(--bg-best-card);
       * {
         transition: all 200ms ease-in-out;
         width: 100%;
@@ -134,14 +133,6 @@
 .pc .zy-article-card.transition-in:hover {
   transform: none;
   box-shadow: none;
-}
-
-.layout-default-main.transition .main-view-inner {
-  transition: all 600ms, background 0s;
-  opacity: 0;
-  transform: scale(0.8);
-  overflow: hidden;
-  filter: blur(30px);
 }
 
 @media (orientation: portrait) {

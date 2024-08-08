@@ -34,7 +34,7 @@
                 class="sm:rounded-2xl"
               >
                 <template #image>
-                  <img
+                  <ZyLazyImage
                     :src="`https://pan.yiru.love${item.article_title_image}`"
                     alt=""
                   />

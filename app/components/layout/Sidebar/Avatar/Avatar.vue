@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-4 bg-theme rounded-2xl overflow-hidden flex items-center justify-center flex-col gap-4 relative"
+    class="p-4 bg-theme shadow-lg shadow-theme rounded-2xl overflow-hidden flex items-center justify-center flex-col gap-4 relative"
   >
     <div
       class="absolute -z-1 w-full h-full bg-gradient-to-b from-theme to-transparent hue-rotate-30 mix-blend-multiply"

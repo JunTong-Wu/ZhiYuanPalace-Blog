@@ -36,7 +36,7 @@
             <ShuoShuoCard :href="`/text/shuoshuo/${item.shuoshuo_id}`">
               <template #image>
                 <div v-for="n in item.shuoshuo_images">
-                  <img :src="`https://pan.yiru.love${n}`" alt="" />
+                  <ZyLazyImage className="aspect-square" :src="`https://pan.yiru.love${n}`" alt="" />
                 </div>
               </template>
               <template #title>

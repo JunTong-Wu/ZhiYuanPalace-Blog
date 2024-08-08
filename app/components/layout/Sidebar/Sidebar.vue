@@ -2,8 +2,11 @@
   <aside
     class="zy-side-bar color-text-1 px-4 overflow-hidden portrait:hidden select-none"
   >
-    <Logo class="select-none mb-4" />
-    <Avatar class="mb-4" />
+    <Logo class="select-none mb-8" />
+    <Avatar class="mb-8" />
+    <div class="px-8">
+      <div class="border-b border-borderColor mb-4"></div>
+    </div>
     <Navigation />
   </aside>
 </template>

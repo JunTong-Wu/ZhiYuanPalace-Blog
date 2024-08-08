@@ -38,10 +38,10 @@
             <template v-slot:onload="{ row: item }">
               <AlbumCard
                 :href="`/audio/photo/${item.album_path}`"
-                class="sm:rounded-2xl dark"
+                class="sm:rounded-2xl"
               >
                 <template #image>
-                  <img
+                  <ZyLazyImage
                     :src="`https://pan.yiru.love${item.album_cover}`"
                     alt=""
                   />
