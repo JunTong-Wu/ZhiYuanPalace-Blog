@@ -4,7 +4,7 @@
 @media (orientation: portrait) {
   #zy-music-bar.transition-translate-out {
     transform: translateY(
-                    calc(0rem - var(--header-bar-height) - var(--music-bar-height))
+      calc(0rem - var(--header-bar-height) - var(--music-bar-height))
     );
   }
 }
@@ -14,4 +14,3 @@
     transform: translateX(calc(100% + 2rem));
   }
 }
-

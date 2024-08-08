@@ -1,15 +1,18 @@
 <template>
   <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
-
-  <Head>
-    <template v-for="link in head.link" :key="link.id">
-      <Link :id="link.id" :rel="link.rel" :href="link.href" :hreflang="link.hreflang" />
-    </template>
-    <template v-for="meta in head.meta" :key="meta.id">
-      <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
-    </template>
-  </Head>
-
+    <Head>
+      <template v-for="link in head.link" :key="link.id">
+        <Link
+          :id="link.id"
+          :rel="link.rel"
+          :href="link.href"
+          :hreflang="link.hreflang"
+        />
+      </template>
+      <template v-for="meta in head.meta" :key="meta.id">
+        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
+      </template>
+    </Head>
   </Html>
   <ZySuperResponsive>
     <NuxtLayout>
@@ -22,7 +25,7 @@ import "@/assets/css/style.scss";
 import "@/assets/css/common-to-live2d.scss";
 import "@/utils/transition/index.scss";
 import "@/assets/css/common-to-nprogress.scss";
-import "@/assets/css/common-to-markdown.scss"
+import "@/assets/css/common-to-markdown.scss";
 
 // 多语言
 const head = useLocaleHead({
@@ -81,14 +84,13 @@ const myLive2dConfig = () => {
   }
 };
 if (process.client) {
-  const canvas = document.querySelector("#oml-canvas")
-  if(!canvas){
+  const canvas = document.querySelector("#oml-canvas");
+  if (!canvas) {
     const script = document.createElement("script");
     script.src = "/static/js/oh-my-live2d.min.js";
     document.body.appendChild(script);
     myLive2dConfig();
   }
-
 }
 
 // head

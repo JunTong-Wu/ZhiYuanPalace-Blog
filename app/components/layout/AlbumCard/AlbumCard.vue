@@ -1,9 +1,9 @@
 <template>
   <div class="zy-album-card">
     <a
-        class="w-full h-full inline-block overflow-hidden cursor-pointer color-text-1"
-        :href="href"
-        @click.prevent="openCard($el)"
+      class="w-full h-full inline-block overflow-hidden cursor-pointer color-text-1"
+      :href="href"
+      @click.prevent="openCard($el)"
     >
       <div class="zy-album-card-inner">
         <div class="zy-card-title">

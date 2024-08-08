@@ -138,7 +138,7 @@ export default {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0.3rem;
+  left: 0.75rem;
   width: 0.25rem;
   background: var(--theme-color);
   z-index: 2;

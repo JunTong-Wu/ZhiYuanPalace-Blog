@@ -4,7 +4,7 @@
  * @return {*} boolean
  */
 export const isObject = (obj: any) => {
-    return obj !== null && typeof obj === "object";
+  return obj !== null && typeof obj === "object";
 };
 
 /**
@@ -14,58 +14,58 @@ export const isObject = (obj: any) => {
  * @return {*} boolean
  */
 export const looseEqual = function (a: any, b: any): boolean {
-    if (a === b) {
-        //如果是绝对相等就直接返回true
-        return true;
-    }
-    //如果不是绝对相等就哦按的他们是否有相同的形状
-    var isObjectA = isObject(a);
-    var isObjectB = isObject(b);
-    if (isObjectA && isObjectB) {
-        //两个均是对象
-        try {
-            var isArrayA = Array.isArray(a);
-            var isArrayB = Array.isArray(b);
-            if (isArrayA && isArrayB) {
-                //如果都是数组
-                if (a.length === b.length) {
-                    //如果长度相等
-                    return a.every(function (e: any, i: any) {
-                        //用every和递归来比对a数组和b数组的每个元素，并返回
-                        return looseEqual(e, b[i]);
-                    });
-                }
-                //长度都不等直接返回false
-                return false;
-            } else if (a instanceof Date && b instanceof Date) {
-                //如果是Date 则直接getTime 比较
-                return a.getTime() === b.getTime();
-            } else if (!isArrayA && !isArrayB) {
-                //对象的比较
-                //拿到两个对象的key
-                var keysA = Object.keys(a);
-                var keysB = Object.keys(b);
-                if (keysA.length === keysB.length) {
-                    //如果keys相等
-                    return keysA.every(function (key) {
-                        //用every和递归来比对a对象和b对象的每个元素值，并返回
-                        return looseEqual(a[key], b[key]);
-                    });
-                }
-                //长度都不等直接返回false
-                return false;
-            } else {
-                return false;
-            }
-        } catch (e) {
-            return false;
+  if (a === b) {
+    //如果是绝对相等就直接返回true
+    return true;
+  }
+  //如果不是绝对相等就哦按的他们是否有相同的形状
+  var isObjectA = isObject(a);
+  var isObjectB = isObject(b);
+  if (isObjectA && isObjectB) {
+    //两个均是对象
+    try {
+      var isArrayA = Array.isArray(a);
+      var isArrayB = Array.isArray(b);
+      if (isArrayA && isArrayB) {
+        //如果都是数组
+        if (a.length === b.length) {
+          //如果长度相等
+          return a.every(function (e: any, i: any) {
+            //用every和递归来比对a数组和b数组的每个元素，并返回
+            return looseEqual(e, b[i]);
+          });
         }
-    } else if (!isObjectA && !isObjectB) {
-        //如果都不是对象则按String来处理
-        return String(a) === String(b);
-    } else {
+        //长度都不等直接返回false
         return false;
+      } else if (a instanceof Date && b instanceof Date) {
+        //如果是Date 则直接getTime 比较
+        return a.getTime() === b.getTime();
+      } else if (!isArrayA && !isArrayB) {
+        //对象的比较
+        //拿到两个对象的key
+        var keysA = Object.keys(a);
+        var keysB = Object.keys(b);
+        if (keysA.length === keysB.length) {
+          //如果keys相等
+          return keysA.every(function (key) {
+            //用every和递归来比对a对象和b对象的每个元素值，并返回
+            return looseEqual(a[key], b[key]);
+          });
+        }
+        //长度都不等直接返回false
+        return false;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
     }
+  } else if (!isObjectA && !isObjectB) {
+    //如果都不是对象则按String来处理
+    return String(a) === String(b);
+  } else {
+    return false;
+  }
 };
 
 /**
@@ -74,25 +74,24 @@ export const looseEqual = function (a: any, b: any): boolean {
  * @return {*} string
  */
 export const BeiJingTime = function (date: string): string {
-    const time = new Date(+new Date(date) + 8 * 3600 * 1000)
-        .toISOString()
-        .replace(/T/g, " ")
-        .replace(/\.[\d]{3}Z/, "");
-    return time;
+  const time = new Date(+new Date(date) + 8 * 3600 * 1000)
+    .toISOString()
+    .replace(/T/g, " ")
+    .replace(/\.[\d]{3}Z/, "");
+  return time;
 };
-
 
 /**
  * @description: 防抖函数
  * @return : Function
  */
 export const debounce = (func: () => void, delay: number): (() => void) => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    return function (this: Window, ...args: any) {
-        const context = this;
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            func.apply(context, args);
-        }, delay);
-    };
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (this: Window, ...args: any) {
+    const context = this;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
 };

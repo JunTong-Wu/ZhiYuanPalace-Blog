@@ -8,18 +8,18 @@
         <li
             v-for="n in linkList"
 
-            class="sidebar-navigation h-24 flex py-2"
+            class="sidebar-navigation h-20 flex"
             :class="{ activate: routerActivate(route, n.path) }"
         >
           <ZyLink
               v-zy-ripple
               :to="`${n.path}`"
               :title="$t(n.title)"
-              class="w-full flex-col justify-center"
+              class="w-full flex-col justify-center pl-8"
           >
-            <div class="w-full flex justify-center dark relative" >
+            <div class="w-full flex items-center gap-4 relative" >
               <img v-if="n.iconImage" :src="`/static/images/icons/${n.iconImage}.png`" :alt="$t(n.title)" class="w-10 h-10" />
-              <span class="absolute -bottom-5 text-xs">{{ $t(n.title) }}</span>
+              <span>{{ $t(n.title) }}</span>
             </div>
           </ZyLink>
         </li>

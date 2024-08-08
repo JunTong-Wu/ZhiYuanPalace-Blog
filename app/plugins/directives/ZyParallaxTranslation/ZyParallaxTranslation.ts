@@ -65,10 +65,14 @@ export const ZyParallaxTranslation = {
       const yValue = calcValue(mouse.y, window.innerHeight);
 
       el.style.transform = `translate3d(${xValue}px, ${yValue}px, 0)`;
-      const children = el.querySelectorAll<HTMLElement>(".mb-parallax-move-layer-front");
+      const children = el.querySelectorAll<HTMLElement>(
+        ".mb-parallax-move-layer-front"
+      );
       if (children) {
         for (let i = 0; i < children.length; i++) {
-          children[i].style.transform = `translate3d(${xValue * 2}px, ${yValue * 1}px, 50px)`;
+          children[i].style.transform = `translate3d(${xValue * 2}px, ${
+            yValue * 1
+          }px, 50px)`;
         }
       }
 
@@ -92,6 +96,8 @@ function calcValue(mouseCoord: number, screenSize: number): number {
 
 declare function isMobileDevice(): boolean;
 declare function isVertical(): boolean;
-declare function getAncestorSectionByElement(el: HTMLElement): HTMLElement | null;
+declare function getAncestorSectionByElement(
+  el: HTMLElement
+): HTMLElement | null;
 
 export default ZyParallaxTranslation;

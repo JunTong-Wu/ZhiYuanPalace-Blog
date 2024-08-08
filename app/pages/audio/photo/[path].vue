@@ -8,17 +8,14 @@
             <div class="zy-card-title">
               <div class="h-full flex flex-col justify-center">
                 <h4
-                    class="m-0 portrait:text-lg landscape:text-xl portrait:font-normal landscape:font-bold line-clamp-1 text-white"
+                  class="m-0 portrait:text-lg landscape:text-xl portrait:font-normal landscape:font-bold line-clamp-1 text-white"
                 >
                   {{ item.album_title }}
                 </h4>
               </div>
             </div>
             <div class="zy-card-image">
-              <img
-                  :src="`https://pan.yiru.love${item.album_cover}`"
-                  alt=""
-              />
+              <img :src="`https://pan.yiru.love${item.album_cover}`" alt="" />
             </div>
           </div>
         </template>
@@ -28,7 +25,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {ApiPhotos} from "~/utils";
+import { ApiPhotos } from "~/utils";
 
 useHead({
   title: "相册详情",

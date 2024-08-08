@@ -5,7 +5,7 @@
     >
       <div class="col-span-12">
         <div
-          class="portrait:p-0 landscape:py-4 xs:py-4 sm:py-6 md:py-7 lg:py-8 pl-0 rounded-xl"
+          class="portrait:p-0 landscape:py-4 xs:py-4 sm:py-6 md:py-7 lg:py-8 pl-0 rounded-2xl"
         >
           <h3
             class="col-span-12 m-0 font-normal landscape:font-bold text-base sm:text-xl lg:text-2xl pt-4"
@@ -26,7 +26,6 @@
                 <div v-for="n in 3">
                   <ZySkeleton type="image" />
                 </div>
-
               </template>
               <template #title>
                 <ZySkeleton :row="3" />

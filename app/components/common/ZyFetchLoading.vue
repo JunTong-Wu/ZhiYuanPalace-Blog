@@ -12,7 +12,7 @@
     </li>
   </ul>
   <ul v-else :class="rowClass">
-    <template v-for="(i,index) in item?.data" :key="`success-${i}`">
+    <template v-for="(i, index) in item?.data" :key="`success-${i}`">
       <template v-if="localMaxDataLength > 0">
         <li v-if="index < localMaxDataLength" :class="cloClass">
           <slot name="onload" :row="i"></slot>
@@ -75,10 +75,7 @@ export default {
     // 客户端获取参数
     watch(props.fetchData.pending, (newValue: any) => {
       if (!newValue) {
-        if (
-          props.fetchData.res.value &&
-          props.fetchData.res.value.code === 0
-        ) {
+        if (props.fetchData.res.value && props.fetchData.res.value.code === 0) {
           item.value = props.fetchData.res.value;
         }
       }

@@ -1,7 +1,7 @@
 <template>
   <div id="layout-default" class="relative overflow-hidden">
     <Sidebar
-      class="fixed top-0 bottom-0 left-0 w-sidebar z-40 pt-main border-r border-borderColor bg-bg-opaque"
+      class="fixed top-0 bottom-0 left-0 w-sidebar z-40 border-r border-borderColor bg-bg-opaque"
     />
     <div
       class="w-sidebar h-full fixed z-30 top-0 left-0 portrait:hidden pointer-events-none"
@@ -23,7 +23,7 @@
       </main>
     </div>
     <Music
-      class="fixed top-music landscape:right-8 w-music portrait:z-50 landscape:z-30 portrait:bg-bg-opaque landscape:rounded-3xl landscape:overflow-hidden landscape:shadow-sm"
+      class="fixed top-music landscape:right-8 w-music portrait:z-50 landscape:z-30 portrait:bg-bg-opaque landscape:rounded-2xl landscape:overflow-hidden landscape:shadow-sm"
     />
     <FooterColumns />
     <FooterNavigation

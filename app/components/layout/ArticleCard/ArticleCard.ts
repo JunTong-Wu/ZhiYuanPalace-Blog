@@ -33,7 +33,9 @@ export function cardTransitionStart(element: any, callback: () => void) {
       document.body.appendChild(copyElement);
       element.style.opacity = 0;
 
-      const layoutDefault = document.querySelector(".layout-default-main") as any;
+      const layoutDefault = document.querySelector(
+        ".layout-default-main"
+      ) as any;
       if (layoutDefault) {
         layoutDefault.classList.add("transition");
       }

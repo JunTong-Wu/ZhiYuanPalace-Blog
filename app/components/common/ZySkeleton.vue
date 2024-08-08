@@ -1,9 +1,19 @@
 <template>
   <template v-if="type == 'text'">
-    <div v-for="i in row" :key="`skeleton-text${i}`" class="ZySkeleton-text" :class="{ animation: animation }"></div>
+    <div
+      v-for="i in row"
+      :key="`skeleton-text${i}`"
+      class="ZySkeleton-text"
+      :class="{ animation: animation }"
+    ></div>
   </template>
   <template v-if="type == 'image'">
-    <div v-for="i in row" :key="`skeleton-image${i}`" class="ZySkeleton-image" :class="{ animation: animation }"></div>
+    <div
+      v-for="i in row"
+      :key="`skeleton-image${i}`"
+      class="ZySkeleton-image"
+      :class="{ animation: animation }"
+    ></div>
   </template>
 </template>
 <script lang="ts">
@@ -60,10 +70,12 @@ export default {
     width: 100%;
     height: 100%;
     animation: loading 1.5s infinite;
-    background: linear-gradient(90deg,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0));
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0)
+    );
     transform: translateX(-100%);
     z-index: 1;
   }

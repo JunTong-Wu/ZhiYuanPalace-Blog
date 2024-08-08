@@ -5,7 +5,7 @@
     >
       <div class="col-span-12">
         <div
-          class="portrait:p-0 landscape:py-4 xs:py-4 sm:py-6 md:py-7 lg:py-8 pl-0 rounded-xl"
+          class="portrait:p-0 landscape:py-4 xs:py-4 sm:py-6 md:py-7 lg:py-8 pl-0 rounded-2xl"
         >
           <h3
             class="col-span-12 m-0 font-normal landscape:font-bold text-base sm:text-xl lg:text-2xl pt-4"
@@ -19,7 +19,7 @@
             :minLoadingNumber="12"
           >
             <template v-slot:loading>
-              <ArticleCard skeleton class="rounded-xl">
+              <ArticleCard skeleton class="rounded-2xl">
                 <template #image>
                   <ZySkeleton type="image" />
                 </template>
@@ -31,7 +31,7 @@
             <template v-slot:onload="{ row: item }">
               <ArticleCard
                 :href="`/text/article/${item.article_id}`"
-                class="sm:rounded-xl"
+                class="sm:rounded-2xl"
               >
                 <template #image>
                   <img
@@ -63,7 +63,6 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-
 useHead({
   title: "文章",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],

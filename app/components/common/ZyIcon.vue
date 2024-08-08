@@ -1,16 +1,24 @@
 <template>
-  <div :class="{ activated: activated }" :style="{ '--size': size, width: size, height: size }" class="ZyIcon relative">
+  <div
+    :class="{ activated: activated }"
+    :style="{ '--size': size, width: size, height: size }"
+    class="ZyIcon relative"
+  >
     <div
-        v-if="defaultName"
-        :style="{ '--icon-color': defaultLinearGradient ? 'inherit' : defaultColor }"
-        class="icon-default flex"
-        v-html="formatDefaultIcon"
+      v-if="defaultName"
+      :style="{
+        '--icon-color': defaultLinearGradient ? 'inherit' : defaultColor,
+      }"
+      class="icon-default flex"
+      v-html="formatDefaultIcon"
     ></div>
     <div
-        v-if="activatedName"
-        :style="{ '--icon-color': activatedLinearGradient ? 'inherit' : activatedColor }"
-        class="icon-activated flex"
-        v-html="formatActivatedIcon"
+      v-if="activatedName"
+      :style="{
+        '--icon-color': activatedLinearGradient ? 'inherit' : activatedColor,
+      }"
+      class="icon-activated flex"
+      v-html="formatActivatedIcon"
     ></div>
   </div>
 </template>
@@ -65,10 +73,10 @@ let formatActivatedIcon = "";
 
 const getId = (state: "default" | "activated") => {
   const name = state === "default" ? props.defaultName : props.activatedName;
-  const {direction, from, to} =
-      state === "default"
-          ? (props.defaultLinearGradient as LinearGradient)
-          : (props.activatedLinearGradient as LinearGradient);
+  const { direction, from, to } =
+    state === "default"
+      ? (props.defaultLinearGradient as LinearGradient)
+      : (props.activatedLinearGradient as LinearGradient);
   const randomNumber = Math.floor(Math.random() * 900000) + 100000;
   return md5(name + direction + from + to + randomNumber);
 };
@@ -83,11 +91,11 @@ const formatIcon = () => {
 
   if (props.defaultLinearGradient) {
     const name = getId("default");
-    const {direction, from, to} = props.defaultLinearGradient;
+    const { direction, from, to } = props.defaultLinearGradient;
     let x1 = "0%",
-        y1 = "0%",
-        x2 = "0%",
-        y2 = "0%";
+      y1 = "0%",
+      x2 = "0%",
+      y2 = "0%";
     switch (direction) {
       case "bottom":
         y2 = "100%";
@@ -108,17 +116,23 @@ const formatIcon = () => {
         <stop offset="100%" stop-color="${to}" />
       </linearGradient>
     `;
-    formatDefaultIcon = originDefaultIcon.replace(/fill="([^"]+)"/g, `fill="url(#${name})"`);
-    formatDefaultIcon = formatDefaultIcon.replace(/(<svg[^>]+)>/, `$1>${gradient}`);
+    formatDefaultIcon = originDefaultIcon.replace(
+      /fill="([^"]+)"/g,
+      `fill="url(#${name})"`
+    );
+    formatDefaultIcon = formatDefaultIcon.replace(
+      /(<svg[^>]+)>/,
+      `$1>${gradient}`
+    );
   }
 
   if (props.activatedLinearGradient) {
     const name = getId("activated");
-    const {direction, from, to} = props.activatedLinearGradient;
+    const { direction, from, to } = props.activatedLinearGradient;
     let x1 = "0%",
-        y1 = "0%",
-        x2 = "0%",
-        y2 = "0%";
+      y1 = "0%",
+      x2 = "0%",
+      y2 = "0%";
     switch (direction) {
       case "bottom":
         y2 = "100%";
@@ -139,8 +153,14 @@ const formatIcon = () => {
         <stop offset="100%" stop-color="${to}" />
       </linearGradient>
     `;
-    formatActivatedIcon = originActivatedIcon.replace(/fill="([^"]+)"/g, `fill="url(#${name})"`);
-    formatActivatedIcon = formatActivatedIcon.replace(/(<svg[^>]+)>/, `$1>${gradient}`);
+    formatActivatedIcon = originActivatedIcon.replace(
+      /fill="([^"]+)"/g,
+      `fill="url(#${name})"`
+    );
+    formatActivatedIcon = formatActivatedIcon.replace(
+      /(<svg[^>]+)>/,
+      `$1>${gradient}`
+    );
   }
 };
 

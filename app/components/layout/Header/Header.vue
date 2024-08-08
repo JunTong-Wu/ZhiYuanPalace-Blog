@@ -4,16 +4,6 @@
       class="absolute top-0 z-0 h-header w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"
     ></div>
     <div
-      class="zy-header-logo-wrapper portrait:hidden absolute top-1/2 z-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center h-header"
-    >
-      <Logo class="px-4 select-none" />
-      <h1
-        class="font-vivo text-xl font-bold text-center opacity-50 pointer-events-none select-none"
-      >
-        {{ $t("zhiYuanPalace") }}
-      </h1>
-    </div>
-    <div
       class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
     >
       <div class="flex items-center h-full overflow-hidden">
@@ -151,7 +141,6 @@
 </template>
 <script setup lang="ts">
 import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
-import Logo from "~/components/layout/Logo/Logo.vue";
 
 // 使用类型断言来处理 TypeScript 的类型检查
 declare global {
@@ -317,21 +306,5 @@ const closeMoreDrawer = () => {
 ::view-transition-new(root),
 ::view-transition-old(root) {
   animation: none;
-}
-</style>
-<style lang="scss" scoped>
-.zy-header-logo-wrapper {
-  h1 {
-    width: auto;
-    max-width: 0%;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: max-width 0.3s ease-in-out;
-  }
-  &:hover {
-    h1 {
-      max-width: 100%;
-    }
-  }
 }
 </style>

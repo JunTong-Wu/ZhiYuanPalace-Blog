@@ -1,7 +1,13 @@
 <template>
-  <div ref="touchEvent" @mousedown.prevent="onMouseDown($event)" @mousemove.prevent="onMouseMove($event)"
-    @mouseup.prevent="onMouseUp()" @touchstart.passive="onTouchStart($event)" @touchmove.passive="onTouchMove($event)"
-    @touchend.passive="onTouchEnd()">
+  <div
+    ref="touchEvent"
+    @mousedown.prevent="onMouseDown($event)"
+    @mousemove.prevent="onMouseMove($event)"
+    @mouseup.prevent="onMouseUp()"
+    @touchstart.passive="onTouchStart($event)"
+    @touchmove.passive="onTouchMove($event)"
+    @touchend.passive="onTouchEnd()"
+  >
     <slot />
   </div>
 </template>

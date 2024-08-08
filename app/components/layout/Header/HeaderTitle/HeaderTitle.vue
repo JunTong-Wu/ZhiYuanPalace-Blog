@@ -1,30 +1,56 @@
 <template>
-  <nav id="header-tabs" class="header-title flex items-center h-full p-3 portrait:p-3 relative" v-if="titleDisable">
-    <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="top-3 bottom-3 left-3 right-3 absolute bg-bg-gray rounded-lg overflow-hidden">
-      <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
+  <nav
+    id="header-tabs"
+    class="header-title flex items-center h-full p-3 portrait:p-3 relative"
+    v-if="titleDisable"
+  >
+    <div
+      v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
+      class="top-3 bottom-3 left-3 right-3 absolute bg-bg-gray rounded-lg overflow-hidden"
+    >
+      <div
+        id="header-tabs-indicator"
+        class="inline-block h-full relative p-1 transition-all opacity-0"
+      >
         <div class="h-full bg-bg-best rounded-lg overflow-hidden"></div>
       </div>
     </div>
 
-    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">
-      <li
-        v-for="tabs in childrenTabs"
-        :key="tabs.title"
-      >
+    <ul
+      v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
+      class="headerbar-tabs flex h-full relative z-10"
+    >
+      <li v-for="tabs in childrenTabs" :key="tabs.title">
         <ZyLink
           :to="tabs.path"
           class="h-full flex items-center justify-center px-8 portrait:px-6 text-text-3"
         >
-          <div class="flex items-center text-base gap-2 portrait:text-sm select-none">
-            <ZyIcon class="landscape:hidden" size="1rem" :defaultName="tabs.activatedIcon" />
-            <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.activatedIcon" />
+          <div
+            class="flex items-center text-base gap-2 portrait:text-sm select-none"
+          >
+            <ZyIcon
+              class="landscape:hidden"
+              size="1rem"
+              :defaultName="tabs.activatedIcon"
+            />
+            <ZyIcon
+              class="portrait:hidden"
+              size="1.2rem"
+              :defaultName="tabs.activatedIcon"
+            />
             {{ $t(tabs.title) }}
           </div>
         </ZyLink>
       </li>
     </ul>
-    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1" class="headerbar-title ml-2 px-4 py-1 border-l-4 border-theme">
-      <span class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo">{{ $t(childrenTabs[0].title) }}</span>
+    <div
+      v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1"
+      class="headerbar-title ml-2 px-4 py-1 border-l-4 border-theme"
+    >
+      <span
+        class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo"
+        >{{ $t(childrenTabs[0].title) }}</span
+      >
     </div>
   </nav>
 </template>
@@ -47,19 +73,23 @@ watch(
 );
 
 watch(
-    () => childrenTabs.value,
-    (newVal) => {
-      if(Array.isArray(newVal) && newVal.length > 1){
-        nextTick(() => {
-          initIndicator(activeTab.value);
-        });
-      }
+  () => childrenTabs.value,
+  (newVal) => {
+    if (Array.isArray(newVal) && newVal.length > 1) {
+      nextTick(() => {
+        initIndicator(activeTab.value);
+      });
     }
-)
+  }
+);
 
 const initIndicator = (path: string) => {
-  if (path && Array.isArray(childrenTabs.value) && childrenTabs.value.length > 1) {
-    const tabIndex =  childrenTabs.value.findIndex((item) => {
+  if (
+    path &&
+    Array.isArray(childrenTabs.value) &&
+    childrenTabs.value.length > 1
+  ) {
+    const tabIndex = childrenTabs.value.findIndex((item) => {
       return item.path === path;
     });
     indicatorMove(tabIndex);
@@ -67,7 +97,9 @@ const initIndicator = (path: string) => {
 };
 
 const indicatorMove = (index: number) => {
-  const allTabs = document.querySelectorAll("#header-tabs li") as NodeListOf<HTMLLIElement>;
+  const allTabs = document.querySelectorAll(
+    "#header-tabs li"
+  ) as NodeListOf<HTMLLIElement>;
   const tab = allTabs[index];
   let tabWidth = [];
   for (let i = 0; i < allTabs.length; i++) {
@@ -126,14 +158,13 @@ onActivated(() => {
  * 语言切换时
  */
 watch(
-    () => locale.value,
-    () => {
-      nextTick().then(() => {
-        initIndicator(activeTab.value);
-      });
-    }
+  () => locale.value,
+  () => {
+    nextTick().then(() => {
+      initIndicator(activeTab.value);
+    });
+  }
 );
-
 </script>
 <style lang="scss" scoped>
 .headerbar-tabs {
