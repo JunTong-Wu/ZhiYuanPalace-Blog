@@ -63,6 +63,9 @@ a {
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
+    #zy-tool-bar {
+      display: none;
+    }
   }
 }
 @media (orientation: landscape) {
@@ -71,11 +74,14 @@ a {
     --footer-bar-height: 0rem;
     --centered-width: 86rem;
     --side-bar-width: 14rem;
-    --tool-bar-width: 24rem;
+    --tool-bar-width: 0rem;
     --music-bar-height: 12rem;
     --music-bar-width: calc(var(--tool-bar-width) - 2rem);
     --music-bar-top: calc(var(--header-bar-height) + 2rem);
     --pt-main: var(--header-bar-height);
+    #zy-tool-bar {
+      display: none;
+    }
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
@@ -83,8 +89,17 @@ a {
     --centered-width: 75rem;
   }
 }
+@media (min-width: 1200px) and (orientation: landscape) {
+  :root {
+    --tool-bar-width: 20rem;
+  }
+  #zy-tool-bar {
+    display: block !important;
+  }
+}
 
-:root {
+
+    :root {
   --border-color: rgba(127, 127, 127, 0.2);
 }
 :root {

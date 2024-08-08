@@ -25,7 +25,13 @@
 }
 
 /* 手机布局 */
-:root.vertical {
+:root.mobile {
+  #oml-stage,
+  #oml-tips {
+    visibility: hidden !important;
+  }
+}
+@media (orientation: portrait) {
   #oml-stage,
   #oml-tips {
     visibility: hidden !important;
