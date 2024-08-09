@@ -1,5 +1,5 @@
 <template>
-  <header class="h-header color-text-1 overflow-hidden border-b border-borderColor">
+  <header class="h-header color-text-1 overflow-hidden landscape:border-b border-borderColor">
 <!--    <div-->
 <!--      class="absolute top-0 z-0 h-header w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"-->
 <!--    ></div>-->
