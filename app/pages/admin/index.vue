@@ -1,18 +1,18 @@
 <template>
   <div>
-    <NuxtPage></NuxtPage>
+    TEST
   </div>
 </template>
 <script setup lang="ts">
 useHead({
-  title: "文字",
+  title: "视频",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
   bodyAttrs: {
-    class: "page-text",
+    class: "page-video",
   },
 });
 definePageMeta({
-  layout: "default",
+  layout: 'simple',
   layoutTransition: {
     mode: "out-in",
   },
@@ -21,6 +21,4 @@ definePageMeta({
   },
   middleware: "transition",
 });
-const route = useRoute();
-const router = useRouter();
 </script>

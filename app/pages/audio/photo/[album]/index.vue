@@ -60,6 +60,10 @@ useHead({
   },
 });
 definePageMeta({
+  layout: "default",
+  layoutTransition: {
+    mode: "out-in",
+  },
   pageTransition: {
     name: "third-layer",
     mode: "out-in",

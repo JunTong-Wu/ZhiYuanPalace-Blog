@@ -1,0 +1,7 @@
+#oml-stage {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+#oml-stage.transition-translate-out {
+  opacity: 0;
+}

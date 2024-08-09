@@ -22,6 +22,7 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { mode: "out-in" },
+    layoutTransition: { mode: "out-in" },
   },
   hooks: {
     "vite:extendConfig"(config) {

@@ -1,0 +1,28 @@
+.layout-prev-enter-active {
+  transition: all 0.2s;
+}
+.layout-prev-leave-active {
+  transition: all 0.2s;
+}
+.layout-prev-enter-from {
+  opacity: 0;
+  transform: translateX(-50vw);
+}
+.layout-prev-leave-to {
+  opacity: 0;
+  transform: translateX(-50vw);
+}
+.layout-next-enter-active {
+  transition: all 0.2s;
+}
+.layout-next-leave-active {
+  transition: all 0.2s;
+}
+.layout-next-enter-from {
+  opacity: 0;
+  transform: translateX(50vw);
+}
+.layout-next-leave-to {
+  opacity: 0;
+  transform: translateX(50vw);
+}

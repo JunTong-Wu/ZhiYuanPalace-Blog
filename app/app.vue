@@ -15,7 +15,7 @@
     </Head>
   </Html>
   <ZySuperResponsive>
-    <NuxtLayout>
+    <NuxtLayout ref="layoutRef">
       <NuxtPage class="nuxt-page mx-auto" />
     </NuxtLayout>
   </ZySuperResponsive>

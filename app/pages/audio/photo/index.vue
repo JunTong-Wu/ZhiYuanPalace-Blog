@@ -75,6 +75,10 @@ useHead({
   },
 });
 definePageMeta({
+  layout: "default",
+  layoutTransition: {
+    mode: "out-in",
+  },
   pageTransition: {
     mode: "out-in",
   },
