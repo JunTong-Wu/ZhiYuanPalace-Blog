@@ -1,12 +1,12 @@
 <template>
   <nav
     id="header-tabs"
-    class="header-title flex items-center h-full p-3 portrait:p-3 relative"
+    class="header-title flex items-center h-full p-2 portrait:p-2 relative"
     v-if="titleDisable"
   >
     <div
       v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
-      class="top-3 bottom-3 left-3 right-3 absolute bg-bg-gray rounded-lg overflow-hidden"
+      class="top-2 bottom-2 left-2 right-2 absolute bg-bg-gray rounded-lg overflow-hidden"
     >
       <div
         id="header-tabs-indicator"
@@ -15,7 +15,6 @@
         <div class="h-full bg-bg-best rounded-lg overflow-hidden"></div>
       </div>
     </div>
-
     <ul
       v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
       class="headerbar-tabs flex h-full relative z-10"
@@ -56,6 +55,8 @@
 </template>
 <script setup lang="ts">
 // 标题
+import type {Route} from "~/utils/router/type";
+
 const route = useRoute();
 const router = useRouter();
 const titleDisable = ref(true);
@@ -133,14 +134,16 @@ router.beforeEach(
         activeTab.value = to.fullPath;
       }, 200);
     } else {
-      childrenTabs.value = getChildrenTabs(to.fullPath);
-      activeTab.value = to.fullPath;
       next();
+      childrenTabs.value = getChildrenTabs(to.fullPath);
+      titleDisable.value = true;
+      activeTab.value = to.fullPath;
     }
   }
 );
 
 onMounted(() => {
+  childrenTabs.value = getChildrenTabs(route.fullPath);
   activeTab.value = route.fullPath;
   initIndicator(activeTab.value);
   // 监听浏览器窗口变化

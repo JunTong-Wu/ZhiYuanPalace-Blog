@@ -1,12 +1,12 @@
 <template>
-  <a
-    :href="to"
+  <NuxtLink
+    :to="to"
     class="bg-transparent text-base border-0 color-text-1 flex items-center no-underline"
     @click.prevent="swichRouter(to)"
     :title="title"
   >
     <slot />
-  </a>
+  </NuxtLink>
 </template>
 to
 <script lang="ts">
@@ -23,6 +23,10 @@ export default defineComponent({
   setup(props) {
     const router = useRouter();
     const swichRouter = (url: string) => {
+      const body = document.documentElement;
+      if (body) {
+        body.style.overflow = "auto";
+      }
       if (props.type == "replace") {
         router.replace(url);
       } else if (props.type == "push") {
