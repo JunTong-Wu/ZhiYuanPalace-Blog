@@ -1,8 +1,8 @@
 <template>
   <header class="h-header color-text-1 overflow-hidden landscape:border-b border-borderColor">
-<!--    <div-->
-<!--      class="absolute top-0 z-0 h-header w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"-->
-<!--    ></div>-->
+    <div
+      class="absolute top-0 z-0 h-header w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"
+    ></div>
     <div
       class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
     >
@@ -57,6 +57,19 @@
             />
             <ZyIcon v-else size="1.5rem" defaultName="minimize" />
           </ZyButton>
+          <ZyButton
+              class="flex items-center justify-center"
+              @click="darkModeSwitch"
+              title="日间/夜间"
+              type="icon"
+          >
+            <ZyIcon
+                size="1.5rem"
+                class="hidden dark:inline-block"
+                defaultName="sun"
+            />
+            <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
+          </ZyButton>
           <!-- 多语言抽屉 -->
           <ZyPopover title="切换语言" background="var(--bg-panel)">
             <template #reference>
@@ -69,44 +82,9 @@
               </ZyButton>
             </template>
             <template #actions>
-              <div class="color-text-1 w-40">
-                <ul>
-                  <li
-                    v-for="lang in availableLocales"
-                    :key="lang.code"
-                    :to="switchLocalePath(lang.code)"
-                    @click="switchLanguage(lang.code, lang.iso)"
-                    class="border-t-0 border-l-0 border-r-0 border-b-1 border-solid border-borderColor"
-                  >
-                    <label
-                      class="w-full flex justify-between p-4 h-14 hover:bg-theme hover:text-white cursor-pointer"
-                    >
-                      <span class="text-sm">{{ lang.name }}</span>
-                      <input
-                        type="radio"
-                        name="lang"
-                        :checked="lang.code == locale"
-                        class="hidden"
-                      />
-                    </label>
-                  </li>
-                </ul>
-              </div>
+              <LanguagePopoverInner />
             </template>
           </ZyPopover>
-          <ZyButton
-            class="flex items-center justify-center"
-            @click="darkModeSwitch"
-            title="日间/夜间"
-            type="icon"
-          >
-            <ZyIcon
-              size="1.5rem"
-              class="hidden dark:inline-block"
-              defaultName="sun"
-            />
-            <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
-          </ZyButton>
           <ZyButton
             class="flex items-center justify-center"
             @click="openMoreDrawer()"
@@ -138,7 +116,53 @@
       maskColor="var(--bg-mask)"
       background="var(--bg-panel)"
     >
-      <MoreDrawerInner />
+      <MoreDrawerInner>
+        <template #footer>
+          <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
+            <ZyButton
+                class="flex items-center justify-center"
+                @click="toggleFullScreen"
+                title="全屏/退出全屏"
+                type="icon"
+            >
+              <ZyIcon
+                  v-if="!fullScreenFlag"
+                  size="1.5rem"
+                  defaultName="maximize"
+              />
+              <ZyIcon v-else size="1.5rem" defaultName="minimize" />
+            </ZyButton>
+            <ZyButton
+                class="flex items-center justify-center"
+                @click="darkModeSwitch"
+                title="日间/夜间"
+                type="icon"
+            >
+              <ZyIcon
+                  size="1.5rem"
+                  class="hidden dark:inline-block"
+                  defaultName="sun"
+              />
+              <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
+            </ZyButton>
+            <ZyPopover title="切换语言" background="var(--bg-panel)" position="top-right">
+              <template #reference>
+                <ZyButton
+                    class="flex items-center justify-center"
+                    title="切换语言"
+                    type="icon"
+                >
+                  <ZyIcon size="1.5rem" defaultName="language" />
+                </ZyButton>
+              </template>
+              <template #actions>
+                <LanguagePopoverInner />
+              </template>
+            </ZyPopover>
+
+          </div>
+        </template>
+      </MoreDrawerInner>
     </ZyDrawer>
   </header>
 </template>
@@ -149,19 +173,6 @@ declare global {
     ActiveXObject?: any;
   }
 }
-
-// 多语言
-const { locale, locales, setLocale } = useI18n() as any;
-const switchLocalePath = useSwitchLocalePath();
-
-const availableLocales = computed(() => {
-  return locales.value;
-});
-
-const switchLanguage = (code: any, iso: any) => {
-  setLocale(code);
-  document.documentElement.lang = iso;
-};
 
 // 夜间模式
 const darkModeSwitch = (e) => {
