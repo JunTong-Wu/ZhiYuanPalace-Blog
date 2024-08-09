@@ -1,19 +1,22 @@
 <template>
   <aside id="zy-music-bar" class="h-music">
     <div
-      class="relative z-10 h-full portrait:flex items-center landscape:bg-bg-bestCard"
+      class="relative z-10 h-full portrait:flex items-center landscape:rounded-2xl landscape:bg-theme landscape:shadow-lg landscape:shadow-theme"
     >
+      <div
+          class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme to-transparent hue-rotate-30 mix-blend-multiply rounded-2xl"
+      ></div>
       <div
         class="flex flex-none relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4"
       >
         <img
-          class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5 landscape:hidden"
+          class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5 landscape:left-6"
           src="../../../assets/image/record-128.png"
           alt=""
           srcset=""
         />
         <img
-          class="h-full relative left-0 rounded-md portrait:shadow-md landscape:rounded-2xl"
+          class="h-full relative left-0 rounded-md portrait:shadow-md"
           :src="musicNowCover"
           alt=""
           srcset=""
@@ -21,107 +24,91 @@
           @load="createDecoration()"
         />
       </div>
+
       <div
-        class="absolute top-0 right-0 w-full h-full z-0 overflow-hidden portrait:hidden"
-      >
-        <div class="absolute -top-8 right-12 w-28 h-28">
-          <div class="w-full h-full rounded-full bg-theme"></div>
-        </div>
-        <div
-          class="absolute -top-8 -right-8 w-28 h-28 invert -hue-rotate-15 mix-blend-multiply"
-        >
-          <div class="w-full h-full rounded-full bg-theme"></div>
-        </div>
-        <div
-          class="absolute top-3 right-3 w-3 h-3 rounded-tr-md overflow-hidden"
-        >
-          <div class="w-full h-full rounded-tr-md border-t-2 border-r-2"></div>
-        </div>
-      </div>
-      <div
-        class="portrait:ml-8 portrait:flex portrait:h-full w-full items-center pr-2 bottom-0 top-0 landscape:p-4"
+        class="portrait:ml-8 portrait:flex portrait:h-full w-full items-center pr-2 bottom-0 top-0 landscape:p-4 relative"
       >
         <p
-          class="flex-1 line-clamp-1 text-xs landscape:text-base landscape:mt-4"
+          class="flex-1 line-clamp-1 text-xs landscape:text-base landscape:mt-4 landscape:text-white"
         >
           你说的话 有心的吗 刺痛我了 无意的吧
         </p>
-        <div
-          class="flex landscape:absolute bottom-0 left-0 right-0 landscape:p-4 landscape:justify-around"
-        >
-          <div class="portrait:hidden order-2">
-            <ZyButton
+
+      </div>
+      <div
+          class="flex landscape:absolute bottom-0 left-0 right-0 landscape:p-4 landscape:justify-around landscape:text-white"
+      >
+        <div class="portrait:hidden">
+          <ZyButton
               class="portrait:h-music aspect-square"
               title="上一曲"
               type="transparent"
-            >
-              <ZyIcon
+          >
+            <ZyIcon
                 class="landscape:hidden"
                 size="1rem"
                 defaultName="music-prev"
-              />
-              <ZyIcon
+            />
+            <ZyIcon
                 class="portrait:hidden"
-                size="1.5rem"
+                size="1.25rem"
                 defaultName="music-prev"
-              />
-            </ZyButton>
-          </div>
-          <div class="order-3">
-            <ZyButton
+            />
+          </ZyButton>
+        </div>
+        <div>
+          <ZyButton
               class="portrait:h-music aspect-square"
               title="播放"
               type="transparent"
-            >
-              <ZyIcon
+          >
+            <ZyIcon
                 class="landscape:hidden"
                 size="1rem"
                 defaultName="music-play"
-              />
-              <ZyIcon
-                class="portrait:hidden invert -hue-rotate-15"
-                size="2.5rem"
+            />
+            <ZyIcon
+                class="portrait:hidden"
+                size="2rem"
                 defaultName="music-play"
-                defaultColor="var(--theme-color)"
-              />
-            </ZyButton>
-          </div>
-          <div class="portrait:hidden order-4">
-            <ZyButton
+            />
+          </ZyButton>
+        </div>
+        <div class="portrait:hidden">
+          <ZyButton
               class="portrait:h-music aspect-square"
               title="下一曲"
               type="transparent"
-            >
-              <ZyIcon
+          >
+            <ZyIcon
                 class="landscape:hidden"
                 size="1rem"
                 defaultName="music-next"
-              />
-              <ZyIcon
+            />
+            <ZyIcon
                 class="portrait:hidden"
-                size="1.5rem"
+                size="1.25rem"
                 defaultName="music-next"
-              />
-            </ZyButton>
-          </div>
-          <div class="order-4 landscape:order-1">
-            <ZyButton
+            />
+          </ZyButton>
+        </div>
+        <div>
+          <ZyButton
               class="portrait:h-music aspect-square"
               title="播放列表"
               type="transparent"
-            >
-              <ZyIcon
+          >
+            <ZyIcon
                 class="landscape:hidden"
                 size="1rem"
                 defaultName="music-list"
-              />
-              <ZyIcon
+            />
+            <ZyIcon
                 class="portrait:hidden"
-                size="1.25rem"
+                size="1rem"
                 defaultName="music-list"
-              />
-            </ZyButton>
-          </div>
+            />
+          </ZyButton>
         </div>
       </div>
     </div>

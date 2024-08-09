@@ -3,9 +3,6 @@
     <Sidebar
       class="fixed top-0 bottom-0 left-0 w-sidebar z-40 border-r border-borderColor bg-bg-opaque"
     />
-    <div
-      class="w-sidebar h-full fixed z-30 top-0 left-0 portrait:hidden pointer-events-none"
-    ></div>
     <Header
       class="fixed top-0 left-sidebar right-0 z-40 landscape:backdrop-blur-3xl landscape:bg-bg-headBar portrait:bg-bg-opaque"
     />
@@ -23,7 +20,7 @@
       </main>
     </div>
     <Music
-      class="fixed top-music landscape:right-8 w-music portrait:z-50 landscape:z-30 portrait:bg-bg-opaque landscape:rounded-2xl landscape:overflow-hidden landscape:shadow-sm"
+      class="fixed top-music landscape:left-4 w-music z-50 portrait:bg-bg-opaque  landscape:shadow-sm"
     />
     <FooterColumns />
     <FooterNavigation

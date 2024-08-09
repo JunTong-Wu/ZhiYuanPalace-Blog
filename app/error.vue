@@ -1,10 +1,12 @@
 <template>
   <ZySuperResponsive>
     <NuxtLayout>
-      <CommonMainSection>
-        <h1>Error {{ error.statusCode }}</h1>
-        <p>{{ error }}</p>
-      </CommonMainSection>
+      <div class="nuxt-page mx-auto" >
+        <CommonMainSection>
+          <h1>Error {{ error.statusCode }}</h1>
+          <p>{{ error }}</p>
+        </CommonMainSection>
+      </div>
     </NuxtLayout>
   </ZySuperResponsive>
 </template>

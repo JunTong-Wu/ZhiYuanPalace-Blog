@@ -2,9 +2,9 @@
   <Teleport to="body">
     <aside
       id="zy-tool-bar"
-      class="zy-tool-bar portrait:hidden fixed top-header bottom-0 right-0 w-toolbar"
+      class="zy-tool-bar portrait:hidden fixed top-header bottom-0 right-0 w-toolbar  border-l border-borderColor"
     >
-      <div class="absolute top-64 bottom-0 w-full pr-8">
+      <div class="absolute top-8 bottom-0 w-full pr-4 pl-4">
         <div
           class="w-full h-40 flex justify-center items-center color-text-4 bg-bg-bestCard rounded-2xl"
         >

@@ -44,7 +44,6 @@ export function cardTransitionStart(element: any, callback: () => void) {
         footerBarHide();
         footerColumnsHide();
         headerBarHide();
-        musicBarHide();
         toolBarHide();
         copyElement.classList.add("transition-in");
         setTimeout(() => {

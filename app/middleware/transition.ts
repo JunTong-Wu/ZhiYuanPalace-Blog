@@ -91,7 +91,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
       (to.meta.pageTransition as any).name = "third-layer";
       (to.meta.pageTransition as any).onAfterEnter = () => {
         headerBarShow();
-        musicBarShow();
         toolBarShow();
         footerColumnsShow();
         ArticleCardTransitionEnd();
@@ -103,7 +102,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
     footerBarHide();
     footerColumnsHide();
     headerBarHide();
-    musicBarHide();
     toolBarHide();
     if (from.meta.pageTransition && to.meta.pageTransition) {
       (from.meta.pageTransition as any).name = "third-layer";
@@ -112,7 +110,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
         footerBarShow();
         footerColumnsShow();
         headerBarShow();
-        musicBarShow();
         toolBarShow();
         ArticleCardTransitionEnd();
         ShuoShuoCardTransitionEnd();

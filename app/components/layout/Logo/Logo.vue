@@ -11,7 +11,7 @@
         </div>
       </div>
       <h1
-        class="text-base font-bold text-center opacity-50 pointer-events-none select-none"
+        class="text-base font-bold text-center pointer-events-none select-none text-text-1"
       >
         {{ $t("zhiYuanPalace") }}
       </h1>
