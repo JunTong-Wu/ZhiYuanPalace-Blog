@@ -54,12 +54,12 @@ a {
 
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 4rem;
-    --footer-bar-height: 3.5rem;
+    --header-bar-height: 3.75rem;
+    --footer-bar-height: 3.25rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
-    --music-bar-height: 3rem;
+    --music-bar-height: 2.5rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));

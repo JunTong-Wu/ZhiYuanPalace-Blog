@@ -4,7 +4,7 @@
       class="relative z-10 h-full portrait:flex items-center landscape:bg-bg-bestCard"
     >
       <div
-        class="flex relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4"
+        class="flex flex-none relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4"
       >
         <img
           class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5 landscape:hidden"

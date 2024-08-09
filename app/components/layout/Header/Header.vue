@@ -128,22 +128,21 @@
       maskColor="var(--bg-mask)"
     >
     </ZyDrawer>
-    <!-- 更多选项抽屉 -->
+    <!-- 设置抽屉 -->
     <ZyDrawer
-      title="更多选项"
+      title="设置"
       :display="moreDisplay"
       @cancel="closeMoreDrawer"
       position="right"
-      size="21rem"
+      size="25rem"
       maskColor="var(--bg-mask)"
       background="var(--bg-panel)"
     >
+      <MoreDrawerInner />
     </ZyDrawer>
   </header>
 </template>
 <script setup lang="ts">
-import HeaderTitle from "./HeaderTitle/HeaderTitle.vue";
-
 // 使用类型断言来处理 TypeScript 的类型检查
 declare global {
   interface Window {

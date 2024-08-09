@@ -16,14 +16,14 @@
       z-index: 1;
       top: 0;
       right: 0;
-      width: calc(100% - var(--image-size) - 1rem);
+      width: calc(100% - var(--image-size));
       padding: 1rem;
       padding-bottom: 1rem;
     }
     .zy-card-image {
       transition: all cubic-bezier(0.63, 0, 0.32, 1) 400ms;
       position: absolute;
-      left: 1rem;
+      left: 0;
       width: var(--image-size);
       height: var(--image-size);
       overflow: hidden;

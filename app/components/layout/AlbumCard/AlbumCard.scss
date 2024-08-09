@@ -54,8 +54,21 @@
 }
 @media (orientation: portrait) {
   .zy-album-card {
-    --card-height: 16rem;
+    --card-height: 10rem;
+    .zy-album-card-inner {
+      .zy-card-title {
+        padding: 1.5rem;
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+      .zy-card-image {
+        border-radius: 0.5rem;
+        * {
+          transform: scale(1);
+        }
+      }
+    }
   }
+
 }
 .zy-album-card.transition-prepare {
   .zy-album-card-inner {
@@ -80,6 +93,32 @@
     }
     .zy-card-title {
       padding: 3rem 2rem;
+    }
+  }
+}
+@media (orientation: portrait) {
+  .zy-album-card.transition-prepare {
+    .zy-album-card-inner {
+      .zy-card-title {
+        padding: 1.5rem;
+      }
+    }
+  }
+
+  .zy-album-card.transition-in {
+    --card-height: 4rem;
+    padding: 0 1rem;
+
+    .zy-album-card-inner {
+      position: relative;
+      height: var(--card-height);
+      .zy-card-title {
+        height: var(--card-height);
+        border-radius: 0.5rem;
+      }
+      .zy-card-title {
+        padding: 0 1rem;
+      }
     }
   }
 }
