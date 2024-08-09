@@ -10,9 +10,9 @@
               </div>
               <div class="flex items-center gap-4">
                 <div class="font-medium dark:text-white">
-                  <div>你还未登录</div>
+                  <div>登录</div>
                   <div class="text-sm text-gray-500 dark:text-gray-400">
-                    请先登录知鸢宫后台
+                    登录到您的帐户
                   </div>
                 </div>
               </div>
