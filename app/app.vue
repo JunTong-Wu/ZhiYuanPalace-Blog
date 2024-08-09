@@ -83,15 +83,41 @@ const myLive2dConfig = () => {
     });
   }
 };
+const route = useRoute();
+const router = useRouter();
+const isSimpleLayout = () => {
+  if(route.meta){
+      return route.meta.layout === 'simple'
+  }
+  return false
+};
+const initLive2d = () => {
+  console.log('initLive2d')
+  const script = document.createElement("script");
+  script.src = "/static/js/oh-my-live2d.min.js";
+  document.body.appendChild(script);
+  myLive2dConfig();
+};
+
 if (process.client) {
   const canvas = document.querySelector("#oml-canvas");
-  if (!canvas) {
-    const script = document.createElement("script");
-    script.src = "/static/js/oh-my-live2d.min.js";
-    document.body.appendChild(script);
-    myLive2dConfig();
+  if (!canvas && !isSimpleLayout()) {
+    initLive2d();
   }
 }
+
+router.afterEach(
+    (to, from) => {
+      if(to.meta.layout !== 'simple'){
+        const canvas = document.querySelector("#oml-canvas");
+        if (!canvas && !isSimpleLayout()) {
+          setTimeout(() => {
+            initLive2d();
+          },400);
+        }
+      }
+    }
+);
 
 // head
 useHead({
