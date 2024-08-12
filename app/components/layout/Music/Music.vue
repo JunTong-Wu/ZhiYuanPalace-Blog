@@ -4,7 +4,7 @@
       class="relative z-10 h-full portrait:flex items-center landscape:rounded-2xl landscape:bg-theme landscape:shadow-lg landscape:shadow-theme"
     >
       <div
-          class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme to-transparent hue-rotate-30 mix-blend-multiply rounded-2xl"
+        class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme to-transparent hue-rotate-30 mix-blend-multiply rounded-2xl"
       ></div>
       <div
         class="flex flex-none relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4"
@@ -33,80 +33,79 @@
         >
           你说的话 有心的吗 刺痛我了 无意的吧
         </p>
-
       </div>
       <div
-          class="flex landscape:absolute bottom-0 left-0 right-0 landscape:p-4 landscape:justify-around landscape:text-white"
+        class="flex landscape:absolute bottom-0 left-0 right-0 landscape:p-4 landscape:justify-around landscape:text-white"
       >
         <div class="portrait:hidden">
           <ZyButton
-              class="portrait:h-music aspect-square"
-              title="上一曲"
-              type="transparent"
+            class="portrait:h-music aspect-square"
+            title="上一曲"
+            type="transparent"
           >
             <ZyIcon
-                class="landscape:hidden"
-                size="1rem"
-                defaultName="music-prev"
+              class="landscape:hidden"
+              size="1rem"
+              defaultName="music-prev"
             />
             <ZyIcon
-                class="portrait:hidden"
-                size="1.25rem"
-                defaultName="music-prev"
+              class="portrait:hidden"
+              size="1.25rem"
+              defaultName="music-prev"
             />
           </ZyButton>
         </div>
         <div>
           <ZyButton
-              class="portrait:h-music aspect-square"
-              title="播放"
-              type="transparent"
+            class="portrait:h-music aspect-square"
+            title="播放"
+            type="transparent"
           >
             <ZyIcon
-                class="landscape:hidden"
-                size="1rem"
-                defaultName="music-play"
+              class="landscape:hidden"
+              size="1rem"
+              defaultName="music-play"
             />
             <ZyIcon
-                class="portrait:hidden"
-                size="2rem"
-                defaultName="music-play"
+              class="portrait:hidden"
+              size="2rem"
+              defaultName="music-play"
             />
           </ZyButton>
         </div>
         <div class="portrait:hidden">
           <ZyButton
-              class="portrait:h-music aspect-square"
-              title="下一曲"
-              type="transparent"
+            class="portrait:h-music aspect-square"
+            title="下一曲"
+            type="transparent"
           >
             <ZyIcon
-                class="landscape:hidden"
-                size="1rem"
-                defaultName="music-next"
+              class="landscape:hidden"
+              size="1rem"
+              defaultName="music-next"
             />
             <ZyIcon
-                class="portrait:hidden"
-                size="1.25rem"
-                defaultName="music-next"
+              class="portrait:hidden"
+              size="1.25rem"
+              defaultName="music-next"
             />
           </ZyButton>
         </div>
         <div>
           <ZyButton
-              class="portrait:h-music aspect-square"
-              title="播放列表"
-              type="transparent"
+            class="portrait:h-music aspect-square"
+            title="播放列表"
+            type="transparent"
           >
             <ZyIcon
-                class="landscape:hidden"
-                size="1rem"
-                defaultName="music-list"
+              class="landscape:hidden"
+              size="1rem"
+              defaultName="music-list"
             />
             <ZyIcon
-                class="portrait:hidden"
-                size="1rem"
-                defaultName="music-list"
+              class="portrait:hidden"
+              size="1rem"
+              defaultName="music-list"
             />
           </ZyButton>
         </div>

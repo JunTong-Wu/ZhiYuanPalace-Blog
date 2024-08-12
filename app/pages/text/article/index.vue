@@ -15,7 +15,14 @@
           <ZyFetchLoading
             :fetchData="(articleListData as any)"
             rowClass="grid grid-cols-12 portrait:gap-0 portrait:xs:gap-4 gap-4 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8"
-            cloClass="portrait:col-span-12 landscape:col-span-12 portrait:xs:col-span-12 landscape:xs:col-span-12 portrait:sm:col-span-6 landscape:sm:col-span-6 portrait:md:col-span-6 landscape:md:col-span-6 portrait:lg:col-span-6 landscape:lg:col-span-6 portrait:xl:col-span-6 landscape:xl:col-span-4"
+            cloClass="
+            portrait:col-span-12 landscape:col-span-12
+            portrait:xs:col-span-12 landscape:xs:col-span-12
+            portrait:sm:col-span-6 landscape:sm:col-span-6
+            portrait:md:col-span-6 landscape:md:col-span-6
+            portrait:lg:col-span-6 landscape:lg:col-span-6
+            portrait:xl:col-span-6 landscape:xl:col-span-4
+            "
             :minLoadingNumber="12"
           >
             <template v-slot:loading>

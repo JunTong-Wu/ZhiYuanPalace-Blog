@@ -1,17 +1,18 @@
-/*
- * @Author: Nick juntong.wu@travel-easy.com
- * @Date: 2024-07-12 20:55:48
- * @LastEditors: Nick juntong.wu@travel-easy.com
- * @LastEditTime: 2024-07-12 21:08:45
- * @FilePath: \zyp-next\tailwind.config.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 import type { Config } from "tailwindcss";
 export default <Partial<Config>>{
   darkMode: "selector",
   theme: {
     fontFamily: {
-      'vivo':["vivoTypeRegular", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+      vivo: [
+        "vivoTypeRegular",
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji",
+      ],
     },
     extend: {
       height: {
@@ -74,7 +75,7 @@ export default <Partial<Config>>{
           sideBar: "var(--bg-side-bar)",
           level: {
             1: "var(--bg-level-1)",
-          }
+          },
         },
         borderColor: "var(--border-color)",
         themeColorTranslucent: "var(--theme-color-translucent)",

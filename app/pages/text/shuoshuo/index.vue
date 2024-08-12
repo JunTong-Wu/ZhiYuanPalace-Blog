@@ -17,7 +17,14 @@
           class="pt-8"
           :fetchData="(shuoshuoListData as any)"
           rowClass="grid grid-cols-12 gap-0 landscape:xs:gap-4 portrait:sm:gap-6 landscape:sm:gap-6 portrait:md:col-span-7 landscape:md:gap-7 portrait:lg:gap-8 landscape:lg:gap-8"
-          cloClass="portrait:col-span-12 landscape:col-span-12 portrait:xs:col-span-12 landscape:xs:col-span-12 portrait:sm:col-span-6 landscape:sm:col-span-6 portrait:md:col-span-6 landscape:md:col-span-6 portrait:lg:col-span-6 landscape:lg:col-span-6 portrait:xl:col-span-6 landscape:xl:col-span-4"
+          cloClass="
+          portrait:col-span-12 landscape:col-span-12
+          portrait:xs:col-span-12 landscape:xs:col-span-12
+          portrait:sm:col-span-6 landscape:sm:col-span-6
+          portrait:md:col-span-6 landscape:md:col-span-6
+          portrait:lg:col-span-6 landscape:lg:col-span-6
+          portrait:xl:col-span-6 landscape:xl:col-span-4
+          "
           :minLoadingNumber="12"
         >
           <template v-slot:loading>
@@ -36,7 +43,11 @@
             <ShuoShuoCard :href="`/text/shuoshuo/${item.shuoshuo_id}`">
               <template #image>
                 <div v-for="n in item.shuoshuo_images">
-                  <ZyLazyImage className="aspect-square" :src="`https://pan.yiru.love${n}`" alt="" />
+                  <ZyLazyImage
+                    className="aspect-square"
+                    :src="`https://pan.yiru.love${n}`"
+                    alt=""
+                  />
                 </div>
               </template>
               <template #title>

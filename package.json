@@ -22,11 +22,9 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@element-plus/nuxt": "^1.0.9",
     "@nuxtjs/i18n": "^8.0.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@types/nprogress": "^0.2.3",
-    "element-plus": "^2.8.0",
     "nuxt-headlessui": "^1.2.0",
     "sass": "^1.70.0"
   }

@@ -6,18 +6,23 @@
       </div>
       <ul class="flex flex-col gap-2">
         <li
-            v-for="n in linkList"
-            class="sidebar-navigation h-16 flex"
-            :class="{ activate: routerActivate(route, n.path) }"
+          v-for="n in linkList"
+          class="sidebar-navigation h-16 flex"
+          :class="{ activate: routerActivate(route, n.path) }"
         >
           <ZyLink
-              v-zy-ripple
-              :to="`${n.path}`"
-              :title="$t(n.title)"
-              class="w-full flex-col justify-center pl-8 text-text-1"
+            v-zy-ripple
+            :to="`${n.path}`"
+            :title="$t(n.title)"
+            class="w-full flex-col justify-center pl-8 text-text-1"
           >
-            <div class="w-full flex items-center gap-4 relative" >
-              <img v-if="n.iconImage" :src="`/static/images/icons/${n.iconImage}.png`" :alt="$t(n.title)" class="w-10 h-10 rounded-full overflow-hidden" />
+            <div class="w-full flex items-center gap-4 relative">
+              <img
+                v-if="n.iconImage"
+                :src="`/static/images/icons/${n.iconImage}.png`"
+                :alt="$t(n.title)"
+                class="w-10 h-10 rounded-full overflow-hidden"
+              />
               <span>{{ $t(n.title) }}</span>
             </div>
           </ZyLink>
@@ -25,7 +30,6 @@
       </ul>
     </nav>
   </div>
-
 </template>
 <script setup lang="ts">
 import Indicator from "./Indicator/Indicator.vue";

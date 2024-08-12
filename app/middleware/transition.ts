@@ -23,7 +23,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
           (to.meta.pageTransition as any).name = "first-layer-prev";
         }
       } else if (
-          getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
+        getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
       ) {
         if (from.meta.pageTransition && to.meta.pageTransition) {
           (from.meta.pageTransition as any).name = "first-layer-prev";
@@ -32,8 +32,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }
     }
     if (
-        (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 2) ||
-        (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 1)
+      (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 2) ||
+      (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 1)
     ) {
       if (process.client) {
         NProgress.start();
@@ -47,7 +47,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
           (to.meta.pageTransition as any).name = "first-layer-prev";
         }
       } else if (
-          getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
+        getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
       ) {
         if (from.meta.pageTransition && to.meta.pageTransition) {
           (from.meta.pageTransition as any).name = "first-layer-prev";
@@ -69,7 +69,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
             (to.meta.pageTransition as any).name = "second-layer-prev";
           }
         } else if (
-            getSelfPathOrder(from.fullPath) < getSelfPathOrder(to.fullPath)
+          getSelfPathOrder(from.fullPath) < getSelfPathOrder(to.fullPath)
         ) {
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "second-layer-prev";
@@ -83,7 +83,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
             (to.meta.pageTransition as any).name = "first-layer-prev";
           }
         } else if (
-            getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
+          getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
         ) {
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "first-layer-prev";
@@ -126,19 +126,16 @@ export default defineNuxtRouteMiddleware((to, from) => {
         };
       }
     }
-  }
-  else {
-    if (to.meta.layout === 'admin' && from.meta.layout === 'default') {
+  } else {
+    if (to.meta.layout === "admin" && from.meta.layout === "default") {
       live2dHide();
       if (from.meta.layoutTransition && to.meta.layoutTransition) {
         (from.meta.layoutTransition as any).name = "layout-prev";
         (to.meta.layoutTransition as any).name = "layout-next";
-        (to.meta.pageTransition as any).onEnter = () => {
-
-        };
+        (to.meta.pageTransition as any).onEnter = () => {};
       }
     }
-    if (to.meta.layout === 'default' && from.meta.layout === 'admin') {
+    if (to.meta.layout === "default" && from.meta.layout === "admin") {
       live2dShow();
       if (from.meta.layoutTransition && to.meta.layoutTransition) {
         (from.meta.layoutTransition as any).name = "layout-next";
@@ -146,5 +143,4 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }
     }
   }
-
 });

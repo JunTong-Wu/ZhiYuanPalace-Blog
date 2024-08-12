@@ -55,7 +55,7 @@
 </template>
 <script setup lang="ts">
 // 标题
-import type {Route} from "~/utils/router/type";
+import type { Route } from "~/utils/router/type";
 
 const route = useRoute();
 const router = useRouter();

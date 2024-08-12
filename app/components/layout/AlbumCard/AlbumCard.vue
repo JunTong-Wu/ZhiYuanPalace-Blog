@@ -1,7 +1,7 @@
 <template>
   <div class="zy-album-card">
     <a
-      class="w-full h-full inline-block overflow-hidden cursor-pointer color-text-1"
+      class="w-full h-full inline-block overflow-hidden cursor-pointer text-text-1"
       :href="href"
       @click.prevent="openCard($el)"
     >

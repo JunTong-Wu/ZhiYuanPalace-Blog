@@ -15,7 +15,10 @@
               </div>
             </div>
             <div class="zy-card-image">
-              <ZyLazyImage :src="`https://pan.yiru.love${item.album_cover}`" alt=""/>
+              <ZyLazyImage
+                :src="`https://pan.yiru.love${item.album_cover}`"
+                alt=""
+              />
             </div>
           </div>
         </template>
@@ -23,16 +26,17 @@
     </div>
     <CommonMainSection noPaddingTop class="album-data-grid">
       <ZyFetchLoading
-          :fetchData="(albumData as any)"
-          rowClass="grid grid-cols-12 portrait:gap-2 portrait:xs:gap-4 gap-4"
-          cloClass="
-      portrait:col-span-4 landscape:col-span-4
-      portrait:xs:col-span-4 landscape:xs:col-span-4
-      portrait:sm:col-span-4 landscape:sm:col-span-4
-      portrait:md:col-span-3 landscape:md:col-span-3
-      portrait:lg:col-span-3 landscape:lg:col-span-3
-      portrait:xl:col-span-3 landscape:xl:col-span-3
-      ">
+        :fetchData="(albumData as any)"
+        rowClass="grid grid-cols-12 portrait:gap-2 portrait:xs:gap-4 gap-4"
+        cloClass="
+        portrait:col-span-4 landscape:col-span-4
+        portrait:xs:col-span-4 landscape:xs:col-span-4
+        portrait:sm:col-span-4 landscape:sm:col-span-4
+        portrait:md:col-span-3 landscape:md:col-span-3
+        portrait:lg:col-span-3 landscape:lg:col-span-3
+        portrait:xl:col-span-3 landscape:xl:col-span-3
+        "
+      >
         <template v-slot:loading>test</template>
         <template v-slot:onload="{ row: item }">
           <div>

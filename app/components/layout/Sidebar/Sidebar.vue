@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="zy-side-bar color-text-1 px-4 overflow-hidden portrait:hidden select-none"
+    class="zy-side-bar text-text-1 px-4 overflow-hidden portrait:hidden select-none"
   >
     <div class="h-header mb-8"></div>
     <div class="h-music mb-8"></div>

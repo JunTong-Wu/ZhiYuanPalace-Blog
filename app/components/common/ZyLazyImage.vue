@@ -1,8 +1,14 @@
 <template>
   <div ref="imageWrapperRef" class="relative" :class="className">
     <div v-if="!isLoading && lazyUrl">
-      <img v-if="!preview" :src="lazyUrl" :alt="alt" :style="style">
-      <ZyImagePreview v-else :thumbnailSrc="lazyUrl" :sourceSrc="sourceSrc" :alt="alt" :style="style"></ZyImagePreview>
+      <img v-if="!preview" :src="lazyUrl" :alt="alt" :style="style" />
+      <ZyImagePreview
+        v-else
+        :thumbnailSrc="lazyUrl"
+        :sourceSrc="sourceSrc"
+        :alt="alt"
+        :style="style"
+      ></ZyImagePreview>
     </div>
     <div v-else class="loading">
       <ZySkeleton type="image" />
@@ -11,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { useIntersectionObserver } from '@vueuse/core'
+import { useIntersectionObserver } from "@vueuse/core";
 
 const props = defineProps({
   src: {
@@ -24,11 +30,11 @@ const props = defineProps({
   },
   alt: {
     type: String,
-    default: '',
+    default: "",
   },
   className: {
     type: String,
-    default: '',
+    default: "",
   },
   style: {
     type: Object,
@@ -37,11 +43,11 @@ const props = defineProps({
   preview: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 
 const isLoading = ref(true);
-const lazyUrl = ref('')
+const lazyUrl = ref("");
 const imageWrapperRef = ref<HTMLImageElement>();
 
 onMounted(() => {
@@ -54,12 +60,13 @@ onMounted(() => {
   };
 
   const { stop } = useIntersectionObserver(
-      imageWrapperRef,
-    ([{isIntersecting}], observerElement) => {
-    if(isIntersecting){
-      lazyUrl.value = props.src;
+    imageWrapperRef,
+    ([{ isIntersecting }], observerElement) => {
+      if (isIntersecting) {
+        lazyUrl.value = props.src;
+      }
     }
-  });
+  );
 });
 </script>
 
