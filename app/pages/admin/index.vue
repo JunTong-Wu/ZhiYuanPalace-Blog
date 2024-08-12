@@ -5,18 +5,18 @@
         <h1 class="text-2xl font-bold text-center mb-4">登录知鸢宫</h1>
 
         <div class="flex flex-col items-center">
-          <UInput
-              v-model="username"
+          <el-input
+            v-model="username"
             placeholder="请输入用户名"
             class="mb-4"
-          ></UInput>
-          <UInput
-              v-model="password"
+          ></el-input>
+          <el-input
+            v-model="password"
             placeholder="请输入密码"
             type="password"
             class="mb-4"
-          ></UInput >
-          <UButton type="primary" @click="login">登录</UButton>
+          ></el-input>
+          <el-button type="primary" @click="login">登录</el-button>
         </div>
       </div>
     </div>

@@ -1,16 +1,13 @@
 <template>
   <header>
+    <div class="absolute top-0 h-full w-full landscape:bg-bg-headBar portrait:bg-bg-opaque landscape:backdrop-blur-3xl"></div>
     <div
-      class="absolute top-0 h-full w-full landscape:bg-bg-headBar portrait:bg-bg-opaque landscape:backdrop-blur-3xl"
+        class="absolute top-0 h-full w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"
     ></div>
-    <div
-      class="absolute top-0 h-full w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"
-    ></div>
-    <div
-      class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden"
-    >
+    <div class="absolute top-0 h-full w-full right-0 color-text-1 overflow-hidden">
+
       <div
-        class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
+          class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
       >
         <div class="flex items-center h-full overflow-hidden">
           <Logo class="w-sidebar px-4 portrait:hidden" />
@@ -22,18 +19,18 @@
           <div class="flex items-center w-full h-full justify-between">
             <div class="flex items-center h-full">
               <ZyButton
-                class="w-header h-header"
-                @click="openSearchDrawer()"
-                title="搜索"
-                type="transparent"
+                  class="w-header h-header"
+                  @click="openSearchDrawer()"
+                  title="搜索"
+                  type="transparent"
               >
                 <ZyIcon defaultName="search" size="1.25rem" />
               </ZyButton>
               <ZyButton
-                class="w-header h-header"
-                @click="openMoreDrawer()"
-                title="更多选项"
-                type="transparent"
+                  class="w-header h-header"
+                  @click="openMoreDrawer()"
+                  title="更多选项"
+                  type="transparent"
               >
                 <ZyIcon defaultName="more" size="1.25rem" />
               </ZyButton>
@@ -44,36 +41,36 @@
         <div class="portrait:hidden">
           <div class="flex justify-end h-full items-center gap-4">
             <ZyButton
-              class="flex items-center justify-center"
-              @click="openSearchDrawer()"
-              title="搜索"
-              type="icon"
+                class="flex items-center justify-center"
+                @click="openSearchDrawer()"
+                title="搜索"
+                type="icon"
             >
               <ZyIcon size="1.5rem" defaultName="search" />
             </ZyButton>
             <ZyButton
-              class="flex items-center justify-center"
-              @click="toggleFullScreen"
-              title="全屏/退出全屏"
-              type="icon"
+                class="flex items-center justify-center"
+                @click="toggleFullScreen"
+                title="全屏/退出全屏"
+                type="icon"
             >
               <ZyIcon
-                v-if="!fullScreenFlag"
-                size="1.5rem"
-                defaultName="maximize"
+                  v-if="!fullScreenFlag"
+                  size="1.5rem"
+                  defaultName="maximize"
               />
               <ZyIcon v-else size="1.5rem" defaultName="minimize" />
             </ZyButton>
             <ZyButton
-              class="flex items-center justify-center"
-              @click="darkModeSwitch"
-              title="日间/夜间"
-              type="icon"
+                class="flex items-center justify-center"
+                @click="darkModeSwitch"
+                title="日间/夜间"
+                type="icon"
             >
               <ZyIcon
-                size="1.5rem"
-                class="hidden dark:inline-block"
-                defaultName="sun"
+                  size="1.5rem"
+                  class="hidden dark:inline-block"
+                  defaultName="sun"
               />
               <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
             </ZyButton>
@@ -81,9 +78,9 @@
             <ZyPopover title="切换语言" background="var(--bg-panel)">
               <template #reference>
                 <ZyButton
-                  class="flex items-center justify-center"
-                  title="切换语言"
-                  type="icon"
+                    class="flex items-center justify-center"
+                    title="切换语言"
+                    type="icon"
                 >
                   <ZyIcon size="1.5rem" defaultName="language" />
                 </ZyButton>
@@ -93,10 +90,10 @@
               </template>
             </ZyPopover>
             <ZyButton
-              class="flex items-center justify-center"
-              @click="openMoreDrawer()"
-              title="更多选项"
-              type="icon"
+                class="flex items-center justify-center"
+                @click="openMoreDrawer()"
+                title="更多选项"
+                type="icon"
             >
               <ZyIcon size="1.5rem" defaultName="more" />
             </ZyButton>
@@ -105,65 +102,59 @@
       </div>
       <!-- 搜索抽屉 -->
       <ZyDrawer
-        title="搜索"
-        :display="searchDisplay"
-        @cancel="closeSearchDrawer"
-        position="top"
-        size="100%"
-        maskColor="var(--bg-mask)"
+          title="搜索"
+          :display="searchDisplay"
+          @cancel="closeSearchDrawer"
+          position="top"
+          size="100%"
+          maskColor="var(--bg-mask)"
       >
       </ZyDrawer>
       <!-- 设置抽屉 -->
       <ZyDrawer
-        title="设置"
-        :display="moreDisplay"
-        @cancel="closeMoreDrawer"
-        position="right"
-        size="18rem"
-        maskColor="var(--bg-mask)"
-        background="var(--bg-panel)"
+          title="设置"
+          :display="moreDisplay"
+          @cancel="closeMoreDrawer"
+          position="right"
+          size="18rem"
+          maskColor="var(--bg-mask)"
+          background="var(--bg-panel)"
       >
         <MoreDrawerInner>
           <template #footer>
-            <div
-              class="flex justify-end h-full items-center gap-4 landscape:hidden"
-            >
+            <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
               <ZyButton
-                class="flex items-center justify-center"
-                @click="toggleFullScreen"
-                title="全屏/退出全屏"
-                type="icon"
+                  class="flex items-center justify-center"
+                  @click="toggleFullScreen"
+                  title="全屏/退出全屏"
+                  type="icon"
               >
                 <ZyIcon
-                  v-if="!fullScreenFlag"
-                  size="1.5rem"
-                  defaultName="maximize"
+                    v-if="!fullScreenFlag"
+                    size="1.5rem"
+                    defaultName="maximize"
                 />
                 <ZyIcon v-else size="1.5rem" defaultName="minimize" />
               </ZyButton>
               <ZyButton
-                class="flex items-center justify-center"
-                @click="darkModeSwitch"
-                title="日间/夜间"
-                type="icon"
+                  class="flex items-center justify-center"
+                  @click="darkModeSwitch"
+                  title="日间/夜间"
+                  type="icon"
               >
                 <ZyIcon
-                  size="1.5rem"
-                  class="hidden dark:inline-block"
-                  defaultName="sun"
+                    size="1.5rem"
+                    class="hidden dark:inline-block"
+                    defaultName="sun"
                 />
                 <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
               </ZyButton>
-              <ZyPopover
-                title="切换语言"
-                background="var(--bg-panel)"
-                position="top-right"
-              >
+              <ZyPopover title="切换语言" background="var(--bg-panel)" position="top-right">
                 <template #reference>
                   <ZyButton
-                    class="flex items-center justify-center"
-                    title="切换语言"
-                    type="icon"
+                      class="flex items-center justify-center"
+                      title="切换语言"
+                      type="icon"
                   >
                     <ZyIcon size="1.5rem" defaultName="language" />
                   </ZyButton>
@@ -172,12 +163,14 @@
                   <LanguagePopoverInner />
                 </template>
               </ZyPopover>
+
             </div>
           </template>
         </MoreDrawerInner>
       </ZyDrawer>
     </div>
   </header>
+
 </template>
 <script setup lang="ts">
 // 使用类型断言来处理 TypeScript 的类型检查

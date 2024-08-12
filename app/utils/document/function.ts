@@ -24,7 +24,7 @@ export const getAncestorSectionByElement = (
 ): HTMLElement | null => {
   let ancestor: HTMLElement | null = element?.parentNode as HTMLElement | null;
   while (
-    ancestor !== null && ancestor !== undefined &&
+    ancestor !== null &&
     ancestor.tagName.toLowerCase() !== "section" &&
     ancestor.tagName.toLowerCase() !== "body"
   ) {
