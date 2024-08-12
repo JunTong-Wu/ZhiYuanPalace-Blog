@@ -34,10 +34,13 @@
       >
         <div
           v-if="!hideHeader"
-          class="flex justify-between items-center h-header px-6 text-base color-text-1"
+          class="flex justify-between items-center h-header px-6 text-base text-text-1"
         >
           <div>
-            <h2 v-if="title" class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo ml-2 px-4 border-l-4 border-theme">
+            <h2
+              v-if="title"
+              class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo ml-2 px-4 border-l-4 border-theme"
+            >
               {{ title }}
             </h2>
           </div>

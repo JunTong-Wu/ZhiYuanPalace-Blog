@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="to"
-    class="bg-transparent text-base border-0 color-text-1 flex items-center no-underline"
+    class="bg-transparent text-base border-0 text-text-1 flex items-center no-underline"
     @click.prevent="swichRouter(to)"
     :title="title"
   >
