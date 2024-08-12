@@ -1,124 +1,53 @@
 <template>
-  <header class="h-header color-text-1 overflow-hidden landscape:border-b border-borderColor">
+  <header>
+    <div class="absolute top-0 h-full w-full landscape:bg-bg-headBar portrait:bg-bg-opaque landscape:backdrop-blur-3xl"></div>
     <div
-      class="absolute top-0 z-0 h-header w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"
+        class="absolute top-0 h-full w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"
     ></div>
-    <div
-      class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
-    >
-      <div class="flex items-center h-full overflow-hidden">
-        <GoBackButton />
-        <HeaderTitle />
-      </div>
+    <div class="absolute top-0 h-full w-full right-0 color-text-1 overflow-hidden">
 
-      <div class="h-full landscape:hidden">
-        <div class="flex items-center w-full h-full justify-between">
-          <div class="flex items-center h-full">
-            <ZyButton
-              class="w-header h-header"
-              @click="openSearchDrawer()"
-              title="搜索"
-              type="transparent"
-            >
-              <ZyIcon defaultName="search" size="1.25rem" />
-            </ZyButton>
-            <ZyButton
-              class="w-header h-header"
-              @click="openMoreDrawer()"
-              title="更多选项"
-              type="transparent"
-            >
-              <ZyIcon defaultName="more" size="1.25rem" />
-            </ZyButton>
+      <div
+          class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
+      >
+        <div class="flex items-center h-full overflow-hidden">
+          <Logo class="w-sidebar px-4" />
+          <GoBackButton />
+          <HeaderTitle />
+        </div>
+
+        <div class="h-full landscape:hidden">
+          <div class="flex items-center w-full h-full justify-between">
+            <div class="flex items-center h-full">
+              <ZyButton
+                  class="w-header h-header"
+                  @click="openSearchDrawer()"
+                  title="搜索"
+                  type="transparent"
+              >
+                <ZyIcon defaultName="search" size="1.25rem" />
+              </ZyButton>
+              <ZyButton
+                  class="w-header h-header"
+                  @click="openMoreDrawer()"
+                  title="更多选项"
+                  type="transparent"
+              >
+                <ZyIcon defaultName="more" size="1.25rem" />
+              </ZyButton>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="portrait:hidden">
-        <div class="flex justify-end h-full items-center gap-4">
-          <ZyButton
-            class="flex items-center justify-center"
-            @click="openSearchDrawer()"
-            title="搜索"
-            type="icon"
-          >
-            <ZyIcon size="1.5rem" defaultName="search" />
-          </ZyButton>
-          <ZyButton
-            class="flex items-center justify-center"
-            @click="toggleFullScreen"
-            title="全屏/退出全屏"
-            type="icon"
-          >
-            <ZyIcon
-              v-if="!fullScreenFlag"
-              size="1.5rem"
-              defaultName="maximize"
-            />
-            <ZyIcon v-else size="1.5rem" defaultName="minimize" />
-          </ZyButton>
-          <ZyButton
-              class="flex items-center justify-center"
-              @click="darkModeSwitch"
-              title="日间/夜间"
-              type="icon"
-          >
-            <ZyIcon
-                size="1.5rem"
-                class="hidden dark:inline-block"
-                defaultName="sun"
-            />
-            <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
-          </ZyButton>
-          <!-- 多语言抽屉 -->
-          <ZyPopover title="切换语言" background="var(--bg-panel)">
-            <template #reference>
-              <ZyButton
+        <div class="portrait:hidden">
+          <div class="flex justify-end h-full items-center gap-4">
+            <ZyButton
                 class="flex items-center justify-center"
-                title="切换语言"
+                @click="openSearchDrawer()"
+                title="搜索"
                 type="icon"
-              >
-                <ZyIcon size="1.5rem" defaultName="language" />
-              </ZyButton>
-            </template>
-            <template #actions>
-              <LanguagePopoverInner />
-            </template>
-          </ZyPopover>
-          <ZyButton
-            class="flex items-center justify-center"
-            @click="openMoreDrawer()"
-            title="更多选项"
-            type="icon"
-          >
-            <ZyIcon size="1.5rem" defaultName="more" />
-          </ZyButton>
-        </div>
-      </div>
-    </div>
-    <!-- 搜索抽屉 -->
-    <ZyDrawer
-      title="搜索"
-      :display="searchDisplay"
-      @cancel="closeSearchDrawer"
-      position="top"
-      size="100%"
-      maskColor="var(--bg-mask)"
-    >
-    </ZyDrawer>
-    <!-- 设置抽屉 -->
-    <ZyDrawer
-      title="设置"
-      :display="moreDisplay"
-      @cancel="closeMoreDrawer"
-      position="right"
-      size="25rem"
-      maskColor="var(--bg-mask)"
-      background="var(--bg-panel)"
-    >
-      <MoreDrawerInner>
-        <template #footer>
-          <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
+            >
+              <ZyIcon size="1.5rem" defaultName="search" />
+            </ZyButton>
             <ZyButton
                 class="flex items-center justify-center"
                 @click="toggleFullScreen"
@@ -145,7 +74,8 @@
               />
               <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
             </ZyButton>
-            <ZyPopover title="切换语言" background="var(--bg-panel)" position="top-right">
+            <!-- 多语言抽屉 -->
+            <ZyPopover title="切换语言" background="var(--bg-panel)">
               <template #reference>
                 <ZyButton
                     class="flex items-center justify-center"
@@ -159,12 +89,88 @@
                 <LanguagePopoverInner />
               </template>
             </ZyPopover>
-
+            <ZyButton
+                class="flex items-center justify-center"
+                @click="openMoreDrawer()"
+                title="更多选项"
+                type="icon"
+            >
+              <ZyIcon size="1.5rem" defaultName="more" />
+            </ZyButton>
           </div>
-        </template>
-      </MoreDrawerInner>
-    </ZyDrawer>
+        </div>
+      </div>
+      <!-- 搜索抽屉 -->
+      <ZyDrawer
+          title="搜索"
+          :display="searchDisplay"
+          @cancel="closeSearchDrawer"
+          position="top"
+          size="100%"
+          maskColor="var(--bg-mask)"
+      >
+      </ZyDrawer>
+      <!-- 设置抽屉 -->
+      <ZyDrawer
+          title="设置"
+          :display="moreDisplay"
+          @cancel="closeMoreDrawer"
+          position="right"
+          size="18rem"
+          maskColor="var(--bg-mask)"
+          background="var(--bg-panel)"
+      >
+        <MoreDrawerInner>
+          <template #footer>
+            <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
+              <ZyButton
+                  class="flex items-center justify-center"
+                  @click="toggleFullScreen"
+                  title="全屏/退出全屏"
+                  type="icon"
+              >
+                <ZyIcon
+                    v-if="!fullScreenFlag"
+                    size="1.5rem"
+                    defaultName="maximize"
+                />
+                <ZyIcon v-else size="1.5rem" defaultName="minimize" />
+              </ZyButton>
+              <ZyButton
+                  class="flex items-center justify-center"
+                  @click="darkModeSwitch"
+                  title="日间/夜间"
+                  type="icon"
+              >
+                <ZyIcon
+                    size="1.5rem"
+                    class="hidden dark:inline-block"
+                    defaultName="sun"
+                />
+                <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
+              </ZyButton>
+              <ZyPopover title="切换语言" background="var(--bg-panel)" position="top-right">
+                <template #reference>
+                  <ZyButton
+                      class="flex items-center justify-center"
+                      title="切换语言"
+                      type="icon"
+                  >
+                    <ZyIcon size="1.5rem" defaultName="language" />
+                  </ZyButton>
+                </template>
+                <template #actions>
+                  <LanguagePopoverInner />
+                </template>
+              </ZyPopover>
+
+            </div>
+          </template>
+        </MoreDrawerInner>
+      </ZyDrawer>
+    </div>
   </header>
+
 </template>
 <script setup lang="ts">
 // 使用类型断言来处理 TypeScript 的类型检查
@@ -173,116 +179,6 @@ declare global {
     ActiveXObject?: any;
   }
 }
-
-// 夜间模式
-const darkModeSwitch = (e) => {
-  // 检查是否支持 startViewTransition API
-  if (typeof document.startViewTransition === "function") {
-    // 支持 startViewTransition API，使用过渡动画
-    const transition = document.startViewTransition(() => {
-      if (!document.documentElement.classList.contains("dark")) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    });
-
-    const x = e.clientX;
-    const y = e.clientY;
-
-    const tragetRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
-    transition.ready.then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0% at ${x}px ${y}px)`,
-            `circle(${tragetRadius}px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration: 400,
-          pseudoElement: "::view-transition-new(root)",
-        }
-      );
-    });
-  } else {
-    // 不支持 startViewTransition API，直接切换暗模式
-    if (!document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }
-};
-
-// 全屏
-const fullScreen = () => {
-  const element = document.documentElement as any; //若要全屏页面div
-  //IE 10及以下ActiveXObject
-  if (window.ActiveXObject) {
-    const WsShell = new window.ActiveXObject("WScript.Shell");
-    WsShell.SendKeys("{F11}");
-    //写全屏后的执行函数
-  }
-  //HTML W3C 提议
-  else if (element.requestFullScreen) {
-    element.requestFullScreen();
-    //写全屏后的执行函数
-  }
-  //IE11
-  else if (element.msRequestFullscreen) {
-    element.msRequestFullscreen();
-    //写全屏后的执行函数
-  }
-  // Webkit (works in Safari5.1 and Chrome 15)
-  else if (element.webkitRequestFullScreen) {
-    element.webkitRequestFullScreen();
-    //写全屏后的执行函数
-  }
-  // Firefox (works in nightly)
-  else if (element.mozRequestFullScreen) {
-    element.mozRequestFullScreen();
-    //写全屏后的执行函数
-  } else {
-    alert("此设备不支持 Fullscreen API");
-  }
-};
-
-// 退出全屏
-const fullExit = () => {
-  const element = document.documentElement as any; //若要全屏页面中
-  const doc = document as any;
-  //IE ActiveXObject
-  if (window.ActiveXObject) {
-    const WsShell = new window.ActiveXObject("WScript.Shell");
-    WsShell.SendKeys("{F11}");
-    //写退出全屏后的执行函数
-  }
-  //HTML5 W3C 提议
-  else if (element.requestFullScreen) {
-    doc.exitFullscreen();
-    //写退出全屏后的执行函数
-  }
-  //IE 11
-  else if (element.msRequestFullscreen) {
-    doc.msExitFullscreen();
-    //写退出全屏后的执行函数
-  }
-  // Webkit (works in Safari5.1 and Chrome 15)
-  else if (element.webkitRequestFullScreen) {
-    doc.webkitCancelFullScreen();
-    //写退出全屏后的执行函数
-  }
-  // Firefox (works in nightly)
-  else if (element.mozRequestFullScreen) {
-    doc.mozCancelFullScreen();
-    //写退出全屏后的执行函数
-  }
-};
 
 // 切换全屏
 const fullScreenFlag = ref(false);
@@ -295,8 +191,6 @@ const toggleFullScreen = () => {
     fullExit();
   }
 };
-
-// 返回
 
 // 抽屉
 const searchDisplay = ref(false);

@@ -30,7 +30,7 @@ export default {
         if (element) {
           let href = props.href;
           cardTransitionStart(element, () => {
-            router.replace(href);
+            router.push(href);
           });
         }
       }

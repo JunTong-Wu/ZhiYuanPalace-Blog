@@ -22,10 +22,7 @@
 </template>
 <script setup lang="ts">
 import "@/assets/css/style.scss";
-import "@/assets/css/common-to-live2d.scss";
 import "@/utils/transition/index.scss";
-import "@/assets/css/common-to-nprogress.scss";
-import "@/assets/css/common-to-markdown.scss";
 
 // 多语言
 const head = useLocaleHead({

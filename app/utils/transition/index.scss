@@ -39,6 +39,15 @@
   }
 }
 
+@keyframes an-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 .layout-default-main.transition .main-view-inner {
   transition: all 600ms, background 0s;

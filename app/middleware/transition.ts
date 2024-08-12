@@ -3,7 +3,12 @@ import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layo
 import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/ShuoShuoCard";
 
 export default defineNuxtRouteMiddleware((to, from) => {
-
+  if (process.client) {
+    const body = document.documentElement;
+    if (body) {
+      body.style.overflow = "auto";
+    }
+  }
   if (to.meta.layout === from.meta.layout) {
     if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
       if (process.client) {
@@ -123,7 +128,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
   }
   else {
-    if (to.meta.layout === 'simple' && from.meta.layout === 'default') {
+    if (to.meta.layout === 'admin' && from.meta.layout === 'default') {
       live2dHide();
       if (from.meta.layoutTransition && to.meta.layoutTransition) {
         (from.meta.layoutTransition as any).name = "layout-prev";
@@ -133,7 +138,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         };
       }
     }
-    if (to.meta.layout === 'default' && from.meta.layout === 'simple') {
+    if (to.meta.layout === 'default' && from.meta.layout === 'admin') {
       live2dShow();
       if (from.meta.layoutTransition && to.meta.layoutTransition) {
         (from.meta.layoutTransition as any).name = "layout-next";
