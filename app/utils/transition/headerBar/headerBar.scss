@@ -6,8 +6,18 @@ header.transition-translate-out {
     calc(0rem - var(--header-bar-height) - var(--music-bar-height))
   );
 }
-header {
-  .header-title {
-    animation: an-fade-in 400ms;
+@media (orientation: portrait) {
+  header {
+    .header-title {
+      animation: an-fade-in-from-left 400ms;
+    }
+  }
+}
+
+@media (orientation: landscape) {
+  header {
+    .header-title {
+      animation: an-fade-in 400ms;
+    }
   }
 }
