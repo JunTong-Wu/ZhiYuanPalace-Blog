@@ -147,7 +147,7 @@ onMounted(() => {
 
   // 监听最顶级祖先section标签
   const root = document.querySelector("#service-grid");
-  getAncestorSectionByElement(root).addEventListener("mousemove", onMouseMove);
+  getAncestorSectionByElement(root)?.addEventListener("mousemove", onMouseMove);
   // document.addEventListener("mousemove", onMouseMove);
   document.addEventListener("scroll", onScroll);
   window.addEventListener("resize", onWindowResize);
