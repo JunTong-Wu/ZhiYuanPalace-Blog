@@ -34,7 +34,7 @@ export default defineNuxtConfig({
  },
 
  devtools: { enabled: false },
- modules: ["@nuxtjs/tailwindcss", "nuxt-headlessui", "@element-plus/nuxt", "@nuxtjs/i18n"],
+ modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "nuxt-headlessui", "@element-plus/nuxt", "@nuxtjs/i18n"],
 
  components: [
    {
