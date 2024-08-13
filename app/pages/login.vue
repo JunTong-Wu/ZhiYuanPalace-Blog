@@ -40,6 +40,10 @@
   </div>
 </template>
 <script setup lang="ts">
+import store from '@/store'
+
+const router = useRouter();
+
 useHead({
   title: "登录",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
@@ -61,7 +65,7 @@ definePageMeta({
 const username = ref("admin");
 const password = ref("Wjt991128!@#$%^");
 
-// 获取文章列表
+// 登录
 const login = async () => {
   const data = await ApiUser.login({
     username: username.value,
@@ -69,7 +73,16 @@ const login = async () => {
   });
   if (data.code === 0) {
     // 登录成功
-    console.log('登录成功')
+    store.useAuthStore().setToken(data.data.token);
+    store.useAuthStore().setUser({
+      id: data.data.user_id,
+      username: data.data.user_name,
+      email: data.data.user_email,
+      avatar: data.data.user_avatar,
+      nickname: data.data.user_nick_name,
+    });
+    await router.replace('/admin')
+
   }
 };
 
