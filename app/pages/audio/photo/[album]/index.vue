@@ -79,8 +79,8 @@ const route = useRoute();
 const albumPath = route.params.album as string;
 
 // 获取相册内容
-const albumDetailData = ApiPhotos.search_album_title_by_album_path(albumPath);
-const albumData = ApiPhotos.search_photos_by_album_path(albumPath);
+const albumDetailData = await ApiPhotos.search_album_title_by_album_path(albumPath);
+const albumData = await ApiPhotos.search_photos_by_album_path(albumPath);
 </script>
 <style>
 @import url("~/components/layout/AlbumCard/AlbumCard.scss");

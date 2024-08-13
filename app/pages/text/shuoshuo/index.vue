@@ -79,7 +79,7 @@ definePageMeta({
 });
 
 // 获取说说列表
-const shuoshuoListData = ApiShuoShuo.search_shuoshuo_all();
+const shuoshuoListData = await ApiShuoShuo.search_shuoshuo_all();
 </script>
 <style>
 @import url("~/components/layout/ShuoShuoCard/ShuoShuoCard.scss");

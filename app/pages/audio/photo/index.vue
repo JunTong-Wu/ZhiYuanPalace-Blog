@@ -86,7 +86,7 @@ definePageMeta({
 });
 
 // 获取相册列表
-const albumListData = ApiPhotos.search_album_list();
+const albumListData = await ApiPhotos.search_album_list();
 </script>
 <style>
 @import url("~/components/layout/AlbumCard/AlbumCard.scss");

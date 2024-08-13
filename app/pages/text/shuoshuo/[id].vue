@@ -46,7 +46,7 @@ const route = useRoute();
 const id = route.params.id as string;
 
 // 获取文章内容
-const shuoshuoData = ApiShuoShuo.search_shuoshuo_by_id(id);
+const shuoshuoData = await ApiShuoShuo.search_shuoshuo_by_id(id);
 </script>
 <style>
 @import url("~/components/layout/ShuoShuoCard/ShuoShuoCard.scss");

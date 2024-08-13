@@ -52,7 +52,7 @@ const route = useRoute();
 const id = route.params.id as string;
 
 // 获取文章内容
-const articleData = ApiArticle.search_article_by_id(id);
+const articleData = await ApiArticle.search_article_by_id(id);
 </script>
 <style>
 @import url("~/components/layout/ArticleCard/ArticleCard.scss");

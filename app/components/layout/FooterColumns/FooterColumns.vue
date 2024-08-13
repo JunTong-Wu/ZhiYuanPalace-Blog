@@ -226,7 +226,7 @@ const copyrightLinks = [
 ];
 
 // 获取友链列表
-let friendsListData = ApiFriend.search_friends_all();
+const friendsListData = await ApiFriend.search_friends_all();
 
 const showMoreFriends = () => {
   router.push("/about/friend");

@@ -85,7 +85,7 @@ definePageMeta({
 });
 
 // 获取文章列表
-const articleListData = ApiArticle.search_articles_all();
+const articleListData = await ApiArticle.search_articles_all();
 </script>
 <style>
 @import url("~/components/layout/ArticleCard/ArticleCard.scss");

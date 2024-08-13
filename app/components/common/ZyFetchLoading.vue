@@ -1,10 +1,6 @@
 <template>
   <ul
-    v-if="
-      fetchData.pending.value ||
-      fetchData.error.value ||
-      fetchData.res.value?.code !== 0
-    "
+    v-if="loading"
     :class="rowClass"
   >
     <li v-for="i in minLoadingNumber" :key="`loading-${i}`" :class="cloClass">
@@ -31,11 +27,14 @@ export default {
   props: {
     fetchData: {
       default: {
-        res: ref(),
-        pending: ref(),
-        error: ref(),
-        refresh: ref(),
+        code: 0,
+        message: '请求成功',
+        data:[],
       },
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
     rowClass: {
       type: String,
@@ -68,39 +67,10 @@ export default {
     }
 
     // 服务端获取参数
-    if (props.fetchData.res.value && props.fetchData.res.value.code === 0) {
-      item.value = props.fetchData.res.value;
-    }
-
-    // 客户端获取参数
-    watch(props.fetchData.pending, (newValue: any) => {
-      if (!newValue) {
-        if (props.fetchData.res.value && props.fetchData.res.value.code === 0) {
-          item.value = props.fetchData.res.value;
-        }
+    if (props.fetchData.data) {
+      if (props.fetchData.data.length > 0) {
+        item.value.data = props.fetchData.data;
       }
-    });
-
-    // 弹框提醒
-    if (process.client) {
-      watch(
-        props.fetchData.error,
-        (newValue: any) => {
-          if (newValue) {
-            // showErrorMsg("408", "服务端响应超时");
-          }
-        },
-        { immediate: true }
-      );
-      watch(
-        props.fetchData.res,
-        (newValue: { code: number }) => {
-          if (newValue && newValue.code !== 0) {
-            // showErrorMsg(newValue.code, newValue.message);
-          }
-        },
-        { immediate: true }
-      );
     }
 
     return {

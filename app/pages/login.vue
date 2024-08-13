@@ -62,12 +62,15 @@ const username = ref("admin");
 const password = ref("Wjt991128!@#$%^");
 
 // 获取文章列表
-const login = () => {
-  const {res: loginRes} = ApiUser.login({
+const login = async () => {
+  const data = await ApiUser.login({
     username: username.value,
     password: password.value,
   });
-  console.log(loginRes.value)
+  if (data.code === 0) {
+    // 登录成功
+    console.log('登录成功')
+  }
 };
 
 </script>
