@@ -1,3 +1,5 @@
+import qs from "qs";// 导入qs库，用于处理query
+
 export const useMyFetch = function (
   method: string,
   url: string,
@@ -11,16 +13,22 @@ export const useMyFetch = function (
   } = useLazyFetch(url, {
     onRequest({ request, options }) {
       options.method = method;
+      // @ts-ignore
       options.baseURL = import.meta.env.VITE_APP_API_BASE;
+      options.headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+      };
       // console.log('请求接口：' + options.baseURL + url);
       if (method == "get") {
         // 如果是get请求，把参数传到query
         // console.log('reqquery:', parameter);
         options.query = parameter;
       } else if (method == "post") {
-        // 如果是get请求，把参数传到body
+        // 如果是post请求，把参数传到body
         // console.log('reqbody:', parameter);
-        options.body = parameter;
+
+        options.body = qs.stringify(parameter);
+
       }
     },
     onRequestError({ request, options, error }) {
