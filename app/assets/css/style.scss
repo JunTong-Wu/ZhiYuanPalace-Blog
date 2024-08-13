@@ -1,7 +1,6 @@
 @import url("./live2d/index.scss");
 @import url("./markdown/index.scss");
 @import url("./nprogress/index.scss");
-@import url("./element-plus/index.scss");
 
 @import url("../fonts/DFPKingGothicGB.css");
 @import url("../fonts/HarmonyOS.css");
@@ -111,7 +110,7 @@ a {
   --theme-color: rgb(0, 186, 242);
   --theme-color-translucent: transparent;
   --theme-color-rgb: 0, 186, 242;
-  --bg-card: rgba(255, 255, 255, 0.3); //卡片
+  --bg-card: rgba(255, 255, 255, 0.7); //卡片
   --bg-best-card: rgba(244, 245, 247, 1); //卡片
   --bg-panel: rgba(255, 255, 255, 0.6); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
@@ -131,7 +130,7 @@ a {
   --theme-color: rgb(0, 186, 242);
   --theme-color-translucent: transparent;
   --theme-color-rgb: 0, 186, 242;
-  --bg-card: rgba(50, 51, 69, 0.3); //卡片
+  --bg-card: rgba(68, 69, 98, 0.4); //卡片
   --bg-best-card: rgba(32, 33, 58, 1); //卡片
   --bg-panel: rgba(32, 33, 58, 0.6); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层

@@ -84,7 +84,7 @@ const route = useRoute();
 const router = useRouter();
 const isSimpleLayout = () => {
   if(route.meta){
-      return route.meta.layout === 'simple'
+      return route.meta.layout === 'admin'
   }
   return false
 };
@@ -105,7 +105,7 @@ if (process.client) {
 
 router.afterEach(
     (to, from) => {
-      if(to.meta.layout !== 'simple'){
+      if(to.meta.layout !== 'admin'){
         const canvas = document.querySelector("#oml-canvas");
         if (!canvas && !isSimpleLayout()) {
           setTimeout(() => {

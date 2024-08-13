@@ -7,7 +7,7 @@
         class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
       >
         <div class="flex items-center h-full overflow-hidden">
-          <Logo class="w-sidebar px-4" />
+          <Logo class="w-sidebar px-4 portrait:hidden" />
           <GoBackButton />
         </div>
 
