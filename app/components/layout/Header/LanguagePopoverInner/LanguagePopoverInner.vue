@@ -12,7 +12,7 @@
         }"
       >
         <label
-          class="w-full flex justify-between p-4 h-14 hover:bg-theme hover:text-white cursor-pointer"
+          class="w-full flex justify-between p-4 h-14 hover:bg-theme-500 hover:text-white cursor-pointer"
         >
           <span class="text-sm">{{ lang.name }}</span>
           <input

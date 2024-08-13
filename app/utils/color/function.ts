@@ -233,15 +233,31 @@ const hslToRgb = (
     b = hue2rgb(p, q, h - 1 / 3);
   }
 
-  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+  // 限制 r, g, b 不超过 255
+  r = Math.min(Math.round(r * 255), 255);
+  g = Math.min(Math.round(g * 255), 255);
+  b = Math.min(Math.round(b * 255), 255);
+
+  return [r, g, b];
 };
 
 /**
+ * @description: 将RGB转换为HEX
+ * @param rgb - [k:number, s:number, l:number]
+ * @return hex - string
+ */
+export const rgbToHex = (rgb: [number, number, number]): string => {
+  const [r, g, b] = rgb;
+  const toHex = (n: number) => n.toString(16).padStart(2, '0').toUpperCase();
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+/**
  * @description: 保持颜色的色调和饱和度不变,限制亮度区间
- * @param {*} rgb [r:number, g:number, b:number]
- * @param {*} maxBrightness number(0~100)
- * @param {*} minBrightness number(0~100)
- * @return {*} [r:number, g:number, b:number]
+ * @param rgb - [r:number, g:number, b:number]
+ * @param maxBrightness - number(0~100)
+ * @param minBrightness - number(0~100)
+ * @return [r:number, g:number, b:number]
  */
 export const adjustBrightnessWhilePreservingHue = (
   rgb: [number, number, number],
@@ -270,4 +286,33 @@ export const increaseSaturation = (
   // 将 HSL 转换回 RGB
   const [newR, newG, newB] = hslToRgb(h, newS, l);
   return [newR, newG, newB];
+};
+
+/**
+ * @description: 生成TailwindColors
+ * @param rgb - [r:number, g:number, b:number]
+ * @return tailwindColors - { [key: string]: string }
+ */
+export const generateTailwindColors = (
+    rgb: [number, number, number]
+): { [key: string]: string } => {
+  let [h, s, l] = rgbToHsl(...rgb);
+
+  // 将 s 和 l 转换到 [0, 100] 的范围
+  s *= 100;
+  l *= 100;
+
+  return {
+    50: rgbToHex(hslToRgb(h, s / 100, (l + 35) / 100)),
+    100: rgbToHex(hslToRgb(h, s / 100, (l + 28) / 100)),
+    200: rgbToHex(hslToRgb(h, s / 100, (l + 21) / 100)),
+    300: rgbToHex(hslToRgb(h, s / 100, (l + 14) / 100)),
+    400: rgbToHex(hslToRgb(h, s / 100, (l + 7) / 100)),
+    500: rgbToHex(hslToRgb(h, s / 100, l / 100)),
+    600: rgbToHex(hslToRgb(h, s / 100, (l - 7) / 100)),
+    700: rgbToHex(hslToRgb(h, s / 100, (l - 14) / 100)),
+    800: rgbToHex(hslToRgb(h, s / 100, (l - 21) / 100)),
+    900: rgbToHex(hslToRgb(h, s / 100, (l - 28) / 100)),
+    950: rgbToHex(hslToRgb(h, s / 100, (l - 35) / 100))
+  };
 };

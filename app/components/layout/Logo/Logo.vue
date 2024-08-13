@@ -1,13 +1,15 @@
 <template>
   <div class="zy-header-logo-wrapper h-header">
     <div class="flex gap-4 items-center h-full">
-      <div class="portrait:hidden text-text-1">
-        <div class="h-full flex items-center justify-center">
-          <img src="@/assets/image/logo.png" alt="" class="logo-img w-10" />
-        </div>
+      <div class="h-full flex items-center justify-center">
+        <img src="@/assets/image/logo.png" alt=""
+             class="logo-img"
+             :class="{'w-10':size === 'small', 'w-16':size === 'default', 'w-20':size === 'large'}"
+        />
       </div>
       <div
         class="h-full w-28 flex items-center justify-center opacity-80 dark:invert"
+        :class="{'w-28':size === 'small', 'w-36':size === 'default', 'w-48':size === 'large'}"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -74,6 +76,13 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const props = defineProps({
+  size: { type: String, default: "default" },
+});
+</script>
+
 <style lang="scss" scoped>
 //.zy-header-logo-wrapper {
 //  h1 {
@@ -90,4 +99,3 @@
 //  }
 //}
 </style>
-<script setup lang="ts"></script>

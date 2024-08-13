@@ -1,10 +1,10 @@
 <template>
   <aside id="zy-music-bar" class="h-music">
     <div
-      class="relative z-10 h-full portrait:flex items-center landscape:rounded-2xl landscape:bg-theme landscape:shadow-lg landscape:shadow-theme"
+      class="relative z-10 h-full portrait:flex items-center landscape:rounded-2xl landscape:bg-theme-500 landscape:shadow-lg landscape:shadow-theme"
     >
       <div
-        class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme to-transparent hue-rotate-30 mix-blend-multiply rounded-2xl"
+        class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme-600 to-transparent hue-rotate-30 mix-blend-multiply rounded-2xl"
       ></div>
       <div
         class="flex flex-none relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4"
@@ -126,16 +126,33 @@ watch(bg_image, (newValue: any) => {
 const createDecoration = () => {
   const img = bg_image.value;
   if (img) {
+    const imageColor = getImageColor(img);
     const rgb = increaseSaturation(
-      adjustBrightnessWhilePreservingHue(getImageColor(img), 60, 60),
+      adjustBrightnessWhilePreservingHue(imageColor, 60, 60),
       5
     );
     const themeColorTranslucent = `rgba(${rgb},0.2)`;
     const themeColor = `rgb(${rgb})`;
     const themeColorRGB = `${rgb}`;
+    const themeColorTailwind = generateTailwindColors(rgb);
     document.body.setAttribute(
       "style",
-      `--theme-color-translucent: ${themeColorTranslucent};--theme-color: ${themeColor};--theme-color-rgb: ${themeColorRGB};`
+      `
+      --theme-color-translucent: ${themeColorTranslucent};
+      --theme-color: ${themeColor};
+      --theme-color-rgb: ${themeColorRGB};
+      --theme-color-50: ${themeColorTailwind[50]};
+      --theme-color-100: ${themeColorTailwind[100]};
+      --theme-color-200: ${themeColorTailwind[200]};
+      --theme-color-300: ${themeColorTailwind[300]};
+      --theme-color-400: ${themeColorTailwind[400]};
+      --theme-color-500: ${themeColorTailwind[500]};
+      --theme-color-600: ${themeColorTailwind[600]};
+      --theme-color-700: ${themeColorTailwind[700]};
+      --theme-color-800: ${themeColorTailwind[800]};
+      --theme-color-900: ${themeColorTailwind[900]};
+      --theme-color-950: ${themeColorTailwind[950]};
+      `
     );
   }
 };

@@ -1,26 +1,38 @@
 <template>
   <div>
     <div
-        class="absolute top-0 left-0 z-10 w-full h-full flex items-center justify-center bg-bg-bestCard"
+        class="absolute top-0 left-0 z-10 w-full h-full flex flex-col items-center justify-center bg-bg-bestCard portrait:bg-bg-opaque"
     >
+      <Logo class="px-4 portrait:hidden mb-8" size="large" />
+      <Logo class="px-4 landscape:hidden" size="default" />
       <div
-          class="bg-bg-card p-8 rounded-2xl min-w-[20rem] flex flex-col items-center justify-center "
+          class="bg-bg-card p-8 landscape:pt-12 rounded-2xl landscape:min-w-[34rem] portrait:w-full flex flex-col items-center justify-center mb-8 landscape:shadow-lg"
       >
-        <h1 class="text-2xl font-bold text-center mb-4">登录知鸢宫</h1>
+        <h1 class="text-2xl portrait:hidden font-bold text-center">登录</h1>
+        <div class="flex flex-col items-center gap-8 w-full mt-4 p-4">
+          <div class="flex flex-col items-center gap-8 w-full mb-8">
+            <UInput
+                v-model="username"
+                icon="i-ri-account-box-fill"
+                placeholder="请输入用户名"
+                class="w-full"
+                size="xl"
+            ></UInput>
+            <UInput
+                v-model="password"
+                icon="i-ri-lock-password-fill"
+                placeholder="请输入密码"
+                type="password"
+                class="w-full"
+                size="xl"
+            ></UInput>
+          </div>
+          <div class="portrait:absolute bottom-24 left-0 right-0 z-10 flex justify-center">
+            <ZyButton
+                type="none"
+                class="w-48 text-xl portrait:text-base  p-4 border-4 rounded-full border-slate-100 text-slate-500 hover:border-indigo-500 hover:text-indigo-500 font-bold portrait:font-normal"  @click="login">登录</ZyButton>
+          </div>
 
-        <div class="flex flex-col items-center">
-          <UInput
-              v-model="username"
-              placeholder="请输入用户名"
-              class="mb-4"
-          ></UInput>
-          <UInput
-              v-model="password"
-              placeholder="请输入密码"
-              type="password"
-              class="mb-4"
-          ></UInput>
-          <UButton type="primary" @click="login">登录</UButton>
         </div>
       </div>
     </div>

@@ -4,9 +4,9 @@
       'ZyButton-default': type == 'default',
       'ZyButton-text': type == 'text',
       'ZyButton-icon': type == 'icon',
-      'ZyButton-primary': type == 'primary',
+      'ZyButton-none': type == 'none',
     }"
-    class="min-h-9 min-w-9 text-base p-0 m-0 flex items-center justify-center"
+    class="min-h-9 min-w-9 p-0 m-0 flex items-center justify-center"
     ref="button"
     type="button"
     color="inherit"
@@ -15,9 +15,7 @@
     @mouseup="animationEnd()"
     @touchstart.passive="animationStart()"
     @touchend.passive="animationEnd()"
-  >
-    <slot />
-  </button>
+  ><slot/></button>
 </template>
 <script lang="ts">
 export default defineComponent({
@@ -117,53 +115,24 @@ export default defineComponent({
 }
 
 /**
-* Type Default
+* Type None
 **/
-button.ZyButton-default {
-  background-color: var(--bg-card);
-  color: inherit;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  border-radius: 9999px;
-  border: none;
-  box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--bg-card),
-    inset -5px -5px 10px var(--bg-card);
-}
+button.ZyButton-none {
 
-@media (hover: hover) {
-  .pc button.ZyButton-default:hover {
-    background-color: var(--primary-5);
-    color: white;
-    box-shadow: 5px 5px 10px var(--bg-mask), inset 2px 2px 6px var(--primary-7),
-      inset -5px -5px 10px var(--primary-7);
-  }
 }
 
 /**
-* Type Primary
+* Type Default
 **/
-button.ZyButton-primary {
-  background-color: var(--primary-5);
-  color: white;
+button.ZyButton-default {
+  color: var(--theme-color);
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  font-weight: bold;
   border-radius: 9999px;
-  border: none;
-  box-shadow: 5px 5px 10px rgba(108, 106, 212, 0.25),
-    inset 2px 2px 6px var(--primary-6), inset -5px -5px 10px var(--primary-6);
-}
-
-@media (hover: hover) {
-  .pc button.ZyButton-primary:hover {
-    background-color: var(--primary-6);
-    color: white;
-    box-shadow: 5px 5px 10px rgba(108, 106, 212, 0.25),
-      inset 2px 2px 6px var(--primary-7), inset -5px -5px 10px var(--primary-7);
-  }
+  border: 4px solid var(--theme-color);
 }
 
 /**

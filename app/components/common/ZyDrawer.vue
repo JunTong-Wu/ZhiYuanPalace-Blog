@@ -39,7 +39,7 @@
           <div>
             <h2
               v-if="title"
-              class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo ml-2 px-4 border-l-4 border-theme"
+              class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo ml-2 px-4 border-l-4 border-theme-500"
             >
               {{ title }}
             </h2>

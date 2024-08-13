@@ -44,7 +44,7 @@
             </div>
           </div>
           <div
-            class="active-layout absolute hue-rotate-30 bg-theme h-full inset-0"
+            class="active-layout absolute hue-rotate-30 bg-theme-600 h-full inset-0"
           >
             <div class="flex h-16 items-center justify-center w-full">
               <ZyIcon

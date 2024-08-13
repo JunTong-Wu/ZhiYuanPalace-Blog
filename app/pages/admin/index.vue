@@ -5,10 +5,10 @@
 </template>
 <script setup lang="ts">
 useHead({
-  title: "登录",
+  title: "仪表盘",
   meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
   bodyAttrs: {
-    class: "page-login",
+    class: "page-admin",
   },
 });
 definePageMeta({

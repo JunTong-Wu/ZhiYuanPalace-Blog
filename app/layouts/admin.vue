@@ -1,13 +1,14 @@
 <template>
   <div id="layout-simple" class="relative overflow-hidden">
     <header
+      v-if="!isLoginPage"
       class="fixed top-0 left-0 right-0 z-40 landscape:backdrop-blur-3xl landscape:bg-bg-headBar portrait:bg-bg-opaque h-header text-text-1 overflow-hidden landscape:border-b border-borderColor"
     >
       <div
         class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
       >
         <div class="flex items-center h-full overflow-hidden">
-          <Logo class="w-sidebar px-4 portrait:hidden" />
+          <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
           <GoBackButton />
         </div>
 
@@ -74,6 +75,9 @@
   </div>
 </template>
 <script setup lang="ts">
+const route = useRoute()
+const isLoginPage = computed(() =>{ return route.path === '/login'})
+
 // 切换全屏
 const fullScreenFlag = ref(false);
 const toggleFullScreen = () => {

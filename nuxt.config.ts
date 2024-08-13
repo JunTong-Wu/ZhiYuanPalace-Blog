@@ -18,6 +18,10 @@ export default defineNuxtConfig({
    layoutTransition: { mode: "out-in" },
  },
 
+ui: {
+    safelistColors: ['theme']
+},
+
  hooks: {
    "vite:extendConfig"(config) {
      delete config.define!.window;
