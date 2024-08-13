@@ -17,6 +17,7 @@
                 placeholder="请输入用户名"
                 class="w-full"
                 size="xl"
+                color="indigo"
             ></UInput>
             <UInput
                 v-model="password"
@@ -25,6 +26,7 @@
                 type="password"
                 class="w-full"
                 size="xl"
+                color="indigo"
             ></UInput>
           </div>
           <div class="portrait:absolute bottom-24 left-0 right-0 z-10 flex justify-center">
@@ -32,7 +34,6 @@
                 type="none"
                 class="w-48 text-xl portrait:text-base p-4 border-4 rounded-full border-slate-100 dark:border-slate-600 text-slate-500 hover:border-indigo-500 hover:text-indigo-500 font-bold portrait:font-normal"  @click="login">登录</ZyButton>
           </div>
-
         </div>
       </div>
     </div>
