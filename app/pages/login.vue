@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="">
     <div
-        class="absolute top-0 left-0 z-10 w-full h-full flex flex-col items-center justify-center bg-bg-bestCard"
+        class="translate-screen-center w-full flex flex-col items-center justify-center"
     >
       <Logo class="px-4 portrait:hidden mb-8" size="large" />
       <Logo class="px-4 landscape:hidden" size="default" />
       <div
-          class="bg-bg-card portrait:bg-bg-bestCard p-8 landscape:pt-12 rounded-2xl landscape:min-w-[34rem] portrait:w-full flex flex-col items-center justify-center mb-8 landscape:shadow-lg"
+          class="bg-bg-card portrait:bg-transparent p-8 landscape:pt-12 rounded-2xl landscape:min-w-[34rem] portrait:w-full flex flex-col items-center justify-center mb-8 landscape:shadow-lg"
       >
         <h1 class="text-2xl portrait:hidden font-bold text-center">登录</h1>
         <div class="flex flex-col items-center gap-8 w-full mt-4 p-4">
@@ -29,7 +29,7 @@
                 color="indigo"
             ></UInput>
           </div>
-          <div class="portrait:absolute bottom-24 left-0 right-0 z-10 flex justify-center">
+          <div class="flex justify-center">
             <ZyButton
                 type="none"
                 class="w-48 text-xl portrait:text-base p-4 border-4 rounded-full border-slate-100 dark:border-slate-600 text-slate-500 hover:border-indigo-500 hover:text-indigo-500 font-bold portrait:font-normal"  @click="login">登录</ZyButton>

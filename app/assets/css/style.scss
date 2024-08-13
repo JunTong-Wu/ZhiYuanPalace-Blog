@@ -24,7 +24,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 * {
   box-sizing: border-box;
@@ -203,4 +202,17 @@ a {
 .container {
   max-width: var(--centered-width);
   margin: 0 auto;
+}
+
+.translate-screen-center {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+}
+
+*.hidden-scrollbar-x {
+  ::-webkit-scrollbar {
+    height: 0;
+  }
 }

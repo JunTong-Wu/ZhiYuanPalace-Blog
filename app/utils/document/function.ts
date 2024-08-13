@@ -164,9 +164,11 @@ export const darkModeSwitch = (e) => {
     // 支持 startViewTransition API，使用过渡动画
     const transition = document.startViewTransition(() => {
       if (!document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("light");
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
       }
     });
 
@@ -195,9 +197,11 @@ export const darkModeSwitch = (e) => {
   } else {
     // 不支持 startViewTransition API，直接切换暗模式
     if (!document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("light");
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   }
 };

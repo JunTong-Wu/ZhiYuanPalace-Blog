@@ -1,5 +1,5 @@
 <template>
-  <div id="layout-simple" class="relative overflow-hidden">
+  <div id="layout-simple" class="relative">
     <header
       v-if="!isLoginPage"
       class="fixed top-0 left-0 right-0 z-40 landscape:backdrop-blur-3xl landscape:bg-bg-headBar portrait:bg-bg-opaque h-header text-text-1 overflow-hidden landscape:border-b border-borderColor"
@@ -65,7 +65,7 @@
     </header>
     <div id="layout-simple-main" class="layout-simple-main relative z-20">
       <main>
-        <div class="main-view text-base relative overflow-hidden">
+        <div class="main-view text-base relative">
           <div class="main-view-inner">
             <slot />
           </div>

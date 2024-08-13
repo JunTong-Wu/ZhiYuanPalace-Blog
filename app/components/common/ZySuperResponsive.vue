@@ -67,12 +67,13 @@ export default defineComponent({
         if (isDarkTheme.matches) {
           return true;
         } else {
-          let currdate = new Date();
-          if (currdate.getHours() >= 19 || currdate.getHours() < 7) {
-            return true;
-          } else {
-            return false;
-          }
+          return false;
+          // let currdate = new Date();
+          // if (currdate.getHours() >= 19 || currdate.getHours() < 7) {
+          //   return true;
+          // } else {
+          //   return false;
+          // }
         }
       };
       const isVertical = () => {

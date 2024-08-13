@@ -1,5 +1,5 @@
 <template>
-  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
+  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" class="hidden-scrollbar-x">
     <Head>
       <template v-for="link in head.link" :key="link.id">
         <Link
@@ -16,9 +16,10 @@
   </Html>
   <ZySuperResponsive>
     <NuxtLayout ref="layoutRef">
-      <NuxtPage class="nuxt-page mx-auto" />
+      <NuxtPage class="nuxt-page mx-auto" :class="{'min-h-screen': !isSimpleLayout()}" />
     </NuxtLayout>
   </ZySuperResponsive>
+
 </template>
 <script setup lang="ts">
 import "@/assets/css/style.scss";
@@ -125,8 +126,6 @@ useHead({
 </script>
 <style lang="scss">
 .nuxt-page {
-  min-height: 100vh;
-  padding-bottom: 10rem;
   will-change: transform;
 }
 
