@@ -4,7 +4,7 @@
       <ul>
         <li class="">
           <ZyLink
-            :to="{ name: 'admin' }"
+            to="/admin"
             type="push"
             class="flex items-center justify-between"
           >

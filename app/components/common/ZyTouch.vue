@@ -16,8 +16,8 @@ export default {
   name: "ZyTouch",
   props: {
     init: {
-      type: Boolean,
-      default: false,
+      type: Number,
+      default: 0,
     },
   },
   setup(props, { emit }) {
