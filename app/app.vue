@@ -109,9 +109,7 @@ router.afterEach(
       if(to.meta.layout !== 'admin'){
         const canvas = document.querySelector("#oml-canvas");
         if (!canvas && !isSimpleLayout()) {
-          setTimeout(() => {
-            initLive2d();
-          },400);
+          initLive2d();
         }
       }
     }
