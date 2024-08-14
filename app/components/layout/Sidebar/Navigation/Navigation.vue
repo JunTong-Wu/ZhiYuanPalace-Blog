@@ -2,7 +2,7 @@
   <div>
     <nav class="relative">
       <div class="indicator-layer" id="indicator-layer">
-        <Indicator :msg="getNavigationMap()" />
+        <Indicator :msg="getVisitorNavigationMap()" />
       </div>
       <ul class="flex flex-col gap-2">
         <li

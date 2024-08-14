@@ -102,6 +102,18 @@ export const getNavigationMap = (): Route[] => {
   ];
 };
 
+export const getVisitorNavigationMap  = (): Route[] => {
+  let linkList = getNavigationMap() as Route[];
+  linkList = linkList.filter((item) => item.rule !== "admin");
+  return linkList;
+};
+
+export const getAdminNavigationMap  = (): Route[] => {
+  let linkList = getNavigationMap() as Route[];
+  linkList = linkList.filter((item) => item.rule === "admin");
+  return linkList;
+};
+
 export const findTitleByPath = (routes: Route[], path: string): string => {
   // 首先检查顶级路由
   for (const route of routes) {
@@ -159,8 +171,7 @@ export const getSelfPathOrder = (path: string) => {
 };
 
 export const getNavigationMapForVisitorMenu = () => {
-  let linkList = getNavigationMap() as Route[];
-  linkList = linkList.filter((item) => item.rule !== "admin");
+  let linkList = getVisitorNavigationMap() as Route[];
   for (const route of linkList) {
     if (route.children) {
       route.path = route.children[0].path;
@@ -170,8 +181,7 @@ export const getNavigationMapForVisitorMenu = () => {
 };
 
 export const getNavigationMapForAdminMenu = () => {
-  let linkList = getNavigationMap() as Route[];
-  linkList = linkList.filter((item) => item.rule === "admin");
+  let linkList = getAdminNavigationMap() as Route[];
   for (const route of linkList) {
     if (route.children) {
       route.path = route.children[0].path;

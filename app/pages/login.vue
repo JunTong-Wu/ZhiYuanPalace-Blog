@@ -62,8 +62,8 @@ definePageMeta({
   middleware: "transition",
 });
 
-const username = ref("admin");
-const password = ref("Wjt991128!@#$%^");
+const username = ref("");
+const password = ref("");
 
 // 登录
 const login = async () => {
