@@ -1,25 +1,27 @@
 <template>
-  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" class="hidden-scrollbar-x">
+  <div>
+    <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" class="hidden-scrollbar-x">
     <Head>
       <template v-for="link in head.link" :key="link.id">
         <Link
-          :id="link.id"
-          :rel="link.rel"
-          :href="link.href"
-          :hreflang="link.hreflang"
+            :id="link.id"
+            :rel="link.rel"
+            :href="link.href"
+            :hreflang="link.hreflang"
         />
       </template>
       <template v-for="meta in head.meta" :key="meta.id">
         <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
       </template>
     </Head>
-  </Html>
-  <ZySuperResponsive>
-    <NuxtLayout ref="layoutRef">
-      <NuxtPage class="nuxt-page mx-auto" :class="{'min-h-screen': !isSimpleLayout()}" />
-    </NuxtLayout>
-  </ZySuperResponsive>
-
+    </Html>
+    <ZySuperResponsive>
+      <NuxtLayout ref="layoutRef">
+        <NuxtPage class="nuxt-page mx-auto" :class="{'min-h-screen': !isSimpleLayout()}" />
+        <NuxtSnackbar />
+      </NuxtLayout>
+    </ZySuperResponsive>
+  </div>
 </template>
 <script setup lang="ts">
 import "@/assets/css/style.scss";

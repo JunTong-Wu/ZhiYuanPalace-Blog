@@ -95,3 +95,11 @@ export const debounce = (func: () => void, delay: number): (() => void) => {
     }, delay);
   };
 };
+
+/**
+ * @description: 暂停执行函数
+ * @return : Function
+ */
+export const sleep = (ms:number) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

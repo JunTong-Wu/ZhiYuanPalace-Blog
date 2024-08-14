@@ -36,6 +36,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import {sleep} from "~/utils";
+
 const props = defineProps({
   type: {
     type: String,
@@ -50,15 +52,37 @@ const props = defineProps({
 const loading = ref(false)
 const isOpen = ref(false)
 const password = ref('')
+const snackbar = useSnackbar();
 
 const verifyPassword = async () => {
-  loading.value = true
-  // const data = await ApiArticle.articles_password_verify({
-  //   password: password.value,
-  //   id: props.id,
-  // });
-  // if(data.code === 0){
-  //   console.log('密码正确，可以访问文章')
-  // }
+  if(password.value.trim() === ''){
+    snackbar.add({
+      type: 'warning',
+      text: '密码不能为空'
+    })
+    return;
+  }
+  loading.value = true;
+  const data = await ApiArticle.articles_password_verify({
+    password: password.value,
+    id: props.id,
+  });
+  await sleep(400);
+  loading.value = false;
+  if(data.code === 0){
+    snackbar.add({
+      type: 'success',
+      text: '密码正确，可以访问文章'
+    })
+  } else {
+    snackbar.add({
+      type: 'warning',
+      text: '密码错误，不能访问文章'
+    })
+  }
+
+
+
+
 }
 </script>

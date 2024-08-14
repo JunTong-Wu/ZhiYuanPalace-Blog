@@ -9,75 +9,87 @@ Object.assign(process.env, envData); // 将环境配置信息，添加到process
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import compression from "vite-plugin-compression";
 export default defineNuxtConfig({
- future: {
-   compatibilityVersion: 4,
- },
+  future: {
+    compatibilityVersion: 4,
+  },
 
- app: {
-   pageTransition: { mode: "out-in" },
-   layoutTransition: { mode: "out-in" },
- },
+  app: {
+    pageTransition: { mode: "out-in" },
+    layoutTransition: { mode: "out-in" },
+  },
 
-ui: {
-    safelistColors: ['theme']
-},
+  ui: {
+    safelistColors: ["theme"],
+  },
 
- hooks: {
-   "vite:extendConfig"(config) {
-     delete config.define!.window;
-     delete config.define!.document;
-   },
- },
+  hooks: {
+    "vite:extendConfig"(config) {
+      delete config.define!.window;
+      delete config.define!.document;
+    },
+  },
 
- devtools: { enabled: false },
- modules: ["@nuxt/ui", "@nuxtjs/tailwindcss", "nuxt-headlessui", "@nuxtjs/i18n", "@pinia/nuxt"],
+  devtools: { enabled: false },
+  modules: [
+    "@nuxt/ui",
+    "@nuxtjs/tailwindcss",
+    "nuxt-headlessui",
+    "@nuxtjs/i18n",
+    "@pinia/nuxt",
+    "nuxt-snackbar",
+  ],
 
- components: [
-   {
-     path: "components",
-     pathPrefix: false,
-     extensions: [".vue"],
-   },
- ],
+  snackbar: {
+    top: true,
+    duration: 1500,
+  },
 
- i18n: {
-   baseUrl: "https://www.yiru.love",
-   locales: [
-     {
-       code: "zh-CN",
-       name: "简体中文",
-       iso: "zh-CN",
-       files: ["zh/common.json"],
-       dir: "ltr",
-     },
-     {
-       code: "en",
-       name: "English",
-       iso: "en",
-       files: ["en/common.json"],
-       dir: "ltr",
-     },
-   ],
-   defaultLocale: "zh-CN",
-   strategy: "no_prefix",
-   detectBrowserLanguage: {
-     useCookie: true,
-     cookieKey: "i18n_redirected",
-     alwaysRedirect: true,
-   },
-   vueI18n: "./i18n.config.ts",
-   lazy: true,
-   langDir: "language",
- },
+  components: [
+    {
+      path: "components",
+      pathPrefix: false,
+      extensions: [".vue"],
+    },
+  ],
 
- vite: {
-   plugins: [
-     compression({
-       algorithm: "gzip", // 使用 gzip 压缩
-       ext: ".gz", // 压缩后的文件扩展名
-     }),
-   ],
- },
+  i18n: {
+    baseUrl: "https://www.yiru.love",
+    locales: [
+      {
+        code: "zh-CN",
+        name: "简体中文",
+        iso: "zh-CN",
+        files: ["zh/common.json"],
+        dir: "ltr",
+      },
+      {
+        code: "en",
+        name: "English",
+        iso: "en",
+        files: ["en/common.json"],
+        dir: "ltr",
+      },
+    ],
+    defaultLocale: "zh-CN",
+    strategy: "no_prefix",
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      alwaysRedirect: true,
+    },
+    vueI18n: "./i18n.config.ts",
+    lazy: true,
+    langDir: "language",
+  },
 
- compatibilityDate: "2024-08-12",
+  vite: {
+    plugins: [
+      compression({
+        algorithm: "gzip", // 使用 gzip 压缩
+        ext: ".gz", // 压缩后的文件扩展名
+      }),
+    ],
+  },
+
+  compatibilityDate: "2024-08-12",
 });
