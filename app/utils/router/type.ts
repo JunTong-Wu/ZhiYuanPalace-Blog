@@ -6,4 +6,5 @@ export type Route = {
   iconImage?: string;
   order: number;
   children?: Route[];
+  rule?:string;
 };

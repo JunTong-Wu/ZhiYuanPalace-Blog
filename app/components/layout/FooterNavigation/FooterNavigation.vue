@@ -26,6 +26,6 @@
   </footer>
 </template>
 <script setup lang="ts">
-const linkList = getNavigationMapForMenu();
+const linkList = getNavigationMapForVisitorMenu();
 const route = useRoute();
 </script>

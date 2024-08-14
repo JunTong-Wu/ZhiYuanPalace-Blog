@@ -97,6 +97,7 @@ export const getNavigationMap = (): Route[] => {
       defaultIcon: "admin-default",
       activatedIcon: "admin-activated",
       order: 6,
+      rule: "admin",
     },
   ];
 };
@@ -157,8 +158,20 @@ export const getSelfPathOrder = (path: string) => {
   return order;
 };
 
-export const getNavigationMapForMenu = () => {
+export const getNavigationMapForVisitorMenu = () => {
   let linkList = getNavigationMap() as Route[];
+  linkList = linkList.filter((item) => item.rule !== "admin");
+  for (const route of linkList) {
+    if (route.children) {
+      route.path = route.children[0].path;
+    }
+  }
+  return linkList;
+};
+
+export const getNavigationMapForAdminMenu = () => {
+  let linkList = getNavigationMap() as Route[];
+  linkList = linkList.filter((item) => item.rule === "admin");
   for (const route of linkList) {
     if (route.children) {
       route.path = route.children[0].path;
