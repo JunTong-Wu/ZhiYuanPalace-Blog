@@ -73,6 +73,21 @@ export default {
       }
     }
 
+    // 服务端获取状态
+    watch(
+      () => props.fetchData,
+      (newVal) => {
+        if (newVal.data) {
+          if (newVal.data.length > 0) {
+            item.value.data = newVal.data;
+          }
+        }
+      },
+      {
+        deep: true,
+      }
+    );
+
     return {
       item,
       localMaxDataLength,

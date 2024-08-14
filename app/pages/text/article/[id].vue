@@ -24,8 +24,14 @@
             </h1>
             <div v-else>
               <ZySkeleton :row="3" />
-              <div class="flex justify-center items-center mt-8 xs:mt-10 sm:mt-12 md:mt-14 lg:mt-16">
-                <PassWordModel type="article" :id="item.article_id">
+              <div
+                class="flex justify-center items-center mt-8 xs:mt-10 sm:mt-12 md:mt-14 lg:mt-16"
+              >
+                <PassWordModel
+                  type="article"
+                  :id="item.article_id"
+                  @validate-success="getArticleWithPassword"
+                >
                   <ZyButton>输入密码</ZyButton>
                 </PassWordModel>
               </div>
@@ -64,7 +70,13 @@ const route = useRoute();
 const id = route.params.id as string;
 
 // 获取文章内容
-const articleData = await ApiArticle.search_article_by_id(id);
+const articleData = ref();
+articleData.value = await ApiArticle.search_article_by_id(id);
+const getArticleWithPassword = async (params: { password: string }) => {
+  articleData.value = await ApiArticle.search_article_by_id_with_password(id, {
+    password: params.password,
+  });
+};
 </script>
 <style>
 @import url("~/components/layout/ArticleCard/ArticleCard.scss");

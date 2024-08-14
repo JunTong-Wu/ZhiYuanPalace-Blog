@@ -38,6 +38,12 @@ export const ApiArticle = {
   search_article_by_id(id: string | number) {
     return ApiService.get(`/articles/search_article_by_id/${id}`, null);
   },
+  search_article_by_id_with_password(id: string | number, params: any) {
+    return ApiService.get(
+      `/articles/search_article_by_id/${id}`,
+        params
+    );
+  },
   /**
    * 根据 ID 查询文章的标题
    */
