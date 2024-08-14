@@ -25,7 +25,9 @@
             <div v-else>
               <ZySkeleton :row="3" />
               <div class="flex justify-center items-center mt-8 xs:mt-10 sm:mt-12 md:mt-14 lg:mt-16">
-                <ZyButton>输入密码</ZyButton>
+                <PassWordModel type="article" :id="item.article_id">
+                  <ZyButton>输入密码</ZyButton>
+                </PassWordModel>
               </div>
             </div>
             <v-md-preview

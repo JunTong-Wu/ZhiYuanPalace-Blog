@@ -5,17 +5,25 @@
       'ZyButton-text': type == 'text',
       'ZyButton-icon': type == 'icon',
       'ZyButton-none': type == 'none',
+      'ZyButton-loading': loading,
     }"
-    class="min-h-9 min-w-9 p-0 m-0 flex items-center justify-center"
+    class="min-h-9 min-w-9 p-0 m-0 flex items-center justify-center relative"
     ref="button"
     type="button"
-    color="inherit"
     :title="title"
+    :disabled="loading"
     @mousedown="animationStart()"
     @mouseup="animationEnd()"
     @touchstart.passive="animationStart()"
     @touchend.passive="animationEnd()"
-  ><slot/></button>
+  >
+    <span v-if="loading" class="absolute top-0 left-0 w-full h-full">
+      <UIcon name="i-eos-icons-three-dots-loading" class="w-8 h-8" />
+    </span>
+    <span :class="{'opacity-0': loading}">
+      <slot/>
+    </span>
+  </button>
 </template>
 <script lang="ts">
 export default defineComponent({
@@ -23,11 +31,12 @@ export default defineComponent({
   props: {
     title: { type: String, default: "" },
     type: { type: String, default: "default" },
+    loading: { type: Boolean, default: false },
   },
-  setup() {
+  setup(props) {
     const button = ref();
     const animationStart = () => {
-      if (button.value) {
+      if (button.value && !props.loading) {
         button.value.classList.add("animation");
       }
     };
@@ -133,6 +142,10 @@ button.ZyButton-default {
   font-weight: bold;
   border-radius: 9999px;
   border: 4px solid var(--theme-color);
+  &.ZyButton-loading {
+    border-color: var(--text-5);
+    cursor: not-allowed;
+  }
 }
 
 /**

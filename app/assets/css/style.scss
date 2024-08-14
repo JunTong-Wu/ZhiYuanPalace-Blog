@@ -1,6 +1,7 @@
 @import url("./live2d/index.scss");
 @import url("./markdown/index.scss");
 @import url("./nprogress/index.scss");
+@import url("./loading/ZySectionLoading.scss");
 
 @import url("../fonts/DFPKingGothicGB.css");
 @import url("../fonts/HarmonyOS.css");
@@ -126,7 +127,7 @@ a {
 :root {
   --bg-card: rgba(255, 255, 255, 0.7); //卡片
   --bg-best-card: rgba(244, 245, 247, 1); //卡片
-  --bg-panel: rgba(255, 255, 255, 0.6); //面板
+  --bg-panel: rgba(255, 255, 255, 1); //面板
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
   --bg-side-bar: #2d3d65; //侧边栏
   --bg-head-bar: rgba(255, 255, 255, 0.7); //顶栏
@@ -143,7 +144,7 @@ a {
 *.dark {
   --bg-card: rgba(68, 69, 98, 0.4); //卡片
   --bg-best-card: rgba(32, 33, 58, 1); //卡片
-  --bg-panel: rgba(32, 33, 58, 0.6); //面板
+  --bg-panel: rgb(17, 17, 42); //面板
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
   --bg-side-bar: #121f3c; //侧边栏
   --bg-head-bar: rgba(18, 18, 46, 0.7); //顶栏

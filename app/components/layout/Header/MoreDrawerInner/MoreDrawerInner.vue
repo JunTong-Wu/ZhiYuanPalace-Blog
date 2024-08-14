@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <div class="bg-bg-opaque rounded-2xl text-text-1 p-4">
+    <div class="bg-bg-bestCard rounded-2xl text-text-1 p-4">
       <ul>
         <li class="">
           <ZyLink

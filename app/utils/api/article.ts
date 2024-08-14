@@ -62,4 +62,10 @@ export const ApiArticle = {
   search_classify_list() {
     return ApiService.get("/articles/search_classify_list", null);
   },
+  /**
+   * 文章密码验证
+   */
+  articles_password_verify(params: any) {
+    return ApiService.post("/articles/articles_password_verify", params);
+  }
 };
