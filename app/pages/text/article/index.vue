@@ -42,6 +42,7 @@
               >
                 <template #image>
                   <ZyLazyImage
+                    :locked="item.has_password"
                     :src="`https://pan.yiru.love${item.article_title_image}`"
                     alt=""
                   />

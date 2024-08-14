@@ -15,6 +15,11 @@ export default <Partial<Config>>{
       ],
     },
     extend: {
+      aspectRatio: {
+        auto: 'auto',
+        square: '1 / 1',
+        video: '16 / 9'
+      },
       height: {
         header: "var(--header-bar-height)",
         footer: "var(--footer-bar-height)",

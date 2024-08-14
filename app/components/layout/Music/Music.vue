@@ -7,7 +7,7 @@
         class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme-600 to-transparent hue-rotate-30 mix-blend-multiply rounded-2xl"
       ></div>
       <div
-        class="flex flex-none relative h-[120%] landscape:h-16 landscape:left-4 landscape:top-4"
+        class="flex flex-none relative h-[120%] aspect-square landscape:h-16 landscape:left-4 landscape:top-4"
       >
         <img
           class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5 landscape:left-6"
@@ -16,13 +16,15 @@
           srcset=""
         />
         <img
+          v-if="!isLoading"
           class="h-full relative left-0 rounded-md portrait:shadow-md"
           :src="musicNowCover"
           alt=""
           srcset=""
-          ref="bg_image"
+          ref="MusicCoverImageRef"
           @load="createDecoration()"
         />
+        <div v-else class="h-full w-full relative left-0 rounded-md portrait:shadow-md bg-theme-500"></div>
       </div>
 
       <div
@@ -114,17 +116,22 @@
   </aside>
 </template>
 <script setup lang="ts">
+const isLoading = ref(true);
 const musicNowCover =
   "https://pan.yiru.love/project-zhiyuanpalace/uploads/music/cover/本兮 - 有心无意.jpg";
 
-const bg_image = ref();
-watch(bg_image, (newValue: any) => {
-  if (newValue) {
-    createDecoration();
-  }
-});
+const MusicCoverImageRef = ref();
+
+onMounted(()=>{
+  isLoading.value = false;
+  watch(MusicCoverImageRef, (newValue: any) => {
+    if (newValue) {
+      createDecoration();
+    }
+  });
+})
 const createDecoration = () => {
-  const img = bg_image.value;
+  const img = MusicCoverImageRef.value;
   if (img) {
     const imageColor = getImageColor(img);
     const rgb = increaseSaturation(

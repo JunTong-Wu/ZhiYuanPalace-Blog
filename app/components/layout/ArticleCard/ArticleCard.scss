@@ -28,7 +28,7 @@
       height: var(--image-size);
       overflow: hidden;
       border-radius: 100%;
-      * {
+      div,img {
         transition: all 200ms ease-in-out;
         width: 100%;
         height: 100%;
@@ -47,12 +47,11 @@
   }
 
   .pc .zy-article-card:hover {
-    .zy-card-image * {
+    .zy-card-image img {
       transform: scale(1.1);
     }
     .zy-card-title {
-      transform: scale(1.1);
-      transform-origin: left center;
+      transform: translateY(-1rem);
     }
   }
   .pc .zy-article-card.transition-in:hover {
@@ -87,7 +86,7 @@
         padding: 0;
         border-radius: 1rem;
         overflow: hidden;
-        * {
+        div,img {
           width: 100%;
           height: 100%;
           border-radius: 1rem;
@@ -121,7 +120,7 @@
       padding: 0;
       border-radius: 1rem;
       overflow: hidden;
-      * {
+      div,img {
         width: 100%;
         height: var(--image-height);
         border-radius: 1rem;

@@ -1,6 +1,11 @@
 <template>
   <div ref="imageWrapperRef" class="relative" :class="className">
-    <div v-if="!isLoading && lazyUrl">
+    <div v-if="!isLoading && lazyUrl" class="relative">
+      <div v-if="locked" class="absolute top-0 left-0 z-10 w-full h-full bg-bg-mask backdrop-blur-3xl portrait:backdrop-blur-lg backdrop-saturate-200 flex items-center justify-center">
+        <p class="locked-icon flex items-center justify-center w-1/2 h-1/2 max-w-16 max-h-16 rounded-full bg-bg-mask-dark opacity-20 dark:opacity-40">
+          <UIcon name="i-ri-lock-line" class="w-full h-full" />
+        </p>
+      </div>
       <img v-if="!preview" :src="lazyUrl" :alt="alt" :style="style" />
       <ZyImagePreview
         v-else
@@ -44,6 +49,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  locked: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const isLoading = ref(true);
