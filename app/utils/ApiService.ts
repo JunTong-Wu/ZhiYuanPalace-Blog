@@ -76,16 +76,23 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
       //   // );
       // },
       onRequest({ request, options }) {
-        // console.log("请求了", options);
+        console.log("请求了", options);
         // Set the request headers
         //   options.headers = options.headers || {};
       },
       onRequestError({ request, options, error }) {
-        // console.log("报错了", request);
+        console.log("报错了", request);
         // ElMessage.closeAll();
         // error && ElMessage.error("Sorry, The Data Request Failed");
         // Handle the request errors
-        reject(options);
+        // reject(options);
+        const message = "无法连接到服务器";
+        resolve({
+          code: 500,
+          data: null,
+          message: message,
+        });
+        window.ZyAlert({ text: message })
       },
       onResponse({ request, response, options }) {
         // console.log("响应了", request);

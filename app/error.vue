@@ -2,10 +2,23 @@
   <div>
     <ZySuperResponsive>
       <NuxtLayout>
-        <div class="nuxt-page mx-auto" >
+        <div class="nuxt-page mx-auto min-h-screen" >
           <CommonMainSection>
-            <h1>Error {{ error.statusCode }}</h1>
-            <p>{{ error }}</p>
+
+
+<!--            <p>statusCode: {{ error.statusCode }}</p>-->
+<!--            <p>statusMessage: {{ error.statusMessage || "&#45;&#45;" }}</p>-->
+
+            <h1 class="text-center text-3xl font-bold mb-8">Error {{ error.statusCode }}</h1>
+            <UCard>
+              <template #header>
+                <p>message: {{ error.message }}</p>
+              </template>
+              <div v-html="error.stack"></div>
+              <template #footer>
+                <p class="text-end">url: {{ error.url }}</p>
+              </template>
+            </UCard>
           </CommonMainSection>
         </div>
       </NuxtLayout>
@@ -33,3 +46,12 @@ export default {
   },
 };
 </script>
+<style>
+.stack.internal {
+  color: var(--text-1);
+  display: block;
+  white-space: break-spaces;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+</style>
