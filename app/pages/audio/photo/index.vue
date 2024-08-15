@@ -31,7 +31,7 @@
                   <ZySkeleton type="image" />
                 </template>
                 <template #title>
-                  <ZySkeleton :row="3" />
+                  <ZySkeleton :row="2" />
                 </template>
               </AlbumCard>
             </template>

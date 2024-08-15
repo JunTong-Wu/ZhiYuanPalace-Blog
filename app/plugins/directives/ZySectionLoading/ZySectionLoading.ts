@@ -1,5 +1,5 @@
 import type { DirectiveBinding } from "vue";
-
+import './ZySectionLoading.scss';
 export const Loading = {
   mounted(el: HTMLElement, binding: DirectiveBinding) {
     const div = document.createElement("div");

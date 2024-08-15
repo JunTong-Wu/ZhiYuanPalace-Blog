@@ -1,6 +1,6 @@
 <template>
   <ul
-    v-if="loading"
+    v-if="loading || localLoading"
     :class="rowClass"
   >
     <li v-for="i in minLoadingNumber" :key="`loading-${i}`" :class="cloClass">
@@ -56,6 +56,7 @@ export default {
   setup(props) {
     const item = ref();
     const localMaxDataLength = ref(0);
+    const localLoading = ref(true);
 
     // 初始化
     item.value = {
@@ -67,19 +68,22 @@ export default {
     }
 
     // 服务端获取参数
-    if (props.fetchData.data) {
-      if (props.fetchData.data.length > 0) {
-        item.value.data = props.fetchData.data;
+    if(props.fetchData.code === 0){
+      if (props.fetchData.data) {
+        if (props.fetchData.data.length > 0) {
+          item.value.data = props.fetchData.data;
+        }
       }
     }
 
-    // 服务端获取状态
     watch(
       () => props.fetchData,
       (newVal) => {
-        if (newVal.data) {
-          if (newVal.data.length > 0) {
-            item.value.data = newVal.data;
+        if (newVal.code === 0) {
+          if (newVal.data) {
+            if (newVal.data.length > 0) {
+              item.value.data = newVal.data;
+            }
           }
         }
       },
@@ -91,6 +95,7 @@ export default {
     return {
       item,
       localMaxDataLength,
+      localLoading,
     };
   },
 };

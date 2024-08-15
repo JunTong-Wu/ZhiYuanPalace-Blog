@@ -1,6 +1,6 @@
 <template>
   <CommonMainSection>
-    TEST
+    <button @click="showAlert">Show Alert</button>
     <Toolbar />
   </CommonMainSection>
 </template>
@@ -22,4 +22,11 @@ definePageMeta({
   },
   middleware: "transition",
 });
+
+function showAlert() {
+  window.ZyAlert({
+    title: "提示",
+    text: "这是一个提示信息",
+  });
+}
 </script>

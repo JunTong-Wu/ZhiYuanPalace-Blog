@@ -20,8 +20,8 @@
     <span v-if="loading" class="absolute top-0 left-0 w-full h-full">
       <UIcon name="i-eos-icons-three-dots-loading" class="w-8 h-8" />
     </span>
-    <span :class="{'opacity-0': loading}">
-      <slot/>
+    <span class="flex-1 text-center text-sm" :class="{'opacity-0': loading}">
+      <slot />
     </span>
   </button>
 </template>

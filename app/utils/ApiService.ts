@@ -9,7 +9,7 @@
 import qs from "qs";// 导入qs库，用于处理query
 // import { getLang, getToken } from "../entity";
 
-interface ResponseMap {
+  interface ResponseMap {
   blob: Blob;
   text: string;
   arrayBuffer: ArrayBuffer;
@@ -91,6 +91,9 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
         // console.log("响应了", request);
         // Process the response data
         resolve(response._data);
+        if (process.client) {
+          window.ZyAlert({ text: response._data.message })
+        }
         // refreshNuxtData([currentKey]);
         // return response._data;
       },

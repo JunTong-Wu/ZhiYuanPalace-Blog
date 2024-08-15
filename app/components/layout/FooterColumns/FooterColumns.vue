@@ -73,9 +73,9 @@
               :max-data-length="3"
             >
               <template v-slot:loading>
-                <ZyButton type="text" class="w-28"
-                  ><ZySkeleton :row="1"
-                /></ZyButton>
+                <ZyButton type="text" class="w-28">
+                  <ZySkeleton :row="1"/>
+                </ZyButton>
               </template>
               <template v-slot:onload="{ row: item }">
                 <a :href="item.friend_path" target="_blank">
