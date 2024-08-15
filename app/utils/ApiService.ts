@@ -8,6 +8,7 @@
  */
 import qs from "qs";// 导入qs库，用于处理query
 // import { getLang, getToken } from "../entity";
+import store from '@/store'
 
   interface ResponseMap {
   blob: Blob;
@@ -33,103 +34,63 @@ export interface ResOptions<T> {
   msg?: string;
 }
 const request = (url: string, options: RequestOptions): Promise<any> => {
-  // const config = useRuntimeConfig();
   // 获取配置域名
   // @ts-ignore
   let baseUrl = import.meta.env.VITE_APP_API_BASE;
   // 拼接请求地址
   const reqUrl = baseUrl + url;
-  // const reqUrl = url;
   let headers: Record<string, any> = {};
-  // const token = getToken(),
-  //     lang = getLang();
-  // if (token) {
-  //   headers.Authorization = `Bearer ${token}`;
-  // }
-  // if (lang) {
-  //   headers["X-LANG"] = lang;
-  // }
-  // headers: {
-  //   'Cache-Control': 'no-cache',
-  // },
   headers["Cache-Control"] = "no-cache";
   headers["Content-Type"] = "application/x-www-form-urlencoded";
   if (options.headers) {
     headers = Object.assign({}, headers, options.headers);
   }
-  return new Promise((resolve, reject) => {
-    return $fetch(reqUrl, {
-      method: options.method ?? "POST",
-      query: options.query ?? null,
-      body: options.body ?? null,
-      responseType: options.responseType ?? "json",
-      headers: headers,
-      key: options.key,
-      cache: options.cache,
-      // credentials: "same-origin",
-      // keepalive: true,
-      // getCachedData(key: string) {
-      //   console.log(key);
-      //   // const nuxt = useNuxtApp();
-      //   // console.log(
-      //   //   nuxt.isHydrating ? nuxt.payload.data[key] : nuxt.static.data[key]
-      //   // );
-      // },
-      onRequest({ request, options }) {
-        console.log("请求了", options);
-        // Set the request headers
-        //   options.headers = options.headers || {};
-      },
-      onRequestError({ request, options, error }) {
-        console.log("报错了", request);
-        // ElMessage.closeAll();
-        // error && ElMessage.error("Sorry, The Data Request Failed");
-        // Handle the request errors
-        // reject(options);
+  return useLazyAsyncData(() => $fetch(reqUrl,{
+    method: options.method ?? "POST",
+    query: options.query ?? null,
+    body: options.body ?? null,
+    responseType: options.responseType ?? "json",
+    headers: headers,
+    key: options.key,
+    cache: options.cache,
+    onRequest({ request, options }) {
+      // console.log("请求了", options);
+    },
+    onRequestError({ request, options, error }) {
+      // console.log("报错了", request);
+      if(process.server){
+        const alertToClient = () => {
+          const message = "无法连接到服务器";
+          window.ZyAlert({ text: message })
+        }
+        store.useQueueStore().enqueue('onApiRequestError', alertToClient.toString())
+      }
+      if(process.client){
         const message = "无法连接到服务器";
-        resolve({
-          code: 500,
-          data: null,
-          message: message,
-        });
         window.ZyAlert({ text: message })
-      },
-      onResponse({ request, response, options }) {
-        // console.log("响应了", request);
-        // Process the response data
-        resolve(response._data);
-        if (process.client) {
+      }
+
+    },
+    onResponse({ request, response, options }) {
+      // console.log("响应了", response);
+      if(response._data.code !== 0){
+        // 后端返回错误信息
+        if(process.server){
+          const alertToClient = () => {
+            const message = "数据库连接失败";
+            window.ZyAlert({ text: message })
+          }
+          store.useQueueStore().enqueue('onApiResponse', alertToClient.toString())
+        }
+        if(process.client){
           window.ZyAlert({ text: response._data.message })
         }
-        // refreshNuxtData([currentKey]);
-        // return response._data;
-      },
-      onResponseError({ request, response, options }) {
-        // console.log(
-        //   "🚀 ~ file: MyRequest.ts:42 ~ onResponseError ~ request:",
-        //   request
-        // );
-        // Handle the response errors
-        reject(options);
-      },
-    });
-    // .then(({ data, error }: any) => {
-    //   const value: ResOptions<any> = data.value;
-    //   resolve(value);
-    //   // 判断是否有错误产生
-    //   if (error.value) {
-    //     doError(error.value?.statusCode, reqUrl);
-    //     reject(error.value);
-    //   } else {
-    //     resolve(ref(value).value);
-    //   }
-    // })
-    // .catch((err: any) => {
-    //   // 接口请求异常的操作写在这里
-    //   console.log(err);
-    //   reject(err);
-    // });
-  });
+      }
+    },
+    onResponseError({ request, response, options }) {
+      // console.log("报错了", response);
+    },
+  }))
 };
 
 export const ApiService = {

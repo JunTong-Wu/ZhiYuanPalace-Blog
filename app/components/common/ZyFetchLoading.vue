@@ -72,6 +72,7 @@ export default {
       if (props.fetchData.data) {
         if (props.fetchData.data.length > 0) {
           item.value.data = props.fetchData.data;
+          localLoading.value = false;
         }
       }
     }
@@ -83,6 +84,7 @@ export default {
           if (newVal.data) {
             if (newVal.data.length > 0) {
               item.value.data = newVal.data;
+              localLoading.value = false;
             }
           }
         }

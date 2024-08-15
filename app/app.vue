@@ -26,6 +26,7 @@
 <script setup lang="ts">
 import "@/assets/css/style.scss";
 import "@/utils/transition/index.scss";
+import store from "@/store";
 
 // 多语言
 const head = useLocaleHead({
@@ -122,6 +123,12 @@ useHead({
     return titleChunk ? `${titleChunk} - 知鸢宫` : "知鸢宫";
   },
 });
+
+const queueStore = store.useQueueStore()
+onMounted(() => {
+  // 全局执行队列中的所有函数
+  queueStore.executeQueue()
+})
 </script>
 <style lang="scss">
 .nuxt-page {
