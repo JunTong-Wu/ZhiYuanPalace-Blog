@@ -5,6 +5,11 @@ declare global {
 }
 
 export interface CustomAlertOptions {
-    title?: string;
+    title: string;
     text?: string;
+    duration?: number;
+    type?: string;
+    position?: string;
+    icon?: string;
+    callback?: () => void;
 }

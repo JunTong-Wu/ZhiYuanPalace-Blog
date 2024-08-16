@@ -59,7 +59,7 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
         if (process.server) {
           const alertToClient = () => {
             const message = "无法连接到服务器";
-            window.ZyToast({ text: message });
+            window.ZyToast({ title: message });
           };
           store
             .useQueueStore()
@@ -67,7 +67,7 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
         }
         if (process.client) {
           const message = "无法连接到服务器";
-          window.ZyToast({ text: message });
+          window.ZyToast({ title: message });
         }
       },
       onResponse({ request, response, options }) {
@@ -77,14 +77,14 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
           if (process.server) {
             const alertToClient = () => {
               const message = "数据库连接失败";
-              window.ZyToast({ text: message });
+              window.ZyToast({ title: message });
             };
             store
               .useQueueStore()
               .enqueue("onApiResponse", alertToClient.toString());
           }
           if (process.client) {
-            window.ZyToast({ text: response._data.message });
+            window.ZyToast({ title: response._data.message });
           }
         }
       },

@@ -68,10 +68,10 @@ const snackbar = useSnackbar();
 
 const verifyPassword = async () => {
   if (password.value.trim() === "") {
-    snackbar.add({
-      type: "warning",
-      text: "密码不能为空",
-    });
+    window.ZyToast({
+      title: "密码不能为空",
+      text: "请输入正确的密码，才能访问这篇文章",
+    })
     return;
   }
   loading.value = true;
@@ -82,17 +82,12 @@ const verifyPassword = async () => {
   await sleep(400);
   loading.value = false;
   if (data.value.code === 0) {
-    snackbar.add({
-      type: "success",
-      text: "密码正确，可以访问文章",
-    });
+    window.ZyToast({
+      title: "密码正确",
+      text: "密码正确，您现在可以访问这篇文章",
+    })
     emit("validateSuccess", { password: password.value });
     isOpen.value = false;
-  } else {
-    snackbar.add({
-      type: "warning",
-      text: "密码错误，不能访问文章",
-    });
   }
 };
 </script>
