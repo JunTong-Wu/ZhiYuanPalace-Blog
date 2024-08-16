@@ -67,19 +67,19 @@ const password = ref("");
 
 // 登录
 const login = async () => {
-  const data = await ApiUser.login({
+  const { data } = await ApiUser.login({
     username: username.value,
     password: password.value,
   });
-  if (data.code === 0) {
+  if (data.value.code === 0) {
     // 登录成功
-    store.useAuthStore().setToken(data.data.token);
+    store.useAuthStore().setToken(data.value.data.token);
     store.useAuthStore().setUser({
-      id: data.data.user_id,
-      username: data.data.user_name,
-      email: data.data.user_email,
-      avatar: data.data.user_avatar,
-      nickname: data.data.user_nick_name,
+      id: data.value.data.user_id,
+      username: data.value.data.user_name,
+      email: data.value.data.user_email,
+      avatar: data.value.data.user_avatar,
+      nickname: data.value.data.user_nick_name,
     });
     await router.replace('/admin')
 
