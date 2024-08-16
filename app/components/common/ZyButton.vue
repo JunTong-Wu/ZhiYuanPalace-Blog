@@ -20,7 +20,10 @@
     <span v-if="loading" class="absolute top-0 left-0 w-full h-full">
       <UIcon name="i-eos-icons-three-dots-loading" class="w-8 h-8" />
     </span>
-    <span class="flex-1 text-center text-sm" :class="{'opacity-0': loading}">
+    <span
+      class="flex-1 flex items-center justify-center text-sm"
+      :class="{ 'opacity-0': loading }"
+    >
       <slot />
     </span>
   </button>
@@ -127,7 +130,6 @@ export default defineComponent({
 * Type None
 **/
 button.ZyButton-none {
-
 }
 
 /**

@@ -75,13 +75,13 @@ const verifyPassword = async () => {
     return;
   }
   loading.value = true;
-  const data = await ApiArticle.articles_password_verify({
+  const { data } = await ApiArticle.articles_password_verify({
     password: password.value,
     id: props.id,
   });
   await sleep(400);
   loading.value = false;
-  if (data.code === 0) {
+  if (data.value.code === 0) {
     snackbar.add({
       type: "success",
       text: "密码正确，可以访问文章",

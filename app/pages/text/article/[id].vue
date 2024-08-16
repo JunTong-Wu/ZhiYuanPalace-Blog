@@ -70,7 +70,7 @@ const route = useRoute();
 const id = route.params.id as string;
 
 // 获取文章内容
-const articleData = ref();
+const articleData = shallowRef();
 articleData.value = await ApiArticle.search_article_by_id(id);
 const getArticleWithPassword = async (params: { password: string }) => {
   articleData.value = await ApiArticle.search_article_by_id_with_password(id, {

@@ -22,14 +22,19 @@ export const getImageColor = (img: any): [number, number, number] => {
       // 取所有像素的平均值
       for (var row = 0; row < img.height; row++) {
         for (var col = 0; col < img.width; col++) {
-          // console.log(data[((img.width * row) + col) * 4])
           if (row == 0) {
+            // @ts-ignore
             r += data[img.width * row + col];
+            // @ts-ignore
             g += data[img.width * row + col + 1];
+            // @ts-ignore
             b += data[img.width * row + col + 2];
           } else {
+            // @ts-ignore
             r += data[(img.width * row + col) * 4];
+            // @ts-ignore
             g += data[(img.width * row + col) * 4 + 1];
+            // @ts-ignore
             b += data[(img.width * row + col) * 4 + 2];
           }
         }
@@ -248,9 +253,9 @@ const hslToRgb = (
  */
 export const rgbToHex = (rgb: [number, number, number]): string => {
   const [r, g, b] = rgb;
-  const toHex = (n: number) => n.toString(16).padStart(2, '0').toUpperCase();
+  const toHex = (n: number) => n.toString(16).padStart(2, "0").toUpperCase();
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-}
+};
 
 /**
  * @description: 保持颜色的色调和饱和度不变,限制亮度区间
@@ -294,7 +299,7 @@ export const increaseSaturation = (
  * @return tailwindColors - { [key: string]: string }
  */
 export const generateTailwindColors = (
-    rgb: [number, number, number]
+  rgb: [number, number, number]
 ): { [key: string]: string } => {
   let [h, s, l] = rgbToHsl(...rgb);
 
@@ -313,6 +318,6 @@ export const generateTailwindColors = (
     700: rgbToHex(hslToRgb(h, s / 100, (l - 14) / 100)),
     800: rgbToHex(hslToRgb(h, s / 100, (l - 21) / 100)),
     900: rgbToHex(hslToRgb(h, s / 100, (l - 28) / 100)),
-    950: rgbToHex(hslToRgb(h, s / 100, (l - 35) / 100))
+    950: rgbToHex(hslToRgb(h, s / 100, (l - 35) / 100)),
   };
 };

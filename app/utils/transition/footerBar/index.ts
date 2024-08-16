@@ -6,7 +6,6 @@ export function footerBarHide() {
   }
 }
 export function footerBarShow() {
-  console.log("footerBarShow");
   const footer = document.querySelector("footer");
   if (footer) {
     footer.classList.remove("transition-translate-out");

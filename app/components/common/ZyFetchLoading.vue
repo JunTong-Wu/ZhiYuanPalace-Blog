@@ -1,8 +1,5 @@
 <template>
-  <ul
-    v-if="loading || localLoading"
-    :class="rowClass"
-  >
+  <ul v-if="loading || localLoading" :class="rowClass">
     <li v-for="i in minLoadingNumber" :key="`loading-${i}`" :class="cloClass">
       <slot name="loading"></slot>
     </li>
@@ -11,14 +8,14 @@
     <template v-for="(i, index) in item?.data" :key="`success-${i}`">
       <template v-if="localMaxDataLength > 0">
         <li v-if="index < localMaxDataLength" :class="cloClass">
-          <slot name="onload" :row="i"></slot>
+          <slot :row="i" name="onload"></slot>
         </li>
       </template>
       <li v-else :class="cloClass">
-        <slot name="onload" :row="i"></slot>
+        <slot :row="i" name="onload"></slot>
       </li>
     </template>
-    <slot name="onload_noForeach" :row="item.data"></slot>
+    <slot :row="item.data" name="onload_noForeach"></slot>
   </ul>
 </template>
 <script lang="ts">
@@ -27,9 +24,12 @@ export default {
   props: {
     fetchData: {
       default: {
-        code: 0,
-        message: '请求成功',
-        data:[],
+        data: ref({
+          data: [],
+          code: 0,
+        }),
+        pending: ref(false),
+        error: ref(null),
       },
     },
     loading: {
@@ -58,7 +58,7 @@ export default {
     const localMaxDataLength = ref(0);
     const localLoading = ref(true);
 
-    // 初始化
+    // 初始化 item 和 localMaxDataLength
     item.value = {
       data: [],
       code: 0,
@@ -68,31 +68,26 @@ export default {
     }
 
     // 服务端获取参数
-    if(props.fetchData.code === 0){
-      if (props.fetchData.data) {
-        if (props.fetchData.data.length > 0) {
-          item.value.data = props.fetchData.data;
-          localLoading.value = false;
-        }
-      }
+    if (
+      props.fetchData.data &&
+      props.fetchData.data.value &&
+      props.fetchData.data.value.code === 0
+    ) {
+      item.value = props.fetchData.data.value;
+      localLoading.value = false;
     }
 
-    watch(
-      () => props.fetchData,
-      (newVal) => {
-        if (newVal.code === 0) {
-          if (newVal.data) {
-            if (newVal.data.length > 0) {
-              item.value.data = newVal.data;
-              localLoading.value = false;
-            }
-          }
-        }
-      },
-      {
-        deep: true,
+    // 客户端获取参数
+    watchEffect(() => {
+      if (
+        props.fetchData.data &&
+        props.fetchData.data.value &&
+        props.fetchData.data.value.code === 0
+      ) {
+        item.value = props.fetchData.data.value;
+        localLoading.value = false;
       }
-    );
+    });
 
     return {
       item,
