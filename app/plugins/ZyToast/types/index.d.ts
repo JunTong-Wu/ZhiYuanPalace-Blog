@@ -1,6 +1,6 @@
 declare global {
     interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
-        ZyAlert(config: CustomAlertOptions): void;
+        ZyToast(config: CustomAlertOptions): void;
     }
 }
 

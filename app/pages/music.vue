@@ -24,7 +24,7 @@ definePageMeta({
 });
 
 function showAlert() {
-  window.ZyAlert({
+  window.ZyToast({
     title: "提示",
     text: "这是一个提示信息",
   });

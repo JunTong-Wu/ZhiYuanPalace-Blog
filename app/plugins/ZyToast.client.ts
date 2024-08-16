@@ -1,10 +1,9 @@
-import type { CustomAlertOptions } from './ZyAlert/types';
-import './ZyAlert/ZyAlert.scss';
+import type { CustomAlertOptions } from './ZyToast/types';
+import './ZyToast/ZyToast.scss';
 
 export default defineNuxtPlugin(() => {
-    // 自定义弹窗逻辑，替换 window.alert
-    window.ZyAlert = function(config: CustomAlertOptions) {
-        // 自定义弹窗逻辑
+    // 自定义弹窗
+    window.ZyToast = function(config: CustomAlertOptions) {
         const customAlertBox = document.createElement('div');
         customAlertBox.classList.add('custom-alert-box'); // 使用分离的样式
 
