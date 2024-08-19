@@ -22,11 +22,15 @@ definePageMeta({
   },
   middleware: "transition",
 });
-
+const snackbar = useSnackbar();
 function showAlert() {
   window.ZyToast({
     title: "提示",
     text: "这是一个提示信息",
   });
+  // snackbar.add({
+  //   title: "提示",
+  //   text: "这是一个提示信息",
+  // });
 }
 </script>

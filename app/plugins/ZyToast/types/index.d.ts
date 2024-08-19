@@ -9,7 +9,6 @@ export interface CustomAlertOptions {
     text?: string;
     duration?: number;
     type?: string;
-    position?: string;
     icon?: string;
     callback?: () => void;
 }
