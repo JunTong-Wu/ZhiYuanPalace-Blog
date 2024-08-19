@@ -1,7 +1,7 @@
 <template>
   <aside id="zy-music-bar" class="h-music">
     <div
-      class="relative z-10 h-full portrait:flex items-center landscape:rounded-2xl landscape:bg-theme-500 landscape:shadow-lg landscape:shadow-theme"
+      class="relative z-10 h-full portrait:flex items-center landscape:rounded-2xl landscape:bg-theme-500 landscape:shadow-lg landscape:shadow-theme-500"
     >
       <div
         class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme-600 to-transparent hue-rotate-30 mix-blend-multiply rounded-2xl"
