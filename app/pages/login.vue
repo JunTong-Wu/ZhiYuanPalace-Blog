@@ -8,7 +8,7 @@
       <div
           class="bg-bg-card portrait:bg-transparent p-8 landscape:pt-12 rounded-2xl landscape:min-w-[34rem] portrait:w-full flex flex-col items-center justify-center mb-8 landscape:shadow-lg"
       >
-        <h1 class="text-2xl portrait:hidden font-bold text-center">登录</h1>
+        <h1 class="text-2xl portrait:hidden font-bold text-center font-montserrat">Sign in to ZhiYuanPalace</h1>
         <div class="flex flex-col items-center gap-8 w-full mt-4 p-4">
           <div class="flex flex-col items-center gap-8 w-full mb-8">
             <UInput
@@ -29,10 +29,8 @@
                 color="indigo"
             ></UInput>
           </div>
-          <div class="flex justify-center">
-            <ZyButton
-                type="none"
-                class="w-48 text-xl portrait:text-base p-4 border-4 rounded-full border-slate-100 dark:border-slate-600 text-slate-500 hover:border-indigo-500 hover:text-indigo-500 font-bold portrait:font-normal"  @click="login">登录</ZyButton>
+          <div class="w-full flex justify-center">
+            <ZyButton class="w-full" @click="login">登录</ZyButton>
           </div>
         </div>
       </div>

@@ -7,7 +7,10 @@ export default defineAppConfig({
         color: 'theme',
       },
       variant: {
-        outline: 'bg-transparent outline-none shadow-none ring-0 border-b-4 border-slate-100 dark:border-slate-600 rounded-none focus:ring-0 focus:border-{color}-500 pl-0 py-4 transition-border-color duration-300',
+        outline: 'bg-slate-100 dark:bg-slate-900 py-4 ring-0 focus:ring-0 rounded-xl',
+      },
+      icon: {
+        color: 'text-slate-400 dark:text-slate-600',
       },
     },
     modal: {

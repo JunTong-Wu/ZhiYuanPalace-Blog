@@ -13,6 +13,9 @@ export default <Partial<Config>>{
         "Segoe UI Symbol",
         "Noto Color Emoji",
       ],
+      montserrat: [
+        "Montserrat", "Helvetica", "sans-serif"
+      ],
     },
     extend: {
       aspectRatio: {
@@ -71,7 +74,6 @@ export default <Partial<Config>>{
           900: 'var(--theme-color-900)',
           950: 'var(--theme-color-950)'
         },
-        // theme: "var(--theme-color)",
         text: {
           1: "var(--text-1)",
           2: "var(--text-2)",
@@ -96,7 +98,6 @@ export default <Partial<Config>>{
           },
         },
         borderColor: "var(--border-color)",
-        themeColorTranslucent: "var(--theme-color-translucent)",
       },
       screens: {
         xs: "600px",

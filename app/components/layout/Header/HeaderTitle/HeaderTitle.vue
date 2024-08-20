@@ -22,7 +22,7 @@
       <li v-for="tabs in childrenTabs" :key="tabs.title">
         <ZyLink
           :to="tabs.path"
-          class="h-full flex items-center justify-center px-8 portrait:px-6 text-inherit"
+          class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100"
         >
           <div
             class="flex items-center text-base gap-2 portrait:text-sm select-none"
@@ -176,10 +176,12 @@ watch(
     a {
       position: relative;
       opacity: 0.6;
+      filter: grayscale(100%);
     }
     &.activate {
       a {
         opacity: 1;
+        filter: grayscale(0%);
         span {
           position: relative;
           z-index: 2;

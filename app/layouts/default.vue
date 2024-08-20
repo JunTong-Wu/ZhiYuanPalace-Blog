@@ -1,6 +1,6 @@
 <template>
   <div id="layout-default" class="relative overflow-hidden">
-    <Sidebar class="fixed top-0 bottom-0 left-0 w-sidebar z-40 bg-bg-opaque" />
+    <Sidebar class="fixed top-header bottom-0 left-0 w-sidebar z-40 bg-bg-opaque" />
     <Header class="fixed top-0 z-40 h-header w-full" />
     <div
       id="layout-default-main"

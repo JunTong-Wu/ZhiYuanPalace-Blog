@@ -7,11 +7,6 @@
         <div
           class="portrait:p-0 landscape:py-4 xs:py-4 sm:py-6 md:py-7 lg:py-8 pl-0 rounded-2xl"
         >
-          <h3
-            class="col-span-12 m-0 font-normal landscape:font-bold text-base sm:text-xl lg:text-2xl pt-4"
-          >
-            所有文章
-          </h3>
           <ZyFetchLoading
             :fetchData="(articleListData as any)"
             rowClass="grid grid-cols-12 portrait:gap-0 portrait:xs:gap-4 gap-4 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8"

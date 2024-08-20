@@ -6,6 +6,9 @@
     <div
       class="landscape:hidden absolute top-0 h-full w-full bg-gradient-to-r from-theme-500 to-transparent pointer-events-none hue-rotate-30 dark:brightness-50"
     ></div>
+    <div class="portrait:hidden absolute top-0 h-full w-full">
+      <div class="absolute top-0 h-full w-full bg-gradient-to-b from-theme-500 to-musicBar pointer-events-none opacity-10"></div>
+    </div >
     <div
       class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden portrait:text-white"
     >
@@ -15,7 +18,7 @@
         <div class="flex items-center h-full overflow-hidden">
           <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
           <GoBackButton />
-          <HeaderTitle class="" />
+          <HeaderTitle />
         </div>
 
         <div class="h-full landscape:hidden">

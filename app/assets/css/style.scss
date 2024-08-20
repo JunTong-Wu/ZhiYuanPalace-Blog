@@ -6,6 +6,7 @@
 @import url("../fonts/DFPKingGothicGB.css");
 @import url("../fonts/HarmonyOS.css");
 @import url("../fonts/vivoTypeCNRegular.css");
+@import url("../fonts/montserrat.css");
 // 字体
 :root.pc {
   font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
@@ -77,9 +78,9 @@ a {
     --header-bar-height: 5rem;
     --footer-bar-height: 0rem;
     --centered-width: 86rem;
-    --side-bar-width: 15rem;
+    --side-bar-width: 14rem;
     --tool-bar-width: 0rem;
-    --music-bar-height: 13rem;
+    --music-bar-height: 12rem;
     --music-bar-width: calc(var(--side-bar-width) - 2rem);
     --music-bar-top: calc(var(--header-bar-height) + 2rem);
     --pt-main: var(--header-bar-height);
@@ -108,7 +109,6 @@ a {
 }
 
 :root {
-  --theme-color-translucent: rgba(99, 102, 241,0.2);
   --theme-color: rgb(99 102 241);
   --theme-color-rgb: 99 102 241;
   --theme-color-50: #eef2ff;

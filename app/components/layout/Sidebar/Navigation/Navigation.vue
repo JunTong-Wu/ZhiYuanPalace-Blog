@@ -17,20 +17,20 @@
             class="w-full flex-col justify-center pl-8 text-text-1"
           >
             <div class="w-full flex items-center gap-4 relative">
-<!--              <img-->
-<!--                v-if="n.iconImage"-->
-<!--                :src="`/static/images/icons/${n.iconImage}.png`"-->
-<!--                :alt="$t(n.title)"-->
-<!--                class="w-10 h-10 rounded-full overflow-hidden"-->
-<!--              />-->
-              <ZyIcon
-                  size="1.5rem"
-                  :defaultName="n.defaultIcon"
-                  defaultColor="var(--text-2)"
-                  :activatedName="n.activatedIcon"
-                  :activated="routerActivate(route, n.path)"
-                  activatedColor="var(--text-1)"
+              <img
+                v-if="n.iconImage"
+                :src="`/static/images/icons/${n.iconImage}.png`"
+                :alt="$t(n.title)"
+                class="w-10 h-10 rounded-full overflow-hidden"
               />
+<!--              <ZyIcon-->
+<!--                  size="1.5rem"-->
+<!--                  :defaultName="n.defaultIcon"-->
+<!--                  defaultColor="var(&#45;&#45;text-2)"-->
+<!--                  :activatedName="n.activatedIcon"-->
+<!--                  :activated="routerActivate(route, n.path)"-->
+<!--                  activatedColor="var(&#45;&#45;text-1)"-->
+<!--              />-->
               <span>{{ $t(n.title) }}</span>
             </div>
           </ZyLink>

@@ -1,5 +1,6 @@
 import qs from "qs";
 import store from "@/store";
+import NProgress from "nprogress";
 
 interface ResponseMap {
   blob: Blob;
@@ -53,6 +54,9 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
       cache: options.cache,
       onRequest({ request, options }) {
         // 请求前操作
+        if (process.client) {
+          NProgress.start();
+        }
       },
       onRequestError({ request, options, error }) {
         // 请求错误处理
@@ -72,6 +76,9 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
       },
       onResponse({ request, response, options }) {
         // 响应处理
+        if (process.client) {
+          NProgress.done();
+        }
         if (response._data.code !== 0) {
           // 后端返回错误
           if (process.server) {
@@ -90,6 +97,9 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
       },
       onResponseError({ request, response, options }) {
         // 响应错误处理
+        if (process.client) {
+          NProgress.done();
+        }
       },
     })
   );
