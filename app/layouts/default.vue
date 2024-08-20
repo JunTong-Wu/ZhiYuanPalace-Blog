@@ -15,11 +15,11 @@
       </main>
     </div>
     <Music
-      class="fixed top-music landscape:left-4 w-music z-50 portrait:bg-bg-opaque landscape:shadow-sm"
+      class="fixed top-music landscape:left-4 w-music z-50 portrait:bg-bg-bestCard landscape:shadow-sm"
     />
     <FooterColumns />
     <FooterNavigation
-      class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-bg-opaque"
+      class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-bg-headBar backdrop-blur-3xl border-t border-borderColor"
     />
   </div>
 </template>

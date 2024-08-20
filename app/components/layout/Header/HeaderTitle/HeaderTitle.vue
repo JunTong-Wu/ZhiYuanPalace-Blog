@@ -1,18 +1,18 @@
 <template>
   <nav
     id="header-tabs"
-    class="header-title flex items-center h-full p-2 portrait:p-2 relative"
+    class="header-title flex items-center h-full p-3 portrait:p-3 relative"
     v-if="titleDisable"
   >
     <div
       v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
-      class="top-2 bottom-2 left-2 right-2 absolute bg-bg-gray rounded-lg overflow-hidden"
+      class="top-3 bottom-3 left-3 right-3 absolute bg-[rgba(127,127,127,0.1)] rounded-lg overflow-hidden"
     >
       <div
         id="header-tabs-indicator"
         class="inline-block h-full relative p-1 transition-all opacity-0"
       >
-        <div class="h-full bg-bg-best rounded-lg overflow-hidden"></div>
+        <div class="h-full landscape:bg-bg-best portrait:bg-[rgba(255,255,255,0.2)] rounded-lg overflow-hidden"></div>
       </div>
     </div>
     <ul
@@ -22,7 +22,7 @@
       <li v-for="tabs in childrenTabs" :key="tabs.title">
         <ZyLink
           :to="tabs.path"
-          class="h-full flex items-center justify-center px-8 portrait:px-6 text-text-3"
+          class="h-full flex items-center justify-center px-8 portrait:px-6 text-inherit"
         >
           <div
             class="flex items-center text-base gap-2 portrait:text-sm select-none"
@@ -44,10 +44,10 @@
     </ul>
     <div
       v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1"
-      class="headerbar-title ml-2 px-4 py-1 border-l-4 border-theme-500"
+      class="headerbar-title px-4 text-inherit"
     >
       <span
-        class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo"
+        class="text-2xl font-bold portrait:text-xl portrait:font-normal text-inherit font-vivo"
         >{{ $t(childrenTabs[0].title) }}</span
       >
     </div>
@@ -175,11 +175,11 @@ watch(
   li {
     a {
       position: relative;
-      color: var(--text-3);
+      opacity: 0.6;
     }
     &.activate {
       a {
-        color: var(--theme-color);
+        opacity: 1;
         span {
           position: relative;
           z-index: 2;

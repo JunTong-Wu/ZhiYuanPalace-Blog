@@ -308,16 +308,16 @@ export const generateTailwindColors = (
   l *= 100;
 
   return {
-    50: rgbToHex(hslToRgb(h, s / 100, (l + 35) / 100)),
-    100: rgbToHex(hslToRgb(h, s / 100, (l + 28) / 100)),
-    200: rgbToHex(hslToRgb(h, s / 100, (l + 21) / 100)),
-    300: rgbToHex(hslToRgb(h, s / 100, (l + 14) / 100)),
-    400: rgbToHex(hslToRgb(h, s / 100, (l + 7) / 100)),
+    50: rgbToHex(hslToRgb(h, s / 100, (l + 45) / 100)),
+    100: rgbToHex(hslToRgb(h, s / 100, (l + 36) / 100)),
+    200: rgbToHex(hslToRgb(h, s / 100, (l + 27) / 100)),
+    300: rgbToHex(hslToRgb(h, s / 100, (l + 18) / 100)),
+    400: rgbToHex(hslToRgb(h, s / 100, (l + 9) / 100)),
     500: rgbToHex(hslToRgb(h, s / 100, l / 100)),
-    600: rgbToHex(hslToRgb(h, s / 100, (l - 7) / 100)),
-    700: rgbToHex(hslToRgb(h, s / 100, (l - 14) / 100)),
-    800: rgbToHex(hslToRgb(h, s / 100, (l - 21) / 100)),
-    900: rgbToHex(hslToRgb(h, s / 100, (l - 28) / 100)),
-    950: rgbToHex(hslToRgb(h, s / 100, (l - 35) / 100)),
+    600: rgbToHex(hslToRgb(h, s / 100, (l - 9) / 100)),
+    700: rgbToHex(hslToRgb(h, s / 100, (l - 18) / 100)),
+    800: rgbToHex(hslToRgb(h, s / 100, (l - 27) / 100)),
+    900: rgbToHex(hslToRgb(h, s / 100, (l - 36) / 100)),
+    950: rgbToHex(hslToRgb(h, s / 100, (l - 45) / 100)),
   };
 };

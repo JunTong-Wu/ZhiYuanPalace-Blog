@@ -55,7 +55,7 @@
                       {{ item.article_title }}
                     </h4>
                     <p
-                      class="m-0 mt-2 portrait:text-sm landscape:text-base portrait:line-clamp-2 landscape:line-clamp-3 text-text-2"
+                      class="m-0 mt-2 portrait:text-sm landscape:text-base portrait:line-clamp-1 landscape:line-clamp-3 text-text-2"
                     >
                       {{ item.article_text.replace(/\r\n/g, "") }}
                     </p>

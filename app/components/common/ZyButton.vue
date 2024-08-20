@@ -21,7 +21,7 @@
       <UIcon name="i-eos-icons-three-dots-loading" class="w-8 h-8" />
     </span>
     <span
-      class="flex-1 flex items-center justify-center text-sm"
+      class="flex-1 flex items-center justify-center"
       :class="{ 'opacity-0': loading }"
     >
       <slot />
@@ -136,14 +136,29 @@ button.ZyButton-none {
 * Type Default
 **/
 button.ZyButton-default {
-  color: var(--theme-color);
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  font-weight: bold;
-  border-radius: 9999px;
-  border: 4px solid var(--theme-color);
+  position: relative;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background-color: var(--theme-color);
+  box-shadow: 0 0.5rem 1rem rgba(var(--theme-color-rgb), 0.3);
+  //border: 4px solid var(--theme-color);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, var(--theme-color-600), transparent);
+    opacity: 1;
+    filter: hue-rotate(30deg);
+    border-radius: 1rem;
+  }
+  span {
+    position: relative;
+    z-index: 1;
+  }
   &.ZyButton-loading {
     border-color: var(--text-5);
     cursor: not-allowed;

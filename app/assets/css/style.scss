@@ -58,12 +58,12 @@ a {
 
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 3.75rem;
-    --footer-bar-height: 3.25rem;
+    --header-bar-height: 4rem;
+    --footer-bar-height: 3.75rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
-    --music-bar-height: 2.5rem;
+    --music-bar-height: 2.75rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
@@ -74,12 +74,12 @@ a {
 }
 @media (orientation: landscape) {
   :root {
-    --header-bar-height: 4.5rem;
+    --header-bar-height: 5rem;
     --footer-bar-height: 0rem;
     --centered-width: 86rem;
-    --side-bar-width: 14rem;
+    --side-bar-width: 15rem;
     --tool-bar-width: 0rem;
-    --music-bar-height: 12rem;
+    --music-bar-height: 13rem;
     --music-bar-width: calc(var(--side-bar-width) - 2rem);
     --music-bar-top: calc(var(--header-bar-height) + 2rem);
     --pt-main: var(--header-bar-height);

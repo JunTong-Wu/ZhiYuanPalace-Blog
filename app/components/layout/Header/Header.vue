@@ -1,13 +1,13 @@
 <template>
   <header>
     <div
-      class="absolute top-0 h-full w-full landscape:bg-bg-headBar portrait:bg-bg-opaque landscape:backdrop-blur-3xl"
+      class="absolute top-0 h-full w-full landscape:bg-bg-headBar portrait:bg-theme-500 portrait:dark:brightness-[.2] landscape:backdrop-blur-3xl"
     ></div>
     <div
-      class="absolute top-0 h-full w-full bg-gradient-to-b from-themeColorTranslucent to-musicBar pointer-events-none opacity-70"
+      class="landscape:hidden absolute top-0 h-full w-full bg-gradient-to-r from-theme-500 to-transparent pointer-events-none hue-rotate-30 dark:brightness-50"
     ></div>
     <div
-      class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden"
+      class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden portrait:text-white"
     >
       <div
         class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
@@ -15,7 +15,7 @@
         <div class="flex items-center h-full overflow-hidden">
           <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
           <GoBackButton />
-          <HeaderTitle />
+          <HeaderTitle class="" />
         </div>
 
         <div class="h-full landscape:hidden">

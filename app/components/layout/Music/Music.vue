@@ -31,7 +31,7 @@
         class="portrait:ml-8 portrait:flex portrait:h-full w-full items-center pr-2 bottom-0 top-0 landscape:p-4 relative"
       >
         <p
-          class="flex-1 line-clamp-1 text-xs landscape:text-base landscape:mt-4 landscape:text-white"
+          class="flex-1 landscape:line-clamp-2 portrait:line-clamp-1 text-xs landscape:text-base landscape:mt-4 landscape:text-white"
         >
           你说的话 有心的吗 刺痛我了 无意的吧
         </p>

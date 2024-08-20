@@ -101,8 +101,10 @@ export default defineNuxtRouteMiddleware((to, from) => {
           musicBarShow();
           toolBarShow();
           footerColumnsShow();
-          ArticleCardTransitionEnd();
-          ShuoShuoCardTransitionEnd();
+          setTimeout(() => {
+            ArticleCardTransitionEnd();
+            ShuoShuoCardTransitionEnd();
+          }, 200);
         };
       }
     }
@@ -121,8 +123,10 @@ export default defineNuxtRouteMiddleware((to, from) => {
           headerBarShow();
           musicBarShow();
           toolBarShow();
-          ArticleCardTransitionEnd();
-          ShuoShuoCardTransitionEnd();
+          setTimeout(() => {
+            ArticleCardTransitionEnd();
+            ShuoShuoCardTransitionEnd();
+          }, 200);
         };
       }
     }

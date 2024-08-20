@@ -93,6 +93,6 @@ const getArticleWithPassword = async (params: { password: string }) => {
 }
 
 .zy-article-card-text {
-  animation: an-article-card-text 400ms;
+  animation: an-article-card-text 400ms 200ms;
 }
 </style>

@@ -1,5 +1,5 @@
 .zy-article-card {
-  --card-height: 7rem;
+  --card-height: 5.5rem;
   --image-size: 4rem;
   height: var(--card-height);
   vertical-align: middle;
@@ -17,8 +17,7 @@
       top: 0;
       right: 0;
       width: calc(100% - var(--image-size));
-      padding: 1rem;
-      padding-bottom: 1rem;
+      padding: 0.25rem 1rem;
     }
     .zy-card-image {
       transition: all cubic-bezier(0.63, 0, 0.32, 1) 400ms;
@@ -28,6 +27,7 @@
       height: var(--image-size);
       overflow: hidden;
       border-radius: 100%;
+      top: 0;
       div,img {
         transition: all 200ms ease-in-out;
         width: 100%;
