@@ -12,11 +12,7 @@
             </div>
             <div class="zy-card-image">
               <div v-for="n in item.shuoshuo_images">
-                <ZyLazyImage
-                  className="aspect-square"
-                  :src="`https://pan.yiru.love${n}`"
-                  alt=""
-                />
+                <ZyLazyImage className="aspect-square" :src="`${cdnUrl}${n}`" alt="" />
               </div>
             </div>
           </div>
@@ -47,6 +43,7 @@ const id = route.params.id as string;
 
 // 获取文章内容
 const shuoshuoData = await ApiShuoShuo.search_shuoshuo_by_id(id);
+const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
 </script>
 <style>
 @import url("~/components/layout/ShuoShuoCard/ShuoShuoCard.scss");

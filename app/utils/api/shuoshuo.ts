@@ -1,8 +1,8 @@
 export const ApiShuoShuo = {
   search_shuoshuo_all() {
-    return ApiService.get("/shuoshuo/search_shuoshuos_all", null);
+    return ApiService.post("/shuoshuo/search_shuoshuos_all", null);
   },
   search_shuoshuo_by_id(id: string | number) {
-    return ApiService.get(`/shuoshuo/search_shuoshuo_by_id/${id}`, null);
+    return ApiService.post(`/shuoshuo/search_shuoshuo_by_id/${id}`, null);
   },
 };

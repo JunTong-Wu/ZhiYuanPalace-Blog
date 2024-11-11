@@ -1,20 +1,12 @@
 <template>
   <section id="footer-columns" class="relative z-30 landscape:shadow-2xl">
-    <div
-      class="landscape:bg-bg-bestCard landscape:pl-sidebar portrait:pb-footer"
-    >
+    <div class="landscape:bg-bg-bestCard landscape:pl-sidebar portrait:pb-footer">
       <div class="container px-8">
-        <div
-          class="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12 portrait:hidden"
-        >
+        <div class="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12 portrait:hidden">
           <div class="col-span-full sm:col-span-3 md:col-span-4">
             <!-- Logo -->
             <NuxtLink to="/" class="flex items-center mb-8">
-              <img
-                src="../../../assets/image/logo.png"
-                class="max-h-7"
-                :alt="$t('zhiYuanPalace')"
-              />
+              <img src="../../../assets/image/logo.png" class="max-h-7" :alt="$t('zhiYuanPalace')" />
               <span class="ml-2 text-xl font-bold">{{
                 $t("zhiYuanPalace")
               }}</span>
@@ -25,10 +17,7 @@
             <!-- Socials -->
             <ul class="flex space-x-2">
               <li v-for="socialLink in socialLinks">
-                <a
-                  :href="socialLink.href"
-                  @click.prevent="socialLink.onclick()"
-                >
+                <a :href="socialLink.href" @click.prevent="socialLink.onclick()">
                   <ZyButton type="icon">
                     <ZyIcon :defaultName="socialLink.icon" size="1.25rem" />
                   </ZyButton>
@@ -41,10 +30,7 @@
             <h3 class="mb-6 text-lg">鸣谢</h3>
             <ul>
               <li v-for="thanksLink in thanksLinks">
-                <a
-                  :href="thanksLink.href"
-                  @click.prevent="thanksLink.onclick()"
-                >
+                <a :href="thanksLink.href" @click.prevent="thanksLink.onclick()">
                   <ZyButton type="text">{{ thanksLink.name }}</ZyButton>
                 </a>
               </li>
@@ -55,10 +41,7 @@
             <h3 class="mb-6 text-lg">开源</h3>
             <ul>
               <li v-for="openSourceLink in openSourceLinks">
-                <a
-                  :href="openSourceLink.href"
-                  @click.prevent="openSourceLink.onclick()"
-                >
+                <a :href="openSourceLink.href" @click.prevent="openSourceLink.onclick()">
                   <ZyButton type="text">{{ openSourceLink.name }}</ZyButton>
                 </a>
               </li>
@@ -67,14 +50,10 @@
 
           <div class="col-span-full sm:col-span-3 md:col-span-2">
             <h3 class="mb-6 text-lg">友链</h3>
-            <ZyFetchLoading
-              :fetchData="(friendsListData as any)"
-              :minLoadingNumber="3"
-              :max-data-length="3"
-            >
+            <ZyFetchLoading :fetchData="(friendsListData as any)" :minLoadingNumber="3" :max-data-length="3">
               <template v-slot:loading>
                 <ZyButton type="text" class="w-28">
-                  <ZySkeleton :row="1"/>
+                  <ZySkeleton :row="1" />
                 </ZyButton>
               </template>
               <template v-slot:onload="{ row: item }">
@@ -83,26 +62,15 @@
                 </a>
               </template>
             </ZyFetchLoading>
-            <ZyButton type="text" @click.prevent="showMoreFriends()"
-              >更多</ZyButton
-            >
+            <ZyButton type="text" @click.prevent="showMoreFriends()">更多</ZyButton>
           </div>
         </div>
-        <div
-          class="flex flex-col items-center justify-between landscape:flex-row landscape:space-y-2 py-8 portrait:py-0"
-        >
-          <span class="text-sm portrait:hidden"
-            >©2024 {{ $t("zhiYuanPalace") }}</span
-          >
-          <ul
-            class="flex flex-wrap landscape:space-x-4 portrait:flex-col portrait:items-center portrait:text-text-3"
-          >
+        <div class="flex flex-col items-center justify-between landscape:flex-row landscape:space-y-2 py-8 portrait:py-0">
+          <span class="text-sm portrait:hidden">©2024 {{ $t("zhiYuanPalace") }}</span>
+          <ul class="flex flex-wrap landscape:space-x-4 portrait:flex-col portrait:items-center portrait:text-text-3">
             <template v-for="copyrightLink in copyrightLinks">
               <li :class="{ 'portrait:hidden': copyrightLink.mobileHide }">
-                <a
-                  :href="copyrightLink.href"
-                  @click.prevent="copyrightLink.onclick()"
-                >
+                <a :href="copyrightLink.href" @click.prevent="copyrightLink.onclick()">
                   <ZyButton type="text" class="text-sm portrait:text-xs">{{
                     copyrightLink.name
                   }}</ZyButton>

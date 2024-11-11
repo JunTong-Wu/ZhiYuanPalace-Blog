@@ -1,23 +1,20 @@
 <template>
   <div>
     <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" class="hidden-scrollbar-x">
+
     <Head>
       <template v-for="link in head.link" :key="link.id">
-        <Link
-            :id="link.id"
-            :rel="link.rel"
-            :href="link.href"
-            :hreflang="link.hreflang"
-        />
+        <Link :id="link.id" :rel="link.rel" :href="link.href" :hreflang="link.hreflang" />
       </template>
       <template v-for="meta in head.meta" :key="meta.id">
         <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
       </template>
     </Head>
+
     </Html>
     <ZySuperResponsive>
       <NuxtLayout ref="layoutRef">
-        <NuxtPage class="nuxt-page mx-auto" :class="{'min-h-screen': !isSimpleLayout()}" />
+        <NuxtPage class="nuxt-page mx-auto" :class="{ 'min-h-screen': !isSimpleLayout() }" />
         <NuxtSnackbar />
       </NuxtLayout>
     </ZySuperResponsive>
@@ -43,11 +40,12 @@ const myLive2dConfig = () => {
       myLive2dConfig();
     }, 200);
   } else {
+    const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
     OML2D.loadOhMyLive2D({
       sayHello: false,
       mobileShow: true,
       transitionTime: 600,
-      source: "https://pan.yiru.love/project-zhiyuanpalace/live2d/",
+      source: `${cdnUrl}/live2d/`,
       models: {
         path: "/草神/草神.model3.json",
         scale: 0.8,
@@ -87,8 +85,8 @@ const myLive2dConfig = () => {
 const route = useRoute();
 const router = useRouter();
 const isSimpleLayout = () => {
-  if(route.meta){
-      return route.meta.layout === 'admin'
+  if (route.meta) {
+    return route.meta.layout === 'admin'
   }
   return false
 };
@@ -107,14 +105,14 @@ if (process.client) {
 }
 
 router.afterEach(
-    (to, from) => {
-      if(to.meta.layout !== 'admin'){
-        const canvas = document.querySelector("#oml-canvas");
-        if (!canvas && !isSimpleLayout()) {
-          initLive2d();
-        }
+  (to, from) => {
+    if (to.meta.layout !== 'admin') {
+      const canvas = document.querySelector("#oml-canvas");
+      if (!canvas && !isSimpleLayout()) {
+        initLive2d();
       }
     }
+  }
 );
 
 // head

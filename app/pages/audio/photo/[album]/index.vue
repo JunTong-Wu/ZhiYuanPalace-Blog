@@ -8,26 +8,20 @@
             <div class="zy-card-title">
               <div class="h-full flex flex-col justify-center">
                 <h4
-                  class="m-0 portrait:text-sm landscape:text-xl portrait:font-normal landscape:font-bold line-clamp-1 text-white"
-                >
+                  class="m-0 portrait:text-sm landscape:text-xl portrait:font-normal landscape:font-bold line-clamp-1 text-white">
                   {{ item.album_title }}
                 </h4>
               </div>
             </div>
             <div class="zy-card-image">
-              <ZyLazyImage
-                :src="`https://pan.yiru.love${item.album_cover}`"
-                alt=""
-              />
+              <ZyLazyImage :src="`${cdnUrl}${item.album_cover}`" alt="" />
             </div>
           </div>
         </template>
       </ZyFetchLoading>
     </div>
     <CommonMainSection noPaddingTop class="album-data-grid">
-      <ZyFetchLoading
-        :fetchData="(albumData as any)"
-        rowClass="grid grid-cols-12 portrait:gap-2 portrait:xs:gap-4 gap-4"
+      <ZyFetchLoading :fetchData="(albumData as any)" rowClass="grid grid-cols-12 portrait:gap-2 portrait:xs:gap-4 gap-4"
         cloClass="
         portrait:col-span-4 landscape:col-span-4
         portrait:xs:col-span-4 landscape:xs:col-span-4
@@ -35,18 +29,13 @@
         portrait:md:col-span-3 landscape:md:col-span-3
         portrait:lg:col-span-3 landscape:lg:col-span-3
         portrait:xl:col-span-3 landscape:xl:col-span-3
-        "
-      >
+        ">
         <template v-slot:loading>test</template>
         <template v-slot:onload="{ row: item }">
           <div>
-            <ZyLazyImage
-              className="w-full rounded-lg overflow-hidden aspect-square"
-              :src="`https://pan.yiru.love${item.photo_thumbnail_path}`"
-              :sourceSrc="`https://pan.yiru.love${item.photo_source_path}`"
-              alt=""
-              preview
-            />
+            <ZyLazyImage className="w-full rounded-lg overflow-hidden aspect-square"
+              :src="`${cdnUrl}${item.photo_thumbnail_path}`" :sourceSrc="`${cdnUrl}${item.photo_source_path}`" alt=""
+              preview />
           </div>
         </template>
       </ZyFetchLoading>
@@ -81,9 +70,11 @@ const albumPath = route.params.album as string;
 // 获取相册内容
 const albumDetailData = await ApiPhotos.search_album_title_by_album_path(albumPath);
 const albumData = await ApiPhotos.search_photos_by_album_path(albumPath);
+const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
 </script>
 <style>
 @import url("~/components/layout/AlbumCard/AlbumCard.scss");
+
 @keyframes an-album-data-grid {
   0% {
     transform: translateY(10rem);

@@ -80,10 +80,12 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
           NProgress.done();
         }
         if (response._data.code !== 0) {
+          console.log(response._data);
+
           // 后端返回错误
           if (process.server) {
             const alertToClient = () => {
-              const message = "数据库连接失败";
+              const message = "API发生错误，请查看控制台信息";
               window.ZyToast({ title: message });
             };
             store

@@ -7,38 +7,22 @@
       <UCard>
         <template #header>
           <div class="flex items-center justify-between">
-            <h3
-              class="text-base font-semibold leading-6 text-gray-900 dark:text-white"
-            >
+            <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
               访问加密内容
             </h3>
-            <UButton
-              color="gray"
-              variant="ghost"
-              icon="i-heroicons-x-mark-20-solid"
-              class="-my-1"
-              @click="isOpen = false"
-            />
+            <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1"
+              @click="isOpen = false" />
           </div>
         </template>
         <!--        <p>当前{{ type }} id为{{ id }}，需要密码访问，请输入密码</p>-->
         <div v-loading="loading">
-          <UInput
-            v-model="password"
-            icon="i-ri-lock-password-fill"
-            placeholder="请输入密码"
-            type="password"
-            class="w-full"
-            size="xl"
-            color="theme"
-          ></UInput>
+          <UInput v-model="password" icon="i-ri-lock-password-fill" placeholder="请输入密码" type="password" class="w-full"
+            size="xl" color="theme"></UInput>
         </div>
 
         <template #footer>
           <div class="flex items-center justify-end space-x-2">
-            <ZyButton :loading="loading" @click="verifyPassword()"
-              >确认</ZyButton
-            >
+            <ZyButton :loading="loading" @click="verifyPassword()">确认</ZyButton>
           </div>
         </template>
       </UCard>
@@ -75,7 +59,7 @@ const verifyPassword = async () => {
     return;
   }
   loading.value = true;
-  const { data } = await ApiArticle.articles_password_verify({
+  const { data } = await ApiArticle.passwordVerify({
     password: password.value,
     id: props.id,
   });
