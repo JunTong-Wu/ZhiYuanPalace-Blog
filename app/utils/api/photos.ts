@@ -1,17 +1,14 @@
 export const ApiPhotos = {
-  search_album_list() {
-    return ApiService.post("/photos/search_album_list", null);
+  /**
+   * 查询相册列表
+   */
+  getAlbumsList(params: any) {
+    return ApiService.post("/photos/albums", params);
   },
-  search_album_title_by_album_path(album_path: string) {
-    return ApiService.post(
-      `/photos/search_album_title_by_album_path/${album_path}`,
-      null
-    );
-  },
-  search_photos_by_album_path(album_path: string) {
-    return ApiService.post(
-      `/photos/search_photos_by_album_path/${album_path}`,
-      null
-    );
+  /**
+   * 查询照片列表
+   */
+  getPhotosList(params: any) {
+    return ApiService.post("/photos/index", params);
   },
 };

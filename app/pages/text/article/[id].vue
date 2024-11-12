@@ -54,10 +54,11 @@ const id = route.params.id as string;
 
 // 获取文章内容
 const articleData = shallowRef();
-articleData.value = await ApiArticle.getSingleArticle(id, null);
+articleData.value = await ApiArticle.showArticle({ article_id: id });
 const getArticleWithPassword = async (params: { password: string }) => {
-  articleData.value = await ApiArticle.getSingleArticle(id, {
-    password: params.password,
+  articleData.value = await ApiArticle.showArticle({
+    article_id: id,
+    article_password: params.password,
   });
 };
 const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;

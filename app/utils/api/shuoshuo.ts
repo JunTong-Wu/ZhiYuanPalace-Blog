@@ -1,8 +1,14 @@
 export const ApiShuoShuo = {
-  search_shuoshuo_all() {
-    return ApiService.post("/shuoshuo/search_shuoshuos_all", null);
+  /**
+   * 查询说说列表
+   */
+  getShuoshuoList(params: any) {
+    return ApiService.post("/shuoshuo/index", params);
   },
-  search_shuoshuo_by_id(id: string | number) {
-    return ApiService.post(`/shuoshuo/search_shuoshuo_by_id/${id}`, null);
+  /**
+   * 查询单条说说
+   */
+  showShuoshuo(params: any) {
+    return ApiService.post(`/shuoshuo/show`, params);
   },
 };

@@ -66,10 +66,10 @@ definePageMeta({
 
 // 获取文章列表
 const articleListData = shallowRef();
-// articleListData.value = await ApiArticle.getArticles({
+// articleListData.value = await ApiArticle.getArticlesList({
 //   classify_path: 'life'
 // });
-articleListData.value = await ApiArticle.getArticles(null);
+articleListData.value = await ApiArticle.getArticlesList(null);
 const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
 </script>
 <style>

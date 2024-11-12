@@ -23,15 +23,3 @@ export const getDBQuery = (sql: string, values: any) => {
     });
   });
 };
-export const getHandledQuery = async (sql: string, values: any) => {
-  try {
-    const rows = (await getDBQuery(sql, values)) as any[];
-    if (rows) {
-      return { code: 0, message: "查询成功", data: rows };
-    } else {
-      return { code: 500, message: "预期的结果不存在", data: null };
-    }
-  } catch (e) {
-    return { code: 500, message: "数据库连接失败", data: null };
-  }
-};

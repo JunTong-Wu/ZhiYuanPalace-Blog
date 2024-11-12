@@ -1,18 +1,14 @@
 /**
- * 查询单篇文章
+ * 展示单篇文章
  */
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  const params = getRouterParams(event);
-  const id = params.id;
-  const password = body.password || null;
-  let sql = "SELECT * from articles where article_id= ?";
+  const id = body.article_id || null;
+  const password = body.article_password || null;
+  let sql = "SELECT * FROM articles WHERE article_id= ?";
   let values = [];
   if (id) {
     values.push(id);
-  }
-  if (password) {
-    values.push(password);
   }
   const dbResults = await getHandledQuery(sql, values);
 

@@ -70,7 +70,7 @@ definePageMeta({
 });
 
 // 获取相册列表
-const albumListData = await ApiPhotos.search_album_list();
+const albumListData = await ApiPhotos.getAlbumsList(null);
 const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
 </script>
 <style>

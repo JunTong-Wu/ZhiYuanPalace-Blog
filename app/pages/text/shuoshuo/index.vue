@@ -65,7 +65,7 @@ definePageMeta({
 });
 
 // 获取说说列表
-const shuoshuoListData = await ApiShuoShuo.search_shuoshuo_all();
+const shuoshuoListData = await ApiShuoShuo.getShuoshuoList(null);
 const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
 </script>
 <style>

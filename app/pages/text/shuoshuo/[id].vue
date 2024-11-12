@@ -42,7 +42,7 @@ const route = useRoute();
 const id = route.params.id as string;
 
 // 获取文章内容
-const shuoshuoData = await ApiShuoShuo.search_shuoshuo_by_id(id);
+const shuoshuoData = await ApiShuoShuo.showShuoshuo({ shuoshuo_id: id });
 const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
 </script>
 <style>

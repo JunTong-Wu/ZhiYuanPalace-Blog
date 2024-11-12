@@ -194,7 +194,7 @@ const copyrightLinks = [
 ];
 
 // 获取友链列表
-const friendsListData = await ApiFriend.search_friends_all();
+const friendsListData = await ApiFriend.getFriendsList();
 
 const showMoreFriends = () => {
   router.push("/about/friend");
