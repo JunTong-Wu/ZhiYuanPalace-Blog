@@ -1,8 +1,8 @@
 import CryptoJS from "crypto-js";
 
 const encryptData = (data: string | CryptoJS.lib.WordArray) => {
-  const key = process.env.VUE_APP_AES_KEY as string;
-  const iv = process.env.VUE_APP_AES_IV as string;
+  const key = process.env.VITE_APP_AES_KEY as string;
+  const iv = process.env.VITE_APP_AES_IV as string;
 
   const keyHex = CryptoJS.enc.Utf8.parse(key);
   const ivHex = CryptoJS.enc.Utf8.parse(iv);
@@ -26,8 +26,8 @@ const encryptData = (data: string | CryptoJS.lib.WordArray) => {
 };
 
 const decryptData = (cipherText: string | CryptoJS.lib.CipherParams) => {
-  const key = process.env.VUE_APP_AES_KEY as string;
-  const iv = process.env.VUE_APP_AES_IV as string;
+  const key = process.env.VITE_APP_AES_KEY as string;
+  const iv = process.env.VITE_APP_AES_IV as string;
 
   const keyHex = CryptoJS.enc.Utf8.parse(key);
   const ivHex = CryptoJS.enc.Utf8.parse(iv);

@@ -1,19 +1,19 @@
 export const getConfig = () => {
   // 读取环境变量
   // @ts-ignore
-  const host = import.meta.env.NITRO_SERVER_DB_HOST;
+  const host = import.meta.env.VITE_APP_DB_HOST;
   // @ts-ignore
-  const port = import.meta.env.NITRO_SERVER_DB_PORT;
+  const port = import.meta.env.VITE_APP_DB_PORT;
   // @ts-ignore
-  const user = import.meta.env.NITRO_SERVER_DB_USER;
+  const user = import.meta.env.VITE_APP_DB_USER;
   // @ts-ignore
-  const password = import.meta.env.NITRO_SERVER_DB_PASSWORD;
+  const password = import.meta.env.VITE_APP_DB_PASSWORD;
   // @ts-ignore
-  const database = import.meta.env.NITRO_SERVER_DB_DATABASE;
+  const database = import.meta.env.VITE_APP_DB_DATABASE;
   // @ts-ignore
-  const expiresIn = import.meta.env.NITRO_SERVER_JWT_EXPIRES_IN;
+  const expiresIn = import.meta.env.VITE_APP_JWT_EXPIRES_IN;
   // @ts-ignore
-  const secret = import.meta.env.NITRO_SERVER_JWT_SECRET;
+  const secret = import.meta.env.VITE_APP_JWT_SECRET;
 
   return {
     db: {
