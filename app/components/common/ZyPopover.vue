@@ -5,25 +5,13 @@
         <slot name="reference" />
       </div>
       <Teleport to="body">
-        <transition
-          enter-active-class="transition duration-100 ease-out"
-          enter-from-class="transform opacity-0"
-          enter-to-class="transform opacity-100"
-          leave-active-class="transition duration-100 ease-out"
-          leave-from-class="transform opacity-100"
-          leave-to-class="transform opacity-0"
-        >
-          <div
-            v-if="open"
-            class="fixed"
-            :class="{ 'opacity-0 pointer-events-none': !open && init }"
-            :style="mainStyle"
-          >
-            <div
-              ref="popoverInnerRef"
+        <transition enter-active-class="transition duration-100 ease-out" enter-from-class="transform opacity-0"
+          enter-to-class="transform opacity-100" leave-active-class="transition duration-100 ease-out"
+          leave-from-class="transform opacity-100" leave-to-class="transform opacity-0">
+          <div v-if="open" class="fixed" :class="{ 'opacity-0 pointer-events-none': !open && init }" :style="mainStyle">
+            <div ref="popoverInnerRef"
               class="flex flex-col h-full backdrop-blur-3xl will-change-transform rounded-lg overflow-hidden shadow-2xl min-w-24 border-none dark:border dark:border-solid dark:border-borderColor"
-              :style="{ 'background-color': background }"
-            >
+              :style="{ 'background-color': background }">
               <slot name="actions" />
             </div>
           </div>
@@ -105,7 +93,7 @@ const mainStyle = computed(() => {
 });
 
 const open = ref(false);
-const closeMenu = (e) => {
+const closeMenu = (e: any) => {
   if (
     e.target.closest(".language-button") ||
     e.target.closest(".language-menu-item")

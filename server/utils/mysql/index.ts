@@ -13,6 +13,7 @@ export const getDBQuery = (sql: string, values: any) => {
       } else {
         pool.query(sql, values, (err, results) => {
           connection.release(); // 释放连接回连接池
+          pool.end();
           if (err) {
             reject(err);
           } else {

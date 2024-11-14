@@ -1,29 +1,17 @@
 <template>
-  <button
-    :class="{
-      'ZyButton-default': type == 'default',
-      'ZyButton-text': type == 'text',
-      'ZyButton-icon': type == 'icon',
-      'ZyButton-none': type == 'none',
-      'ZyButton-loading': loading,
-    }"
-    class="min-h-9 min-w-9 p-0 m-0 flex items-center justify-center relative"
-    ref="button"
-    type="button"
-    :title="title"
-    :disabled="loading"
-    @mousedown="animationStart()"
-    @mouseup="animationEnd()"
-    @touchstart.passive="animationStart()"
-    @touchend.passive="animationEnd()"
-  >
+  <button :class="{
+    'ZyButton-default': type == 'default',
+    'ZyButton-text': type == 'text',
+    'ZyButton-icon': type == 'icon',
+    'ZyButton-none': type == 'none',
+    'ZyButton-loading': loading,
+  }" class="min-h-9 min-w-9 p-0 m-0 flex items-center justify-center relative" ref="button" type="button"
+    :title="title" :disabled="loading" @mousedown="animationStart()" @mouseup="animationEnd()"
+    @touchstart.passive="animationStart()" @touchend.passive="animationEnd()">
     <span v-if="loading" class="absolute top-0 left-0 w-full h-full">
       <UIcon name="i-eos-icons-three-dots-loading" class="w-8 h-8" />
     </span>
-    <span
-      class="flex-1 flex items-center justify-center"
-      :class="{ 'opacity-0': loading }"
-    >
+    <span class="flex-1 flex items-center justify-center" :class="{ 'opacity-0': loading }">
       <slot />
     </span>
   </button>
@@ -129,8 +117,7 @@ export default defineComponent({
 /**
 * Type None
 **/
-button.ZyButton-none {
-}
+button.ZyButton-none {}
 
 /**
 * Type Default
@@ -142,27 +129,34 @@ button.ZyButton-default {
   border-radius: 1rem;
   background-color: var(--theme-color);
   box-shadow: 0 0.5rem 1rem rgba(var(--theme-color-rgb), 0.3);
+
   //border: 4px solid var(--theme-color);
-  &::before {
+  /* &::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to right, var(--theme-color-600), transparent);
+    background-image: linear-gradient(to bottom, var(--theme-color-500), transparent);
+    mix-blend-mode: multiply;
     opacity: 1;
-    filter: hue-rotate(30deg);
     border-radius: 1rem;
-  }
+  } */
+
   span {
     position: relative;
     z-index: 1;
   }
+
   &.ZyButton-loading {
     border-color: var(--text-5);
     cursor: not-allowed;
   }
+}
+
+.dark button.ZyButton-default {
+  background-color: var(--theme-color-700);
 }
 
 /**

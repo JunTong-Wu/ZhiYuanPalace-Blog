@@ -1,6 +1,6 @@
 <template>
   <CommonMainSection>
-    <button @click="showAlert">{{ test }}</button>
+    TEST
     <Toolbar />
   </CommonMainSection>
 </template>
@@ -22,12 +22,4 @@ definePageMeta({
   },
   middleware: "transition",
 });
-function showAlert() {
-  window.ZyToast({
-    title: "提示",
-    text: "这是一个提示信息",
-  });
-}
-const config = useRuntimeConfig()
-const test = config.public.DB_USER + "@" + config.public.DB_HOST + ":" + config.public.DB_PORT + ", " + config.public.DB_PASSWORD
 </script>

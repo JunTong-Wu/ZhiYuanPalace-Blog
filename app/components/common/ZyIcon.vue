@@ -1,25 +1,11 @@
 <template>
-  <div
-    :class="{ activated: activated }"
-    :style="{ '--size': size, width: size, height: size }"
-    class="ZyIcon relative"
-  >
-    <div
-      v-if="defaultName"
-      :style="{
-        '--icon-color': defaultLinearGradient ? 'inherit' : defaultColor,
-      }"
-      class="icon-default flex"
-      v-html="formatDefaultIcon"
-    ></div>
-    <div
-      v-if="activatedName"
-      :style="{
-        '--icon-color': activatedLinearGradient ? 'inherit' : activatedColor,
-      }"
-      class="icon-activated flex"
-      v-html="formatActivatedIcon"
-    ></div>
+  <div :class="{ activated: activated }" :style="{ '--size': size, width: size, height: size }" class="ZyIcon relative">
+    <div v-if="defaultName" :style="{
+      '--icon-color': defaultLinearGradient ? 'inherit' : defaultColor,
+    }" class="icon-default flex" v-html="formatDefaultIcon"></div>
+    <div v-if="activatedName" :style="{
+      '--icon-color': activatedLinearGradient ? 'inherit' : activatedColor,
+    }" class="icon-activated flex" v-html="formatActivatedIcon"></div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -175,26 +161,26 @@ formatIcon();
     color: var(--icon-color);
   }
 
-  > div {
+  >div {
     position: absolute;
     top: 0;
     transition: opacity 0.3s ease;
   }
 
-  > div.icon-default {
+  >div.icon-default {
     opacity: 1;
   }
 
-  > div.icon-activated {
+  >div.icon-activated {
     opacity: 0;
   }
 
   &.activated {
-    > div.icon-default {
+    >div.icon-default {
       opacity: 0;
     }
 
-    > div.icon-activated {
+    >div.icon-activated {
       opacity: 1;
     }
   }

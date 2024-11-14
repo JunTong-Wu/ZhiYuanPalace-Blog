@@ -1,19 +1,22 @@
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
-  --progress-color: linear-gradient(to right, var(--theme-color-400), var(--theme-color-600));
+  --progress-color: linear-gradient(
+    to right,
+    var(--theme-color-400),
+    var(--theme-color-600)
+  );
   --shadow-color: rgba(var(--theme-color-rgb), 0.5);
 }
 
 @media (orientation: portrait) {
   #nprogress {
-    --progress-color: rgba(255,255,255,0.5);
+    --progress-color: rgba(255, 255, 255, 0.5);
   }
 }
 
 #nprogress .bar {
   background: var(--progress-color);
-  filter: hue-rotate(30deg);
   position: fixed;
   z-index: 2000;
   top: 0;
