@@ -48,7 +48,6 @@ const emit = defineEmits(["validateSuccess"]);
 const loading = ref(false);
 const isOpen = ref(false);
 const password = ref("");
-const snackbar = useSnackbar();
 
 const verifyPassword = async () => {
   if (password.value.trim() === "") {

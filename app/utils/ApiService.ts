@@ -28,8 +28,8 @@ export interface ResOptions<T> {
 
 const request = (url: string, options: RequestOptions): Promise<any> => {
   // 获取配置域名
-  // @ts-ignore
-  let baseUrl = import.meta.env.VITE_APP_API_BASE;
+  const config = useRuntimeConfig();
+  const baseUrl = config.public.API_URL;
   // 拼接请求地址
   const reqUrl = baseUrl + url;
   let headers: Record<string, any> = {};

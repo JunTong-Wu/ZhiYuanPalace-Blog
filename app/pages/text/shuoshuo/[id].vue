@@ -43,7 +43,8 @@ const id = route.params.id as string;
 
 // 获取文章内容
 const shuoshuoData = await ApiShuoShuo.showShuoshuo({ shuoshuo_id: id });
-const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+const config = useRuntimeConfig();
+const cdnUrl = config.public.CDN_URL;
 </script>
 <style>
 @import url("~/components/layout/ShuoShuoCard/ShuoShuoCard.scss");

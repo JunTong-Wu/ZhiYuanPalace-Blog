@@ -66,7 +66,8 @@ definePageMeta({
 
 // 获取说说列表
 const shuoshuoListData = await ApiShuoShuo.getShuoshuoList(null);
-const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+const config = useRuntimeConfig();
+const cdnUrl = config.public.CDN_URL;
 </script>
 <style>
 @import url("~/components/layout/ShuoShuoCard/ShuoShuoCard.scss");

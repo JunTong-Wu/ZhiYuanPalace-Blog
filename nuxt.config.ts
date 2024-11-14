@@ -1,34 +1,40 @@
-// 环境变量配置
-import { loadEnv } from "vite";
-const envName: string = (process.env.npm_lifecycle_script as string).match(
-  /--mode\s(.*)/
-)?.[1] as string;
-const envData = loadEnv(envName, process.cwd()); // 获取.env文件中的配置
-Object.assign(process.env, envData); // 将环境配置信息，添加到process.env
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import compression from "vite-plugin-compression";
 export default defineNuxtConfig({
+  runtimeConfig: {
+    //私密
+    JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN,
+    JWT_SECRET: process.env.JWT_SECRET,
+    DB_HOST: process.env.DB_HOST,
+    DB_PORT: process.env.DB_PORT,
+    DB_USER: process.env.DB_USER,
+    DB_DATABASE: process.env.DB_DATABASE,
+    DB_PASSWORD: process.env.DB_PASSWORD,
+    AES_KEY: process.env.AES_KEY,
+    AES_IV: process.env.AES_IV,
+    public: {
+      //公开
+      API_URL: process.env.API_URL,
+      CDN_URL: process.env.CDN_URL,
+      SITE_URL: process.env.SITE_URL,
+    },
+  },
   future: {
     compatibilityVersion: 4,
   },
-
   app: {
     pageTransition: { mode: "out-in" },
     layoutTransition: { mode: "out-in" },
   },
-
   ui: {
     safelistColors: ["theme"],
   },
-
   hooks: {
     "vite:extendConfig"(config) {
       delete config.define!.window;
       delete config.define!.document;
     },
   },
-
   devtools: { enabled: false },
   modules: [
     "@nuxt/ui",
@@ -36,15 +42,7 @@ export default defineNuxtConfig({
     "nuxt-headlessui",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
-    "nuxt-snackbar",
   ],
-
-  snackbar: {
-    top: true,
-    groups:false,
-    duration: 3000,
-  },
-
   components: [
     {
       path: "components",
@@ -52,9 +50,8 @@ export default defineNuxtConfig({
       extensions: [".vue"],
     },
   ],
-
   i18n: {
-    baseUrl: "https://www.yiru.love",
+    baseUrl: process.env.SITE_URL,
     locales: [
       {
         code: "zh-CN",
@@ -82,7 +79,6 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: "language",
   },
-
   vite: {
     plugins: [
       compression({
@@ -91,6 +87,5 @@ export default defineNuxtConfig({
       }),
     ],
   },
-
   compatibilityDate: "2024-08-12",
 });

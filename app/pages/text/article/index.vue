@@ -70,7 +70,8 @@ const articleListData = shallowRef();
 //   classify_path: 'life'
 // });
 articleListData.value = await ApiArticle.getArticlesList(null);
-const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+const config = useRuntimeConfig();
+const cdnUrl = config.public.CDN_URL;
 </script>
 <style>
 @import url("~/components/layout/ArticleCard/ArticleCard.scss");

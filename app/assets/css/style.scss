@@ -1,7 +1,6 @@
 @import url("./live2d/index.scss");
 @import url("./markdown/index.scss");
 @import url("./nprogress/index.scss");
-@import url("./snackbar/index.scss");
 
 @import url("../fonts/DFPKingGothicGB.css");
 @import url("../fonts/HarmonyOS.css");
@@ -102,7 +101,6 @@ a {
     display: block !important;
   }
 }
-
 
 :root {
   --border-color: rgba(127, 127, 127, 0.2);
@@ -223,7 +221,7 @@ a {
   background-color: var(--theme-color-200);
   //color: #fff;
 }
-.dark{
+.dark {
   ::selection {
     background-color: var(--theme-color-900);
   }

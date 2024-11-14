@@ -15,7 +15,6 @@
     <ZySuperResponsive>
       <NuxtLayout ref="layoutRef">
         <NuxtPage class="nuxt-page mx-auto" :class="{ 'min-h-screen': !isSimpleLayout() }" />
-        <NuxtSnackbar />
       </NuxtLayout>
     </ZySuperResponsive>
   </div>
@@ -40,7 +39,8 @@ const myLive2dConfig = () => {
       myLive2dConfig();
     }, 200);
   } else {
-    const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+    const config = useRuntimeConfig();
+    const cdnUrl = config.public.CDN_URL;
     OML2D.loadOhMyLive2D({
       sayHello: false,
       mobileShow: true,

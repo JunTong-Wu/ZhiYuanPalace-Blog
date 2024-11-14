@@ -52,7 +52,8 @@
 </template>
 <script setup lang="ts">
 const isLoading = ref(true);
-const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+const config = useRuntimeConfig();
+const cdnUrl = config.public.CDN_URL;
 const musicNowCover =
   cdnUrl + "/uploads/music/cover/本兮 - 有心无意.jpg";
 

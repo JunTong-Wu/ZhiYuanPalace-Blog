@@ -70,7 +70,8 @@ const albumPath = route.params.album as string;
 // 获取相册内容
 const albumDetailData = await ApiPhotos.getAlbumsList({ album_path: albumPath });
 const albumData = await ApiPhotos.getPhotosList({ album_path: albumPath });
-const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+const config = useRuntimeConfig();
+const cdnUrl = config.public.CDN_URL;
 </script>
 <style>
 @import url("~/components/layout/AlbumCard/AlbumCard.scss");

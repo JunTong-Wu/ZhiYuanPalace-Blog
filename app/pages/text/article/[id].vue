@@ -61,7 +61,8 @@ const getArticleWithPassword = async (params: { password: string }) => {
     article_password: params.password,
   });
 };
-const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+const config = useRuntimeConfig();
+const cdnUrl = config.public.CDN_URL;
 </script>
 <style>
 @import url("~/components/layout/ArticleCard/ArticleCard.scss");

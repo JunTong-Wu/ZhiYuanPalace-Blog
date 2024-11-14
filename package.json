@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build --dotenv .env.production",
+    "build": "source .env.production && nuxt build",
     "dev": "nuxt dev --host --dotenv .env.development",
     "generate": "nuxt generate --dotenv .env.production",
     "preview": "nuxt preview",
@@ -24,7 +24,6 @@
     "mysql2": "^3.11.4",
     "nprogress": "^0.2.0",
     "nuxt": "^3.12.4",
-    "nuxt-snackbar": "^1.1.2",
     "pinia": "^2.2.1",
     "qs": "^6.13.0",
     "vite-plugin-compression": "^0.5.1",

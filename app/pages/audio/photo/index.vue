@@ -71,7 +71,8 @@ definePageMeta({
 
 // 获取相册列表
 const albumListData = await ApiPhotos.getAlbumsList(null);
-const cdnUrl = import.meta.env.VITE_APP_CDN_BASE;
+const config = useRuntimeConfig();
+const cdnUrl = config.public.CDN_URL;
 </script>
 <style>
 @import url("~/components/layout/AlbumCard/AlbumCard.scss");
