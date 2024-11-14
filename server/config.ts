@@ -16,12 +16,22 @@ export const getConfig = () => {
   const secret = import.meta.env.VITE_APP_JWT_SECRET;
 
   return {
+    // db: {
+    //   host: host,
+    //   port: port,
+    //   user: user,
+    //   password: password,
+    //   database: database,
+    //   waitForConnections: true,
+    //   connectionLimit: 10,
+    //   queueLimit: 0,
+    // },
     db: {
-      host: host,
+      host: "119.27.165.209",
       port: port,
-      user: user,
-      password: password,
-      database: database,
+      user: "root",
+      password: "Wjt991128!@#$%^",
+      database: "zhiyuanpalace",
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,

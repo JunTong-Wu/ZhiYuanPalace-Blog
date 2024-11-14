@@ -1,3 +1,5 @@
+import { errorMessages } from "vue/compiler-sfc";
+
 export const getHandledQuery = async (sql: string, values: any) => {
   try {
     const rows = (await getDBQuery(sql, values)) as any[];
@@ -6,8 +8,13 @@ export const getHandledQuery = async (sql: string, values: any) => {
     } else {
       return { code: 500, message: "预期的结果不存在", data: null };
     }
-  } catch (e: any) {
-    return { code: 500, message: "数据库查询错误", data: e };
+  } catch (err: any) {
+    return {
+      code: 500,
+      message: "数据库查询错误",
+      data: null,
+      errorMessages: err,
+    };
   }
 };
 export const setJson = (

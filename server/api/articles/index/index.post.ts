@@ -25,14 +25,16 @@ export default defineEventHandler(async (event) => {
     values.push(pageLimit, pageSize);
   }
 
-  const dbResults = await getHandledQuery(sql, values);
-  const passwordFilter = articlePasswordFilter(dbResults);
+  let dbResults = await getHandledQuery(sql, values);
 
-  passwordFilter.data.forEach((item) => {
-    if (item.article_text.length > 60) {
-      item.article_text = item.article_text.substring(0, 60) + "...";
-    }
-  });
+  if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
+    dbResults = articlePasswordFilter(dbResults);
+    dbResults.data.forEach((item) => {
+      if (item.article_text.length > 60) {
+        item.article_text = item.article_text.substring(0, 60) + "...";
+      }
+    });
+  }
 
-  return passwordFilter;
+  return dbResults;
 });

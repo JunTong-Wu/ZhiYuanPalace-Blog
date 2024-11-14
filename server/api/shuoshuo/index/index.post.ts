@@ -25,12 +25,15 @@ export default defineEventHandler(async (event) => {
   }
 
   const dbResults = await getHandledQuery(sql, values);
+  console.log(dbResults);
 
-  dbResults.data?.forEach((item: any) => {
-    if (item.shuoshuo_text.length > 60) {
-      item.shuoshuo_text = item.shuoshuo_text.substring(0, 60) + "...";
-    }
-  });
+  if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
+    dbResults.data.forEach((item: any) => {
+      if (item.shuoshuo_text.length > 60) {
+        item.shuoshuo_text = item.shuoshuo_text.substring(0, 60) + "...";
+      }
+    });
+  }
 
   return dbResults;
 });
