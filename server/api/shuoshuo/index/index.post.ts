@@ -25,7 +25,6 @@ export default defineEventHandler(async (event) => {
   }
 
   const dbResults = await getHandledQuery(sql, values);
-  console.log(dbResults);
 
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     dbResults.data.forEach((item: any) => {
