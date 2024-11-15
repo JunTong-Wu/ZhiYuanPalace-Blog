@@ -25,25 +25,25 @@
       </div>
       <div
         class="flex landscape:absolute bottom-0 left-0 right-0 landscape:p-4 landscape:justify-around landscape:text-white">
-        <div>
+        <div class="flex">
           <ZyButton class="portrait:h-music aspect-square" title="上一曲" type="transparent" @click="musicPrev">
-            <UIcon name="i-ri-skip-back-fill" class="w-6 h-6 portrait:w-4 portrait:h-4" />
+            <UIcon name="i-fluent-previous-16-filled" class="w-5 h-5 portrait:w-4 portrait:h-4" />
           </ZyButton>
         </div>
-        <div>
+        <div class="flex">
           <ZyButton class="portrait:h-music aspect-square portrait:text-theme-700" title="播放" type="transparent"
             @click="togglePlay">
             <template v-if="musicPlayState">
-              <UIcon name="i-ri-pause-circle-fill" class="w-10 h-10 portrait:w-8 portrait:h-8" />
+              <UIcon name="i-fluent-pause-circle-16-filled" class="w-10 h-10 portrait:w-8 portrait:h-8" />
             </template>
             <template v-else>
-              <UIcon name="i-ri-play-circle-fill" class="w-10 h-10 portrait:w-8 portrait:h-8" />
+              <UIcon name="i-fluent-play-circle-16-filled" class="w-10 h-10 portrait:w-8 portrait:h-8" />
             </template>
           </ZyButton>
         </div>
-        <div>
+        <div class="flex">
           <ZyButton class="portrait:h-music aspect-square" title="下一曲" type="transparent" @click="musicNext">
-            <UIcon name="i-ri-skip-forward-fill" class="w-6 h-6 portrait:w-4 portrait:h-4" />
+            <UIcon name="i-fluent-next-16-filled" class="w-5 h-5 portrait:w-4 portrait:h-4" />
           </ZyButton>
         </div>
         <!-- <div>

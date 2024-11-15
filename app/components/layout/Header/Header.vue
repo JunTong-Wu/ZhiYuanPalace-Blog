@@ -23,10 +23,10 @@
           <div class="flex items-center w-full h-full justify-between">
             <div class="flex items-center h-full">
               <ZyButton class="w-header h-header" @click="openSearchDrawer()" title="搜索" type="transparent">
-                <ZyIcon defaultName="search" size="1.25rem" />
+                <UIcon name="i-fluent-search-16-regular" class="w-5 h-5" />
               </ZyButton>
               <ZyButton class="w-header h-header" @click="openMoreDrawer()" title="更多选项" type="transparent">
-                <ZyIcon defaultName="more" size="1.25rem" />
+                <UIcon name="i-fluent-navigation-16-regular" class="w-5 h-5" />
               </ZyButton>
             </div>
           </div>
@@ -35,21 +35,21 @@
         <div class="portrait:hidden">
           <div class="flex justify-end h-full items-center gap-4">
             <ZyButton class="flex items-center justify-center" @click="openSearchDrawer()" title="搜索" type="icon">
-              <ZyIcon size="1.5rem" defaultName="search" />
+              <UIcon name="i-fluent-search-16-regular" class="w-6 h-6" />
             </ZyButton>
             <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-              <ZyIcon v-if="!fullScreenFlag" size="1.5rem" defaultName="maximize" />
-              <ZyIcon v-else size="1.5rem" defaultName="minimize" />
+              <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-16-regular" class="w-6 h-6" />
+              <UIcon v-else name="i-fluent-full-screen-minimize-16-regular" class="w-6 h-6" />
             </ZyButton>
             <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-              <ZyIcon size="1.5rem" class="hidden dark:inline-block" defaultName="sun" />
-              <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
+              <UIcon name="i-fluent-weather-sunny-16-regular" class="w-6 h-6 hidden dark:inline-block" />
+              <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
             </ZyButton>
             <!-- 多语言抽屉 -->
             <ZyPopover title="切换语言" background="var(--bg-panel)">
               <template #reference>
                 <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                  <ZyIcon size="1.5rem" defaultName="language" />
+                  <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />
                 </ZyButton>
               </template>
               <template #actions>
@@ -57,7 +57,7 @@
               </template>
             </ZyPopover>
             <ZyButton class="flex items-center justify-center" @click="openMoreDrawer()" title="更多选项" type="icon">
-              <ZyIcon size="1.5rem" defaultName="more" />
+              <UIcon name="i-fluent-navigation-16-regular" class="w-6 h-6" />
             </ZyButton>
           </div>
         </div>
@@ -73,17 +73,17 @@
           <template #footer>
             <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
               <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-                <ZyIcon v-if="!fullScreenFlag" size="1.5rem" defaultName="maximize" />
-                <ZyIcon v-else size="1.5rem" defaultName="minimize" />
+                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-16-regular" class="w-6 h-6" />
+                <UIcon v-else name="i-fluent-full-screen-minimize-16-regular" class="w-6 h-6" />
               </ZyButton>
               <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-                <ZyIcon size="1.5rem" class="hidden dark:inline-block" defaultName="sun" />
-                <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
+                <UIcon name="i-fluent-weather-sunny-16-regular" class="w-6 h-6 hidden dark:inline-block" />
+                <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
               </ZyButton>
               <ZyPopover title="切换语言" background="var(--bg-panel)" position="top-right">
                 <template #reference>
                   <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                    <ZyIcon size="1.5rem" defaultName="language" />
+                    <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />
                   </ZyButton>
                 </template>
                 <template #actions>

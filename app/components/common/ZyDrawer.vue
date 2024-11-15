@@ -1,59 +1,23 @@
 <template>
   <Teleport to="body">
-    <aside
-      class="fixed inset-0"
-      v-if="componentsDisplay"
-      :style="`z-index: ${zIndex};`"
-      ref="el"
-      :class="{ dark: dark }"
-      @touchmove.passive="preventTouchGesture($event)"
-    >
-      <div
-        class="fixed inset-0 transition-opacity duration-200 bg-bg-mask"
-        :class="maskClass"
-        :style="maskStyle"
-        @click="closeByMask"
-        v-if="mask"
-      ></div>
-      <ZyTouch
-        class="drawer-main cursor-grab fixed h-full will-change-transform"
-        :init="touchInit"
-        :style="mainStyle"
-        @slidingLeft="slidingLeft"
-        @slidingRight="slidingRight"
-        @slidingUp="slidingUp"
-        @slidingDown="slidingDown"
-        @slideEndLeft="slideEndLeft"
-        @slideEndRight="slideEndRight"
-        @slideEndUp="slideEndUp"
-        @slideEndDown="slideEndDown"
-        @slideCancelLeft="slideCancel"
-        @slideCancelRight="slideCancel"
-        @slideCancelUp="slideCancel"
-        @slideCancelDown="slideCancel"
-      >
-        <div
-          v-if="!hideHeader"
-          class="flex justify-between items-center h-header px-6 text-base text-text-1"
-        >
+    <aside class="fixed inset-0" v-if="componentsDisplay" :style="`z-index: ${zIndex};`" ref="el" :class="{ dark: dark }"
+      @touchmove.passive="preventTouchGesture($event)">
+      <div class="fixed inset-0 transition-opacity duration-200 bg-bg-mask" :class="maskClass" :style="maskStyle"
+        @click="closeByMask" v-if="mask"></div>
+      <ZyTouch class="drawer-main cursor-grab fixed h-full will-change-transform" :init="touchInit" :style="mainStyle"
+        @slidingLeft="slidingLeft" @slidingRight="slidingRight" @slidingUp="slidingUp" @slidingDown="slidingDown"
+        @slideEndLeft="slideEndLeft" @slideEndRight="slideEndRight" @slideEndUp="slideEndUp" @slideEndDown="slideEndDown"
+        @slideCancelLeft="slideCancel" @slideCancelRight="slideCancel" @slideCancelUp="slideCancel"
+        @slideCancelDown="slideCancel">
+        <div v-if="!hideHeader" class="flex justify-between items-center h-header px-6 text-base text-text-1">
           <div>
-            <h2
-              v-if="title"
-              class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo"
-            >
+            <h2 v-if="title" class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo">
               {{ title }}
             </h2>
           </div>
-          <span
-            class="cursor-pointer"
-            @click="closeByButton"
-            v-show="closable"
-            v-if="componentsDisplay"
-            @mousedown.stop
-            @mousemove.stop
-            @mouseup.stop
-          >
-            <ZyIcon size="1.5rem" defaultName="close" />
+          <span class="cursor-pointer" @click="closeByButton" v-show="closable" v-if="componentsDisplay" @mousedown.stop
+            @mousemove.stop @mouseup.stop>
+            <UIcon name="i-fluent-dismiss-16-regular" class="w-4 h-4" />
           </span>
         </div>
         <div class="h-full overflow-auto flex flex-col">

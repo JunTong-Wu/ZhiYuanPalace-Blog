@@ -19,7 +19,7 @@
               <li v-for="socialLink in socialLinks">
                 <a :href="socialLink.href" @click.prevent="socialLink.onclick()">
                   <ZyButton type="icon">
-                    <ZyIcon :defaultName="socialLink.icon" size="1.25rem" />
+                    <UIcon :name="socialLink.icon" class="w-5 h-5" />
                   </ZyButton>
                 </a>
               </li>
@@ -91,7 +91,7 @@ const router = useRouter();
 const socialLinks = [
   {
     name: "WeChat",
-    icon: "wechat",
+    icon: "i-ri-wechat-fill",
     href: "",
     onclick: () => {
       // window.open('https://wechats.deothemes.com')
@@ -100,7 +100,7 @@ const socialLinks = [
   },
   {
     name: "QQ",
-    icon: "QQ",
+    icon: "i-ri-qq-fill",
     href: "",
     onclick: () => {
       // window.open('https://wechats.deothemes.com')
@@ -109,7 +109,7 @@ const socialLinks = [
   },
   {
     name: "douyin",
-    icon: "douyin",
+    icon: "i-ri-tiktok-fill",
     href: "",
     onclick: () => {
       // window.open('https://qzone.deothemes.com')
