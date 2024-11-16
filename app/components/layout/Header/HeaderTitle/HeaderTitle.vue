@@ -1,7 +1,7 @@
 <template>
-  <nav id="header-tabs" class="header-title flex items-center h-full p-3 portrait:p-3 relative" v-if="titleDisable">
+  <nav id="header-tabs" class="header-title flex items-center h-full p-3 portrait:p-1 relative" v-if="titleDisable">
     <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
-      class="top-3 bottom-3 left-3 right-3 absolute bg-[rgba(127,127,127,0.1)] rounded-lg overflow-hidden">
+      class="inset-3 portrait:inset-1 absolute bg-[rgba(127,127,127,0.1)] rounded-lg overflow-hidden">
       <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
         <div class="h-full landscape:bg-level-2 portrait:bg-[rgba(255,255,255,0.2)] rounded-lg overflow-hidden"></div>
       </div>

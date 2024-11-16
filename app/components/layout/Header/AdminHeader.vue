@@ -49,7 +49,7 @@
       </div>
       <!-- 设置抽屉 -->
       <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="18rem"
-        maskColor="var(--bg-mask)" background="var(--bg-level-1)">
+        maskColor="var(--bg-mask)" background="var(--bg-background)">
         <AdminMoreDrawerInner>
           <template #footer>
             <div class="flex justify-end h-full items-center gap-4 landscape:hidden">

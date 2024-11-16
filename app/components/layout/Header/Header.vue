@@ -24,7 +24,7 @@
                 <UIcon name="i-fluent-search-16-regular" class="w-5 h-5" />
               </ZyButton>
               <ZyButton class="w-header h-header" @click="openMoreDrawer()" title="更多选项" type="transparent">
-                <UIcon name="i-fluent-navigation-16-regular" class="w-5 h-5" />
+                <UIcon name="i-fluent-more-vertical-28-regular" class="w-5 h-5" />
               </ZyButton>
             </div>
           </div>
@@ -55,18 +55,18 @@
               </template>
             </ZyPopover>
             <ZyButton class="flex items-center justify-center" @click="openMoreDrawer()" title="更多选项" type="icon">
-              <UIcon name="i-fluent-navigation-16-regular" class="w-6 h-6" />
+              <UIcon name="i-fluent-more-vertical-28-regular" class="w-6 h-6" />
             </ZyButton>
           </div>
         </div>
       </div>
       <!-- 搜索抽屉 -->
       <ZyDrawer title="搜索" :display="searchDisplay" @cancel="closeSearchDrawer" position="top" size="100%"
-        maskColor="var(--bg-mask)">
+        maskColor="var(--bg-mask)" :maskBlur="true">
       </ZyDrawer>
       <!-- 设置抽屉 -->
-      <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="18rem"
-        maskColor="var(--bg-mask)" background="var(--bg-level-1)">
+      <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="var(--drawer-width)"
+        maskColor="rgba(0,0,0,0.4)" background="var(--bg-level-1)">
         <MoreDrawerInner>
           <template #footer>
             <div class="flex justify-end h-full items-center gap-4 landscape:hidden">

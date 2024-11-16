@@ -40,6 +40,7 @@ const props = defineProps({
   mask: { type: Boolean, default: true },
   maskClosable: { type: Boolean, default: true },
   maskColor: { type: String, default: "transparent" },
+  maskBlur: { type: Boolean, default: false },
   zIndex: { type: Number, default: 2000 },
   hideHeader: { type: Boolean, default: false },
   dark: { type: Boolean, default: false },
@@ -64,7 +65,7 @@ const classInit = () => {
   maskClass.value = {
     "opacity-100": props.mask && visible.value,
     "opacity-0": !(props.mask && visible.value),
-    "backdrop-blur-xl": props.mask && visible.value,
+    "backdrop-blur-xl": props.mask && props.maskBlur && visible.value,
   };
 };
 classInit();

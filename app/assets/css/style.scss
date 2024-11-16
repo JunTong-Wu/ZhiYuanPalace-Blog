@@ -58,11 +58,12 @@ a {
 
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 4rem;
-    --footer-bar-height: 3.75rem;
+    --header-bar-height: 3.25rem;
+    --footer-bar-height: 3.25rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
+    --drawer-width: 100vw;
     --music-bar-height: 2.75rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
@@ -79,6 +80,7 @@ a {
     --centered-width: 86rem;
     --side-bar-width: 14rem;
     --tool-bar-width: 0rem;
+    --drawer-width: 20rem;
     --music-bar-height: 12rem;
     --music-bar-width: calc(var(--side-bar-width) - 2rem);
     --music-bar-top: calc(var(--header-bar-height) + 2rem);
@@ -95,7 +97,7 @@ a {
 }
 @media (min-width: 1200px) and (orientation: landscape) {
   :root {
-    --tool-bar-width: 20rem;
+    --tool-bar-width: 16rem;
   }
   #zy-tool-bar {
     display: block !important;
@@ -153,10 +155,10 @@ a {
   --bg-level-3: var(--gray-50);
   --bg-level-4: var(--gray-50);
   --bg-level-5: var(--gray-50);
-  --text-1: var(--gray-1000); //强调/正文标题
-  --text-2: var(--gray-800); //次强调/正文标
-  --text-3: var(--gray-600); //次要信息
-  --text-4: var(--gray-400); //置灰信息
+  --text-1: var(--gray-900); //强调/正文标题
+  --text-2: var(--gray-500); //次强调/正文标
+  --text-3: var(--gray-400); //次要信息
+  --text-4: var(--gray-200); //置灰信息
   --text-5: var(--gray-200); //骨架
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
   --bg-head-bar: rgba(249, 249, 250, 0.7); //顶栏
@@ -169,10 +171,10 @@ a {
   --bg-level-3: var(--gray-800);
   --bg-level-4: var(--gray-750);
   --bg-level-5: var(--gray-700);
-  --text-1: var(--gray-100); //强调/正文标题
-  --text-2: var(--gray-300); //次强调/正文标
-  --text-3: var(--gray-500); //次要信息
-  --text-4: var(--gray-700); //置灰信息
+  --text-1: var(--gray-300); //强调/正文标题
+  --text-2: var(--gray-500); //次强调/正文标
+  --text-3: var(--gray-700); //次要信息
+  --text-4: var(--gray-800); //置灰信息
   --text-5: var(--gray-900); //骨架
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
   --bg-head-bar: rgba(17, 26, 37, 0.7); //顶栏

@@ -30,8 +30,7 @@
                 </template>
                 <template #title>
                   <div class="h-full flex flex-col justify-center">
-                    <h4
-                      class="m-0 portrait:text-base landscape:text-xl portrait:font-normal landscape:font-bold line-clamp-1">
+                    <h4 class="m-0 portrait:text-base landscape:text-xl portrait:font-normal line-clamp-1">
                       {{ item.article_title }}
                     </h4>
                     <p
