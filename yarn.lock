@@ -700,6 +700,13 @@
   dependencies:
     "@tanstack/vue-virtual" "^3.0.0-beta.60"
 
+"@iconify-json/cib@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.npmmirror.com/@iconify-json/cib/-/cib-1.2.1.tgz#767713606f96047418bcc47c82e3d39333f6d9d4"
+  integrity sha512-3GaouBPiNevaodcZ3eJi0kxzZYFQxTkR847SNbW+ezGJSQsdO6hsvZQl0HKfla56zFXLaL4Ne/zybT3EtMjwrA==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/fluent@^1.2.7":
   version "1.2.7"
   resolved "https://registry.npmmirror.com/@iconify-json/fluent/-/fluent-1.2.7.tgz#fc5deeaff4e691b4a0ed03791b9bce1f19fdad86"
@@ -711,13 +718,6 @@
   version "1.1.24"
   resolved "https://registry.yarnpkg.com/@iconify-json/heroicons/-/heroicons-1.1.24.tgz#91b8e1a1f6fffdc5104c5fa4e7195164d5234c2e"
   integrity sha512-Axd6nxsEeQMpuK8ugkAkJ1kS6cbmgXX1s1+Z6NbANvtgtNTBIx9bLQcEL6loKjxpfktDXERElrR5G6xzWOqysg==
-  dependencies:
-    "@iconify/types" "*"
-
-"@iconify-json/ri@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.npmmirror.com/@iconify-json/ri/-/ri-1.2.3.tgz#7b16498b7fc53be58f03e5de4a1436703d00a2a8"
-  integrity sha512-UVKofd5xkSevGd5K01pvO4NWsu+2C9spu+GxnMZUYymUiaWmpCAxtd22MFSpm6MGf0MP4GCwhDCo1Q8L8oZ9wg==
   dependencies:
     "@iconify/types" "*"
 

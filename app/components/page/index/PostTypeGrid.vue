@@ -6,7 +6,7 @@
         <div class="border-layout absolute inset-0 overflow-hidden rounded-2xl"></div>
         <div class="content-layout h-full overflow-hidden p-1 relative rounded-2xl z-1">
           <div class="h-full px-6 portrait:px-2 pt-12 pb-8 rounded-[0.75rem] text-center bg-bg-bestCard">
-            <h3 class="text-text-1 text-3xl my-2 font-bold portrait:text-2xl portrait:font-normal font-vivo">
+            <h3 class="text-text-1 text-2xl my-2 portrait:text-xl portrait:font-normal">
               {{ $t(item.title) }}
             </h3>
             <p class="text-text-2 text-base portrait:text-xs whitespace-pre-line">
@@ -35,43 +35,43 @@ const items = ref([
   {
     title: "article",
     text: "articleModuleSlogan",
-    defaultIcon: "article-default",
-    activatedIcon: "article-activated",
+    defaultIcon: "i-fluent-document-text-16-regular",
+    activatedIcon: "i-fluent-document-text-16-filled",
     path: "/text/article",
   },
   {
     title: "shuoshuo",
     text: "shuoshuoModuleSlogan",
-    defaultIcon: "shuoshuo-default",
-    activatedIcon: "shuoshuo-activated",
+    defaultIcon: "i-fluent-text-quote-16-regular",
+    activatedIcon: "i-fluent-text-quote-16-filled",
     path: "/text/shuoshuo",
   },
   {
     title: "music",
     text: "musicModuleSlogan",
-    defaultIcon: "music-default",
-    activatedIcon: "music-activated",
+    defaultIcon: "i-fluent-music-note-2-16-regular",
+    activatedIcon: "i-fluent-music-note-2-16-filled",
     path: "/music",
   },
   {
     title: "photo",
     text: "photoModuleSlogan",
-    defaultIcon: "photo-default",
-    activatedIcon: "photo-activated",
+    defaultIcon: "i-fluent-camera-16-regular",
+    activatedIcon: "i-fluent-camera-16-filled",
     path: "/audio/photo",
   },
   {
     title: "video",
     text: "videoModuleSlogan",
-    defaultIcon: "video-default",
-    activatedIcon: "video-activated",
+    defaultIcon: "i-fluent-video-16-regular",
+    activatedIcon: "i-fluent-video-16-filled",
     path: "/audio/video",
   },
   {
     title: "friend",
     text: "friendModuleSlogan",
-    defaultIcon: "friend-default",
-    activatedIcon: "friend-activated",
+    defaultIcon: "i-fluent-link-multiple-16-regular",
+    activatedIcon: "i-fluent-link-multiple-16-filled",
     path: "/about/friend",
   },
 ]);

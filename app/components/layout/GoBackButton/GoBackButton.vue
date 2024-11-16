@@ -1,23 +1,12 @@
 <template>
   <div class="portrait:hidden ml-4" v-if="gobackFlag">
-    <ZyButton
-      class="flex items-center justify-center"
-      @click="goback()"
-      title="返回"
-      type="icon"
-    >
-      <ZyIcon size="1.5rem" defaultName="arrow-left" />
+    <ZyButton class="flex items-center justify-center" @click="goback()" title="返回" type="icon">
+      <ZyIcon size="1.5rem" defaultName="i-fluent-ios-arrow-24-regular" />
     </ZyButton>
   </div>
   <div class="landscape:hidden" v-if="gobackFlag">
-    <ZyButton
-      v-if="gobackFlag"
-      class="w-header h-header"
-      @click="goback()"
-      title="返回"
-      type="transparent"
-    >
-      <ZyIcon size="1.25rem" defaultName="arrow-left" />
+    <ZyButton v-if="gobackFlag" class="w-header h-header" @click="goback()" title="返回" type="transparent">
+      <ZyIcon size="1.25rem" defaultName="i-fluent-ios-arrow-24-regular" />
     </ZyButton>
   </div>
 </template>

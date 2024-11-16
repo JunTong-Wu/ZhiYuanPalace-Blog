@@ -11,7 +11,7 @@
         @slideCancelDown="slideCancel">
         <div v-if="!hideHeader" class="flex justify-between items-center h-header px-6 text-base text-text-1">
           <div>
-            <h2 v-if="title" class="text-2xl font-bold portrait:text-xl portrait:font-normal text-text-1 font-vivo">
+            <h2 v-if="title" class="text-xl portrait:text-lg portrait:font-normal text-text-1">
               {{ title }}
             </h2>
           </div>

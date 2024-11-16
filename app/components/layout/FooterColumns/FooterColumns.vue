@@ -91,7 +91,7 @@ const router = useRouter();
 const socialLinks = [
   {
     name: "WeChat",
-    icon: "i-ri-wechat-fill",
+    icon: "i-cib-wechat",
     href: "",
     onclick: () => {
       // window.open('https://wechats.deothemes.com')
@@ -100,7 +100,7 @@ const socialLinks = [
   },
   {
     name: "QQ",
-    icon: "i-ri-qq-fill",
+    icon: "i-cib-qq",
     href: "",
     onclick: () => {
       // window.open('https://wechats.deothemes.com')
@@ -109,7 +109,7 @@ const socialLinks = [
   },
   {
     name: "douyin",
-    icon: "i-ri-tiktok-fill",
+    icon: "i-cib-tiktok",
     href: "",
     onclick: () => {
       // window.open('https://qzone.deothemes.com')

@@ -6,31 +6,31 @@ export const getNavigationMap = (): Route[] => {
     {
       path: "/",
       title: "home",
-      defaultIcon: "home-default",
-      activatedIcon: "home-activated",
+      defaultIcon: "i-fluent-home-16-regular",
+      activatedIcon: "i-fluent-home-16-filled",
       iconImage: "home",
       order: 1,
     },
     {
       path: "/text",
       title: "text",
-      defaultIcon: "text-default",
-      activatedIcon: "text-activated",
+      defaultIcon: "i-fluent-textbox-16-regular",
+      activatedIcon: "i-fluent-textbox-16-filled",
       iconImage: "text",
       order: 2,
       children: [
         {
           path: "/text/article",
           title: "article",
-          defaultIcon: "article-default",
-          activatedIcon: "article-activated",
+          defaultIcon: "i-fluent-document-text-16-regular",
+          activatedIcon: "i-fluent-document-text-16-filled",
           order: 201,
         },
         {
           path: "/text/shuoshuo",
           title: "shuoshuo",
-          defaultIcon: "shuoshuo-default",
-          activatedIcon: "shuoshuo-activated",
+          defaultIcon: "i-fluent-text-quote-16-regular",
+          activatedIcon: "i-fluent-text-quote-16-filled",
           order: 202,
         },
       ],
@@ -38,31 +38,31 @@ export const getNavigationMap = (): Route[] => {
     {
       path: "/music",
       title: "music",
-      defaultIcon: "music-default",
-      activatedIcon: "music-activated",
+      defaultIcon: "i-fluent-music-note-2-16-regular",
+      activatedIcon: "i-fluent-music-note-2-16-filled",
       iconImage: "music",
       order: 3,
     },
     {
       path: "/audio",
       title: "audio",
-      defaultIcon: "audio-default",
-      activatedIcon: "audio-activated",
+      defaultIcon: "i-fluent-video-clip-16-regular",
+      activatedIcon: "i-fluent-video-clip-16-filled",
       iconImage: "audio",
       order: 4,
       children: [
         {
           path: "/audio/photo",
           title: "photo",
-          defaultIcon: "photo-default",
-          activatedIcon: "photo-activated",
+          defaultIcon: "i-fluent-camera-16-regular",
+          activatedIcon: "i-fluent-camera-16-filled",
           order: 401,
         },
         {
           path: "/audio/video",
           title: "video",
-          defaultIcon: "video-default",
-          activatedIcon: "video-activated",
+          defaultIcon: "i-fluent-video-16-regular",
+          activatedIcon: "i-fluent-video-16-filled",
           order: 402,
         },
       ],
@@ -70,23 +70,23 @@ export const getNavigationMap = (): Route[] => {
     {
       path: "/about",
       title: "about",
-      defaultIcon: "about-default",
-      activatedIcon: "about-activated",
+      defaultIcon: "i-fluent-person-16-regular",
+      activatedIcon: "i-fluent-person-16-filled",
       iconImage: "about",
       order: 5,
       children: [
         {
           path: "/about/information",
           title: "information",
-          defaultIcon: "information-default",
-          activatedIcon: "information-activated",
+          defaultIcon: "i-fluent-contact-card-16-regular",
+          activatedIcon: "i-fluent-contact-card-16-filled",
           order: 501,
         },
         {
           path: "/about/friend",
           title: "friend",
-          defaultIcon: "friend-default",
-          activatedIcon: "friend-activated",
+          defaultIcon: "i-fluent-link-multiple-16-regular",
+          activatedIcon: "i-fluent-link-multiple-16-filled",
           order: 502,
         },
       ],
@@ -102,13 +102,13 @@ export const getNavigationMap = (): Route[] => {
   ];
 };
 
-export const getVisitorNavigationMap  = (): Route[] => {
+export const getVisitorNavigationMap = (): Route[] => {
   let linkList = getNavigationMap() as Route[];
   linkList = linkList.filter((item) => item.rule !== "admin");
   return linkList;
 };
 
-export const getAdminNavigationMap  = (): Route[] => {
+export const getAdminNavigationMap = (): Route[] => {
   let linkList = getNavigationMap() as Route[];
   linkList = linkList.filter((item) => item.rule === "admin");
   return linkList;

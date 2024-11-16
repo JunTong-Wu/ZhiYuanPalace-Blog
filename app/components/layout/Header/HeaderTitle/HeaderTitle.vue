@@ -1,55 +1,28 @@
 <template>
-  <nav
-    id="header-tabs"
-    class="header-title flex items-center h-full p-3 portrait:p-3 relative"
-    v-if="titleDisable"
-  >
-    <div
-      v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
-      class="top-3 bottom-3 left-3 right-3 absolute bg-[rgba(127,127,127,0.1)] rounded-lg overflow-hidden"
-    >
-      <div
-        id="header-tabs-indicator"
-        class="inline-block h-full relative p-1 transition-all opacity-0"
-      >
+  <nav id="header-tabs" class="header-title flex items-center h-full p-3 portrait:p-3 relative" v-if="titleDisable">
+    <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
+      class="top-3 bottom-3 left-3 right-3 absolute bg-[rgba(127,127,127,0.1)] rounded-lg overflow-hidden">
+      <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
         <div class="h-full landscape:bg-bg-best portrait:bg-[rgba(255,255,255,0.2)] rounded-lg overflow-hidden"></div>
       </div>
     </div>
-    <ul
-      v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
-      class="headerbar-tabs flex h-full relative z-10"
-    >
+    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">
       <li v-for="tabs in childrenTabs" :key="tabs.title">
-        <ZyLink
-          :to="tabs.path"
-          class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100"
-        >
-          <div
-            class="flex items-center text-base gap-2 portrait:text-sm select-none"
-          >
-            <ZyIcon
-              class="landscape:hidden"
-              size="1rem"
-              :defaultName="tabs.activatedIcon"
-            />
-            <ZyIcon
-              class="portrait:hidden"
-              size="1.2rem"
-              :defaultName="tabs.activatedIcon"
-            />
+        <ZyLink :to="tabs.path"
+          class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100">
+          <div class="flex items-center text-base gap-2 portrait:text-sm select-none">
+            <ZyIcon class="landscape:hidden" size="1rem" :defaultName="tabs.defaultIcon"
+              :activatedName="tabs.activatedIcon" :activated="activeTab === tabs.path" />
+            <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.defaultIcon"
+              :activatedName="tabs.activatedIcon" :activated="activeTab === tabs.path" />
             {{ $t(tabs.title) }}
           </div>
         </ZyLink>
       </li>
     </ul>
-    <div
-      v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1"
-      class="headerbar-title px-4 text-inherit"
-    >
-      <span
-        class="text-2xl font-bold portrait:text-xl portrait:font-normal text-inherit font-vivo"
-        >{{ $t(childrenTabs[0].title) }}</span
-      >
+    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1" class="headerbar-title px-4 text-inherit">
+      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
+        $t(childrenTabs[0].title) }}</h2>
     </div>
   </nav>
 </template>
@@ -172,16 +145,19 @@ watch(
 <style lang="scss" scoped>
 .headerbar-tabs {
   transition: all 400ms;
+
   li {
     a {
       position: relative;
       opacity: 0.6;
       filter: grayscale(100%);
     }
+
     &.activate {
       a {
         opacity: 1;
         filter: grayscale(0%);
+
         span {
           position: relative;
           z-index: 2;
