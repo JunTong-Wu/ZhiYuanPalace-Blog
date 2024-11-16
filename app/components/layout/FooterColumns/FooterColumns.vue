@@ -1,9 +1,9 @@
 <template>
-  <section id="footer-columns" class="relative z-30 landscape:shadow-2xl">
-    <div class="landscape:bg-bg-bestCard landscape:pl-sidebar portrait:pb-footer">
+  <section id="footer-columns" class=" ">
+    <div class="landscape:bg-level-1 landscape:pl-sidebar landscape:pr-toolbar portrait:pb-footer">
       <div class="container px-8">
-        <div class="grid grid-cols-6 gap-x-7 gap-y-14 pt-24 pb-12 md:grid-cols-12 portrait:hidden">
-          <div class="col-span-full sm:col-span-3 md:col-span-4">
+        <div class="grid gap-x-7 gap-y-14 pt-24 pb-12 grid-cols-12 portrait:hidden">
+          <div class="col-span-full md:col-span-8">
             <!-- Logo -->
             <NuxtLink to="/" class="flex items-center mb-8">
               <img src="../../../assets/image/logo.png" class="max-h-7" :alt="$t('zhiYuanPalace')" />
@@ -11,9 +11,12 @@
                 $t("zhiYuanPalace")
               }}</span>
             </NuxtLink>
-            <p class="mb-12 text-text-2">
-              {{ $t("bannerSlogan1") }}
-            </p>
+            <div class="max-w-96">
+              <p class="mb-12 text-text-2">
+                {{ $t("bannerSlogan1") }}
+              </p>
+            </div>
+
             <!-- Socials -->
             <ul class="flex space-x-2">
               <li v-for="socialLink in socialLinks">
@@ -26,23 +29,12 @@
             </ul>
           </div>
 
-          <div class="col-span-full sm:col-span-3 md:col-span-2 md:col-start-7">
+          <div class="col-span-full sm:col-span-3 md:col-span-2">
             <h3 class="mb-6 text-lg">鸣谢</h3>
             <ul>
               <li v-for="thanksLink in thanksLinks">
                 <a :href="thanksLink.href" @click.prevent="thanksLink.onclick()">
                   <ZyButton type="text">{{ thanksLink.name }}</ZyButton>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-span-full sm:col-span-3 md:col-span-2">
-            <h3 class="mb-6 text-lg">开源</h3>
-            <ul>
-              <li v-for="openSourceLink in openSourceLinks">
-                <a :href="openSourceLink.href" @click.prevent="openSourceLink.onclick()">
-                  <ZyButton type="text">{{ openSourceLink.name }}</ZyButton>
                 </a>
               </li>
             </ul>
@@ -149,23 +141,6 @@ const thanksLinks = [
   },
 ];
 
-const openSourceLinks = [
-  {
-    name: "开发文档",
-    href: "",
-    onclick: () => {
-      console.log("开源文档");
-    },
-  },
-  {
-    name: "Github",
-    href: "",
-    onclick: () => {
-      console.log("Github");
-    },
-  },
-];
-
 const copyrightLinks = [
   {
     name: "鄂ICP备2022016355号-1",
@@ -189,6 +164,14 @@ const copyrightLinks = [
     mobileHide: true,
     onclick: () => {
       console.log("条款和条件");
+    },
+  },
+  {
+    name: "开源文档",
+    href: "",
+    mobileHide: true,
+    onclick: () => {
+      console.log("开源文档");
     },
   },
 ];

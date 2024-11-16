@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="flex portrait:flex-col bg-bg-bestCard rounded-2xl rounded-tr-[4rem] rounded-bl-[4rem] relative overflow-hidden">
+  <div class="flex portrait:flex-col bg-level-2 rounded-2xl rounded-tr-[4rem] rounded-bl-[4rem] relative overflow-hidden">
     <div class="absolute left-0 bottom-0 opacity-5 text-[10rem] portrait:text-[3rem] text-center text-text-2 font-bold">
       ZHIYUANPALACE
     </div>

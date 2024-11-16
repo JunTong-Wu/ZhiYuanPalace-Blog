@@ -18,7 +18,7 @@
   top: 0;
   left: 0;
   border-radius: 50%;
-  background: currentColor;
+  background: rgba(var(--theme-color-rgb), 0.2);
   opacity: 0;
   pointer-events: none;
   overflow: hidden;
@@ -33,7 +33,7 @@
 .zy-ripple-animation-in {
   transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1),
     opacity 0.1s cubic-bezier(0, 0, 0.2, 1);
-  opacity: 0.1;
+  opacity: 1;
 }
 
 .zy-ripple-animation-out {

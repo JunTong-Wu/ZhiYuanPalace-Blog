@@ -4,7 +4,7 @@
       <Logo class="px-4 portrait:hidden mb-8" size="large" />
       <Logo class="px-4 landscape:hidden" size="default" />
       <div
-        class="bg-bg-card portrait:bg-transparent p-8 landscape:pt-12 rounded-2xl landscape:min-w-[34rem] portrait:w-full flex flex-col items-center justify-center mb-8 landscape:shadow-lg">
+        class="bg-level-2 portrait:bg-transparent p-8 landscape:pt-12 rounded-2xl landscape:min-w-[34rem] portrait:w-full flex flex-col items-center justify-center mb-8 landscape:shadow-lg">
         <h1 class="text-2xl portrait:hidden font-bold text-center font-montserrat">Sign in to ZhiYuanPalace</h1>
         <div class="flex flex-col items-center gap-8 w-full mt-4 p-4">
           <div class="flex flex-col items-center gap-8 w-full mb-8">

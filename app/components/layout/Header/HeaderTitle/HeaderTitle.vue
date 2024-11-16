@@ -3,7 +3,7 @@
     <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
       class="top-3 bottom-3 left-3 right-3 absolute bg-[rgba(127,127,127,0.1)] rounded-lg overflow-hidden">
       <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
-        <div class="h-full landscape:bg-bg-best portrait:bg-[rgba(255,255,255,0.2)] rounded-lg overflow-hidden"></div>
+        <div class="h-full landscape:bg-level-2 portrait:bg-[rgba(255,255,255,0.2)] rounded-lg overflow-hidden"></div>
       </div>
     </div>
     <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">

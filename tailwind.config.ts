@@ -13,15 +13,13 @@ export default <Partial<Config>>{
         "Segoe UI Symbol",
         "Noto Color Emoji",
       ],
-      montserrat: [
-        "Montserrat", "Helvetica", "sans-serif"
-      ],
+      montserrat: ["Montserrat", "Helvetica", "sans-serif"],
     },
     extend: {
       aspectRatio: {
-        auto: 'auto',
-        square: '1 / 1',
-        video: '16 / 9'
+        auto: "auto",
+        square: "1 / 1",
+        video: "16 / 9",
       },
       height: {
         header: "var(--header-bar-height)",
@@ -62,17 +60,17 @@ export default <Partial<Config>>{
         transparent: "transparent",
         current: "currentColor",
         theme: {
-          50: 'var(--theme-color-50)',
-          100: 'var(--theme-color-100)',
-          200: 'var(--theme-color-200)',
-          300: 'var(--theme-color-300)',
-          400: 'var(--theme-color-400)',
-          500: 'var(--theme-color-500)',
-          600: 'var(--theme-color-600)',
-          700: 'var(--theme-color-700)',
-          800: 'var(--theme-color-800)',
-          900: 'var(--theme-color-900)',
-          950: 'var(--theme-color-950)'
+          50: "var(--theme-color-50)",
+          100: "var(--theme-color-100)",
+          200: "var(--theme-color-200)",
+          300: "var(--theme-color-300)",
+          400: "var(--theme-color-400)",
+          500: "var(--theme-color-500)",
+          600: "var(--theme-color-600)",
+          700: "var(--theme-color-700)",
+          800: "var(--theme-color-800)",
+          900: "var(--theme-color-900)",
+          950: "var(--theme-color-950)",
         },
         text: {
           1: "var(--text-1)",
@@ -81,23 +79,18 @@ export default <Partial<Config>>{
           4: "var(--text-4)",
           5: "var(--text-5)",
         },
-        bg: {
-          best: "var(--bg-best)",
-          card: "var(--bg-card)",
-          bestCard: "var(--bg-best-card)",
-          panel: "var(--bg-panel)",
-          transparent: "transparent",
-          mask: "var(--bg-mask)",
-          primary: "var(--primary-5)",
-          opaque: "var(--bg-opaque)",
-          gray: "var(--bg-gray)",
-          headBar: "var(--bg-head-bar)",
-          sideBar: "var(--bg-side-bar)",
-          level: {
-            1: "var(--bg-level-1)",
-          },
-        },
+        headBar: "var(--bg-head-bar)",
+        background: "var(--bg-background)",
         borderColor: "var(--border-color)",
+        mask: "var(--bg-mask)",
+        level: {
+          b1: "var(--bg-level-b1)",
+          1: "var(--bg-level-1)",
+          2: "var(--bg-level-2)",
+          3: "var(--bg-level-3)",
+          4: "var(--bg-level-4)",
+          5: "var(--bg-level-5)",
+        },
       },
       screens: {
         xs: "600px",

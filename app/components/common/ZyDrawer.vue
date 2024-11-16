@@ -2,7 +2,7 @@
   <Teleport to="body">
     <aside class="fixed inset-0" v-if="componentsDisplay" :style="`z-index: ${zIndex};`" ref="el" :class="{ dark: dark }"
       @touchmove.passive="preventTouchGesture($event)">
-      <div class="fixed inset-0 transition-opacity duration-200 bg-bg-mask" :class="maskClass" :style="maskStyle"
+      <div class="fixed inset-0 transition-opacity duration-200 bg-mask" :class="maskClass" :style="maskStyle"
         @click="closeByMask" v-if="mask"></div>
       <ZyTouch class="drawer-main cursor-grab fixed h-full will-change-transform" :init="touchInit" :style="mainStyle"
         @slidingLeft="slidingLeft" @slidingRight="slidingRight" @slidingUp="slidingUp" @slidingDown="slidingDown"

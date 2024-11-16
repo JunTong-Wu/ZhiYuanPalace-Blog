@@ -1,42 +1,18 @@
 <template>
-  <div
-    class="zy-image-preview cursor-pointer"
-    @click="togglePreview"
-    :class="className"
-  >
+  <div class="zy-image-preview cursor-pointer" @click="togglePreview" :class="className">
     <img :src="thumbnailSrc" :alt="alt" :style="style" />
     <Teleport to="body">
       <HeadlessTransitionRoot :show="previewOpen" appear as="template">
-        <HeadlessTransitionChild
-          as="template"
-          enter="duration-300 ease-out"
-          enter-from="opacity-0"
-          enter-to="opacity-100"
-          leave="duration-200 ease-in"
-          leave-from="opacity-100"
-          leave-to="opacity-0"
-        >
-          <div
-            class="fixed z-[100] top-0 left-0 w-full h-full transition-opacity duration-200 bg-bg-mask backdrop-blur-xl"
-            @click="togglePreview"
-          >
-            <div
-              class="flex flex-col items-center justify-center h-full w-full"
-            >
-              <div
-                v-loading
-                v-if="isLoading"
-                class="w-full h-full flex flex-col items-center justify-center brightness-50"
-              >
+        <HeadlessTransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
+          leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
+          <div class="fixed z-[100] top-0 left-0 w-full h-full transition-opacity duration-200 bg-mask backdrop-blur-xl"
+            @click="togglePreview">
+            <div class="flex flex-col items-center justify-center h-full w-full">
+              <div v-loading v-if="isLoading"
+                class="w-full h-full flex flex-col items-center justify-center brightness-50">
                 <img :src="thumbnailSrc" :alt="alt" :style="style" />
               </div>
-              <img
-                v-else
-                class="w-full h-full object-contain"
-                :src="sourceSrc"
-                :alt="alt"
-                :style="style"
-              />
+              <img v-else class="w-full h-full object-contain" :src="sourceSrc" :alt="alt" :style="style" />
             </div>
           </div>
         </HeadlessTransitionChild>
@@ -103,11 +79,13 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+
   img {
     width: 100%;
     height: auto;
     transition: all 0.3s ease-in-out;
   }
+
   &:hover {
     img {
       transform: scale(1.1);

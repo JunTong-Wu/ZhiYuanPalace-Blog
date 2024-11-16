@@ -20,7 +20,8 @@
       border-radius: 0.5rem;
       overflow: hidden;
       transition: all 100ms ease-in-out;
-      div,img {
+      div,
+      img {
         height: 100%;
         width: 100%;
         object-fit: cover;
@@ -73,7 +74,7 @@
       width: 1.25rem;
       height: 1.25rem;
       border-radius: 50%;
-      background: var(--bg-opaque);
+      background: var(--bg-background);
       border: 0.25rem solid var(--theme-color);
       box-shadow: 0 0 0.5rem var(--theme-color);
       position: absolute;

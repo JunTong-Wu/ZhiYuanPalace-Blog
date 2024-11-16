@@ -1,17 +1,15 @@
 <template>
   <header>
+    <!-- 移动端背景 -->
     <div
-      class="absolute top-0 h-full w-full landscape:bg-bg-headBar portrait:bg-theme-500 portrait:dark:brightness-[.5] landscape:backdrop-blur-3xl">
+      class="absolute top-0 h-full w-full landscape:bg-headBar portrait:bg-theme-500 portrait:dark:brightness-[.5] landscape:backdrop-blur-3xl">
     </div>
     <div
       class="landscape:hidden absolute top-0 h-full w-full bg-gradient-to-r from-theme-500 to-transparent pointer-events-none dark:brightness-50 mix-blend-multiply">
     </div>
-    <div class="portrait:hidden absolute top-0 h-full w-full">
-      <div
-        class="absolute top-0 h-full w-full bg-gradient-to-b from-theme-500 to-musicBar pointer-events-none opacity-10">
-      </div>
-    </div>
-    <div class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden portrait:text-white">
+    <!-- 主体 -->
+    <div
+      class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden portrait:border border-b border-borderColor portrait:text-white">
       <div class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10">
         <div class="flex items-center h-full overflow-hidden">
           <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
@@ -46,7 +44,7 @@
               <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
             </ZyButton>
             <!-- 多语言抽屉 -->
-            <ZyPopover title="切换语言" background="var(--bg-panel)">
+            <ZyPopover title="切换语言" background="var(--bg-level-1)">
               <template #reference>
                 <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
                   <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />
@@ -68,7 +66,7 @@
       </ZyDrawer>
       <!-- 设置抽屉 -->
       <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="18rem"
-        maskColor="var(--bg-mask)" background="var(--bg-panel)">
+        maskColor="var(--bg-mask)" background="var(--bg-level-1)">
         <MoreDrawerInner>
           <template #footer>
             <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
@@ -80,7 +78,7 @@
                 <UIcon name="i-fluent-weather-sunny-16-regular" class="w-6 h-6 hidden dark:inline-block" />
                 <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
               </ZyButton>
-              <ZyPopover title="切换语言" background="var(--bg-panel)" position="top-right">
+              <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
                 <template #reference>
                   <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
                     <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />

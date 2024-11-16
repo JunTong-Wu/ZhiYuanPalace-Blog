@@ -1,14 +1,9 @@
 <template>
   <header>
-    <div
-        class="absolute top-0 h-full w-full landscape:bg-bg-headBar portrait:bg-bg-opaque landscape:backdrop-blur-3xl"
-    ></div>
-    <div
-        class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden"
-    >
-      <div
-          class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10"
-      >
+    <div class="absolute top-0 h-full w-full landscape:bg-headBar portrait:bg-background landscape:backdrop-blur-3xl">
+    </div>
+    <div class="absolute top-0 h-full w-full right-0 text-text-1 overflow-hidden">
+      <div class="zy-header-inner flex items-center justify-between h-full landscape:pr-4 portrait:pr-0 relative z-10">
         <div class="flex items-center h-full overflow-hidden">
           <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
           <GoBackButton />
@@ -18,12 +13,7 @@
         <div class="h-full landscape:hidden">
           <div class="flex items-center w-full h-full justify-between">
             <div class="flex items-center h-full">
-              <ZyButton
-                  class="w-header h-header"
-                  @click="openMoreDrawer()"
-                  title="更多选项"
-                  type="transparent"
-              >
+              <ZyButton class="w-header h-header" @click="openMoreDrawer()" title="更多选项" type="transparent">
                 <ZyIcon defaultName="more" size="1.25rem" />
               </ZyButton>
             </div>
@@ -32,40 +22,18 @@
 
         <div class="portrait:hidden">
           <div class="flex justify-end h-full items-center gap-4">
-            <ZyButton
-                class="flex items-center justify-center"
-                @click="toggleFullScreen"
-                title="全屏/退出全屏"
-                type="icon"
-            >
-              <ZyIcon
-                  v-if="!fullScreenFlag"
-                  size="1.5rem"
-                  defaultName="maximize"
-              />
+            <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
+              <ZyIcon v-if="!fullScreenFlag" size="1.5rem" defaultName="maximize" />
               <ZyIcon v-else size="1.5rem" defaultName="minimize" />
             </ZyButton>
-            <ZyButton
-                class="flex items-center justify-center"
-                @click="darkModeSwitch"
-                title="日间/夜间"
-                type="icon"
-            >
-              <ZyIcon
-                  size="1.5rem"
-                  class="hidden dark:inline-block"
-                  defaultName="sun"
-              />
+            <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
+              <ZyIcon size="1.5rem" class="hidden dark:inline-block" defaultName="sun" />
               <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
             </ZyButton>
             <!-- 多语言抽屉 -->
-            <ZyPopover title="切换语言" background="var(--bg-panel)">
+            <ZyPopover title="切换语言" background="var(--bg-level-1)">
               <template #reference>
-                <ZyButton
-                    class="flex items-center justify-center"
-                    title="切换语言"
-                    type="icon"
-                >
+                <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
                   <ZyIcon size="1.5rem" defaultName="language" />
                 </ZyButton>
               </template>
@@ -73,69 +41,29 @@
                 <LanguagePopoverInner />
               </template>
             </ZyPopover>
-            <ZyButton
-                class="flex items-center justify-center"
-                @click="openMoreDrawer()"
-                title="更多选项"
-                type="icon"
-            >
+            <ZyButton class="flex items-center justify-center" @click="openMoreDrawer()" title="更多选项" type="icon">
               <ZyIcon size="1.5rem" defaultName="more" />
             </ZyButton>
           </div>
         </div>
       </div>
       <!-- 设置抽屉 -->
-      <ZyDrawer
-          title="设置"
-          :display="moreDisplay"
-          @cancel="closeMoreDrawer"
-          position="right"
-          size="18rem"
-          maskColor="var(--bg-mask)"
-          background="var(--bg-panel)"
-      >
+      <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="18rem"
+        maskColor="var(--bg-mask)" background="var(--bg-level-1)">
         <AdminMoreDrawerInner>
           <template #footer>
-            <div
-                class="flex justify-end h-full items-center gap-4 landscape:hidden"
-            >
-              <ZyButton
-                  class="flex items-center justify-center"
-                  @click="toggleFullScreen"
-                  title="全屏/退出全屏"
-                  type="icon"
-              >
-                <ZyIcon
-                    v-if="!fullScreenFlag"
-                    size="1.5rem"
-                    defaultName="maximize"
-                />
+            <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
+              <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
+                <ZyIcon v-if="!fullScreenFlag" size="1.5rem" defaultName="maximize" />
                 <ZyIcon v-else size="1.5rem" defaultName="minimize" />
               </ZyButton>
-              <ZyButton
-                  class="flex items-center justify-center"
-                  @click="darkModeSwitch"
-                  title="日间/夜间"
-                  type="icon"
-              >
-                <ZyIcon
-                    size="1.5rem"
-                    class="hidden dark:inline-block"
-                    defaultName="sun"
-                />
+              <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
+                <ZyIcon size="1.5rem" class="hidden dark:inline-block" defaultName="sun" />
                 <ZyIcon size="1.5rem" class="dark:hidden" defaultName="moon" />
               </ZyButton>
-              <ZyPopover
-                  title="切换语言"
-                  background="var(--bg-panel)"
-                  position="top-right"
-              >
+              <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
                 <template #reference>
-                  <ZyButton
-                      class="flex items-center justify-center"
-                      title="切换语言"
-                      type="icon"
-                  >
+                  <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
                     <ZyIcon size="1.5rem" defaultName="language" />
                   </ZyButton>
                 </template>

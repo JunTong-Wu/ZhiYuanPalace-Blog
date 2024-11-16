@@ -123,51 +123,72 @@ a {
 }
 
 :root {
-  --bg-card: rgba(255, 255, 255, 0.7); //卡片
-  --bg-best-card: rgba(244, 245, 247, 1); //卡片
-  --bg-panel: rgba(255, 255, 255, 1); //面板
+  --gray-50: #ffffff;
+  --gray-100: #f9f9fa;
+  --gray-150: #f2f2f4;
+  --gray-200: #e5e7eb;
+  --gray-250: #e7e5e4;
+  --gray-300: #d1d5db;
+  --gray-350: #c2c7ce;
+  --gray-400: #9ca3af;
+  --gray-450: #828994;
+  --gray-500: #6b7280;
+  --gray-550: #555e72;
+  --gray-600: #4b5563;
+  --gray-650: #414957;
+  --gray-700: #374151;
+  --gray-750: #2d3748;
+  --gray-800: #1f2937;
+  --gray-850: #17212e;
+  --gray-900: #111a25;
+  --gray-950: #070f18;
+  --gray-1000: #02080f;
+}
+
+:root {
+  --bg-background: var(--gray-150);
+  --bg-level-b1: var(--gray-200);
+  --bg-level-1: var(--gray-100);
+  --bg-level-2: var(--gray-50);
+  --bg-level-3: var(--gray-50);
+  --bg-level-4: var(--gray-50);
+  --bg-level-5: var(--gray-50);
+  --text-1: var(--gray-1000); //强调/正文标题
+  --text-2: var(--gray-800); //次强调/正文标
+  --text-3: var(--gray-600); //次要信息
+  --text-4: var(--gray-400); //置灰信息
+  --text-5: var(--gray-200); //骨架
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
-  --bg-side-bar: #2d3d65; //侧边栏
-  --bg-head-bar: rgba(255, 255, 255, 0.7); //顶栏
-  --bg-gray: rgba(231, 231, 231, 0.5); //灰色背景
-  --text-1: rgba(15, 16, 46, 1); //强调/正文标题
-  --text-2: rgba(15, 16, 46, 0.6); //次强调/正文标
-  --text-3: rgba(15, 16, 46, 0.4); //次要信息
-  --text-4: rgba(15, 16, 46, 0.2); //置灰信息
-  --text-5: rgba(15, 16, 46, 0.05); //骨架
-  --bg-opaque: #ffffff;
-  --bg-level-1: #f2f3f5;
-  --bg-best: rgb(255, 255, 255);
+  --bg-head-bar: rgba(249, 249, 250, 0.7); //顶栏
 }
 *.dark {
-  --bg-card: rgba(68, 69, 98, 0.4); //卡片
-  --bg-best-card: rgba(32, 33, 58, 1); //卡片
-  --bg-panel: rgb(17, 17, 42); //面板
+  --bg-background: var(--gray-950);
+  --bg-level-b1: var(--gray-1000);
+  --bg-level-1: var(--gray-900);
+  --bg-level-2: var(--gray-850);
+  --bg-level-3: var(--gray-800);
+  --bg-level-4: var(--gray-750);
+  --bg-level-5: var(--gray-700);
+  --text-1: var(--gray-100); //强调/正文标题
+  --text-2: var(--gray-300); //次强调/正文标
+  --text-3: var(--gray-500); //次要信息
+  --text-4: var(--gray-700); //置灰信息
+  --text-5: var(--gray-900); //骨架
   --bg-mask: rgba(1, 8, 24, 0.5); //遮罩层
-  --bg-side-bar: #121f3c; //侧边栏
-  --bg-head-bar: rgba(18, 18, 46, 0.7); //顶栏
-  --bg-gray: rgba(31, 32, 57, 0.5); //灰色背景
-  --text-1: rgba(255, 255, 255, 1); //强调/正文标题
-  --text-2: rgba(255, 255, 255, 0.6); //次强调/正文标
-  --text-3: rgba(255, 255, 255, 0.4); //次要信息
-  --text-4: rgba(255, 255, 255, 0.2); //置灰信息
-  --text-5: rgba(255, 255, 255, 0.05); //骨架
-  --bg-opaque: #12122e;
-  --bg-level-1: #050524;
-  --bg-best: rgb(40, 40, 68);
+  --bg-head-bar: rgba(17, 26, 37, 0.7); //顶栏
 }
 
 //背景色
 :root {
-  background: var(--bg-opaque);
+  background: var(--bg-background);
   color: var(--text-1);
 }
 @media (max-width: 600px) and (orientation: portrait) {
   :root {
-    --bg-opaque: #ffffff;
+    --bg-background: #ffffff;
   }
   *.dark {
-    --bg-opaque: #050524;
+    --bg-background: #050524;
   }
 }
 
