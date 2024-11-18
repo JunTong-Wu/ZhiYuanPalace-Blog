@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-    <Toolbar />
+    <Toolbar>456456</Toolbar>
   </CommonMainSection>
 </template>
 <script setup lang="ts">

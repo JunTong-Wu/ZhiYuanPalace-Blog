@@ -11,6 +11,9 @@
         </div>
       </main>
     </div>
+    <aside id="zy-tool-bar"
+      class="zy-tool-bar portrait:hidden fixed top-header bottom-0 right-0 w-toolbar bg-level-1 border border-y-0 border-r-0 border-borderColor">
+    </aside>
     <Music
       class="fixed top-music landscape:left-4 w-music z-50 portrait:bg-headBar backdrop-blur-3xl landscape:shadow-sm" />
     <FooterColumns />
