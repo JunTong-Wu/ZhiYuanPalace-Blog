@@ -18,7 +18,7 @@
       padding: 2rem;
       background-color: var(--bg-mask);
       backdrop-filter: blur(30px);
-      border-radius: 0 0 1rem 1rem;
+      border-radius: 0 0 var(--border-radius-base) var(--border-radius-base);
       overflow: hidden;
       transition: all 0.2s ease-in-out;
       &::before {
@@ -39,7 +39,7 @@
       bottom: 0;
       width: 100%;
       height: 100%;
-      border-radius: 1rem;
+      border-radius: var(--border-radius-base);
       overflow: hidden;
       * {
         width: 100%;
@@ -87,7 +87,7 @@
     height: var(--card-height);
     .zy-card-title {
       height: var(--card-height);
-      border-radius: 1rem;
+      border-radius: var(--border-radius-base);
     }
     .zy-card-title {
       padding: 3rem 2rem;

@@ -1,6 +1,6 @@
 <template>
-  <div class="zy-header-logo-wrapper h-full">
-    <div class="flex items-center h-full"
+  <div class="zy-header-logo-wrapper h-full w-full">
+    <div class="flex items-center h-full w-full justify-center"
       :class="{ 'gap-1': size === 'small', 'gap-2': size === 'default', 'gap-4': size === 'large' }">
       <div class="h-full flex items-center justify-center">
         <img src="@/assets/image/logo.png" alt="" class="logo-img"

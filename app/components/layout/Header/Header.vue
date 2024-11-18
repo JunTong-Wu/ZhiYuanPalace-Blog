@@ -1,10 +1,14 @@
 <template>
   <header>
     <!-- StatusBar -->
-    <div class="portrait:hidden h-status relative w-full">
+    <div class="portrait:hidden h-status relative w-full flex items-center">
       <!-- 遮罩 -->
       <div class="absolute top-0 h-full w-full bg-[rgba(0,0,0,0.05)] mix-blend-multiply"></div>
       <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
+      <!-- 歌词区 -->
+      <div class="bg-[rgba(0,0,0,0.05)]  w-96 flex items-center px-4 rounded-full h-[70%]">
+        <span class="text-xs text-text-1">暂无歌词，享受好音乐</span>
+      </div>
       <!-- 按键区 -->
       <div class="absolute right-0 top-0 h-full flex items-center">
         <div class="flex justify-end h-full items-center gap-1">

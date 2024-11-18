@@ -12,7 +12,7 @@
   .zy-card-image {
     display: flex;
     gap: 1rem;
-    border-radius: 1rem;
+    border-radius: var(--border-radius-base);
     overflow: hidden;
     > div {
       flex: 1;
@@ -67,7 +67,7 @@
     }
     .zy-card-image {
       gap: 0.5rem;
-      border-radius: 1rem;
+      border-radius: var(--border-radius-base);
     }
     &::before {
       content: "";

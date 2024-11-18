@@ -21,7 +21,7 @@
             <ul class="flex space-x-2">
               <li v-for="socialLink in socialLinks">
                 <a :href="socialLink.href" @click.prevent="socialLink.onclick()">
-                  <ZyButton type="icon">
+                  <ZyButton type="icon" class="p-2">
                     <UIcon :name="socialLink.icon" class="w-5 h-5" />
                   </ZyButton>
                 </a>
@@ -34,7 +34,7 @@
             <ul>
               <li v-for="thanksLink in thanksLinks">
                 <a :href="thanksLink.href" @click.prevent="thanksLink.onclick()">
-                  <ZyButton type="text">{{ thanksLink.name }}</ZyButton>
+                  <ZyButton type="text" class="py-2">{{ thanksLink.name }}</ZyButton>
                 </a>
               </li>
             </ul>
@@ -50,7 +50,7 @@
               </template>
               <template v-slot:onload="{ row: item }">
                 <a :href="item.friend_path" target="_blank">
-                  <ZyButton type="text">{{ item.friend_title }}</ZyButton>
+                  <ZyButton type="text" class="py-2">{{ item.friend_title }}</ZyButton>
                 </a>
               </template>
             </ZyFetchLoading>

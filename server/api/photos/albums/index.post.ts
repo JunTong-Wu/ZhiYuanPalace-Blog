@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     "SELECT * \n" +
     "FROM photo_albums \n" +
     (albumPath ? "WHERE photo_albums.album_path = ?" : "") +
-    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT?,?;" : ";");
+    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
 
   let values = [];
   if (albumPath) {

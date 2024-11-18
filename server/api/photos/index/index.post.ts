@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     "JOIN photo_albums ON photos.photo_album_id = photo_albums.album_id \n" +
     (albumPath ? "WHERE photo_albums.album_path = ?" : "") +
     "ORDER BY photos.photo_id DESC\n" +
-    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT?,?;" : ";");
+    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
 
   let values = [];
   if (albumPath) {

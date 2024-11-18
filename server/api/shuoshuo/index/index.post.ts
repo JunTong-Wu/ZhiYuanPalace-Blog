@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     "JOIN shuoshuo_collections ON shuoshuos.shuoshuo_coll_id = shuoshuo_collections.sh_coll_id \n" +
     (collectionPath ? "WHERE shuoshuo_collections.sh_coll_path = ?" : "") +
     "ORDER BY shuoshuos.shuoshuo_date DESC\n" +
-    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT?,?;" : ";");
+    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
 
   let values = [];
   if (collectionPath) {

@@ -92,7 +92,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         }
       }
     }
-    if (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 3) {
+    if (getPageLevel(from.fullPath) < 3 && getPageLevel(to.fullPath) == 3) {
       if (from.meta.pageTransition && to.meta.pageTransition) {
         (from.meta.pageTransition as any).name = "third-layer";
         (to.meta.pageTransition as any).name = "third-layer";
@@ -108,7 +108,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         };
       }
     }
-    if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) == 2) {
+    if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) < 3) {
       footerBarHide();
       footerColumnsHide();
       headerBarHide();

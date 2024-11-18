@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
     "WHERE articles.article_private!= 1\n" +
     (classifyPath ? "AND article_classifys.classify_path = ?" : "") +
     "ORDER BY articles.article_date DESC\n" +
-    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT?,?;" : ";");
+    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
 
   let values = [];
   if (classifyPath) {

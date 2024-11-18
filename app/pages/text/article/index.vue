@@ -24,7 +24,7 @@
               </ArticleCard>
             </template>
             <template v-slot:onload="{ row: item }">
-              <ArticleCard :href="`/text/article/${item.article_id}`" class="sm:rounded">
+              <ArticleCard :href="`/text/article/${item.article_id}`">
                 <template #image>
                   <ZyLazyImage :locked="item.has_password" :src="`${cdnUrl}${item.article_title_image}`" alt="" />
                 </template>
