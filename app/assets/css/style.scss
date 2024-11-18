@@ -58,6 +58,7 @@ a {
 
 @media (orientation: portrait) {
   :root {
+    --status-bar-height: 0rem;
     --header-bar-height: 3.25rem;
     --footer-bar-height: 3.25rem;
     --centered-width: 100%;
@@ -75,7 +76,8 @@ a {
 }
 @media (orientation: landscape) {
   :root {
-    --header-bar-height: 5rem;
+    --status-bar-height: 2.25rem;
+    --header-bar-height: 4rem;
     --footer-bar-height: 0rem;
     --centered-width: 86rem;
     --side-bar-width: 14rem;
@@ -83,8 +85,8 @@ a {
     --drawer-width: 20rem;
     --music-bar-height: 12rem;
     --music-bar-width: calc(var(--side-bar-width) - 2rem);
-    --music-bar-top: calc(var(--header-bar-height) + 2rem);
-    --pt-main: var(--header-bar-height);
+    --music-bar-top: calc(var(--status-bar-height) + 2rem);
+    --pt-main: calc(var(--header-bar-height) + var(--status-bar-height));
     #zy-tool-bar {
       display: none;
     }
@@ -102,6 +104,26 @@ a {
   #zy-tool-bar {
     display: block !important;
   }
+}
+
+:root {
+  --border-radius-4xs: 0.25rem;
+  --border-radius-3xs: 0.5rem;
+  --border-radius-2xs: 0.75rem;
+  --border-radius-xs: 1rem;
+  --border-radius-sm: 1.25rem;
+  --border-radius-base: 1.5rem;
+  --border-radius-md: 1.75rem;
+  --border-radius-lg: 2rem;
+  --border-radius-xl: 2.25rem;
+  --border-radius-2xl: 2.5rem;
+  --border-radius-3xl: 2.75rem;
+  --border-radius-4xl: 3rem;
+  --border-radius-5xl: 3.25rem;
+  --border-radius-6xl: 3.5rem;
+  --border-radius-7xl: 3.75rem;
+  --border-radius-8xl: 4rem;
+  --border-radius-full: 9999px;
 }
 
 :root {
@@ -218,6 +240,14 @@ a {
 
   ::-webkit-scrollbar-track {
     background-color: transparent; /* 设置滚动条的背景颜色 */
+  }
+}
+
+.scrollbar-hiden {
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    width: 0rem;
+    height: 0rem;
   }
 }
 

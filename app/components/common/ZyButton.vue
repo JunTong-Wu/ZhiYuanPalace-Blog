@@ -5,7 +5,7 @@
     'ZyButton-icon': type == 'icon',
     'ZyButton-none': type == 'none',
     'ZyButton-loading': loading,
-  }" class="min-h-9 min-w-9 p-0 m-0 flex items-center justify-center relative" ref="button" type="button"
+  }" class="min-h-4 min-w-4 p-0 m-0 flex items-center justify-center relative" ref="button" type="button"
     :title="title" :disabled="loading" @mousedown="animationStart()" @mouseup="animationEnd()"
     @touchstart.passive="animationStart()" @touchend.passive="animationEnd()">
     <span v-if="loading" class="absolute top-0 left-0 w-full h-full">

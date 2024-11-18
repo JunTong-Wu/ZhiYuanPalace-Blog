@@ -10,7 +10,7 @@
           leave-from-class="transform opacity-100" leave-to-class="transform opacity-0">
           <div v-if="open" class="fixed" :class="{ 'opacity-0 pointer-events-none': !open && init }" :style="mainStyle">
             <div ref="popoverInnerRef"
-              class="flex flex-col h-full backdrop-blur-3xl will-change-transform rounded-lg overflow-hidden shadow-2xl min-w-24 border-none dark:border dark:border-solid dark:border-borderColor"
+              class="flex flex-col h-full backdrop-blur-3xl will-change-transform rounded-xs overflow-hidden shadow-2xl min-w-24 border-none dark:border dark:border-solid dark:border-borderColor"
               :style="{ 'background-color': background }">
               <slot name="actions" />
             </div>

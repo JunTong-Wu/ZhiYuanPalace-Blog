@@ -1,9 +1,9 @@
 <template>
-  <nav id="header-tabs" class="header-title flex items-center h-full p-3 portrait:p-1 relative" v-if="titleDisable">
+  <nav id="header-tabs" class="header-title flex items-center h-full p-1 landscape:p-2 relative" v-if="titleDisable">
     <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
-      class="inset-3 portrait:inset-1 absolute bg-[rgba(127,127,127,0.1)] rounded-lg overflow-hidden">
+      class="inset-1 landscape:inset-2 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs overflow-hidden">
       <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
-        <div class="h-full landscape:bg-level-2 portrait:bg-[rgba(255,255,255,0.2)] rounded-lg overflow-hidden"></div>
+        <div class="h-full landscape:bg-level-4 portrait:bg-[rgba(255,255,255,0.2)] rounded-3xs overflow-hidden"></div>
       </div>
     </div>
     <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">

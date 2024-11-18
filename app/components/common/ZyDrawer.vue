@@ -9,7 +9,7 @@
         @slideEndLeft="slideEndLeft" @slideEndRight="slideEndRight" @slideEndUp="slideEndUp" @slideEndDown="slideEndDown"
         @slideCancelLeft="slideCancel" @slideCancelRight="slideCancel" @slideCancelUp="slideCancel"
         @slideCancelDown="slideCancel">
-        <div v-if="!hideHeader" class="flex justify-between items-center h-header px-6 text-base text-text-1">
+        <div v-if="!hideHeader" class="flex justify-between items-center h-16 px-6 text-base text-text-1">
           <div>
             <h2 v-if="title" class="text-xl portrait:text-lg portrait:font-normal text-text-1">
               {{ title }}

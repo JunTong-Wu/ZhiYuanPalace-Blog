@@ -1,11 +1,11 @@
 <template>
-  <div id="service-grid" class="gap-8 portrait:gap-4 portrait:sm:gap-6 portrait:lg:gap-8 grid grid-cols-12 pt-8">
+  <div id="service-grid" class="gap-2 grid grid-cols-12 pt-8">
     <div v-for="(item, i) in items" :data-index="i"
       class="service-card pt-8 portrait:col-span-6 landscape:col-span-4 relative">
-      <NuxtLink :to="item.path" class="card-inner h-full relative rounded-2xl shadow-sm">
-        <div class="border-layout absolute inset-0 overflow-hidden rounded-2xl"></div>
-        <div class="content-layout h-full overflow-hidden p-1 relative rounded-2xl z-1">
-          <div class="h-full px-6 portrait:px-2 pt-12 pb-8 rounded-[0.75rem] text-center bg-level-1">
+      <NuxtLink :to="item.path" class="card-inner h-full relative rounded shadow-sm">
+        <div class="border-layout absolute inset-0 overflow-hidden rounded"></div>
+        <div class="content-layout h-full overflow-hidden p-1 relative rounded z-1">
+          <div class="h-full px-6 portrait:px-2 pt-12 pb-8 rounded-sm text-center bg-level-1">
             <h3 class="text-text-1 text-2xl my-2 portrait:text-xl portrait:font-normal">
               {{ $t(item.title) }}
             </h3>
@@ -14,7 +14,7 @@
             </p>
           </div>
         </div>
-        <div class="absolute h-16 w-16 left-1/2 -ml-8 -top-8 overflow-hidden shadow-sm z-2 rounded-2xl rounded-tr-none">
+        <div class="absolute h-16 w-16 left-1/2 -ml-8 -top-8 overflow-hidden shadow-sm z-2 rounded-2xs rounded-tr-none">
           <div class="absolute bg-level-2 flex h-full inset-0 items-center justify-center">
             <div class="flex h-16 items-center justify-center w-full">
               <ZyIcon :default-name="item.activatedIcon" size="1.5rem" />

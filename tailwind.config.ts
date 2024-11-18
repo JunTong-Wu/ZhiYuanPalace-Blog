@@ -23,11 +23,13 @@ export default <Partial<Config>>{
       },
       height: {
         header: "var(--header-bar-height)",
+        status: "var(--status-bar-height)",
         footer: "var(--footer-bar-height)",
         music: "var(--music-bar-height)",
       },
       width: {
         header: "var(--header-bar-height)",
+        status: "var(--status-bar-height)",
         sidebar: "var(--side-bar-width)",
         toolbar: "var(--tool-bar-width)",
         "sidebar-toolbar":
@@ -41,6 +43,7 @@ export default <Partial<Config>>{
         "sidebar-toolbar":
           "calc(var(--side-bar-width) + var(--tool-bar-width))",
         header: "var(--header-bar-height)",
+        status: "var(--status-bar-height)",
         music: "var(--music-bar-top)",
       },
       padding: {
@@ -49,12 +52,34 @@ export default <Partial<Config>>{
           "calc(var(--side-bar-width) + var(--tool-bar-width))",
         toolbar: "var(--tool-bar-width)",
         header: "var(--header-bar-height)",
+        status: "var(--status-bar-height)",
         main: "var(--pt-main)",
         footer: "var(--footer-bar-height)",
       },
       margin: {
         header: "var(--header-bar-height)",
+        status: "var(--status-bar-height)",
         toolbar: "var(--tool-bar-width)",
+      },
+      borderRadius: {
+        none: "0",
+        "4xs": "var(--border-radius-4xs)",
+        "3xs": "var(--border-radius-3xs)",
+        "2xs": "var(--border-radius-2xs)",
+        xs: "var(--border-radius-xs)",
+        sm: "var(--border-radius-sm)",
+        DEFAULT: "var(--border-radius-base)",
+        md: "var(--border-radius-md)",
+        lg: "var(--border-radius-lg)",
+        xl: "var(--border-radius-xl)",
+        "2xl": "var(--border-radius-2xl)",
+        "3xl": "var(--border-radius-3xl)",
+        "4xl": "var(--border-radius-4xl)",
+        "5xl": "var(--border-radius-5xl)",
+        "6xl": "var(--border-radius-6xl)",
+        "7xl": "var(--border-radius-7xl)",
+        "8xl": "var(--border-radius-8xl)",
+        full: "var(--border-radius-full)",
       },
       colors: {
         transparent: "transparent",

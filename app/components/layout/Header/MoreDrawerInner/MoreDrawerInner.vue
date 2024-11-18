@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <div class="bg-level-3 rounded-2xl text-text-1 p-4">
+    <div class="bg-level-3 rounded text-text-1 p-4">
       <ul>
         <li class="">
           <ZyLink to="/admin" type="push" class="flex items-center justify-between">

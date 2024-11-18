@@ -242,6 +242,10 @@ const hslToRgb = (
   r = Math.min(Math.round(r * 255), 255);
   g = Math.min(Math.round(g * 255), 255);
   b = Math.min(Math.round(b * 255), 255);
+  // 确保 r, g, b 不小于 0
+  r = Math.max(r, 0);
+  g = Math.max(g, 0);
+  b = Math.max(b, 0);
 
   return [r, g, b];
 };
