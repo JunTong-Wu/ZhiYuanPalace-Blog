@@ -1,11 +1,11 @@
 <template>
-  <div class="p-24 bg-level-1">
-    <div class="flex flex-col  justify-center items-center">
-      <span class="text-theme-500 text-2xl font-bold mb-4">更多</span>
-      <h2 class="text-5xl portrait:text-2xl font-bold portrait:font-normal">
+  <div class="bg-level-1 py-16 px-4 landscape:sm:py-24 landscape:px-16 landscape:sm:px-24">
+    <div class="flex flex-col justify-center items-center">
+      <span class="text-theme-500 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4">更多</span>
+      <h2 class="text-3xl landscape:sm:text-5xl font-bold">
         阅读更多种类的内容
       </h2>
-      <div class="h-1 w-16 bg-theme-500 my-8"></div>
+      <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
       <p class="text-lg text-text-2 portrait:text-base mb-4">
         『知鸢宫』包含以下内容分类，你可以点击进入查看
       </p>

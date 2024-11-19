@@ -1,6 +1,6 @@
 <template>
   <div class="bg-level-1 rounded relative overflow-hidden aspect-square">
-    <img alt="" src="`@/assets/image/bg-dt.webp`" class="absolute inset-0 h-full object-cover " />
+    <img alt="" src="@/assets/image/bg-dt.webp" class="absolute inset-0 h-full object-cover " />
     <div class="relative p-4 z-1 h-full text-white flex flex-col justify-between bg-[rgba(0,0,0,0.2)] backdrop-blur">
       <h4 class="text-xl">和可可在一起</h4>
       <span id="time"></span>

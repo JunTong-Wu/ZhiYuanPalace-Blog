@@ -29,7 +29,7 @@
             </ul>
           </div>
 
-          <div class="col-span-full sm:col-span-3 md:col-span-2">
+          <div class="col-span-6 sm:col-span-3 md:col-span-2">
             <h3 class="mb-6 text-lg">鸣谢</h3>
             <ul>
               <li v-for="thanksLink in thanksLinks">
@@ -40,7 +40,7 @@
             </ul>
           </div>
 
-          <div class="col-span-full sm:col-span-3 md:col-span-2">
+          <div class="col-span-6 sm:col-span-3 md:col-span-2">
             <h3 class="mb-6 text-lg">友链</h3>
             <ZyFetchLoading :fetchData="(friendsListData as any)" :minLoadingNumber="3" :max-data-length="3">
               <template v-slot:loading>
