@@ -271,11 +271,11 @@ a {
 
 // 选中颜色
 ::selection {
-  background-color: var(--theme-color-200);
-  //color: #fff;
+  background-color: var(--theme-color-500);
+  color: #fff;
 }
 .dark {
   ::selection {
-    background-color: var(--theme-color-900);
+    background-color: var(--theme-color-500);
   }
 }

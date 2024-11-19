@@ -60,13 +60,6 @@
   </div>
 </template>
 <script setup lang="ts">
-definePageMeta({
-  pageTransition: {
-    mode: "out-in",
-  },
-  middleware: "transition",
-});
-
 // 获取文章列表
 const articleListData = shallowRef();
 // articleListData.value = await ApiArticle.getArticlesList({

@@ -1,6 +1,7 @@
 <template>
   <button :class="{
     'ZyButton-default': type == 'default',
+    'ZyButton-linear': type == 'linear',
     'ZyButton-text': type == 'text',
     'ZyButton-icon': type == 'icon',
     'ZyButton-none': type == 'none',
@@ -129,8 +130,34 @@ button.ZyButton-default {
   border-radius: 1rem;
   background-color: var(--theme-color);
   box-shadow: 0 0.5rem 1rem rgba(var(--theme-color-rgb), 0.3);
+  border: 2px solid var(--theme-color);
 
-  //border: 4px solid var(--theme-color);
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.ZyButton-loading {
+    border-color: var(--text-5);
+    cursor: not-allowed;
+  }
+}
+
+.dark button.ZyButton-default {
+  background-color: var(--theme-color-700);
+}
+
+/**
+* Type Linear
+**/
+button.ZyButton-linear {
+  position: relative;
+  color: var(--theme-color);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  /* background-color: var(--theme-color); */
+
+  border: 2px solid var(--theme-color);
   /* &::before {
     content: "";
     position: absolute;

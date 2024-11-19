@@ -6,6 +6,7 @@
     <Listen />
     <NewPosts />
     <MorePostType />
+    <OpenSource />
     <Toolbar>123123</Toolbar>
   </div>
 </template>

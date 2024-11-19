@@ -1,6 +1,6 @@
 <template>
-  <section id="footer-columns" class=" ">
-    <div class="landscape:bg-level-1 landscape:pl-sidebar landscape:pr-toolbar portrait:pb-footer">
+  <section id="footer-columns" class="landscape:pl-sidebar landscape:pr-toolbar">
+    <div class="landscape:bg-level-1 portrait:pb-footer">
       <div class="container px-8">
         <div class="grid gap-x-7 gap-y-14 pt-24 pb-12 grid-cols-12 portrait:hidden">
           <div class="col-span-full md:col-span-8">

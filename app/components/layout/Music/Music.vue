@@ -7,10 +7,11 @@
       </div>
       <div class="flex flex-none relative h-[120%] aspect-square landscape:h-16 landscape:left-4 landscape:top-4">
         <img class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5 landscape:left-6"
-          src="../../../assets/image/record-128.png" alt="" srcset="" />
+          src="@/assets/image/record-128.png" alt="" srcset="" />
         <img v-if="!isLoading" class="h-full relative left-0 rounded-3xs portrait:shadow-md"
           :src="`${cdnUrl}${musicNowCover}`" alt="" srcset="" ref="MusicCoverImageRef" @load="createDecoration()" />
-        <div v-else class="h-full w-full relative left-0 rounded portrait:shadow-md bg-theme-500"></div>
+        <div v-else class="h-full w-full relative left-0 rounded-3xs portrait:shadow-md bg-theme-500">
+        </div>
       </div>
 
       <div

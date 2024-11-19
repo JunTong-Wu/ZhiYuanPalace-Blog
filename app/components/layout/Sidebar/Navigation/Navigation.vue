@@ -6,7 +6,7 @@
       </div>
       <ul class="flex flex-col gap-2">
         <li v-for="n in linkList" class="sidebar-navigation h-16 flex"
-          :class="[routerActivate(route, n.path) ? 'bg-level-2' : '']">
+          :class="[routerActivate(route, n.path) ? 'bg-headBar' : '']">
           <ZyLink v-zy-ripple :to="`${n.path}`" :title="$t(n.title)"
             class="w-full flex-col justify-center pl-8 text-text-1">
             <div class="w-full flex items-center gap-4 relative">
