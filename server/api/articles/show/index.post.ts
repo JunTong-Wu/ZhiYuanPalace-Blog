@@ -14,15 +14,18 @@ export default defineEventHandler(async (event) => {
 
   if (!password) {
     const passwordFilter = articlePasswordFilter(dbResults);
-    return passwordFilter;
+    return setJson({ data: passwordFilter.data[0] }, passwordFilter);
   } else if (
     dbResults.data &&
     password === dbResults.data[0].article_password
   ) {
     const results = dbResults;
     delete results.data[0].article_password;
-    return results;
+    return setJson({ data: results.data[0] }, results);
   } else {
-    return { code: 401, message: "密码错误", data: null };
+    return setJson({
+      code: 401,
+      message: "密码错误",
+    });
   }
 });

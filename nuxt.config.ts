@@ -50,6 +50,9 @@ export default defineNuxtConfig({
       extensions: [".vue"],
     },
   ],
+  imports: {
+    dirs: ["@/stores/index.{ts,js,mjs,mts}"],
+  },
   i18n: {
     baseUrl: process.env.SITE_URL,
     locales: [

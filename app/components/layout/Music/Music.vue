@@ -61,7 +61,7 @@
   </aside>
 </template>
 <script setup lang="ts">
-import store from '@/store'
+import "./transition.scss"
 
 const isLoading = ref(true);
 const config = useRuntimeConfig();

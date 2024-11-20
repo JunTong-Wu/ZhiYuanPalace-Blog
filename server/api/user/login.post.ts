@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
       });
     } else {
       return setJson({
-        code: 400,
+        code: 401,
         message: "密码错误",
       });
     }

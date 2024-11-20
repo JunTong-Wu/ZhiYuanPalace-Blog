@@ -10,11 +10,14 @@
         <span class="text-xs text-text-1">暂无歌词，享受好音乐</span>
       </div>
       <!-- 时间区 -->
-      <div class="absolute left-[50%] -translate-x-[50%] text-text-2">
-        <ZyButton class="flex items-center justify-center p-1 px-2" title="时钟" type="icon">
-          {{ time }}
-        </ZyButton>
-      </div>
+      <ClientOnly>
+        <div class="absolute left-[50%] -translate-x-[50%] text-text-2">
+          <ZyButton class="flex items-center justify-center p-1 px-2" title="时钟" type="icon">
+            {{ time }}
+          </ZyButton>
+        </div>
+      </ClientOnly>
+
       <div class="absolute right-0 top-0 h-full flex items-center">
         <!-- 日期区 -->
         <div class="flex items-center justify-end h-full text-text-2 p-2">
@@ -71,6 +74,9 @@
             <div class="flex items-center h-full">
               <GoBackButton />
               <HeaderTitle />
+              <ClientOnly>
+                <PostTitle />
+              </ClientOnly>
             </div>
             <!-- 按键区 -->
             <div class="h-full landscape:hidden">
@@ -126,6 +132,8 @@
   </header>
 </template>
 <script setup lang="ts">
+import "./transition.scss"
+
 // 使用类型断言来处理 TypeScript 的类型检查
 declare global {
   interface Window {

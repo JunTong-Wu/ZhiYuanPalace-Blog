@@ -1,6 +1,27 @@
 import NProgress from "nprogress";
-import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/ArticleCard";
-import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/ShuoShuoCard";
+import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
+import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
+import {
+  footerBarHide,
+  footerBarShow,
+} from "~/components/layout/FooterNavigation/transition";
+import {
+  footerColumnsHide,
+  footerColumnsShow,
+} from "~/components/layout/FooterColumns/transition";
+import {
+  headerBarHide,
+  headerBarShow,
+} from "~/components/layout/Header/transition";
+import {
+  musicBarHide,
+  musicBarShow,
+} from "~/components/layout/Music/transition";
+import {
+  toolBarHide,
+  toolBarShow,
+} from "~/components/layout/Toolbar/transition";
+import { live2dHide, live2dShow } from "~/components/layout/Live2D/transition";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.client) {
@@ -147,4 +168,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }
     }
   }
+
+  // HeaderTitle
+  const { clearPostInfo } = toRefs(store.usePostInfo());
+  clearPostInfo.value();
 });

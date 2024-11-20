@@ -42,19 +42,27 @@
 
           <div class="col-span-6 sm:col-span-3 md:col-span-2">
             <h3 class="mb-6 text-lg">友链</h3>
-            <ZyFetchLoading :fetchData="(friendsListData as any)" :minLoadingNumber="3" :max-data-length="3">
-              <template v-slot:loading>
-                <ZyButton type="text" class="w-28">
-                  <ZySkeleton :row="1" />
-                </ZyButton>
+            <ZyFetchLoading :fetchData="(friendsListDataFetch as any)" @fetchOnload="showFriendList">
+              <template #loading>
+                <ul>
+                  <li v-for="n in 3">
+                    <ZyButton type="text" class="w-28 py-2">
+                      <ZySkeleton :row="1" />
+                    </ZyButton>
+                  </li>
+                </ul>
               </template>
-              <template v-slot:onload="{ row: item }">
-                <a :href="item.friend_path" target="_blank">
-                  <ZyButton type="text" class="py-2">{{ item.friend_title }}</ZyButton>
-                </a>
+              <template #onload>
+                <ul>
+                  <li v-for="(item, index) in friendsListData.data">
+                    <a v-if="index < 3" :href="item.friend_path" target="_blank">
+                      <ZyButton type="text" class="py-2">{{ item.friend_title }}</ZyButton>
+                    </a>
+                  </li>
+                </ul>
               </template>
             </ZyFetchLoading>
-            <ZyButton type="text" @click.prevent="showMoreFriends()">更多</ZyButton>
+            <ZyButton type="text" class="py-2" @click.prevent="showMoreFriends()">更多</ZyButton>
           </div>
         </div>
         <div class="flex flex-col items-center justify-between landscape:flex-row landscape:space-y-2 py-8 portrait:py-0">
@@ -76,6 +84,7 @@
   </section>
 </template>
 <script setup lang="ts">
+import "./transition.scss";
 import { ApiFriend } from "~/utils";
 
 const router = useRouter();
@@ -177,7 +186,15 @@ const copyrightLinks = [
 ];
 
 // 获取友链列表
-const friendsListData = await ApiFriend.getFriendsList();
+const friendsListDataFetch = await ApiFriend.getFriendsList();
+const friendsListData = ref<ResOptions<any>>({
+  data: [],
+  code: 0,
+  message: "",
+});
+const showFriendList = (result: ResOptions<any>) => {
+  friendsListData.value = result;
+}
 
 const showMoreFriends = () => {
   router.push("/about/friend");

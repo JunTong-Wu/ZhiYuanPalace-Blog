@@ -1,6 +1,6 @@
 import qs from "qs";
-import store from "@/store";
 import NProgress from "nprogress";
+import type { AsyncDataRequestStatus } from "#app";
 
 interface ResponseMap {
   blob: Blob;
@@ -21,9 +21,20 @@ export interface RequestOptions {
 }
 
 export interface ResOptions<T> {
-  data?: T;
-  code?: number;
-  msg?: string;
+  data: T;
+  code: number;
+  message: string;
+}
+
+//_AsyncData
+export interface LazyAsyncDataRef<T> {
+  clear: () => void;
+  data: Ref<T | undefined>;
+  error: Ref<any>;
+  execute: () => Promise<void>;
+  pending: Ref<boolean>;
+  refresh: () => Promise<void>;
+  status: Ref<AsyncDataRequestStatus>;
 }
 
 const request = (url: string, options: RequestOptions): Promise<any> => {

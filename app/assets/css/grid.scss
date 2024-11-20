@@ -1,0 +1,45 @@
+.row-article {
+  @apply grid grid-cols-12 portrait:gap-0 portrait:xs:gap-4 gap-4 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8;
+}
+.row-shuoshuo {
+  @apply grid grid-cols-12 gap-0 landscape:xs:gap-4 portrait:sm:gap-6 landscape:sm:gap-6 portrait:md:col-span-7 landscape:md:gap-7 portrait:lg:gap-8 landscape:lg:gap-8;
+}
+.row-album {
+  @apply grid grid-cols-12 gap-4 xs:gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 xs:mt-5 sm:mt-6 md:mt-7 lg:mt-8;
+}
+.row-photo {
+  @apply grid grid-cols-12 gap-0;
+}
+
+.clo-article-card {
+  @apply portrait:col-span-12 landscape:col-span-12
+          portrait:xs:col-span-12 landscape:xs:col-span-6
+          portrait:sm:col-span-6 landscape:sm:col-span-6
+          portrait:md:col-span-6 landscape:md:col-span-6
+          portrait:lg:col-span-6 landscape:lg:col-span-6
+          portrait:xl:col-span-6 landscape:xl:col-span-4;
+}
+.clo-shuoshuo-card {
+  @apply portrait:col-span-12 landscape:col-span-12
+          portrait:xs:col-span-12 landscape:xs:col-span-12
+          portrait:sm:col-span-6 landscape:sm:col-span-6
+          portrait:md:col-span-6 landscape:md:col-span-6
+          portrait:lg:col-span-6 landscape:lg:col-span-6
+          portrait:xl:col-span-6 landscape:xl:col-span-4;
+}
+.clo-album-card {
+  @apply portrait:col-span-4 landscape:col-span-6
+          portrait:xs:col-span-4 landscape:xs:col-span-4
+          portrait:sm:col-span-4 landscape:sm:col-span-4
+          portrait:md:col-span-3 landscape:md:col-span-3
+          portrait:lg:col-span-3 landscape:lg:col-span-3
+          portrait:xl:col-span-2 landscape:xl:col-span-2;
+}
+.clo-photo-card {
+  @apply portrait:col-span-3 landscape:col-span-3
+          portrait:xs:col-span-3 landscape:xs:col-span-3
+          portrait:sm:col-span-2 landscape:sm:col-span-2
+          portrait:md:col-span-2 landscape:md:col-span-2
+          portrait:lg:col-span-2 landscape:lg:col-span-2
+          portrait:xl:col-span-2 landscape:xl:col-span-2;
+}

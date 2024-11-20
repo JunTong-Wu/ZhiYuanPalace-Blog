@@ -22,5 +22,10 @@ export default defineEventHandler(async (event) => {
     values.push(pageLimit, pageSize);
   }
 
-  return await getHandledQuery(sql, values);
+  const dbResults = await getHandledQuery(sql, values);
+  let total = 0;
+  if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
+    total = dbResults.data.length;
+  }
+  return setJson({ data: { list: dbResults.data, total: total } }, dbResults);
 });

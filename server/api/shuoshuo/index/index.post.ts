@@ -25,6 +25,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const dbResults = await getHandledQuery(sql, values);
+  let total = 0;
 
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     dbResults.data.forEach((item: any) => {
@@ -32,7 +33,8 @@ export default defineEventHandler(async (event) => {
         item.shuoshuo_text = item.shuoshuo_text.substring(0, 60) + "...";
       }
     });
+    total = dbResults.data.length;
   }
 
-  return dbResults;
+  return setJson({ data: { list: dbResults.data, total: total } }, dbResults);
 });

@@ -15,7 +15,6 @@
   </aside>
 </template>
 <script setup lang="ts">
-import store from '@/store'
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;
 

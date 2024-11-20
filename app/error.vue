@@ -2,12 +2,12 @@
   <div>
     <ZySuperResponsive>
       <NuxtLayout>
-        <div class="nuxt-page mx-auto min-h-screen" >
+        <div class="nuxt-page mx-auto min-h-screen">
           <CommonMainSection>
 
 
-<!--            <p>statusCode: {{ error.statusCode }}</p>-->
-<!--            <p>statusMessage: {{ error.statusMessage || "&#45;&#45;" }}</p>-->
+            <!--            <p>statusCode: {{ error.statusCode }}</p>-->
+            <!--            <p>statusMessage: {{ error.statusMessage || "&#45;&#45;" }}</p>-->
 
             <h1 class="text-center text-3xl font-bold mb-8">Error {{ error.statusCode }}</h1>
             <UCard>
@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/ArticleCard";
-import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/ShuoShuoCard";
+import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
+import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
 
 export default {
   name: "TestError",

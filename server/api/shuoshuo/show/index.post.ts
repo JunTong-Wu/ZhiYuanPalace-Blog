@@ -9,5 +9,8 @@ export default defineEventHandler(async (event) => {
   if (id) {
     values.push(id);
   }
-  return await getHandledQuery(sql, values);
+  const dbResults = await getHandledQuery(sql, values);
+  if (dbResults.data) {
+    return setJson({ data: dbResults.data[0] }, dbResults);
+  }
 });

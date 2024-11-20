@@ -63,8 +63,7 @@ onMounted(() => {
   imgElement.onload = () => {
     isLoading.value = false;
   };
-
-  const { stop } = useIntersectionObserver(
+  useIntersectionObserver(
     imageWrapperRef,
     ([{ isIntersecting }], observerElement) => {
       if (isIntersecting) {
