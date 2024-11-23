@@ -34,9 +34,6 @@ useHead({
 });
 definePageMeta({
   layout: "admin",
-  layoutTransition: {
-    mode: "out-in",
-  },
   pageTransition: {
     mode: "out-in",
   },

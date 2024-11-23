@@ -1,16 +1,16 @@
 <template>
-  <aside id="zy-music-bar" class="h-music">
+  <aside id="zy-music-bar" class="h-music select-none">
     <div
-      class="relative z-10 h-full portrait:flex items-center landscape:rounded landscape:bg-theme-500 landscape:dark:bg-theme-700">
+      class="relative z-10 h-full portrait:flex items-center landscape:rounded-lg landscape:bg-theme-500 landscape:dark:bg-theme-700">
       <div
-        class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme-500 to-transparent mix-blend-multiply rounded">
+        class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme-500 to-transparent mix-blend-multiply rounded-lg">
       </div>
       <div class="flex flex-none relative h-[120%] aspect-square landscape:h-16 landscape:left-4 landscape:top-4">
         <img class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5 landscape:left-6"
           src="@/assets/image/record-128.png" alt="" srcset="" />
-        <img v-if="!isLoading" class="h-full relative left-0 rounded-3xs portrait:shadow-md"
+        <img v-if="!isLoading" class="h-full relative left-0 rounded-xs portrait:shadow-md"
           :src="`${cdnUrl}${musicNowCover}`" alt="" srcset="" ref="MusicCoverImageRef" @load="createDecoration()" />
-        <div v-else class="h-full w-full relative left-0 rounded-3xs portrait:shadow-md bg-theme-500">
+        <div v-else class="h-full w-full relative left-0 rounded-xs portrait:shadow-md bg-theme-500">
         </div>
       </div>
 
@@ -32,7 +32,7 @@
           </ZyButton>
         </div>
         <div class="flex">
-          <ZyButton class="portrait:h-music aspect-square portrait:text-theme-700" title="播放" type="transparent"
+          <ZyButton class="portrait:h-music aspect-square portrait:text-theme-500" title="播放" type="transparent"
             @click="togglePlay">
             <template v-if="musicPlayState">
               <UIcon name="i-fluent-pause-circle-16-filled" class="w-10 h-10 portrait:w-8 portrait:h-8" />
@@ -85,8 +85,8 @@ const createDecoration = () => {
   if (img) {
     const imageColor = getImageColor(img);
     const rgb = increaseSaturation(
-      adjustBrightnessWhilePreservingHue(imageColor, 50, 50),
-      2
+      adjustBrightnessWhilePreservingHue(imageColor, 40, 40),
+      3.5
     );
     const themeColor = `rgb(${rgb})`;
     const themeColorRGB = `${rgb}`;

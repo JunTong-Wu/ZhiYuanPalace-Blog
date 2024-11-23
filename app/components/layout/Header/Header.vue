@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="select-none">
     <!-- PC端顶栏遮蔽 -->
     <div class="portrait:hidden h-status w-full bg-level-b1">
       <div class="h-status reverse-rounded"></div>
@@ -10,24 +10,26 @@
     <div class="portrait:hidden absolute z-10 top-0 left-0 h-status w-full flex items-center">
       <!-- 图标区 -->
       <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
+
       <!-- 歌词区 -->
-      <div class="bg-[rgba(127,127,127,0.2)]  w-96 flex items-center px-4 rounded-full h-[70%]">
-        <span class="text-xs text-text-1">暂无歌词，享受好音乐</span>
-      </div>
-      <!-- 时间区 -->
+      <ZyButton class="flex items-center justify-center p-1 h-[70%] w-72" title="歌词" type="text">
+        <span class="text-xs text-text-2 w-72 px-4 text-start">暂无歌词，享受好音乐</span>
+      </ZyButton>
+
+      <!-- 时钟区 -->
       <ClientOnly>
-        <div class="absolute left-[50%] -translate-x-[50%] text-text-2">
-          <ZyButton class="flex items-center justify-center p-1 px-2" title="时钟" type="icon">
-            {{ time }}
-          </ZyButton>
+        <div class="layout-clock absolute left-[50%] -translate-x-[50%] h-full">
+          <div
+            class="bg-background w-72 flex flex-col items-center px-4 rounded-full h-[70%] relative top-[15%] justify-center">
+            <span class="time text-sm text-text-1">{{ time }}</span>
+            <div class="date text-xs text-text-3">{{ todayDate }}</div>
+          </div>
         </div>
       </ClientOnly>
 
       <div class="absolute right-2 top-0 h-full flex items-center">
         <!-- 日期区 -->
-        <div class="flex items-center justify-end h-full text-text-2 p-2">
-          {{ todayDate }}
-        </div>
+
         <!-- 按键区 -->
         <div class="ml-2 flex justify-end h-full items-center">
           <!-- 多语言抽屉 -->
@@ -255,6 +257,22 @@ updateDate();
     bottom: -2rem;
     right: 0;
     background-image: radial-gradient(2rem at 0rem 2rem, transparent 2rem, var(--background) 2rem);
+  }
+}
+
+.layout-clock {
+  .date {
+    max-height: 0rem;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.2s ease-in-out, opacity 0.1s ease-in-out;
+  }
+
+  &:hover {
+    .date {
+      opacity: 1;
+      max-height: 1rem;
+    }
   }
 }
 </style>

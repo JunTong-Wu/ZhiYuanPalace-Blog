@@ -192,7 +192,7 @@ button.ZyButton-linear {
 button.ZyButton-icon {
   background-color: transparent;
   color: inherit;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius-2xs);
 }
 
 .dark button.ZyButton-icon {

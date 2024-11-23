@@ -23,8 +23,12 @@ export const getAncestorSectionByElement = (
   element: HTMLElement | null
 ): HTMLElement | null => {
   let ancestor: HTMLElement | null = element?.parentNode as HTMLElement | null;
+  if (!ancestor) {
+    return document.body;
+  }
   while (
-    ancestor !== null &&
+    ancestor &&
+    ancestor.tagName &&
     ancestor.tagName.toLowerCase() !== "section" &&
     ancestor.tagName.toLowerCase() !== "body"
   ) {
@@ -81,7 +85,6 @@ export const isElementInViewport = (el: HTMLElement): boolean => {
   const horInView = rect.left <= windowWidth && rect.right >= 0;
   return vertInView && horInView;
 };
-
 
 /**
  * @description: 全屏
@@ -176,22 +179,22 @@ export const darkModeSwitch = (e) => {
     const y = e.clientY;
 
     const tragetRadius = Math.hypot(
-        Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y)
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
     );
 
     transition.ready.then(() => {
       document.documentElement.animate(
-          {
-            clipPath: [
-              `circle(0% at ${x}px ${y}px)`,
-              `circle(${tragetRadius}px at ${x}px ${y}px)`,
-            ],
-          },
-          {
-            duration: 400,
-            pseudoElement: "::view-transition-new(root)",
-          }
+        {
+          clipPath: [
+            `circle(0% at ${x}px ${y}px)`,
+            `circle(${tragetRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 400,
+          pseudoElement: "::view-transition-new(root)",
+        }
       );
     });
   } else {
