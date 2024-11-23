@@ -2,9 +2,11 @@
   <nav id="header-tabs" class="header-title flex items-center h-full relative" v-if="titleDisable"
     :class="{ 'p-1 landscape:p-2': Array.isArray(childrenTabs) && childrenTabs.length > 1 }">
     <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
-      class="inset-1 landscape:inset-2 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs overflow-hidden">
+      class="inset-1 landscape:inset-2 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs landscape:rounded-sm overflow-hidden">
       <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
-        <div class="h-full landscape:bg-level-4 portrait:bg-[rgba(255,255,255,0.2)] rounded-3xs overflow-hidden"></div>
+        <div
+          class="h-full landscape:bg-level-4 portrait:bg-[rgba(255,255,255,0.2)] rounded-3xs landscape:rounded-xs overflow-hidden">
+        </div>
       </div>
     </div>
     <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">
@@ -22,7 +24,7 @@
       </li>
     </ul>
     <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1"
-      class="headerbar-title px-4 text-inherit flex gap-4 items-center">
+      class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
       <div class="w-1 h-6 bg-theme-500 inline-block rounded"></div>
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
         $t(childrenTabs[0].title) }}</h2>

@@ -1,9 +1,14 @@
 <template>
   <header>
+    <!-- PC端顶栏遮蔽 -->
+    <div class="portrait:hidden h-status w-full bg-level-b1">
+      <div class="h-status reverse-rounded"></div>
+    </div>
+    <div class="absolute z-10 top-0 left-0 h-status w-full bg-level-b1"></div>
+
     <!-- StatusBar -->
-    <div class="portrait:hidden h-status relative w-full flex items-center">
-      <!-- 遮罩 -->
-      <div class="absolute top-0 h-full w-full bg-[rgba(0,0,0,0.05)] mix-blend-multiply"></div>
+    <div class="portrait:hidden absolute z-10 top-0 left-0 h-status w-full flex items-center">
+      <!-- 图标区 -->
       <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
       <!-- 歌词区 -->
       <div class="bg-[rgba(127,127,127,0.2)]  w-96 flex items-center px-4 rounded-full h-[70%]">
@@ -18,47 +23,63 @@
         </div>
       </ClientOnly>
 
-      <div class="absolute right-0 top-0 h-full flex items-center">
+      <div class="absolute right-2 top-0 h-full flex items-center">
         <!-- 日期区 -->
         <div class="flex items-center justify-end h-full text-text-2 p-2">
           {{ todayDate }}
         </div>
         <!-- 按键区 -->
-        <div class="flex justify-end h-full items-center gap-1">
+        <div class="ml-2 flex justify-end h-full items-center">
           <!-- 多语言抽屉 -->
-          <ZyPopover title="切换语言" background="var(--bg-level-1)">
-            <template #reference>
-              <ZyButton class="flex items-center justify-center p-1 w-8" title="切换语言" type="icon">
-                <UIcon name="i-fluent-local-language-16-regular" class="w-5 h-5" />
-              </ZyButton>
-            </template>
-            <template #actions>
-              <LanguagePopoverInner />
-            </template>
-          </ZyPopover>
-          <ZyButton class="flex items-center justify-center p-1 w-8" @click="openSearchDrawer()" title="搜索" type="icon">
-            <UIcon name="i-fluent-search-16-regular" class="w-5 h-5" />
-          </ZyButton>
-          <ZyButton class="flex items-center justify-center p-1 w-8" @click="toggleFullScreen" title="全屏/退出全屏"
-            type="icon">
-            <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-16-regular" class="w-5 h-5" />
-            <UIcon v-else name="i-fluent-full-screen-minimize-16-regular" class="w-5 h-5" />
-          </ZyButton>
-          <ZyButton class="flex items-center justify-center p-1 w-8" @click="darkModeSwitch" title="日间/夜间" type="icon">
-            <UIcon name="i-fluent-weather-sunny-16-regular" class="w-5 h-5 hidden dark:inline-block" />
-            <UIcon name="i-fluent-weather-moon-16-regular" class="w-5 h-5 dark:hidden" />
-          </ZyButton>
+          <div class="p-2 -ml-2 h-status w-status">
+            <ZyPopover title="切换语言" background="var(--bg-level-1)" class="w-full h-full">
+              <template #reference>
+                <ZyButton class="flex items-center justify-center w-full h-full" title="切换语言" type="icon">
+                  <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />
+                </ZyButton>
+              </template>
+              <template #actions>
+                <LanguagePopoverInner />
+              </template>
+            </ZyPopover>
+          </div>
 
-          <ZyButton class="flex items-center justify-center p-1 w-8" @click="openMoreDrawer()" title="更多选项" type="icon">
-            <UIcon name="i-fluent-more-vertical-28-regular" class="w-5 h-5" />
-          </ZyButton>
+          <div class="p-2 -ml-2 h-status w-status">
+            <ZyButton class="flex items-center justify-center w-full h-full" @click="openSearchDrawer()" title="搜索"
+              type="icon">
+              <UIcon name="i-fluent-search-16-regular" class="w-6 h-6" />
+            </ZyButton>
+          </div>
+
+          <div class="p-2 -ml-2 h-status w-status">
+            <ZyButton class="flex items-center justify-center w-full h-full" @click="toggleFullScreen" title="全屏/退出全屏"
+              type="icon">
+              <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-16-regular" class="w-6 h-6" />
+              <UIcon v-else name="i-fluent-full-screen-minimize-16-regular" class="w-6 h-6" />
+            </ZyButton>
+          </div>
+
+          <div class="p-2 -ml-2 h-status w-status">
+            <ZyButton class="flex items-center justify-center w-full h-full" @click="darkModeSwitch" title="日间/夜间"
+              type="icon">
+              <UIcon name="i-fluent-weather-sunny-16-regular" class="w-6 h-6 hidden dark:inline-block" />
+              <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
+            </ZyButton>
+          </div>
+
+          <div class="p-2 -ml-2 h-status w-status">
+            <ZyButton class="flex items-center justify-center w-full h-full" @click="openMoreDrawer()" title="更多选项"
+              type="icon">
+              <UIcon name="i-fluent-more-vertical-28-regular" class="w-6 h-6" />
+            </ZyButton>
+          </div>
+
         </div>
       </div>
     </div>
 
-
     <!-- 主体 -->
-    <div class=" h-full w-full text-text-1 portrait:text-white">
+    <div class=" h-full text-text-1 portrait:text-white bg-headBar backdrop-blur-3xl">
       <!-- 背景 -->
       <div class="landscape:hidden">
         <div class="absolute top-0 h-header w-full portrait:bg-theme-500 portrait:dark:brightness-[.5] ">
@@ -69,9 +90,9 @@
       </div>
       <!-- 主体内容 -->
       <div class="zy-header-inner h-full relative z-10">
-        <div class="h-header relative landscape:w-full landscape:pl-sidebar landscape:pr-toolbar">
+        <div class="h-header relative">
           <div class="h-full w-auto flex items-center justify-between">
-            <div class="flex items-center h-full">
+            <div class="flex gap-2 items-center h-full">
               <GoBackButton />
               <HeaderTitle />
               <ClientOnly>
@@ -207,5 +228,33 @@ updateDate();
 ::view-transition-new(root),
 ::view-transition-old(root) {
   animation: none;
+}
+</style>
+<style lang="scss" scoped>
+.reverse-rounded {
+  --background: var(--bg-level-b1);
+  position: relative;
+  z-index: 10;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    line-height: 100px;
+    bottom: -2rem;
+    background-image: radial-gradient(2rem at 2rem 2rem, transparent 2rem, var(--background) 2rem);
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    line-height: 100px;
+    bottom: -2rem;
+    right: 0;
+    background-image: radial-gradient(2rem at 0rem 2rem, transparent 2rem, var(--background) 2rem);
+  }
 }
 </style>

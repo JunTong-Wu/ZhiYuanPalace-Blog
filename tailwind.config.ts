@@ -26,6 +26,7 @@ export default <Partial<Config>>{
         status: "var(--status-bar-height)",
         footer: "var(--footer-bar-height)",
         music: "var(--music-bar-height)",
+        main: "var(--pt-main)",
       },
       width: {
         header: "var(--header-bar-height)",
@@ -45,6 +46,7 @@ export default <Partial<Config>>{
         header: "var(--header-bar-height)",
         status: "var(--status-bar-height)",
         music: "var(--music-bar-top)",
+        main: "var(--pt-main)",
       },
       padding: {
         sidebar: "var(--side-bar-width)",
@@ -57,6 +59,7 @@ export default <Partial<Config>>{
         footer: "var(--footer-bar-height)",
       },
       margin: {
+        sidebar: "var(--side-bar-width)",
         header: "var(--header-bar-height)",
         status: "var(--status-bar-height)",
         toolbar: "var(--tool-bar-width)",

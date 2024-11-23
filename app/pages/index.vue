@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-main">
+  <div class="pt-header">
     <Welcome />
     <Slogin />
     <AboutMe />

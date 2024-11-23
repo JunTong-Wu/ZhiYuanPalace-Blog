@@ -13,7 +13,7 @@
           <div class="portrait:p-0 landscape:py-4 xs:py-4 sm:py-6 md:py-7 lg:py-8 pl-0 rounded">
             <ZyFetchLoading :fetchData="articleListDataLazyFetch" @fetchOnload="showArticleList">
               <template #:loading>
-                <ul class="row">
+                <ul class="row-article">
                   <li class="clo-article-card" v-for="n in 12">
                     <ArticleCard skeleton class="rounded">
                       <template #image>
@@ -27,7 +27,7 @@
                 </ul>
               </template>
               <template #onload>
-                <ul class="row">
+                <ul class="row-article">
                   <li class="clo-article-card" v-for="item in articleListData">
                     <ArticleCard :href="`/text/article/${item.article_id}`">
                       <template #image>

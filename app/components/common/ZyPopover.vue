@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="relative">
     <HeadlessMenu>
-      <div ref="EventListenerRef" class="relative" @click="openMenu()">
+      <div ref="EventListenerRef" class="relative w-full h-full" @click="openMenu()">
         <slot name="reference" />
       </div>
       <Teleport to="body">

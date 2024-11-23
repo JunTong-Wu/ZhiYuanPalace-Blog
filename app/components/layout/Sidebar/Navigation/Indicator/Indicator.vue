@@ -145,6 +145,6 @@ export default {
   border-radius: 100px;
   display: none;
   animation: Init 200ms forwards;
-  box-shadow: 0.1rem 0.2rem 0.5rem var(--theme-color);
+  /* box-shadow: 0.1rem 0.2rem 0.5rem var(--theme-color); */
 }
 </style>
