@@ -13,9 +13,9 @@
 
     </Html>
     <ZySuperResponsive>
-      <NuxtLayout ref="layoutRef">
+      <Layout>
         <NuxtPage class="nuxt-page mx-auto" :class="{ 'min-h-screen': !isSimpleLayout() }" />
-      </NuxtLayout>
+      </Layout>
     </ZySuperResponsive>
     <ClientOnly>
       <Live2D />

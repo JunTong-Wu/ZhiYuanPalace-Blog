@@ -1,7 +1,7 @@
 <template>
   <div>
     <ZySuperResponsive>
-      <NuxtLayout>
+      <Layout>
         <div class="nuxt-page mx-auto min-h-screen">
           <CommonMainSection>
 
@@ -21,7 +21,7 @@
             </UCard>
           </CommonMainSection>
         </div>
-      </NuxtLayout>
+      </Layout>
     </ZySuperResponsive>
   </div>
 </template>

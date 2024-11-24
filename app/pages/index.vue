@@ -12,10 +12,6 @@
 </template>
 <script setup lang="ts">
 definePageMeta({
-  layout: "default",
-  layoutTransition: {
-    mode: "out-in",
-  },
   pageTransition: {
     mode: "out-in",
   },

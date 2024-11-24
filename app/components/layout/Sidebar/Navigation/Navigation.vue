@@ -6,12 +6,12 @@
       </div>
       <ul class="flex flex-col gap-2 py-1">
         <li v-for="n in linkList" class="sidebar-navigation h-14 flex hover:bg-background"
-          :class="[routerActivate(route, n.path) ? 'bg-level-1 an-beat' : '']">
+          :class="[isActivateRouter(route, n.path) ? 'bg-level-1 an-beat' : '']">
           <ZyLink v-zy-ripple :to="`${n.path}`" :title="$t(n.title)"
             class="w-full flex-col justify-center pl-8 text-text-1">
             <div class="w-full flex items-center gap-4 relative">
               <ZyIcon size="1.75rem" :defaultName="n.defaultIcon" defaultColor="var(&#45;&#45;text-2)"
-                :activatedName="n.activatedIcon" :activated="routerActivate(route, n.path)"
+                :activatedName="n.activatedIcon" :activated="isActivateRouter(route, n.path)"
                 activatedColor="var(&#45;&#45;text-1)" />
               <span>{{ $t(n.title) }}</span>
             </div>

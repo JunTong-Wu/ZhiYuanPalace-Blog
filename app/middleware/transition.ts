@@ -151,22 +151,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
         };
       }
     }
-  } else {
-    if (to.meta.layout === "admin" && from.meta.layout === "default") {
-      live2dHide();
-      if (from.meta.layoutTransition && to.meta.layoutTransition) {
-        (from.meta.layoutTransition as any).name = "layout-prev";
-        (to.meta.layoutTransition as any).name = "layout-next";
-        (to.meta.pageTransition as any).onEnter = () => {};
-      }
-    }
-    if (to.meta.layout === "default" && from.meta.layout === "admin") {
-      live2dShow();
-      if (from.meta.layoutTransition && to.meta.layoutTransition) {
-        (from.meta.layoutTransition as any).name = "layout-next";
-        (to.meta.layoutTransition as any).name = "layout-prev";
-      }
-    }
   }
 
   // HeaderTitle

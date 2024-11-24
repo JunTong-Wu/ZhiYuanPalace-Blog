@@ -1,7 +1,11 @@
 import type { RouteLocationNormalizedLoaded } from "vue-router";
 import type { Route } from "./type";
 
-export const getNavigationMap = (): Route[] => {
+/**
+ * 定义路由结构
+ * @returns Route[]
+ */
+export const _getNavigationMap = (): Route[] => {
   return [
     {
       path: "/",
@@ -101,20 +105,31 @@ export const getNavigationMap = (): Route[] => {
     },
   ];
 };
-
+/**
+ * 获取访客路由结构
+ * @returns Route[]
+ */
 export const getVisitorNavigationMap = (): Route[] => {
-  let linkList = getNavigationMap() as Route[];
+  let linkList = _getNavigationMap() as Route[];
   linkList = linkList.filter((item) => item.rule !== "admin");
   return linkList;
 };
 
+/**
+ * 获取管理员路由结构
+ * @returns Route[]
+ */
 export const getAdminNavigationMap = (): Route[] => {
-  let linkList = getNavigationMap() as Route[];
+  let linkList = _getNavigationMap() as Route[];
   linkList = linkList.filter((item) => item.rule === "admin");
   return linkList;
 };
 
-export const findTitleByPath = (routes: Route[], path: string): string => {
+/**
+ * 通过路径查找标题
+ * @returns Route[]
+ */
+export const _findTitleByPath = (routes: Route[], path: string): string => {
   // 首先检查顶级路由
   for (const route of routes) {
     if (!route.children || !route.children.length) {
@@ -126,7 +141,7 @@ export const findTitleByPath = (routes: Route[], path: string): string => {
   // 如果没有找到顶级路由匹配，则递归检查子路由
   for (const route of routes) {
     if (route.children) {
-      const result = findTitleByPath(route.children, path);
+      const result = _findTitleByPath(route.children, path);
       if (result !== undefined) {
         return result;
       }
@@ -135,14 +150,22 @@ export const findTitleByPath = (routes: Route[], path: string): string => {
   return "empty";
 };
 
+/**
+ * 获取移动端标题
+ * @returns string
+ */
 export const getMobileTitle = (path: string) => {
   let title = "empty";
-  const linkList = getNavigationMap() as Route[];
-  title = findTitleByPath(linkList, path);
+  const linkList = _getNavigationMap() as Route[];
+  title = _findTitleByPath(linkList, path);
   return title;
 };
 
-export const findOrderByPath = (routes: Route[], path: string): number => {
+/**
+ * 通过路径查找Order
+ * @returns string
+ */
+export const _findOrderByPath = (routes: Route[], path: string): number => {
   // 首先检查顶级路由
   for (const route of routes) {
     if (!route.children || !route.children.length) {
@@ -154,7 +177,7 @@ export const findOrderByPath = (routes: Route[], path: string): number => {
   //如果没有找到顶级路由匹配，则递归检查子路由
   for (const route of routes) {
     if (route.children) {
-      const result = findOrderByPath(route.children, path);
+      const result = _findOrderByPath(route.children, path);
       if (result !== 0) {
         return result;
       }
@@ -163,33 +186,49 @@ export const findOrderByPath = (routes: Route[], path: string): number => {
   return 0;
 };
 
+/**
+ * 获取自身路径Order
+ * @returns number
+ */
 export const getSelfPathOrder = (path: string) => {
   let order = 0;
-  const linkList = getNavigationMap() as Route[];
-  order = findOrderByPath(linkList, path);
+  const linkList = _getNavigationMap() as Route[];
+  order = _findOrderByPath(linkList, path);
   return order;
 };
 
+/**
+ * 获取访客导航列表
+ * @returns Route[]
+ */
 export const getNavigationMapForVisitorMenu = () => {
   let linkList = getVisitorNavigationMap() as Route[];
   for (const route of linkList) {
-    if (route.children) {
+    if (route.children && route.children[0]) {
       route.path = route.children[0].path;
     }
   }
   return linkList;
 };
 
+/**
+ * 获取管理员导航列表
+ * @returns Route[]
+ */
 export const getNavigationMapForAdminMenu = () => {
   let linkList = getAdminNavigationMap() as Route[];
   for (const route of linkList) {
-    if (route.children) {
+    if (route.children && route.children[0]) {
       route.path = route.children[0].path;
     }
   }
   return linkList;
 };
 
+/**
+ * 获取页面层级
+ * @returns number
+ */
 export const getPageLevel = (path: string) => {
   // 移除路径两端的斜杠，然后分割路径
   const parts = path
@@ -203,6 +242,10 @@ export const getPageLevel = (path: string) => {
   }
 };
 
+/**
+ * 获取根路径
+ * @returns string
+ */
 export const getRootPath = (path: string) => {
   // 移除路径两端的斜杠，然后分割路径
   const parts = path
@@ -211,7 +254,7 @@ export const getRootPath = (path: string) => {
     .split("/");
 
   const rootPath = `/${parts[0]}`;
-  const linkList = getNavigationMap() as Route[];
+  const linkList = _getNavigationMap() as Route[];
   for (const route of linkList) {
     if (route.path === rootPath) {
       return route.path;
@@ -220,8 +263,12 @@ export const getRootPath = (path: string) => {
   return "/";
 };
 
+/**
+ * 获取子路由
+ * @returns Route[]
+ */
 export const getChildrenTabs = (path: string) => {
-  const linkList = getNavigationMap() as Route[];
+  const linkList = _getNavigationMap() as Route[];
   for (const routeItem of linkList) {
     if (!routeItem.children || !routeItem.children.length) {
       if (routeItem.path === path) {
@@ -240,6 +287,10 @@ export const getChildrenTabs = (path: string) => {
   }
 };
 
+/**
+ * 获取根路径Order
+ * @returns number
+ */
 export const getRootPathOrder = (path: string) => {
   // 移除路径两端的斜杠，然后分割路径
   const parts = path
@@ -248,7 +299,7 @@ export const getRootPathOrder = (path: string) => {
     .split("/");
 
   const rootPath = `/${parts[0]}`;
-  const linkList = getNavigationMap() as Route[];
+  const linkList = _getNavigationMap() as Route[];
   for (const route of linkList) {
     if (route.path === rootPath) {
       return route.order;
@@ -257,7 +308,11 @@ export const getRootPathOrder = (path: string) => {
   return 0;
 };
 
-export const routerActivate = (
+/**
+ * 判断是否激活路由
+ * @returns boolean
+ */
+export const isActivateRouter = (
   route: RouteLocationNormalizedLoaded,
   path: string
 ) => {
@@ -272,4 +327,20 @@ export const routerActivate = (
       return true;
     }
   }
+};
+
+/**
+ * 判断是否是admin路由
+ * @returns boolean
+ */
+export const isAdminRouter = (path: string) => {
+  const linkList = _getNavigationMap() as Route[];
+  for (const route of linkList) {
+    if (route.path === path) {
+      if (route.rule === "admin") {
+        return true;
+      }
+    }
+  }
+  return false;
 };
