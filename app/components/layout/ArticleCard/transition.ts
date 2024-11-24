@@ -5,6 +5,7 @@ import { musicBarHide } from "~/components/layout/Music/transition";
 import { toolBarHide } from "~/components/layout/Toolbar/transition";
 
 export function cardTransitionStart(element: any, callback: () => void) {
+  console.log("动画：展开文章卡片");
   const mainViewElement = document.querySelector(".main-view") as any;
   let mainViewTop = 0;
   let mainViewLeft = 0;
@@ -67,6 +68,7 @@ export function cardTransitionStart(element: any, callback: () => void) {
   }, 80);
 }
 export function cardTransitionEnd() {
+  console.log("动画：清理文章卡片占位元素");
   const tempElement = document.getElementById("temp-element");
   if (tempElement) {
     document.body.removeChild(tempElement);

@@ -33,7 +33,6 @@ useHead({
   },
 });
 definePageMeta({
-  layout: "admin",
   pageTransition: {
     mode: "out-in",
   },

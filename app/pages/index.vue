@@ -11,10 +11,7 @@
   </div>
 </template>
 <script setup lang="ts">
-definePageMeta({
-  pageTransition: {
-    mode: "out-in",
-  },
-  middleware: "transition",
-});
+// const route = useRoute();
+// console.log(route.meta.pageTransition);
+
 </script>

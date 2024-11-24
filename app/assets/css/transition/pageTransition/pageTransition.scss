@@ -8,11 +8,11 @@
   }
   .first-layer-prev-enter-from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: translateY(-50vh);
   }
   .first-layer-prev-leave-to {
     opacity: 0;
-    transform: scale(0.8);
+    transform: translateY(50vh);
   }
   .first-layer-next-enter-active {
     transition: all ease-in-out 200ms;
@@ -26,7 +26,7 @@
   }
   .first-layer-next-leave-to {
     opacity: 0;
-    transform: translateY(50vh);
+    transform: translateY(-50vh);
   }
 }
 @media (orientation: portrait) {
@@ -39,11 +39,11 @@
   }
   .first-layer-prev-enter-from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: translateX(-50vw);
   }
   .first-layer-prev-leave-to {
     opacity: 0;
-    transform: scale(0.8);
+    transform: translateX(50vw);
   }
   .first-layer-next-enter-active {
     transition: all ease-in-out 200ms;
@@ -57,7 +57,7 @@
   }
   .first-layer-next-leave-to {
     opacity: 0;
-    transform: translateX(50vw);
+    transform: translateX(-50vw);
   }
 }
 
@@ -69,11 +69,11 @@
 }
 .second-layer-prev-enter-from {
   opacity: 0;
-  transform: scale(0.8);
+  transform: translateX(-50vw);
 }
 .second-layer-prev-leave-to {
   opacity: 0;
-  transform: scale(0.8);
+  transform: translateX(50vw);
 }
 .second-layer-next-enter-active {
   transition: all ease-in-out 200ms;
@@ -87,7 +87,7 @@
 }
 .second-layer-next-leave-to {
   opacity: 0;
-  transform: translateX(50vw);
+  transform: translateX(-50vw);
 }
 .third-layer-enter-active {
   transition: all 0s;
@@ -106,7 +106,7 @@
 }
 @media (orientation: landscape) {
   .third-layer-leave-to {
-    transform: translateY(calc(100vw - var(--side-bar-width)));
+    transform: translateY(calc(100vh - var(--side-bar-width)));
     opacity: 0;
   }
 }
