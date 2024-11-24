@@ -10,15 +10,15 @@
       </div>
     </div>
     <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">
-      <li v-for="tabs in childrenTabs" :key="tabs.title">
+      <li v-for="tabs in childrenTabs" :key="tabs.name">
         <ZyLink :to="tabs.path"
           class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100">
           <div class="flex items-center text-base gap-2 portrait:text-sm select-none">
-            <ZyIcon class="landscape:hidden" size="1rem" :defaultName="tabs.defaultIcon"
-              :activatedName="tabs.activatedIcon" :activated="activeTab === tabs.path" />
-            <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.defaultIcon"
-              :activatedName="tabs.activatedIcon" :activated="activeTab === tabs.path" />
-            {{ $t(tabs.title) }}
+            <ZyIcon class="landscape:hidden" size="1rem" :defaultName="tabs.meta.defaultIcon"
+              :activatedName="tabs.meta.activatedIcon" :activated="activeTab === tabs.path" />
+            <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.meta.defaultIcon"
+              :activatedName="tabs.meta.activatedIcon" :activated="activeTab === tabs.path" />
+            {{ $t(tabs.name) }}
           </div>
         </ZyLink>
       </li>
@@ -27,18 +27,18 @@
       class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
       <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden"></div>
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
-        $t(childrenTabs[0].title) }}</h2>
+        $t(childrenTabs[0].name) }}</h2>
     </div>
   </nav>
 </template>
 <script setup lang="ts">
-// 标题
-import type { Route } from "~/utils/router/type";
+import type { RouterOptions } from 'vue-router';
 
+// 标题
 const route = useRoute();
 const router = useRouter();
 const titleDisable = ref(true);
-const childrenTabs = ref<Array<Route>>();
+const childrenTabs = ref<RouterOptions["routes"]>();
 const activeTab = ref<string>("");
 const { locale } = useI18n();
 
@@ -82,12 +82,14 @@ const indicatorMove = (index: number) => {
   const tab = allTabs[index];
   let tabWidth = [];
   for (let i = 0; i < allTabs.length; i++) {
-    tabWidth.push(allTabs[i].getBoundingClientRect().width);
+    tabWidth.push(allTabs[i]?.getBoundingClientRect().width);
   }
   for (let i = 0; i < allTabs.length; i++) {
-    allTabs[i].classList.remove("activate");
+    allTabs[i]?.classList.remove("activate");
   }
-  const indicator = document.querySelector("#header-tabs-indicator");
+  const indicator = document.querySelector("#header-tabs-indicator") as
+    | HTMLElement
+    | null;
   if (tab && indicator) {
     const width = tab.getBoundingClientRect().width;
     const left = tabWidth.slice(0, index).reduce((acc, cur) => acc + cur, 0);

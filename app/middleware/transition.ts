@@ -40,7 +40,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         }, 100);
       }
       if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-        console.log("动画：一级页面切换（向前切换）");
+        // console.log("动画：一级页面切换（向前切换）");
         if (from.meta.pageTransition && to.meta.pageTransition) {
           (from.meta.pageTransition as any).name = "first-layer-prev";
           (to.meta.pageTransition as any).name = "first-layer-prev";
@@ -48,7 +48,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       } else if (
         getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
       ) {
-        console.log("动画：一级页面切换（向后切换）");
+        // console.log("动画：一级页面切换（向后切换）");
         if (from.meta.pageTransition && to.meta.pageTransition) {
           (from.meta.pageTransition as any).name = "first-layer-next";
           (to.meta.pageTransition as any).name = "first-layer-next";
@@ -67,7 +67,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         }, 100);
       }
       if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-        console.log("动画：一级和二级页面切换（向前切换）");
+        // console.log("动画：一级和二级页面切换（向前切换）");
         if (from.meta.pageTransition && to.meta.pageTransition) {
           (from.meta.pageTransition as any).name = "first-layer-prev";
           (to.meta.pageTransition as any).name = "first-layer-prev";
@@ -75,7 +75,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       } else if (
         getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
       ) {
-        console.log("动画：一级和二级页面切换（向后切换）");
+        // console.log("动画：一级和二级页面切换（向后切换）");
         if (from.meta.pageTransition && to.meta.pageTransition) {
           (from.meta.pageTransition as any).name = "first-layer-next";
           (to.meta.pageTransition as any).name = "first-layer-next";
@@ -92,7 +92,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }
       if (getRootPath(from.fullPath) == getRootPath(to.fullPath)) {
         if (getSelfPathOrder(from.fullPath) > getSelfPathOrder(to.fullPath)) {
-          console.log("动画：二级相同根路径页面切换（向前切换）");
+          // console.log("动画：二级相同根路径页面切换（向前切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "second-layer-prev";
             (to.meta.pageTransition as any).name = "second-layer-prev";
@@ -100,7 +100,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         } else if (
           getSelfPathOrder(from.fullPath) < getSelfPathOrder(to.fullPath)
         ) {
-          console.log("动画：二级相同根路径页面切换（向后切换）");
+          // console.log("动画：二级相同根路径页面切换（向后切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "second-layer-next";
             (to.meta.pageTransition as any).name = "second-layer-next";
@@ -108,7 +108,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         }
       } else {
         if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-          console.log("动画：二级不同根路径页面切换（向前切换）");
+          // console.log("动画：二级不同根路径页面切换（向前切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "first-layer-prev";
             (to.meta.pageTransition as any).name = "first-layer-prev";
@@ -116,7 +116,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         } else if (
           getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
         ) {
-          console.log("动画：二级不同根路径页面切换（向后切换）");
+          // console.log("动画：二级不同根路径页面切换（向后切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "first-layer-next";
             (to.meta.pageTransition as any).name = "first-layer-next";
@@ -126,7 +126,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
     //  进入三级页面
     if (getPageLevel(from.fullPath) < 3 && getPageLevel(to.fullPath) == 3) {
-      console.log("动画：进入三级页面");
+      // console.log("动画：进入三级页面");
       if (from.meta.pageTransition && to.meta.pageTransition) {
         (from.meta.pageTransition as any).name = "third-layer";
         (to.meta.pageTransition as any).name = "third-layer";
@@ -144,7 +144,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
     //  退出三级页面
     if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) < 3) {
-      console.log("动画：退出三级页面");
+      // console.log("动画：退出三级页面");
       footerBarHide();
       footerColumnsHide();
       headerBarHide();
