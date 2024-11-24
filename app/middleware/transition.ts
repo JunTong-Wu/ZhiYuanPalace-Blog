@@ -30,7 +30,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       body.style.overflow = "auto";
     }
   }
-  if (to.meta.layout === from.meta.layout) {
+  if (to.meta.role !== "admin" && to.path !== "/login") {
     //  一级页面切换
     if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
       if (process.client) {
@@ -165,6 +165,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
           }, 200);
         };
       }
+    }
+  } else if (from.meta.role !== "admin" && to.path === "/login") {
+    // console.log("动画：从访客页面进入登录页面");
+    if (from.meta.pageTransition && to.meta.pageTransition) {
+      (from.meta.pageTransition as any).name = "first-layer-prev";
+      (to.meta.pageTransition as any).name = "first-layer-prev";
     }
   }
 

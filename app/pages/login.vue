@@ -32,12 +32,6 @@ useHead({
     class: "page-login",
   },
 });
-definePageMeta({
-  pageTransition: {
-    mode: "out-in",
-  },
-  middleware: "transition",
-});
 
 const username = ref("");
 const password = ref("");

@@ -13,8 +13,14 @@
 
     </Html>
     <ZySuperResponsive>
-      <Layout>
-        <NuxtPage class="nuxt-page mx-auto" :class="{ 'min-h-screen': !isSimpleLayout() }" />
+      <AdminLayout v-if="isAdminPage">
+        <NuxtPage class="nuxt-page mx-auto min-h-screen" />
+      </AdminLayout>
+      <div v-else-if="isLoginPage">
+        <NuxtPage class="nuxt-page mx-auto min-h-screen" />
+      </div>
+      <Layout v-else>
+        <NuxtPage class="nuxt-page mx-auto min-h-screen" />
       </Layout>
     </ZySuperResponsive>
     <ClientOnly>
@@ -33,13 +39,23 @@ const head = useLocaleHead({
 });
 
 const route = useRoute();
-const router = useRouter();
-const isSimpleLayout = () => {
-  if (route.meta) {
-    return route.meta.layout === 'admin'
-  }
-  return false
-};
+const isAdminPage = ref(false);
+const isLoginPage = ref(false);
+// 监听路由变化，切换布局
+watch(
+  () => route.path,
+  (newPath) => {
+    if (newPath.startsWith("/admin")) {
+      isAdminPage.value = true;
+    } else if (newPath.startsWith("/login")) {
+      isLoginPage.value = true;
+    } else {
+      isAdminPage.value = false;
+      isLoginPage.value = false;
+    }
+  },
+  { immediate: true }
+);
 
 // head
 useHead({

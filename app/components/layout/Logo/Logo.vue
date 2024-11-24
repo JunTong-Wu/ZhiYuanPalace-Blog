@@ -4,7 +4,7 @@
       :class="{ 'gap-1': size === 'small', 'gap-2': size === 'default', 'gap-4': size === 'large' }">
       <div class="h-full flex items-center justify-center">
         <img src="@/assets/image/logo.png" alt="" class="logo-img"
-          :class="{ 'w-8': size === 'small', 'w-16': size === 'default', 'w-24': size === 'large' }" />
+          :class="{ 'w-8': size === 'small', 'w-12': size === 'default', 'w-16': size === 'large' }" />
       </div>
       <div class="h-full flex items-center justify-center opacity-80 dark:invert"
         :class="{ 'w-24': size === 'small', 'w-32': size === 'default', 'w-48': size === 'large' }">
