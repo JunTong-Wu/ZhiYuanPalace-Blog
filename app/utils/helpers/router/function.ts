@@ -15,7 +15,9 @@ export const _getNavigationMap = (): Array<RouteRecordRaw> => {
  */
 export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
-  linkList = linkList.filter((item) => item.meta?.rule !== "admin");
+  linkList = linkList.filter(
+    (item) => item.meta?.role !== "admin" && item.meta?.navigate !== false
+  );
   return linkList;
 };
 
@@ -25,7 +27,9 @@ export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
  */
 export const getAdminNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
-  linkList = linkList.filter((item) => item.meta?.rule === "admin");
+  linkList = linkList.filter(
+    (item) => item.meta?.role === "admin" && item.meta?.navigate !== false
+  );
   return linkList;
 };
 
@@ -269,7 +273,7 @@ export const isAdminRouter = (path: string) => {
   const linkList = _getNavigationMap();
   for (const route of linkList) {
     if (route.path === path) {
-      if (route.meta?.rule === "admin") {
+      if (route.meta?.role === "admin") {
         return true;
       }
     }

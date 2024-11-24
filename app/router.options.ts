@@ -28,7 +28,7 @@ export default {
       pageTransition: {
         mode: "out-in",
       },
-      middleware: "transition",
+      middleware: ["auth", "transition"],
     };
     myRotes.forEach((route) => {
       _addMetaRecursively(route, commonMeta);

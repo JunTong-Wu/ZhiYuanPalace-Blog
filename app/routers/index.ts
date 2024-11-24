@@ -1,12 +1,22 @@
+// @ts-nocheck
 import type { RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: "/login",
+    name: "login",
+    component: () => import("@/pages/login.vue"),
+    meta: {
+      navigate: false,
+      order: 0,
+    },
+  },
+  {
     path: "/", // 路由的路径
     name: "home", // 路由的名称
-    // @ts-ignore
-    component: () => import("@/pages/index.vue"), // 路由的组件
+    component: () => import("@/pages/visitor/index.vue"), // 路由的组件
     meta: {
+      navigate: true, // 路由是否可以被导航
       defaultIcon: "i-fluent-home-16-regular", // 路由的默认图标
       activatedIcon: "i-fluent-home-16-filled", // 路由的激活图标
       order: 100, // 路由的排序
@@ -15,9 +25,9 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/text",
     name: "text",
-    // @ts-ignore
-    component: () => import("@/pages/text/index.vue"),
+    component: () => import("@/pages/visitor/text/index.vue"),
     meta: {
+      navigate: true,
       defaultIcon: "i-fluent-textbox-16-regular",
       activatedIcon: "i-fluent-textbox-16-filled",
       order: 200,
@@ -26,9 +36,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/text/article",
         name: "article",
-        // @ts-ignore
-        component: () => import("@/pages/text/article/index.vue"),
+        component: () => import("@/pages/visitor/text/article/index.vue"),
         meta: {
+          navigate: true,
           defaultIcon: "i-fluent-document-text-16-regular",
           activatedIcon: "i-fluent-document-text-16-filled",
           order: 210,
@@ -37,8 +47,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/text/article/:id",
         name: "article-id",
-        // @ts-ignore
-        component: () => import("@/pages/text/article/[id].vue"),
+        component: () => import("@/pages/visitor/text/article/[id].vue"),
         meta: {
           order: 211,
         },
@@ -46,9 +55,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/text/shuoshuo",
         name: "shuoshuo",
-        // @ts-ignore
-        component: () => import("@/pages/text/shuoshuo/index.vue"),
+        component: () => import("@/pages/visitor/text/shuoshuo/index.vue"),
         meta: {
+          navigate: true,
           defaultIcon: "i-fluent-text-quote-16-regular",
           activatedIcon: "i-fluent-text-quote-16-filled",
           order: 220,
@@ -57,8 +66,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/text/shuoshuo/:id",
         name: "shuoshuo-id",
-        // @ts-ignore
-        component: () => import("@/pages/text/shuoshuo/[id].vue"),
+        component: () => import("@/pages/visitor/text/shuoshuo/[id].vue"),
         meta: {
           order: 221,
         },
@@ -68,9 +76,9 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/music",
     name: "music",
-    // @ts-ignore
-    component: () => import("@/pages/music/index.vue"),
+    component: () => import("@/pages/visitor/music/index.vue"),
     meta: {
+      navigate: true,
       defaultIcon: "i-fluent-music-note-2-16-regular",
       activatedIcon: "i-fluent-music-note-2-16-filled",
       order: 300,
@@ -79,9 +87,9 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/audio",
     name: "audio",
-    // @ts-ignore
-    component: () => import("@/pages/audio/index.vue"),
+    component: () => import("@/pages/visitor/audio/index.vue"),
     meta: {
+      navigate: true,
       defaultIcon: "i-fluent-video-clip-16-regular",
       activatedIcon: "i-fluent-video-clip-16-filled",
       order: 400,
@@ -90,9 +98,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/audio/photo",
         name: "photo",
-        // @ts-ignore
-        component: () => import("@/pages/audio/photo/index.vue"),
+        component: () => import("@/pages/visitor/audio/photo/index.vue"),
         meta: {
+          navigate: true,
           defaultIcon: "i-fluent-image-16-regular",
           activatedIcon: "i-fluent-image-16-filled",
           order: 410,
@@ -101,8 +109,8 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/audio/photo/:album",
         name: "photo-album",
-        // @ts-ignore
-        component: () => import("@/pages/audio/photo/[album]/index.vue"),
+        component: () =>
+          import("@/pages/visitor/audio/photo/[album]/index.vue"),
         meta: {
           order: 411,
         },
@@ -110,9 +118,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/audio/video",
         name: "video",
-        // @ts-ignore
-        component: () => import("@/pages/audio/video/index.vue"),
+        component: () => import("@/pages/visitor/audio/video/index.vue"),
         meta: {
+          navigate: true,
           defaultIcon: "i-fluent-video-16-regular",
           activatedIcon: "i-fluent-video-16-filled",
           order: 420,
@@ -123,9 +131,9 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/about",
     name: "about",
-    // @ts-ignore
-    component: () => import("@/pages/about/index.vue"),
+    component: () => import("@/pages/visitor/about/index.vue"),
     meta: {
+      navigate: true,
       defaultIcon: "i-fluent-info-16-regular",
       activatedIcon: "i-fluent-info-16-filled",
       order: 500,
@@ -134,9 +142,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/about/information",
         name: "information",
-        // @ts-ignore
-        component: () => import("@/pages/about/information/index.vue"),
+        component: () => import("@/pages/visitor/about/information/index.vue"),
         meta: {
+          navigate: true,
           defaultIcon: "i-fluent-person-16-regular",
           activatedIcon: "i-fluent-person-16-filled",
           order: 510,
@@ -145,15 +153,27 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/about/friend",
         name: "friend",
-        // @ts-ignore
-        component: () => import("@/pages/about/friend/index.vue"),
+        component: () => import("@/pages/visitor/about/friend/index.vue"),
         meta: {
+          navigate: true,
           defaultIcon: "i-fluent-person-16-regular",
           activatedIcon: "i-fluent-person-16-filled",
           order: 520,
         },
       },
     ],
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: () => import("@/pages/admin/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-settings-16-regular",
+      activatedIcon: "i-fluent-settings-16-filled",
+      order: 600,
+      role: "admin",
+    },
   },
 ];
 
