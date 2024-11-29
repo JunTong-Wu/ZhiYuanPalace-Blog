@@ -1,27 +1,5 @@
 {
   "empty": "",
-  "home": "主页",
-  "text": "文字",
-  "audio": "媒体",
-  "music": "音乐",
-  "musicModuleSlogan": "长歌吟松风，曲尽河星稀。\n我醉君复乐，陶然共忘机。",
-  "about": "关于",
-  "article": "文章",
-  "articleModuleSlogan": "长安一片月，万户捣衣声。\n秋风吹不尽，总是玉关情。",
-  "shuoshuo": "说说",
-  "shuoshuoModuleSlogan": "曲尽酒亦倾，北窗醉如泥。\n人生且行乐，何必组与珪。",
-  "photo": "相册",
-  "photoModuleSlogan": "月下飞天镜，云生结海楼。\n仍怜故乡水，万里送行舟。",
-  "video": "视频",
-  "videoModuleSlogan": "千山鸟飞绝，万径人踪灭。\n孤舟蓑笠翁，独钓寒江雪。",
-  "information": "资料",
-  "friend": "友链",
-  "friendModuleSlogan": "浮云游子意，落日故人情。\n挥手自兹去，萧萧班马鸣。",
-  "zhiYuanPalace": "知鸢宫",
-
-  "welcome": "欢迎来到",
-  "bannerSlogan1": "『知鸢宫』是我的个人博客，用来存放原创文章、网络文案、照片等回忆。愿有岁月可回首，且以深情共白头。",
-  "bannerSlogan2": "『知鸢宫』取自成语『知书达理，鸢飞鱼跃』。须是操存涵养，定云止水中，有鸢飞鱼跃的景象，风狂雨骤处，有波恬浪静的风光，才见处一化齐之妙。",
-
-  "admin": "仪表盘"
+  "login": "登录",
+  "zhiYuanPalace": "知鸢宫"
 }

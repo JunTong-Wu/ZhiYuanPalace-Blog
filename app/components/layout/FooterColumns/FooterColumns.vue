@@ -6,14 +6,14 @@
           <div class="col-span-full md:col-span-8">
             <!-- Logo -->
             <NuxtLink to="/" class="flex items-center mb-8">
-              <img src="../../../assets/image/logo.png" class="max-h-7" :alt="$t('zhiYuanPalace')" />
+              <img src="../../../assets/image/logo.png" class="max-h-7" :alt="$t('common.zhiYuanPalace')" />
               <span class="ml-2 text-xl font-bold">{{
-                $t("zhiYuanPalace")
+                $t("common.zhiYuanPalace")
               }}</span>
             </NuxtLink>
             <div class="max-w-96">
               <p class="mb-12 text-text-2">
-                {{ $t("bannerSlogan1") }}
+                {{ $t("home.briefIntroductionContent") }}
               </p>
             </div>
 
@@ -66,7 +66,7 @@
           </div>
         </div>
         <div class="flex flex-col items-center justify-between landscape:flex-row landscape:space-y-2 py-8 portrait:py-0">
-          <span class="text-sm portrait:hidden">©2024 {{ $t("zhiYuanPalace") }}</span>
+          <span class="text-sm portrait:hidden">©2024 {{ $t("common.zhiYuanPalace") }}</span>
           <ul class="flex flex-wrap landscape:space-x-4 portrait:flex-col portrait:items-center portrait:text-text-3">
             <template v-for="copyrightLink in copyrightLinks">
               <li :class="{ 'portrait:hidden': copyrightLink.mobileHide }">

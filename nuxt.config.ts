@@ -54,32 +54,8 @@ export default defineNuxtConfig({
   },
   i18n: {
     baseUrl: process.env.SITE_URL,
-    locales: [
-      {
-        code: "zh-CN",
-        name: "简体中文",
-        iso: "zh-CN",
-        files: ["zh/common.json"],
-        dir: "ltr",
-      },
-      {
-        code: "en",
-        name: "English",
-        iso: "en",
-        files: ["en/common.json"],
-        dir: "ltr",
-      },
-    ],
-    defaultLocale: "zh-CN",
     strategy: "no_prefix",
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_redirected",
-      alwaysRedirect: true,
-    },
     vueI18n: "./i18n.config.ts",
-    lazy: true,
-    langDir: "language",
   },
   vite: {
     plugins: [

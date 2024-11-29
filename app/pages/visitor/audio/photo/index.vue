@@ -41,20 +41,6 @@
 <script setup lang="ts">
 import { ApiPhotos } from "~/utils";
 
-useHead({
-  title: "相册",
-  meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
-  bodyAttrs: {
-    class: "page-photo",
-  },
-});
-definePageMeta({
-  pageTransition: {
-    mode: "out-in",
-  },
-  middleware: "transition",
-});
-
 // 获取相册列表
 const albumListDataLazyFetch = await ApiPhotos.getAlbumsList(null);
 const albumListData = ref<AlbumListItem[]>();

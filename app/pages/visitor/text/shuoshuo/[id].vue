@@ -23,20 +23,6 @@
   </div>
 </template>
 <script setup lang="ts">
-useHead({
-  title: "说说详情",
-  meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
-  bodyAttrs: {
-    class: "page-shuoshuo-details",
-  },
-});
-definePageMeta({
-  pageTransition: {
-    name: "third-layer",
-    mode: "out-in",
-  },
-  middleware: "transition",
-});
 
 const { setPostInfo } = toRefs(
   store.usePostInfo()

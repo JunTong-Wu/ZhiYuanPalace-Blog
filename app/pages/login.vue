@@ -14,7 +14,7 @@
               class="w-full" size="xl" color="indigo"></UInput>
           </div>
           <div class="w-full flex justify-center">
-            <ZyButton class="w-full" @click="login">登录</ZyButton>
+            <ZyButton class="w-full" @click="login">{{ $t('common.login') }}</ZyButton>
           </div>
         </div>
       </div>
@@ -24,15 +24,6 @@
 <script setup lang="ts">
 
 const router = useRouter();
-
-useHead({
-  title: "登录",
-  meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
-  bodyAttrs: {
-    class: "page-login",
-  },
-});
-
 const username = ref("");
 const password = ref("");
 

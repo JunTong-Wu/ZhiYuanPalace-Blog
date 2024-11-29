@@ -4,11 +4,11 @@
       <div class="w-1/2 relative portrait:w-full flex justify-end">
         <div class="home-section2-image
         landscape:relative landscape:-left-8 landscape:-top-16 landscape:h-[20rem] landscape:w-[24rem]
-        landscape:sm:-top-48 landscape:sm:h-[32rem] landscape:sm:w-[38rem]
+        landscape:sm:-top-48 landscape:sm:h-[28rem] landscape:sm:w-[34rem]
         portrait:relative portrait:top-0 portrait:w-full portrait:h-[20rem] portrait:p-4">
           <img class="h-full w-full object-cover
             rounded sm:rounded-lg md:rounded-2xl lg:rounded-4xl
-            landscape:rounded-tl-none landscape:rounded-br-none" src="@/assets/image/home-section2.png" alt="" />
+          " src="@/assets/image/home-section2.png" alt="" />
         </div>
       </div>
       <div
@@ -19,7 +19,7 @@
         </h2>
         <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
         <p class="text-lg text-text-2 portrait:text-base mb-4">
-          {{ $t("bannerSlogan2") }}
+          {{ $t("home.nameOriginContent") }}
         </p>
 
       </div>

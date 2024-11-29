@@ -7,13 +7,13 @@
       <ul class="flex flex-col gap-2 py-1">
         <li v-for="n in linkList" class="sidebar-navigation h-14 flex hover:bg-background"
           :class="[isActivateRouter(route, n.path) ? 'bg-level-1 an-beat' : '']">
-          <ZyLink v-zy-ripple :to="`${n.path}`" :title="$t(n.name as string)"
+          <ZyLink v-zy-ripple :to="`${n.path}`" :title="$t(`menu.${String(n.name)}`)"
             class="w-full flex-col justify-center pl-8 text-text-1">
             <div class="w-full flex items-center gap-4 relative">
               <ZyIcon size="1.75rem" :defaultName="n.meta?.defaultIcon" defaultColor="var(&#45;&#45;text-2)"
                 :activatedName="n.meta?.activatedIcon" :activated="isActivateRouter(route, n.path)"
                 activatedColor="var(&#45;&#45;text-1)" />
-              <span>{{ $t(n.name as string) }}</span>
+              <span>{{ $t(`menu.${String(n.name)}`) }}</span>
             </div>
           </ZyLink>
         </li>

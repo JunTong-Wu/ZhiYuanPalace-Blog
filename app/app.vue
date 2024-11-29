@@ -13,15 +13,12 @@
 
     </Html>
     <ZySuperResponsive>
-      <AdminLayout v-if="isAdminPage">
-        <NuxtPage class="nuxt-page mx-auto min-h-screen" />
-      </AdminLayout>
-      <div v-else-if="isLoginPage">
-        <NuxtPage class="nuxt-page mx-auto min-h-screen" />
-      </div>
-      <Layout v-else>
+      <Layout v-if="!isLoginPage" :isAdminLayout="isAdminPage">
         <NuxtPage class="nuxt-page mx-auto min-h-screen" />
       </Layout>
+      <div v-else>
+        <NuxtPage class="nuxt-page mx-auto min-h-screen" />
+      </div>
     </ZySuperResponsive>
     <ClientOnly>
       <Live2D />
@@ -47,7 +44,9 @@ watch(
   (newPath) => {
     if (newPath.startsWith("/admin")) {
       isAdminPage.value = true;
+      isLoginPage.value = false;
     } else if (newPath.startsWith("/login")) {
+      isAdminPage.value = false;
       isLoginPage.value = true;
     } else {
       isAdminPage.value = false;
@@ -56,11 +55,13 @@ watch(
   },
   { immediate: true }
 );
+const { t } = useI18n();
 
 // head
 useHead({
-  titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - 知鸢宫` : "知鸢宫";
+  titleTemplate: () => {
+    const title = t(`menu.${String(route.name)}`);
+    return route.path !== '/' ? `${title} - 知鸢宫` : "知鸢宫";
   },
 });
 

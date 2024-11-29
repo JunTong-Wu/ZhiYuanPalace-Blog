@@ -41,20 +41,6 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-useHead({
-  title: "说说",
-  meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
-  bodyAttrs: {
-    class: "page-shuoshuo",
-  },
-});
-definePageMeta({
-  pageTransition: {
-    mode: "out-in",
-  },
-  middleware: "transition",
-});
-
 // 获取说说列表
 const shuoshuoListDataLazyFetch = await ApiShuoShuo.getShuoshuoList(null);
 const shuoshuoListData = ref<ShuoshuoListItem[]>();

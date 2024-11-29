@@ -42,20 +42,6 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-useHead({
-  title: "文章",
-  meta: [{ name: "description", content: "知书达理，鸢飞鱼跃" }],
-  bodyAttrs: {
-    class: "page-article",
-  },
-});
-definePageMeta({
-  pageTransition: {
-    mode: "out-in",
-  },
-  middleware: "transition",
-});
-
 // 获取文章列表
 const articleListDataLazyFetch = await ApiArticle.getArticlesList(null);
 const articleListData = ref<ArticleListItem[]>();

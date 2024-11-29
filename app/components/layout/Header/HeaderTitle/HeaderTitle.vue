@@ -18,7 +18,7 @@
               :activatedName="tabs.meta.activatedIcon" :activated="activeTab === tabs.path" />
             <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.meta.defaultIcon"
               :activatedName="tabs.meta.activatedIcon" :activated="activeTab === tabs.path" />
-            {{ $t(tabs.name) }}
+            {{ $t(`menu.${String(tabs.name)}`) }}
           </div>
         </ZyLink>
       </li>
@@ -27,7 +27,7 @@
       class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
       <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden"></div>
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
-        $t(childrenTabs[0].name) }}</h2>
+        $t(`menu.${childrenTabs[0].name}`) }}</h2>
     </div>
   </nav>
 </template>
