@@ -3,7 +3,7 @@
     <div class="bg-level-3 rounded text-text-1 p-4">
       <ul>
         <li class="">
-          <ZyLink to="/admin" type="push" class="flex items-center justify-between">
+          <ZyLink to="/admin" type="push" class="flex items-center justify-between" @click="closeDrawer">
             <div class="flex items-center gap-4">
               <div class="relative w-10 h-10 overflow-hidden rounded-full bg-level-b1">
                 <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
@@ -33,4 +33,9 @@
     </div>
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const emit = defineEmits(['closeDrawer']);
+const closeDrawer = () => {
+  emit('closeDrawer');
+};
+</script>

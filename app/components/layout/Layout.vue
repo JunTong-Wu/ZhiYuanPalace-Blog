@@ -1,9 +1,9 @@
 <template>
   <div id="layout" class="relative overflow-hidden bg-background">
     <!-- 侧边导航栏 -->
-    <Sidebar class="fixed top-status bottom-0 left-0 w-sidebar z-40 bg-level-b1" />
+    <Sidebar :isAdminSidebar="isAdminLayout" class="fixed top-status bottom-0 left-0 w-sidebar z-40 bg-level-b1" />
     <!-- 整体顶栏 -->
-    <Header class="fixed top-0 left-0 w-full pl-sidebar z-30 right-0 "
+    <Header :isAdminHeader="isAdminLayout" class="fixed top-0 left-0 w-full pl-sidebar z-30 right-0 "
       :class="{ 'pr-toolbar': !isAdminLayout, 'pr-4': isAdminLayout }" />
     <div id="layout-main" class="layout-main relative z-10 ml-sidebar mt-main"
       :class="{ 'mr-toolbar': !isAdminLayout, 'mr-4': isAdminLayout }">

@@ -21,7 +21,7 @@
       </div>
     </ZySuperResponsive>
     <ClientOnly>
-      <Live2D />
+      <Live2D :hide="isAdminPage || isLoginPage" />
     </ClientOnly>
   </div>
 </template>
@@ -42,7 +42,9 @@ const isLoginPage = ref(false);
 watch(
   () => route.path,
   (newPath) => {
-    if (newPath.startsWith("/admin")) {
+    if (isAdminRouter(newPath)) {
+      console.log('isAdminRouter');
+
       isAdminPage.value = true;
       isLoginPage.value = false;
     } else if (newPath.startsWith("/login")) {

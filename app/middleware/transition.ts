@@ -21,7 +21,6 @@ import {
   toolBarHide,
   toolBarShow,
 } from "~/components/layout/Toolbar/transition";
-import { live2dHide, live2dShow } from "~/components/layout/Live2D/transition";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.client) {
@@ -30,85 +29,18 @@ export default defineNuxtRouteMiddleware((to, from) => {
       body.style.overflow = "auto";
     }
   }
-  if (to.meta.role !== "admin" && to.path !== "/login") {
-    //  一级页面切换
-    if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
-      if (process.client) {
-        NProgress.start();
-        setTimeout(() => {
-          NProgress.done();
-        }, 100);
-      }
-      if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-        // console.log("动画：一级页面切换（向前切换）");
-        if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = "first-layer-prev";
-          (to.meta.pageTransition as any).name = "first-layer-prev";
+  if (to.path !== "/login") {
+    if (from.meta.role !== "admin" && to.meta.role !== "admin") {
+      //  一级页面切换
+      if (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 1) {
+        if (process.client) {
+          NProgress.start();
+          setTimeout(() => {
+            NProgress.done();
+          }, 100);
         }
-      } else if (
-        getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
-      ) {
-        // console.log("动画：一级页面切换（向后切换）");
-        if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = "first-layer-next";
-          (to.meta.pageTransition as any).name = "first-layer-next";
-        }
-      }
-    }
-    //  一级和二级页面切换
-    if (
-      (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 2) ||
-      (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 1)
-    ) {
-      if (process.client) {
-        NProgress.start();
-        setTimeout(() => {
-          NProgress.done();
-        }, 100);
-      }
-      if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-        // console.log("动画：一级和二级页面切换（向前切换）");
-        if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = "first-layer-prev";
-          (to.meta.pageTransition as any).name = "first-layer-prev";
-        }
-      } else if (
-        getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
-      ) {
-        // console.log("动画：一级和二级页面切换（向后切换）");
-        if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = "first-layer-next";
-          (to.meta.pageTransition as any).name = "first-layer-next";
-        }
-      }
-    }
-    //  二级页面切换
-    if (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 2) {
-      if (process.client) {
-        NProgress.start();
-        setTimeout(() => {
-          NProgress.done();
-        }, 100);
-      }
-      if (getRootPath(from.fullPath) == getRootPath(to.fullPath)) {
-        if (getSelfPathOrder(from.fullPath) > getSelfPathOrder(to.fullPath)) {
-          // console.log("动画：二级相同根路径页面切换（向前切换）");
-          if (from.meta.pageTransition && to.meta.pageTransition) {
-            (from.meta.pageTransition as any).name = "second-layer-prev";
-            (to.meta.pageTransition as any).name = "second-layer-prev";
-          }
-        } else if (
-          getSelfPathOrder(from.fullPath) < getSelfPathOrder(to.fullPath)
-        ) {
-          // console.log("动画：二级相同根路径页面切换（向后切换）");
-          if (from.meta.pageTransition && to.meta.pageTransition) {
-            (from.meta.pageTransition as any).name = "second-layer-next";
-            (to.meta.pageTransition as any).name = "second-layer-next";
-          }
-        }
-      } else {
         if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
-          // console.log("动画：二级不同根路径页面切换（向前切换）");
+          // console.log("动画：一级页面切换（向前切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "first-layer-prev";
             (to.meta.pageTransition as any).name = "first-layer-prev";
@@ -116,58 +48,139 @@ export default defineNuxtRouteMiddleware((to, from) => {
         } else if (
           getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
         ) {
-          // console.log("动画：二级不同根路径页面切换（向后切换）");
+          // console.log("动画：一级页面切换（向后切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
             (from.meta.pageTransition as any).name = "first-layer-next";
             (to.meta.pageTransition as any).name = "first-layer-next";
           }
         }
       }
-    }
-    //  进入三级页面
-    if (getPageLevel(from.fullPath) < 3 && getPageLevel(to.fullPath) == 3) {
-      // console.log("动画：进入三级页面");
-      if (from.meta.pageTransition && to.meta.pageTransition) {
-        (from.meta.pageTransition as any).name = "third-layer";
-        (to.meta.pageTransition as any).name = "third-layer";
-        (to.meta.pageTransition as any).onEnter = () => {
-          headerBarShow();
-          musicBarShow();
-          toolBarShow();
-          footerColumnsShow();
+      //  一级和二级页面切换
+      if (
+        (getPageLevel(from.fullPath) == 1 && getPageLevel(to.fullPath) == 2) ||
+        (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 1)
+      ) {
+        if (process.client) {
+          NProgress.start();
           setTimeout(() => {
-            ArticleCardTransitionEnd();
-            ShuoShuoCardTransitionEnd();
-          }, 200);
-        };
+            NProgress.done();
+          }, 100);
+        }
+        if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
+          // console.log("动画：一级和二级页面切换（向前切换）");
+          if (from.meta.pageTransition && to.meta.pageTransition) {
+            (from.meta.pageTransition as any).name = "first-layer-prev";
+            (to.meta.pageTransition as any).name = "first-layer-prev";
+          }
+        } else if (
+          getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
+        ) {
+          // console.log("动画：一级和二级页面切换（向后切换）");
+          if (from.meta.pageTransition && to.meta.pageTransition) {
+            (from.meta.pageTransition as any).name = "first-layer-next";
+            (to.meta.pageTransition as any).name = "first-layer-next";
+          }
+        }
+      }
+      //  二级页面切换
+      if (getPageLevel(from.fullPath) == 2 && getPageLevel(to.fullPath) == 2) {
+        if (process.client) {
+          NProgress.start();
+          setTimeout(() => {
+            NProgress.done();
+          }, 100);
+        }
+        if (getRootPath(from.fullPath) == getRootPath(to.fullPath)) {
+          if (getSelfOrder(from.fullPath) > getSelfOrder(to.fullPath)) {
+            // console.log("动画：二级相同根路径页面切换（向前切换）");
+            if (from.meta.pageTransition && to.meta.pageTransition) {
+              (from.meta.pageTransition as any).name = "second-layer-prev";
+              (to.meta.pageTransition as any).name = "second-layer-prev";
+            }
+          } else if (getSelfOrder(from.fullPath) < getSelfOrder(to.fullPath)) {
+            // console.log("动画：二级相同根路径页面切换（向后切换）");
+            if (from.meta.pageTransition && to.meta.pageTransition) {
+              (from.meta.pageTransition as any).name = "second-layer-next";
+              (to.meta.pageTransition as any).name = "second-layer-next";
+            }
+          }
+        } else {
+          if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
+            // console.log("动画：二级不同根路径页面切换（向前切换）");
+            if (from.meta.pageTransition && to.meta.pageTransition) {
+              (from.meta.pageTransition as any).name = "first-layer-prev";
+              (to.meta.pageTransition as any).name = "first-layer-prev";
+            }
+          } else if (
+            getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
+          ) {
+            // console.log("动画：二级不同根路径页面切换（向后切换）");
+            if (from.meta.pageTransition && to.meta.pageTransition) {
+              (from.meta.pageTransition as any).name = "first-layer-next";
+              (to.meta.pageTransition as any).name = "first-layer-next";
+            }
+          }
+        }
+      }
+      //  进入三级页面
+      if (getPageLevel(from.fullPath) < 3 && getPageLevel(to.fullPath) == 3) {
+        // console.log("动画：进入三级页面");
+        if (from.meta.pageTransition && to.meta.pageTransition) {
+          (from.meta.pageTransition as any).name = "third-layer";
+          (to.meta.pageTransition as any).name = "third-layer";
+          (to.meta.pageTransition as any).onEnter = () => {
+            headerBarShow();
+            musicBarShow();
+            toolBarShow();
+            footerColumnsShow();
+            setTimeout(() => {
+              ArticleCardTransitionEnd();
+              ShuoShuoCardTransitionEnd();
+            }, 200);
+          };
+        }
+      }
+      //  退出三级页面
+      if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) < 3) {
+        // console.log("动画：退出三级页面");
+        footerBarHide();
+        footerColumnsHide();
+        headerBarHide();
+        musicBarHide();
+        toolBarHide();
+        if (from.meta.pageTransition && to.meta.pageTransition) {
+          (from.meta.pageTransition as any).name = "third-layer";
+          (to.meta.pageTransition as any).name = "second-layer-prev";
+          (to.meta.pageTransition as any).onEnter = () => {
+            footerBarShow();
+            footerColumnsShow();
+            headerBarShow();
+            musicBarShow();
+            toolBarShow();
+            setTimeout(() => {
+              ArticleCardTransitionEnd();
+              ShuoShuoCardTransitionEnd();
+            }, 200);
+          };
+        }
+      }
+    } else if (from.meta.role === "admin" && to.meta.role === "admin") {
+      if (getSelfOrder(from.fullPath) > getSelfOrder(to.fullPath)) {
+        // console.log("动画：管理员页面切换（向前切换）");
+        if (from.meta.pageTransition && to.meta.pageTransition) {
+          (from.meta.pageTransition as any).name = "first-layer-prev";
+          (to.meta.pageTransition as any).name = "first-layer-prev";
+        }
+      } else if (getSelfOrder(from.fullPath) < getSelfOrder(to.fullPath)) {
+        // console.log("动画：管理员页面切换（向后切换）");
+        if (from.meta.pageTransition && to.meta.pageTransition) {
+          (from.meta.pageTransition as any).name = "first-layer-next";
+          (to.meta.pageTransition as any).name = "first-layer-next";
+        }
       }
     }
-    //  退出三级页面
-    if (getPageLevel(from.fullPath) == 3 && getPageLevel(to.fullPath) < 3) {
-      // console.log("动画：退出三级页面");
-      footerBarHide();
-      footerColumnsHide();
-      headerBarHide();
-      musicBarHide();
-      toolBarHide();
-      if (from.meta.pageTransition && to.meta.pageTransition) {
-        (from.meta.pageTransition as any).name = "third-layer";
-        (to.meta.pageTransition as any).name = "second-layer-prev";
-        (to.meta.pageTransition as any).onEnter = () => {
-          footerBarShow();
-          footerColumnsShow();
-          headerBarShow();
-          musicBarShow();
-          toolBarShow();
-          setTimeout(() => {
-            ArticleCardTransitionEnd();
-            ShuoShuoCardTransitionEnd();
-          }, 200);
-        };
-      }
-    }
-  } else if (from.meta.role !== "admin" && to.path === "/login") {
-    // console.log("动画：从访客页面进入登录页面");
+  } else {
+    // console.log("动画：进入登录页面");
     if (from.meta.pageTransition && to.meta.pageTransition) {
       (from.meta.pageTransition as any).name = "first-layer-prev";
       (to.meta.pageTransition as any).name = "first-layer-prev";

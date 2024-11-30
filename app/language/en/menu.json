@@ -10,5 +10,12 @@
   "video": "Video",
   "information": "Info",
   "friend": "Friend",
-  "admin": "Dashboard"
+  "login": "Login",
+  "dashboard": "Dashboard",
+  "post-manage": "Post Manage",
+  "article-manage": "Article Manage",
+  "shuoshuo-manage": "Microblog Manage",
+  "music-manage": "Music Manage",
+  "photo-manage": "Photo Manage",
+  "video-manage": "Video Manage"
 }

@@ -1,6 +1,13 @@
 <template></template>
 <script setup lang="ts">
+import { live2dHide, live2dShow } from "./transition";
 import "./transition.scss"
+const props = defineProps({
+  hide: {
+    type: Boolean,
+    required: false,
+  },
+});
 // Live2D
 const myLive2dConfig = () => {
   const OML2D = (window as any).OML2D;
@@ -50,16 +57,12 @@ const myLive2dConfig = () => {
       },
       // ...more
     });
+    if (props.hide) {
+      live2dHide();
+    }
   }
 };
-const route = useRoute();
-const router = useRouter();
-const isSimpleLayout = () => {
-  if (route.meta) {
-    return route.meta.layout === 'admin'
-  }
-  return false
-};
+
 const initLive2d = () => {
   const script = document.createElement("script");
   script.src = "/static/js/oh-my-live2d.min.js";
@@ -67,23 +70,25 @@ const initLive2d = () => {
   myLive2dConfig();
 };
 
-if (process.client) {
+onMounted(() => {
   const canvas = document.querySelector("#oml-canvas");
-  if (!canvas && !isSimpleLayout()) {
+  if (!canvas) {
     initLive2d();
   }
-}
+});
 
-router.afterEach(
-  (to, from) => {
-    if (to.meta.layout !== 'admin') {
-      const canvas = document.querySelector("#oml-canvas");
-      if (!canvas && !isSimpleLayout()) {
-        initLive2d();
-      }
+watch(
+  () => props.hide,
+  (newValue) => {
+    if (newValue) {
+      live2dHide();
+    } else {
+      live2dShow();
     }
-  }
+  },
+  { immediate: true }
 );
+
 </script>
 <style lang="scss">
 #oml-stage {
@@ -105,10 +110,10 @@ router.afterEach(
   min-width: 12rem;
   height: auto !important;
   top: 2.5% !important;
-  background-color: var(--bg-level-5) !important;
+  background-color: var(--bg-level-2) !important;
   backdrop-filter: blur(30px);
   color: var(--text-1) !important;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1) !important;
   filter: none !important;
   border: 1px solid var(--border-color) !important;
   padding: 0.5rem !important;

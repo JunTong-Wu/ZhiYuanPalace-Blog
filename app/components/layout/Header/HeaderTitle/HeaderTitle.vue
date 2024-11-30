@@ -1,7 +1,7 @@
 <template>
   <nav id="header-tabs" class="header-title flex items-center h-full relative" v-if="titleDisable"
     :class="{ 'p-1 landscape:p-2': Array.isArray(childrenTabs) && childrenTabs.length > 1 }">
-    <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1"
+    <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader"
       class="inset-1 landscape:inset-2 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs landscape:rounded overflow-hidden">
       <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
         <div
@@ -9,7 +9,8 @@
         </div>
       </div>
     </div>
-    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1" class="headerbar-tabs flex h-full relative z-10">
+    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader"
+      class="headerbar-tabs flex h-full relative z-10">
       <li v-for="tabs in childrenTabs" :key="tabs.name">
         <ZyLink :to="tabs.path"
           class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100">
@@ -23,16 +24,28 @@
         </ZyLink>
       </li>
     </ul>
-    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1"
+    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1 && !isAdminHeader"
       class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
       <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden"></div>
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
         $t(`menu.${childrenTabs[0].name}`) }}</h2>
     </div>
+    <div v-else class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
+      <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden"></div>
+      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
+        $t(`menu.${getSelfTitle(route.path)}`) }}</h2>
+    </div>
   </nav>
 </template>
 <script setup lang="ts">
 import type { RouterOptions } from 'vue-router';
+
+const props = defineProps({
+  isAdminHeader: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 // 标题
 const route = useRoute();

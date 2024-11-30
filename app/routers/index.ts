@@ -165,7 +165,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/admin",
-    name: "admin",
+    name: "dashboard",
     component: () => import("@/pages/admin/index.vue"),
     meta: {
       navigate: true,
@@ -174,6 +174,80 @@ const routes: Array<RouteRecordRaw> = [
       order: 600,
       role: "admin",
     },
+  },
+  {
+    path: "/post-manage",
+    name: "post-manage",
+    component: () => import("@/pages/admin/post-manage/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-settings-16-regular",
+      activatedIcon: "i-fluent-settings-16-filled",
+      order: 610,
+      role: "admin",
+    },
+    children: [
+      {
+        path: "/post-manage/article",
+        name: "article-manage",
+        component: () => import("@/pages/admin/post-manage/article/index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-document-text-16-regular",
+          activatedIcon: "i-fluent-document-text-16-filled",
+          order: 611,
+          role: "admin",
+        },
+      },
+      {
+        path: "/post-manage/shuoshuo",
+        name: "shuoshuo-manage",
+        component: () => import("@/pages/admin/post-manage/shuoshuo/index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-text-quote-16-regular",
+          activatedIcon: "i-fluent-text-quote-16-filled",
+          order: 612,
+          role: "admin",
+        },
+      },
+      {
+        path: "/post-manage/music",
+        name: "music-manage",
+        component: () => import("@/pages/admin/post-manage/music/index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-music-note-2-16-regular",
+          activatedIcon: "i-fluent-music-note-2-16-filled",
+          order: 613,
+          role: "admin",
+        },
+      },
+      {
+        path: "/post-manage/photo",
+        name: "photo-manage",
+        component: () => import("@/pages/admin/post-manage/photo/index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-image-16-regular",
+          activatedIcon: "i-fluent-image-16-filled",
+          order: 614,
+          role: "admin",
+        },
+      },
+      {
+        path: "/post-manage/video",
+        name: "video-manage",
+        component: () => import("@/pages/admin/post-manage/video/index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-video-clip-16-regular",
+          activatedIcon: "i-fluent-video-clip-16-filled",
+          order: 615,
+          role: "admin",
+        },
+      },
+    ],
   },
 ];
 

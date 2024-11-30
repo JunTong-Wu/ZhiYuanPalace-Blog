@@ -7,8 +7,7 @@ export default defineAppConfig({
         color: "theme",
       },
       variant: {
-        outline:
-          "bg-slate-100 dark:bg-slate-900 py-4 ring-0 focus:ring-0 rounded",
+        outline: "bg-level-1 py-4 ring-0 focus:ring-0 rounded-2xs",
       },
       icon: {
         color: "text-slate-400 dark:text-slate-600",

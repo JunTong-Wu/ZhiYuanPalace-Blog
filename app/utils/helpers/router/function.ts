@@ -34,6 +34,34 @@ export const getAdminNavigationMap = (): Array<RouteRecordRaw> => {
 };
 
 /**
+ * 获取访客可导航列表
+ * @returns Array<RouteRecordRaw>
+ */
+export const getNavigationMapForVisitorMenu = () => {
+  let linkList = getVisitorNavigationMap();
+  for (const route of linkList) {
+    if (route.children && route.children[0]) {
+      route.path = route.children[0].path;
+    }
+  }
+  return linkList;
+};
+
+/**
+ * 获取管理员可导航列表
+ * @returns Array<RouteRecordRaw>
+ */
+export const getNavigationMapForAdminMenu = () => {
+  let linkList = getAdminNavigationMap();
+  for (const route of linkList) {
+    if (route.children && route.children[0]) {
+      route.path = route.children[0].path;
+    }
+  }
+  return linkList;
+};
+
+/**
  * 通过路径查找标题
  * @returns Array<RouteRecordRaw>
  */
@@ -53,12 +81,23 @@ export const _findTitleByPath = (
   for (const route of routes) {
     if (route.children) {
       const result = _findTitleByPath(route.children, path);
-      if (result !== undefined) {
+      if (result !== "empty") {
         return result;
       }
     }
   }
   return "empty";
+};
+
+/**
+ * 获取自身路径标题
+ * @returns string
+ */
+export const getSelfTitle = (path: string) => {
+  let title = "empty";
+  const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
+  title = _findTitleByPath(linkList, path);
+  return title;
 };
 
 /**
@@ -93,7 +132,7 @@ export const _findOrderByPath = (
  * 获取自身路径Order
  * @returns number
  */
-export const getSelfPathOrder = (path: string) => {
+export const getSelfOrder = (path: string) => {
   let order = 0;
   const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
   order = _findOrderByPath(linkList, path);
@@ -101,31 +140,46 @@ export const getSelfPathOrder = (path: string) => {
 };
 
 /**
- * 获取访客导航列表
- * @returns Array<RouteRecordRaw>
+ * 通过路径查找Role
+ * @returns string
  */
-export const getNavigationMapForVisitorMenu = () => {
-  let linkList = getVisitorNavigationMap();
-  for (const route of linkList) {
-    if (route.children && route.children[0]) {
-      route.path = route.children[0].path;
+export const _findRoleByPath = (
+  routes: Array<RouteRecordRaw>,
+  path: string
+): string => {
+  // 首先检查顶级路由
+  for (const route of routes) {
+    if (!route.children || !route.children.length) {
+      if (route.path === path) {
+        return (route.meta?.role as string) || "";
+      }
     }
   }
-  return linkList;
+  //如果没有找到顶级路由匹配，则递归检查子路由
+  for (const route of routes) {
+    if (route.children) {
+      const result = _findRoleByPath(route.children, path);
+      if (result !== "") {
+        return result;
+      }
+    }
+  }
+  return "";
 };
 
 /**
- * 获取管理员导航列表
- * @returns Array<RouteRecordRaw>
+ * 判断是否是admin路由
+ * @returns boolean
  */
-export const getNavigationMapForAdminMenu = () => {
-  let linkList = getAdminNavigationMap();
-  for (const route of linkList) {
-    if (route.children && route.children[0]) {
-      route.path = route.children[0].path;
-    }
+export const isAdminRouter = (path: string) => {
+  let role = "";
+  const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
+  role = _findRoleByPath(linkList, path);
+  if (role === "admin") {
+    return true;
+  } else {
+    return false;
   }
-  return linkList;
 };
 
 /**
@@ -164,6 +218,21 @@ export const getRootPath = (path: string) => {
     }
   }
   return "/";
+};
+
+/**
+ * 获取根路径Order
+ * @returns number
+ */
+export const getRootPathOrder = (path: string) => {
+  const rootPath = getRootPath(path);
+  const linkList = _getNavigationMap();
+  for (const route of linkList) {
+    if (route.path === rootPath) {
+      return (route.meta?.order as number) || 0;
+    }
+  }
+  return 0;
 };
 
 /**
@@ -224,31 +293,25 @@ export const getChildrenTabs = (path: string) => {
 };
 
 /**
- * 获取根路径Order
- * @returns number
- */
-export const getRootPathOrder = (path: string) => {
-  // 移除路径两端的斜杠，然后分割路径
-  const parts = path
-    .trim()
-    .replace(/^\/+|\/+$/g, "")
-    .split("/");
-
-  const rootPath = `/${parts[0]}`;
-  const linkList = _getNavigationMap();
-  for (const route of linkList) {
-    if (route.path === rootPath) {
-      return (route.meta?.order as number) || 0;
-    }
-  }
-  return 0;
-};
-
-/**
- * 判断是否激活路由
+ * 判断是否是激活路由
  * @returns boolean
  */
 export const isActivateRouter = (
+  route: RouteLocationNormalizedLoaded,
+  path: string
+) => {
+  if (route.fullPath == path) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+/**
+ * 判断是否是激活路由的根路由
+ * @returns boolean
+ */
+export const isActivateRootRouter = (
   route: RouteLocationNormalizedLoaded,
   path: string
 ) => {
@@ -263,20 +326,4 @@ export const isActivateRouter = (
       return true;
     }
   }
-};
-
-/**
- * 判断是否是admin路由
- * @returns boolean
- */
-export const isAdminRouter = (path: string) => {
-  const linkList = _getNavigationMap();
-  for (const route of linkList) {
-    if (route.path === path) {
-      if (route.meta?.role === "admin") {
-        return true;
-      }
-    }
-  }
-  return false;
 };

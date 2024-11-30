@@ -5,15 +5,15 @@
         <Indicator :msg="getVisitorNavigationMap()" />
       </div>
       <ul class="flex flex-col gap-2 py-1">
-        <li v-for="n in linkList" class="sidebar-navigation h-14 flex hover:bg-background"
-          :class="[isActivateRouter(route, n.path) ? 'bg-level-1 an-beat' : '']">
-          <ZyLink v-zy-ripple :to="`${n.path}`" :title="$t(`menu.${String(n.name)}`)"
-            class="w-full flex-col justify-center pl-8 text-text-1">
+        <li v-for="item in linkList" class="rounded-xs h-14 flex hover:bg-background"
+          :class="[isActivateRootRouter(route, item.path) ? 'bg-level-1 an-beat' : '']">
+          <ZyLink v-zy-ripple :to="`${item.path}`" :title="$t(`menu.${String(item.name)}`)"
+            class="rounded-xs w-full flex-col justify-center pl-8 text-text-1">
             <div class="w-full flex items-center gap-4 relative">
-              <ZyIcon size="1.75rem" :defaultName="n.meta?.defaultIcon" defaultColor="var(&#45;&#45;text-2)"
-                :activatedName="n.meta?.activatedIcon" :activated="isActivateRouter(route, n.path)"
+              <ZyIcon size="1.75rem" :defaultName="item.meta?.defaultIcon" defaultColor="var(&#45;&#45;text-2)"
+                :activatedName="item.meta?.activatedIcon" :activated="isActivateRootRouter(route, item.path)"
                 activatedColor="var(&#45;&#45;text-1)" />
-              <span>{{ $t(`menu.${String(n.name)}`) }}</span>
+              <span>{{ $t(`menu.${String(item.name)}`) }}</span>
             </div>
           </ZyLink>
         </li>
@@ -40,16 +40,6 @@ const route = useRoute();
 
   a {
     border-radius: 1rem;
-
-    img {
-      transition: all 0.1s ease-in-out;
-    }
-
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
-    }
   }
 }
 

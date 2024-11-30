@@ -9,7 +9,7 @@
     <!-- StatusBar -->
     <div class="portrait:hidden absolute z-10 top-0 left-0 h-status w-full flex items-center">
       <!-- 图标区 -->
-      <Logo class="w-sidebar px-4 portrait:hidden" size="small" />
+      <Logo class="w-sidebar px-4 portrait:hidden cursor-pointer" size="small" @click="backToHome" />
 
       <!-- 歌词区 -->
       <ZyButton class="flex items-center justify-center p-1 h-[70%] w-72" title="歌词" type="text">
@@ -31,7 +31,14 @@
         <!-- 日期区 -->
 
         <!-- 按键区 -->
-        <div class="ml-2 flex justify-end h-full items-center">
+
+        <div v-if="isAdminHeader" class="p-2 -ml-2 h-status w-status">
+          <ZyButton class="flex items-center justify-center w-full h-full" @click="backToHome" title="回到前台" type="icon">
+            <UIcon name="i-fluent-home-16-regular" class="w-6 h-6" />
+          </ZyButton>
+        </div>
+
+        <div class="flex justify-end h-full items-center">
           <!-- 多语言抽屉 -->
           <div class="p-2 -ml-2 h-status w-status">
             <ZyPopover title="切换语言" background="var(--bg-level-1)" class="w-full h-full">
@@ -46,7 +53,8 @@
             </ZyPopover>
           </div>
 
-          <div class="p-2 -ml-2 h-status w-status">
+
+          <div v-if="!isAdminHeader" class="p-2 -ml-2 h-status w-status">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="openSearchDrawer()" title="搜索"
               type="icon">
               <UIcon name="i-fluent-search-16-regular" class="w-6 h-6" />
@@ -69,7 +77,7 @@
             </ZyButton>
           </div>
 
-          <div class="p-2 -ml-2 h-status w-status">
+          <div v-if="!isAdminHeader" class="p-2 -ml-2 h-status w-status">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="openMoreDrawer()" title="更多选项"
               type="icon">
               <UIcon name="i-fluent-more-vertical-28-regular" class="w-6 h-6" />
@@ -96,7 +104,7 @@
           <div class="h-full w-auto flex items-center justify-between">
             <div class="flex gap-2 items-center h-full">
               <GoBackButton />
-              <HeaderTitle />
+              <HeaderTitle :isAdminHeader="isAdminHeader" />
               <ClientOnly>
                 <PostTitle />
               </ClientOnly>
@@ -105,10 +113,12 @@
             <div class="h-full landscape:hidden">
               <div class="flex items-center w-full h-full justify-between">
                 <div class="flex items-center h-full">
-                  <ZyButton class="w-header h-header" @click="openSearchDrawer()" title="搜索" type="transparent">
+                  <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openSearchDrawer()" title="搜索"
+                    type="transparent">
                     <UIcon name="i-fluent-search-16-regular" class="w-5 h-5" />
                   </ZyButton>
-                  <ZyButton class="w-header h-header" @click="openMoreDrawer()" title="更多选项" type="transparent">
+                  <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openMoreDrawer()" title="更多选项"
+                    type="transparent">
                     <UIcon name="i-fluent-more-vertical-28-regular" class="w-5 h-5" />
                   </ZyButton>
                 </div>
@@ -126,7 +136,7 @@
       <!-- 设置抽屉 -->
       <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="var(--drawer-width)"
         maskColor="rgba(0,0,0,0.4)" background="var(--bg-level-1)">
-        <MoreDrawerInner>
+        <MoreDrawerInner @closeDrawer="closeMoreDrawer">
           <template #footer>
             <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
               <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
@@ -156,6 +166,13 @@
 </template>
 <script setup lang="ts">
 import "./transition.scss"
+
+const props = defineProps({
+  isAdminHeader: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 // 使用类型断言来处理 TypeScript 的类型检查
 declare global {
@@ -225,6 +242,12 @@ const updateDate = () => {
 };
 // 初始化时间
 updateDate();
+
+const router = useRouter();
+// 管理员回到前台
+const backToHome = () => {
+  router.replace('/')
+};
 </script>
 <style>
 ::view-transition-new(root),
