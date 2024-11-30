@@ -51,6 +51,7 @@
   </UAccordion>
 </template>
 <script setup lang="ts">
+const emit = defineEmits(['change']);
 
 const linkList = getNavigationMapForAdminMenu() as any;
 const route = useRoute();
@@ -64,6 +65,10 @@ const setDefaultOpen = () => {
   })
 }
 setDefaultOpen();
+
+watch(() => route.path, (newVal) => {
+  emit('change');
+})
 
 </script>
 

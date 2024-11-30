@@ -4,7 +4,7 @@
     <Sidebar :isAdminSidebar="isAdminLayout" class="fixed top-status bottom-0 left-0 w-sidebar z-40 bg-level-b1" />
     <!-- 整体顶栏 -->
     <Header :isAdminHeader="isAdminLayout" class="fixed top-0 left-0 w-full pl-sidebar z-30 right-0 "
-      :class="{ 'pr-toolbar': !isAdminLayout, 'pr-4': isAdminLayout }" />
+      :class="{ 'pr-toolbar': !isAdminLayout, 'pr-4 portrait:pr-0': isAdminLayout }" />
     <div id="layout-main" class="layout-main relative z-10 ml-sidebar mt-main"
       :class="{ 'mr-toolbar': !isAdminLayout, 'mr-4': isAdminLayout }">
       <main class="flex-1 bg-background">
@@ -23,8 +23,10 @@
       </div>
     </aside>
     <!-- 音乐播放器 -->
-    <Music v-if="!isAdminLayout"
-      class="fixed top-music landscape:left-4 w-music z-50 portrait:bg-headBar backdrop-blur-3xl landscape:shadow-sm" />
+    <Music class="fixed top-music landscape:left-4 w-music z-50 portrait:bg-headBar backdrop-blur-3xl landscape:shadow-sm"
+      :class="{
+        'landscape:hidden': isAdminLayout,
+      }" />
     <!-- 底部版权 -->
     <FooterColumns v-if="!isAdminLayout" />
     <!-- 底部导航栏 -->

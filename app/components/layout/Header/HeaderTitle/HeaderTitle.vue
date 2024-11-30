@@ -30,7 +30,7 @@
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
         $t(`menu.${childrenTabs[0].name}`) }}</h2>
     </div>
-    <div v-else class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
+    <div v-else-if="isAdminHeader" class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
       <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden"></div>
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
         $t(`menu.${getSelfTitle(route.path)}`) }}</h2>
