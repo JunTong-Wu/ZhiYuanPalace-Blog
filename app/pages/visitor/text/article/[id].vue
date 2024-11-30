@@ -75,7 +75,9 @@ const showArticle = (result: ResOptions<ArticleListItem>) => {
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;
 </script>
-<style>
+<style lang="scss">
+@import url("@/components/layout/ArticleCard/ArticleCard.scss");
+
 @keyframes an-article-card-text {
   0% {
     transform: translateY(10rem);

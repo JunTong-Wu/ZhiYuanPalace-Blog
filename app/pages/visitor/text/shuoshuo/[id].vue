@@ -44,3 +44,6 @@ const showShuoshuo = (result: ResOptions<ShuoshuoListItem>) => {
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;
 </script>
+<style lang="scss">
+@import url("@/components/layout/ShuoShuoCard/ShuoShuoCard.scss");
+</style>

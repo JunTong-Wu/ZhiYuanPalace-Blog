@@ -31,20 +31,13 @@
         <!-- 日期区 -->
 
         <!-- 按键区 -->
-
-        <div v-if="isAdminHeader" class="p-2 -ml-2 h-status w-status">
-          <ZyButton class="flex items-center justify-center w-full h-full" @click="backToHome" title="回到前台" type="icon">
-            <UIcon name="i-fluent-home-16-regular" class="w-6 h-6" />
-          </ZyButton>
-        </div>
-
         <div class="flex justify-end h-full items-center">
           <!-- 多语言抽屉 -->
           <div class="p-2 -ml-2 h-status w-status">
             <ZyPopover title="切换语言" background="var(--bg-level-1)" class="w-full h-full">
               <template #reference>
                 <ZyButton class="flex items-center justify-center w-full h-full" title="切换语言" type="icon">
-                  <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />
+                  <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
                 </ZyButton>
               </template>
               <template #actions>
@@ -57,30 +50,36 @@
           <div v-if="!isAdminHeader" class="p-2 -ml-2 h-status w-status">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="openSearchDrawer()" title="搜索"
               type="icon">
-              <UIcon name="i-fluent-search-16-regular" class="w-6 h-6" />
+              <UIcon name="i-fluent-search-20-regular" class="w-6 h-6" />
             </ZyButton>
           </div>
 
           <div class="p-2 -ml-2 h-status w-status">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="toggleFullScreen" title="全屏/退出全屏"
               type="icon">
-              <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-16-regular" class="w-6 h-6" />
-              <UIcon v-else name="i-fluent-full-screen-minimize-16-regular" class="w-6 h-6" />
+              <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
+              <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
             </ZyButton>
           </div>
 
           <div class="p-2 -ml-2 h-status w-status">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="darkModeSwitch" title="日间/夜间"
               type="icon">
-              <UIcon name="i-fluent-weather-sunny-16-regular" class="w-6 h-6 hidden dark:inline-block" />
-              <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
+              <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
+              <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
             </ZyButton>
           </div>
 
           <div v-if="!isAdminHeader" class="p-2 -ml-2 h-status w-status">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="openMoreDrawer()" title="更多选项"
               type="icon">
-              <UIcon name="i-fluent-more-vertical-28-regular" class="w-6 h-6" />
+              <UIcon name="i-fluent-more-vertical-20-regular" class="w-6 h-6" />
+            </ZyButton>
+          </div>
+
+          <div v-if="isAdminHeader" class="p-2 -ml-2 h-status w-status">
+            <ZyButton class="flex items-center justify-center w-full h-full" @click="backToHome" title="回到前台" type="icon">
+              <UIcon name="i-fluent-home-20-regular" class="w-6 h-6" />
             </ZyButton>
           </div>
 
@@ -115,15 +114,15 @@
                 <div class="flex items-center h-full">
                   <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openSearchDrawer()" title="搜索"
                     type="transparent">
-                    <UIcon name="i-fluent-search-16-regular" class="w-5 h-5" />
+                    <UIcon name="i-fluent-search-20-regular" class="w-5 h-5" />
                   </ZyButton>
                   <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openMoreDrawer()" title="更多选项"
                     type="transparent">
-                    <UIcon name="i-fluent-more-vertical-28-regular" class="w-5 h-5" />
+                    <UIcon name="i-fluent-more-vertical-20-regular" class="w-5 h-5" />
                   </ZyButton>
                   <ZyButton v-if="isAdminHeader" class="w-header h-header" @click="openAdminNavigationDrawer()" title="菜单"
                     type="transparent">
-                    <UIcon name="i-fluent-navigation-16-filled" class="w-5 h-5" />
+                    <UIcon name="i-fluent-navigation-20-filled" class="w-5 h-5" />
                   </ZyButton>
                 </div>
               </div>
@@ -144,17 +143,17 @@
           <template #footer>
             <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
               <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-16-regular" class="w-6 h-6" />
-                <UIcon v-else name="i-fluent-full-screen-minimize-16-regular" class="w-6 h-6" />
+                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
+                <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
               </ZyButton>
               <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-                <UIcon name="i-fluent-weather-sunny-16-regular" class="w-6 h-6 hidden dark:inline-block" />
-                <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
+                <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
+                <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
               </ZyButton>
               <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
                 <template #reference>
                   <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                    <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />
+                    <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
                   </ZyButton>
                 </template>
                 <template #actions>
@@ -166,27 +165,27 @@
         </MoreDrawerInner>
       </ZyDrawer>
       <!-- 管理员移动端导航抽屉 -->
-      <ZyDrawer title="设置" :display="adminNavigationDisplay" @cancel="closeAdminNavigationDrawer" position="right"
-        size="var(--drawer-width)" maskColor="var(--bg-mask)" :maskBlur="true">
+      <ZyDrawer title="导航" :display="adminNavigationDisplay" @cancel="closeAdminNavigationDrawer" position="top"
+        size="100%" background="var(--bg-background)">
         <AdminNavigationDrawerInner @closeDrawer="closeAdminNavigationDrawer">
           <template #footer>
             <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
               <ZyButton v-if="isAdminHeader" class="flex items-center justify-center" @click="backToHome" title="回到前台"
                 type="icon">
-                <UIcon name="i-fluent-home-16-regular" class="w-6 h-6" />
+                <UIcon name="i-fluent-home-20-regular" class="w-6 h-6" />
               </ZyButton>
               <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-16-regular" class="w-6 h-6" />
-                <UIcon v-else name="i-fluent-full-screen-minimize-16-regular" class="w-6 h-6" />
+                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
+                <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
               </ZyButton>
               <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-                <UIcon name="i-fluent-weather-sunny-16-regular" class="w-6 h-6 hidden dark:inline-block" />
-                <UIcon name="i-fluent-weather-moon-16-regular" class="w-6 h-6 dark:hidden" />
+                <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
+                <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
               </ZyButton>
               <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
                 <template #reference>
                   <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                    <UIcon name="i-fluent-local-language-16-regular" class="w-6 h-6" />
+                    <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
                   </ZyButton>
                 </template>
                 <template #actions>

@@ -4,7 +4,7 @@
     <Sidebar :isAdminSidebar="isAdminLayout" class="fixed top-status bottom-0 left-0 w-sidebar z-40 bg-level-b1" />
     <!-- 整体顶栏 -->
     <Header :isAdminHeader="isAdminLayout" class="fixed top-0 left-0 w-full pl-sidebar z-30 right-0 "
-      :class="{ 'pr-toolbar': !isAdminLayout, 'pr-4 portrait:pr-0': isAdminLayout }" />
+      :class="{ 'pr-4 md:pr-toolbar portrait:pr-0': !isAdminLayout, 'pr-4 portrait:pr-0': isAdminLayout }" />
     <div id="layout-main" class="layout-main relative z-10 ml-sidebar mt-main"
       :class="{ 'mr-toolbar': !isAdminLayout, 'mr-4': isAdminLayout }">
       <main class="flex-1 bg-background">
@@ -16,8 +16,8 @@
       </main>
     </div>
     <!-- 工具栏 -->
-    <aside class="portrait:hidden fixed z-40 top-status bottom-0 right-0 bg-level-b1"
-      :class="{ 'w-toolbar': !isAdminLayout, 'w-4': isAdminLayout }">
+    <aside class="portrait:hidden fixed z-20 top-status bottom-0 right-0 bg-level-b1"
+      :class="{ 'w-4 md:w-toolbar portrait:w-0': !isAdminLayout, 'w-4': isAdminLayout }">
       <div v-show="!isAdminLayout" id="zy-tool-bar"
         class="absolute inset-4 top-0 rounded-lg bg-headBar backdrop-blur-3xl">
       </div>
