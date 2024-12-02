@@ -176,7 +176,7 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/post-manage",
+    path: "/admin/post-manage",
     name: "post-manage",
     component: () => import("@/pages/admin/post-manage/index.vue"),
     meta: {
@@ -188,7 +188,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: "/post-manage/article",
+        path: "/admin/post-manage/article",
         name: "article-manage",
         component: () => import("@/pages/admin/post-manage/article/index.vue"),
         meta: {
@@ -200,7 +200,7 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
-        path: "/post-manage/shuoshuo",
+        path: "/admin/post-manage/shuoshuo",
         name: "shuoshuo-manage",
         component: () => import("@/pages/admin/post-manage/shuoshuo/index.vue"),
         meta: {
@@ -212,7 +212,7 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
-        path: "/post-manage/music",
+        path: "/admin/post-manage/music",
         name: "music-manage",
         component: () => import("@/pages/admin/post-manage/music/index.vue"),
         meta: {
@@ -224,7 +224,7 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
-        path: "/post-manage/photo",
+        path: "/admin/post-manage/photo",
         name: "photo-manage",
         component: () => import("@/pages/admin/post-manage/photo/index.vue"),
         meta: {
@@ -236,7 +236,7 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
-        path: "/post-manage/video",
+        path: "/admin/post-manage/video",
         name: "video-manage",
         component: () => import("@/pages/admin/post-manage/video/index.vue"),
         meta: {
@@ -250,7 +250,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    path: "/personal-center",
+    path: "/admin/personal-center",
     name: "personal-center",
     component: () => import("@/pages/admin/personal-center/index.vue"),
     meta: {
@@ -262,7 +262,7 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/comment-manage",
+    path: "/admin/comment-manage",
     name: "comment-manage",
     component: () => import("@/pages/admin/comment-manage/index.vue"),
     meta: {
@@ -274,7 +274,7 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/friends-manage",
+    path: "/admin/friends-manage",
     name: "friends-manage",
     component: () => import("@/pages/admin/friends-manage/index.vue"),
     meta: {
@@ -286,7 +286,7 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/site-setting",
+    path: "/admin/site-setting",
     name: "site-setting",
     component: () => import("@/pages/admin/site-setting/index.vue"),
     meta: {
@@ -298,7 +298,7 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/server-manage",
+    path: "/admin/server-manage",
     name: "server-manage",
     component: () => import("@/pages/admin/server-manage/index.vue"),
     meta: {
