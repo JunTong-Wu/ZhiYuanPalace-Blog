@@ -249,6 +249,66 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/personal-center",
+    name: "personal-center",
+    component: () => import("@/pages/admin/personal-center/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-person-circle-20-regular",
+      activatedIcon: "i-fluent-person-circle-20-filled",
+      order: 620,
+      role: "admin",
+    },
+  },
+  {
+    path: "/comment-manage",
+    name: "comment-manage",
+    component: () => import("@/pages/admin/comment-manage/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-comment-note-20-regular",
+      activatedIcon: "i-fluent-comment-note-20-filled",
+      order: 630,
+      role: "admin",
+    },
+  },
+  {
+    path: "/friends-manage",
+    name: "friends-manage",
+    component: () => import("@/pages/admin/friends-manage/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-person-link-20-regular",
+      activatedIcon: "i-fluent-person-link-20-filled",
+      order: 640,
+      role: "admin",
+    },
+  },
+  {
+    path: "/site-setting",
+    name: "site-setting",
+    component: () => import("@/pages/admin/site-setting/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-apps-settings-20-regular",
+      activatedIcon: "i-fluent-apps-settings-20-filled",
+      order: 650,
+      role: "admin",
+    },
+  },
+  {
+    path: "/server-manage",
+    name: "server-manage",
+    component: () => import("@/pages/admin/server-manage/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-server-20-regular",
+      activatedIcon: "i-fluent-server-20-filled",
+      order: 650,
+      role: "admin",
+    },
+  },
 ];
 
 export const routersStringify = JSON.stringify(routes);

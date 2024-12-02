@@ -18,5 +18,10 @@
   "shuoshuo-manage": "说说管理",
   "music-manage": "音乐管理",
   "photo-manage": "相册管理",
-  "video-manage": "视频管理"
+  "video-manage": "视频管理",
+  "personal-center": "个人中心",
+  "comment-manage": "评论管理",
+  "friends-manage": "友链管理",
+  "site-setting": "站点设置",
+  "server-manage": "服务器管理"
 }

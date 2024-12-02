@@ -18,5 +18,10 @@
   "shuoshuo-manage": "Microblog Manage",
   "music-manage": "Music Manage",
   "photo-manage": "Photo Manage",
-  "video-manage": "Video Manage"
+  "video-manage": "Video Manage",
+  "personal-center": "Personal Center",
+  "comment-manage": "Comment Manage",
+  "friends-manage": "Friends Manage",
+  "site-setting": "Site Setting",
+  "server-manage": "Server Manage"
 }
