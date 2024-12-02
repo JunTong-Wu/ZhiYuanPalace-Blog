@@ -17,7 +17,7 @@
       </template>
       <template #onload>
         <ul class="row-article">
-          <li class="clo-article-card" v-for="item in articleListData">
+          <li class="clo-article-card" v-for="item in articleListData.list">
             <ArticleCard :href="`/text/article/${item.article_id}`">
               <template #image>
                 <ZyLazyImage :locked="item.has_password" :src="`${cdnUrl}${item.article_title_image}`" alt="" />
@@ -44,9 +44,9 @@
 <script setup lang="ts">
 // 获取文章列表
 const articleListDataLazyFetch = await ApiArticle.getArticlesList(null);
-const articleListData = ref<ArticleListItem[]>();
-const showArticleList = (result: ResOptions<ArticleList>) => {
-  articleListData.value = result.data.list;
+const articleListData = ref<ArticleListModelType>(new ArticleListModel());
+const showArticleList = (result: ResOptionsModelType<ArticleListModelType>) => {
+  articleListData.value = result.data;
 };
 
 const config = useRuntimeConfig();

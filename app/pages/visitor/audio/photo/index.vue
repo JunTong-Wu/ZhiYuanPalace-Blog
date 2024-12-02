@@ -17,7 +17,7 @@
       </template>
       <template #onload>
         <ul class="row-album">
-          <li class="clo-album-card" v-for="item in albumListData">
+          <li class="clo-album-card" v-for="item in albumListData.list">
             <AlbumCard :href="`/audio/photo/${item.album_path}`" class="sm:rounded">
               <template #image>
                 <ZyLazyImage :src="`${cdnUrl}${item.album_cover}`" alt="" />
@@ -43,9 +43,9 @@ import { ApiPhotos } from "~/utils";
 
 // 获取相册列表
 const albumListDataLazyFetch = await ApiPhotos.getAlbumsList(null);
-const albumListData = ref<AlbumListItem[]>();
-const showAlbumList = (result: ResOptions<AlbumList>) => {
-  albumListData.value = result.data.list;
+const albumListData = ref<AlbumListModelType>(new AlbumListModel());
+const showAlbumList = (result: ResOptionsModelType<AlbumListModelType>) => {
+  albumListData.value = result.data;
 };
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;

@@ -1,8 +1,11 @@
+import { photo } from "@@/models";
+type ApiAlbumModelType = photo.ApiAlbum;
+
 /**
  * 查询相册列表
  */
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
+  const body = (await readBody(event)) as ApiAlbumModelType["params"];
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const albumPath = body.album_path || null;
@@ -27,5 +30,8 @@ export default defineEventHandler(async (event) => {
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     total = dbResults.data.length;
   }
-  return setJson({ data: { list: dbResults.data, total: total } }, dbResults);
+  return setJson(
+    { data: { list: dbResults.data, total: total } },
+    dbResults
+  ) as ApiAlbumModelType["result"];
 });

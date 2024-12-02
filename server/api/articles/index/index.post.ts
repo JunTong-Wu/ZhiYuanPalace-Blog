@@ -1,8 +1,11 @@
+import { article } from "@@/models";
+type ApiIndexModelType = article.ApiIndex;
+
 /**
  * 查询文章列表
  */
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
+  const body = (await readBody(event)) as ApiIndexModelType["params"];
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const classifyPath = body.classify_path || null;
@@ -38,5 +41,8 @@ export default defineEventHandler(async (event) => {
     total = dbResults.data.length;
   }
 
-  return setJson({ data: { list: dbResults.data, total: total } }, dbResults);
+  return setJson(
+    { data: { list: dbResults.data, total: total } },
+    dbResults
+  ) as ApiIndexModelType["result"];
 });

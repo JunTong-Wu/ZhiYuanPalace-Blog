@@ -66,8 +66,9 @@ const getArticleWithPassword = async (params: { password: string }) => {
   articleDataLazyFetch = await getArticleDataLazyFetch(params.password);
 };
 
-const articleData = ref<ArticleListItem>({ ...ArticleListItemData });
-const showArticle = (result: ResOptions<ArticleListItem>) => {
+const articleData = ref<ArticleModelType>(new ArticleModel());
+
+const showArticle = (result: ResOptionsModelType<ArticleModelType>) => {
   articleData.value = result.data;
   setHeaderTitle(result.data.article_id, result.data.article_title)
 };

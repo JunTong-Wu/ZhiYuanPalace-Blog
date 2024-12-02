@@ -20,7 +20,7 @@
       </template>
       <template #onload>
         <ul class="row-shuoshuo">
-          <li class="clo-shuoshuo-card" v-for="item in shuoshuoListData">
+          <li class="clo-shuoshuo-card" v-for="item in shuoshuoListData.list">
             <ShuoShuoCard :href="`/text/shuoshuo/${item.shuoshuo_id}`">
               <template #image>
                 <div v-for="n in item.shuoshuo_images">
@@ -43,9 +43,9 @@
 <script setup lang="ts">
 // 获取说说列表
 const shuoshuoListDataLazyFetch = await ApiShuoShuo.getShuoshuoList(null);
-const shuoshuoListData = ref<ShuoshuoListItem[]>();
-const showShuoshuoList = (result: ResOptions<ShuoshuoList>) => {
-  shuoshuoListData.value = result.data.list;
+const shuoshuoListData = ref<ShuoshuoListModelType>(new ShuoshuoListModel());
+const showShuoshuoList = (result: ResOptionsModelType<ShuoshuoListModelType>) => {
+  shuoshuoListData.value = result.data;
 };
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;

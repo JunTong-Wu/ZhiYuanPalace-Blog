@@ -36,8 +36,8 @@ const id = route.params.id as string;
 
 // 获取文章内容
 const shuoshuoDataLazyFetch = await ApiShuoShuo.showShuoshuo({ shuoshuo_id: id });
-const shuoshuoData = ref<ShuoshuoListItem>({ ...ShuoshuoListItemData });
-const showShuoshuo = (result: ResOptions<ShuoshuoListItem>) => {
+const shuoshuoData = ref<ShuoshuoModelType>(new ShuoshuoModel());
+const showShuoshuo = (result: ResOptionsModelType<ShuoshuoModelType>) => {
   shuoshuoData.value = result.data;
   setHeaderTitle(shuoshuoData.value.shuoshuo_id, shuoshuoData.value.shuoshuo_text.substring(0, 30) + "...");
 };

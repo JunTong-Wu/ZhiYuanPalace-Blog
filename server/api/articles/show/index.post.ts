@@ -1,8 +1,11 @@
+import { article } from "@@/models";
+type ApiShowModelType = article.ApiShow;
+
 /**
  * 展示单篇文章
  */
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
+  const body = (await readBody(event)) as ApiShowModelType["params"];
   const id = body.article_id || null;
   const password = body.article_password || null;
   let sql = "SELECT * FROM articles WHERE article_id= ?";
@@ -21,7 +24,10 @@ export default defineEventHandler(async (event) => {
   ) {
     const results = dbResults;
     delete results.data[0].article_password;
-    return setJson({ data: results.data[0] }, results);
+    return setJson(
+      { data: results.data[0] },
+      results
+    ) as ApiShowModelType["result"];
   } else {
     return setJson({
       code: 401,

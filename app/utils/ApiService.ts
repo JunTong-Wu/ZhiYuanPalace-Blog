@@ -2,6 +2,9 @@ import qs from "qs";
 import NProgress from "nprogress";
 import type { AsyncDataRequestStatus } from "#app";
 
+import { options } from "@@/models";
+type ResOptions<T> = options.ResOptions<T>;
+
 interface ResponseMap {
   blob: Blob;
   text: string;
@@ -20,11 +23,7 @@ export interface RequestOptions {
   key?: string;
 }
 
-export interface ResOptions<T> {
-  data: T;
-  code: number;
-  message: string;
-}
+export type ResOptionsModelType<T> = ResOptions<T>;
 
 //_AsyncData
 export interface LazyAsyncDataRef<T> {

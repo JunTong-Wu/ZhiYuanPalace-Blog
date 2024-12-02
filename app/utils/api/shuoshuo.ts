@@ -1,20 +1,28 @@
-import type { ShuoshuoListItem, ShuoshuoList } from "../models/post/shuoshuo";
+import { shuoshuo } from "@@/models";
+
+export const ShuoshuoModel = shuoshuo.Shuoshuo;
+export const ShuoshuoListModel = shuoshuo.ShuoshuoList;
+
+export type ShuoshuoModelType = shuoshuo.Shuoshuo;
+export type ShuoshuoListModelType = shuoshuo.ShuoshuoList;
+export type ApiIndexModelType = shuoshuo.ApiIndex;
+export type ApiShowModelType = shuoshuo.ApiShow;
 
 export const ApiShuoShuo = {
   /**
    * 查询说说列表
    */
   getShuoshuoList(
-    params: any
-  ): Promise<LazyAsyncDataRef<ResOptions<ShuoshuoList>>> {
+    params: ApiIndexModelType["params"] | null
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<ShuoshuoListModelType>>> {
     return ApiService.post("/shuoshuo/index", params);
   },
   /**
    * 查询单条说说
    */
   showShuoshuo(
-    params: any
-  ): Promise<LazyAsyncDataRef<ResOptions<ShuoshuoListItem>>> {
+    params: ApiShowModelType["params"]
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<ShuoshuoModelType>>> {
     return ApiService.post(`/shuoshuo/show`, params);
   },
 };

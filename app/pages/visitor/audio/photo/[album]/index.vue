@@ -25,7 +25,7 @@
         <template #loading>test</template>
         <template #onload>
           <ul class="row-photo">
-            <li class="clo-photo-card" v-for="item in photoList">
+            <li class="clo-photo-card" v-for="item in photoList.list">
               <div>
                 <ZyLazyImage className="w-full rounded-none overflow-hidden aspect-square"
                   :src="`${cdnUrl}${item.photo_thumbnail_path}`" :sourceSrc="`${cdnUrl}${item.photo_source_path}`" alt=""
@@ -54,13 +54,13 @@ const albumPath = route.params.album as string;
 // 获取相册内容
 const albumDetailDataLazyFetch = await ApiPhotos.getAlbumsList({ album_path: albumPath });
 const photoListLazyFetch = await ApiPhotos.getPhotosList({ album_path: albumPath });
-const albumDetailData = ref<AlbumListItem>({ ...AlbumListItemData });
-const photoList = ref<PhotoListItem[]>();
-const showAlbumDetail = (result: ResOptions<AlbumList>) => {
-  albumDetailData.value = result.data.list[0] as AlbumListItem;
+const albumDetailData = ref<AlbumModelType>(new AlbumModel());
+const photoList = ref<PhotoListModelType>(new PhotoListModel());
+const showAlbumDetail = (result: ResOptionsModelType<AlbumListModelType>) => {
+  albumDetailData.value = result.data.list[0] as AlbumModelType;
 }
-const showPhotoDetail = (result: ResOptions<PhotoList>) => {
-  photoList.value = result.data.list;
+const showPhotoDetail = (result: ResOptionsModelType<PhotoListModelType>) => {
+  photoList.value = result.data;
   setHeaderTitle(albumDetailData.value.album_id, albumDetailData.value.album_title);
 }
 const config = useRuntimeConfig();

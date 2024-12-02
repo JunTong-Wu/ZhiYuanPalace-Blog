@@ -1,4 +1,18 @@
 import { defineStore } from "pinia";
+type PostType =
+  | "article"
+  | "shuoshuo"
+  | "song"
+  | "album"
+  | "video"
+  | "site"
+  | "unknown";
+
+interface PostInfo {
+  id: number;
+  type: PostType;
+  title: string;
+}
 
 export const usePostInfo = defineStore("postInfo", {
   state: () => {

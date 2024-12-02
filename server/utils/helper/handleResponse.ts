@@ -1,8 +1,6 @@
-import { errorMessages } from "vue/compiler-sfc";
-
-export const getHandledQuery = async (sql: string, values: any) => {
+export const getHandledQuery = async (sql: string, values?: any) => {
   try {
-    const rows = (await getDBQuery(sql, values)) as any[];
+    const rows = (await getDBQuery(sql, values || null)) as any[];
     if (rows) {
       return { code: 0, message: "查询成功", data: rows };
     } else {

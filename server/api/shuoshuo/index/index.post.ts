@@ -1,8 +1,11 @@
+import { shuoshuo } from "@@/models";
+type ApiIndexModelType = shuoshuo.ApiIndex;
+
 /**
  * 查询说说列表
  */
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
+  const body = (await readBody(event)) as ApiIndexModelType["params"];
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const collectionPath = body.coll_path || null;
@@ -36,5 +39,8 @@ export default defineEventHandler(async (event) => {
     total = dbResults.data.length;
   }
 
-  return setJson({ data: { list: dbResults.data, total: total } }, dbResults);
+  return setJson(
+    { data: { list: dbResults.data, total: total } },
+    dbResults
+  ) as ApiIndexModelType["result"];
 });
