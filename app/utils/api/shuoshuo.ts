@@ -5,8 +5,9 @@ export const ShuoshuoListModel = shuoshuo.ShuoshuoList;
 
 export type ShuoshuoModelType = shuoshuo.Shuoshuo;
 export type ShuoshuoListModelType = shuoshuo.ShuoshuoList;
-export type ApiIndexModelType = shuoshuo.ApiIndex;
-export type ApiShowModelType = shuoshuo.ApiShow;
+
+type ApiIndexModelType = shuoshuo.ApiIndex;
+type ApiShowModelType = shuoshuo.ApiShow;
 
 export const ApiShuoShuo = {
   /**

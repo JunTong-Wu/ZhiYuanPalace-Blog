@@ -5,8 +5,9 @@ export const ArticleListModel = article.ArticleList;
 
 export type ArticleModelType = article.Article;
 export type ArticleListModelType = article.ArticleList;
-export type ApiIndexModelType = article.ApiIndex;
-export type ApiShowModelType = article.ApiShow;
+
+type ApiIndexModelType = article.ApiIndex;
+type ApiShowModelType = article.ApiShow;
 
 export const ApiArticle = {
   /**

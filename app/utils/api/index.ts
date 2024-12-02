@@ -4,3 +4,4 @@ export * from "./friend";
 export * from "./shuoshuo";
 export * from "./photos";
 export * from "./user";
+export * from "./dashboard";

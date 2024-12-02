@@ -24,6 +24,7 @@
     "mysql2": "^3.11.4",
     "nprogress": "^0.2.0",
     "nuxt": "^3.12.4",
+    "os": "^0.1.2",
     "pinia": "^2.2.1",
     "qs": "^6.13.0",
     "vite-plugin-compression": "^0.5.1",

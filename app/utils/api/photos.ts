@@ -9,15 +9,16 @@ export type PhotoModelType = photo.Photo;
 export type PhotoListModelType = photo.PhotoList;
 export type AlbumModelType = photo.PhotoAlbum;
 export type AlbumListModelType = photo.PhotoAlbumList;
-export type ApiIndexModelType = photo.ApiIndex;
-export type ApiAlbumModelType = photo.ApiAlbum;
+
+type ApiIndexModelType = photo.ApiIndex;
+type ApiAlbumModelType = photo.ApiAlbum;
 
 export const ApiPhotos = {
   /**
    * 查询相册列表
    */
   getAlbumsList(
-    params: any
+    params: ApiAlbumModelType["params"] | null
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<AlbumListModelType>>> {
     return ApiService.post("/photos/albums", params);
   },
@@ -25,7 +26,7 @@ export const ApiPhotos = {
    * 查询照片列表
    */
   getPhotosList(
-    params: any
+    params: ApiIndexModelType["params"] | null
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<PhotoListModelType>>> {
     return ApiService.post("/photos/index", params);
   },
