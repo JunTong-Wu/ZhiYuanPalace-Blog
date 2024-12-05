@@ -1,11 +1,11 @@
 <template>
   <div class="zy-image-preview cursor-pointer" @click="togglePreview" :class="className">
     <img :src="thumbnailSrc" :alt="alt" :style="style" />
-    <Teleport to="body">
+    <Teleport to="#zy-image-preview-root">
       <HeadlessTransitionRoot :show="previewOpen" appear as="template">
         <HeadlessTransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
           leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
-          <div class="fixed z-[100] top-0 left-0 w-full h-full transition-opacity duration-200 bg-mask backdrop-blur-xl"
+          <div class="fixed z-[100] top-0 left-0 w-full h-full transition-opacity duration-200 bg-[rgba(0,0,0,0.5)]"
             @click="togglePreview">
             <div class="flex flex-col items-center justify-center h-full w-full">
               <div v-loading v-if="isLoading"
@@ -63,15 +63,31 @@ const togglePreview = () => {
 
 const isLoading = ref(true);
 
-onMounted(() => {
-  isLoading.value = true;
-  const imgElement = new Image();
-  imgElement.src = props.sourceSrc;
+const createImgPreviewRoot = () => {
+  const imgPreviewRoot = document.createElement('div');
+  imgPreviewRoot.id = 'zy-image-preview-root';
+  document.body.appendChild(imgPreviewRoot);
+};
 
-  imgElement.onload = () => {
-    isLoading.value = false;
-  };
-});
+onBeforeMount(() => {
+  const imgPreviewRoot = document.getElementById('zy-image-preview-root');
+  if (imgPreviewRoot) {
+    return;
+  } else {
+    createImgPreviewRoot();
+  }
+}),
+
+
+  onMounted(() => {
+    isLoading.value = true;
+    const imgElement = new Image();
+    imgElement.src = props.sourceSrc;
+
+    imgElement.onload = () => {
+      // isLoading.value = false;
+    };
+  });
 </script>
 <style lang="scss" scoped>
 .zy-image-preview {

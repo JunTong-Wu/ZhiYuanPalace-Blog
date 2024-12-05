@@ -1,123 +1,102 @@
-@keyframes border-scale {
+.loading-spinner-wrapper,
+.loading-spinner-inner,
+.loading-circle {
+  width: 5rem;
+  height: 5rem;
+}
+
+.loading-circle > circle {
+  cx: 2.5rem;
+  cy: 2.5rem;
+  fill: none;
+  stroke-linecap: round;
+  transform-origin: center;
+}
+
+.loading-circle > circle:first-child {
+  stroke: #3c455c;
+  stroke-width: 0.4rem;
+  animation: loading-circle-black 2s linear infinite;
+}
+.loading-circle > circle:last-child {
+  stroke: #ca5256;
+  stroke-dasharray: 0rem 11rem;
+  stroke-width: 0.5rem;
+  animation: loading-circle-accent 2s linear infinite;
+}
+
+@keyframes loading-circle-black {
   0% {
-    transform: scale(1);
-    border-width: 4px;
+    stroke-dasharray: 5.7rem 6.28rem;
+    transform: rotate(0deg);
+    r: 1rem;
+  }
+  37.5% {
+    stroke-dasharray: 5rem 7.85rem;
+    transform: rotate(450deg);
+    r: 1.25rem;
+  }
+  62.5% {
+    stroke-dasharray: 5rem 6.28rem;
+    transform: rotate(540deg);
+    r: 1rem;
+  }
+  87.5% {
+    stroke-dasharray: 5rem 4.71rem;
+    transform: rotate(630deg);
+    r: 0.75rem;
+  }
+  100% {
+    stroke-dasharray: 5.7rem 6.28rem;
+    transform: rotate(720deg);
+    r: 1rem;
+  }
+}
+
+@keyframes loading-circle-accent {
+  0% {
+    transform: rotate(0deg);
+    stroke-dasharray: 0rem 11rem;
+    r: 1.5rem;
+  }
+  12.5% {
+    transform: rotate(90deg);
+    stroke-dasharray: 0.5rem 11rem;
+    r: 1.25rem;
+  }
+  25% {
+    transform: rotate(180deg);
+    stroke-dasharray: 1rem 11rem;
+    r: 0.75rem;
+  }
+  37.5% {
+    transform: rotate(270deg);
+    stroke-dasharray: 1.5rem 11rem;
+    r: 0.65rem;
   }
   50% {
-    transform: scale(1.5);
-    border-width: 2px;
+    transform: rotate(360deg);
+    stroke-dasharray: 2rem 11rem;
+    r: 0.65rem;
+  }
+  62.5% {
+    transform: rotate(450deg);
+    stroke-dasharray: 1.5rem 11rem;
+    r: 1rem;
   }
   75% {
-    transform: scale(1);
-    border-width: 4px;
+    transform: rotate(540deg);
+    stroke-dasharray: 1rem 11rem;
+    r: 1.5rem;
+  }
+  87.5% {
+    transform: rotate(630deg);
+    stroke-dasharray: 0.5rem 11rem;
+    r: 1.5rem;
   }
   100% {
-    transform: scale(1);
-    border-width: 4px;
-  }
-}
-@keyframes center-scale {
-  0% {
-    transform: scale(1);
-    border-width: 4px;
-  }
-  50% {
-    transform: scale(0.8);
-    border-width: 3px;
-  }
-  75% {
-    transform: scale(1);
-    border-width: 4px;
-  }
-  100% {
-    transform: scale(1);
-    border-width: 4px;
-  }
-}
-@keyframes spin {
-  0% {
-    transform: rotate(30deg);
-    animation-timing-function: ease-in;
-  }
-  42% {
-    transform: rotate(900deg);
-    animation-timing-function: ease-out;
-  }
-  52% {
-    transform: rotate(1260deg);
-    animation-timing-function: ease-out;
-  }
-  65% {
-    transform: rotate(1510deg);
-    animation-timing-function: ease-out;
-  }
-  75% {
-    transform: rotate(1460deg);
-    animation-timing-function: ease-in-out;
-  }
-  90% {
-    transform: rotate(1500deg);
-    animation-timing-function: ease-in-out;
-  }
-  100% {
-    transform: rotate(1470deg);
-    animation-timing-function: ease-in-out;
-  }
-}
-*.is-loading {
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    backdrop-filter: blur(5rem);
-    z-index: 9999;
-    border-radius: inherit;
-  }
-  .loading-spinner-wrapper {
-    position: absolute;
-    inset: 0;
-    z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .loading-spinner-inner {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      border: 4px solid var(--text-5);
-      animation: spin 3s infinite;
-      position: relative;
-      &::after {
-        position: absolute;
-        right: -0.3rem;
-        top: -0.3rem;
-        content: "";
-        width: calc(100% + 0.6rem);
-        height: calc(100% + 0.6rem);
-        border-radius: 9999px;
-        border: 4px solid var(--theme-color);
-        border-top-color: transparent;
-        border-left-color: transparent;
-        animation: border-scale 3s infinite;
-      }
-      &::before {
-        position: absolute;
-        left: -0.3rem;
-        top: -0.3rem;
-        content: "";
-        width: calc(100% + 0.6rem);
-        height: calc(100% + 0.6rem);
-        border-radius: 9999px;
-        border: 4px solid var(--text-1);
-        border-bottom-color: transparent;
-        border-right-color: transparent;
-        animation: center-scale 3s infinite;
-      }
-    }
+    transform: rotate(720deg);
+    stroke-dasharray: 0rem 11rem;
+    r: 1.5rem;
   }
 }

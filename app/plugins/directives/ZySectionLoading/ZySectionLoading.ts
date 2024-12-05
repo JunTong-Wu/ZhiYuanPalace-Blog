@@ -1,11 +1,17 @@
 import type { DirectiveBinding } from "vue";
-import './ZySectionLoading.scss';
+import "./ZySectionLoading.scss";
 export const Loading = {
   mounted(el: HTMLElement, binding: DirectiveBinding) {
     const div = document.createElement("div");
     div.classList.add("loading-spinner-wrapper");
     const inner = document.createElement("div");
     inner.classList.add("loading-spinner-inner");
+    inner.innerHTML = `
+    <svg class="loading-circle">
+      <circle />
+      <circle />
+    </svg>
+    `;
     div.appendChild(inner);
     el.appendChild(div);
     if (binding.value) {
