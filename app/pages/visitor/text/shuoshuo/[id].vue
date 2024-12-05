@@ -24,7 +24,7 @@
 </template>
 <script setup lang="ts">
 
-const { setPostInfo } = toRefs(
+const { setPostInfo, clearPostInfo } = toRefs(
   store.usePostInfo()
 );
 const setHeaderTitle = (id: number, title: string) => {
@@ -34,7 +34,7 @@ const setHeaderTitle = (id: number, title: string) => {
 const route = useRoute();
 const id = route.params.id as string;
 
-// 获取文章内容
+// 获取说说内容
 const shuoshuoDataLazyFetch = await ApiShuoShuo.showShuoshuo({ shuoshuo_id: id });
 const shuoshuoData = ref<ShuoshuoModelType>(new ShuoshuoModel());
 const showShuoshuo = (result: ResOptionsModelType<ShuoshuoModelType>) => {
@@ -43,6 +43,10 @@ const showShuoshuo = (result: ResOptionsModelType<ShuoshuoModelType>) => {
 };
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;
+
+onUnmounted(() => {
+  clearPostInfo.value();
+})
 </script>
 <style lang="scss">
 @import url("@/components/layout/ShuoShuoCard/ShuoShuoCard.scss");

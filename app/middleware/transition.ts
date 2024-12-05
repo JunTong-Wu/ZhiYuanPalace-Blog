@@ -188,6 +188,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
   }
 
   // HeaderTitle
-  const { clearPostInfo } = toRefs(store.usePostInfo());
-  clearPostInfo.value();
+  // const { clearPostInfo } = toRefs(store.usePostInfo());
+  // clearPostInfo.value();
 });

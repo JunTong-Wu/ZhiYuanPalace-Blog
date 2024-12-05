@@ -9,9 +9,9 @@
   }" class="min-h-4 min-w-4 p-0 m-0 flex items-center justify-center relative" ref="button" type="button"
     :title="title" :disabled="loading" @mousedown="animationStart()" @mouseup="animationEnd()"
     @touchstart.passive="animationStart()" @touchend.passive="animationEnd()">
-    <span v-if="loading" class="absolute top-0 left-0 w-full h-full">
-      <UIcon name="i-eos-icons-three-dots-loading" class="w-8 h-8" />
-    </span>
+    <div v-if="loading" class="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+      <UIcon name="i-eos-icons-three-dots-loading" class="w-12 h-12" />
+    </div>
     <span class="flex-1 flex items-center justify-center" :class="{ 'opacity-0': loading }">
       <slot />
     </span>

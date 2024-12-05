@@ -24,11 +24,13 @@ export const usePostInfo = defineStore("postInfo", {
   },
   actions: {
     setPostInfo(id: number, type: PostType, title: string) {
+      console.log("setPostInfo");
       this.id = id;
       this.type = type;
       this.title = title;
     },
     clearPostInfo() {
+      console.log("clearPostInfo");
       this.id = 0;
       this.type = "unknown";
       this.title = "";

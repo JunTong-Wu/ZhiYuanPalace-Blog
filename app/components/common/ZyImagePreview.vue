@@ -5,15 +5,18 @@
       <HeadlessTransitionRoot :show="previewOpen" appear as="template">
         <HeadlessTransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
           leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
-          <div class="fixed z-[100] top-0 left-0 w-full h-full transition-opacity duration-200 bg-[rgba(0,0,0,0.5)]"
+          <div class="fixed z-[100] top-0 left-0 w-full h-full transition-opacity duration-200 bg-[rgba(0,0,0,0.7)]"
             @click="togglePreview">
-            <div class="flex flex-col items-center justify-center h-full w-full">
-              <div v-loading v-if="isLoading"
-                class="w-full h-full flex flex-col items-center justify-center brightness-50">
-                <img :src="thumbnailSrc" :alt="alt" :style="style" />
+
+            <div v-if="isLoading" v-loading="isLoading" class="flex flex-col items-center justify-center h-full w-full">
+              <div class="flex flex-col items-center justify-center w-32 h-32 relative">
+                <!-- <img class="rounded" :src="thumbnailSrc" :alt="alt" :style="style" /> -->
+                <div class=" absolute inset-0 bg-level-3 rounded flex justify-center items-end">
+                  <span class="translate-y-10 text-white">原图加载中</span>
+                </div>
               </div>
-              <img v-else class="w-full h-full object-contain" :src="sourceSrc" :alt="alt" :style="style" />
             </div>
+            <img v-else class="w-full h-full object-contain" :src="sourceSrc" :alt="alt" :style="style" />
           </div>
         </HeadlessTransitionChild>
       </HeadlessTransitionRoot>
@@ -78,16 +81,18 @@ onBeforeMount(() => {
   }
 }),
 
+  watch(() => previewOpen.value, (newValue) => {
+    if (newValue) {
+      isLoading.value = true;
+      const imgElement = new Image();
+      imgElement.src = props.sourceSrc;
 
-  onMounted(() => {
-    isLoading.value = true;
-    const imgElement = new Image();
-    imgElement.src = props.sourceSrc;
+      imgElement.onload = () => {
+        isLoading.value = false;
+      };
+    }
+  })
 
-    imgElement.onload = () => {
-      // isLoading.value = false;
-    };
-  });
 </script>
 <style lang="scss" scoped>
 .zy-image-preview {

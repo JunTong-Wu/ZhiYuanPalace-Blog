@@ -41,7 +41,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const { setPostInfo } = toRefs(
+const { setPostInfo, clearPostInfo } = toRefs(
   store.usePostInfo()
 );
 const setHeaderTitle = (id: number, title: string) => {
@@ -65,6 +65,10 @@ const showPhotoDetail = (result: ResOptionsModelType<PhotoListModelType>) => {
 }
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;
+
+onUnmounted(() => {
+  clearPostInfo.value();
+})
 </script>
 <style>
 @keyframes an-album-data-grid {

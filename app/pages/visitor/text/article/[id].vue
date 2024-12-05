@@ -36,10 +36,11 @@
   </div>
 </template>
 <script setup lang="ts">
-const { setPostInfo } = toRefs(
+const { setPostInfo, clearPostInfo } = toRefs(
   store.usePostInfo()
 );
 const setHeaderTitle = (id: number, title: string) => {
+  console.log('route:', route.fullPath);
   setPostInfo.value(id, "article", title)
 }
 
@@ -75,6 +76,10 @@ const showArticle = (result: ResOptionsModelType<ArticleModelType>) => {
 
 const config = useRuntimeConfig();
 const cdnUrl = config.public.CDN_URL;
+
+onUnmounted(() => {
+  clearPostInfo.value();
+})
 </script>
 <style lang="scss">
 @import url("@/components/layout/ArticleCard/ArticleCard.scss");
