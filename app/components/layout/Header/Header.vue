@@ -2,7 +2,7 @@
   <header class="select-none">
     <!-- PC端顶栏遮蔽 -->
     <div class="portrait:hidden h-status w-full bg-level-b1">
-      <div class="h-status reverse-rounded"></div>
+      <div class="h-status reverse-rounded pointer-events-none"></div>
     </div>
     <div class="absolute z-10 top-0 left-0 h-status w-full bg-level-b1"></div>
 
@@ -88,45 +88,42 @@
     </div>
 
     <!-- 主体 -->
-    <div class=" h-full text-text-1 portrait:text-white bg-headBar backdrop-blur-3xl">
-      <!-- 背景 -->
-      <div class="landscape:hidden">
-        <div class="absolute top-0 h-header w-full portrait:bg-theme-500 portrait:dark:brightness-[.5] ">
-        </div>
-        <div
-          class=" absolute top-0 h-full w-full bg-gradient-to-r from-theme-500 to-transparent pointer-events-none dark:brightness-50 mix-blend-multiply">
-        </div>
-      </div>
+    <div class=" h-full text-text-1 bg-headBar backdrop-blur-3xl">
       <!-- 主体内容 -->
       <div class="zy-header-inner h-full relative z-10">
         <div class="h-header relative">
           <div class="h-full w-auto flex items-center justify-between">
-            <div class="flex gap-2 items-center h-full">
+            <div class="flex gap-2 items-center h-full flex-1">
               <GoBackButton />
               <HeaderTitle :isAdminHeader="isAdminHeader" />
               <ClientOnly>
                 <PostTitle />
               </ClientOnly>
             </div>
-            <!-- 按键区 -->
-            <div class="h-full landscape:hidden">
-              <div class="flex items-center w-full h-full justify-between">
-                <div class="flex items-center h-full">
-                  <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openSearchDrawer()" title="搜索"
-                    type="transparent">
-                    <UIcon name="i-fluent-search-20-regular" class="w-5 h-5" />
-                  </ZyButton>
-                  <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openMoreDrawer()" title="更多选项"
-                    type="transparent">
-                    <UIcon name="i-fluent-more-vertical-20-regular" class="w-5 h-5" />
-                  </ZyButton>
-                  <ZyButton v-if="isAdminHeader" class="w-header h-header" @click="openAdminNavigationDrawer()" title="菜单"
-                    type="transparent">
-                    <UIcon name="i-fluent-navigation-20-filled" class="w-5 h-5" />
-                  </ZyButton>
+            <div class="flex gap-2 items-center h-full overflow-hidden flex-none">
+              <!-- PC端按键区 -->
+              <BackToTop />
+              <!-- 移动端按键区 -->
+              <div class="h-full landscape:hidden">
+                <div class="flex items-center w-full h-full justify-between">
+                  <div class="flex items-center h-full">
+                    <!-- <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openSearchDrawer()" title="搜索"
+                      type="transparent">
+                      <UIcon name="i-fluent-search-20-regular" class="w-5 h-5" />
+                    </ZyButton> -->
+                    <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openMoreDrawer()" title="更多选项"
+                      type="transparent">
+                      <UIcon name="i-fluent-navigation-20-filled" class="w-5 h-5" />
+                    </ZyButton>
+                    <ZyButton v-if="isAdminHeader" class="w-header h-header" @click="openAdminNavigationDrawer()"
+                      title="菜单" type="transparent">
+                      <UIcon name="i-fluent-navigation-20-filled" class="w-5 h-5" />
+                    </ZyButton>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 

@@ -9,12 +9,6 @@
   --shadow-color: rgba(var(--theme-color-rgb), 0.5);
 }
 
-@media (orientation: portrait) {
-  #nprogress {
-    --progress-color: rgba(255, 255, 255, 0.5);
-  }
-}
-
 #nprogress .bar {
   background: var(--progress-color);
   position: fixed;
