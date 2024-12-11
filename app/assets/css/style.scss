@@ -65,7 +65,7 @@ a {
     --side-bar-width: 0rem;
     --tool-bar-width: 0rem;
     --drawer-width: 100vw;
-    --music-bar-height: 2.75rem;
+    --music-bar-height: 3rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
@@ -82,7 +82,7 @@ a {
     --side-bar-width: 14rem;
     --tool-bar-width: 0rem;
     --drawer-width: 20rem;
-    --music-bar-height: calc(var(--header-bar-height) - 1.5rem);
+    --music-bar-height: calc(var(--header-bar-height) - 1rem);
     --music-bar-width: 24rem;
     --music-bar-top: 0.5rem;
     --pt-main: var(--header-bar-height);

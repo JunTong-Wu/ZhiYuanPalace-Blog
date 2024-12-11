@@ -20,7 +20,7 @@
         </template>
       </ZyFetchLoading>
     </div>
-    <CommonMainSection noPaddingTop class="album-data-grid">
+    <div class="album-data-grid mt-10">
       <ZyFetchLoading :fetchData="photoListLazyFetch" @fetchOnload="showPhotoDetail">
         <template #loading>test</template>
         <template #onload>
@@ -35,7 +35,7 @@
           </ul>
         </template>
       </ZyFetchLoading>
-    </CommonMainSection>
+    </div>
 
     <Toolbar />
   </div>

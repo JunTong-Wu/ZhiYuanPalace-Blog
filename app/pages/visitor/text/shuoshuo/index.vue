@@ -1,6 +1,6 @@
 <template>
-  <CommonMainSection>
-    <ZyFetchLoading class="pt-8" :fetchData="shuoshuoListDataLazyFetch" @fetchOnload="showShuoshuoList">
+  <CommonMainSection noPaddingTop>
+    <ZyFetchLoading :fetchData="shuoshuoListDataLazyFetch" @fetchOnload="showShuoshuoList">
       <template #loading>
         <ul class="row-shuoshuo">
           <li class="clo-shuoshuo-card" v-for="n in 12">

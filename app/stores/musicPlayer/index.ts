@@ -3,10 +3,10 @@ import { defineStore } from "pinia";
 export const useMusicControl = defineStore("musicControl", {
   state: () => {
     return {
-      musicNowTitle: "凌乱的华丽",
-      musicNowSinger: "单色凌",
-      musicNowCover: "/uploads/music/cover/单色凌 - 凌乱的华丽.jpg",
-      musicNowAudio: "/uploads/music/audio/单色凌 - 凌乱的华丽.ogg",
+      musicNowTitle: "幻听",
+      musicNowSinger: "许嵩",
+      musicNowCover: "/uploads/music/cover/许嵩 - 幻听.jpg",
+      musicNowAudio: "/uploads/music/audio/许嵩 - 幻听.ogg",
       musicPlayState: false,
       musicLyricState: false,
     };
@@ -108,6 +108,12 @@ export const useMusicList = defineStore("musicList", {
     return {
       musicList: [
         {
+          title: "幻听",
+          singer: "许嵩",
+          cover: "/uploads/music/cover/许嵩 - 幻听.jpg",
+          audio: "/uploads/music/audio/许嵩 - 幻听.ogg",
+        },
+        {
           title: "凌乱的华丽",
           singer: "单色凌",
           cover: "/uploads/music/cover/单色凌 - 凌乱的华丽.jpg",
@@ -184,12 +190,6 @@ export const useMusicList = defineStore("musicList", {
           singer: "许嵩",
           cover: "/uploads/music/cover/许嵩 - 多余的解释.jpg",
           audio: "/uploads/music/audio/许嵩 - 多余的解释.ogg",
-        },
-        {
-          title: "幻听",
-          singer: "许嵩",
-          cover: "/uploads/music/cover/许嵩 - 幻听.jpg",
-          audio: "/uploads/music/audio/许嵩 - 幻听.ogg",
         },
         {
           title: "断桥残雪",

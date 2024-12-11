@@ -1,15 +1,19 @@
 <template>
-  <aside id="zy-music-bar" class="h-music select-none">
-    <div class="relative z-10 h-full flex items-center landscape:rounded-lg ">
-      <!-- <div
-        class="portrait:hidden absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-r from-theme-500 to-transparent mix-blend-multiply rounded-lg">
-      </div> -->
-      <div class="flex flex-none relative h-[120%] aspect-square">
-        <img class="h-[90%] absolute bottom-[5%] drop-shadow-md left-5" src="@/assets/image/record-128.png" alt=""
-          srcset="" />
-        <img v-if="!isLoading" class="h-full relative left-0 rounded-3xs shadow-md" :src="`${cdnUrl}${musicNowCover}`"
-          alt="" srcset="" ref="MusicCoverImageRef" @load="createDecoration()" />
-        <div v-else class="h-full w-full relative left-0 rounded-xs shadow-md bg-theme-500">
+  <aside id="zy-music-bar" class="h-music select-none portrait:rounded-2xs text-white">
+    <div class="relative z-10 h-full flex items-center landscape:rounded-xs portrait:rounded-2xs overflow-hidden">
+      <div class="absolute top-0 right-0 -z-1 w-full h-full">
+        <img v-if="!isLoading" class="h-full w-full object-cover" :src="`${cdnUrl}${musicNowCover}`" alt="" srcset=""
+          ref="MusicCoverImageRef" />
+      </div>
+      <div
+        class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.8)] backdrop-blur-3xl">
+      </div>
+      <div class="flex flex-none relative h-full aspect-square">
+        <img class="h-[80%] absolute bottom-[10%] drop-shadow-md left-6 portrait:drop-shadow-none"
+          src="@/assets/image/record-128.png" alt="" srcset="" />
+        <img v-if="!isLoading" class="h-full relative left-0 rounded-2xs shadow-md portrait:shadow-none"
+          :src="`${cdnUrl}${musicNowCover}`" alt="" srcset="" ref="MusicCoverImageRef" @load="createDecoration()" />
+        <div v-else class="h-full w-full relative left-0 rounded-2xs shadow-md bg-theme-500">
         </div>
       </div>
 
@@ -27,8 +31,7 @@
           </ZyButton>
         </div>
         <div class="flex">
-          <ZyButton class="portrait:h-music aspect-square text-theme-500" title="播放" type="transparent"
-            @click="togglePlay">
+          <ZyButton class="portrait:h-music aspect-square" title="播放" type="transparent" @click="togglePlay">
             <template v-if="musicPlayState">
               <UIcon name="i-fluent-pause-circle-16-filled" class="w-8 h-8" />
             </template>

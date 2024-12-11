@@ -1,13 +1,13 @@
 <template>
   <header class="select-none">
     <!-- PC端顶栏遮蔽 -->
-    <div class=" h-header w-full bg-level-b1">
-      <div class="h-header reverse-rounded pointer-events-none"></div>
+    <div class=" h-header w-full bg-level-b1 relative z-10 pointer-events-none">
+      <div class="h-header reverse-rounded"></div>
     </div>
     <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-b1"></div>
 
-    <!-- StatusBar -->
-    <div class="absolute z-10 top-0 left-0 h-header w-full flex items-center justify-between">
+    <!-- 主体区域 -->
+    <div class="absolute z-20 top-0 left-0 h-header w-full flex items-center justify-between">
       <div class="flex items-center h-full">
         <!-- 图标区 -->
         <Logo class="flex-none w-sidebar px-4 portrait:hidden cursor-pointer" size="small" @click="backToHome" />
@@ -276,28 +276,35 @@ const backToHome = () => {
 <style lang="scss" scoped>
 .reverse-rounded {
   --background: var(--bg-level-b1);
+  --rounded: var(--border-radius-lg);
   position: relative;
   z-index: 10;
 
   &::after {
     position: absolute;
     content: "";
-    width: 2rem;
-    height: 2rem;
+    width: var(--rounded);
+    height: var(--rounded);
     line-height: 100px;
-    bottom: -2rem;
-    background-image: radial-gradient(2rem at 2rem 2rem, transparent 2rem, var(--background) 2rem);
+    bottom: calc(0rem - var(--rounded));
+    background-image: radial-gradient(var(--rounded) at var(--rounded) var(--rounded), transparent var(--rounded), var(--background) var(--rounded));
   }
 
   &::before {
     position: absolute;
     content: "";
-    width: 2rem;
-    height: 2rem;
+    width: var(--rounded);
+    height: var(--rounded);
     line-height: 100px;
-    bottom: -2rem;
+    bottom: calc(0rem - var(--rounded));
     right: 0;
-    background-image: radial-gradient(2rem at 0rem 2rem, transparent 2rem, var(--background) 2rem);
+    background-image: radial-gradient(var(--rounded) at 0rem var(--rounded), transparent var(--rounded), var(--background) var(--rounded));
+  }
+}
+
+@media (orientation: portrait) {
+  .reverse-rounded {
+    --rounded: var(--border-radius-xs);
   }
 }
 

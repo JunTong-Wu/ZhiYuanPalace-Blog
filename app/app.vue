@@ -13,12 +13,9 @@
 
     </Html>
     <ZySuperResponsive>
-      <Layout v-if="!isLoginPage" :isAdminLayout="isAdminPage">
+      <Layout :isLoginLayout="isLoginPage" :isAdminLayout="isAdminPage">
         <NuxtPage class="nuxt-page mx-auto min-h-screen" />
       </Layout>
-      <div v-else>
-        <NuxtPage class="nuxt-page mx-auto min-h-screen" />
-      </div>
     </ZySuperResponsive>
     <ClientOnly>
       <Live2D :hide="isAdminPage || isLoginPage" />
