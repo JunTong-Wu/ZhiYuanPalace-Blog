@@ -1,23 +1,100 @@
 <template>
   <header class="select-none">
     <!-- PC端顶栏遮蔽 -->
-    <div class="portrait:hidden h-status w-full bg-level-b1">
-      <div class="h-status reverse-rounded pointer-events-none"></div>
+    <div class=" h-header w-full bg-level-b1">
+      <div class="h-header reverse-rounded pointer-events-none"></div>
     </div>
-    <div class="absolute z-10 top-0 left-0 h-status w-full bg-level-b1"></div>
+    <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-b1"></div>
 
     <!-- StatusBar -->
-    <div class="portrait:hidden absolute z-10 top-0 left-0 h-status w-full flex items-center">
-      <!-- 图标区 -->
-      <Logo class="w-sidebar px-4 portrait:hidden cursor-pointer" size="small" @click="backToHome" />
+    <div class="absolute z-10 top-0 left-0 h-header w-full flex items-center justify-between">
+      <div class="flex items-center h-full">
+        <!-- 图标区 -->
+        <Logo class="flex-none w-sidebar px-4 portrait:hidden cursor-pointer" size="small" @click="backToHome" />
+        <!-- 标题区 -->
+        <div class="flex gap-2 items-center h-full mr-4">
+          <GoBackButton class="flex-none" v-if="!isAdminHeader" />
+          <HeaderTitle class="flex-none" :isAdminHeader="isAdminHeader" />
+          <ClientOnly>
+            <PostTitle class="flex-1" />
+          </ClientOnly>
+        </div>
+      </div>
+      <div class="flex items-center h-full">
+        <!-- 歌词区 -->
+        <div class="hidden sm:flex items-center justify-center p-1 h-[70%] w-72" title="歌词" type="text">
+          <span class="text-xs text-right text-text-2 w-72 px-4">暂无歌词，享受好音乐</span>
+        </div>
+        <!-- 音乐播放器 -->
+        <Music
+          class="landscape:px-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-52 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl" />
+        <div class="h-full flex items-center">
+          <!-- 按键区 -->
+          <div class="flex justify-end h-full items-center">
+            <!-- 多语言抽屉 -->
+            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
+              <ZyPopover title="切换语言" background="var(--bg-level-1)" class="w-full h-full">
+                <template #reference>
+                  <ZyButton class="flex items-center justify-center w-full h-full" title="切换语言" type="icon">
+                    <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
+                  </ZyButton>
+                </template>
+                <template #actions>
+                  <LanguagePopoverInner />
+                </template>
+              </ZyPopover>
+            </div>
 
-      <!-- 歌词区 -->
-      <ZyButton class="flex items-center justify-center p-1 h-[70%] w-72" title="歌词" type="text">
-        <span class="text-xs text-text-2 w-72 px-4 text-start">暂无歌词，享受好音乐</span>
-      </ZyButton>
+            <div v-if="!isAdminHeader" class="portrait:hidden p-2 -ml-2 h-header w-header">
+              <ZyButton class="flex items-center justify-center w-full h-full" @click="openSearchDrawer()" title="搜索"
+                type="icon">
+                <UIcon name="i-fluent-search-20-regular" class="w-6 h-6" />
+              </ZyButton>
+            </div>
+
+            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
+              <ZyButton class="flex items-center justify-center w-full h-full" @click="toggleFullScreen" title="全屏/退出全屏"
+                type="icon">
+                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
+                <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
+              </ZyButton>
+            </div>
+
+            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
+              <ZyButton class="flex items-center justify-center w-full h-full" @click="darkModeSwitch" title="日间/夜间"
+                type="icon">
+                <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
+                <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
+              </ZyButton>
+            </div>
+
+            <BackToTop class="p-2 -ml-2" />
+
+            <div v-if="!isAdminHeader" class="p-2 -ml-2 h-header w-header">
+              <ZyButton class="flex items-center justify-center w-full h-full" @click="openMoreDrawer()" title="更多选项"
+                type="icon">
+                <UIcon name="i-fluent-navigation-20-regular" class=" w-6 h-6" />
+              </ZyButton>
+            </div>
+
+            <div v-if="isAdminHeader" class="p-2 -ml-2 h-header w-header">
+              <ZyButton class="flex items-center justify-center w-full h-full" @click="backToHome" title="回到前台"
+                type="icon">
+                <UIcon name="i-fluent-home-20-regular" class="w-6 h-6" />
+              </ZyButton>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
 
       <!-- 时钟区 -->
-      <ClientOnly>
+      <!-- <ClientOnly>
         <div class="layout-clock absolute left-[50%] -translate-x-[50%] h-full">
           <div
             class="bg-background w-72 flex flex-col items-center px-4 rounded-full h-[70%] relative top-[15%] justify-center">
@@ -25,18 +102,32 @@
             <div class="date text-xs text-text-3">{{ todayDate }}</div>
           </div>
         </div>
-      </ClientOnly>
+      </ClientOnly> -->
 
-      <div class="absolute right-2 top-0 h-full flex items-center">
-        <!-- 日期区 -->
 
-        <!-- 按键区 -->
-        <div class="flex justify-end h-full items-center">
-          <!-- 多语言抽屉 -->
-          <div class="p-2 -ml-2 h-status w-status">
-            <ZyPopover title="切换语言" background="var(--bg-level-1)" class="w-full h-full">
+    </div>
+
+    <!-- 搜索抽屉 -->
+    <ZyDrawer title="搜索" :display="searchDisplay" @cancel="closeSearchDrawer" position="top" size="100%"
+      maskColor="var(--bg-mask)" :maskBlur="true">
+    </ZyDrawer>
+    <!-- 设置抽屉 -->
+    <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="var(--drawer-width)"
+      maskColor="rgba(0,0,0,0.4)" background="var(--bg-level-1)">
+      <MoreDrawerInner @closeDrawer="closeMoreDrawer">
+        <template #footer>
+          <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
+            <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
+              <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
+              <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
+            </ZyButton>
+            <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
+              <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
+              <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
+            </ZyButton>
+            <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
               <template #reference>
-                <ZyButton class="flex items-center justify-center w-full h-full" title="切换语言" type="icon">
+                <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
                   <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
                 </ZyButton>
               </template>
@@ -45,155 +136,41 @@
               </template>
             </ZyPopover>
           </div>
-
-
-          <div v-if="!isAdminHeader" class="p-2 -ml-2 h-status w-status">
-            <ZyButton class="flex items-center justify-center w-full h-full" @click="openSearchDrawer()" title="搜索"
+        </template>
+      </MoreDrawerInner>
+    </ZyDrawer>
+    <!-- 管理员移动端导航抽屉 -->
+    <ZyDrawer title="导航" :display="adminNavigationDisplay" @cancel="closeAdminNavigationDrawer" position="top" size="100%"
+      background="var(--bg-background)">
+      <AdminNavigationDrawerInner @closeDrawer="closeAdminNavigationDrawer">
+        <template #footer>
+          <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
+            <ZyButton v-if="isAdminHeader" class="flex items-center justify-center" @click="backToHome" title="回到前台"
               type="icon">
-              <UIcon name="i-fluent-search-20-regular" class="w-6 h-6" />
+              <UIcon name="i-fluent-home-20-regular" class="w-6 h-6" />
             </ZyButton>
-          </div>
-
-          <div class="p-2 -ml-2 h-status w-status">
-            <ZyButton class="flex items-center justify-center w-full h-full" @click="toggleFullScreen" title="全屏/退出全屏"
-              type="icon">
+            <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
               <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
               <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
             </ZyButton>
-          </div>
-
-          <div class="p-2 -ml-2 h-status w-status">
-            <ZyButton class="flex items-center justify-center w-full h-full" @click="darkModeSwitch" title="日间/夜间"
-              type="icon">
+            <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
               <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
               <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
             </ZyButton>
+            <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
+              <template #reference>
+                <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
+                  <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
+                </ZyButton>
+              </template>
+              <template #actions>
+                <LanguagePopoverInner />
+              </template>
+            </ZyPopover>
           </div>
-
-          <div v-if="!isAdminHeader" class="p-2 -ml-2 h-status w-status">
-            <ZyButton class="flex items-center justify-center w-full h-full" @click="openMoreDrawer()" title="更多选项"
-              type="icon">
-              <UIcon name="i-fluent-more-vertical-20-regular" class="w-6 h-6" />
-            </ZyButton>
-          </div>
-
-          <div v-if="isAdminHeader" class="p-2 -ml-2 h-status w-status">
-            <ZyButton class="flex items-center justify-center w-full h-full" @click="backToHome" title="回到前台" type="icon">
-              <UIcon name="i-fluent-home-20-regular" class="w-6 h-6" />
-            </ZyButton>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- 主体 -->
-    <div class=" h-full text-text-1 bg-headBar backdrop-blur-3xl">
-      <!-- 主体内容 -->
-      <div class="zy-header-inner h-full relative z-10">
-        <div class="h-header relative">
-          <div class="h-full w-auto flex items-center justify-between">
-            <div class="flex gap-2 items-center h-full flex-1">
-              <GoBackButton />
-              <HeaderTitle :isAdminHeader="isAdminHeader" />
-              <ClientOnly>
-                <PostTitle />
-              </ClientOnly>
-            </div>
-            <div class="flex gap-2 items-center h-full overflow-hidden flex-none">
-              <!-- PC端按键区 -->
-              <BackToTop />
-              <!-- 移动端按键区 -->
-              <div class="h-full landscape:hidden">
-                <div class="flex items-center w-full h-full justify-between">
-                  <div class="flex items-center h-full">
-                    <!-- <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openSearchDrawer()" title="搜索"
-                      type="transparent">
-                      <UIcon name="i-fluent-search-20-regular" class="w-5 h-5" />
-                    </ZyButton> -->
-                    <ZyButton v-if="!isAdminHeader" class="w-header h-header" @click="openMoreDrawer()" title="更多选项"
-                      type="transparent">
-                      <UIcon name="i-fluent-navigation-20-filled" class="w-5 h-5" />
-                    </ZyButton>
-                    <ZyButton v-if="isAdminHeader" class="w-header h-header" @click="openAdminNavigationDrawer()"
-                      title="菜单" type="transparent">
-                      <UIcon name="i-fluent-navigation-20-filled" class="w-5 h-5" />
-                    </ZyButton>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-
-      </div>
-      <!-- 搜索抽屉 -->
-      <ZyDrawer title="搜索" :display="searchDisplay" @cancel="closeSearchDrawer" position="top" size="100%"
-        maskColor="var(--bg-mask)" :maskBlur="true">
-      </ZyDrawer>
-      <!-- 设置抽屉 -->
-      <ZyDrawer title="设置" :display="moreDisplay" @cancel="closeMoreDrawer" position="right" size="var(--drawer-width)"
-        maskColor="rgba(0,0,0,0.4)" background="var(--bg-level-1)">
-        <MoreDrawerInner @closeDrawer="closeMoreDrawer">
-          <template #footer>
-            <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
-              <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
-                <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
-              </ZyButton>
-              <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-                <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
-                <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
-              </ZyButton>
-              <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
-                <template #reference>
-                  <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                    <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
-                  </ZyButton>
-                </template>
-                <template #actions>
-                  <LanguagePopoverInner />
-                </template>
-              </ZyPopover>
-            </div>
-          </template>
-        </MoreDrawerInner>
-      </ZyDrawer>
-      <!-- 管理员移动端导航抽屉 -->
-      <ZyDrawer title="导航" :display="adminNavigationDisplay" @cancel="closeAdminNavigationDrawer" position="top"
-        size="100%" background="var(--bg-background)">
-        <AdminNavigationDrawerInner @closeDrawer="closeAdminNavigationDrawer">
-          <template #footer>
-            <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
-              <ZyButton v-if="isAdminHeader" class="flex items-center justify-center" @click="backToHome" title="回到前台"
-                type="icon">
-                <UIcon name="i-fluent-home-20-regular" class="w-6 h-6" />
-              </ZyButton>
-              <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-                <UIcon v-if="!fullScreenFlag" name="i-fluent-full-screen-maximize-20-regular" class="w-6 h-6" />
-                <UIcon v-else name="i-fluent-full-screen-minimize-20-regular" class="w-6 h-6" />
-              </ZyButton>
-              <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-                <UIcon name="i-fluent-weather-sunny-20-regular" class="w-6 h-6 hidden dark:inline-block" />
-                <UIcon name="i-fluent-weather-moon-20-regular" class="w-6 h-6 dark:hidden" />
-              </ZyButton>
-              <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
-                <template #reference>
-                  <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                    <UIcon name="i-fluent-local-language-20-regular" class="w-6 h-6" />
-                  </ZyButton>
-                </template>
-                <template #actions>
-                  <LanguagePopoverInner />
-                </template>
-              </ZyPopover>
-            </div>
-          </template>
-        </AdminNavigationDrawerInner>
-      </ZyDrawer>
-    </div>
+        </template>
+      </AdminNavigationDrawerInner>
+    </ZyDrawer>
   </header>
 </template>
 <script setup lang="ts">

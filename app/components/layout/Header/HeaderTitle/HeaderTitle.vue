@@ -2,9 +2,9 @@
   <nav id="header-tabs" class="header-title flex items-center h-full relative" v-if="titleDisable"
     :class="{ 'p-1 landscape:p-2': Array.isArray(childrenTabs) && childrenTabs.length > 1 }">
     <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader"
-      class="inset-1 landscape:inset-2 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs landscape:rounded overflow-hidden">
+      class="inset-1 landscape:inset-2 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs landscape:rounded-xs overflow-hidden">
       <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
-        <div class="h-full bg-level-4 rounded-3xs landscape:rounded-sm overflow-hidden">
+        <div class="h-full bg-level-4 rounded-3xs landscape:rounded-2xs overflow-hidden">
         </div>
       </div>
     </div>

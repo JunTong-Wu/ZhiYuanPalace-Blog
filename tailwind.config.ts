@@ -23,14 +23,12 @@ export default <Partial<Config>>{
       },
       height: {
         header: "var(--header-bar-height)",
-        status: "var(--status-bar-height)",
         footer: "var(--footer-bar-height)",
         music: "var(--music-bar-height)",
         main: "var(--pt-main)",
       },
       width: {
         header: "var(--header-bar-height)",
-        status: "var(--status-bar-height)",
         sidebar: "var(--side-bar-width)",
         toolbar: "var(--tool-bar-width)",
         "sidebar-toolbar":
@@ -44,7 +42,6 @@ export default <Partial<Config>>{
         "sidebar-toolbar":
           "calc(var(--side-bar-width) + var(--tool-bar-width))",
         header: "var(--header-bar-height)",
-        status: "var(--status-bar-height)",
         music: "var(--music-bar-top)",
         main: "var(--pt-main)",
       },
@@ -54,14 +51,12 @@ export default <Partial<Config>>{
           "calc(var(--side-bar-width) + var(--tool-bar-width))",
         toolbar: "var(--tool-bar-width)",
         header: "var(--header-bar-height)",
-        status: "var(--status-bar-height)",
         main: "var(--pt-main)",
         footer: "var(--footer-bar-height)",
       },
       margin: {
         sidebar: "var(--side-bar-width)",
         header: "var(--header-bar-height)",
-        status: "var(--status-bar-height)",
         toolbar: "var(--tool-bar-width)",
       },
       borderRadius: {

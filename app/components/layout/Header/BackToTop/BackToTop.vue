@@ -1,7 +1,7 @@
 <template>
   <ZyButton type="transparent" @click="backToTop" class="h-header flex justify-center items-center" :class="{
-    'px-0 opacity-0 !min-w-0 pointer-events-none': progress < 1,
-    'px-4 portrait:px-0 opacity-100 max-w-32': progress >= 1,
+    '!p-0 !ml-0 opacity-0 !min-w-0 pointer-events-none': progress < 1,
+    'opacity-100 max-w-32': progress >= 1,
   }">
     <div
       class="relative flex justify-center items-center bg-text-1 text-background rounded-full transition-all duration-300 pointer-events-none"
