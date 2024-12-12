@@ -18,7 +18,7 @@
           <div class="content-layout h-full overflow-hidden p-1 relative rounded z-1">
             <div class="h-full px-6 portrait:px-2 pt-12 pb-12 rounded-sm text-center bg-level-3">
               <h3 class="text-text-1 text-2xl my-2 portrait:text-xl portrait:font-normal">
-                {{ $t(item.title) }}
+                {{ $t(`menu.${getSelfTitle(item.path)}`) }}
               </h3>
               <p class="text-text-2 text-base portrait:text-xs whitespace-pre-line">
                 {{ $t(item.text) }}
@@ -28,12 +28,13 @@
           <div class="absolute h-16 w-16 left-1/2 -ml-8 -top-8 overflow-hidden shadow-xl z-2 rounded-2xs rounded-tr-none">
             <div class="absolute bg-level-4 flex h-full inset-0 items-center justify-center">
               <div class="flex h-16 items-center justify-center w-full">
-                <ZyIcon :default-name="item.activatedIcon" size="1.5rem" />
+                <ZyIcon :default-name="getSelfIcon(item.path).activatedIcon" size="1.5rem" />
               </div>
             </div>
             <div class="active-layout absolute bg-theme-500 h-full inset-0">
               <div class="flex h-16 items-center justify-center w-full">
-                <ZyIcon :activated="true" :activated-name="item.activatedIcon" activated-color="white" size="1.5rem" />
+                <ZyIcon :activated="true" :activated-name="getSelfIcon(item.path).activatedIcon" activated-color="white"
+                  size="1.5rem" />
               </div>
             </div>
           </div>
@@ -45,45 +46,27 @@
 <script setup>
 const items = ref([
   {
-    title: "menu.article",
     text: "home.articleModuleSlogan",
-    defaultIcon: "i-solar-text-square-linear",
-    activatedIcon: "i-solar-text-square-bold",
     path: "/text/article",
   },
   {
-    title: "menu.shuoshuo",
     text: "home.shuoshuoModuleSlogan",
-    defaultIcon: "i-solar-stars-minimalistic-linear",
-    activatedIcon: "i-solar-stars-minimalistic-bold",
     path: "/text/shuoshuo",
   },
   {
-    title: "menu.music",
     text: "home.musicModuleSlogan",
-    defaultIcon: "i-solar-music-note-3-linear",
-    activatedIcon: "i-solar-music-note-3-bold",
     path: "/music",
   },
   {
-    title: "menu.photo",
     text: "home.photoModuleSlogan",
-    defaultIcon: "i-solar-gallery-round-linear",
-    activatedIcon: "i-solar-gallery-round-bold",
     path: "/audio/photo",
   },
   {
-    title: "menu.video",
     text: "home.videoModuleSlogan",
-    defaultIcon: "i-solar-videocamera-linear",
-    activatedIcon: "i-solar-videocamera-bold",
     path: "/audio/video",
   },
   {
-    title: "menu.friend",
     text: "home.friendModuleSlogan",
-    defaultIcon: "i-solar-link-circle-linear",
-    activatedIcon: "i-solar-link-circle-bold",
     path: "/about/friend",
   },
 ]);

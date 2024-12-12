@@ -83,8 +83,8 @@ const createDecoration = () => {
   if (img) {
     const imageColor = getImageColor(img);
     const rgb = increaseSaturation(
-      adjustBrightnessWhilePreservingHue(imageColor, 60, 40),
-      3.5
+      adjustBrightnessWhilePreservingHue(imageColor, 40, 40),
+      5
     );
     const themeColor = `rgb(${rgb})`;
     const themeColorRGB = `${rgb}`;

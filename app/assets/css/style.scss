@@ -148,8 +148,8 @@ a {
 :root {
   --gray-50: #ffffff;
   --gray-100: #f9f9fa;
-  --gray-150: #f2f2f4;
-  --gray-200: #e5e7eb;
+  --gray-150: #f3f3f5;
+  --gray-200: #e7e8ee;
   --gray-250: #e7e5e4;
   --gray-300: #d1d5db;
   --gray-350: #c2c7ce;
@@ -165,7 +165,7 @@ a {
   --gray-850: #17212e;
   --gray-900: #111a25;
   --gray-950: #070f18;
-  --gray-1000: #02080f;
+  --gray-1000: #030d1a;
 }
 
 :root {
@@ -185,13 +185,13 @@ a {
   --bg-head-bar: rgba(249, 249, 250, 0.7); //顶栏
 }
 *.dark {
-  --bg-background: var(--gray-950);
-  --bg-level-b1: var(--gray-1000);
-  --bg-level-1: var(--gray-900);
-  --bg-level-2: var(--gray-850);
-  --bg-level-3: var(--gray-800);
-  --bg-level-4: var(--gray-750);
-  --bg-level-5: var(--gray-700);
+  --bg-background: var(--gray-900);
+  --bg-level-b1: var(--gray-950);
+  --bg-level-1: var(--gray-850);
+  --bg-level-2: var(--gray-800);
+  --bg-level-3: var(--gray-750);
+  --bg-level-4: var(--gray-700);
+  --bg-level-5: var(--gray-650);
   --text-1: var(--gray-300); //强调/正文标题
   --text-2: var(--gray-500); //次强调/正文标
   --text-3: var(--gray-700); //次要信息

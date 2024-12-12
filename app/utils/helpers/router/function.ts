@@ -63,7 +63,7 @@ export const getNavigationMapForAdminMenu = () => {
 
 /**
  * 通过路径查找标题
- * @returns Array<RouteRecordRaw>
+ * @returns string
  */
 export const _findTitleByPath = (
   routes: Array<RouteRecordRaw>,
@@ -98,6 +98,57 @@ export const getSelfTitle = (path: string) => {
   const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
   title = _findTitleByPath(linkList, path);
   return title;
+};
+
+/**
+ * 通过路径查找图标
+ * @returns
+ */
+export const _findIconByPath = (
+  routes: Array<RouteRecordRaw>,
+  path: string
+): {
+  defaultIcon: string;
+  activatedIcon: string;
+} => {
+  // 首先检查顶级路由
+  for (const route of routes) {
+    if (!route.children || !route.children.length) {
+      if (route.path === path) {
+        return {
+          defaultIcon: route.meta?.defaultIcon as string,
+          activatedIcon: route.meta?.activatedIcon as string,
+        };
+      }
+    }
+  }
+  // 如果没有找到顶级路由匹配，则递归检查子路由
+  for (const route of routes) {
+    if (route.children) {
+      const result = _findIconByPath(route.children, path);
+      if (result.defaultIcon !== "" && result.activatedIcon !== "") {
+        return result;
+      }
+    }
+  }
+  return {
+    defaultIcon: "",
+    activatedIcon: "",
+  };
+};
+
+/**
+ * 获取自身路径图标
+ * @returns
+ */
+export const getSelfIcon = (path: string) => {
+  let icon = {
+    defaultIcon: "",
+    activatedIcon: "",
+  };
+  const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
+  icon = _findIconByPath(linkList, path);
+  return icon;
 };
 
 /**

@@ -157,7 +157,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           navigate: true,
           defaultIcon: "i-solar-link-circle-linear",
-          activatedIcon: "i-solar-link-circle-bold",
+          activatedIcon: "i-solar-link-circle-linear",
           order: 520,
         },
       },
@@ -193,8 +193,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/article/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-solar-document-add-linear",
-          activatedIcon: "i-solar-document-add-bold",
+          defaultIcon: "i-solar-text-square-linear",
+          activatedIcon: "i-solar-text-square-bold",
           order: 611,
           role: "admin",
         },
@@ -205,8 +205,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/shuoshuo/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-solar-notes-linear",
-          activatedIcon: "i-solar-notes-bold",
+          defaultIcon: "i-solar-stars-minimalistic-linear",
+          activatedIcon: "i-solar-stars-minimalistic-bold",
           order: 612,
           role: "admin",
         },
@@ -217,8 +217,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/music/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-solar-turntable-music-note-linear",
-          activatedIcon: "i-solar-turntable-music-note-bold",
+          defaultIcon: "i-solar-music-note-3-linear",
+          activatedIcon: "i-solar-music-note-3-bold",
           order: 613,
           role: "admin",
         },
@@ -241,8 +241,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/video/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-solar-videocamera-record-linear",
-          activatedIcon: "i-solar-videocamera-record-bold",
+          defaultIcon: "i-solar-videocamera-linear",
+          activatedIcon: "i-solar-videocamera-bold",
           order: 615,
           role: "admin",
         },
@@ -280,7 +280,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       navigate: true,
       defaultIcon: "i-solar-link-circle-linear",
-      activatedIcon: "i-solar-link-circle-bold",
+      activatedIcon: "i-solar-link-circle-linear",
       order: 640,
       role: "admin",
     },

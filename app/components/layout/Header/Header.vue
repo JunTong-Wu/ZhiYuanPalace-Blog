@@ -7,12 +7,12 @@
     <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-b1"></div>
 
     <!-- 主体区域 -->
-    <div class="absolute z-20 top-0 left-0 h-header w-full flex items-center justify-between">
+    <div class="absolute z-20 top-0 left-0 right-0 h-header flex items-center justify-between landscape:pr-2">
       <div class="flex items-center h-full">
         <!-- 图标区 -->
         <Logo class="flex-none w-sidebar px-4 portrait:hidden cursor-pointer" size="small" @click="backToHome" />
         <!-- 标题区 -->
-        <div class="flex gap-2 items-center h-full mr-4">
+        <div class="flex items-center h-full mr-4">
           <GoBackButton class="flex-none" v-if="!isAdminHeader" />
           <HeaderTitle class="flex-none" :isAdminHeader="isAdminHeader" />
           <ClientOnly>
@@ -20,21 +20,27 @@
           </ClientOnly>
         </div>
       </div>
-      <div class="flex items-center h-full">
-        <!-- 歌词区 -->
-        <div class="hidden sm:flex items-center justify-center p-1 h-[70%] w-72" title="歌词" type="text">
-          <span class="text-xs text-right text-text-2 w-72 px-4">暂无歌词，享受好音乐</span>
-        </div>
+      <div class="flex items-center h-full gap-4">
         <!-- 音乐播放器 -->
-        <Music
-          class="landscape:px-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-52 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl" />
+        <div class="flex items-center h-full -mr-2 ">
+          <Music
+            class="landscape:px-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-52 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl" />
+          <!-- 歌词区 -->
+          <div class="p-2 -ml-2 h-header w-72 " title="歌词" type="text">
+            <div class="bg-background rounded-xs h-full w-full flex items-center justify-center">
+              <span class="text-xs text-center text-text-2 w-72 px-4">暂无歌词，享受好音乐</span>
+            </div>
+          </div>
+        </div>
+
+
         <div class="h-full flex items-center">
           <!-- 按键区 -->
           <div class="flex justify-end h-full items-center">
             <div v-if="!isAdminHeader" class="portrait:hidden p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="openSearchDrawer()" title="搜索"
                 type="icon">
-                <UIcon name="i-solar-magnifer-broken" class="w-6 h-6" />
+                <UIcon name="i-solar-magnifer-linear" class="w-6 h-6" />
               </ZyButton>
             </div>
 
