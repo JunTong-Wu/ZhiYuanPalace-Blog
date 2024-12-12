@@ -27,6 +27,15 @@ export default <Partial<Config>>{
         music: "var(--music-bar-height)",
         main: "var(--pt-main)",
       },
+      minWidth: {
+        header: "var(--header-bar-height)",
+        sidebar: "var(--side-bar-width)",
+        toolbar: "var(--tool-bar-width)",
+        "sidebar-toolbar":
+          "calc(var(--side-bar-width) + var(--tool-bar-width))",
+        centered: "var(--centered-width)",
+        music: "var(--music-bar-width)",
+      },
       width: {
         header: "var(--header-bar-height)",
         sidebar: "var(--side-bar-width)",

@@ -17,8 +17,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/visitor/index.vue"), // 路由的组件
     meta: {
       navigate: true, // 路由是否可以被导航
-      defaultIcon: "i-fluent-home-20-regular", // 路由的默认图标
-      activatedIcon: "i-fluent-home-20-filled", // 路由的激活图标
+      defaultIcon: "i-solar-home-smile-linear", // 路由的默认图标
+      activatedIcon: "i-solar-home-smile-bold", // 路由的激活图标
       order: 100, // 路由的排序
     },
   },
@@ -28,8 +28,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/visitor/text/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-textbox-20-regular",
-      activatedIcon: "i-fluent-textbox-20-filled",
+      defaultIcon: "i-solar-document-text-linear",
+      activatedIcon: "i-solar-document-text-bold",
       order: 200,
     },
     children: [
@@ -39,8 +39,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/visitor/text/article/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-document-text-20-regular",
-          activatedIcon: "i-fluent-document-text-20-filled",
+          defaultIcon: "i-solar-text-square-linear",
+          activatedIcon: "i-solar-text-square-bold",
           order: 210,
         },
       },
@@ -58,8 +58,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/visitor/text/shuoshuo/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-text-quote-20-regular",
-          activatedIcon: "i-fluent-text-quote-20-filled",
+          defaultIcon: "i-solar-stars-minimalistic-linear",
+          activatedIcon: "i-solar-stars-minimalistic-bold",
           order: 220,
         },
       },
@@ -79,8 +79,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/visitor/music/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-music-note-2-20-regular",
-      activatedIcon: "i-fluent-music-note-2-20-filled",
+      defaultIcon: "i-solar-music-note-3-linear",
+      activatedIcon: "i-solar-music-note-3-bold",
       order: 300,
     },
   },
@@ -90,8 +90,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/visitor/audio/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-video-clip-20-regular",
-      activatedIcon: "i-fluent-video-clip-20-filled",
+      defaultIcon: "i-solar-chat-round-video-linear",
+      activatedIcon: "i-solar-chat-round-video-bold",
       order: 400,
     },
     children: [
@@ -101,8 +101,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/visitor/audio/photo/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-image-20-regular",
-          activatedIcon: "i-fluent-image-20-filled",
+          defaultIcon: "i-solar-gallery-round-linear",
+          activatedIcon: "i-solar-gallery-round-bold",
           order: 410,
         },
       },
@@ -121,8 +121,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/visitor/audio/video/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-video-20-regular",
-          activatedIcon: "i-fluent-video-20-filled",
+          defaultIcon: "i-solar-videocamera-linear",
+          activatedIcon: "i-solar-videocamera-bold",
           order: 420,
         },
       },
@@ -134,8 +134,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/visitor/about/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-info-20-regular",
-      activatedIcon: "i-fluent-info-20-filled",
+      defaultIcon: "i-solar-user-circle-linear",
+      activatedIcon: "i-solar-user-circle-bold",
       order: 500,
     },
     children: [
@@ -145,8 +145,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/visitor/about/information/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-person-20-regular",
-          activatedIcon: "i-fluent-person-20-filled",
+          defaultIcon: "i-solar-ghost-smile-linear",
+          activatedIcon: "i-solar-ghost-smile-bold",
           order: 510,
         },
       },
@@ -156,8 +156,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/visitor/about/friend/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-person-20-regular",
-          activatedIcon: "i-fluent-person-20-filled",
+          defaultIcon: "i-solar-link-circle-linear",
+          activatedIcon: "i-solar-link-circle-bold",
           order: 520,
         },
       },
@@ -169,8 +169,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/admin/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-chart-multiple-20-regular",
-      activatedIcon: "i-fluent-chart-multiple-20-filled",
+      defaultIcon: "i-solar-pie-chart-2-linear",
+      activatedIcon: "i-solar-pie-chart-2-bold",
       order: 600,
       role: "admin",
     },
@@ -181,8 +181,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/admin/post-manage/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-archive-settings-20-regular",
-      activatedIcon: "i-fluent-archive-settings-20-filled",
+      defaultIcon: "i-solar-archive-linear",
+      activatedIcon: "i-solar-archive-bold",
       order: 610,
       role: "admin",
     },
@@ -193,8 +193,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/article/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-document-signature-20-regular",
-          activatedIcon: "i-fluent-document-signature-20-filled",
+          defaultIcon: "i-solar-document-add-linear",
+          activatedIcon: "i-solar-document-add-bold",
           order: 611,
           role: "admin",
         },
@@ -205,8 +205,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/shuoshuo/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-tooltip-quote-20-regular",
-          activatedIcon: "i-fluent-tooltip-quote-20-filled",
+          defaultIcon: "i-solar-notes-linear",
+          activatedIcon: "i-solar-notes-bold",
           order: 612,
           role: "admin",
         },
@@ -217,8 +217,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/music/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-music-note-2-play-20-regular",
-          activatedIcon: "i-fluent-music-note-2-play-20-filled",
+          defaultIcon: "i-solar-turntable-music-note-linear",
+          activatedIcon: "i-solar-turntable-music-note-bold",
           order: 613,
           role: "admin",
         },
@@ -229,8 +229,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/photo/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-image-edit-20-regular",
-          activatedIcon: "i-fluent-image-edit-20-filled",
+          defaultIcon: "i-solar-gallery-round-linear",
+          activatedIcon: "i-solar-gallery-round-bold",
           order: 614,
           role: "admin",
         },
@@ -241,8 +241,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/pages/admin/post-manage/video/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-video-clip-wand-20-regular",
-          activatedIcon: "i-fluent-video-clip-wand-20-filled",
+          defaultIcon: "i-solar-videocamera-record-linear",
+          activatedIcon: "i-solar-videocamera-record-bold",
           order: 615,
           role: "admin",
         },
@@ -255,8 +255,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/admin/personal-center/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-person-circle-20-regular",
-      activatedIcon: "i-fluent-person-circle-20-filled",
+      defaultIcon: "i-solar-ghost-smile-linear",
+      activatedIcon: "i-solar-ghost-smile-bold",
       order: 620,
       role: "admin",
     },
@@ -267,8 +267,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/admin/comment-manage/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-comment-note-20-regular",
-      activatedIcon: "i-fluent-comment-note-20-filled",
+      defaultIcon: "i-solar-dialog-2-linear",
+      activatedIcon: "i-solar-dialog-2-bold",
       order: 630,
       role: "admin",
     },
@@ -279,8 +279,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/admin/friends-manage/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-person-link-20-regular",
-      activatedIcon: "i-fluent-person-link-20-filled",
+      defaultIcon: "i-solar-link-circle-linear",
+      activatedIcon: "i-solar-link-circle-bold",
       order: 640,
       role: "admin",
     },
@@ -291,8 +291,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/admin/site-setting/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-apps-settings-20-regular",
-      activatedIcon: "i-fluent-apps-settings-20-filled",
+      defaultIcon: "i-solar-magic-stick-3-linear",
+      activatedIcon: "i-solar-magic-stick-3-bold",
       order: 650,
       role: "admin",
     },
@@ -303,8 +303,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/admin/server-manage/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-fluent-server-20-regular",
-      activatedIcon: "i-fluent-server-20-filled",
+      defaultIcon: "i-solar-server-minimalistic-linear",
+      activatedIcon: "i-solar-server-minimalistic-bold",
       order: 650,
       role: "admin",
     },

@@ -8,7 +8,7 @@
         <label
           class="language-switch-label w-full flex justify-between p-4 h-14 hover:bg-theme-500 hover:text-white cursor-pointer">
           <span class="text-sm">{{ t(`language.${lang}`) }}</span>
-          <UIcon v-if="lang == locale" name="i-fluent-checkmark-12-regular" class="w-6 h-6 text-theme-500" />
+          <UIcon v-if="lang == locale" name="i-solar-unread-linear" class="w-6 h-6 text-theme-500" />
         </label>
       </li>
     </ul>

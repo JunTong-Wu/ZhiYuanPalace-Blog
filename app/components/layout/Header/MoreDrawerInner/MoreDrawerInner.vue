@@ -22,7 +22,7 @@
               </div>
             </div>
             <div>
-              <ZyIcon defaultName="i-fluent-ios-arrow-rtl-24-regular" size="1.25rem" />
+              <ZyIcon defaultName="i-solar-alt-arrow-right-linear" size="1.25rem" />
             </div>
           </ZyLink>
         </li>

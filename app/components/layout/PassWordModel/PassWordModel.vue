@@ -10,14 +10,14 @@
             <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
               访问加密内容
             </h3>
-            <UButton color="gray" variant="ghost" icon="i-fluent-dismiss-16-regular" class="-my-1"
+            <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1"
               @click="isOpen = false" />
           </div>
         </template>
         <!--        <p>当前{{ type }} id为{{ id }}，需要密码访问，请输入密码</p>-->
         <div v-loading="loading">
-          <UInput v-model="password" icon="i-fluent-lock-closed-16-filled" placeholder="请输入密码" type="password"
-            class="w-full" size="xl" color="theme"></UInput>
+          <UInput v-model="password" icon="i-solar-lock-password-bold" placeholder="请输入密码" type="password" class="w-full"
+            size="xl" color="theme"></UInput>
         </div>
 
         <template #footer>

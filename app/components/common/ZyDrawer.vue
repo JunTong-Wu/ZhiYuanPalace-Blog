@@ -17,7 +17,7 @@
           </div>
           <span class="cursor-pointer" @click="closeByButton" v-show="closable" v-if="componentsDisplay" @mousedown.stop
             @mousemove.stop @mouseup.stop>
-            <UIcon name="i-fluent-dismiss-16-regular" class="w-4 h-4" />
+            <UIcon name="i-heroicons-x-mark-20-solid" class="w-6 h-6" />
           </span>
         </div>
         <div class="h-full overflow-auto flex flex-col">

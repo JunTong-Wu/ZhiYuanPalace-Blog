@@ -34,22 +34,22 @@
         ">
           <div class="flex">
             <ZyButton class="aspect-square" title="上一曲" type="transparent" @click="musicPrev">
-              <UIcon name="i-fluent-previous-16-filled" class="w-12 h-12" />
+              <UIcon name="i-solar-skip-previous-bold" class="w-12 h-12" />
             </ZyButton>
           </div>
           <div class="flex">
             <ZyButton class="aspect-square text-theme-500" title="播放" type="transparent" @click="togglePlay">
               <template v-if="musicPlayState">
-                <UIcon name="i-fluent-pause-circle-16-filled" class="w-24 h-24" />
+                <UIcon name="i-solar-pause-circle-bold" class="w-24 h-24" />
               </template>
               <template v-else>
-                <UIcon name="i-fluent-play-circle-16-filled" class="w-24 h-24" />
+                <UIcon name="i-solar-play-circle-bold" class="w-24 h-24" />
               </template>
             </ZyButton>
           </div>
           <div class="flex">
             <ZyButton class="aspect-square" title="下一曲" type="transparent" @click="musicNext">
-              <UIcon name="i-fluent-next-16-filled" class="w-12 h-12" />
+              <UIcon name="i-solar-skip-next-bold" class="w-12 h-12" />
             </ZyButton>
           </div>
           <!-- <div>
