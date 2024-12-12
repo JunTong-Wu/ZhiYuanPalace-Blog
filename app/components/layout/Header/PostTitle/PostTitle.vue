@@ -1,6 +1,6 @@
 <template>
   <div v-if="type != 'unknown'" class="post-title line-clamp-1">
-    <span class="portrait:hidden">当前正在浏览：</span>{{ titleString }}
+    {{ titleString }}
   </div>
 </template>
 <script setup lang="ts">

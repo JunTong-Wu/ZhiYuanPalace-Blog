@@ -24,15 +24,14 @@
         <!-- 音乐播放器 -->
         <div class="flex items-center h-full -mr-2 ">
           <Music
-            class="landscape:px-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-52 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl" />
+            class="landscape:px-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl" />
           <!-- 歌词区 -->
-          <div class="p-2 -ml-2 h-header w-72 " title="歌词" type="text">
+          <div class="hidden landscape:md:block p-2 -ml-2 h-header w-72" title="歌词" type="text">
             <div class="bg-background rounded-xs h-full w-full flex items-center justify-center">
               <span class="text-xs text-center text-text-2 w-72 px-4">暂无歌词，享受好音乐</span>
             </div>
           </div>
         </div>
-
 
         <div class="h-full flex items-center">
           <!-- 按键区 -->
@@ -101,11 +100,6 @@
           </div>
         </div>
       </div>
-
-
-
-
-
 
       <!-- 时钟区 -->
       <!-- <ClientOnly>

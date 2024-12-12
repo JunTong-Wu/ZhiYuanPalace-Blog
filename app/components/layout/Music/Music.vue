@@ -24,14 +24,14 @@
         </p>
       </div>
 
-      <div class="flex bottom-0 left-0 right-0 landscape:mr-4 landscape:gap-4">
+      <div class="flex bottom-0 left-0 right-0">
         <div class="flex">
-          <ZyButton class="portrait:h-music aspect-square" title="上一曲" type="transparent" @click="musicPrev">
+          <ZyButton class="h-music aspect-square" title="上一曲" type="transparent" @click="musicPrev">
             <UIcon name="i-solar-skip-previous-bold" class="w-4 h-4" />
           </ZyButton>
         </div>
         <div class="flex">
-          <ZyButton class="portrait:h-music aspect-square" title="播放" type="transparent" @click="togglePlay">
+          <ZyButton class="h-music aspect-square" title="播放" type="transparent" @click="togglePlay">
             <template v-if="musicPlayState">
               <UIcon name="i-solar-pause-circle-bold" class="w-8 h-8" />
             </template>
@@ -41,7 +41,7 @@
           </ZyButton>
         </div>
         <div class="flex">
-          <ZyButton class="portrait:h-music aspect-square" title="下一曲" type="transparent" @click="musicNext">
+          <ZyButton class="h-music aspect-square" title="下一曲" type="transparent" @click="musicNext">
             <UIcon name="i-solar-skip-next-bold" class="w-4 h-4" />
           </ZyButton>
         </div>
