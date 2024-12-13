@@ -1,13 +1,15 @@
 <template>
-  <div class="portrait:hidden mr-4" v-if="gobackFlag">
-    <ZyButton class="flex items-center justify-center p-2" @click="goback()" title="返回" type="icon">
-      <ZyIcon size="1.5rem" defaultName="i-heroicons:chevron-left-solid" />
-    </ZyButton>
-  </div>
-  <div class="landscape:hidden" v-if="gobackFlag">
-    <ZyButton v-if="gobackFlag" class="w-header h-header" @click="goback()" title="返回" type="transparent">
-      <ZyIcon size="1.25rem" defaultName="i-heroicons:chevron-left-solid" />
-    </ZyButton>
+  <div>
+    <div class="portrait:hidden mr-4" v-if="gobackFlag">
+      <ZyButton class="flex items-center justify-center p-2" @click="goback()" title="返回" type="icon">
+        <ZyIcon size="1.5rem" defaultName="i-heroicons:chevron-left-solid" />
+      </ZyButton>
+    </div>
+    <div class="landscape:hidden" v-if="gobackFlag">
+      <ZyButton v-if="gobackFlag" class="w-header h-header" @click="goback()" title="返回" type="transparent">
+        <ZyIcon size="1.25rem" defaultName="i-heroicons:chevron-left-solid" />
+      </ZyButton>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
