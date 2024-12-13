@@ -1,10 +1,10 @@
 <template>
   <header class="select-none">
-    <!-- PC端顶栏遮蔽 -->
-    <div class=" h-header w-full bg-level-b1 relative z-10 pointer-events-none">
+    <!-- 顶栏遮蔽 -->
+    <div class=" h-header w-full bg-level-b1 portrait:bg-level-1 relative z-10 pointer-events-none">
       <div class="h-header reverse-rounded"></div>
     </div>
-    <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-b1"></div>
+    <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-b1 portrait:bg-level-1"></div>
 
     <!-- 主体区域 -->
     <div class="absolute z-20 top-0 left-0 right-0 h-header flex items-center justify-between landscape:pr-2">
@@ -312,6 +312,7 @@ const backToHome = () => {
 
 @media (orientation: portrait) {
   .reverse-rounded {
+    --background: var(--bg-level-1);
     --rounded: var(--border-radius-xs);
   }
 }

@@ -11,7 +11,7 @@
         <p class="text-lg text-text-2 portrait:text-base mb-4">
           射手座 男 24岁<br>ENFP快乐小狗<br>前端开发者<br>腾讯音乐人<br>业余诗人<br>纯爱战士<br>
         </p>
-        <ZyButton class="mt-12">了解更多</ZyButton>
+        <ZyButton class="mt-12" @click="$router.push('/about/information')">了解更多</ZyButton>
       </div>
       <div class="w-1/2 portrait:w-full">
         <div class="home-section3-image

@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="flex flex-col justify-center items-center pb-16 landscape:sm:pb-24">
-      <ZyButton class="mt-12">查看更多</ZyButton>
+      <ZyButton class="mt-12" @click="$router.push('/text/article')">查看更多</ZyButton>
     </div>
   </div>
 </template>
