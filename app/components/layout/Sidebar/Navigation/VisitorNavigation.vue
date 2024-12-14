@@ -1,19 +1,28 @@
 <template>
   <div>
     <nav class="relative">
-      <div class="indicator-layer" id="indicator-layer">
+      <div class="indicator-layer transition-all" id="indicator-layer" :class="{
+        '-left-5': hide,
+        'left-0': !hide,
+      }">
         <Indicator :msg="getVisitorNavigationMap()" />
       </div>
       <ul class="flex flex-col gap-2 py-1">
         <li v-for="item in linkList" class="rounded-xs h-14 flex hover:bg-background"
           :class="[isActivateRootRouter(route, item.path) ? 'bg-level-1 an-beat' : '']">
           <ZyLink v-zy-ripple :to="`${item.path}`" :title="$t(`menu.${String(item.name)}`)"
-            class="rounded-xs w-full flex-col justify-center pl-8 text-text-1">
+            class="rounded-xs w-full flex-col justify-center text-text-1 transition-all" :class="{
+              'pl-8': !hide,
+              'pl-4': hide,
+            }">
             <div class="w-full flex items-center gap-4 relative">
-              <ZyIcon size="1.75rem" :defaultName="item.meta?.defaultIcon" defaultColor="var(&#45;&#45;text-2)"
-                :activatedName="item.meta?.activatedIcon" :activated="isActivateRootRouter(route, item.path)"
-                activatedColor="var(&#45;&#45;text-1)" />
-              <span>{{ $t(`menu.${String(item.name)}`) }}</span>
+              <ZyIcon class="flex-none" size="1.75rem" :defaultName="item.meta?.defaultIcon"
+                defaultColor="var(&#45;&#45;text-2)" :activatedName="item.meta?.activatedIcon"
+                :activated="isActivateRootRouter(route, item.path)" activatedColor="var(&#45;&#45;text-1)" />
+              <span class="transition-all line-clamp-1" :class="{
+                'opacity-100 w-32': !hide,
+                'opacity-0 w-0': hide,
+              }">{{ $t(`menu.${String(item.name)}`) }}</span>
             </div>
           </ZyLink>
         </li>
@@ -26,6 +35,13 @@ import Indicator from "./Indicator/Indicator.vue";
 
 const linkList = getNavigationMapForVisitorMenu();
 const route = useRoute();
+
+const props = defineProps({
+  hide: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 <style lang="scss" scoped>
 .indicator-layer {

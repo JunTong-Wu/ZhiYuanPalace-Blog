@@ -1,5 +1,5 @@
 <template>
-  <section id="footer-columns" class="landscape:pl-sidebar landscape:pr-toolbar">
+  <section id="footer-columns">
     <div class="landscape:bg-level-1 portrait:pb-footer">
       <div class="container px-8">
         <div class="grid gap-x-7 gap-y-14 pt-24 pb-12 grid-cols-12 portrait:hidden">

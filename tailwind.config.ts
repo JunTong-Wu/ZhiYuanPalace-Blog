@@ -22,6 +22,8 @@ export default <Partial<Config>>{
         video: "16 / 9",
       },
       height: {
+        sidebar: "var(--side-bar-width)",
+        hideSidebar: "var(--hide-side-bar-width)",
         header: "var(--header-bar-height)",
         footer: "var(--footer-bar-height)",
         music: "var(--music-bar-height)",
@@ -30,34 +32,30 @@ export default <Partial<Config>>{
       minWidth: {
         header: "var(--header-bar-height)",
         sidebar: "var(--side-bar-width)",
+        hideSidebar: "var(--hide-side-bar-width)",
         toolbar: "var(--tool-bar-width)",
-        "sidebar-toolbar":
-          "calc(var(--side-bar-width) + var(--tool-bar-width))",
         centered: "var(--centered-width)",
         music: "var(--music-bar-width)",
       },
       width: {
         header: "var(--header-bar-height)",
         sidebar: "var(--side-bar-width)",
+        hideSidebar: "var(--hide-side-bar-width)",
         toolbar: "var(--tool-bar-width)",
-        "sidebar-toolbar":
-          "calc(var(--side-bar-width) + var(--tool-bar-width))",
         centered: "var(--centered-width)",
         music: "var(--music-bar-width)",
       },
       inset: {
         sidebar: "var(--side-bar-width)",
+        hideSidebar: "var(--hide-side-bar-width)",
         toolbar: "var(--tool-bar-width)",
-        "sidebar-toolbar":
-          "calc(var(--side-bar-width) + var(--tool-bar-width))",
         header: "var(--header-bar-height)",
         music: "var(--music-bar-top)",
         main: "var(--pt-main)",
       },
       padding: {
         sidebar: "var(--side-bar-width)",
-        "sidebar-toolbar":
-          "calc(var(--side-bar-width) + var(--tool-bar-width))",
+        hideSidebar: "var(--hide-side-bar-width)",
         toolbar: "var(--tool-bar-width)",
         header: "var(--header-bar-height)",
         main: "var(--pt-main)",
@@ -65,6 +63,7 @@ export default <Partial<Config>>{
       },
       margin: {
         sidebar: "var(--side-bar-width)",
+        hideSidebar: "var(--hide-side-bar-width)",
         header: "var(--header-bar-height)",
         toolbar: "var(--tool-bar-width)",
       },

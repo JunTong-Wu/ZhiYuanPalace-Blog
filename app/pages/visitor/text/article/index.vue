@@ -16,7 +16,7 @@
         </ul>
       </template>
       <template #onload>
-        <ul class="row-article">
+        <ul class="row-article container">
           <li class="clo-article-card" v-for="item in articleListData.list">
             <ArticleCard :href="`/text/article/${item.article_id}`">
               <template #image>

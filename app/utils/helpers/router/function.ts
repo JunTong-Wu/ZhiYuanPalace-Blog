@@ -366,7 +366,7 @@ export const isActivateRootRouter = (
   route: RouteLocationNormalizedLoaded,
   path: string
 ) => {
-  if (path != "/") {
+  if (path != "/" && route.path != "/admin") {
     if (getRootPath(route.fullPath) == getRootPath(path)) {
       return true;
     } else {

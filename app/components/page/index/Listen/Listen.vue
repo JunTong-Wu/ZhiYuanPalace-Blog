@@ -1,6 +1,6 @@
 <template>
-  <div class="relative">
-    <div class="flex portrait:flex-col bg-level-1 relative py-12 portrait:pt-0">
+  <div class="relative bg-level-1">
+    <div class="container flex portrait:flex-col relative py-12 portrait:pt-0">
       <div class="w-1/2 relative flex justify-center items-center
       landscape:scale-75 landscape:sm:scale-100
       portrait:w-full portrait:scale-75">

@@ -24,13 +24,11 @@
       </li>
     </ul>
     <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1 && !isAdminHeader"
-      class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
-      <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden"></div>
+      class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4">
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
         $t(`menu.${childrenTabs[0].name}`) }}</h2>
     </div>
-    <div v-else-if="isAdminHeader" class="headerbar-title px-4 text-inherit flex gap-4 items-center ml-2">
-      <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden"></div>
+    <div v-else-if="isAdminHeader" class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4">
       <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
         $t(`menu.${getSelfTitle(route.path)}`) }}</h2>
     </div>

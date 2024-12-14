@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex portrait:flex-col relative landscape:sm:pb-12">
+    <div class="flex portrait:flex-col relative landscape:sm:pb-12 container">
       <div
         class="w-1/2 px-16 landscape:py-16 landscape:sm:py-32 portrait:px-8 portrait:py-16 flex flex-col justify-center portrait:w-full portrait:order-2">
         <span class="text-theme-500 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4">关于我</span>

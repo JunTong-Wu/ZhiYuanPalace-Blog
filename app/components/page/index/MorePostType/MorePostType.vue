@@ -10,7 +10,7 @@
         『知鸢宫』包含以下内容分类，你可以点击进入查看
       </p>
     </div>
-    <div id="service-grid" class="gap-2 grid grid-cols-12 pt-8">
+    <div id="service-grid" class="container gap-2 grid grid-cols-12 pt-8">
       <div v-for="(item, i) in items" :data-index="i"
         class="service-card pt-12 portrait:col-span-6 landscape:col-span-4 relative">
         <NuxtLink :to="item.path" class="card-inner h-full relative rounded shadow-sm">

@@ -1,5 +1,5 @@
 <template>
-  <div class="py-16 px-4 landscape:sm:py-24 landscape:px-16 landscape:sm:px-24">
+  <div class="container py-16 px-4 landscape:sm:py-24 landscape:px-16 landscape:sm:px-24">
     <div class="flex flex-col justify-center items-center">
       <span class="text-theme-500 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4">开源</span>
       <h2 class="text-3xl landscape:sm:text-5xl font-bold">

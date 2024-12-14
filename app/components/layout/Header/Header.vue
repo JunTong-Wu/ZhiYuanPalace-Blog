@@ -9,10 +9,22 @@
     <!-- 主体区域 -->
     <div class="absolute z-20 top-0 left-0 right-0 h-header flex items-center justify-between landscape:pr-2">
       <div class="flex items-center h-full">
-        <!-- 图标区 -->
-        <Logo class="flex-none w-sidebar px-4 portrait:hidden cursor-pointer" size="small" @click="backToHome" />
+        <div class="flex items-center h-full w-sidebar relative">
+          <!-- 收起侧边导航栏按钮 -->
+          <div class="portrait:hidden p-2 h-header w-header flex-none">
+            <ZyButton class="flex items-center justify-center w-full h-full" @click="switchSidebarClick" title="收起侧边栏"
+              type="icon">
+              <UIcon v-if="!hideSidebar" name="i-icon-park-outline-menu-unfold-one" class="w-6 h-6" />
+              <UIcon v-if="hideSidebar" name="i-icon-park-outline-menu-fold-one" class="w-6 h-6" />
+            </ZyButton>
+          </div>
+          <!-- 图标区 -->
+          <Logo class="absolute left-header right-8 flex-none portrait:hidden cursor-pointer" size="small"
+            @click="backToHome" />
+        </div>
         <!-- 标题区 -->
-        <div class="flex items-center h-full mr-4">
+        <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4"></div>
+        <div class="flex items-center h-full mx-1">
           <GoBackButton class="flex-none" v-if="!isAdminHeader" />
           <HeaderTitle class="flex-none" :isAdminHeader="isAdminHeader" />
           <ClientOnly>
@@ -34,6 +46,7 @@
         </div>
 
         <div class="h-full flex items-center">
+          <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4"></div>
           <!-- 按键区 -->
           <div class="flex justify-end h-full items-center">
             <div v-if="!isAdminHeader" class="portrait:hidden p-2 -ml-2 h-header w-header">
@@ -189,7 +202,13 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  hideSidebar: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+const emit = defineEmits(['switchSidebarClick', 'switchToolbarClick']);
 
 // 使用类型断言来处理 TypeScript 的类型检查
 declare global {
@@ -274,6 +293,11 @@ const router = useRouter();
 const backToHome = () => {
   router.replace('/')
 };
+
+// switchSidebarClick
+const switchSidebarClick = () => {
+  emit('switchSidebarClick')
+}
 </script>
 <style>
 ::view-transition-new(root),
