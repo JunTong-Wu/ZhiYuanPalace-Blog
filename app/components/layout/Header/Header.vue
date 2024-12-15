@@ -9,7 +9,7 @@
     <!-- 主体区域 -->
     <div class="absolute z-20 top-0 left-0 right-0 h-header flex items-center justify-between landscape:pr-2">
       <div class="flex items-center h-full">
-        <div class="flex items-center h-full w-sidebar relative flex-none">
+        <div class="flex items-center h-full w-4 sm:w-sidebar relative flex-none">
           <!-- 收起侧边导航栏按钮 -->
           <div v-if="!disabledLayoutControl" class="portrait:hidden p-2 h-header w-header flex-none">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="switchSidebarClick" title="收起侧边栏"
@@ -19,7 +19,7 @@
             </ZyButton>
           </div>
           <!-- 图标区 -->
-          <Logo class="absolute right-8 portrait:hidden cursor-pointer" :class="{
+          <Logo class="absolute right-8 hidden sm:block portrait:hidden cursor-pointer" :class="{
             'left-4': disabledLayoutControl,
             'left-header': !disabledLayoutControl,
           }" size="small" @click="backToHome" />
@@ -40,7 +40,7 @@
           <Music
             class="landscape:px-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl" />
           <!-- 歌词区 -->
-          <div class="hidden landscape:md:block p-2 -ml-2 h-header w-72" title="歌词" type="text">
+          <div class="hidden landscape:lg:block p-2 -ml-2 h-header w-72" title="歌词" type="text">
             <div class="bg-background rounded-xs h-full w-full flex items-center justify-center">
               <span class="text-xs text-center text-text-2 w-72 px-4">暂无歌词，享受好音乐</span>
             </div>

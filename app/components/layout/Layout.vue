@@ -87,15 +87,17 @@ const isLandscapeMdSizeFlag = ref(true);
 onMounted(() => {
   // 监听窗口大小变化
   window.addEventListener("resize", () => {
-    if (!isLandscapeMdSize.value) {
-      isLandscapeMdSizeFlag.value = false;
-      hideSidebar.value = true;
-      hideToolbar.value = true;
-    } else {
-      isLandscapeMdSizeFlag.value = true;
-      hideSidebar.value = false;
-      hideToolbar.value = false;
-    }
+    setTimeout(() => {
+      if (!isLandscapeMdSize.value) {
+        isLandscapeMdSizeFlag.value = false;
+        hideSidebar.value = true;
+        hideToolbar.value = true;
+      } else {
+        isLandscapeMdSizeFlag.value = true;
+        hideSidebar.value = false;
+        hideToolbar.value = false;
+      }
+    }, 20);
   })
 });
 
