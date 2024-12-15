@@ -4,17 +4,19 @@
     <section id="layout-main" class="layout-main relative z-10 mt-main transition-all" :class="{
       'ml-sidebar': !isLoginLayout && !hideSidebar,
       'ml-hideSidebar': !isLoginLayout && hideSidebar,
-      'mr-toolbar': !isAdminLayout && !isLoginLayout,
-      'mr-4': isAdminLayout,
+      'mr-toolbar': !isAdminLayout && !isLoginLayout && !hideToolbar,
+      'mr-4 portrait:mr-0': isAdminLayout || hideToolbar,
       'mt-main': !isLoginLayout
     }
       ">
-      <main class="flex-1 bg-background">
+      <main class="flex-1 bg-background border-r-[1rem] -mr-4 border-r-level-b1">
         <div class="main-view text-base relative overflow-hidden">
           <div class="main-view-inner">
             <slot />
           </div>
         </div>
+        <!-- 底部版权 -->
+        <FooterColumns v-if="!isAdminLayout" />
       </main>
     </section>
 
@@ -27,32 +29,35 @@
           'w-hideSidebar': hideSidebar,
         }" />
       <!-- 整体顶栏 -->
-      <Header :hideSidebar="hideSidebar" :isAdminHeader="isAdminLayout"
-        class="fixed top-0 left-0 w-full z-30 right-0 transition-all" :class="{
+      <Header :hideSidebar="hideSidebar" :hideToolbar="hideToolbar" :isAdminHeader="isAdminLayout"
+        :disabledLayoutControl="!isLandscapeMdSizeFlag" class="fixed top-0 left-0 w-full z-30 right-0 transition-all"
+        :class="{
           'pl-sidebar': !hideSidebar,
           'pl-hideSidebar': hideSidebar,
-          'pr-4 md:pr-toolbar portrait:pr-0': !isAdminLayout,
-          'pr-4 portrait:pr-0': isAdminLayout
+          'pr-toolbar portrait:pr-0': !isAdminLayout && !hideToolbar,
+          'pr-4 portrait:pr-0': isAdminLayout || hideToolbar,
         }" @switchSidebarClick="switchSidebarStyle" @switchToolbarClick="switchToolbarStyle" />
-      <!-- 底部版权 -->
-      <FooterColumns v-if="!isAdminLayout" class="landscape:pr-toolbar" :class="{
-        'landscape:pl-sidebar': !hideSidebar,
-        'landscape:pl-hideSidebar': hideSidebar,
-      }" />
       <!-- 底部导航栏 -->
       <FooterNavigation v-if="!isAdminLayout"
         class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-headBar backdrop-blur-3xl" />
     </section>
 
     <!-- 工具栏 -->
-    <aside v-show="!isLoginLayout" class="portrait:hidden fixed z-20 top-header bottom-0 right-0 bg-level-b1"
-      :class="{ 'w-4 md:w-toolbar portrait:w-0': !isAdminLayout, 'w-4': isAdminLayout }">
+    <aside v-show="!isLoginLayout"
+      class="portrait:hidden fixed z-20 top-header bottom-0 right-0 bg-level-b1 transition-all" :class="{
+        'w-toolbar': !isAdminLayout,
+        'w-0': isAdminLayout,
+        'translate-x-full': hideToolbar
+      }
+        ">
       <div id="zy-tool-bar" class="absolute inset-4 top-0 rounded-lg bg-headBar backdrop-blur-3xl">
       </div>
     </aside>
   </div>
 </template>
 <script setup lang="ts">
+import { useMediaQuery } from '@vueuse/core';
+
 const props = defineProps({
   isAdminLayout: {
     type: Boolean,
@@ -74,6 +79,25 @@ const hideToolbar = ref(false);
 const switchToolbarStyle = () => {
   hideToolbar.value = !hideToolbar.value;
 };
+
+const isLandscapeMdSize = useMediaQuery("(min-width: 1200px) and (orientation: landscape)");
+const isLandscapeMdSizeFlag = ref(true);
+
+
+onMounted(() => {
+  // 监听窗口大小变化
+  window.addEventListener("resize", () => {
+    if (!isLandscapeMdSize.value) {
+      isLandscapeMdSizeFlag.value = false;
+      hideSidebar.value = true;
+      hideToolbar.value = true;
+    } else {
+      isLandscapeMdSizeFlag.value = true;
+      hideSidebar.value = false;
+      hideToolbar.value = false;
+    }
+  })
+});
 
 watch(() => props.isAdminLayout, () => {
   if (props.isAdminLayout) {

@@ -82,28 +82,17 @@ a {
     --centered-width: 86rem;
     --side-bar-width: 14rem;
     --hide-side-bar-width: 5rem;
-    --tool-bar-width: 0rem;
+    --tool-bar-width: 21rem;
     --drawer-width: 20rem;
     --music-bar-height: calc(var(--header-bar-height) - 1rem);
     --music-bar-width: 24rem;
     --music-bar-top: 0.5rem;
     --pt-main: var(--header-bar-height);
-    #zy-tool-bar {
-      display: none;
-    }
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
   :root {
     --centered-width: 75rem;
-  }
-}
-@media (min-width: 1200px) and (orientation: landscape) {
-  :root {
-    --tool-bar-width: 21rem;
-  }
-  #zy-tool-bar {
-    display: block !important;
   }
 }
 

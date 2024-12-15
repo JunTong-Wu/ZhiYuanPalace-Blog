@@ -9,11 +9,11 @@
       <div class="relative flex justify-center items-center rounded-full pointer-events-none border-2 border-text-1"
         :class="{
           'w-0 h-0 scale-0': progress < 1,
-          'w-6 h-6': progress >= 1 && progress < 90,
-          'w-24 h-6 is-text-mode': progress >= 90,
+          'w-7 h-7': progress >= 1 && progress < 90,
+          'w-24 h-7 is-text-mode': progress >= 90,
         }">
-        <span
-          class="progress absolute w-full h-full text-xs font-bold flex justify-center items-center scale-75 duration-300"
+        <span class="absolute w-full h-full bg-text-1 rounded-full opacity-20"></span>
+        <span class="progress absolute w-full h-full text-xs font-bold flex justify-center items-center duration-300"
           :class="{
             'opacity-100': progress < 90,
             'opacity-0': progress < 1 || progress >= 90,

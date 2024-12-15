@@ -9,22 +9,24 @@
     <!-- 主体区域 -->
     <div class="absolute z-20 top-0 left-0 right-0 h-header flex items-center justify-between landscape:pr-2">
       <div class="flex items-center h-full">
-        <div class="flex items-center h-full w-sidebar relative">
+        <div class="flex items-center h-full w-sidebar relative flex-none">
           <!-- 收起侧边导航栏按钮 -->
-          <div class="portrait:hidden p-2 h-header w-header flex-none">
+          <div v-if="!disabledLayoutControl" class="portrait:hidden p-2 h-header w-header flex-none">
             <ZyButton class="flex items-center justify-center w-full h-full" @click="switchSidebarClick" title="收起侧边栏"
               type="icon">
-              <UIcon v-if="!hideSidebar" name="i-icon-park-outline-menu-unfold-one" class="w-6 h-6" />
-              <UIcon v-if="hideSidebar" name="i-icon-park-outline-menu-fold-one" class="w-6 h-6" />
+              <UIcon v-if="!hideSidebar" name="i-ph-text-outdent-duotone" class="w-7 h-7" />
+              <UIcon v-if="hideSidebar" name="i-ph-text-indent-duotone" class="w-7 h-7" />
             </ZyButton>
           </div>
           <!-- 图标区 -->
-          <Logo class="absolute left-header right-8 flex-none portrait:hidden cursor-pointer" size="small"
-            @click="backToHome" />
+          <Logo class="absolute right-8 portrait:hidden cursor-pointer" :class="{
+            'left-4': disabledLayoutControl,
+            'left-header': !disabledLayoutControl,
+          }" size="small" @click="backToHome" />
         </div>
         <!-- 标题区 -->
-        <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4"></div>
-        <div class="flex items-center h-full mx-1">
+        <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4 flex-none"></div>
+        <div class="flex items-center h-full mx-1 mr-4">
           <GoBackButton class="flex-none" v-if="!isAdminHeader" />
           <HeaderTitle class="flex-none" :isAdminHeader="isAdminHeader" />
           <ClientOnly>
@@ -46,21 +48,16 @@
         </div>
 
         <div class="h-full flex items-center">
-          <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4"></div>
+          <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4 flex-none"></div>
           <!-- 按键区 -->
           <div class="flex justify-end h-full items-center">
+
+            <BackToTop class="" />
+
             <div v-if="!isAdminHeader" class="portrait:hidden p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="openSearchDrawer()" title="搜索"
                 type="icon">
-                <UIcon name="i-solar-magnifer-linear" class="w-6 h-6" />
-              </ZyButton>
-            </div>
-
-            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
-              <ZyButton class="flex items-center justify-center w-full h-full" @click="toggleFullScreen" title="全屏/退出全屏"
-                type="icon">
-                <UIcon v-if="!fullScreenFlag" name="i-solar-maximize-linear" class="w-6 h-6" />
-                <UIcon v-else name="i-solar-minimize-linear" class="w-6 h-6" />
+                <UIcon name="i-ph-magnifying-glass-duotone" class="w-7 h-7" />
               </ZyButton>
             </div>
 
@@ -69,7 +66,7 @@
               <ZyPopover title="切换语言" background="var(--bg-level-1)" class="w-full h-full">
                 <template #reference>
                   <ZyButton class="flex items-center justify-center w-full h-full" title="切换语言" type="icon">
-                    <UIcon name="i-solar-planet-linear" class="w-7 h-7" />
+                    <UIcon name="i-ph-planet-duotone" class="w-7 h-7" />
                   </ZyButton>
                 </template>
                 <template #actions>
@@ -81,24 +78,39 @@
             <div class="portrait:hidden p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="darkModeSwitch" title="日间/夜间"
                 type="icon">
-                <UIcon name="i-solar-sun-fog-linear" class="w-6 h-6 hidden dark:inline-block" />
-                <UIcon name="i-solar-moon-fog-linear" class="w-6 h-6 dark:hidden" />
+                <UIcon name="i-ph-sun-duotone" class="w-7 h-7 hidden dark:inline-block" />
+                <UIcon name="i-ph-moon-duotone" class="w-7 h-7 dark:hidden" />
+              </ZyButton>
+            </div>
+
+            <!-- 收起右侧工具栏按钮 -->
+            <div v-if="!isAdminHeader && !disabledLayoutControl" class="portrait:hidden p-2 -ml-2 h-header w-header">
+              <ZyButton class="flex items-center justify-center w-full h-full" @click="switchToolbarClick" title="收起工具栏"
+                type="icon">
+                <UIcon v-if="!hideToolbar" name="i-ph-square-half-duotone" class="w-7 h-7 rotate-180" />
+                <UIcon v-if="hideToolbar" name="i-ph-square-split-horizontal-duotone" class="w-7 h-7 rotate-180" />
               </ZyButton>
             </div>
 
             <div v-if="isAdminHeader" class="p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="backToHome" title="回到前台"
                 type="icon">
-                <UIcon name="i-solar-home-smile-linear" class="w-6 h-6" />
+                <UIcon name="i-ph-house-duotone" class="w-7 h-7" />
               </ZyButton>
             </div>
 
-            <BackToTop class="" />
+            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
+              <ZyButton class="flex items-center justify-center w-full h-full" @click="toggleFullScreen" title="全屏/退出全屏"
+                type="icon">
+                <UIcon v-if="!fullScreenFlag" name="i-ph-arrows-out-simple-duotone" class="w-7 h-7" />
+                <UIcon v-else name="i-ph-arrows-in-simple-duotone" class="w-7 h-7" />
+              </ZyButton>
+            </div>
 
             <div v-if="!isAdminHeader" class="p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="openMoreDrawer()" title="更多选项"
                 type="icon">
-                <UIcon name="i-solar-hamburger-menu-broken" class=" w-7 h-7" />
+                <UIcon name="i-ph-list-duotone" class=" w-7 h-7" />
               </ZyButton>
             </div>
 
@@ -106,7 +118,7 @@
             <div v-if="isAdminHeader" class="portrait:hidden p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="openAdminNavigationDrawer()"
                 title="菜单" type="icon">
-                <UIcon name="i-solar-hamburger-menu-broken" class=" w-7 h-7" />
+                <UIcon name="i-ph-list-duotone" class=" w-7 h-7" />
               </ZyButton>
             </div>
 
@@ -137,19 +149,19 @@
       maskColor="rgba(0,0,0,0.4)" background="var(--bg-level-1)">
       <MoreDrawerInner @closeDrawer="closeMoreDrawer">
         <template #footer>
-          <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
-            <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-              <UIcon v-if="!fullScreenFlag" name="i-solar-maximize-linear" class="w-6 h-6" />
-              <UIcon v-else name="i-solar-minimize-linear" class="w-6 h-6" />
+          <div class="flex justify-end h-full items-center gap-2 landscape:hidden">
+            <ZyButton class="flex items-center justify-center p-2" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
+              <UIcon v-if="!fullScreenFlag" name="i-ph-arrows-out-simple-duotone" class="w-7 h-7" />
+              <UIcon v-else name="i-ph-arrows-in-simple-duotone" class="w-7 h-7" />
             </ZyButton>
-            <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-              <UIcon name="i-solar-sun-fog-linear" class="w-6 h-6 hidden dark:inline-block" />
-              <UIcon name="i-solar-moon-fog-linear" class="w-6 h-6 dark:hidden" />
+            <ZyButton class="flex items-center justify-center p-2" @click="darkModeSwitch" title="日间/夜间" type="icon">
+              <UIcon name="i-ph-sun-duotone" class="w-7 h-7 hidden dark:inline-block" />
+              <UIcon name="i-ph-moon-duotone" class="w-7 h-7 dark:hidden" />
             </ZyButton>
             <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
               <template #reference>
-                <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                  <UIcon name="i-solar-planet-linear" class="w-6 h-6" />
+                <ZyButton class="flex items-center justify-center p-2" title="切换语言" type="icon">
+                  <UIcon name="i-ph-planet-duotone" class="w-7 h-7" />
                 </ZyButton>
               </template>
               <template #actions>
@@ -168,20 +180,20 @@
           <div class="flex justify-end h-full items-center gap-4 landscape:hidden">
             <ZyButton v-if="isAdminHeader" class="flex items-center justify-center" @click="backToHome" title="回到前台"
               type="icon">
-              <UIcon name="i-solar-home-smile-linear" class="w-6 h-6" />
+              <UIcon name="i-solar-home-smile-linear" class="w-7 h-7" />
             </ZyButton>
             <ZyButton class="flex items-center justify-center" @click="toggleFullScreen" title="全屏/退出全屏" type="icon">
-              <UIcon v-if="!fullScreenFlag" name="i-solar-maximize-linear" class="w-6 h-6" />
-              <UIcon v-else name="i-solar-minimize-linear" class="w-6 h-6" />
+              <UIcon v-if="!fullScreenFlag" name="i-solar-maximize-linear" class="w-7 h-7" />
+              <UIcon v-else name="i-solar-minimize-linear" class="w-7 h-7" />
             </ZyButton>
             <ZyButton class="flex items-center justify-center" @click="darkModeSwitch" title="日间/夜间" type="icon">
-              <UIcon name="i-solar-sun-fog-linear" class="w-6 h-6 hidden dark:inline-block" />
-              <UIcon name="i-solar-moon-fog-linear" class="w-6 h-6 dark:hidden" />
+              <UIcon name="i-solar-sun-fog-linear" class="w-7 h-7 hidden dark:inline-block" />
+              <UIcon name="i-solar-moon-fog-linear" class="w-7 h-7 dark:hidden" />
             </ZyButton>
             <ZyPopover title="切换语言" background="var(--bg-level-1)" position="top-right">
               <template #reference>
                 <ZyButton class="flex items-center justify-center" title="切换语言" type="icon">
-                  <UIcon name="i-solar-planet-linear" class="w-6 h-6" />
+                  <UIcon name="i-solar-planet-linear" class="w-7 h-7" />
                 </ZyButton>
               </template>
               <template #actions>
@@ -203,6 +215,14 @@ const props = defineProps({
     default: false,
   },
   hideSidebar: {
+    type: Boolean,
+    default: false,
+  },
+  hideToolbar: {
+    type: Boolean,
+    default: false,
+  },
+  disabledLayoutControl: {
     type: Boolean,
     default: false,
   },
@@ -294,9 +314,14 @@ const backToHome = () => {
   router.replace('/')
 };
 
-// switchSidebarClick
+// 切换侧边栏
 const switchSidebarClick = () => {
   emit('switchSidebarClick')
+}
+
+// 切换右侧工具栏
+const switchToolbarClick = () => {
+  emit('switchToolbarClick')
 }
 </script>
 <style>

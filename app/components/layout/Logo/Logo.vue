@@ -2,12 +2,12 @@
   <div class="zy-header-logo-wrapper">
     <div class="flex items-center h-full w-full justify-start gap-4"
       :class="{ 'gap-1': size === 'small', 'gap-2': size === 'default', 'gap-4': size === 'large' }">
-      <!-- <div class="h-full flex items-center justify-center flex-none">
+      <div class="h-full flex items-center justify-center flex-none">
         <img src="@/assets/image/logo.png" alt="" class="logo-img"
-          :class="{ 'w-8': size === 'small', 'w-12': size === 'default', 'w-16': size === 'large' }" />
-      </div> -->
-      <div class="h-full flex items-center justify-start opacity-80 dark:invert"
-        :class="{ 'w-24': size === 'small', 'w-32': size === 'default', 'w-48': size === 'large' }">
+          :class="{ 'w-9': size === 'small', 'w-12': size === 'default', 'w-16': size === 'large' }" />
+      </div>
+      <div class="h-full flex-1 flex items-center justify-start opacity-80 dark:invert"
+        :class="{ 'w-20': size === 'small', 'w-32': size === 'default', 'w-48': size === 'large' }">
         <svg xmlns="http://www.w3.org/2000/svg" width="506" height="88" viewBox="0 0 506 88">
           <g>
             <path
