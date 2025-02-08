@@ -1,9 +1,14 @@
 #zy-music-bar {
   transition: transform 400ms, background 0ms;
+  .open\:hidden {
+    transition: transform 400ms, opacity 400ms;
+  }
 }
 @media (orientation: portrait) {
   #zy-music-bar.transition-translate-out {
-    transform: translateY(calc(0rem - var(--header-bar-height) - var(--music-bar-height)));
+    transform: translateY(
+      calc(0rem - var(--header-bar-height) - var(--music-bar-height))
+    );
   }
 }
 
@@ -11,4 +16,14 @@
   #zy-music-bar.transition-translate-out {
     transform: none;
   }
+}
+
+#zy-music-bar.transition-open {
+  .open\:hidden {
+    opacity: 0;
+    transform: translateY(calc(0rem - var(--music-bar-height)));
+  }
+}
+#zy-music-drawer.transition-open {
+  transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
