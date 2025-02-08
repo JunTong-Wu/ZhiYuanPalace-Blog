@@ -9,7 +9,7 @@
         </h2>
         <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
         <p class="text-lg text-text-2 portrait:text-base mb-4">
-          射手座 男 24岁<br>ENFP快乐小狗<br>前端开发者<br>腾讯音乐人<br>业余诗人<br>纯爱战士<br>
+          射手座 男 24岁<br>ENFP快乐小狗<br>前端开发者<br>腾讯音乐人<br>纯爱战士<br>
         </p>
         <ZyButton class="mt-12" @click="$router.push('/about/information')">了解更多</ZyButton>
       </div>
