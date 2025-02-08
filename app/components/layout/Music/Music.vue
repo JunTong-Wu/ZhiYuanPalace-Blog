@@ -4,12 +4,10 @@
     <div
       class="relative z-10 h-full flex items-center landscape:rounded-xs portrait:rounded-2xs overflow-hidden cursor-pointer"
       @click.prevent="openMusicDrawer">
-      <div class="absolute top-0 right-0 -z-1 w-full h-full">
-        <img v-if="!isLoading" class="h-full w-full object-cover" :src="`${cdnUrl}${musicNowCover}`" alt="" srcset=""
-          ref="MusicCoverImageRef" />
+      <div class="absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme-600 to-theme-700 saturate-75">
+        <img v-if="!isLoading" class="h-full w-full object-cover" :src="`${cdnUrl}${musicNowCover}`" alt="" srcset=""/>
       </div>
-      <div
-        class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.8)] backdrop-blur-3xl">
+      <div class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.6)] backdrop-blur-3xl">
       </div>
       <div class="open:hidden flex flex-none relative h-full aspect-square">
         <img class="h-[80%] absolute bottom-[10%] drop-shadow-md left-6 portrait:drop-shadow-none"
@@ -28,14 +26,14 @@
         </p>
       </div>
 
-      <div class="open:hidden flex bottom-0 left-0 right-0">
+      <div class="open:hidden flex">
         <div class="flex">
-          <ZyButton class="h-music aspect-square" title="上一曲" type="transparent" @click="musicPrev">
+          <ZyButton class="h-music aspect-square" title="上一曲" type="transparent" @click.stop="musicPrev">
             <UIcon name="i-solar-skip-previous-bold" class="w-4 h-4" />
           </ZyButton>
         </div>
         <div class="flex">
-          <ZyButton class="h-music aspect-square" title="播放" type="transparent" @click="togglePlay">
+          <ZyButton class="h-music aspect-square" title="播放" type="transparent" @click.stop="togglePlay">
             <template v-if="musicPlayState">
               <UIcon name="i-solar-pause-circle-bold" class="w-8 h-8" />
             </template>
@@ -45,16 +43,10 @@
           </ZyButton>
         </div>
         <div class="flex">
-          <ZyButton class="h-music aspect-square" title="下一曲" type="transparent" @click="musicNext">
+          <ZyButton class="h-music aspect-square" title="下一曲" type="transparent" @click.stop="musicNext">
             <UIcon name="i-solar-skip-next-bold" class="w-4 h-4" />
           </ZyButton>
         </div>
-        <!-- <div>
-          <ZyButton class="portrait:h-music aspect-square" title="播放列表" type="transparent">
-            <ZyIcon class="landscape:hidden" size="1rem" defaultName="music-list" />
-            <ZyIcon class="portrait:hidden" size="1rem" defaultName="music-list" />
-          </ZyButton>
-        </div> -->
       </div>
     </div>
     <audio id="bgMusic" type="audio/ogg" v-if="!refreshAudioElement" loop>
@@ -66,16 +58,106 @@
       <ZyTouch id="zy-music-drawer"
         class="hidden cursor-grab will-change-transform fixed landscape:rounded-xs portrait:rounded-2xs overflow-hidden"
         :init="touchInit" @slidingUp="slidingUp" @slideEndUp="slideEndUp" @slideCancelUp="slideCancelUp">
-        <div class="absolute top-0 right-0 -z-1 w-full h-full">
-          <img v-if="!isLoading" class="h-full w-full object-cover" :src="`${cdnUrl}${musicNowCover}`" alt="" srcset=""
-            ref="MusicCoverImageRef" />
+        <div class="absolute top-0 right-0 -z-1 w-full h-full bg-gradient-to-b from-theme-600 to-theme-700 saturate-75">
+          <img v-if="!isLoading" class="h-full w-full object-cover" :src="`${cdnUrl}${musicNowCover}`" alt="" srcset=""/>
         </div>
-        <div
-          class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.8)] backdrop-blur-3xl">
+        <div class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.6)] backdrop-blur-3xl">
         </div>
 
-        <div class="absolute z-1">
-          <h1>TEST</h1>
+        <div class="zy-music-drawer-inner absolute top-0 right-0 z-1 w-full h-full text-white flex justify-center">
+          <div class="landscape:p-20 portrait:pt-16 landscape:pb-36 w-full h-full flex justify-center portrait:flex-col-reverse">
+            <div class="landscape:w-1/2 portrait:w-full text-center">
+              <div class="landscape:w-2/3 aspect-square inline-block">
+                <div class="portrait:hidden p-16 pb-8"><img v-if="!isLoading"
+                    class="h-full w-full object-cover rounded-xs overflow-hidden shadow-lg"
+                    :src="`${cdnUrl}${musicNowCover}`" alt="" srcset="" /></div>
+
+              </div>
+              <div class="landscape:w-2/3 portrait:w-full inline-block p-16 portrait:px-12 portrait:py-8 pt-0 text-start relative">
+                <p class="flex-1 line-clamp-1 text-2xl">
+                  {{ musicNowTitle }}
+                </p>
+                <p class="flex-1 line-clamp-1 text-xl opacity-50">
+                  {{ musicNowSinger }}
+                </p>
+                <div class="absolute right-16 portrait:right-12 top-4">
+                  <ZyButton type="transparent" class="bg-[rgba(255,255,255,0.2)] p-2 rounded-full" title="歌曲操作">
+                    <UIcon name="i-ph-dots-three-outline-fill" class="w-6 h-6" />
+                  </ZyButton>
+                </div>
+                <div class="py-10">
+                  <URange @mousedown.stop @mousemove.stop @mouseup.stop v-model="value" color="theme" size="lg" />
+                  <div class="flex justify-between text-xs opacity-50 mt-4">
+                    <span>01:00</span>
+                    <span>03:00</span>
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <ZyButton class="h-music aspect-square" title="播放顺序" type="transparent">
+                      <UIcon name="i-ph-arrows-clockwise-bold" class="w-6 h-6 portrait:w-4 portrait:h-4 opacity-50" />
+                    </ZyButton>
+                  </div>
+                  <div class="flex gap-8 portrait:gap-4">
+                    <div class="flex items-center">
+                      <ZyButton class="h-music aspect-square" title="上一曲" type="transparent" @click.stop="musicPrev">
+                        <UIcon name="i-solar-skip-previous-bold" class="w-8 h-8 portrait:w-6 portrait:h-6" />
+                      </ZyButton>
+                    </div>
+                    <div class="flex items-center">
+                      <ZyButton class="!p-4 !rounded-full" title="播放"  @click.stop="togglePlay">
+                        <template v-if="musicPlayState">
+                          <UIcon name="i-solar-pause-bold" class="w-8 h-8 portrait:w-6 portrait:h-6" />
+                        </template>
+                        <template v-else>
+                          <UIcon name="i-solar-play-bold" class="w-8 h-8 portrait:w-6 portrait:h-6" />
+                        </template>
+                      </ZyButton>
+                    </div>
+                    <div class="flex items-center">
+                      <ZyButton class="h-music aspect-square" title="下一曲" type="transparent" @click.stop="musicNext">
+                        <UIcon name="i-solar-skip-next-bold" class="w-8 h-8 portrait:w-6 portrait:h-6" />
+                      </ZyButton>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <ZyButton class="h-music aspect-square" title="播放列表" type="transparent">
+                      <UIcon name="i-ph-playlist-bold" class="w-6 h-6 portrait:w-4 portrait:h-4 opacity-50" />
+                    </ZyButton>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div
+              class="landscape:w-1/2 flex flex-col gap-10 portrait:gap-4 pt-16 pb-16 portrait:px-12 text-3xl portrait:text-xl leading-relaxed overflow-y-scroll scrollbar-hiden" @touchstart.stop @touchmove.stop @touchend.stop>
+              <p>感受不到这份未来</p>
+              <p>别让我一直猜</p>
+              <p>感觉不到爱的存在</p>
+              <p>何必还要依赖</p>
+              <p>触碰不到那片纯白</p>
+              <p>怎么给自己一个交待</p>
+              <p>在下个转弯</p>
+              <p>我就会再离开</p>
+              <p>感受不到这份未来</p>
+              <p>别让我一直猜</p>
+              <p>感觉不到爱的存在</p>
+              <p>何必还要依赖</p>
+              <p>触碰不到那片纯白</p>
+              <p>怎么给自己一个交待</p>
+              <p>在下个转弯</p>
+              <p>我就会再离开</p>
+              <p>感受不到这份未来</p>
+              <p>别让我一直猜</p>
+              <p>感觉不到爱的存在</p>
+              <p>何必还要依赖</p>
+              <p>触碰不到那片纯白</p>
+              <p>怎么给自己一个交待</p>
+              <p>在下个转弯</p>
+              <p>我就会再离开</p>
+            </div>
+          </div>
+
         </div>
       </ZyTouch>
     </Teleport>
@@ -131,7 +213,8 @@ const slideEndUp = (val: any) => {
 const slideCancelUp = () => {
   const el = document.getElementById("zy-music-bar");
   const drawer = document.getElementById("zy-music-drawer");
-  musicCardTransitionSlideCancelUp(el, drawer)
+  musicCardTransitionSlideCancelUp(el, drawer);
+  touchInit.value = Date.now();
 };
 
 onMounted(() => {
@@ -151,7 +234,7 @@ const createDecoration = () => {
     const imageColor = getImageColor(img);
     const rgb = increaseSaturation(
       adjustBrightnessWhilePreservingHue(imageColor, 50, 50),
-      5
+      3
     );
     const themeColor = `rgb(${rgb})`;
     const themeColorRGB = `${rgb}`;
@@ -211,4 +294,7 @@ watch(musicNowAudio, async () => {
     }, 0);
   }, 0);
 });
+
+// 控制audio进度条
+const value = ref(50)
 </script>

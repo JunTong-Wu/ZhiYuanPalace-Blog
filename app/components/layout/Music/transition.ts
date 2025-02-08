@@ -14,6 +14,7 @@ export function musicBarShow() {
 }
 
 let animationEndPlaying = false;
+const ANIMATION_DURATION = 400; // 动画时长
 
 export function musicCardTransitionStart(
   element: any,
@@ -27,6 +28,7 @@ export function musicCardTransitionStart(
   // 获取元素的位置
   const elementRect = element.getBoundingClientRect();
 
+  drawer.style.transition = `all ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
   drawer.style.display = "block";
   drawer.style.top = elementRect.top + "px";
   drawer.style.left = elementRect.left + "px";
@@ -37,6 +39,8 @@ export function musicCardTransitionStart(
   drawer.style.zIndex = "2000";
 
   setTimeout(() => {
+    element.classList.remove("transition-close");
+    drawer.classList.remove("transition-close");
     element.classList.add("transition-open");
     drawer.classList.add("transition-open");
     setTimeout(() => {
@@ -53,7 +57,7 @@ export function musicCardTransitionStart(
         drawer.style.width = "100%";
         drawer.style.height = "100%";
         callback();
-      }, 600);
+      }, ANIMATION_DURATION);
     });
   }, 20);
 }
@@ -66,6 +70,9 @@ export function musicCardTransitionSlidingUp(
   // 窗口大小
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
+
+  drawer.style.transition = `none`;
+
   // 获取元素的位置
   const elementRect = element.getBoundingClientRect();
   const drawerRect = drawer.getBoundingClientRect();
@@ -76,13 +83,13 @@ export function musicCardTransitionSlidingUp(
   const diffLeft = Math.abs(drawerRect.left - elementRect.left);
 
   drawer.style.top =
-    drawerRect.top + (distance / windowHeight) * diffTop + "px";
+    drawerRect.top + (distance / windowHeight) * diffTop * 0.2 + "px";
   drawer.style.left =
-    drawerRect.left + (distance / windowWidth) * diffLeft + "px";
+    drawerRect.left + (distance / windowWidth) * diffLeft * 0.2 + "px";
   drawer.style.width =
-    drawerRect.width - (distance / windowWidth) * diffWidth + "px";
+    drawerRect.width - (distance / windowWidth) * diffWidth * 0.2 + "px";
   drawer.style.height =
-    drawerRect.height - (distance / windowHeight) * diffHeight + "px";
+    drawerRect.height - (distance / windowHeight) * diffHeight * 0.2 + "px";
 }
 
 export function musicCardTransitionSlideEndUp(
@@ -92,6 +99,9 @@ export function musicCardTransitionSlideEndUp(
 ) {
   console.log("动画：收起音乐抽屉");
   animationEndPlaying = true;
+
+  drawer.style.transition = `all ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
+
   // 获取元素的位置
   const elementRect = element.getBoundingClientRect();
   drawer.style.top = elementRect.top + "px";
@@ -100,20 +110,24 @@ export function musicCardTransitionSlideEndUp(
   drawer.style.bottom = elementRect.bottom + "px";
   drawer.style.width = elementRect.width + "px";
   drawer.style.height = elementRect.height + "px";
+
+  drawer.classList.remove("transition-open");
+  drawer.classList.add("transition-close");
   setTimeout(() => {
     element.classList.remove("transition-open");
-    drawer.classList.remove("transition-open");
+    element.classList.add("transition-close");
     drawer.style.display = "none";
     element.style.opacity = 1;
     animationEndPlaying = false;
     callback();
-  }, 600);
+  }, ANIMATION_DURATION);
 }
 export function musicCardTransitionSlideCancelUp(element: any, drawer: any) {
   // 窗口大小
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
 
+  drawer.style.transition = `all ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
   drawer.style.top = 0 + "px";
   drawer.style.left = 0 + "px";
   drawer.style.right = 0 + "px";
@@ -123,5 +137,5 @@ export function musicCardTransitionSlideCancelUp(element: any, drawer: any) {
   setTimeout(() => {
     drawer.style.width = "100%";
     drawer.style.height = "100%";
-  }, 300);
+  }, ANIMATION_DURATION / 2);
 }

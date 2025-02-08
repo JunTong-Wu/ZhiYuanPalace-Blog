@@ -94,6 +94,7 @@ const onMouseMove = (e: MouseEvent) => {
     moveDistanceX = startX - endX;
     moveDistanceY = startY - endY;
     startTranslate(moveDistanceX, moveDistanceY);
+    initViewSize();
   }
 };
 
@@ -122,6 +123,7 @@ const onTouchMove = (e: TouchEvent) => {
   moveDistanceX = startX - endX;
   moveDistanceY = startY - endY;
   startTranslate(moveDistanceX, moveDistanceY);
+  initViewSize();
 };
 
 const onTouchEnd = () => {
@@ -133,9 +135,9 @@ const onTouchEnd = () => {
 };
 
 const crossBorder = () => {
-  if (endX < viewLeft + 20 || endX > viewLeft + viewWidth - 20) {
+  if (endX < viewLeft + 5 || endX > viewLeft + viewWidth - 5) {
     return true;
-  } else if (endY < viewTop + 20 || endY > viewTop + viewHeight - 20) {
+  } else if (endY < viewTop + 5 || endY > viewTop + viewHeight - 5) {
     return true;
   } else {
     return false;
