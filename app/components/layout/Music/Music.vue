@@ -334,12 +334,30 @@
     return -1; // 如果没有找到合适的歌词，返回-1
   }
 
+  const scrollToNowLyric = () => {
+    let lineHeight = 40;
+    const lyricElement = document.getElementById("zy-music-lyric");
+    if (lyricElement) {
+      const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
+      const currentIndex = findLyricIndex(lyricsArray.value, audioPlayer.currentTime);
+      const lyricWrapperDiv = lyricElement.querySelector('div');
+      if (lyricWrapperDiv) {
+        lineHeight = (lyricWrapperDiv.offsetHeight / lyricsArray.value.length);
+      }
+      if (currentIndex !== -1) {
+        lyricElement.scrollTo({
+          top: (currentIndex - 2) * lineHeight,
+          behavior: "smooth",
+        });
+      }
+    }
+  }
 
   const displayLyrics = () => {
     const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
     let currentIndex = -1; // 初始化为-1，表示尚未开始播放
     const lyricElement = document.getElementById("zy-music-lyric");
-    let lineHeight = 40;
+
 
     audioPlayer.ontimeupdate = () => {
       const currentTime = audioPlayer.currentTime;
@@ -361,16 +379,7 @@
             (lyricsArray.value[currentIndex + 1] as any).isNext = true;
           }
           // 滚动到当前歌词
-          if (lyricElement) {
-            const lyricWrapperDiv = lyricElement.querySelector('div');
-            if (lyricWrapperDiv) {
-              lineHeight = (lyricWrapperDiv.offsetHeight / lyricsArray.value.length);
-            }
-            lyricElement.scrollTo({
-              top: (currentIndex - 2) * lineHeight,
-              behavior: "smooth",
-            });
-          }
+          scrollToNowLyric();
           // 刷新桌面歌词
           emit("refreshLryric", {
             lyric: (lyricsArray.value[currentIndex] as any).text,
@@ -386,6 +395,13 @@
       }
     };
   }
+
+
+  watch(isOpen, () => {
+    if (isOpen.value) {
+      scrollToNowLyric();
+    }
+  });
 
   const lyricInit = async () => {
     const getUrl = `${cdnUrl}${musicNowLyric.value}`;
