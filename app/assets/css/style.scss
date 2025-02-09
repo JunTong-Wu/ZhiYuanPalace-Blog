@@ -77,14 +77,14 @@ a {
 }
 @media (orientation: landscape) {
   :root {
-    --header-bar-height: 4.25rem;
+    --header-bar-height: 3.75rem;
     --footer-bar-height: 0rem;
     --centered-width: 86rem;
     --side-bar-width: 14rem;
     --hide-side-bar-width: 5rem;
-    --tool-bar-width: 21rem;
+    --tool-bar-width: 22rem;
     --drawer-width: 20rem;
-    --music-bar-height: calc(var(--header-bar-height) - 1rem);
+    --music-bar-height: calc(var(--header-bar-height) - 0.5rem);
     --music-bar-width: 24rem;
     --music-bar-top: 0.5rem;
     --pt-main: var(--header-bar-height);

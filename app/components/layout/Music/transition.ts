@@ -83,13 +83,13 @@ export function musicCardTransitionSlidingUp(
   const diffLeft = Math.abs(drawerRect.left - elementRect.left);
 
   drawer.style.top =
-    drawerRect.top + (distance / windowHeight) * diffTop * 0.2 + "px";
+    drawerRect.top + (distance / windowHeight) * diffTop * 0.05 + "px";
   drawer.style.left =
-    drawerRect.left + (distance / windowWidth) * diffLeft * 0.2 + "px";
+    drawerRect.left + (distance / windowWidth) * diffLeft * 0.05 + "px";
   drawer.style.width =
-    drawerRect.width - (distance / windowWidth) * diffWidth * 0.2 + "px";
+    drawerRect.width - (distance / windowWidth) * diffWidth * 0.05 + "px";
   drawer.style.height =
-    drawerRect.height - (distance / windowHeight) * diffHeight * 0.2 + "px";
+    drawerRect.height - (distance / windowHeight) * diffHeight * 0.05 + "px";
 }
 
 export function musicCardTransitionSlideEndUp(

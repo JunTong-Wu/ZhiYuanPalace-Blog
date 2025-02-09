@@ -18,147 +18,147 @@
   </button>
 </template>
 <script lang="ts">
-export default defineComponent({
-  name: "ZyButton",
-  props: {
-    title: { type: String, default: "" },
-    type: { type: String, default: "default" },
-    loading: { type: Boolean, default: false },
-  },
-  setup(props) {
-    const button = ref();
-    const animationStart = () => {
-      if (button.value && !props.loading) {
-        button.value.classList.add("animation");
-      }
-    };
-    const animationEnd = () => {
-      if (button.value) {
-        button.value.classList.remove("animation");
-      }
-    };
-    return {
-      button,
-      animationStart,
-      animationEnd,
-    };
-  },
-});
+  export default defineComponent({
+    name: "ZyButton",
+    props: {
+      title: { type: String, default: "" },
+      type: { type: String, default: "default" },
+      loading: { type: Boolean, default: false },
+    },
+    setup(props) {
+      const button = ref();
+      const animationStart = () => {
+        if (button.value && !props.loading) {
+          button.value.classList.add("animation");
+        }
+      };
+      const animationEnd = () => {
+        if (button.value) {
+          button.value.classList.remove("animation");
+        }
+      };
+      return {
+        button,
+        animationStart,
+        animationEnd,
+      };
+    },
+  });
 </script>
 <style lang="scss" scoped>
-@keyframes an-bounce {
-  0% {
-    transition: none;
-    opacity: 0.5;
-    transform: scale(0.9);
-  }
+  @keyframes an-bounce {
+    0% {
+      transition: none;
+      opacity: 0.5;
+      transform: scale(0.9);
+    }
 
-  15% {
-    transform: scale(1.1);
-  }
+    15% {
+      transform: scale(1.1);
+    }
 
-  30% {
-    transform: scale(0.8);
-  }
+    30% {
+      transform: scale(0.8);
+    }
 
-  45% {
-    transform: scale(1);
-  }
+    45% {
+      transform: scale(1);
+    }
 
-  60% {
-    opacity: 1;
-    transform: scale(0.94);
-  }
+    60% {
+      opacity: 1;
+      transform: scale(0.94);
+    }
 
-  75% {
-    transform: scale(1);
-  }
+    75% {
+      transform: scale(1);
+    }
 
-  100% {
-    transition: none;
-  }
-}
-
-@keyframes an-click {
-  0% {
-    transition: none;
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  90% {
-    transform: scale(0.9);
-  }
-
-  100% {
-    transition: none;
-    opacity: 0.5;
-    transform: scale(0.9);
-  }
-}
-
-@media screen {
-  button {
-    animation: an-bounce 0.7s;
-    outline: none;
-
-    &.animation {
-      animation: an-click 0.3s forwards;
+    100% {
+      transition: none;
     }
   }
-}
 
-@media (hover: hover) {
-  button {
-    cursor: pointer;
-    transition: all 0.2s;
+  @keyframes an-click {
+    0% {
+      transition: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    90% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      transition: none;
+      opacity: 0.5;
+      transform: scale(0.9);
+    }
   }
-}
 
-/**
+  @media screen {
+    button {
+      animation: an-bounce 0.7s;
+      outline: none;
+
+      &.animation {
+        animation: an-click 0.3s forwards;
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    button {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+  }
+
+  /**
 * Type None
 **/
-button.ZyButton-none {}
+  button.ZyButton-none {}
 
-/**
+  /**
 * Type Default
 **/
-button.ZyButton-default {
-  position: relative;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  background-color: var(--theme-color);
-  box-shadow: 0 0.5rem 1rem rgba(var(--theme-color-rgb), 0.3);
-  border: 2px solid var(--theme-color);
-
-  span {
+  button.ZyButton-default {
     position: relative;
-    z-index: 1;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background-color: var(--theme-color);
+    box-shadow: 0 0.5rem 1rem rgba(var(--theme-color-rgb), 0.3);
+    border: 2px solid var(--theme-color);
+
+    span {
+      position: relative;
+      z-index: 1;
+    }
+
+    &.ZyButton-loading {
+      border-color: var(--text-5);
+      cursor: not-allowed;
+    }
   }
 
-  &.ZyButton-loading {
-    border-color: var(--text-5);
-    cursor: not-allowed;
+  .dark button.ZyButton-default {
+    background-color: var(--theme-color-700);
   }
-}
 
-.dark button.ZyButton-default {
-  background-color: var(--theme-color-700);
-}
-
-/**
+  /**
 * Type Linear
 **/
-button.ZyButton-linear {
-  position: relative;
-  color: var(--theme-color);
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  /* background-color: var(--theme-color); */
+  button.ZyButton-linear {
+    position: relative;
+    color: var(--theme-color);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    /* background-color: var(--theme-color); */
 
-  border: 2px solid var(--theme-color);
-  /* &::before {
+    border: 2px solid var(--theme-color);
+    /* &::before {
     content: "";
     position: absolute;
     top: 0;
@@ -171,58 +171,58 @@ button.ZyButton-linear {
     border-radius: 1rem;
   } */
 
-  span {
-    position: relative;
-    z-index: 1;
+    span {
+      position: relative;
+      z-index: 1;
+    }
+
+    &.ZyButton-loading {
+      border-color: var(--text-5);
+      cursor: not-allowed;
+    }
   }
 
-  &.ZyButton-loading {
-    border-color: var(--text-5);
-    cursor: not-allowed;
+  .dark button.ZyButton-default {
+    background-color: var(--theme-color-700);
   }
-}
 
-.dark button.ZyButton-default {
-  background-color: var(--theme-color-700);
-}
-
-/**
+  /**
 * Type Icon
 **/
-button.ZyButton-icon {
-  background-color: transparent;
-  color: inherit;
-  border-radius: var(--border-radius-xs);
-}
-
-.dark button.ZyButton-icon {
-  background-color: transparent;
-  border: none;
-}
-
-@media (hover: hover) {
-  .pc button.ZyButton-icon:hover {
-    background-color: rgba(127, 127, 127, 0.2);
+  button.ZyButton-icon {
+    background-color: var(--bg-head-bar);
+    color: inherit;
+    border-radius: var(--border-radius-full);
   }
 
-  .pc.dark button.ZyButton-icon:hover {
-    background-color: rgb(255 255 255 / 0.2);
+  .dark button.ZyButton-icon {
+    background-color: transparent;
     border: none;
   }
-}
 
-/**
+  @media (hover: hover) {
+    .pc button.ZyButton-icon:hover {
+      background-color: rgba(127, 127, 127, 0.2);
+    }
+
+    .pc.dark button.ZyButton-icon:hover {
+      background-color: rgb(255 255 255 / 0.2);
+      border: none;
+    }
+  }
+
+  /**
 * Type Text
 **/
-button.ZyButton-text {
-  background-color: transparent;
-  border: none;
-  color: inherit;
-}
-
-@media (hover: hover) {
-  .pc button.ZyButton-text:hover {
-    color: var(--theme-color);
+  button.ZyButton-text {
+    background-color: transparent;
+    border: none;
+    color: inherit;
   }
-}
+
+  @media (hover: hover) {
+    .pc button.ZyButton-text:hover {
+      color: var(--theme-color);
+    }
+  }
 </style>

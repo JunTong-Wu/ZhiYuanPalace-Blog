@@ -12,7 +12,6 @@
           'w-7 h-7': progress >= 1 && progress < 90,
           'w-24 h-7 is-text-mode': progress >= 90,
         }">
-        <span class="absolute w-full h-full bg-text-1 rounded-full opacity-20"></span>
         <span class="progress absolute w-full h-full text-xs font-bold flex justify-center items-center duration-300"
           :class="{
             'opacity-100': progress < 90,
@@ -33,56 +32,56 @@
   </div>
 </template>
 <script setup lang="ts">
-const progress = ref(0)
-const calculateProgress = () => {
-  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-  const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-  const scrollPercent = scrollTop / (scrollHeight - clientHeight);
-  progress.value = Math.round(scrollPercent * 100) || 0;
+  const progress = ref(0)
+  const calculateProgress = () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    const scrollPercent = scrollTop / (scrollHeight - clientHeight);
+    progress.value = Math.round(scrollPercent * 100) || 0;
 
-}
-const backToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
-onMounted(() => {
-  window.addEventListener('scroll', calculateProgress);
-})
+  }
+  const backToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+  onMounted(() => {
+    window.addEventListener('scroll', calculateProgress);
+  })
 </script>
 <style lang="scss" scoped>
-button {
-  div {
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out;
-    ;
-  }
-}
-
-@media (orientation: landscape) {
   button {
-    &:hover {
-      div {
-        background-color: var(--theme-color-500);
-        border-color: var(--theme-color-500);
-        color: white;
-        scale: 1.25;
+    div {
+      transition: width 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out;
+      ;
+    }
+  }
 
-        .progress,
-        .text {
-          opacity: 0;
-        }
+  @media (orientation: landscape) {
+    button {
+      &:hover {
+        div {
+          background-color: var(--theme-color-500);
+          border-color: var(--theme-color-500);
+          color: white;
+          scale: 1.25;
 
-        .ui-arrow-up {
-          opacity: 1;
-        }
+          .progress,
+          .text {
+            opacity: 0;
+          }
 
-        &.is-text-mode {
-          scale: 1;
+          .ui-arrow-up {
+            opacity: 1;
+          }
+
+          &.is-text-mode {
+            scale: 1;
+          }
         }
       }
     }
   }
-}
 </style>
