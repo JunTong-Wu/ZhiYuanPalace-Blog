@@ -8,7 +8,10 @@
           <img class="h-full w-full object-cover rounded-full" src="@/assets/image/record.png" alt="" />
         </div>
         <div class="absolute h-[14rem] w-[14rem] z-10">
-          <img class="h-full w-full object-cover rounded-full" :src="`${cdnUrl}${musicNowCover}`" alt="" />
+          <ClientOnly>
+            <img class="h-full w-full object-cover rounded-full" :src="`${cdnUrl}${musicNowCover}`" alt="" />
+          </ClientOnly>
+
         </div>
         <div class="absolute h-[24rem] top-0  z-10
         landscape:-right-16 landscape:sm:right-10
@@ -68,30 +71,30 @@
   </div>
 </template>
 <script setup lang="ts">
-const config = useRuntimeConfig();
-const cdnUrl = config.public.CDN_URL;
-// Pinia仓库
-const { togglePlay, musicPrev, musicNext, musicNowTitle, musicNowSinger, musicNowCover, musicNowAudio, musicPlayState } = toRefs(
-  store.useMusicControl()
-);
+  const config = useRuntimeConfig();
+  const cdnUrl = config.public.CDN_URL;
+  // Pinia仓库
+  const { togglePlay, musicPrev, musicNext, musicNowCover, musicPlayState } = toRefs(
+    store.useMusicControl()
+  );
 </script>
 <style lang="scss" scoped>
-.home-section4-image {
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: 0 0 2rem var(--theme-color-500);
-  }
+  .home-section4-image {
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 2rem var(--theme-color-500);
+    }
 
-  img {
-    position: relative;
-    z-index: 2;
+    img {
+      position: relative;
+      z-index: 2;
+    }
   }
-}
 </style>

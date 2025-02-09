@@ -1,12 +1,18 @@
 import { defineStore } from "pinia";
+import { music } from "@@/models";
 
+const MusicPlayerListItem = music.musicPlayerListItem;
+
+type MusicListModelType = music.MusicList;
+type MusicPlayerListItemType = music.musicPlayerListItem;
 export const useMusicControl = defineStore("musicControl", {
   state: () => {
     return {
-      musicNowTitle: "幻听",
-      musicNowSinger: "许嵩",
-      musicNowCover: "/uploads/music/cover/许嵩 - 幻听.jpg",
-      musicNowAudio: "/uploads/music/audio/许嵩 - 幻听.ogg",
+      musicNowTitle: "",
+      musicNowSinger: "",
+      musicNowCover: "",
+      musicNowAudio: "",
+      musicNowLyric: "",
       musicPlayState: false,
       musicLyricState: false,
     };
@@ -39,6 +45,7 @@ export const useMusicControl = defineStore("musicControl", {
         singer: this.musicNowSinger,
         cover: this.musicNowCover,
         audio: this.musicNowAudio,
+        lyric: this.musicNowLyric,
       };
       // 导入播放列表
       const { musicList } = useMusicList();
@@ -58,6 +65,7 @@ export const useMusicControl = defineStore("musicControl", {
       this.musicNowSinger = musicNow.singer;
       this.musicNowCover = musicNow.cover;
       this.musicNowAudio = musicNow.audio;
+      this.musicNowLyric = musicNow.lyric;
     },
     /**
      * 切换到下一首音乐
@@ -69,6 +77,7 @@ export const useMusicControl = defineStore("musicControl", {
         singer: this.musicNowSinger,
         cover: this.musicNowCover,
         audio: this.musicNowAudio,
+        lyric: this.musicNowLyric,
       };
       // 导入播放列表
       const { musicList } = useMusicList();
@@ -88,130 +97,51 @@ export const useMusicControl = defineStore("musicControl", {
       this.musicNowSinger = musicNow.singer;
       this.musicNowCover = musicNow.cover;
       this.musicNowAudio = musicNow.audio;
+      this.musicNowLyric = musicNow.lyric;
     },
     /**
      * 从播放列表切换音乐
      */
-    musicSkipFromList(item: any) {
+    musicSkipFromList(item: MusicPlayerListItemType) {
       // 获取点击的音乐
-      const { title, singer, cover, audio } = item;
+      const { title, singer, cover, audio, lyric } = item;
       // 把点击的音乐信息，设置为当前正在播放的音乐信息
       this.musicNowTitle = title;
       this.musicNowSinger = singer;
       this.musicNowCover = cover;
       this.musicNowAudio = audio;
+      this.musicNowLyric = lyric;
     },
   },
 });
 export const useMusicList = defineStore("musicList", {
   state: () => {
     return {
-      musicList: [
-        {
-          title: "幻听",
-          singer: "许嵩",
-          cover: "/uploads/music/cover/许嵩 - 幻听.jpg",
-          audio: "/uploads/music/audio/许嵩 - 幻听.ogg",
-        },
-        {
-          title: "凌乱的华丽",
-          singer: "单色凌",
-          cover: "/uploads/music/cover/单色凌 - 凌乱的华丽.jpg",
-          audio: "/uploads/music/audio/单色凌 - 凌乱的华丽.ogg",
-        },
-        {
-          title: "一爱难求",
-          singer: "九歌",
-          cover: "/uploads/music/cover/九歌 - 一爱难求.jpg",
-          audio: "/uploads/music/audio/九歌 - 一爱难求.ogg",
-        },
-        {
-          title: "触碰纯白",
-          singer: "单色凌",
-          cover: "/uploads/music/cover/单色凌 - 触碰纯白.jpg",
-          audio: "/uploads/music/audio/单色凌 - 触碰纯白.ogg",
-        },
-        {
-          title: "无名指的约定",
-          singer: "回音哥",
-          cover: "/uploads/music/cover/回音哥 - 无名指的约定.jpg",
-          audio: "/uploads/music/audio/回音哥 - 无名指的约定.ogg",
-        },
-        {
-          title: "大圈圈",
-          singer: "安瑞兮",
-          cover: "/uploads/music/cover/安瑞兮 - 大圈圈.jpg",
-          audio: "/uploads/music/audio/安瑞兮 - 大圈圈.ogg",
-        },
-        {
-          title: "会不会",
-          singer: "本兮",
-          cover: "/uploads/music/cover/本兮 - 会不会.jpg",
-          audio: "/uploads/music/audio/本兮 - 会不会.ogg",
-        },
-        {
-          title: "无底线",
-          singer: "本兮",
-          cover: "/uploads/music/cover/本兮 - 无底线.jpg",
-          audio: "/uploads/music/audio/本兮 - 无底线.ogg",
-        },
-        {
-          title: "有心无意",
-          singer: "本兮",
-          cover: "/uploads/music/cover/本兮 - 有心无意.jpg",
-          audio: "/uploads/music/audio/本兮 - 有心无意.ogg",
-        },
-        {
-          title: "白色",
-          singer: "本兮",
-          cover: "/uploads/music/cover/本兮 - 白色.jpg",
-          audio: "/uploads/music/audio/本兮 - 白色.ogg",
-        },
-        {
-          title: "创作者",
-          singer: "本兮 / 徐良",
-          cover: "/uploads/music/cover/本兮 _ 徐良 - 创作者.jpg",
-          audio: "/uploads/music/audio/本兮 _ 徐良 - 创作者.ogg",
-        },
-        {
-          title: "放不下",
-          singer: "汪苏泷",
-          cover: "/uploads/music/cover/汪苏泷 - 放不下.jpg",
-          audio: "/uploads/music/audio/汪苏泷 - 放不下.ogg",
-        },
-        {
-          title: "月亮警察",
-          singer: "火箭少女101",
-          cover: "/uploads/music/cover/火箭少女101 - 月亮警察.jpg",
-          audio: "/uploads/music/audio/火箭少女101 - 月亮警察.ogg",
-        },
-        {
-          title: "多余的解释",
-          singer: "许嵩",
-          cover: "/uploads/music/cover/许嵩 - 多余的解释.jpg",
-          audio: "/uploads/music/audio/许嵩 - 多余的解释.ogg",
-        },
-        {
-          title: "断桥残雪",
-          singer: "许嵩",
-          cover: "/uploads/music/cover/许嵩 - 断桥残雪.jpg",
-          audio: "/uploads/music/audio/许嵩 - 断桥残雪.ogg",
-        },
-        {
-          title: "玫瑰花的葬礼",
-          singer: "许嵩",
-          cover: "/uploads/music/cover/许嵩 - 玫瑰花的葬礼.jpg",
-          audio: "/uploads/music/audio/许嵩 - 玫瑰花的葬礼.ogg",
-        },
-        {
-          title: "违章动物",
-          singer: "许嵩",
-          cover: "/uploads/music/cover/许嵩 - 违章动物.jpg",
-          audio: "/uploads/music/audio/许嵩 - 违章动物.ogg",
-        },
-      ],
+      musicList: [new MusicPlayerListItem()] as MusicPlayerListItemType[],
     };
   },
   getters: {},
-  actions: {},
+  actions: {
+    setMusicList(musicList: MusicListModelType) {
+      const musicPlayerList = <Array<MusicPlayerListItemType>>[];
+      for (let i = 0; i < musicList.list.length; i++) {
+        const item = musicList.list[i];
+        if (item) {
+          musicPlayerList.push({
+            title: item.song_title,
+            singer: item.song_singer,
+            cover: item.song_cover,
+            audio: item.song_audio_url,
+            lyric: item.song_lyric_url,
+          });
+        }
+      }
+      this.musicList = musicPlayerList;
+      // 设置当前播放歌曲为第一首
+      const { musicSkipFromList } = useMusicControl();
+      if (this.musicList[0]) {
+        musicSkipFromList(this.musicList[0]);
+      }
+    },
+  },
 });

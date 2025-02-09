@@ -35,16 +35,29 @@
         </div>
       </div>
       <div class="flex items-center h-full gap-4">
-        <!-- 音乐播放器 -->
-        <div class="flex items-center h-full -mr-2 ">
-          <Music
-            class="landscape:px-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl" />
-          <!-- 歌词区 -->
-          <div class="hidden landscape:lg:block p-2 py-1 -ml-2 h-header w-72" title="歌词" type="text">
-            <div class="bg-background rounded-xs h-full w-full flex items-center justify-center">
-              <span class="text-xs text-center text-text-2 w-72 px-4">暂无歌词，享受好音乐</span>
+
+        <!-- 时钟区 -->
+        <!-- <ClientOnly>
+          <div class="layout-clock h-full">
+            <div
+              class="bg-background w-72 flex flex-col items-center px-4 rounded-full h-[70%] relative top-[15%] justify-center">
+              <span class="time text-sm text-text-1">{{ time }}</span>
+              <div class="date text-xs text-text-3">{{ todayDate }}</div>
             </div>
           </div>
+        </ClientOnly> -->
+
+        <!-- 音乐播放器 -->
+        <div class="flex items-center h-full -mr-2 ">
+          <!-- 歌词区 -->
+          <div class="hidden landscape:lg:block p-2 py-1 -ml-2 h-header w-72" title="歌词" type="text">
+            <div class="rounded-xs h-full w-full flex items-center justify-center">
+              <span class="text-xs text-right text-text-2 w-72 px-4">{{ desktopLyrics }}</span>
+            </div>
+          </div>
+          <Music
+            class="landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl"
+            @refresh-lryric="refreshLryric" />
         </div>
 
         <div class="h-full flex items-center">
@@ -114,30 +127,15 @@
               </ZyButton>
             </div>
 
-
             <div v-if="isAdminHeader" class="landscape:hidden p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="openAdminNavigationDrawer()"
                 title="菜单" type="icon">
                 <UIcon name="i-solar-hamburger-menu-linear" class=" w-5 h-5" />
               </ZyButton>
             </div>
-
           </div>
         </div>
       </div>
-
-      <!-- 时钟区 -->
-      <!-- <ClientOnly>
-        <div class="layout-clock absolute left-[50%] -translate-x-[50%] h-full">
-          <div
-            class="bg-background w-72 flex flex-col items-center px-4 rounded-full h-[70%] relative top-[15%] justify-center">
-            <span class="time text-sm text-text-1">{{ time }}</span>
-            <div class="date text-xs text-text-3">{{ todayDate }}</div>
-          </div>
-        </div>
-      </ClientOnly> -->
-
-
     </div>
 
     <!-- 搜索抽屉 -->
@@ -308,6 +306,12 @@
   };
   // 初始化时间
   updateDate();
+
+  // 刷新桌面歌词
+  const desktopLyrics = ref("");
+  const refreshLryric = (result: any) => {
+    desktopLyrics.value = result.lyric;
+  };
 
   const router = useRouter();
   // 管理员回到前台

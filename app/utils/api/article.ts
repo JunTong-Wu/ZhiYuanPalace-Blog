@@ -15,7 +15,7 @@ export const ApiArticle = {
    */
   getArticlesList(
     params: ApiIndexModelType["params"] | null
-  ): Promise<LazyAsyncDataRef<ResOptionsModelType<ArticleModelType>>> {
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<ArticleListModelType>>> {
     return ApiService.post("/articles/index", params);
   },
   /**
