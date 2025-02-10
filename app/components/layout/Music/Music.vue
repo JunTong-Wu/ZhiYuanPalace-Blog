@@ -426,7 +426,6 @@
   }
 
   watch(musicNowLyric, async () => {
-    console.log(musicNowLyric.value);
     lyricInit();
   });
 
@@ -499,7 +498,6 @@
   if (musicListDataLazyFetch.data.value) {
     const musicList = musicListDataLazyFetch.data.value?.data
     setMusicList.value(musicList);
-
   }
 
   onMounted(() => {

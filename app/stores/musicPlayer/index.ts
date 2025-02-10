@@ -3,11 +3,13 @@ import { music } from "@@/models";
 
 const MusicPlayerListItem = music.musicPlayerListItem;
 
+type MusicModelType = music.Music;
 type MusicListModelType = music.MusicList;
 type MusicPlayerListItemType = music.musicPlayerListItem;
 export const useMusicControl = defineStore("musicControl", {
   state: () => {
     return {
+      musicNowId: 0,
       musicNowTitle: "",
       musicNowSinger: "",
       musicNowCover: "",
@@ -28,6 +30,18 @@ export const useMusicControl = defineStore("musicControl", {
         : (this.musicPlayState = false);
     },
     /**
+     * 音乐播放
+     */
+    musicPlay() {
+      this.musicPlayState = true;
+    },
+    /**
+     * 音乐暂停
+     */
+    musicPause() {
+      this.musicPlayState = false;
+    },
+    /**
      * 歌词显示/歌词隐藏
      */
     toggleLyric() {
@@ -41,6 +55,7 @@ export const useMusicControl = defineStore("musicControl", {
     musicPrev() {
       // 临时存储当前正在播放的音乐
       let musicNow = {
+        id: this.musicNowId,
         title: this.musicNowTitle,
         singer: this.musicNowSinger,
         cover: this.musicNowCover,
@@ -61,6 +76,7 @@ export const useMusicControl = defineStore("musicControl", {
         }
       }
       // 把上一首音乐信息，设置为当前正在播放的音乐信息
+      this.musicNowId = musicNow.id;
       this.musicNowTitle = musicNow.title;
       this.musicNowSinger = musicNow.singer;
       this.musicNowCover = musicNow.cover;
@@ -73,6 +89,7 @@ export const useMusicControl = defineStore("musicControl", {
     musicNext() {
       // 临时存储当前正在播放的音乐
       let musicNow = {
+        id: this.musicNowId,
         title: this.musicNowTitle,
         singer: this.musicNowSinger,
         cover: this.musicNowCover,
@@ -93,6 +110,7 @@ export const useMusicControl = defineStore("musicControl", {
         }
       }
       // 把下一首音乐信息，设置为当前正在播放的音乐信息
+      this.musicNowId = musicNow.id;
       this.musicNowTitle = musicNow.title;
       this.musicNowSinger = musicNow.singer;
       this.musicNowCover = musicNow.cover;
@@ -104,8 +122,31 @@ export const useMusicControl = defineStore("musicControl", {
      */
     musicSkipFromList(item: MusicPlayerListItemType) {
       // 获取点击的音乐
-      const { title, singer, cover, audio, lyric } = item;
+      const { id, title, singer, cover, audio, lyric } = item;
       // 把点击的音乐信息，设置为当前正在播放的音乐信息
+      this.musicNowId = id;
+      this.musicNowTitle = title;
+      this.musicNowSinger = singer;
+      this.musicNowCover = cover;
+      this.musicNowAudio = audio;
+      this.musicNowLyric = lyric;
+    },
+    /**
+     * 从外部切换音乐
+     */
+    musicSkipFromOutside(music: MusicModelType) {
+      const item = {
+        id: music.song_id,
+        title: music.song_title,
+        singer: music.song_singer,
+        cover: music.song_cover,
+        audio: music.song_audio_url,
+        lyric: music.song_lyric_url,
+      };
+      // 获取点击的音乐
+      const { id, title, singer, cover, audio, lyric } = item;
+      // 把点击的音乐信息，设置为当前正在播放的音乐信息
+      this.musicNowId = id;
       this.musicNowTitle = title;
       this.musicNowSinger = singer;
       this.musicNowCover = cover;
@@ -128,6 +169,7 @@ export const useMusicList = defineStore("musicList", {
         const item = musicList.list[i];
         if (item) {
           musicPlayerList.push({
+            id: item.song_id,
             title: item.song_title,
             singer: item.song_singer,
             cover: item.song_cover,

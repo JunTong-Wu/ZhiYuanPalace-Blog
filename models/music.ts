@@ -11,6 +11,7 @@ export class Music {
 }
 
 export class musicPlayerListItem {
+  id: number = 0;
   title: string = "";
   singer: string = "";
   cover: string = "";

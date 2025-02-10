@@ -6,11 +6,13 @@
   }
     ">
     <ZyButton type="icon" @click="backToTop" class="flex justify-center items-center w-full h-full">
-      <div class="relative flex justify-center items-center rounded-full pointer-events-none" :class="{
-        'w-0 h-0 scale-0': progress < 1,
-        'w-7 h-7': progress >= 1 && progress < 90,
-        'w-24 h-7 is-text-mode': progress >= 90,
-      }">
+      <div
+        class="relative flex justify-center items-center rounded-full pointer-events-none portrait:border-2 border-text-4"
+        :class="{
+          'w-0 h-0 scale-0': progress < 1,
+          'w-7 h-7': progress >= 1 && progress < 90,
+          'w-24 h-7 is-text-mode': progress >= 90,
+        }">
         <span class="progress absolute w-full h-full text-xs font-bold flex justify-center items-center duration-300"
           :class="{
             'opacity-100': progress < 90,

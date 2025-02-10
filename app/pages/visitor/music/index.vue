@@ -1,7 +1,6 @@
 <template>
   <CommonMainSection>
-    TEST
-    <div v-loading="true" class="w-20 h-20"></div>
+    <MusicTable />
     <Toolbar />
   </CommonMainSection>
 </template>
