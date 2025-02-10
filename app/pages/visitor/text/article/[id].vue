@@ -6,8 +6,7 @@
         <template #onload>
           <div class="zy-article-card-inner">
             <div class="zy-card-image">
-              <ZyLazyImage :locked="articleData.has_password" :src="`${cdnUrl}${articleData.article_title_image}`"
-                alt="" />
+              <ZyImage :locked="articleData.has_password" :src="`${cdnUrl}${articleData.article_title_image}`" alt="" />
             </div>
           </div>
           <div
@@ -36,67 +35,67 @@
   </div>
 </template>
 <script setup lang="ts">
-const { setPostInfo, clearPostInfo } = toRefs(
-  store.usePostInfo()
-);
-const setHeaderTitle = (id: number, title: string) => {
-  console.log('route:', route.fullPath);
-  setPostInfo.value(id, "article", title)
-}
-
-
-const route = useRoute();
-const id = route.params.id as string;
-
-const getArticleDataLazyFetch = async (password?: string) => {
-  if (password) {
-    return await ApiArticle.showArticle({
-      article_id: id,
-      article_password: password,
-    });
+  const { setPostInfo, clearPostInfo } = toRefs(
+    store.usePostInfo()
+  );
+  const setHeaderTitle = (id: number, title: string) => {
+    console.log('route:', route.fullPath);
+    setPostInfo.value(id, "article", title)
   }
-  return await ApiArticle.showArticle({ article_id: id });
-};
+
+
+  const route = useRoute();
+  const id = route.params.id as string;
+
+  const getArticleDataLazyFetch = async (password?: string) => {
+    if (password) {
+      return await ApiArticle.showArticle({
+        article_id: id,
+        article_password: password,
+      });
+    }
+    return await ApiArticle.showArticle({ article_id: id });
+  };
 
 
 
-// 获取文章内容
-let articleDataLazyFetch = await getArticleDataLazyFetch();
-// 获取加密的文章内容
-const getArticleWithPassword = async (params: { password: string }) => {
-  articleDataLazyFetch = await getArticleDataLazyFetch(params.password);
-};
+  // 获取文章内容
+  let articleDataLazyFetch = await getArticleDataLazyFetch();
+  // 获取加密的文章内容
+  const getArticleWithPassword = async (params: { password: string }) => {
+    articleDataLazyFetch = await getArticleDataLazyFetch(params.password);
+  };
 
-const articleData = ref<ArticleModelType>(new ArticleModel());
+  const articleData = ref<ArticleModelType>(new ArticleModel());
 
-const showArticle = (result: ResOptionsModelType<ArticleModelType>) => {
-  articleData.value = result.data;
-  setHeaderTitle(result.data.article_id, result.data.article_title)
-};
+  const showArticle = (result: ResOptionsModelType<ArticleModelType>) => {
+    articleData.value = result.data;
+    setHeaderTitle(result.data.article_id, result.data.article_title)
+  };
 
-const config = useRuntimeConfig();
-const cdnUrl = config.public.CDN_URL;
+  const config = useRuntimeConfig();
+  const cdnUrl = config.public.CDN_URL;
 
-onUnmounted(() => {
-  clearPostInfo.value();
-})
+  onUnmounted(() => {
+    clearPostInfo.value();
+  })
 </script>
 <style lang="scss">
-@import url("@/components/layout/ArticleCard/ArticleCard.scss");
+  @import url("@/components/layout/ArticleCard/ArticleCard.scss");
 
-@keyframes an-article-card-text {
-  0% {
-    transform: translateY(10rem);
-    opacity: 0;
+  @keyframes an-article-card-text {
+    0% {
+      transform: translateY(10rem);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
   }
 
-  100% {
-    transform: translateY(0rem);
-    opacity: 1;
+  .zy-article-card-text {
+    animation: an-article-card-text 400ms 200ms;
   }
-}
-
-.zy-article-card-text {
-  animation: an-article-card-text 400ms 200ms;
-}
 </style>
