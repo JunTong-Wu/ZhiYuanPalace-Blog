@@ -55,7 +55,7 @@
               <span class="text-xs text-right text-text-2 w-72 px-4">{{ desktopLyrics }}</span>
             </div>
           </div>
-          <Music
+          <MusicPlayer
             class="landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl"
             @refresh-lryric="refreshLryric" />
         </div>

@@ -39,7 +39,6 @@
     store.usePostInfo()
   );
   const setHeaderTitle = (id: number, title: string) => {
-    console.log('route:', route.fullPath);
     setPostInfo.value(id, "article", title)
   }
 

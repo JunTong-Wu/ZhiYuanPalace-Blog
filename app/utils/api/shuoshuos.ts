@@ -16,7 +16,7 @@ export const ApiShuoShuo = {
   getShuoshuoList(
     params: ApiIndexModelType["params"] | null
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<ShuoshuoListModelType>>> {
-    return ApiService.post("/shuoshuo/index", params);
+    return ApiService.post("/shuoshuos/index", params);
   },
   /**
    * 查询单条说说
@@ -24,6 +24,6 @@ export const ApiShuoShuo = {
   showShuoshuo(
     params: ApiShowModelType["params"]
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<ShuoshuoModelType>>> {
-    return ApiService.post(`/shuoshuo/show`, params);
+    return ApiService.post(`/shuoshuos/show`, params);
   },
 };

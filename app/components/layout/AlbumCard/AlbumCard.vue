@@ -14,29 +14,29 @@
   </div>
 </template>
 <script lang="ts">
-import { cardTransitionStart } from "./AlbumCard";
-import "./AlbumCard.scss";
+  import { cardTransitionStart } from "./transition";
+  import "./AlbumCard.scss";
 
-export default {
-  props: {
-    skeleton: { type: Boolean, default: false }, // 指定是否是骨架屏
-    href: { type: String, default: "" }, // 点击跳转的链接
-  },
-  setup(props) {
-    const router = useRouter();
-    const openCard = (element: any) => {
-      if (!props.skeleton) {
-        if (element) {
-          let href = props.href;
-          cardTransitionStart(element, () => {
-            router.push(href);
-          });
+  export default {
+    props: {
+      skeleton: { type: Boolean, default: false }, // 指定是否是骨架屏
+      href: { type: String, default: "" }, // 点击跳转的链接
+    },
+    setup(props) {
+      const router = useRouter();
+      const openCard = (element: any) => {
+        if (!props.skeleton) {
+          if (element) {
+            let href = props.href;
+            cardTransitionStart(element, () => {
+              router.push(href);
+            });
+          }
         }
-      }
-    };
-    return {
-      openCard,
-    };
-  },
-};
+      };
+      return {
+        openCard,
+      };
+    },
+  };
 </script>

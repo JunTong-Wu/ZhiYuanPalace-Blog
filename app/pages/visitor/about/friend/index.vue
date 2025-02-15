@@ -37,8 +37,7 @@
                   {{ item.frd_coll_title }}
                 </button>
                 <div class="flex items-center space-x-1">
-                  <span
-                    class="js-likes relative cursor-pointer before:absolute before:h-4 before:w-4 before:bg-[url('../img/heart-fill.svg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-0">
+                  <span class="js-likes relative cursor-pointer">
                     <UIcon name="i-solar-fire-linear" class="w-4 h-4" />
                   </span>
                   <span class="text-sm dark:text-jacarta-200">54</span>

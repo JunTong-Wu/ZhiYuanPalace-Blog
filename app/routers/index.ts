@@ -126,6 +126,14 @@ const routes: Array<RouteRecordRaw> = [
           order: 420,
         },
       },
+      {
+        path: "/audio/video/:id",
+        name: "video-id",
+        component: () => import("@/pages/visitor/audio/video/[id].vue"),
+        meta: {
+          order: 421,
+        },
+      },
     ],
   },
   {

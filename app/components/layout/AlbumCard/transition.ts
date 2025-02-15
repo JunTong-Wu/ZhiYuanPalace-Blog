@@ -65,6 +65,7 @@ export function cardTransitionStart(element: any, callback: () => void) {
   }, 80);
 }
 export function cardTransitionEnd() {
+  console.log("动画：清理相册卡片占位元素");
   const tempElement = document.getElementById("temp-element");
   if (tempElement) {
     document.body.removeChild(tempElement);

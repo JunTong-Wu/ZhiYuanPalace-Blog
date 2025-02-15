@@ -13,12 +13,12 @@
 
     </Html>
     <ZySuperResponsive>
-      <Layout :isLoginLayout="isLoginPage" :isAdminLayout="isAdminPage">
+      <Layout :isLoginLayout="isLoginPage" :isAdminLayout="isAdminPage" :isVideoDetailLayout="isVideoDetailPage">
         <NuxtPage class="nuxt-page mx-auto min-h-screen" />
       </Layout>
     </ZySuperResponsive>
     <ClientOnly>
-      <Live2D :hide="isAdminPage || isLoginPage" />
+      <Live2D :hide="isAdminPage || isLoginPage || isVideoDetailPage" />
     </ClientOnly>
   </div>
 </template>
@@ -35,13 +35,13 @@ const head = useLocaleHead({
 const route = useRoute();
 const isAdminPage = ref(false);
 const isLoginPage = ref(false);
+const isVideoDetailPage  = ref(false);
 // 监听路由变化，切换布局
 watch(
   () => route.path,
   (newPath) => {
     if (isAdminRouter(newPath)) {
       console.log('isAdminRouter');
-
       isAdminPage.value = true;
       isLoginPage.value = false;
     } else if (newPath.startsWith("/login")) {
@@ -50,6 +50,12 @@ watch(
     } else {
       isAdminPage.value = false;
       isLoginPage.value = false;
+    }
+
+    if(newPath.includes("/audio/video/")){
+      isVideoDetailPage.value = true;
+    } else {
+      isVideoDetailPage.value = false;
     }
   },
   { immediate: true }

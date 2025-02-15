@@ -1,7 +1,7 @@
 import { footerBarHide } from "~/components/layout/FooterNavigation/transition";
 import { footerColumnsHide } from "~/components/layout/FooterColumns/transition";
 import { headerBarHide } from "~/components/layout/Header/transition";
-import { musicBarHide } from "~/components/layout/Music/transition";
+import { musicBarHide } from "~/components/layout/MusicPlayer/transition";
 import { toolBarHide } from "~/components/layout/Toolbar/transition";
 
 export function cardTransitionStart(element: any, callback: () => void) {
@@ -65,6 +65,7 @@ export function cardTransitionStart(element: any, callback: () => void) {
   }, 80);
 }
 export function cardTransitionEnd() {
+  console.log("动画：清理说说卡片占位元素");
   const tempElement = document.getElementById("temp-element");
   if (tempElement) {
     document.body.removeChild(tempElement);

@@ -31,5 +31,21 @@ export default defineAppConfig({
     alert: {
       rounded: "rounded",
     },
+    range: {
+      progress: {
+        rounded: "rounded-full",
+        background:
+          "bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.4)]",
+      },
+      thumb: {
+        background:
+          "[&::-webkit-slider-thumb]:bg-transparent [&::-webkit-slider-thumb]:dark:bg-transparent [&::-moz-range-thumb]:bg-transparent",
+        ring: "[&::-webkit-slider-thumb]:ring-0 [&::-webkit-slider-thumb]:ring-0",
+      },
+      track: {
+        background:
+          "[&::-webkit-slider-runnable-track]:bg-[rgba(255,255,255,0.2)] [&::-moz-range-track]:bg-[rgba(255,255,255,0.2)] [&::-webkit-slider-runnable-track]:dark:bg-[rgba(255,255,255,0.2)] [&::-moz-range-track]:dark:bg-[rgba(255,255,255,0.2)]",
+      },
+    },
   },
 });

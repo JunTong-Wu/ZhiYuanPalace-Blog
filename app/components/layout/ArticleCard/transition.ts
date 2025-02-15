@@ -1,7 +1,7 @@
 import { footerBarHide } from "~/components/layout/FooterNavigation/transition";
 import { footerColumnsHide } from "~/components/layout/FooterColumns/transition";
 import { headerBarHide } from "~/components/layout/Header/transition";
-import { musicBarHide } from "~/components/layout/Music/transition";
+import { musicBarHide } from "~/components/layout/MusicPlayer/transition";
 import { toolBarHide } from "~/components/layout/Toolbar/transition";
 
 export function cardTransitionStart(element: any, callback: () => void) {

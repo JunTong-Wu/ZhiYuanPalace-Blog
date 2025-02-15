@@ -98,19 +98,7 @@
 
                   <div class="py-4 md:py-10">
                     <URange @mousedown.stop @mousemove.stop @mouseup.stop @input="progressBarInput"
-                      v-model="progressBar" :ui="{
-                        progress: {
-                          rounded: 'rounded-full',
-                          background: 'bg-[rgba(255,255,255,0.4)] dark:bg-[rgba(255,255,255,0.4)]',
-                        },
-                        thumb: {
-                          background: '[&::-webkit-slider-thumb]:bg-transparent [&::-webkit-slider-thumb]:dark:bg-transparent [&::-moz-range-thumb]:bg-transparent',
-                          ring: '[&::-webkit-slider-thumb]:ring-0 [&::-webkit-slider-thumb]:ring-0',
-                        },
-                        track: {
-                          background: '[&::-webkit-slider-runnable-track]:bg-[rgba(255,255,255,0.1)] [&::-moz-range-track]:bg-[rgba(255,255,255,0.1)] [&::-webkit-slider-runnable-track]:dark:bg-[rgba(255,255,255,0.1)] [&::-moz-range-track]:dark:bg-[rgba(255,255,255,0.1)]',
-                        }
-                      }" />
+                      v-model="progressBar" />
                     <div class="flex justify-between text-xs opacity-50 mt-4">
                       <span>{{ currentTime }}</span>
                       <span>{{ duration }}</span>
@@ -240,12 +228,22 @@
 
   const refreshAudioElement = ref(false);
 
+  const playStatusInit = () => {
+    const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
+    if (audioPlayer) {
+      musicPlayState.value = false;
+    }
+  }
+
   // 控制audio进度条
   const progressBar = ref(0)
   const currentTime = ref('00:00');
   const duration = ref('--:--');
 
-  function formatTime(time: number) {
+  const formatTime = (time: number) => {
+    if (Number.isNaN(time)) {
+      return '--:--';
+    }
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -253,12 +251,15 @@
 
   const progressInit = () => {
     const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
-    audioPlayer.addEventListener("timeupdate", () => {
-      const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-      currentTime.value = formatTime(audioPlayer.currentTime);
-      duration.value = formatTime(audioPlayer.duration);
-      progressBar.value = progress;
-    });
+    if (audioPlayer) {
+      audioPlayer.addEventListener("timeupdate", () => {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        currentTime.value = formatTime(audioPlayer.currentTime);
+        duration.value = formatTime(audioPlayer.duration);
+        progressBar.value = progress;
+      });
+    }
+
   }
 
   // 进度条拖动时更新音乐播放位置
@@ -279,15 +280,19 @@
   const lyricsArray = ref<Array<LRC>>([{ time: 0, text: '暂无歌词，享受好音乐', isActivate: true, isNext: false, isPrev: false }]);
 
   const fetchLRCFile = async (url: string) => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch LRC file: ${response.statusText}`);
+    if (musicNowLyric.value !== '') {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch LRC file: ${response.statusText}`);
+        }
+        const lrcText = await response.text();
+        return lrcText;
+      } catch (error) {
+        console.error("Error fetching LRC file:", error);
+        return null;
       }
-      const lrcText = await response.text();
-      return lrcText;
-    } catch (error) {
-      console.error("Error fetching LRC file:", error);
+    } else {
       return null;
     }
   }
@@ -358,42 +363,43 @@
     let currentIndex = -1; // 初始化为-1，表示尚未开始播放
     const lyricElement = document.getElementById("zy-music-lyric");
 
+    if (audioPlayer) {
+      audioPlayer.addEventListener("timeupdate", () => {
+        const currentTime = audioPlayer.currentTime;
+        const newIndex = findLyricIndex(lyricsArray.value, currentTime);
 
-    audioPlayer.ontimeupdate = () => {
-      const currentTime = audioPlayer.currentTime;
-      const newIndex = findLyricIndex(lyricsArray.value, currentTime);
-
-      if (newIndex !== currentIndex) { // 如果歌词索引发生变化
-        currentIndex = newIndex;
-        if (currentIndex !== -1) { // 如果找到对应的歌词
-          for (let i = 0; i < lyricsArray.value.length; i++) {
-            (lyricsArray.value[i] as any).isPrev = false;
-            (lyricsArray.value[i] as any).isActivate = false;
-            (lyricsArray.value[i] as any).isNext = false;
-          }
-          if (currentIndex > 0) {
-            (lyricsArray.value[currentIndex - 1] as any).isPrev = true;
-          }
-          (lyricsArray.value[currentIndex] as any).isActivate = true;
-          if (currentIndex < lyricsArray.value.length - 1) {
-            (lyricsArray.value[currentIndex + 1] as any).isNext = true;
-          }
-          // 滚动到当前歌词
-          scrollToNowLyric();
-          // 刷新桌面歌词
-          emit("refreshLryric", {
-            lyric: (lyricsArray.value[currentIndex] as any).text,
-          });
-        } else {
-          // 如果没有找到对应的歌词，将所有歌词的isActivate属性设置为false
-          for (let i = 0; i < lyricsArray.value.length; i++) {
-            (lyricsArray.value[i] as any).isPrev = false;
-            (lyricsArray.value[i] as any).isActivate = false;
-            (lyricsArray.value[i] as any).isNext = false;
+        if (newIndex !== currentIndex) { // 如果歌词索引发生变化
+          currentIndex = newIndex;
+          if (currentIndex !== -1) { // 如果找到对应的歌词
+            for (let i = 0; i < lyricsArray.value.length; i++) {
+              (lyricsArray.value[i] as any).isPrev = false;
+              (lyricsArray.value[i] as any).isActivate = false;
+              (lyricsArray.value[i] as any).isNext = false;
+            }
+            if (currentIndex > 0) {
+              (lyricsArray.value[currentIndex - 1] as any).isPrev = true;
+            }
+            (lyricsArray.value[currentIndex] as any).isActivate = true;
+            if (currentIndex < lyricsArray.value.length - 1) {
+              (lyricsArray.value[currentIndex + 1] as any).isNext = true;
+            }
+            // 滚动到当前歌词
+            scrollToNowLyric();
+            // 刷新桌面歌词
+            emit("refreshLryric", {
+              lyric: (lyricsArray.value[currentIndex] as any).text,
+            });
+          } else {
+            // 如果没有找到对应的歌词，将所有歌词的isActivate属性设置为false
+            for (let i = 0; i < lyricsArray.value.length; i++) {
+              (lyricsArray.value[i] as any).isPrev = false;
+              (lyricsArray.value[i] as any).isActivate = false;
+              (lyricsArray.value[i] as any).isNext = false;
+            }
           }
         }
-      }
-    };
+      })
+    }
   }
 
 
@@ -494,14 +500,19 @@
   };
 
   // 获取音乐列表
-  const musicListDataLazyFetch = await ApiMusic.getMusicList(null);
-  if (musicListDataLazyFetch.data.value) {
-    const musicList = musicListDataLazyFetch.data.value?.data
-    setMusicList.value(musicList);
+  const getData = async () => {
+    const musicListDataLazyFetch = await ApiMusic.getMusicList(null);
+    if (musicListDataLazyFetch.data.value) {
+      const musicList = musicListDataLazyFetch.data.value?.data
+      setMusicList.value(musicList);
+    }
   }
+  getData();
 
   onMounted(() => {
+    getData();
     isLoading.value = false;
+    playStatusInit();
     lyricInit();
     progressInit();
     watch(MusicCoverImageRef, (newValue: any) => {

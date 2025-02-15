@@ -27,31 +27,35 @@
 </template>
 
 <script>
-import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
-import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
+  import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
+  import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
+  import { cardTransitionEnd as AlbumCardTransitionEnd } from "~/components/layout/AlbumCard/transition";
+  import { cardTransitionEnd as VideoCardTransitionEnd } from "~/components/layout/VideoCard/transition";
 
-export default {
-  name: "TestError",
-  props: {
-    // 接受错误页面传递的错误信息
-    error: {
-      type: Object,
-      required: true,
+  export default {
+    name: "TestError",
+    props: {
+      // 接受错误页面传递的错误信息
+      error: {
+        type: Object,
+        required: true,
+      },
     },
-  },
-  mounted() {
-    ArticleCardTransitionEnd();
-    ShuoShuoCardTransitionEnd();
-    console.log(this.error);
-  },
-};
+    mounted() {
+      ArticleCardTransitionEnd();
+      ShuoShuoCardTransitionEnd();
+      AlbumCardTransitionEnd();
+      VideoCardTransitionEnd();
+      console.log(this.error);
+    },
+  };
 </script>
 <style>
-.stack.internal {
-  color: var(--text-1);
-  display: block;
-  white-space: break-spaces;
-  word-wrap: break-word;
-  word-break: break-all;
-}
+  .stack.internal {
+    color: var(--text-1);
+    display: block;
+    white-space: break-spaces;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 </style>

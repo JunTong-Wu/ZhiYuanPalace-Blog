@@ -1,6 +1,8 @@
 import NProgress from "nprogress";
 import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
 import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
+import { cardTransitionEnd as AlbumCardTransitionEnd } from "~/components/layout/AlbumCard/transition";
+import { cardTransitionEnd as VideoCardTransitionEnd } from "~/components/layout/VideoCard/transition";
 import {
   footerBarHide,
   footerBarShow,
@@ -16,11 +18,26 @@ import {
 import {
   musicBarHide,
   musicBarShow,
-} from "~/components/layout/Music/transition";
+} from "~/components/layout/MusicPlayer/transition";
 import {
   toolBarHide,
   toolBarShow,
 } from "~/components/layout/Toolbar/transition";
+
+const cardTransitionEnds = (path: string) => {
+  if (path.includes("/text/article")) {
+    ArticleCardTransitionEnd();
+  }
+  if (path.includes("/text/shuoshuo")) {
+    ShuoShuoCardTransitionEnd();
+  }
+  if (path.includes("/music/album")) {
+    AlbumCardTransitionEnd();
+  }
+  if (path.includes("/audio/video")) {
+    VideoCardTransitionEnd();
+  }
+};
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.client) {
@@ -134,8 +151,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
             toolBarShow();
             footerColumnsShow();
             setTimeout(() => {
-              ArticleCardTransitionEnd();
-              ShuoShuoCardTransitionEnd();
+              cardTransitionEnds(to.fullPath);
             }, 200);
           };
         }
@@ -158,8 +174,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
             musicBarShow();
             toolBarShow();
             setTimeout(() => {
-              ArticleCardTransitionEnd();
-              ShuoShuoCardTransitionEnd();
+              cardTransitionEnds(to.fullPath);
             }, 200);
           };
         }

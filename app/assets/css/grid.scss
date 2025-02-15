@@ -13,6 +13,9 @@
 .row-friend {
   @apply grid grid-cols-12 gap-2 xs:gap-3 sm:gap-4 items-stretch;
 }
+.row-video {
+  @apply grid grid-cols-12 gap-2 xs:gap-3 sm:gap-4;
+}
 
 .clo-article-card {
   @apply portrait:col-span-12 landscape:col-span-12
@@ -48,4 +51,11 @@
           portrait:md:col-span-4 landscape:md:col-span-3
           portrait:lg:col-span-4 landscape:lg:col-span-3
           portrait:xl:col-span-3 landscape:xl:col-span-3;
+}
+.clo-video-card {
+  @apply portrait:col-span-6 landscape:col-span-3
+          portrait:xs:col-span-4 landscape:xs:col-span-3
+          portrait:sm:col-span-3 landscape:sm:col-span-3
+          portrait:md:col-span-3 landscape:md:col-span-3
+          portrait:lg:col-span-2 landscape:lg:col-span-2;
 }

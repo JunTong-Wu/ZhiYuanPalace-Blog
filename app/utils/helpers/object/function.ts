@@ -73,12 +73,54 @@ export const looseEqual = function (a: any, b: any): boolean {
  * @param {*} date ISOString
  * @return {*} string
  */
-export const BeiJingTime = function (date: string): string {
-  const time = new Date(+new Date(date) + 8 * 3600 * 1000)
-    .toISOString()
-    .replace(/T/g, " ")
-    .replace(/\.[\d]{3}Z/, "");
-  return time;
+type FormatType = "YYYY-MM-DD" | "YYYY-MM-DD hh:mm:ss" | string;
+
+export const dateFormat = (
+  utcISOString: string,
+  format: FormatType = "YYYY-MM-DD hh:mm:ss"
+): string => {
+  // 将 UTC 时间 ISO 字符串转换为 Date 对象
+  const utcDate = new Date(utcISOString);
+
+  // 转换为北京时间（UTC+8）
+  const beijingDate = new Date(
+    utcDate.getTime() +
+      utcDate.getTimezoneOffset() * 60 * 1000 +
+      8 * 60 * 60 * 1000
+  );
+
+  // 提取年、月、日、时、分、秒
+  const year = beijingDate.getFullYear();
+  const month = String(beijingDate.getMonth() + 1).padStart(2, "0");
+  const day = String(beijingDate.getDate()).padStart(2, "0");
+  const hours = String(beijingDate.getHours()).padStart(2, "0");
+  const minutes = String(beijingDate.getMinutes()).padStart(2, "0");
+  const seconds = String(beijingDate.getSeconds()).padStart(2, "0");
+
+  // 替换格式字符串中的占位符
+  const replaceTokens = (token: string): string => {
+    switch (token) {
+      case "YYYY":
+        return year.toString();
+      case "MM":
+        return month;
+      case "DD":
+        return day;
+      case "hh":
+        return hours;
+      case "mm":
+        return minutes;
+      case "ss":
+        return seconds;
+      default:
+        return token;
+    }
+  };
+
+  // 使用正则表达式替换格式字符串中的占位符
+  const formattedDate = format.replace(/YYYY|MM|DD|hh|mm|ss/g, replaceTokens);
+
+  return formattedDate;
 };
 
 /**
@@ -100,6 +142,6 @@ export const debounce = (func: () => void, delay: number): (() => void) => {
  * @description: 暂停执行函数
  * @return : Function
  */
-export const sleep = (ms:number) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+export const sleep = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};

@@ -42,13 +42,13 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-// 获取文章列表
-const articleListDataLazyFetch = await ApiArticle.getArticlesList(null);
-const articleListData = ref<ArticleListModelType>(new ArticleListModel());
-const showArticleList = (result: ResOptionsModelType<ArticleListModelType>) => {
-  articleListData.value = result.data;
-};
+  // 获取文章列表
+  const articleListDataLazyFetch = await ApiArticle.getArticlesList(null);
+  const articleListData = ref<ArticleListModelType>(new ArticleListModel());
+  const showArticleList = (result: ResOptionsModelType<ArticleListModelType>) => {
+    articleListData.value = result.data;
+  };
 
-const config = useRuntimeConfig();
-const cdnUrl = config.public.CDN_URL;
+  const config = useRuntimeConfig();
+  const cdnUrl = config.public.CDN_URL;
 </script>
