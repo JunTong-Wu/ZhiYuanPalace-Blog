@@ -5,6 +5,9 @@
       <div class="h-header reverse-rounded"></div>
     </div>
     <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-b1 portrait:bg-level-1"></div>
+    <div class="absolute z-10 portrait:hidden top-0 left-0 w-full h-full pointer-events-none">
+      <img src="@/assets/image/bg.png" alt="" class="h-header w-sidebar object-fill" />
+    </div>
 
     <!-- 主体区域 -->
     <div class="absolute z-20 top-0 left-0 right-0 h-header flex items-center justify-between landscape:pr-2">
@@ -22,7 +25,7 @@
           <Logo class="absolute right-8 hidden sm:block portrait:hidden cursor-pointer" :class="{
             'left-4': disabledLayoutControl,
             'left-header': !disabledLayoutControl,
-          }" size="small" @click="backToHome" />
+          }" @click="backToHome" />
         </div>
         <!-- 标题区 -->
         <div class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4 flex-none"></div>

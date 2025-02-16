@@ -22,9 +22,6 @@
 
     <!-- 固定布局 -->
     <section v-if="!isLoginLayout && !isVideoDetailLayout">
-      <div class="fixed portrait:hidden top-0 left-0 w-full h-full z-50 pointer-events-none">
-        <img src="@/assets/image/bg.png" alt="" class="h-header w-sidebar object-fill" />
-      </div>
       <!-- 侧边导航栏 -->
       <Sidebar :isAdminSidebar="isAdminLayout" :hide="hideSidebar"
         class="portrait:hidden fixed top-header bottom-0 left-0 z-40 bg-level-b1 transition-all" :class="{

@@ -6,10 +6,7 @@
           <div class="col-span-full md:col-span-8">
             <!-- Logo -->
             <NuxtLink to="/" class="flex items-center mb-8">
-              <img src="../../../assets/image/logo.png" class="max-h-7" :alt="$t('common.zhiYuanPalace')" />
-              <span class="ml-2 text-xl font-bold">{{
-                $t("common.zhiYuanPalace")
-                }}</span>
+              <Logo class="block portrait:hidden cursor-pointer" />
             </NuxtLink>
             <div class="max-w-96">
               <p class="mb-12 text-text-2">
