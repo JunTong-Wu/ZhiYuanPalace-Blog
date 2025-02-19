@@ -47,9 +47,7 @@
           </li>
         </ul>
       </template>
-
     </ZyFetchLoading>
-    <Toolbar />
   </CommonMainSection>
 </template>
 <script setup lang="ts">

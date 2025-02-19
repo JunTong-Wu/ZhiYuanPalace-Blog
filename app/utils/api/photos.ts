@@ -1,14 +1,7 @@
 import { photo } from "@@/models";
 
-export const PhotoModel = photo.Photo;
-export const PhotoListModel = photo.PhotoList;
-export const AlbumModel = photo.PhotoAlbum;
-export const AlbumListModel = photo.PhotoAlbumList;
-
-export type PhotoModelType = photo.Photo;
-export type PhotoListModelType = photo.PhotoList;
-export type AlbumModelType = photo.PhotoAlbum;
-export type AlbumListModelType = photo.PhotoAlbumList;
+type PhotoListModelType = photo.PhotoList;
+type AlbumListModelType = photo.PhotoAlbumList;
 
 type ApiIndexModelType = photo.ApiIndex;
 type ApiAlbumModelType = photo.ApiAlbum;

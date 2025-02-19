@@ -1,10 +1,7 @@
 import { shuoshuo } from "@@/models";
 
-export const ShuoshuoModel = shuoshuo.Shuoshuo;
-export const ShuoshuoListModel = shuoshuo.ShuoshuoList;
-
-export type ShuoshuoModelType = shuoshuo.Shuoshuo;
-export type ShuoshuoListModelType = shuoshuo.ShuoshuoList;
+type ShuoshuoModelType = shuoshuo.Shuoshuo;
+type ShuoshuoListModelType = shuoshuo.ShuoshuoList;
 
 type ApiIndexModelType = shuoshuo.ApiIndex;
 type ApiShowModelType = shuoshuo.ApiShow;

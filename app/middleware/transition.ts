@@ -31,7 +31,7 @@ const cardTransitionEnds = (path: string) => {
   if (path.includes("/text/shuoshuo")) {
     ShuoShuoCardTransitionEnd();
   }
-  if (path.includes("/music/album")) {
+  if (path.includes("/audio/photo")) {
     AlbumCardTransitionEnd();
   }
   if (path.includes("/audio/video")) {

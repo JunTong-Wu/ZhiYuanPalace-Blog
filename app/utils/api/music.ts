@@ -1,11 +1,6 @@
 import { music } from "@@/models";
 
-export const MusicModel = music.Music;
-export const MusicListModel = music.MusicList;
-
-export type MusicModelType = music.Music;
-export type MusicListModelType = music.MusicList;
-
+type MusicListModelType = music.MusicList;
 type ApiIndexModelType = music.ApiIndex;
 
 export const ApiMusic = {

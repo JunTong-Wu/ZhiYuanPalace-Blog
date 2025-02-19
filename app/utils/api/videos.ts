@@ -1,10 +1,7 @@
 import { video } from "@@/models";
 
-export const VideoModel = video.Video;
-export const VideoListModel = video.VideoList;
-
-export type VideoModelType = video.Video;
-export type VideoListModelType = video.VideoList;
+type VideoModelType = video.Video;
+type VideoListModelType = video.VideoList;
 
 type ApiIndexModelType = video.ApiIndex;
 type ApiShowModelType = video.ApiShow;

@@ -59,17 +59,20 @@
   </div>
 </template>
 <script setup lang="ts">
-// 获取文章列表
-const articleListDataLazyFetch = await ApiArticle.getArticlesList({
-  page_size: 6,
-  page_numer: 1,
-});
-const articleListData = ref<ArticleListModelType>(new ArticleListModel());
+  import { article } from "@@/models";
+  type ArticleListModelType = article.ArticleList;
 
-const showArticleList = (result: ResOptionsModelType<ArticleListModelType>) => {
-  articleListData.value = result.data;
-};
+  // 获取文章列表
+  const articleListDataLazyFetch = await ApiArticle.getArticlesList({
+    page_size: 6,
+    page_numer: 1,
+  });
+  const articleListData = ref<ArticleListModelType>(new article.ArticleList());
 
-const config = useRuntimeConfig();
-const cdnUrl = config.public.CDN_URL;
+  const showArticleList = (result: ResOptionsModelType<ArticleListModelType>) => {
+    articleListData.value = result.data;
+  };
+
+  const config = useRuntimeConfig();
+  const cdnUrl = config.public.CDN_URL;
 </script>

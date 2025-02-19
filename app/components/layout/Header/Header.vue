@@ -100,7 +100,7 @@
             </div>
 
             <!-- 收起右侧工具栏按钮 -->
-            <div v-if="!isAdminHeader && !disabledLayoutControl" class="portrait:hidden p-2 -ml-2 h-header w-header">
+            <div v-if="!disabledLayoutControl && hasToolbar" class="portrait:hidden p-2 -ml-2 h-header w-header">
               <ZyButton class="flex items-center justify-center w-full h-full" @click="switchToolbarClick" title="收起工具栏"
                 type="icon">
                 <UIcon v-if="!hideToolbar" name="i-solar-logout-2-linear" class="w-5 h-5 rotate-180" />
@@ -217,6 +217,10 @@
       default: false,
     },
     hideSidebar: {
+      type: Boolean,
+      default: false,
+    },
+    hasToolbar: {
       type: Boolean,
       default: false,
     },

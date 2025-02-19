@@ -1,12 +1,12 @@
 import { dashboard } from "@@/models";
 
-export const PostsNumberModel = dashboard.PostsNumber;
-export const OSInfoModel = dashboard.OSInfo;
-export const DashboardModel = dashboard.Dashboard;
+const PostsNumberModel = dashboard.PostsNumber;
+const OSInfoModel = dashboard.OSInfo;
+const DashboardModel = dashboard.Dashboard;
 
-export type PostsNumberModelType = dashboard.PostsNumber;
-export type OSInfoModelType = dashboard.OSInfo;
-export type DashboardModelType = dashboard.Dashboard;
+type PostsNumberModelType = dashboard.PostsNumber;
+type OSInfoModelType = dashboard.OSInfo;
+type DashboardModelType = dashboard.Dashboard;
 
 type ApiIndexModelType = dashboard.ApiIndex;
 

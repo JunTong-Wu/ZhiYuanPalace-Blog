@@ -4,8 +4,8 @@
     <section id="layout-main" class="layout-main relative z-10 mt-main transition-all" :class="{
       'ml-sidebar': !isLoginLayout && !hideSidebar && !isVideoDetailLayout,
       'ml-hideSidebar': !isLoginLayout && hideSidebar && !isVideoDetailLayout,
-      'mr-toolbar': !isAdminLayout && !isLoginLayout && !hideToolbar && !isVideoDetailLayout,
-      'mr-4 portrait:mr-0': isAdminLayout || hideToolbar,
+      'mr-toolbar': !isLoginLayout && hasToolbar && !hideToolbar && !isVideoDetailLayout,
+      'mr-4 portrait:mr-0': hideToolbar || !hasToolbar,
       'mt-main': !isLoginLayout && !isVideoDetailLayout
     }
       ">
@@ -29,28 +29,27 @@
           'w-hideSidebar': hideSidebar,
         }" />
       <!-- 整体顶栏 -->
-      <Header :hideSidebar="hideSidebar" :hideToolbar="hideToolbar" :isAdminHeader="isAdminLayout"
-        :disabledLayoutControl="!isLandscapeMdSizeFlag" class="fixed top-0 left-0 w-full z-30 right-0 transition-all"
-        :class="{
+      <Header :hasToolbar="hasToolbar" :hideSidebar="hideSidebar" :hideToolbar="hideToolbar"
+        :isAdminHeader="isAdminLayout" :disabledLayoutControl="!isLandscapeMdSizeFlag"
+        class="fixed top-0 left-0 w-full z-30 right-0 transition-all" :class="{
           'pl-sidebar': !hideSidebar,
           'pl-hideSidebar': hideSidebar,
-          'pr-toolbar portrait:pr-0': !isAdminLayout && !hideToolbar,
-          'pr-4 portrait:pr-0': isAdminLayout || hideToolbar,
+          'pr-toolbar portrait:pr-0': !hideToolbar && hasToolbar,
+          'pr-4 portrait:pr-0': hideToolbar || !hasToolbar,
         }" @switchSidebarClick="switchSidebarStyle" @switchToolbarClick="switchToolbarStyle" />
       <!-- 底部导航栏 -->
-      <FooterNavigation v-if="!isAdminLayout && !isVideoDetailLayout"
+      <FooterNavigation v-if="!isAdminLayout && !isLoginLayout && !isVideoDetailLayout"
         class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-headBar backdrop-blur-3xl" />
     </section>
 
     <!-- 工具栏 -->
-    <aside v-show="!isLoginLayout && !isVideoDetailLayout"
-      class="portrait:hidden fixed z-20 top-header bottom-0 right-0 bg-level-b1 transition-all" :class="{
-        'w-toolbar': !isAdminLayout,
-        'w-0': isAdminLayout,
-        'translate-x-full': hideToolbar
+    <aside v-show="!isLoginLayout && !isVideoDetailLayout && hasToolbar"
+      class="portrait:hidden fixed z-20 top-header bottom-0 right-0 bg-level-b1 transition-all w-toolbar" :class="{
+        'translate-x-full': hideToolbar || !hasToolbar
       }
         ">
       <div id="zy-tool-bar" class="absolute inset-4 top-0 rounded-lg bg-headBar backdrop-blur-3xl">
+        <!-- 在Toolbar组件中，通过Teleport穿越挂载到这里，用于解耦layout和page -->
       </div>
     </aside>
   </div>
@@ -79,6 +78,7 @@
     hideSidebar.value = !hideSidebar.value;
 
   };
+  const hasToolbar = ref(true);
   const hideToolbar = ref(false);
   const switchToolbarStyle = () => {
     hideToolbar.value = !hideToolbar.value;

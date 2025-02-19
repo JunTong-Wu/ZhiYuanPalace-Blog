@@ -1,10 +1,7 @@
 import { article } from "@@/models";
 
-export const ArticleModel = article.Article;
-export const ArticleListModel = article.ArticleList;
-
-export type ArticleModelType = article.Article;
-export type ArticleListModelType = article.ArticleList;
+type ArticleModelType = article.Article;
+type ArticleListModelType = article.ArticleList;
 
 type ApiIndexModelType = article.ApiIndex;
 type ApiShowModelType = article.ApiShow;

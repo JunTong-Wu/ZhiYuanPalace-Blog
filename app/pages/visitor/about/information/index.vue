@@ -43,7 +43,6 @@
       </div>
 
     </div>
-    <Toolbar />
   </div>
 </template>
 <script setup lang="ts">

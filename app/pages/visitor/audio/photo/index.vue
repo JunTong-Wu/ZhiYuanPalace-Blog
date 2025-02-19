@@ -1,6 +1,9 @@
 <template>
   <CommonMainSection>
-    <ZyFetchLoading :fetchData="albumListDataLazyFetch" @fetchOnload="showAlbumList">
+    <ZyFetchLoading
+      :fetchData="albumListDataLazyFetch"
+      @fetchOnload="showAlbumList"
+    >
       <template #loading>
         <ul class="row-album">
           <li class="clo-album-card" v-for="n in 12">
@@ -18,13 +21,18 @@
       <template #onload>
         <ul class="row-album">
           <li class="clo-album-card" v-for="item in albumListData.list">
-            <AlbumCard :href="`/audio/photo/${item.album_path}`" class="sm:rounded">
+            <AlbumCard
+              :href="`/audio/photo/${item.album_path}`"
+              class="sm:rounded"
+            >
               <template #image>
                 <ZyLazyImage :src="`${cdnUrl}${item.album_cover}`" alt="" />
               </template>
               <template #title>
                 <div class="h-full flex flex-col justify-center">
-                  <h4 class="m-0 portrait:text-sm landscape:text-base portrait:font-normal  line-clamp-1">
+                  <h4
+                    class="m-0 portrait:text-sm landscape:text-base portrait:font-normal line-clamp-1"
+                  >
                     {{ item.album_title }}
                   </h4>
                 </div>
@@ -38,14 +46,15 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-import { ApiPhotos } from "~/utils";
+  import { photo } from "@@/models";
+  type AlbumListModelType = photo.PhotoAlbumList;
 
-// 获取相册列表
-const albumListDataLazyFetch = await ApiPhotos.getAlbumsList(null);
-const albumListData = ref<AlbumListModelType>(new AlbumListModel());
-const showAlbumList = (result: ResOptionsModelType<AlbumListModelType>) => {
-  albumListData.value = result.data;
-};
-const config = useRuntimeConfig();
-const cdnUrl = config.public.CDN_URL;
+  // 获取相册列表
+  const albumListDataLazyFetch = await ApiPhotos.getAlbumsList(null);
+  const albumListData = ref<AlbumListModelType>(new photo.PhotoAlbumList());
+  const showAlbumList = (result: ResOptionsModelType<AlbumListModelType>) => {
+    albumListData.value = result.data;
+  };
+  const config = useRuntimeConfig();
+  const cdnUrl = config.public.CDN_URL;
 </script>
