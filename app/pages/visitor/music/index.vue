@@ -1,8 +1,6 @@
 <template>
   <CommonMainSection>
     <MusicTable />
-    <Toolbar />
   </CommonMainSection>
 </template>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

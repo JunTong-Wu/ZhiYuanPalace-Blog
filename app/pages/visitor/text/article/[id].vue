@@ -50,7 +50,6 @@
         </template>
       </ZyFetchLoading>
     </div>
-    <Toolbar>789789</Toolbar>
   </div>
 </template>
 <script setup lang="ts">

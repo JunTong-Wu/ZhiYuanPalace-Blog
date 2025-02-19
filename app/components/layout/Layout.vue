@@ -1,15 +1,24 @@
 <template>
   <div id="layout" class="relative overflow-hidden bg-background">
     <!-- 主体内容 -->
-    <section id="layout-main" class="layout-main relative z-10 mt-main transition-all" :class="{
-      'ml-sidebar': !isLoginLayout && !hideSidebar && !isVideoDetailLayout,
-      'ml-hideSidebar': !isLoginLayout && hideSidebar && !isVideoDetailLayout,
-      'mr-toolbar': !isLoginLayout && hasToolbar && !hideToolbar && !isVideoDetailLayout,
-      'mr-4 portrait:mr-0': hideToolbar || !hasToolbar,
-      'mt-main': !isLoginLayout && !isVideoDetailLayout
-    }
-      ">
-      <main class="flex-1 bg-background border-r-[1rem] -mr-4 border-r-level-b1">
+    <section
+      id="layout-main"
+      class="layout-main relative z-10 mt-main transition-all"
+      :class="{
+        'ml-sidebar': !isLoginLayout && !hideSidebar && !isVideoDetailLayout,
+        'ml-hideSidebar': !isLoginLayout && hideSidebar && !isVideoDetailLayout,
+        'mr-toolbar':
+          !isLoginLayout &&
+          pageHasToolbar &&
+          !hideToolbar &&
+          !isVideoDetailLayout,
+        'mr-4 portrait:mr-0': hideToolbar || !pageHasToolbar,
+        'mt-main': !isLoginLayout && !isVideoDetailLayout,
+      }"
+    >
+      <main
+        class="flex-1 bg-background border-r-[1rem] -mr-4 border-r-level-b1"
+      >
         <div class="main-view text-base relative overflow-hidden">
           <div class="main-view-inner">
             <slot />
@@ -23,39 +32,59 @@
     <!-- 固定布局 -->
     <section v-if="!isLoginLayout && !isVideoDetailLayout">
       <!-- 侧边导航栏 -->
-      <Sidebar :isAdminSidebar="isAdminLayout" :hide="hideSidebar"
-        class="portrait:hidden fixed top-header bottom-0 left-0 z-40 bg-level-b1 transition-all" :class="{
+      <Sidebar
+        :isAdminSidebar="isAdminLayout"
+        :hide="hideSidebar"
+        class="portrait:hidden fixed top-header bottom-0 left-0 z-40 bg-level-b1 transition-all"
+        :class="{
           'w-sidebar': !hideSidebar,
           'w-hideSidebar': hideSidebar,
-        }" />
+        }"
+      />
       <!-- 整体顶栏 -->
-      <Header :hasToolbar="hasToolbar" :hideSidebar="hideSidebar" :hideToolbar="hideToolbar"
-        :isAdminHeader="isAdminLayout" :disabledLayoutControl="!isLandscapeMdSizeFlag"
-        class="fixed top-0 left-0 w-full z-30 right-0 transition-all" :class="{
+      <Header
+        :pageHasToolbar="pageHasToolbar"
+        :hideSidebar="hideSidebar"
+        :hideToolbar="hideToolbar"
+        :isAdminHeader="isAdminLayout"
+        :disabledLayoutControl="!isLandscapeMdSizeFlag"
+        class="fixed top-0 left-0 w-full z-30 right-0 transition-all"
+        :class="{
           'pl-sidebar': !hideSidebar,
           'pl-hideSidebar': hideSidebar,
-          'pr-toolbar portrait:pr-0': !hideToolbar && hasToolbar,
-          'pr-4 portrait:pr-0': hideToolbar || !hasToolbar,
-        }" @switchSidebarClick="switchSidebarStyle" @switchToolbarClick="switchToolbarStyle" />
+          'pr-toolbar portrait:pr-0': !hideToolbar && pageHasToolbar,
+          'pr-4 portrait:pr-0': hideToolbar || !pageHasToolbar,
+        }"
+        @switchSidebarClick="switchSidebarStyle"
+        @switchToolbarClick="switchHideToolbar"
+      />
       <!-- 底部导航栏 -->
-      <FooterNavigation v-if="!isAdminLayout && !isLoginLayout && !isVideoDetailLayout"
-        class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-headBar backdrop-blur-3xl" />
+      <FooterNavigation
+        v-if="!isAdminLayout && !isLoginLayout && !isVideoDetailLayout"
+        class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-headBar backdrop-blur-3xl"
+      />
     </section>
 
     <!-- 工具栏 -->
-    <aside v-show="!isLoginLayout && !isVideoDetailLayout && hasToolbar"
-      class="portrait:hidden fixed z-20 top-header bottom-0 right-0 bg-level-b1 transition-all w-toolbar" :class="{
-        'translate-x-full': hideToolbar || !hasToolbar
-      }
-        ">
-      <div id="zy-tool-bar" class="absolute inset-4 top-0 rounded-lg bg-headBar backdrop-blur-3xl">
+    <aside
+      v-show="!isLoginLayout && !isVideoDetailLayout"
+      class="portrait:hidden fixed z-20 top-header bottom-0 right-0 bg-level-b1 transition-all w-toolbar"
+      :class="{
+        'translate-x-full': hideToolbar || !pageHasToolbar,
+      }"
+    >
+      <div
+        ref="toolBarRef"
+        id="zy-tool-bar"
+        class="absolute inset-4 top-0 rounded-lg bg-headBar backdrop-blur-3xl"
+      >
         <!-- 在Toolbar组件中，通过Teleport穿越挂载到这里，用于解耦layout和page -->
       </div>
     </aside>
   </div>
 </template>
 <script setup lang="ts">
-  import { useMediaQuery } from '@vueuse/core';
+  import { useMediaQuery } from "@vueuse/core";
 
   const props = defineProps({
     isAdminLayout: {
@@ -69,26 +98,65 @@
     isVideoDetailLayout: {
       type: Boolean,
       default: false,
-    }
+    },
   });
 
   // 布局切换
   const hideSidebar = ref(false);
   const switchSidebarStyle = () => {
     hideSidebar.value = !hideSidebar.value;
-
   };
-  const hasToolbar = ref(true);
+
   const hideToolbar = ref(false);
-  const switchToolbarStyle = () => {
+  const switchHideToolbar = () => {
     hideToolbar.value = !hideToolbar.value;
   };
 
-  const isLandscapeMdSize = useMediaQuery("(min-width: 1200px) and (orientation: landscape)");
+  const pageHasToolbar = ref(false);
+  const toolBarRef = ref<HTMLDivElement | null>(null);
+  // 定义 MutationObserver 实例
+  let observer: MutationObserver | null = null;
+
+  const switchPagepageHasToolbar = (enable: Boolean) => {
+    if (enable) {
+      pageHasToolbar.value = true;
+    } else {
+      pageHasToolbar.value = false;
+    }
+  };
+
+  const isLandscapeMdSize = useMediaQuery(
+    "(min-width: 1200px) and (orientation: landscape)"
+  );
   const isLandscapeMdSizeFlag = ref(true);
 
-
   onMounted(() => {
+    // 观察ToolBar DOM节点变化
+    if (toolBarRef.value) {
+      observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === "childList") {
+            if (mutation.addedNodes.length > 0) {
+              // 观察对象被添加了DIV节点
+              if (mutation.addedNodes[0]?.nodeName == "DIV") {
+                switchPagepageHasToolbar(true);
+              }
+            }
+            if (mutation.removedNodes.length > 0) {
+              // 观察对象被删除了DIV节点
+              if (mutation.removedNodes[0]?.nodeName == "DIV") {
+                switchPagepageHasToolbar(false);
+              }
+            }
+          }
+        });
+      });
+
+      // 配置观察选项
+      const config = { childList: true };
+      observer.observe(toolBarRef.value, config);
+    }
+
     // 监听窗口大小变化
     window.addEventListener("resize", () => {
       setTimeout(() => {
@@ -102,18 +170,13 @@
           hideToolbar.value = false;
         }
       }, 20);
-    })
+    });
   });
 
-  watch(() => props.isAdminLayout, () => {
-    if (props.isAdminLayout) {
-      console.log("isAdminLayout");
-
-    }
-  });
-  watch(() => props.isLoginLayout, () => {
-    if (props.isLoginLayout) {
-      console.log("isLoginLayout");
+  onBeforeUnmount(() => {
+    if (observer) {
+      observer.disconnect(); // 停止观察
+      observer = null;
     }
   });
 </script>

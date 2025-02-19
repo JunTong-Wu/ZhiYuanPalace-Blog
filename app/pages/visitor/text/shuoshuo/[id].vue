@@ -26,7 +26,6 @@
         </template>
       </ZyFetchLoading>
     </div>
-    <Toolbar />
   </div>
 </template>
 <script setup lang="ts">
