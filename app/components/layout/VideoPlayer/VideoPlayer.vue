@@ -36,6 +36,15 @@
         ref="videoElement"
         class="w-full h-full"
         @click="togglePlay"
+        x-webkit-airplay="allow"
+        playsinline
+        webkit-playsinline
+        x5-playsinline
+        t7-video-player-type="inline"
+        x5-video-player-type="h5-page"
+        disablePictureInPicture
+        muted
+        autoplay
       ></video>
     </div>
     <!-- 视频介绍 -->
@@ -154,6 +163,7 @@
       videoElement.value.loop = true;
       videoElement.value.load();
       videoElement.value.volume = 0.5;
+      videoElement.value.muted = false;
       progressInit();
       if (videoElement.value.paused) {
         videoElement.value.play();
