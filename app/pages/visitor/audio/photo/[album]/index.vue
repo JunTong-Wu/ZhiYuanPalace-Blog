@@ -35,7 +35,10 @@
         <template #loading>test</template>
         <template #onload>
           <ul class="row-photo">
-            <li class="clo-photo-card" v-for="item in photoList.list">
+            <li
+              class="clo-photo-card"
+              v-for="item in photoList.list"
+            >
               <div>
                 <ZyLazyImage
                   className="w-full rounded-none overflow-hidden aspect-square"
@@ -53,14 +56,14 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { photo } from "@@/models";
+  import { photo } from '@@/models';
   type AlbumListModelType = photo.PhotoAlbumList;
   type AlbumModelType = photo.PhotoAlbum;
   type PhotoListModelType = photo.PhotoList;
 
   const { setPostInfo, clearPostInfo } = toRefs(store.usePostInfo());
   const setHeaderTitle = (id: number, title: string) => {
-    setPostInfo.value(id, "album", title);
+    setPostInfo.value(id, 'album', title);
   };
 
   const route = useRoute();
@@ -82,7 +85,7 @@
     photoList.value = result.data;
     setHeaderTitle(
       albumDetailData.value.album_id,
-      albumDetailData.value.album_title
+      albumDetailData.value.album_title,
     );
   };
   const config = useRuntimeConfig();

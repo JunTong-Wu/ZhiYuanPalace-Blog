@@ -1,19 +1,40 @@
 <template>
   <div>
-    <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" class="hidden-scrollbar-x">
-
-    <Head>
-      <template v-for="link in head.link" :key="link.id">
-        <Link :id="link.id" :rel="link.rel" :href="link.href" :hreflang="link.hreflang" />
-      </template>
-      <template v-for="meta in head.meta" :key="meta.id">
-        <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
-      </template>
-    </Head>
-
+    <Html
+      :lang="head.htmlAttrs.lang"
+      :dir="head.htmlAttrs.dir"
+      class="hidden-scrollbar-x"
+    >
+      <Head>
+        <template
+          v-for="link in head.link"
+          :key="link.id"
+        >
+          <Link
+            :id="link.id"
+            :rel="link.rel"
+            :href="link.href"
+            :hreflang="link.hreflang"
+          />
+        </template>
+        <template
+          v-for="meta in head.meta"
+          :key="meta.id"
+        >
+          <Meta
+            :id="meta.id"
+            :property="meta.property"
+            :content="meta.content"
+          />
+        </template>
+      </Head>
     </Html>
     <ZySuperResponsive>
-      <Layout :isLoginLayout="isLoginPage" :isAdminLayout="isAdminPage" :isVideoDetailLayout="isVideoDetailPage">
+      <Layout
+        :isLoginLayout="isLoginPage"
+        :isAdminLayout="isAdminPage"
+        :isVideoDetailLayout="isVideoDetailPage"
+      >
         <NuxtPage class="nuxt-page mx-auto min-h-screen" />
       </Layout>
     </ZySuperResponsive>
@@ -23,12 +44,12 @@
   </div>
 </template>
 <script setup lang="ts">
-  import "@/assets/css/style.scss";
+  import '@/assets/css/style.scss';
 
   // 多语言
   const head = useLocaleHead({
     addDirAttribute: true,
-    identifierAttribute: "id",
+    identifierAttribute: 'id',
     addSeoAttributes: true,
   });
 
@@ -44,7 +65,7 @@
         console.log('isAdminRouter');
         isAdminPage.value = true;
         isLoginPage.value = false;
-      } else if (newPath.startsWith("/login")) {
+      } else if (newPath.startsWith('/login')) {
         isAdminPage.value = false;
         isLoginPage.value = true;
       } else {
@@ -52,13 +73,13 @@
         isLoginPage.value = false;
       }
 
-      if (newPath.includes("/audio/video/")) {
+      if (newPath.includes('/audio/video/')) {
         isVideoDetailPage.value = true;
       } else {
         isVideoDetailPage.value = false;
       }
     },
-    { immediate: true }
+    { immediate: true },
   );
   const { t } = useI18n();
 
@@ -66,15 +87,15 @@
   useHead({
     titleTemplate: () => {
       const title = t(`menu.${String(route.name)}`);
-      return route.path !== '/' ? `${title} - 知鸢宫` : "知鸢宫";
+      return route.path !== '/' ? `${title} - 知鸢宫` : '知鸢宫';
     },
   });
 
-  const queueStore = store.useQueueStore()
+  const queueStore = store.useQueueStore();
   onMounted(() => {
     // 全局执行队列中的所有函数
-    queueStore.executeQueue()
-  })
+    queueStore.executeQueue();
+  });
 </script>
 <style lang="scss">
   .nuxt-page {

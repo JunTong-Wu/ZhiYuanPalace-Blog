@@ -4,12 +4,12 @@
       <Layout>
         <div class="nuxt-page mx-auto min-h-screen">
           <CommonMainSection>
-
-
             <!--            <p>statusCode: {{ error.statusCode }}</p>-->
             <!--            <p>statusMessage: {{ error.statusMessage || "&#45;&#45;" }}</p>-->
 
-            <h1 class="text-center text-3xl font-bold mb-8">Error {{ error.statusCode }}</h1>
+            <h1 class="text-center text-3xl font-bold mb-8">
+              Error {{ error.statusCode }}
+            </h1>
             <UCard>
               <template #header>
                 <p>message: {{ error.message }}</p>
@@ -27,13 +27,13 @@
 </template>
 
 <script>
-  import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
-  import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
-  import { cardTransitionEnd as AlbumCardTransitionEnd } from "~/components/layout/AlbumCard/transition";
-  import { cardTransitionEnd as VideoCardTransitionEnd } from "~/components/layout/VideoCard/transition";
+  import { cardTransitionEnd as ArticleCardTransitionEnd } from '~/components/layout/ArticleCard/transition';
+  import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from '~/components/layout/ShuoShuoCard/transition';
+  import { cardTransitionEnd as AlbumCardTransitionEnd } from '~/components/layout/AlbumCard/transition';
+  import { cardTransitionEnd as VideoCardTransitionEnd } from '~/components/layout/VideoCard/transition';
 
   export default {
-    name: "TestError",
+    name: 'TestError',
     props: {
       // 接受错误页面传递的错误信息
       error: {

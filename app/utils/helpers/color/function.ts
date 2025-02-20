@@ -4,12 +4,12 @@
  * @return {*} [r:number, g:number, b:number]
  */
 export const getImageColor = (img: any): [number, number, number] => {
-  var canvas = document.createElement("canvas");
+  var canvas = document.createElement('canvas');
   canvas.width = img.width;
   canvas.height = img.height;
 
-  var context = canvas.getContext("2d");
-  img.crossOrigin = "Anonymous";
+  var context = canvas.getContext('2d');
+  img.crossOrigin = 'Anonymous';
   context?.drawImage(img, 0, 0, canvas.width, canvas.height);
 
   // 获取像素数据
@@ -66,7 +66,7 @@ export const getImageColor = (img: any): [number, number, number] => {
 const rgbToHsv = (
   r: number,
   g: number,
-  b: number
+  b: number,
 ): [number, number, number] => {
   r = r / 255;
   g = g / 255;
@@ -102,7 +102,7 @@ const rgbToHsv = (
 const rgbToHsl = (
   r: number,
   g: number,
-  b: number
+  b: number,
 ): [number, number, number] => {
   r /= 255;
   g /= 255;
@@ -144,7 +144,7 @@ const rgbToHsl = (
 const hsvToRgb = (
   h: number,
   s: number,
-  v: number
+  v: number,
 ): [number, number, number] => {
   h = h % 360;
   s = s / 100;
@@ -214,7 +214,7 @@ const hsvToRgb = (
 const hslToRgb = (
   h: number,
   s: number,
-  l: number
+  l: number,
 ): [number, number, number] => {
   let r: number, g: number, b: number;
 
@@ -257,7 +257,7 @@ const hslToRgb = (
  */
 export const rgbToHex = (rgb: [number, number, number]): string => {
   const [r, g, b] = rgb;
-  const toHex = (n: number) => n.toString(16).padStart(2, "0").toUpperCase();
+  const toHex = (n: number) => n.toString(16).padStart(2, '0').toUpperCase();
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 };
 
@@ -271,7 +271,7 @@ export const rgbToHex = (rgb: [number, number, number]): string => {
 export const adjustBrightnessWhilePreservingHue = (
   rgb: [number, number, number],
   maxBrightness: number,
-  minBrightness: number
+  minBrightness: number,
 ): [number, number, number] => {
   const [h, s, v] = rgbToHsv(...rgb);
   const newV = Math.max(minBrightness, Math.min(v, maxBrightness)); // 确保newV在minBrightness和maxBrightness之间
@@ -286,7 +286,7 @@ export const adjustBrightnessWhilePreservingHue = (
  */
 export const increaseSaturation = (
   [r, g, b]: [number, number, number],
-  factor: number
+  factor: number,
 ): [number, number, number] => {
   // 将 RGB 转换为 HSL
   const [h, s, l] = rgbToHsl(r, g, b);
@@ -303,7 +303,7 @@ export const increaseSaturation = (
  * @return tailwindColors - { [key: string]: string }
  */
 export const generateTailwindColors = (
-  rgb: [number, number, number]
+  rgb: [number, number, number],
 ): { [key: string]: string } => {
   let [h, s, l] = rgbToHsl(...rgb);
 

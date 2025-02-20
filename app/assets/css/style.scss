@@ -1,18 +1,19 @@
-@import url("./transition/index.scss");
-@import url("./nprogress/index.scss");
+@import url('./transition/index.scss');
+@import url('./nprogress/index.scss');
 
-@import url("../fonts/DFPKingGothicGB.css");
-@import url("../fonts/HarmonyOS.css");
-@import url("../fonts/vivoTypeCNRegular.css");
-@import url("../fonts/montserrat.css");
+@import url('../fonts/DFPKingGothicGB.css');
+@import url('../fonts/HarmonyOS.css');
+@import url('../fonts/vivoTypeCNRegular.css');
+@import url('../fonts/montserrat.css');
 
-@import url("./grid.scss");
+@import url('./grid.scss');
 // 字体
 :root.pc {
-  font-family: "PingFang SC", "DFPKingGothicGB-medium", "HarmonyOS Sans SC",
-    "HarmonyOS_Regular", "Noto Sans SC Regular", "Helvetica Neue", Helvetica,
-    Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC",
-    "WenQuanYi Micro Hei", sans-serif;
+  font-family:
+    'PingFang SC', 'DFPKingGothicGB-medium', 'HarmonyOS Sans SC',
+    'HarmonyOS_Regular', 'Noto Sans SC Regular', 'Helvetica Neue', Helvetica,
+    Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC',
+    'WenQuanYi Micro Hei', sans-serif;
 }
 :root.mobile {
   font-family: sans-serif;

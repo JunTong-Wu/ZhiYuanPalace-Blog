@@ -11,7 +11,10 @@
 #zy-tool-bar {
   #zy-tool-bar-innner {
     animation: an-tool-bar-fade-in 400ms;
-    transition: transform 400ms, background 0ms, opacity 400ms;
+    transition:
+      transform 400ms,
+      background 0ms,
+      opacity 400ms;
   }
 }
 #zy-tool-bar.transition-translate-out {

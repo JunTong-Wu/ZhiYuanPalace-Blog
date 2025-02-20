@@ -1,12 +1,12 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 type PostType =
-  | "article"
-  | "shuoshuo"
-  | "song"
-  | "album"
-  | "video"
-  | "site"
-  | "unknown";
+  | 'article'
+  | 'shuoshuo'
+  | 'song'
+  | 'album'
+  | 'video'
+  | 'site'
+  | 'unknown';
 
 interface PostInfo {
   id: number;
@@ -14,12 +14,12 @@ interface PostInfo {
   title: string;
 }
 
-export const usePostInfo = defineStore("postInfo", {
+export const usePostInfo = defineStore('postInfo', {
   state: () => {
     return <PostInfo>{
       id: 0,
-      type: "unknown",
-      title: "",
+      type: 'unknown',
+      title: '',
     };
   },
   actions: {
@@ -30,8 +30,8 @@ export const usePostInfo = defineStore("postInfo", {
     },
     clearPostInfo() {
       this.id = 0;
-      this.type = "unknown";
-      this.title = "";
+      this.type = 'unknown';
+      this.title = '';
     },
   },
 });

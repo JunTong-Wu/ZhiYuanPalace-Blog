@@ -1,23 +1,23 @@
-import { article } from "@@/models";
+import { article } from '@@/models';
 type ApiIndexModelType = article.ApiIndex;
 
 /**
  * 查询文章列表
  */
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as ApiIndexModelType["params"];
+  const body = (await readBody(event)) as ApiIndexModelType['params'];
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const classifyPath = body.classify_path || null;
 
   const sql =
-    "SELECT * \n" +
-    "FROM articles \n" +
-    "JOIN article_classifys ON articles.article_classify_id = article_classifys.classify_id \n" +
-    "WHERE articles.article_private!= 1\n" +
-    (classifyPath ? "AND article_classifys.classify_path = ?" : "") +
-    "ORDER BY articles.article_date DESC\n" +
-    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
+    'SELECT * \n' +
+    'FROM articles \n' +
+    'JOIN article_classifys ON articles.article_classify_id = article_classifys.classify_id \n' +
+    'WHERE articles.article_private!= 1\n' +
+    (classifyPath ? 'AND article_classifys.classify_path = ?' : '') +
+    'ORDER BY articles.article_date DESC\n' +
+    (pageNumer !== -1 && pageSize !== -1 ? 'LIMIT ?,?;' : ';');
 
   let values = [];
   if (classifyPath) {
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     dbResults = articlePasswordFilter(dbResults);
     dbResults.data.forEach((item) => {
       if (item.article_text.length > 60) {
-        item.article_text = item.article_text.substring(0, 60) + "...";
+        item.article_text = item.article_text.substring(0, 60) + '...';
       }
     });
     total = dbResults.data.length;
@@ -43,6 +43,6 @@ export default defineEventHandler(async (event) => {
 
   return setJson(
     { data: { list: dbResults.data, total: total } },
-    dbResults
-  ) as ApiIndexModelType["result"];
+    dbResults,
+  ) as ApiIndexModelType['result'];
 });

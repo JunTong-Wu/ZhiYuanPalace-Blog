@@ -1,7 +1,11 @@
 #zy-music-bar {
-  transition: transform 400ms, background 0ms;
+  transition:
+    transform 400ms,
+    background 0ms;
   .open\:hidden {
-    transition: transform 400ms, opacity 400ms;
+    transition:
+      transform 400ms,
+      opacity 400ms;
   }
 }
 @media (orientation: portrait) {

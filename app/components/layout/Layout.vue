@@ -1,5 +1,8 @@
 <template>
-  <div id="layout" class="relative overflow-hidden bg-background">
+  <div
+    id="layout"
+    class="relative overflow-hidden bg-background"
+  >
     <!-- 主体内容 -->
     <section
       id="layout-main"
@@ -84,7 +87,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { useMediaQuery } from "@vueuse/core";
+  import { useMediaQuery } from '@vueuse/core';
 
   const props = defineProps({
     isAdminLayout: {
@@ -126,7 +129,7 @@
   };
 
   const isLandscapeMdSize = useMediaQuery(
-    "(min-width: 1200px) and (orientation: landscape)"
+    '(min-width: 1200px) and (orientation: landscape)',
   );
   const isLandscapeMdSizeFlag = ref(true);
 
@@ -135,16 +138,16 @@
     if (toolBarRef.value) {
       observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-          if (mutation.type === "childList") {
+          if (mutation.type === 'childList') {
             if (mutation.addedNodes.length > 0) {
               // 观察对象被添加了DIV节点
-              if (mutation.addedNodes[0]?.nodeName == "DIV") {
+              if (mutation.addedNodes[0]?.nodeName == 'DIV') {
                 switchPagepageHasToolbar(true);
               }
             }
             if (mutation.removedNodes.length > 0) {
               // 观察对象被删除了DIV节点
-              if (mutation.removedNodes[0]?.nodeName == "DIV") {
+              if (mutation.removedNodes[0]?.nodeName == 'DIV') {
                 switchPagepageHasToolbar(false);
               }
             }
@@ -158,7 +161,7 @@
     }
 
     // 监听窗口大小变化
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       setTimeout(() => {
         if (!isLandscapeMdSize.value) {
           isLandscapeMdSizeFlag.value = false;

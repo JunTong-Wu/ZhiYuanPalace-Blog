@@ -11,7 +11,9 @@
     align-items: center;
     position: relative;
     .zy-card-title {
-      transition: all 200ms ease-in-out, color 0s;
+      transition:
+        all 200ms ease-in-out,
+        color 0s;
       position: absolute;
       z-index: 1;
       top: 0;
@@ -106,7 +108,9 @@
   height: auto;
   transform: none;
   box-shadow: none;
-  transition: all cubic-bezier(0.63, 0, 0.32, 1) 600ms, background 0s,
+  transition:
+    all cubic-bezier(0.63, 0, 0.32, 1) 600ms,
+    background 0s,
     box-shadow 0s;
   .zy-article-card-inner {
     height: calc(var(--pt-main) + 2rem + var(--image-height));

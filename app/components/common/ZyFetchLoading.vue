@@ -46,7 +46,7 @@
     ) {
       result.value = props.fetchData.data.value;
       localLoading.value = false;
-      emit("fetchOnload", result.value);
+      emit('fetchOnload', result.value);
     }
   });
 </script>

@@ -1,4 +1,4 @@
-import { dashboard } from "@@/models";
+import { dashboard } from '@@/models';
 
 const PostsNumberModel = dashboard.PostsNumber;
 const OSInfoModel = dashboard.OSInfo;
@@ -12,8 +12,8 @@ type ApiIndexModelType = dashboard.ApiIndex;
 
 export const ApiDashboard = {
   getDashboardDetail(
-    params: ApiIndexModelType["params"] | null
+    params: ApiIndexModelType['params'] | null,
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<DashboardModelType>>> {
-    return ApiService.post("/dashboard/index", params);
+    return ApiService.post('/dashboard/index', params);
   },
 };

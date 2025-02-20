@@ -1,7 +1,4 @@
 <template>
-  <CommonMainSection>
-    TEST
-  </CommonMainSection>
+  <CommonMainSection> TEST </CommonMainSection>
 </template>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

@@ -1,5 +1,5 @@
-import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from "vue-router";
-import { routersStringify } from "@/routers";
+import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router';
+import { routersStringify } from '@/routers';
 
 /**
  * 获取路由结构
@@ -16,7 +16,7 @@ export const _getNavigationMap = (): Array<RouteRecordRaw> => {
 export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
   linkList = linkList.filter(
-    (item) => item.meta?.role !== "admin" && item.meta?.navigate !== false
+    (item) => item.meta?.role !== 'admin' && item.meta?.navigate !== false,
   );
   return linkList;
 };
@@ -28,7 +28,7 @@ export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
 export const getAdminNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
   linkList = linkList.filter(
-    (item) => item.meta?.role === "admin" && item.meta?.navigate !== false
+    (item) => item.meta?.role === 'admin' && item.meta?.navigate !== false,
   );
   return linkList;
 };
@@ -67,13 +67,13 @@ export const getNavigationMapForAdminMenu = () => {
  */
 export const _findTitleByPath = (
   routes: Array<RouteRecordRaw>,
-  path: string
+  path: string,
 ): string => {
   // 首先检查顶级路由
   for (const route of routes) {
     if (!route.children || !route.children.length) {
       if (route.path === path) {
-        return (route.name as string) || "empty";
+        return (route.name as string) || 'empty';
       }
     }
   }
@@ -81,12 +81,12 @@ export const _findTitleByPath = (
   for (const route of routes) {
     if (route.children) {
       const result = _findTitleByPath(route.children, path);
-      if (result !== "empty") {
+      if (result !== 'empty') {
         return result;
       }
     }
   }
-  return "empty";
+  return 'empty';
 };
 
 /**
@@ -94,7 +94,7 @@ export const _findTitleByPath = (
  * @returns string
  */
 export const getSelfTitle = (path: string) => {
-  let title = "empty";
+  let title = 'empty';
   const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
   title = _findTitleByPath(linkList, path);
   return title;
@@ -106,7 +106,7 @@ export const getSelfTitle = (path: string) => {
  */
 export const _findIconByPath = (
   routes: Array<RouteRecordRaw>,
-  path: string
+  path: string,
 ): {
   defaultIcon: string;
   activatedIcon: string;
@@ -126,14 +126,14 @@ export const _findIconByPath = (
   for (const route of routes) {
     if (route.children) {
       const result = _findIconByPath(route.children, path);
-      if (result.defaultIcon !== "" && result.activatedIcon !== "") {
+      if (result.defaultIcon !== '' && result.activatedIcon !== '') {
         return result;
       }
     }
   }
   return {
-    defaultIcon: "",
-    activatedIcon: "",
+    defaultIcon: '',
+    activatedIcon: '',
   };
 };
 
@@ -143,8 +143,8 @@ export const _findIconByPath = (
  */
 export const getSelfIcon = (path: string) => {
   let icon = {
-    defaultIcon: "",
-    activatedIcon: "",
+    defaultIcon: '',
+    activatedIcon: '',
   };
   const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
   icon = _findIconByPath(linkList, path);
@@ -157,7 +157,7 @@ export const getSelfIcon = (path: string) => {
  */
 export const _findOrderByPath = (
   routes: Array<RouteRecordRaw>,
-  path: string
+  path: string,
 ): number => {
   // 首先检查顶级路由
   for (const route of routes) {
@@ -196,13 +196,13 @@ export const getSelfOrder = (path: string) => {
  */
 export const _findRoleByPath = (
   routes: Array<RouteRecordRaw>,
-  path: string
+  path: string,
 ): string => {
   // 首先检查顶级路由
   for (const route of routes) {
     if (!route.children || !route.children.length) {
       if (route.path === path) {
-        return (route.meta?.role as string) || "";
+        return (route.meta?.role as string) || '';
       }
     }
   }
@@ -210,12 +210,12 @@ export const _findRoleByPath = (
   for (const route of routes) {
     if (route.children) {
       const result = _findRoleByPath(route.children, path);
-      if (result !== "") {
+      if (result !== '') {
         return result;
       }
     }
   }
-  return "";
+  return '';
 };
 
 /**
@@ -223,10 +223,10 @@ export const _findRoleByPath = (
  * @returns boolean
  */
 export const isAdminRouter = (path: string) => {
-  let role = "";
+  let role = '';
   const linkList = _getNavigationMap() as Array<RouteRecordRaw>;
   role = _findRoleByPath(linkList, path);
-  if (role === "admin") {
+  if (role === 'admin') {
     return true;
   } else {
     return false;
@@ -241,9 +241,9 @@ export const getPageLevel = (path: string) => {
   // 移除路径两端的斜杠，然后分割路径
   const parts = path
     .trim()
-    .replace(/^\/+|\/+$/g, "")
-    .split("/");
-  if (path === "/") {
+    .replace(/^\/+|\/+$/g, '')
+    .split('/');
+  if (path === '/') {
     return 1;
   } else {
     return parts.length;
@@ -258,8 +258,8 @@ export const getRootPath = (path: string) => {
   // 移除路径两端的斜杠，然后分割路径
   const parts = path
     .trim()
-    .replace(/^\/+|\/+$/g, "")
-    .split("/");
+    .replace(/^\/+|\/+$/g, '')
+    .split('/');
 
   const rootPath = `/${parts[0]}`;
   const linkList = _getNavigationMap();
@@ -268,7 +268,7 @@ export const getRootPath = (path: string) => {
       return route.path;
     }
   }
-  return "/";
+  return '/';
 };
 
 /**
@@ -291,13 +291,13 @@ export const getRootPathOrder = (path: string) => {
  * @returns Array<RouteRecordRaw>
  */
 export const _removeIdRoute = (
-  routes: Array<RouteRecordRaw>
+  routes: Array<RouteRecordRaw>,
 ): Array<RouteRecordRaw> => {
   const linkList = routes;
   const newLinkList = [] as any[];
   for (const routeItem of linkList) {
     if (!routeItem.children || !routeItem.children.length) {
-      if (routeItem.path.includes(":")) {
+      if (routeItem.path.includes(':')) {
         continue;
       } else {
         newLinkList.push(routeItem);
@@ -307,7 +307,7 @@ export const _removeIdRoute = (
   for (const routeItem of linkList) {
     if (routeItem.children) {
       for (const children of routeItem.children) {
-        if (children.path.includes(":")) {
+        if (children.path.includes(':')) {
           continue;
         } else {
           const newRouteItem = _removeIdRoute(routeItem.children);
@@ -349,7 +349,7 @@ export const getChildrenTabs = (path: string) => {
  */
 export const isActivateRouter = (
   route: RouteLocationNormalizedLoaded,
-  path: string
+  path: string,
 ) => {
   if (route.fullPath == path) {
     return true;
@@ -364,16 +364,16 @@ export const isActivateRouter = (
  */
 export const isActivateRootRouter = (
   route: RouteLocationNormalizedLoaded,
-  path: string
+  path: string,
 ) => {
-  if (path != "/" && route.path != "/admin") {
+  if (path != '/' && route.path != '/admin') {
     if (getRootPath(route.fullPath) == getRootPath(path)) {
       return true;
     } else {
       return false;
     }
   } else {
-    if (route.path == "/") {
+    if (route.path == '/') {
       return true;
     }
   }

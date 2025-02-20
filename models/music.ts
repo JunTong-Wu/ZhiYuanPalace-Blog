@@ -1,22 +1,22 @@
-import type { ResOptions } from "./options";
+import type { ResOptions } from './options';
 
 export class Music {
   song_id: number = 0;
   song_sheet_id: number = 0;
-  song_title: string = "";
-  song_singer: string = "";
-  song_cover: string = "";
-  song_audio_url: string = "";
-  song_lyric_url: string = "";
+  song_title: string = '';
+  song_singer: string = '';
+  song_cover: string = '';
+  song_audio_url: string = '';
+  song_lyric_url: string = '';
 }
 
 export class musicPlayerListItem {
   id: number = 0;
-  title: string = "";
-  singer: string = "";
-  cover: string = "";
-  audio: string = "";
-  lyric: string = "";
+  title: string = '';
+  singer: string = '';
+  cover: string = '';
+  audio: string = '';
+  lyric: string = '';
 }
 
 export class MusicList {

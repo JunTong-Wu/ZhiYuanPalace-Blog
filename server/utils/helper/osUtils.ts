@@ -1,5 +1,5 @@
-import os from "os";
-import { exec } from "child_process";
+import os from 'os';
+import { exec } from 'child_process';
 
 // 平台信息
 export function platform(): string {
@@ -39,14 +39,14 @@ export function freememPercentage(): number {
 // 获取 Linux 下的内存使用情况
 export function freeCommand(): Promise<number> {
   return new Promise((resolve, reject) => {
-    exec("free -m", (error, stdout, stderr) => {
+    exec('free -m', (error, stdout, stderr) => {
       if (error) {
         reject(error);
         return;
       }
-      const lines = stdout.split("\n");
-      const str_mem_info = lines[1].replace(/[\s\n\r]+/g, " ");
-      const mem_info = str_mem_info.split(" ");
+      const lines = stdout.split('\n');
+      const str_mem_info = lines[1].replace(/[\s\n\r]+/g, ' ');
+      const mem_info = str_mem_info.split(' ');
       const total_mem = parseFloat(mem_info[1]);
       const free_mem = parseFloat(mem_info[3]);
       const buffers_mem = parseFloat(mem_info[5]);
@@ -60,16 +60,16 @@ export function freeCommand(): Promise<number> {
 // 获取硬盘使用情况
 export function harddrive(): Promise<[number, number, number]> {
   return new Promise((resolve, reject) => {
-    exec("df -k", (error, stdout, stderr) => {
+    exec('df -k', (error, stdout, stderr) => {
       if (error) {
         reject(error);
         return;
       }
-      const lines = stdout.split("\n");
-      const str_disk_info = lines[1].replace(/[\s\n\r]+/g, " ");
-      const disk_info = str_disk_info.split(" ");
+      const lines = stdout.split('\n');
+      const str_disk_info = lines[1].replace(/[\s\n\r]+/g, ' ');
+      const disk_info = str_disk_info.split(' ');
       const total = Math.ceil(
-        (Number(disk_info[1]) * 1024) / Math.pow(1024, 2)
+        (Number(disk_info[1]) * 1024) / Math.pow(1024, 2),
       );
       const used = Math.ceil((Number(disk_info[2]) * 1024) / Math.pow(1024, 2));
       const free = Math.ceil((Number(disk_info[3]) * 1024) / Math.pow(1024, 2));
@@ -80,7 +80,7 @@ export function harddrive(): Promise<[number, number, number]> {
 
 // 获取进程信息
 export function getProcesses(nProcess: number = 0): Promise<string> {
-  let command = "ps -eo pcpu,pmem,time,args | sort -k 1 -r | head -n 10";
+  let command = 'ps -eo pcpu,pmem,time,args | sort -k 1 -r | head -n 10';
   if (nProcess > 0) {
     command = `ps -eo pcpu,pmem,time,args | sort -k 1 -r | head -n ${
       nProcess + 1
@@ -92,15 +92,15 @@ export function getProcesses(nProcess: number = 0): Promise<string> {
         reject(error);
         return;
       }
-      const lines = stdout.split("\n");
+      const lines = stdout.split('\n');
       lines.shift();
       lines.pop();
-      let result = "";
+      let result = '';
       lines.forEach((_item) => {
-        const _str = _item.replace(/[\s\n\r]+/g, " ");
-        const parts = _str.split(" ");
+        const _str = _item.replace(/[\s\n\r]+/g, ' ');
+        const parts = _str.split(' ');
         result += `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].substring(
-          parts[4].length - 25
+          parts[4].length - 25,
         )}\n`;
       });
       resolve(result);

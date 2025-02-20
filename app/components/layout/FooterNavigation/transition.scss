@@ -1,5 +1,7 @@
 footer {
-  transition: bottom 400ms, background 0ms;
+  transition:
+    bottom 400ms,
+    background 0ms;
 }
 footer.transition-translate-out {
   bottom: calc(0rem - var(--footer-bar-height));

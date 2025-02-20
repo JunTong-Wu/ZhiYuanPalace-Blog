@@ -6,8 +6,14 @@
     >
       <template #loading>
         <ul class="row-album">
-          <li class="clo-album-card" v-for="n in 12">
-            <AlbumCard skeleton class="rounded">
+          <li
+            class="clo-album-card"
+            v-for="n in 12"
+          >
+            <AlbumCard
+              skeleton
+              class="rounded"
+            >
               <template #image>
                 <ZySkeleton type="image" />
               </template>
@@ -20,13 +26,19 @@
       </template>
       <template #onload>
         <ul class="row-album">
-          <li class="clo-album-card" v-for="item in albumListData.list">
+          <li
+            class="clo-album-card"
+            v-for="item in albumListData.list"
+          >
             <AlbumCard
               :href="`/audio/photo/${item.album_path}`"
               class="sm:rounded"
             >
               <template #image>
-                <ZyLazyImage :src="`${cdnUrl}${item.album_cover}`" alt="" />
+                <ZyLazyImage
+                  :src="`${cdnUrl}${item.album_cover}`"
+                  alt=""
+                />
               </template>
               <template #title>
                 <div class="h-full flex flex-col justify-center">
@@ -45,7 +57,7 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { photo } from "@@/models";
+  import { photo } from '@@/models';
   type AlbumListModelType = photo.PhotoAlbumList;
 
   // 获取相册列表

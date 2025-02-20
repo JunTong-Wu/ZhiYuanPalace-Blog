@@ -65,8 +65,14 @@
           class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4 flex-none"
         ></div>
         <div class="flex items-center h-full mx-1 mr-4">
-          <GoBackButton class="flex-none" v-if="!isAdminHeader" />
-          <HeaderTitle class="flex-none" :isAdminHeader="isAdminHeader" />
+          <GoBackButton
+            class="flex-none"
+            v-if="!isAdminHeader"
+          />
+          <HeaderTitle
+            class="flex-none"
+            :isAdminHeader="isAdminHeader"
+          />
           <ClientOnly>
             <PostTitle class="flex-1" />
           </ClientOnly>
@@ -144,7 +150,10 @@
                     title="切换语言"
                     type="icon"
                   >
-                    <UIcon name="i-solar-planet-linear" class="w-5 h-5" />
+                    <UIcon
+                      name="i-solar-planet-linear"
+                      class="w-5 h-5"
+                    />
                   </ZyButton>
                 </template>
                 <template #actions>
@@ -164,7 +173,10 @@
                   name="i-solar-sun-linear"
                   class="w-5 h-5 hidden dark:inline-block"
                 />
-                <UIcon name="i-solar-moon-linear" class="w-5 h-5 dark:hidden" />
+                <UIcon
+                  name="i-solar-moon-linear"
+                  class="w-5 h-5 dark:hidden"
+                />
               </ZyButton>
             </div>
 
@@ -202,7 +214,10 @@
                 title="回到前台"
                 type="icon"
               >
-                <UIcon name="i-solar-home-smile-linear" class="w-5 h-5" />
+                <UIcon
+                  name="i-solar-home-smile-linear"
+                  class="w-5 h-5"
+                />
               </ZyButton>
             </div>
 
@@ -218,18 +233,28 @@
                   name="i-solar-maximize-linear"
                   class="w-5 h-5"
                 />
-                <UIcon v-else name="i-solar-minimize-linear" class="w-5 h-5" />
+                <UIcon
+                  v-else
+                  name="i-solar-minimize-linear"
+                  class="w-5 h-5"
+                />
               </ZyButton>
             </div>
 
-            <div v-if="!isAdminHeader" class="p-2 -ml-2 h-header w-header">
+            <div
+              v-if="!isAdminHeader"
+              class="p-2 -ml-2 h-header w-header"
+            >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
                 @click="openMoreDrawer()"
                 title="更多选项"
                 type="icon"
               >
-                <UIcon name="i-solar-hamburger-menu-linear" class="w-5 h-5" />
+                <UIcon
+                  name="i-solar-hamburger-menu-linear"
+                  class="w-5 h-5"
+                />
               </ZyButton>
             </div>
 
@@ -243,7 +268,10 @@
                 title="菜单"
                 type="icon"
               >
-                <UIcon name="i-solar-hamburger-menu-linear" class="w-5 h-5" />
+                <UIcon
+                  name="i-solar-hamburger-menu-linear"
+                  class="w-5 h-5"
+                />
               </ZyButton>
             </div>
           </div>
@@ -288,7 +316,11 @@
                 name="i-solar-maximize-linear"
                 class="w-5 h-5"
               />
-              <UIcon v-else name="i-solar-minimize-linear" class="w-5 h-5" />
+              <UIcon
+                v-else
+                name="i-solar-minimize-linear"
+                class="w-5 h-5"
+              />
             </ZyButton>
             <ZyButton
               class="flex items-center justify-center p-2"
@@ -300,7 +332,10 @@
                 name="i-solar-sun-linear"
                 class="w-5 h-5 hidden dark:inline-block"
               />
-              <UIcon name="i-solar-moon-linear" class="w-5 h-5 dark:hidden" />
+              <UIcon
+                name="i-solar-moon-linear"
+                class="w-5 h-5 dark:hidden"
+              />
             </ZyButton>
             <ZyPopover
               title="切换语言"
@@ -313,7 +348,10 @@
                   title="切换语言"
                   type="icon"
                 >
-                  <UIcon name="i-solar-planet-linear" class="w-5 h-5" />
+                  <UIcon
+                    name="i-solar-planet-linear"
+                    class="w-5 h-5"
+                  />
                 </ZyButton>
               </template>
               <template #actions>
@@ -345,7 +383,10 @@
               title="回到前台"
               type="icon"
             >
-              <UIcon name="i-solar-home-smile-linear" class="w-5 h-5" />
+              <UIcon
+                name="i-solar-home-smile-linear"
+                class="w-5 h-5"
+              />
             </ZyButton>
             <ZyButton
               class="flex items-center justify-center"
@@ -358,7 +399,11 @@
                 name="i-solar-maximize-linear"
                 class="w-5 h-5"
               />
-              <UIcon v-else name="i-solar-minimize-linear" class="w-5 h-5" />
+              <UIcon
+                v-else
+                name="i-solar-minimize-linear"
+                class="w-5 h-5"
+              />
             </ZyButton>
             <ZyButton
               class="flex items-center justify-center"
@@ -370,7 +415,10 @@
                 name="i-solar-sun-linear"
                 class="w-5 h-5 hidden dark:inline-block"
               />
-              <UIcon name="i-solar-moon-linear" class="w-5 h-5 dark:hidden" />
+              <UIcon
+                name="i-solar-moon-linear"
+                class="w-5 h-5 dark:hidden"
+              />
             </ZyButton>
             <ZyPopover
               title="切换语言"
@@ -383,7 +431,10 @@
                   title="切换语言"
                   type="icon"
                 >
-                  <UIcon name="i-solar-planet-linear" class="w-5 h-5" />
+                  <UIcon
+                    name="i-solar-planet-linear"
+                    class="w-5 h-5"
+                  />
                 </ZyButton>
               </template>
               <template #actions>
@@ -397,7 +448,7 @@
   </header>
 </template>
 <script setup lang="ts">
-  import "./transition.scss";
+  import './transition.scss';
 
   const props = defineProps({
     isAdminHeader: {
@@ -422,7 +473,7 @@
     },
   });
 
-  const emit = defineEmits(["switchSidebarClick", "switchToolbarClick"]);
+  const emit = defineEmits(['switchSidebarClick', 'switchToolbarClick']);
 
   // 使用类型断言来处理 TypeScript 的类型检查
   declare global {
@@ -469,12 +520,12 @@
   };
 
   // 时钟
-  const time = ref("");
+  const time = ref('');
   const updateTime = () => {
     const date = new Date();
-    const hours = date.getHours().toString().padStart(2, "0");
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    const seconds = date.getSeconds().toString().padStart(2, "0");
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
     time.value = `${hours}:${minutes}:${seconds}`;
   };
   // 初始化时间
@@ -489,21 +540,21 @@
   });
 
   //日期
-  const todayDate = ref("");
+  const todayDate = ref('');
   const updateDate = () => {
     const date = new Date();
     const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
     const week = date.getDay();
-    const weekStr = ["日", "一", "二", "三", "四", "五", "六"];
+    const weekStr = ['日', '一', '二', '三', '四', '五', '六'];
     todayDate.value = `${year}-${month}-${day} 星期${weekStr[week]}`;
   };
   // 初始化时间
   updateDate();
 
   // 刷新桌面歌词
-  const desktopLyrics = ref("");
+  const desktopLyrics = ref('');
   const refreshLryric = (result: any) => {
     desktopLyrics.value = result.lyric;
   };
@@ -511,17 +562,17 @@
   const router = useRouter();
   // 管理员回到前台
   const backToHome = () => {
-    router.replace("/");
+    router.replace('/');
   };
 
   // 切换侧边栏
   const switchSidebarClick = () => {
-    emit("switchSidebarClick");
+    emit('switchSidebarClick');
   };
 
   // 切换右侧工具栏
   const switchToolbarClick = () => {
-    emit("switchToolbarClick");
+    emit('switchToolbarClick');
   };
 
   // 用于删除右侧工具栏按钮的防抖
@@ -535,7 +586,7 @@
   };
   const switchPageHasToolbarDebounce = debounce(
     switchPageHasToolbarDebounceFunc,
-    500
+    500,
   );
   onMounted(() => {
     pageHasToolbarDebounceFlag.value = props.pageHasToolbar;
@@ -549,7 +600,7 @@
       } else {
         switchPageHasToolbarDebounce(false);
       }
-    }
+    },
   );
 </script>
 <style>
@@ -567,7 +618,7 @@
 
     &::after {
       position: absolute;
-      content: "";
+      content: '';
       width: var(--rounded);
       height: var(--rounded);
       line-height: 100px;
@@ -581,7 +632,7 @@
 
     &::before {
       position: absolute;
-      content: "";
+      content: '';
       width: var(--rounded);
       height: var(--rounded);
       line-height: 100px;
@@ -607,7 +658,9 @@
       max-height: 0rem;
       overflow: hidden;
       opacity: 0;
-      transition: max-height 0.2s ease-in-out, opacity 0.1s ease-in-out;
+      transition:
+        max-height 0.2s ease-in-out,
+        opacity 0.1s ease-in-out;
     }
 
     &:hover {

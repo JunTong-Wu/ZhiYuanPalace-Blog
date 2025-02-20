@@ -11,15 +11,15 @@ export class VisitorTernary {
 export class Post extends VisitorTernary {
   protected id: number = 0;
   protected classify_id: number = 0;
-  protected title: string = "";
-  protected date: string = "";
+  protected title: string = '';
+  protected date: string = '';
 }
 
 // 分类
 export class Classify extends VisitorTernary {
   protected id: number = 0;
-  protected path: string = "";
-  protected title: string = "";
-  protected cover: string = "";
+  protected path: string = '';
+  protected title: string = '';
+  protected cover: string = '';
   protected father_id: number = 0;
 }

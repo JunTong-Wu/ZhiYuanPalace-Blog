@@ -1,5 +1,8 @@
 <template>
-  <CommonMainSection noPaddingTop class="flex justify-center">
+  <CommonMainSection
+    noPaddingTop
+    class="flex justify-center"
+  >
     <div class="landscape:max-w-[52rem]">
       <ZyFetchLoading
         :fetchData="shuoshuoListDataLazyFetch"
@@ -7,7 +10,10 @@
       >
         <template #loading>
           <ul class="row-shuoshuo">
-            <li class="clo-shuoshuo-card" v-for="n in 12">
+            <li
+              class="clo-shuoshuo-card"
+              v-for="n in 12"
+            >
               <ShuoShuoCard skeleton>
                 <template #image>
                   <div v-for="n in 3">
@@ -23,7 +29,10 @@
         </template>
         <template #onload>
           <ul class="row-shuoshuo">
-            <li class="clo-shuoshuo-card" v-for="item in shuoshuoListData.list">
+            <li
+              class="clo-shuoshuo-card"
+              v-for="item in shuoshuoListData.list"
+            >
               <ShuoShuoCard :href="`/text/shuoshuo/${item.shuoshuo_id}`">
                 <template #image>
                   <div v-for="n in item.shuoshuo_images">
@@ -36,7 +45,7 @@
                 </template>
                 <template #title>
                   <p>
-                    {{ item.shuoshuo_text.replace(/\r\n/g, "") }}
+                    {{ item.shuoshuo_text.replace(/\r\n/g, '') }}
                   </p>
                 </template>
               </ShuoShuoCard>
@@ -50,16 +59,16 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { shuoshuo } from "@@/models";
+  import { shuoshuo } from '@@/models';
   type ShuoshuoListModelType = shuoshuo.ShuoshuoList;
 
   // 获取说说列表
   const shuoshuoListDataLazyFetch = await ApiShuoShuo.getShuoshuoList(null);
   const shuoshuoListData = ref<ShuoshuoListModelType>(
-    new shuoshuo.ShuoshuoList()
+    new shuoshuo.ShuoshuoList(),
   );
   const showShuoshuoList = (
-    result: ResOptionsModelType<ShuoshuoListModelType>
+    result: ResOptionsModelType<ShuoshuoListModelType>,
   ) => {
     shuoshuoListData.value = result.data;
   };

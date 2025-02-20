@@ -18,7 +18,9 @@
   left: 0;
   width: 100%;
   height: 0.3rem;
-  box-shadow: 0 0 2rem var(--shadow-color), 0 0 1rem var(--shadow-color);
+  box-shadow:
+    0 0 2rem var(--shadow-color),
+    0 0 1rem var(--shadow-color);
   .peg {
     display: none;
   }

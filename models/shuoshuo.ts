@@ -1,5 +1,5 @@
-import type { ResOptions } from "./options";
-import { Post, Classify } from "./post-common";
+import type { ResOptions } from './options';
+import { Post, Classify } from './post-common';
 
 export class Shuoshuo extends Post {
   shuoshuo_id: number = this.id;
@@ -9,7 +9,7 @@ export class Shuoshuo extends Post {
   shuoshuo_likes: number = this.likes;
   shuoshuo_comments: number = this.comments;
 
-  shuoshuo_text: string = "";
+  shuoshuo_text: string = '';
   shuoshuo_images: string[] = [];
 }
 

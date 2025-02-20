@@ -1,5 +1,5 @@
-import CryptoJS from "crypto-js";
-import { config } from "~~/server/config";
+import CryptoJS from 'crypto-js';
+import { config } from '~~/server/config';
 
 const encryptData = (data: string | CryptoJS.lib.WordArray) => {
   const key = config.aes.key;
@@ -8,11 +8,11 @@ const encryptData = (data: string | CryptoJS.lib.WordArray) => {
   const keyHex = CryptoJS.enc.Utf8.parse(key);
   const ivHex = CryptoJS.enc.Utf8.parse(iv);
 
-  if (typeof data === "object") {
+  if (typeof data === 'object') {
     try {
       data = JSON.stringify(data);
     } catch (error) {
-      console.log("error:", error);
+      console.log('error:', error);
     }
   }
 

@@ -1,4 +1,4 @@
-import type { ResOptions } from "./options";
+import type { ResOptions } from './options';
 
 export class PostsNumber {
   total: number = 0;
@@ -8,12 +8,12 @@ export class PostsNumber {
   photo: number = 0;
 }
 export class OSInfo {
-  sys_version: string = "";
+  sys_version: string = '';
   sys_uptime: number = 0;
-  cpu_platform: string = "";
-  cpu_arch: string = "";
+  cpu_platform: string = '';
+  cpu_arch: string = '';
   cpu_count: number = 0;
-  cpu_model: string = "";
+  cpu_model: string = '';
   cpu_speed: number = 0;
   cpu_use: number = 0;
   cpu_free: number = 0;

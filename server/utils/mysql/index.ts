@@ -1,5 +1,5 @@
-import mysql from "mysql2";
-import { config } from "~~/server/config";
+import mysql from 'mysql2';
+import { config } from '~~/server/config';
 
 export const getDB = () => {
   return mysql.createPool(config.db);

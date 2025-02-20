@@ -1,5 +1,7 @@
 header {
-  transition: transform 400ms, background 0ms;
+  transition:
+    transform 400ms,
+    background 0ms;
 }
 
 @media (orientation: portrait) {

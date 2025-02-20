@@ -1,12 +1,15 @@
 <template>
   <div class="w-full h-[100vh] bg-black text-white">
-    <ZyFetchLoading :fetchData="videoDataLazyFetch" @fetchOnload="showVideo">
+    <ZyFetchLoading
+      :fetchData="videoDataLazyFetch"
+      @fetchOnload="showVideo"
+    >
       <template #loading></template>
       <template #onload>
         <div class="w-full h-[100vh]">
           <VideoPlayer
             ref="VideoPlayerRef"
-            :videoData="(videoData as VideoModelType)"
+            :videoData="videoData as VideoModelType"
           />
         </div>
       </template>
@@ -14,7 +17,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { video } from "@@/models";
+  import { video } from '@@/models';
   type VideoModelType = video.Video;
 
   const route = useRoute();
@@ -33,14 +36,14 @@
   onMounted(() => {
     const body = document.documentElement;
     if (body) {
-      body.style.overflow = "hidden";
+      body.style.overflow = 'hidden';
     }
   });
 
   onUnmounted(() => {
     const body = document.documentElement;
     if (body) {
-      body.style.overflow = "auto";
+      body.style.overflow = 'auto';
     }
   });
 </script>

@@ -9,7 +9,7 @@ export const articlePasswordFilter = (
         code: number;
         message: string;
         data: null;
-      }
+      },
 ) => {
   let tempArr: any[] = [];
   if (results.data && results.data.length > 0) {
@@ -21,7 +21,7 @@ export const articlePasswordFilter = (
           article_title: item.article_title,
           article_title_image: item.article_title_image,
           article_text:
-            "文章被密码保护，请先输入密码，或者登录管理员账号查看。",
+            '文章被密码保护，请先输入密码，或者登录管理员账号查看。',
           has_password: true,
         };
       } else {

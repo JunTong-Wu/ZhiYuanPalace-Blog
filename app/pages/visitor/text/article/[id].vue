@@ -45,7 +45,10 @@
               ref="preview"
               :text="articleData.article_text"
             ></v-md-preview>
-            <div v-else class="pb-40"></div>
+            <div
+              v-else
+              class="pb-40"
+            ></div>
           </div>
         </template>
       </ZyFetchLoading>
@@ -53,12 +56,12 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { article } from "@@/models";
+  import { article } from '@@/models';
   type ArticleModelType = article.Article;
 
   const { setPostInfo, clearPostInfo } = toRefs(store.usePostInfo());
   const setHeaderTitle = (id: number, title: string) => {
-    setPostInfo.value(id, "article", title);
+    setPostInfo.value(id, 'article', title);
   };
 
   const route = useRoute();
@@ -96,7 +99,7 @@
   });
 </script>
 <style lang="scss">
-  @import url("@/components/layout/ArticleCard/ArticleCard.scss");
+  @import url('@/components/layout/ArticleCard/ArticleCard.scss');
 
   @keyframes an-article-card-text {
     0% {

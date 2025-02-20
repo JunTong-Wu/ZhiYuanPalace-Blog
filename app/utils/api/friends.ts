@@ -1,5 +1,5 @@
 export const ApiFriend = {
   getFriendsList() {
-    return ApiService.post("/friends/index", null);
+    return ApiService.post('/friends/index', null);
   },
 };

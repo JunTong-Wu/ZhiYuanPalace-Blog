@@ -1,6 +1,6 @@
-import * as CryptoJS from "crypto-js";
-import jwt from "jsonwebtoken";
-import { config } from "~~/server/config";
+import * as CryptoJS from 'crypto-js';
+import jwt from 'jsonwebtoken';
+import { config } from '~~/server/config';
 
 /**
  * 登录
@@ -11,10 +11,10 @@ export default defineEventHandler(async (event) => {
   const password = body.password || null;
 
   if (!username || !password) {
-    return setJson({ code: 400, message: "用户名或密码不能为空" });
+    return setJson({ code: 400, message: '用户名或密码不能为空' });
   }
 
-  const sql = "SELECT * FROM users WHERE username =?;";
+  const sql = 'SELECT * FROM users WHERE username =?;';
 
   const dbResults = await getHandledQuery(sql, [username]);
 
@@ -31,19 +31,19 @@ export default defineEventHandler(async (event) => {
           },
         },
         config.jwt.secret, // 生成 token 的密钥，需要保密
-        { expiresIn: config.jwt.expiresIn } // token 过期时间
+        { expiresIn: config.jwt.expiresIn }, // token 过期时间
       );
       return setJson({
-        message: "登录成功",
+        message: '登录成功',
         data: Object.assign(dbResults.data[0], { token: token }),
       });
     } else {
       return setJson({
         code: 401,
-        message: "密码错误",
+        message: '密码错误',
       });
     }
   } else {
-    return setJson({ code: 400, message: "用户不存在" });
+    return setJson({ code: 400, message: '用户不存在' });
   }
 });

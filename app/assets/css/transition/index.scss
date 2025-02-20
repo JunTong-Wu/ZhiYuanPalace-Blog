@@ -1,4 +1,4 @@
-@import url("./pageTransition/pageTransition.scss");
+@import url('./pageTransition/pageTransition.scss');
 
 @keyframes an-fade-in-from-left {
   0% {
@@ -42,7 +42,9 @@
 }
 
 .layout-main.transition .main-view-inner {
-  transition: all 600ms, background 0s;
+  transition:
+    all 600ms,
+    background 0s;
   opacity: 0;
   transform: scale(0.8);
   overflow: hidden;

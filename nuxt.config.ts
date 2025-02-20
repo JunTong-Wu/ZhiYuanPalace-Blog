@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import compression from "vite-plugin-compression";
+import compression from 'vite-plugin-compression';
 export default defineNuxtConfig({
   runtimeConfig: {
     //私密
@@ -23,47 +23,47 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   app: {
-    pageTransition: { mode: "out-in" },
+    pageTransition: { mode: 'out-in' },
   },
   ui: {
-    safelistColors: ["theme"],
+    safelistColors: ['theme'],
   },
   hooks: {
-    "vite:extendConfig"(config) {
+    'vite:extendConfig'(config) {
       delete config.define!.window;
       delete config.define!.document;
     },
   },
   devtools: { enabled: false },
   modules: [
-    "@nuxt/ui",
-    "@nuxtjs/tailwindcss",
-    "nuxt-headlessui",
-    "@nuxtjs/i18n",
-    "@pinia/nuxt",
+    '@nuxt/ui',
+    '@nuxtjs/tailwindcss',
+    'nuxt-headlessui',
+    '@nuxtjs/i18n',
+    '@pinia/nuxt',
   ],
   components: [
     {
-      path: "components",
+      path: 'components',
       pathPrefix: false,
-      extensions: [".vue"],
+      extensions: ['.vue'],
     },
   ],
   imports: {
-    dirs: ["@/stores/index.{ts,js,mjs,mts}"],
+    dirs: ['@/stores/index.{ts,js,mjs,mts}'],
   },
   i18n: {
     baseUrl: process.env.SITE_URL,
-    strategy: "no_prefix",
-    vueI18n: "./i18n.config.ts",
+    strategy: 'no_prefix',
+    vueI18n: './i18n.config.ts',
   },
   vite: {
     plugins: [
       compression({
-        algorithm: "gzip", // 使用 gzip 压缩
-        ext: ".gz", // 压缩后的文件扩展名
+        algorithm: 'gzip', // 使用 gzip 压缩
+        ext: '.gz', // 压缩后的文件扩展名
       }),
     ],
   },
-  compatibilityDate: "2024-08-12",
+  compatibilityDate: '2024-08-12',
 });

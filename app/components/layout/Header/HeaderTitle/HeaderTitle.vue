@@ -1,36 +1,82 @@
 <template>
-  <nav id="header-tabs" class="header-title flex items-center h-full relative" v-if="titleDisable"
-    :class="{ 'p-1 -mx-1': Array.isArray(childrenTabs) && childrenTabs.length > 1 }">
-    <div v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader"
-      class="inset-1 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs landscape:rounded-xs overflow-hidden">
-      <div id="header-tabs-indicator" class="inline-block h-full relative p-1 transition-all opacity-0">
-        <div class="h-full bg-level-4 rounded-3xs landscape:rounded-2xs overflow-hidden">
-        </div>
+  <nav
+    id="header-tabs"
+    class="header-title flex items-center h-full relative"
+    v-if="titleDisable"
+    :class="{
+      'p-1 -mx-1': Array.isArray(childrenTabs) && childrenTabs.length > 1,
+    }"
+  >
+    <div
+      v-if="
+        Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader
+      "
+      class="inset-1 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs landscape:rounded-xs overflow-hidden"
+    >
+      <div
+        id="header-tabs-indicator"
+        class="inline-block h-full relative p-1 transition-all opacity-0"
+      >
+        <div
+          class="h-full bg-level-4 rounded-3xs landscape:rounded-2xs overflow-hidden"
+        ></div>
       </div>
     </div>
-    <ul v-if="Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader"
-      class="headerbar-tabs flex h-full relative z-10">
-      <li v-for="tabs in childrenTabs" :key="tabs.name">
-        <ZyLink :to="tabs.path"
-          class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100">
-          <div class="flex items-center text-base gap-2 portrait:text-sm select-none">
-            <ZyIcon class="landscape:hidden" size="1rem" :defaultName="tabs.meta.defaultIcon"
-              :activatedName="tabs.meta.activatedIcon" :activated="activeTab === tabs.path" />
-            <ZyIcon class="portrait:hidden" size="1.2rem" :defaultName="tabs.meta.defaultIcon"
-              :activatedName="tabs.meta.activatedIcon" :activated="activeTab === tabs.path" />
+    <ul
+      v-if="
+        Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader
+      "
+      class="headerbar-tabs flex h-full relative z-10"
+    >
+      <li
+        v-for="tabs in childrenTabs"
+        :key="tabs.name"
+      >
+        <ZyLink
+          :to="tabs.path"
+          class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100"
+        >
+          <div
+            class="flex items-center text-base gap-2 portrait:text-sm select-none"
+          >
+            <ZyIcon
+              class="landscape:hidden"
+              size="1rem"
+              :defaultName="tabs.meta.defaultIcon"
+              :activatedName="tabs.meta.activatedIcon"
+              :activated="activeTab === tabs.path"
+            />
+            <ZyIcon
+              class="portrait:hidden"
+              size="1.2rem"
+              :defaultName="tabs.meta.defaultIcon"
+              :activatedName="tabs.meta.activatedIcon"
+              :activated="activeTab === tabs.path"
+            />
             {{ $t(`menu.${String(tabs.name)}`) }}
           </div>
         </ZyLink>
       </li>
     </ul>
-    <div v-else-if="Array.isArray(childrenTabs) && childrenTabs.length === 1 && !isAdminHeader"
-      class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4">
-      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
-        $t(`menu.${childrenTabs[0].name}`) }}</h2>
+    <div
+      v-else-if="
+        Array.isArray(childrenTabs) &&
+        childrenTabs.length === 1 &&
+        !isAdminHeader
+      "
+      class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
+    >
+      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">
+        {{ $t(`menu.${childrenTabs[0].name}`) }}
+      </h2>
     </div>
-    <div v-else-if="isAdminHeader" class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4">
-      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">{{
-        $t(`menu.${getSelfTitle(route.path)}`) }}</h2>
+    <div
+      v-else-if="isAdminHeader"
+      class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
+    >
+      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">
+        {{ $t(`menu.${getSelfTitle(route.path)}`) }}
+      </h2>
     </div>
   </nav>
 </template>
@@ -48,8 +94,8 @@
   const route = useRoute();
   const router = useRouter();
   const titleDisable = ref(true);
-  const childrenTabs = ref<RouterOptions["routes"]>();
-  const activeTab = ref<string>("");
+  const childrenTabs = ref<RouterOptions['routes']>();
+  const activeTab = ref<string>('');
   const { locale } = useI18n();
 
   childrenTabs.value = getChildrenTabs(route.fullPath);
@@ -58,7 +104,7 @@
     () => activeTab.value,
     (newVal) => {
       initIndicator(newVal);
-    }
+    },
   );
 
   watch(
@@ -69,7 +115,7 @@
           initIndicator(activeTab.value);
         });
       }
-    }
+    },
   );
 
   const initIndicator = (path: string) => {
@@ -87,7 +133,7 @@
 
   const indicatorMove = (index: number) => {
     const allTabs = document.querySelectorAll(
-      "#header-tabs li"
+      '#header-tabs li',
     ) as NodeListOf<HTMLLIElement>;
     const tab = allTabs[index];
     let tabWidth = [];
@@ -95,23 +141,27 @@
       tabWidth.push(allTabs[i]?.getBoundingClientRect().width);
     }
     for (let i = 0; i < allTabs.length; i++) {
-      allTabs[i]?.classList.remove("activate");
+      allTabs[i]?.classList.remove('activate');
     }
-    const indicator = document.querySelector("#header-tabs-indicator") as
-      | HTMLElement
-      | null;
+    const indicator = document.querySelector(
+      '#header-tabs-indicator',
+    ) as HTMLElement | null;
     if (tab && indicator) {
       const width = tab.getBoundingClientRect().width;
       const left = tabWidth.slice(0, index).reduce((acc, cur) => acc + cur, 0);
       indicator.style.left = `${left}px`;
       indicator.style.width = `${width}px`;
-      indicator.style.opacity = "1";
-      tab.classList.add("activate");
+      indicator.style.opacity = '1';
+      tab.classList.add('activate');
     }
   };
 
   router.beforeEach(
-    (to: { fullPath: string }, from: { fullPath: string }, next: () => void) => {
+    (
+      to: { fullPath: string },
+      from: { fullPath: string },
+      next: () => void,
+    ) => {
       if (
         getRootPath(from.fullPath) != getRootPath(to.fullPath) ||
         getPageLevel(from.fullPath) != getPageLevel(to.fullPath)
@@ -129,7 +179,7 @@
         titleDisable.value = true;
         activeTab.value = to.fullPath;
       }
-    }
+    },
   );
 
   onMounted(() => {
@@ -137,7 +187,7 @@
     activeTab.value = route.fullPath;
     initIndicator(activeTab.value);
     // 监听浏览器窗口变化
-    window.addEventListener("resize", function () {
+    window.addEventListener('resize', function () {
       initIndicator(activeTab.value);
     });
   });
@@ -156,7 +206,7 @@
       nextTick().then(() => {
         initIndicator(activeTab.value);
       });
-    }
+    },
   );
 </script>
 <style lang="scss" scoped>

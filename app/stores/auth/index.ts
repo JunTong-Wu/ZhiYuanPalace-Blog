@@ -1,14 +1,14 @@
-import { defineStore } from "pinia";
-export const useAuthStore = defineStore("auth", {
+import { defineStore } from 'pinia';
+export const useAuthStore = defineStore('auth', {
   state: () => ({
-    token: "",
+    token: '',
     user: {
-      id: "",
-      username: "",
-      email: "",
-      avatar: "",
-      nickname: "",
-    }
+      id: '',
+      username: '',
+      email: '',
+      avatar: '',
+      nickname: '',
+    },
   }),
   actions: {
     setToken(token: string) {
@@ -18,13 +18,13 @@ export const useAuthStore = defineStore("auth", {
       this.user = user;
     },
     reset() {
-      this.token = "";
+      this.token = '';
       this.user = {
-        id: "",
-        username: "",
-        email: "",
-        avatar: "",
-        nickname: "",
+        id: '',
+        username: '',
+        email: '',
+        avatar: '',
+        nickname: '',
       };
     },
   },
