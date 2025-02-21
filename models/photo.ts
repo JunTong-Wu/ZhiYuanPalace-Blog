@@ -7,6 +7,8 @@ export class Photo extends Post {
 
   photo_thumbnail_path: string = '';
   photo_source_path: string = '';
+
+  album_has_password: boolean = false;
 }
 
 export class PhotoAlbum extends Classify {
@@ -20,6 +22,8 @@ export class PhotoAlbum extends Classify {
 
   album_private: number = 0;
   album_password: string = '';
+
+  has_password: boolean = false;
 }
 
 export class PhotoList {
@@ -43,6 +47,7 @@ export interface ApiIndex {
     page_numer?: number;
     page_size?: number;
     album_path?: string | null;
+    album_password?: string | null;
   };
   result: ResOptions<PhotoList>;
 }

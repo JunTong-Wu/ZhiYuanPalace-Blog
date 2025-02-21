@@ -1,5 +1,6 @@
-import { shuoshuo } from '@@/models';
+import { article, shuoshuo } from '@@/models';
 type ApiIndexModelType = shuoshuo.ApiIndex;
+type Shuoshuo = shuoshuo.Shuoshuo;
 
 /**
  * 查询说说列表
@@ -31,7 +32,7 @@ export default defineEventHandler(async (event) => {
   let total = 0;
 
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
-    dbResults.data.forEach((item: any) => {
+    dbResults.data.forEach((item: Shuoshuo) => {
       if (item.shuoshuo_text.length > 60) {
         item.shuoshuo_text = item.shuoshuo_text.substring(0, 60) + '...';
       }

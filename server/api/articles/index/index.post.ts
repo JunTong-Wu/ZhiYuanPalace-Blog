@@ -1,5 +1,6 @@
 import { article } from '@@/models';
 type ApiIndexModelType = article.ApiIndex;
+type Article = article.Article;
 
 /**
  * 查询文章列表
@@ -33,7 +34,7 @@ export default defineEventHandler(async (event) => {
 
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     dbResults = articlePasswordFilter(dbResults);
-    dbResults.data.forEach((item) => {
+    dbResults.data.forEach((item: Article) => {
       if (item.article_text.length > 60) {
         item.article_text = item.article_text.substring(0, 60) + '...';
       }

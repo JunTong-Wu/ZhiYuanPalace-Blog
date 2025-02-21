@@ -10,10 +10,10 @@
     >
       <div
         v-if="locked"
-        class="absolute top-0 left-0 z-10 w-full h-full bg-mask backdrop-blur-3xl portrait:backdrop-blur-lg backdrop-saturate-200 flex items-center justify-center"
+        class="absolute top-0 left-0 z-10 w-full h-full bg-mask flex items-center justify-center"
       >
         <p
-          class="locked-icon flex items-center justify-center w-1/2 h-1/2 max-w-16 max-h-16 rounded-full bg-mask-dark opacity-20 dark:opacity-40"
+          class="relative z-10 locked-icon flex items-center justify-center w-1/2 h-1/2 max-w-16 max-h-16 rounded-full bg-mask-dark opacity-20 dark:opacity-40"
         >
           <UIcon
             name="i-solar-lock-password-bold-duotone"
@@ -26,6 +26,9 @@
         :src="lazyUrl"
         :alt="alt"
         :style="style"
+        :class="{
+          '!blur-3xl !scale-150 !saturate-200': locked,
+        }"
       />
       <ZyImagePreview
         v-else

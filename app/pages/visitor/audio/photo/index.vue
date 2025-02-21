@@ -37,6 +37,7 @@
               <template #image>
                 <ZyLazyImage
                   :src="`${cdnUrl}${item.album_cover}`"
+                  :locked="item.has_password"
                   alt=""
                 />
               </template>

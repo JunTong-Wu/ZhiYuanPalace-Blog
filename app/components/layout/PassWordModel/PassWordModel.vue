@@ -1,7 +1,24 @@
 <template>
-  <div>
-    <div @click="isOpen = true">
+  <div class="pt-8 xs:pt-10 sm:pt-12 md:pt-14 lg:pt-16 pb-40">
+    <div>
       <slot />
+      <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center">
+          <img
+            class="h-96 w-full"
+            src="@/assets/image/illustrations/4.png"
+            alt=""
+          />
+          <h3 class="text-2xl text-text-3 font-bold">
+            {{ getVerifyApi.outsideTips }}
+          </h3>
+        </div>
+        <div
+          class="flex justify-center items-center mt-8 xs:mt-10 sm:mt-12 md:mt-14 lg:mt-16"
+        >
+          <ZyButton @click="isOpen = true">输入密码</ZyButton>
+        </div>
+      </div>
     </div>
     <UModal v-model="isOpen">
       <UCard>
@@ -50,9 +67,10 @@
 <script setup lang="ts">
   import { sleep } from '~/utils';
 
+  type VerifyType = 'article' | 'album';
   const props = defineProps({
     type: {
-      type: String,
+      type: Object as () => VerifyType | null,
       default: 'article',
     },
     id: {
@@ -67,16 +85,50 @@
   const isOpen = ref(false);
   const password = ref('');
 
+  const getVerifyApi = computed(() => {
+    let params: any = {
+      api: undefined,
+      outsideTips: '',
+      failTips: '',
+      successTips: '',
+    };
+    switch (props.type) {
+      case 'article':
+        params = {
+          api: ApiArticle.passwordVerify,
+          outsideTips: '文章已被加密',
+          failTips: '请输入正确的密码，才能访问这篇文章',
+          successTips: '密码正确，您现在可以访问这篇文章',
+        };
+        break;
+      case 'album':
+        params = {
+          api: ApiPhotos.passwordVerify,
+          outsideTips: '相册已被加密',
+          failTips: '请输入正确的密码，才能访问这个相册',
+          successTips: '密码正确，您现在可以访问这个相册',
+        };
+        break;
+      default:
+        // eslint-disable-next-line no-case-declarations
+        // @ts-ignore
+        const n: never = props.type;
+        console.log(n);
+        break;
+    }
+    return params;
+  });
+
   const verifyPassword = async () => {
     if (password.value.trim() === '') {
       window.ZyToast({
         title: '密码不能为空',
-        text: '请输入正确的密码，才能访问这篇文章',
+        text: getVerifyApi.value.failTips,
       });
       return;
     }
     loading.value = true;
-    const { data } = await ApiArticle.passwordVerify({
+    const { data } = await getVerifyApi.value.api({
       password: password.value,
       id: props.id,
     });
@@ -85,7 +137,7 @@
     if (data.value.code === 0) {
       window.ZyToast({
         title: '密码正确',
-        text: '密码正确，您现在可以访问这篇文章',
+        text: getVerifyApi.value.successTips,
       });
       emit('validateSuccess', { password: password.value });
       isOpen.value = false;

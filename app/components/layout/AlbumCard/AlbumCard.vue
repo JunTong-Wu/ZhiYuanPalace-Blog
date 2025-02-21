@@ -6,7 +6,7 @@
       @click.prevent="openCard($el)"
     >
       <div class="zy-album-card-inner">
-        <div class="zy-card-title dark">
+        <div class="zy-card-title">
           <slot name="title" />
         </div>
         <div class="zy-card-image">

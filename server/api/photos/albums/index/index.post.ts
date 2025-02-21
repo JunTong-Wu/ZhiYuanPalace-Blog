@@ -1,4 +1,5 @@
-import { photo } from '@@/models';
+import { photo } from '~~/models';
+import { albumPasswordFilter } from '~~/server/utils/helper';
 type ApiAlbumModelType = photo.ApiAlbum;
 
 /**
@@ -13,7 +14,8 @@ export default defineEventHandler(async (event) => {
   const sql =
     'SELECT * \n' +
     'FROM photo_albums \n' +
-    (albumPath ? 'WHERE photo_albums.album_path = ?' : '') +
+    'WHERE photo_albums.album_private!= 1\n' +
+    (albumPath ? 'AND photo_albums.album_path = ?' : '') +
     (pageNumer !== -1 && pageSize !== -1 ? 'LIMIT ?,?;' : ';');
 
   let values = [];
@@ -25,9 +27,11 @@ export default defineEventHandler(async (event) => {
     values.push(pageLimit, pageSize);
   }
 
-  const dbResults = await getHandledQuery(sql, values);
+  let dbResults = await getHandledQuery(sql, values);
   let total = 0;
+
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
+    dbResults = albumPasswordFilter(dbResults);
     total = dbResults.data.length;
   }
   return setJson(

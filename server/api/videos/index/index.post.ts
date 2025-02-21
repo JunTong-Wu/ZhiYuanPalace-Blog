@@ -1,5 +1,6 @@
 import { video } from '@@/models';
 type ApiIndexModelType = video.ApiIndex;
+type Video = video.Video;
 
 /**
  * 查询视频列表
@@ -31,7 +32,7 @@ export default defineEventHandler(async (event) => {
   let total = 0;
 
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
-    dbResults.data.forEach((item: any) => {
+    dbResults.data.forEach((item: Video) => {
       if (item.video_text.length > 60) {
         item.video_text = item.video_text.substring(0, 60) + '...';
       }

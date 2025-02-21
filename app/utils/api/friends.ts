@@ -1,5 +1,5 @@
 export const ApiFriend = {
-  getFriendsList() {
+  getFriendsList(): Promise<LazyAsyncDataRef<ResOptionsModelType<any>>> {
     return ApiService.post('/friends/index', null);
   },
 };

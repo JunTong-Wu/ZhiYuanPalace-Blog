@@ -1,2 +1,2 @@
-export * from './articlePasswordFilter';
+export * from './passwordFilter';
 export * from './osUtils';

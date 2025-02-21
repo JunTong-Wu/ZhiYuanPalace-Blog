@@ -7,7 +7,7 @@
       >
         <template #loading></template>
         <template #onload>
-          <div class="zy-album-card-inner dark">
+          <div class="zy-album-card-inner">
             <div class="zy-card-title">
               <div class="h-full flex flex-col justify-center">
                 <h4
@@ -18,8 +18,9 @@
               </div>
             </div>
             <div class="zy-card-image">
-              <ZyLazyImage
+              <ZyImage
                 :src="`${cdnUrl}${albumDetailData.album_cover}`"
+                :locked="albumDetailData.has_password"
                 alt=""
               />
             </div>
@@ -34,7 +35,18 @@
       >
         <template #loading>test</template>
         <template #onload>
-          <ul class="row-photo">
+          <div v-if="albumHasPasswordFlag">
+            <PassWordModel
+              type="album"
+              :id="albumDetailData.album_id"
+              @validate-success="getPhotosWithPassword"
+            >
+            </PassWordModel>
+          </div>
+          <ul
+            v-else
+            class="row-photo"
+          >
             <li
               class="clo-photo-card"
               v-for="item in photoList.list"
@@ -57,6 +69,7 @@
 </template>
 <script setup lang="ts">
   import { photo } from '@@/models';
+  type Photo = photo.Photo;
   type AlbumListModelType = photo.PhotoAlbumList;
   type AlbumModelType = photo.PhotoAlbum;
   type PhotoListModelType = photo.PhotoList;
@@ -68,26 +81,56 @@
 
   const route = useRoute();
   const albumPath = route.params.album as string;
+  const albumHasPasswordFlag = ref(false);
 
-  // 获取相册内容
+  const getPhotosListLazyFetch = async (password?: string) => {
+    if (password) {
+      return await ApiPhotos.getPhotosList({
+        album_path: albumPath,
+        album_password: password,
+      });
+    }
+    return await ApiPhotos.getPhotosList({ album_path: albumPath });
+  };
+
+  // 获取相册标题
+  const albumDetailData = ref<AlbumModelType>(new photo.PhotoAlbum());
   const albumDetailDataLazyFetch = await ApiPhotos.getAlbumsList({
     album_path: albumPath,
   });
-  const photoListLazyFetch = await ApiPhotos.getPhotosList({
-    album_path: albumPath,
-  });
-  const albumDetailData = ref<AlbumModelType>(new photo.PhotoAlbum());
-  const photoList = ref<PhotoListModelType>(new photo.PhotoList());
   const showAlbumDetail = (result: ResOptionsModelType<AlbumListModelType>) => {
     albumDetailData.value = result.data.list[0] as AlbumModelType;
   };
+
+  // 获取相册详细
+  const photoList = ref<PhotoListModelType>(new photo.PhotoList());
+  let photoListLazyFetch = await getPhotosListLazyFetch();
+
+  // 获取加密的相册详细
+  const getPhotosWithPassword = async (params: { password: string }) => {
+    photoListLazyFetch = await getPhotosListLazyFetch(params.password);
+  };
+
+  const displayPasswordEnter = (photos: Photo[]) => {
+    const albumHasPassword = photos.some((item) => {
+      return item.album_has_password;
+    });
+    if (albumHasPassword) {
+      albumHasPasswordFlag.value = true;
+    } else {
+      albumHasPasswordFlag.value = false;
+    }
+  };
+
   const showPhotoDetail = (result: ResOptionsModelType<PhotoListModelType>) => {
     photoList.value = result.data;
+    displayPasswordEnter(result.data.list as Photo[]);
     setHeaderTitle(
       albumDetailData.value.album_id,
       albumDetailData.value.album_title,
     );
   };
+
   const config = useRuntimeConfig();
   const cdnUrl = config.public.CDN_URL;
 

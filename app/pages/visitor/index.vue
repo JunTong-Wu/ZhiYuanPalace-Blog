@@ -7,7 +7,6 @@
     <NewPosts />
     <MorePostType />
     <OpenSource />
-    <Toolbar>123123</Toolbar>
   </div>
 </template>
 <script setup lang="ts"></script>

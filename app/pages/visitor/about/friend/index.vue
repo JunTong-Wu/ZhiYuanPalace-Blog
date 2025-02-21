@@ -11,7 +11,7 @@
     </div>
 
     <ZyFetchLoading
-      :fetchData="friendsListDataFetch as any"
+      :fetchData="friendsListDataFetch"
       @fetchOnload="showFriendList"
     >
       <template #onload>
