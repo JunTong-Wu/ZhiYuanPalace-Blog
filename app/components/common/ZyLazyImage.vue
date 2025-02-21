@@ -2,7 +2,7 @@
   <div
     ref="imageWrapperRef"
     class="relative"
-    :class="className"
+    :class="[isLoading ? 'w-full h-full' : '', className]"
   >
     <div
       v-if="!isLoading && lazyUrl"
@@ -42,7 +42,10 @@
       v-else
       class="loading"
     >
-      <ZySkeleton type="image" />
+      <ZySkeleton
+        type="image"
+        class="w-full h-full"
+      />
     </div>
   </div>
 </template>

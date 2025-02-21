@@ -14,6 +14,7 @@
               <template #image>
                 <ZyLazyImage
                   :src="`${cdnUrl}${item.video_cover}`"
+                  :locked="item.has_password"
                   alt=""
                 />
               </template>

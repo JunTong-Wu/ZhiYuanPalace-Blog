@@ -1,5 +1,10 @@
 <template>
-  <div class="pt-8 xs:pt-10 sm:pt-12 md:pt-14 lg:pt-16 pb-40">
+  <div
+    class="pt-8 xs:pt-10 sm:pt-12 md:pt-14 lg:pt-16 pb-40"
+    :class="{
+      dark: dark,
+    }"
+  >
     <div>
       <slot />
       <div class="flex flex-col justify-center items-center">
@@ -20,7 +25,12 @@
         </div>
       </div>
     </div>
-    <UModal v-model="isOpen">
+    <UModal
+      v-model="isOpen"
+      :class="{
+        dark: dark,
+      }"
+    >
       <UCard>
         <template #header>
           <div class="flex items-center justify-between">
@@ -67,7 +77,7 @@
 <script setup lang="ts">
   import { sleep } from '~/utils';
 
-  type VerifyType = 'article' | 'album';
+  type VerifyType = 'article' | 'album' | 'video';
   const props = defineProps({
     type: {
       type: Object as () => VerifyType | null,
@@ -76,6 +86,10 @@
     id: {
       type: Number,
       default: 0,
+    },
+    dark: {
+      type: Boolean,
+      default: false,
     },
   });
 
@@ -96,7 +110,7 @@
       case 'article':
         params = {
           api: ApiArticle.passwordVerify,
-          outsideTips: '文章已被加密',
+          outsideTips: '该文章被密码保护',
           failTips: '请输入正确的密码，才能访问这篇文章',
           successTips: '密码正确，您现在可以访问这篇文章',
         };
@@ -104,11 +118,18 @@
       case 'album':
         params = {
           api: ApiPhotos.passwordVerify,
-          outsideTips: '相册已被加密',
+          outsideTips: '该相册被密码保护',
           failTips: '请输入正确的密码，才能访问这个相册',
           successTips: '密码正确，您现在可以访问这个相册',
         };
         break;
+      case 'video':
+        params = {
+          api: ApiVideo.passwordVerify,
+          outsideTips: '该视频被密码保护',
+          failTips: '请输入正确的密码，才能访问这个视频',
+          successTips: '密码正确，您现在可以访问这个视频',
+        };
       default:
         // eslint-disable-next-line no-case-declarations
         // @ts-ignore

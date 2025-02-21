@@ -13,10 +13,12 @@ export default defineEventHandler(async (event) => {
     values.push(id);
   }
   const dbResults = await getHandledQuery(sql, values);
-  if (dbResults.data) {
+  if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     return setJson(
       { data: dbResults.data[0] },
       dbResults,
     ) as ApiShowModelType['result'];
+  } else {
+    return dbResults;
   }
 });

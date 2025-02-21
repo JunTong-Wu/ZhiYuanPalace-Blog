@@ -11,6 +11,11 @@ export class Video extends Post {
   video_views: number = this.views;
   video_likes: number = this.likes;
   video_comments: number = this.comments;
+
+  video_private: number = 0;
+  video_password: string = '';
+
+  has_password: boolean = false;
 }
 
 export class VideoCollections extends Classify {
@@ -40,6 +45,7 @@ export interface ApiIndex {
 export interface ApiShow {
   params: {
     video_id: string;
+    video_password?: string;
   };
   result: ResOptions<Video>;
 }

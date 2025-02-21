@@ -31,7 +31,7 @@
     position: relative;
     width: 100%;
     height: 1rem;
-    background-color: var(--text-5);
+    background-color: var(--text-4);
     border-radius: 1rem;
     margin-bottom: 0.75rem;
     overflow: hidden;
@@ -45,7 +45,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: var(--text-5);
+    background-color: var(--text-4);
     margin-bottom: 0.75rem;
     overflow: hidden;
 

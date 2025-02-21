@@ -1,4 +1,5 @@
 import { article } from '@@/models';
+import { articlePasswordFilter } from '~~/server/utils/helper';
 type ApiIndexModelType = article.ApiIndex;
 type Article = article.Article;
 
@@ -33,17 +34,18 @@ export default defineEventHandler(async (event) => {
   let total = 0;
 
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
-    dbResults = articlePasswordFilter(dbResults);
     dbResults.data.forEach((item: Article) => {
       if (item.article_text.length > 60) {
         item.article_text = item.article_text.substring(0, 60) + '...';
       }
     });
+    dbResults = articlePasswordFilter(dbResults);
     total = dbResults.data.length;
+    return setJson(
+      { data: { list: dbResults.data, total: total } },
+      dbResults,
+    ) as ApiIndexModelType['result'];
+  } else {
+    return dbResults;
   }
-
-  return setJson(
-    { data: { list: dbResults.data, total: total } },
-    dbResults,
-  ) as ApiIndexModelType['result'];
 });

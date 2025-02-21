@@ -14,7 +14,8 @@ export class Article extends Post {
   article_text: string = '';
   article_copyright: string = '';
   article_keywords: string = '';
-  album_private: number = 0;
+
+  article_private: number = 0;
   article_password: string = '';
 
   has_password: boolean = false;

@@ -36,9 +36,11 @@ export default defineEventHandler(async (event) => {
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     dbResults = photoPasswordFilter(dbResults, albumPassword);
     total = dbResults.data.length;
+    return setJson(
+      { data: { list: dbResults.data, total: total } },
+      dbResults,
+    ) as ApiIndexModelType['result'];
+  } else {
+    return dbResults;
   }
-  return setJson(
-    { data: { list: dbResults.data, total: total } },
-    dbResults,
-  ) as ApiIndexModelType['result'];
 });

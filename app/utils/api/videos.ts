@@ -23,4 +23,12 @@ export const ApiVideo = {
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<VideoModelType>>> {
     return ApiService.post(`/videos/show`, params);
   },
+  /**
+   * 视频密码验证
+   */
+  passwordVerify(
+    params: any,
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<null>>> {
+    return ApiService.post('/videos/password-verify', params);
+  },
 };

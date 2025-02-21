@@ -1,5 +1,10 @@
-import { article } from '@@/models';
+import { article, video } from '@@/models';
+import {
+  articlePasswordFilter,
+  videoPasswordFilter,
+} from '~~/server/utils/helper';
 type ApiShowModelType = article.ApiShow;
+type Article = article.Article;
 
 /**
  * 展示单篇文章
@@ -13,25 +18,15 @@ export default defineEventHandler(async (event) => {
   if (id) {
     values.push(id);
   }
-  const dbResults = await getHandledQuery(sql, values);
+  let dbResults = await getHandledQuery(sql, values);
 
-  if (!password) {
-    const passwordFilter = articlePasswordFilter(dbResults);
-    return setJson({ data: passwordFilter.data[0] }, passwordFilter);
-  } else if (
-    dbResults.data &&
-    password === dbResults.data[0].article_password
-  ) {
-    const results = dbResults;
-    delete results.data[0].article_password;
+  if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
+    dbResults = articlePasswordFilter(dbResults, password);
     return setJson(
-      { data: results.data[0] },
-      results,
+      { data: dbResults.data[0] },
+      dbResults,
     ) as ApiShowModelType['result'];
   } else {
-    return setJson({
-      code: 401,
-      message: '密码错误',
-    });
+    return dbResults;
   }
 });
