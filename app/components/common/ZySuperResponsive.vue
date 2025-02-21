@@ -55,14 +55,14 @@
       // 初始化
       function initZySuperResponsive() {
         const isMobile = () => {
-          var mql = window.matchMedia('(pointer: coarse)');
+          const mql = window.matchMedia('(pointer: coarse)');
           if (mql.matches) {
             return true;
           } else {
             return false;
           }
         };
-        const isDarkmode = () => {
+        const isDarkMode = () => {
           const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
           if (isDarkTheme.matches) {
             return true;
@@ -77,7 +77,7 @@
           }
         };
         const isVertical = () => {
-          var mql = window.matchMedia('(orientation: portrait)');
+          const mql = window.matchMedia('(orientation: portrait)');
           if (mql.matches) {
             return true;
           } else {
@@ -93,7 +93,7 @@
             document.documentElement.classList.remove('mobile');
             document.documentElement.classList.add('pc');
           }
-          if (isDarkmode()) {
+          if (isDarkMode()) {
             document.documentElement.classList.add('dark');
           } else {
             document.documentElement.classList.remove('dark');
@@ -103,8 +103,8 @@
         classListInit();
 
         const ssrBuryingPoint = () => {
-          if (isDarkmode()) {
-            (window as any).isDarkmode = true;
+          if (isDarkMode()) {
+            window.isDarkMode = true;
           }
         };
         ssrBuryingPoint();
@@ -120,12 +120,12 @@
         };
 
         const fontSizeInit = () => {
-          var docEl = document.documentElement;
-          const fontSize = (window as any).ZyFontSize;
-          const breakPoints = (window as any).ZyBreakPoints;
-          const designSize = (window as any).ZyDesignSize;
+          const docEl = document.documentElement;
+          const fontSize = window.ZyFontSize;
+          const breakPoints = window.ZyBreakPoints;
+          const designSize = window.ZyDesignSize;
           if (docEl) {
-            var rem;
+            let rem;
             if (docEl.clientWidth <= breakPoints.xs) {
               if (isVertical()) {
                 rem = fontSize * (docEl.clientWidth / designSize.min_xs_v);
@@ -190,17 +190,21 @@
       }
 
       // 阻止vivo浏览器手势
-      var startX: number, startY: number;
+      let startX: number, startY: number;
       onMounted(() => {
         window.addEventListener('touchstart', (e) => {
-          startX = e.targetTouches[0].pageX;
-          startY = e.targetTouches[0].pageY;
+          if (e.targetTouches[0]) {
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+          }
         });
         window.addEventListener('touchmove', (e) => {
-          var moveX = e.targetTouches[0].pageX;
-          var moveY = e.targetTouches[0].pageY;
-          if (Math.abs(moveX - startX) > Math.abs(moveY - startY)) {
-            e.cancelable && e.preventDefault();
+          if (e.targetTouches[0]) {
+            const moveX = e.targetTouches[0].pageX;
+            const moveY = e.targetTouches[0].pageY;
+            if (Math.abs(moveX - startX) > Math.abs(moveY - startY)) {
+              e.cancelable && e.preventDefault();
+            }
           }
         });
       });

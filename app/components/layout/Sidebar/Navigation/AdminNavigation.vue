@@ -141,7 +141,7 @@
 
   const emit = defineEmits(['change']);
 
-  const linkList = getNavigationMapForAdminMenu() as any;
+  const linkList = getNavigationMapForAdminMenu();
   const route = useRoute();
 
   const setDefaultOpen = () => {

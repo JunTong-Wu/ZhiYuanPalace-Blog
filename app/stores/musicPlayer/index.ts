@@ -16,7 +16,6 @@ export const useMusicControl = defineStore('musicControl', {
       musicNowAudio: '',
       musicNowLyric: '',
       musicPlayState: false,
-      musicLyricState: false,
     };
   },
   getters: {},
@@ -42,14 +41,6 @@ export const useMusicControl = defineStore('musicControl', {
       this.musicPlayState = false;
     },
     /**
-     * 歌词显示/歌词隐藏
-     */
-    toggleLyric() {
-      this.musicLyricState == false
-        ? (this.musicLyricState = true)
-        : (this.musicLyricState = false);
-    },
-    /**
      * 切换到上一首音乐
      */
     musicPrev() {
@@ -68,9 +59,11 @@ export const useMusicControl = defineStore('musicControl', {
       for (let i = 0; i < musicList.length; i++) {
         if (looseEqual(musicList[i], musicNow)) {
           if (i > 0) {
-            musicNow = musicList[i - 1] as any;
+            musicNow = musicList[i - 1] as MusicPlayerListItemType;
           } else {
-            musicNow = musicList[musicList.length - 1] as any;
+            musicNow = musicList[
+              musicList.length - 1
+            ] as MusicPlayerListItemType;
           }
           break;
         }
@@ -102,9 +95,9 @@ export const useMusicControl = defineStore('musicControl', {
       for (let i = 0; i < musicList.length; i++) {
         if (looseEqual(musicList[i], musicNow)) {
           if (i < musicList.length - 1) {
-            musicNow = musicList[i + 1] as any;
+            musicNow = musicList[i + 1] as MusicPlayerListItemType;
           } else {
-            musicNow = musicList[0] as any;
+            musicNow = musicList[0] as MusicPlayerListItemType;
           }
           break;
         }

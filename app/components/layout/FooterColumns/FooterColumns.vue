@@ -61,7 +61,7 @@
           <div class="col-span-6 sm:col-span-3 md:col-span-2">
             <h3 class="mb-6 text-lg">友链</h3>
             <ZyFetchLoading
-              :fetchData="friendsListDataFetch as any"
+              :fetchData="friendsListDataFetch"
               @fetchOnload="showFriendList"
             >
               <template #loading>

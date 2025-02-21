@@ -108,7 +108,7 @@
           </div>
           <MusicPlayer
             class="landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl"
-            @refresh-lryric="refreshLryric"
+            @refresh-lyric="refreshLyric"
           />
         </div>
 
@@ -555,7 +555,7 @@
 
   // 刷新桌面歌词
   const desktopLyrics = ref('');
-  const refreshLryric = (result: any) => {
+  const refreshLyric = (result: any) => {
     desktopLyrics.value = result.lyric;
   };
 

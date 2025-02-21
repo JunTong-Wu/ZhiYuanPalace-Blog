@@ -192,11 +192,11 @@
   };
   mainStyleInit();
 
-  const el = ref(null);
+  const el = ref<HTMLElement | null>(null);
 
   const translate = (translate: string | null, transition: boolean) => {
     if (el.value) {
-      const drawerMain = (el.value as any).querySelector('.drawer-main');
+      const drawerMain = el.value.querySelector('.drawer-main');
       if (transition) {
         drawerMain.style.transition = `transform ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
         setTimeout(() => {

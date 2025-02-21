@@ -4,7 +4,10 @@ import { config } from '~~/server/config';
 export const getDB = () => {
   return mysql.createPool(config.db);
 };
-export const getDBQuery = (sql: string, values: any) => {
+export const getDBQuery = (
+  sql: string,
+  values?: any[] | { [key: string]: any },
+): Promise<mysql.QueryResult> => {
   return new Promise((resolve, reject) => {
     const pool = getDB();
     pool.getConnection((err, connection) => {

@@ -1,3 +1,6 @@
+import { article } from '@@/models';
+type ArticleModelType = article.Article;
+
 export const articlePasswordFilter = (
   results:
     | {
@@ -11,7 +14,7 @@ export const articlePasswordFilter = (
         data: null;
       },
 ) => {
-  let tempArr: any[] = [];
+  let tempArr = <Array<any>>[];
   if (results.data && results.data.length > 0) {
     results.data.forEach((item: any, index: number, array: any) => {
       if (item.article_password !== null) {
@@ -45,7 +48,7 @@ export const albumPasswordFilter = (
         data: null;
       },
 ) => {
-  let tempArr: any[] = [];
+  let tempArr = <Array<any>>[];
   if (results.data && results.data.length > 0) {
     results.data.forEach((item: any, index: number, array: any) => {
       if (item.album_password !== null) {
@@ -77,7 +80,7 @@ export const photoPasswordFilter = (
       },
   albumPassword: string | null,
 ) => {
-  let tempArr: any[] = [];
+  let tempArr = <Array<any>>[];
 
   if (results.data && results.data.length > 0) {
     results.data.forEach((item: any, index: number, array: any) => {

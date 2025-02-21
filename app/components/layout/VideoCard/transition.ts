@@ -6,7 +6,7 @@ import { toolBarHide } from '~/components/layout/Toolbar/transition';
 
 export function cardTransitionStart(element: any, callback: () => void) {
   console.log('动画：展开视频卡片');
-  const mainViewElement = document.querySelector('.main-view') as any;
+  const mainViewElement = document.querySelector('.main-view');
   let mainViewTop = 0;
   let mainViewLeft = 0;
   let mainViewRight = 0;
@@ -40,7 +40,7 @@ export function cardTransitionStart(element: any, callback: () => void) {
       document.body.appendChild(tempElement);
       element.style.opacity = 0;
 
-      const layoutDefault = document.querySelector('.layout-main') as any;
+      const layoutDefault = document.querySelector('.layout-main');
       if (layoutDefault) {
         layoutDefault.classList.add('transition');
       }
@@ -71,7 +71,7 @@ export function cardTransitionEnd() {
       document.body.removeChild(tempElement);
     }, 200);
   }
-  const layoutDefault = document.querySelector('.layout-main') as any;
+  const layoutDefault = document.querySelector('.layout-main');
   if (layoutDefault) {
     layoutDefault.classList.remove('transition');
   }

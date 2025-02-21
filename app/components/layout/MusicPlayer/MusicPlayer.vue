@@ -315,7 +315,7 @@
     musicCardTransitionSlideCancelUp,
   } from './transition';
 
-  const emit = defineEmits(['refreshLryric']);
+  const emit = defineEmits(['refreshLyric']);
 
   const isLoading = ref(true);
   const isOpen = ref(false);
@@ -493,10 +493,11 @@
     let offsetTime = 0.5; // 偏移时间为0.5秒
     while (left <= right) {
       const mid = Math.floor((left + right) / 2);
-      //@ts-ignore
       if (
+        //@ts-ignore
         lyrics[mid].time <= currentTime + offsetTime &&
         (mid === lyrics.length - 1 ||
+          //@ts-ignore
           lyrics[mid + 1].time > currentTime + offsetTime)
       ) {
         return mid;
@@ -550,31 +551,36 @@
           currentIndex = newIndex;
           if (currentIndex !== -1) {
             // 如果找到对应的歌词
-            for (let i = 0; i < lyricsArray.value.length; i++) {
-              (lyricsArray.value[i] as any).isPrev = false;
-              (lyricsArray.value[i] as any).isActivate = false;
-              (lyricsArray.value[i] as any).isNext = false;
-            }
+            lyricsArray.value.forEach((lyric) => {
+              lyric.isPrev = false;
+              lyric.isActivate = false;
+              lyric.isNext = false;
+            });
             if (currentIndex > 0) {
-              (lyricsArray.value[currentIndex - 1] as any).isPrev = true;
+              // @ts-ignore
+              lyricsArray.value[currentIndex - 1].isPrev = true;
             }
-            (lyricsArray.value[currentIndex] as any).isActivate = true;
+            // @ts-ignore
+            lyricsArray.value[currentIndex].isActivate = true;
             if (currentIndex < lyricsArray.value.length - 1) {
-              (lyricsArray.value[currentIndex + 1] as any).isNext = true;
+              // @ts-ignore
+              lyricsArray.value[currentIndex + 1].isNext = true;
             }
             // 滚动到当前歌词
             scrollToNowLyric();
             // 刷新桌面歌词
-            emit('refreshLryric', {
-              lyric: (lyricsArray.value[currentIndex] as any).text,
+            emit('refreshLyric', {
+              lyric: lyricsArray.value[currentIndex]?.text
+                ? lyricsArray.value[currentIndex]?.text
+                : undefined,
             });
           } else {
             // 如果没有找到对应的歌词，将所有歌词的isActivate属性设置为false
-            for (let i = 0; i < lyricsArray.value.length; i++) {
-              (lyricsArray.value[i] as any).isPrev = false;
-              (lyricsArray.value[i] as any).isActivate = false;
-              (lyricsArray.value[i] as any).isNext = false;
-            }
+            lyricsArray.value.forEach((lyric) => {
+              lyric.isPrev = false;
+              lyric.isActivate = false;
+              lyric.isNext = false;
+            });
           }
         }
       });
@@ -611,13 +617,15 @@
         behavior: 'smooth',
       });
     }
-    emit('refreshLryric', {
-      lyric: (lyricsArray.value[0] as any).text,
-    });
+    if (lyricsArray.value[0]) {
+      emit('refreshLyric', {
+        lyric: lyricsArray.value[0].text,
+      });
+    }
     displayLyrics();
   };
 
-  watch(musicNowLyric, async () => {
+  watch(musicNowLyric, () => {
     lyricInit();
   });
 

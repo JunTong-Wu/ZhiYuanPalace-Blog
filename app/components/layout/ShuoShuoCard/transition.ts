@@ -5,7 +5,7 @@ import { musicBarHide } from '~/components/layout/MusicPlayer/transition';
 import { toolBarHide } from '~/components/layout/Toolbar/transition';
 
 export function cardTransitionStart(element: any, callback: () => void) {
-  const mainViewElement = document.querySelector('.main-view') as any;
+  const mainViewElement = document.querySelector('.main-view');
   let mainViewTop = 0;
   let mainViewLeft = 0;
   let mainViewRight = 0;
@@ -39,7 +39,7 @@ export function cardTransitionStart(element: any, callback: () => void) {
       document.body.appendChild(copyElement);
       element.style.opacity = 0;
 
-      const layoutDefault = document.querySelector('.layout-main') as any;
+      const layoutDefault = document.querySelector('.layout-main');
       if (layoutDefault) {
         layoutDefault.classList.add('transition');
       }
@@ -70,7 +70,7 @@ export function cardTransitionEnd() {
   if (tempElement) {
     document.body.removeChild(tempElement);
   }
-  const layoutDefault = document.querySelector('.layout-main') as any;
+  const layoutDefault = document.querySelector('.layout-main');
   if (layoutDefault) {
     layoutDefault.classList.remove('transition');
   }

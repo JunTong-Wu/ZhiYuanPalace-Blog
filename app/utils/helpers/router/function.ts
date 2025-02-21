@@ -294,7 +294,7 @@ export const _removeIdRoute = (
   routes: Array<RouteRecordRaw>,
 ): Array<RouteRecordRaw> => {
   const linkList = routes;
-  const newLinkList = [] as any[];
+  const newLinkList = [];
   for (const routeItem of linkList) {
     if (!routeItem.children || !routeItem.children.length) {
       if (routeItem.path.includes(':')) {
@@ -316,7 +316,7 @@ export const _removeIdRoute = (
       }
     }
   }
-  return newLinkList;
+  return newLinkList as Array<RouteRecordRaw>;
 };
 
 /**

@@ -10,7 +10,7 @@
   });
   // Live2D
   const myLive2dConfig = () => {
-    const OML2D = (window as any).OML2D;
+    const OML2D = window.OML2D;
     if (!OML2D) {
       setTimeout(() => {
         myLive2dConfig();

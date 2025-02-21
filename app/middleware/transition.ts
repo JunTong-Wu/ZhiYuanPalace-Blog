@@ -24,6 +24,19 @@ import {
   toolBarShow,
 } from '~/components/layout/Toolbar/transition';
 
+type pageTransitionType = {
+  name: string;
+  mode: string;
+  onBeforeEnter: Function;
+  onEnter: Function;
+  onAfterEnter: Function;
+  onEnterCancelled: Function;
+  onBeforeLeave: Function;
+  onLeave: Function;
+  onAfterLeave: Function;
+  onLeaveCancelled: Function;
+};
+
 const cardTransitionEnds = (path: string) => {
   if (path.includes('/text/article')) {
     ArticleCardTransitionEnd();
@@ -59,16 +72,20 @@ export default defineNuxtRouteMiddleware((to, from) => {
         if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
           // console.log("动画：一级页面切换（向前切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
-            (from.meta.pageTransition as any).name = 'first-layer-prev';
-            (to.meta.pageTransition as any).name = 'first-layer-prev';
+            (from.meta.pageTransition as pageTransitionType).name =
+              'first-layer-prev';
+            (to.meta.pageTransition as pageTransitionType).name =
+              'first-layer-prev';
           }
         } else if (
           getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
         ) {
           // console.log("动画：一级页面切换（向后切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
-            (from.meta.pageTransition as any).name = 'first-layer-next';
-            (to.meta.pageTransition as any).name = 'first-layer-next';
+            (from.meta.pageTransition as pageTransitionType).name =
+              'first-layer-next';
+            (to.meta.pageTransition as pageTransitionType).name =
+              'first-layer-next';
           }
         }
       }
@@ -86,16 +103,20 @@ export default defineNuxtRouteMiddleware((to, from) => {
         if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
           // console.log("动画：一级和二级页面切换（向前切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
-            (from.meta.pageTransition as any).name = 'first-layer-prev';
-            (to.meta.pageTransition as any).name = 'first-layer-prev';
+            (from.meta.pageTransition as pageTransitionType).name =
+              'first-layer-prev';
+            (to.meta.pageTransition as pageTransitionType).name =
+              'first-layer-prev';
           }
         } else if (
           getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
         ) {
           // console.log("动画：一级和二级页面切换（向后切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
-            (from.meta.pageTransition as any).name = 'first-layer-next';
-            (to.meta.pageTransition as any).name = 'first-layer-next';
+            (from.meta.pageTransition as pageTransitionType).name =
+              'first-layer-next';
+            (to.meta.pageTransition as pageTransitionType).name =
+              'first-layer-next';
           }
         }
       }
@@ -111,30 +132,38 @@ export default defineNuxtRouteMiddleware((to, from) => {
           if (getSelfOrder(from.fullPath) > getSelfOrder(to.fullPath)) {
             // console.log("动画：二级相同根路径页面切换（向前切换）");
             if (from.meta.pageTransition && to.meta.pageTransition) {
-              (from.meta.pageTransition as any).name = 'second-layer-prev';
-              (to.meta.pageTransition as any).name = 'second-layer-prev';
+              (from.meta.pageTransition as pageTransitionType).name =
+                'second-layer-prev';
+              (to.meta.pageTransition as pageTransitionType).name =
+                'second-layer-prev';
             }
           } else if (getSelfOrder(from.fullPath) < getSelfOrder(to.fullPath)) {
             // console.log("动画：二级相同根路径页面切换（向后切换）");
             if (from.meta.pageTransition && to.meta.pageTransition) {
-              (from.meta.pageTransition as any).name = 'second-layer-next';
-              (to.meta.pageTransition as any).name = 'second-layer-next';
+              (from.meta.pageTransition as pageTransitionType).name =
+                'second-layer-next';
+              (to.meta.pageTransition as pageTransitionType).name =
+                'second-layer-next';
             }
           }
         } else {
           if (getRootPathOrder(from.fullPath) > getRootPathOrder(to.fullPath)) {
             // console.log("动画：二级不同根路径页面切换（向前切换）");
             if (from.meta.pageTransition && to.meta.pageTransition) {
-              (from.meta.pageTransition as any).name = 'first-layer-prev';
-              (to.meta.pageTransition as any).name = 'first-layer-prev';
+              (from.meta.pageTransition as pageTransitionType).name =
+                'first-layer-prev';
+              (to.meta.pageTransition as pageTransitionType).name =
+                'first-layer-prev';
             }
           } else if (
             getRootPathOrder(from.fullPath) < getRootPathOrder(to.fullPath)
           ) {
             // console.log("动画：二级不同根路径页面切换（向后切换）");
             if (from.meta.pageTransition && to.meta.pageTransition) {
-              (from.meta.pageTransition as any).name = 'first-layer-next';
-              (to.meta.pageTransition as any).name = 'first-layer-next';
+              (from.meta.pageTransition as pageTransitionType).name =
+                'first-layer-next';
+              (to.meta.pageTransition as pageTransitionType).name =
+                'first-layer-next';
             }
           }
         }
@@ -143,9 +172,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
       if (getPageLevel(from.fullPath) < 3 && getPageLevel(to.fullPath) == 3) {
         // console.log("动画：进入三级页面");
         if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = 'third-layer';
-          (to.meta.pageTransition as any).name = 'third-layer';
-          (to.meta.pageTransition as any).onEnter = () => {
+          (from.meta.pageTransition as pageTransitionType).name = 'third-layer';
+          (to.meta.pageTransition as pageTransitionType).name = 'third-layer';
+          (to.meta.pageTransition as pageTransitionType).onEnter = () => {
             headerBarShow();
             musicBarShow();
             toolBarShow();
@@ -165,9 +194,10 @@ export default defineNuxtRouteMiddleware((to, from) => {
         musicBarHide();
         toolBarHide();
         if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = 'third-layer';
-          (to.meta.pageTransition as any).name = 'second-layer-prev';
-          (to.meta.pageTransition as any).onEnter = () => {
+          (from.meta.pageTransition as pageTransitionType).name = 'third-layer';
+          (to.meta.pageTransition as pageTransitionType).name =
+            'second-layer-prev';
+          (to.meta.pageTransition as pageTransitionType).onEnter = () => {
             footerBarShow();
             footerColumnsShow();
             headerBarShow();
@@ -183,26 +213,27 @@ export default defineNuxtRouteMiddleware((to, from) => {
       if (getSelfOrder(from.fullPath) > getSelfOrder(to.fullPath)) {
         // console.log("动画：管理员页面切换（向前切换）");
         if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = 'first-layer-prev';
-          (to.meta.pageTransition as any).name = 'first-layer-prev';
+          (from.meta.pageTransition as pageTransitionType).name =
+            'first-layer-prev';
+          (to.meta.pageTransition as pageTransitionType).name =
+            'first-layer-prev';
         }
       } else if (getSelfOrder(from.fullPath) < getSelfOrder(to.fullPath)) {
         // console.log("动画：管理员页面切换（向后切换）");
         if (from.meta.pageTransition && to.meta.pageTransition) {
-          (from.meta.pageTransition as any).name = 'first-layer-next';
-          (to.meta.pageTransition as any).name = 'first-layer-next';
+          (from.meta.pageTransition as pageTransitionType).name =
+            'first-layer-next';
+          (to.meta.pageTransition as pageTransitionType).name =
+            'first-layer-next';
         }
       }
     }
   } else {
     // console.log("动画：进入登录页面");
     if (from.meta.pageTransition && to.meta.pageTransition) {
-      (from.meta.pageTransition as any).name = 'first-layer-prev';
-      (to.meta.pageTransition as any).name = 'first-layer-prev';
+      (from.meta.pageTransition as pageTransitionType).name =
+        'first-layer-prev';
+      (to.meta.pageTransition as pageTransitionType).name = 'first-layer-prev';
     }
   }
-
-  // HeaderTitle
-  // const { clearPostInfo } = toRefs(store.usePostInfo());
-  // clearPostInfo.value();
 });
