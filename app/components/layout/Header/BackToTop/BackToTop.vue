@@ -13,7 +13,7 @@
       class="flex justify-center items-center w-full h-full"
     >
       <div
-        class="relative flex justify-center items-center rounded-full pointer-events-none portrait:border-2 border-text-4"
+        class="relative flex justify-center items-center rounded-full pointer-events-none border-2 border-text-3"
         :class="{
           'w-0 h-0 scale-0': progress < 1,
           'w-7 h-7': progress >= 1 && progress < 90,

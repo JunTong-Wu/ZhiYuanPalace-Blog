@@ -2,6 +2,34 @@
   <slot />
 </template>
 <script lang="ts">
+  // 使用类型断言来处理 TypeScript 的类型检查
+  declare global {
+    interface Window {
+      isDarkMode: boolean;
+      ZyDesignSize: {
+        min_xs_v: number;
+        min_xs_h: number;
+        xs_sm_v: number;
+        xs_sm_h: number;
+        sm_md_v: number;
+        sm_md_h: number;
+        md_lg_v: number;
+        md_lg_h: number;
+        lg_xl_v: number;
+        lg_xl_h: number;
+        xl_max_v: number;
+        xl_max_h: number;
+      };
+      ZyBreakPoints: {
+        xs: number;
+        sm: number;
+        md: number;
+        lg: number;
+        xl: number;
+      };
+      ZyFontSize: number;
+    }
+  }
   export default defineComponent({
     name: 'ZySuperResponsive',
     props: {

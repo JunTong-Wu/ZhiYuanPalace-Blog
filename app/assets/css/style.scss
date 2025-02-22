@@ -93,7 +93,7 @@ a {
 }
 @media (min-width: 1200px) and (orientation: landscape) {
   :root {
-    --centered-width: 75rem;
+    --centered-width: 85rem;
   }
 }
 
@@ -140,7 +140,7 @@ a {
 :root {
   --gray-50: #ffffff;
   --gray-100: #f9f9fa;
-  --gray-150: #f3f3f5;
+  --gray-150: #f4f5f9;
   --gray-200: #e7e8ee;
   --gray-250: #e7e5e4;
   --gray-300: #d1d5db;
@@ -168,22 +168,22 @@ a {
   --bg-level-3: var(--gray-50);
   --bg-level-4: var(--gray-50);
   --bg-level-5: var(--gray-50);
-  --text-1: var(--gray-900); //强调/正文标题
+  --text-1: var(--gray-700); //强调/正文标题
   --text-2: var(--gray-500); //次强调/正文标
-  --text-3: var(--gray-400); //次要信息
+  --text-3: var(--gray-300); //次要信息
   --text-4: var(--gray-200); //置灰信息
   --text-5: var(--gray-200); //骨架
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层
   --bg-head-bar: rgba(249, 249, 250, 0.7); //顶栏
 }
 *.dark {
-  --bg-background: var(--gray-900);
-  --bg-level-b1: var(--gray-950);
-  --bg-level-1: var(--gray-850);
-  --bg-level-2: var(--gray-800);
-  --bg-level-3: var(--gray-750);
-  --bg-level-4: var(--gray-700);
-  --bg-level-5: var(--gray-650);
+  --bg-background: var(--gray-950);
+  --bg-level-b1: var(--gray-1000);
+  --bg-level-1: var(--gray-900);
+  --bg-level-2: var(--gray-850);
+  --bg-level-3: var(--gray-800);
+  --bg-level-4: var(--gray-750);
+  --bg-level-5: var(--gray-700);
   --text-1: var(--gray-300); //强调/正文标题
   --text-2: var(--gray-500); //次强调/正文标
   --text-3: var(--gray-700); //次要信息

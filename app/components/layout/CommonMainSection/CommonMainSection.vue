@@ -1,10 +1,10 @@
 <template>
-  <div class="pt-main">
+  <div :class="{ 'pt-main': !noPaddingMain }">
     <div>
       <slot name="fullwidth"></slot>
     </div>
     <div
-      class="p-6 portrait:px-4 portrait:sm:px-5 portrait:lg:px-6"
+      class="p-6 portrait:p-2 portrait:sm:p-4 portrait:lg:p-6"
       :class="{ 'pt-0': noPaddingTop }"
     >
       <slot></slot>
@@ -14,6 +14,10 @@
 <script setup lang="ts">
   const props = defineProps({
     noPaddingTop: {
+      type: Boolean,
+      default: false,
+    },
+    noPaddingMain: {
       type: Boolean,
       default: false,
     },

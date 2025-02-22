@@ -1,5 +1,19 @@
-import type { CustomAlertOptions } from './ZyToast/types';
 import './ZyToast/ZyToast.scss';
+// 使用类型断言来处理 TypeScript 的类型检查
+declare global {
+  interface Window {
+    ZyToast(config: CustomAlertOptions): void;
+  }
+}
+
+interface CustomAlertOptions {
+  title: string;
+  text?: string;
+  duration?: number;
+  type?: string;
+  icon?: string;
+  callback?: () => void;
+}
 
 export default defineNuxtPlugin(() => {
   // 自定义弹窗

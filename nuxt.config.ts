@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     '@nuxtjs/i18n',
     '@pinia/nuxt',
+    'nuxt-echarts',
   ],
   components: [
     {
@@ -56,6 +57,11 @@ export default defineNuxtConfig({
     baseUrl: process.env.SITE_URL,
     strategy: 'no_prefix',
     vueI18n: './i18n.config.ts',
+  },
+  echarts: {
+    renderer: 'svg',
+    charts: ['PieChart', 'GaugeChart'],
+    components: ['TitleComponent', 'LegendComponent', 'TooltipComponent'],
   },
   vite: {
     plugins: [

@@ -9,7 +9,7 @@
   }
 }
 #zy-tool-bar {
-  #zy-tool-bar-innner {
+  #zy-tool-bar-inner {
     animation: an-tool-bar-fade-in 400ms;
     transition:
       transform 400ms,
@@ -18,7 +18,7 @@
   }
 }
 #zy-tool-bar.transition-translate-out {
-  #zy-tool-bar-innner {
+  #zy-tool-bar-inner {
     opacity: 0;
   }
 }

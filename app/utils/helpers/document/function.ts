@@ -1,3 +1,22 @@
+// 使用类型断言来处理 TypeScript 的类型检查
+declare global {
+  interface Window {
+    ActiveXObject: any;
+  }
+  interface HTMLElement {
+    requestFullScreen: Function;
+    msRequestFullscreen: Function;
+    webkitRequestFullScreen: Function;
+    mozRequestFullScreen: Function;
+  }
+  interface Document {
+    exitFullscreen: () => Promise<void>;
+    msExitFullscreen: Function;
+    webkitCancelFullScreen: Function;
+    mozCancelFullScreen: Function;
+  }
+}
+
 /**
  * @description: 设备判断函数
  * @return : Boolean
@@ -91,7 +110,7 @@ export const isElementInViewport = (el: HTMLElement): boolean => {
  * @return : null
  */
 export const fullScreen = () => {
-  const element = document.documentElement; //若要全屏页面div
+  const element = document.documentElement;
   //IE 10及以下ActiveXObject
   if (window.ActiveXObject) {
     const WsShell = new window.ActiveXObject('WScript.Shell');
@@ -99,30 +118,22 @@ export const fullScreen = () => {
     //写全屏后的执行函数
   }
   //HTML W3C 提议
-  // @ts-ignore
   else if (element.requestFullScreen) {
-    // @ts-ignore
     element.requestFullScreen();
     //写全屏后的执行函数
   }
   //IE11
-  // @ts-ignore
   else if (element.msRequestFullscreen) {
-    // @ts-ignore
     element.msRequestFullscreen();
     //写全屏后的执行函数
   }
   // Webkit (works in Safari5.1 and Chrome 15)
-  // @ts-ignore
   else if (element.webkitRequestFullScreen) {
-    // @ts-ignore
     element.webkitRequestFullScreen();
     //写全屏后的执行函数
   }
   // Firefox (works in nightly)
-  // @ts-ignore
   else if (element.mozRequestFullScreen) {
-    // @ts-ignore
     element.mozRequestFullScreen();
     //写全屏后的执行函数
   } else {
@@ -135,8 +146,8 @@ export const fullScreen = () => {
  * @return : null
  */
 export const fullExit = () => {
-  const element = document.documentElement; //若要全屏页面中
-  const doc = document;
+  const element = document.documentElement;
+  const doc = document as Document;
   //IE ActiveXObject
   if (window.ActiveXObject) {
     const WsShell = new window.ActiveXObject('WScript.Shell');
@@ -144,30 +155,22 @@ export const fullExit = () => {
     //写退出全屏后的执行函数
   }
   //HTML5 W3C 提议
-  // @ts-ignore
   else if (element.requestFullScreen) {
-    // @ts-ignore
     doc.exitFullscreen();
     //写退出全屏后的执行函数
   }
   //IE 11
-  // @ts-ignore
   else if (element.msRequestFullscreen) {
-    // @ts-ignore
     doc.msExitFullscreen();
     //写退出全屏后的执行函数
   }
   // Webkit (works in Safari5.1 and Chrome 15)
-  // @ts-ignore
   else if (element.webkitRequestFullScreen) {
-    // @ts-ignore
     doc.webkitCancelFullScreen();
     //写退出全屏后的执行函数
   }
   // Firefox (works in nightly)
-  // @ts-ignore
   else if (element.mozRequestFullScreen) {
-    // @ts-ignore
     doc.mozCancelFullScreen();
     //写退出全屏后的执行函数
   }

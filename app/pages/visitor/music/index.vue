@@ -1,6 +1,8 @@
 <template>
   <CommonMainSection>
-    <MusicTable />
+    <UCard>
+      <MusicTable />
+    </UCard>
   </CommonMainSection>
 </template>
 <script setup lang="ts"></script>

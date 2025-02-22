@@ -2,8 +2,8 @@
   <ClientOnly>
     <Teleport to="#zy-tool-bar">
       <div
-        id="zy-tool-bar-innner"
-        class="absolute inset-4"
+        id="zy-tool-bar-inner"
+        class="absolute inset-6"
       >
         <slot />
       </div>

@@ -15,13 +15,10 @@
           pageHasToolbar &&
           !hideToolbar &&
           !isVideoDetailLayout,
-        'mr-4 portrait:mr-0': hideToolbar || !pageHasToolbar,
         'mt-main': !isLoginLayout && !isVideoDetailLayout,
       }"
     >
-      <main
-        class="flex-1 bg-background border-r-[1rem] -mr-4 border-r-level-b1"
-      >
+      <main class="flex-1">
         <div class="main-view text-base relative overflow-hidden">
           <div class="main-view-inner">
             <slot />
@@ -38,7 +35,7 @@
       <Sidebar
         :isAdminSidebar="isAdminLayout"
         :hide="hideSidebar"
-        class="portrait:hidden fixed top-header bottom-0 left-0 z-40 bg-level-b1 transition-all"
+        class="portrait:hidden fixed top-header bottom-0 left-0 z-40 bg-level-2 transition-all"
         :class="{
           'w-sidebar': !hideSidebar,
           'w-hideSidebar': hideSidebar,
@@ -71,7 +68,7 @@
     <!-- 工具栏 -->
     <aside
       v-show="!isLoginLayout && !isVideoDetailLayout"
-      class="portrait:hidden fixed z-20 top-header bottom-0 right-0 bg-level-b1 transition-all w-toolbar"
+      class="portrait:hidden fixed z-20 top-header bottom-0 right-0 transition-all w-toolbar"
       :class="{
         'translate-x-full': hideToolbar || !pageHasToolbar,
       }"
@@ -79,7 +76,7 @@
       <div
         ref="toolBarRef"
         id="zy-tool-bar"
-        class="absolute inset-4 top-0 rounded-lg bg-headBar backdrop-blur-3xl"
+        class="absolute rounded bg-level-2 dark:bg-level-1 ring-1 ring-slate-100 dark:ring-slate-800 inset-6 portrait:inset-2 portrait:sm:inset-4 portrait:lg:inset-6 shadow-sm !left-0"
       >
         <!-- 在Toolbar组件中，通过Teleport穿越挂载到这里，用于解耦layout和page -->
       </div>
@@ -142,7 +139,9 @@
             if (mutation.addedNodes.length > 0) {
               // 观察对象被添加了DIV节点
               if (mutation.addedNodes[0]?.nodeName == 'DIV') {
-                switchPagepageHasToolbar(true);
+                setTimeout(() => {
+                  switchPagepageHasToolbar(true);
+                }, 600);
               }
             }
             if (mutation.removedNodes.length > 0) {

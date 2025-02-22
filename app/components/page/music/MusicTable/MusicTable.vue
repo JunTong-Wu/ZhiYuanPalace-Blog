@@ -6,6 +6,7 @@
     <template #loading> </template>
     <template #onload>
       <UTable
+        class="container"
         :columns="columns"
         :rows="musicTableDispiay"
       >

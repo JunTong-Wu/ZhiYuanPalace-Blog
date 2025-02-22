@@ -2,6 +2,14 @@
 <script setup lang="ts">
   import { live2dHide, live2dShow } from './transition';
   import './transition.scss';
+  // 使用类型断言来处理 TypeScript 的类型检查
+  declare global {
+    interface Window {
+      OML2D: {
+        loadOhMyLive2D: (options: any) => void;
+      };
+    }
+  }
   const props = defineProps({
     hide: {
       type: Boolean,

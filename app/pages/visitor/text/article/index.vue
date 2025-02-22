@@ -1,65 +1,67 @@
 <template>
   <CommonMainSection>
-    <ZyFetchLoading
-      :fetchData="articleListDataLazyFetch"
-      @fetchOnload="showArticleList"
-    >
-      <template #loading>
-        <ul class="row-article">
-          <li
-            class="clo-article-card"
-            v-for="n in 12"
-          >
-            <ArticleCard
-              skeleton
-              class="rounded"
+    <UCard class="py-12 portrait:py-0">
+      <ZyFetchLoading
+        :fetchData="articleListDataLazyFetch"
+        @fetchOnload="showArticleList"
+      >
+        <template #loading>
+          <ul class="row-article">
+            <li
+              class="clo-article-card"
+              v-for="n in 12"
             >
-              <template #image>
-                <ZySkeleton type="image" />
-              </template>
-              <template #title>
-                <ZySkeleton :row="3" />
-              </template>
-            </ArticleCard>
-          </li>
-        </ul>
-      </template>
-      <template #onload>
-        <ul class="row-article container">
-          <li
-            class="clo-article-card"
-            v-for="item in articleListData.list"
-          >
-            <ArticleCard :href="`/text/article/${item.article_id}`">
-              <template #image>
-                <ZyLazyImage
-                  :locked="item.has_password"
-                  :src="`${cdnUrl}${item.article_title_image}`"
-                  alt=""
-                />
-              </template>
-              <template #title>
-                <div class="h-full flex flex-col justify-center">
-                  <h4
-                    class="m-0 portrait:text-base landscape:text-xl portrait:font-normal line-clamp-1"
-                  >
-                    {{ item.article_title }}
-                  </h4>
-                  <p
-                    class="m-0 mt-2 portrait:text-sm landscape:text-base portrait:line-clamp-1 landscape:line-clamp-3 text-text-2"
-                  >
-                    <span v-if="!item.has_password">{{
-                      item.article_text.replace(/\r\n/g, '')
-                    }}</span>
-                    <span v-else>文章被密码保护，请输入密码查看。</span>
-                  </p>
-                </div>
-              </template>
-            </ArticleCard>
-          </li>
-        </ul>
-      </template>
-    </ZyFetchLoading>
+              <ArticleCard
+                skeleton
+                class="rounded"
+              >
+                <template #image>
+                  <ZySkeleton type="image" />
+                </template>
+                <template #title>
+                  <ZySkeleton :row="3" />
+                </template>
+              </ArticleCard>
+            </li>
+          </ul>
+        </template>
+        <template #onload>
+          <ul class="row-article container">
+            <li
+              class="clo-article-card"
+              v-for="item in articleListData.list"
+            >
+              <ArticleCard :href="`/text/article/${item.article_id}`">
+                <template #image>
+                  <ZyLazyImage
+                    :locked="item.has_password"
+                    :src="`${cdnUrl}${item.article_title_image}`"
+                    alt=""
+                  />
+                </template>
+                <template #title>
+                  <div class="h-full flex flex-col justify-center">
+                    <h4
+                      class="m-0 portrait:text-base landscape:text-xl portrait:font-normal line-clamp-1"
+                    >
+                      {{ item.article_title }}
+                    </h4>
+                    <p
+                      class="m-0 mt-2 portrait:text-sm landscape:text-base portrait:line-clamp-1 landscape:line-clamp-3 text-text-2"
+                    >
+                      <span v-if="!item.has_password">{{
+                        item.article_text.replace(/\r\n/g, '')
+                      }}</span>
+                      <span v-else>文章被密码保护，请输入密码查看。</span>
+                    </p>
+                  </div>
+                </template>
+              </ArticleCard>
+            </li>
+          </ul>
+        </template>
+      </ZyFetchLoading>
+    </UCard>
   </CommonMainSection>
 </template>
 <script setup lang="ts">

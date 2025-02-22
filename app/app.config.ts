@@ -26,7 +26,7 @@ export default defineAppConfig({
     card: {
       rounded: 'rounded',
       ring: 'ring-slate-100 dark:ring-slate-800',
-      background: 'bg-level-2 dark:bg-level-2',
+      background: 'bg-level-2 dark:bg-level-1',
     },
     alert: {
       rounded: 'rounded',

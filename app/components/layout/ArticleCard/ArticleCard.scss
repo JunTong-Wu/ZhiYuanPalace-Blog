@@ -143,6 +143,20 @@
 
 @media (orientation: portrait) {
   .zy-article-card.transition-in {
-    --image-height: 14rem;
+    --image-height: 20rem;
+    .zy-article-card-inner {
+      height: calc(var(--header-bar-height) + var(--image-height));
+      .zy-card-image {
+        top: var(--header-bar-height);
+        width:100%;
+        left: 0rem;
+        right: 0rem;
+        border-radius: 0rem;
+        div,
+        img {
+          border-radius: 0rem;
+        }
+      }
+    }
   }
 }

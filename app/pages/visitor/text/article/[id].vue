@@ -18,19 +18,23 @@
           </div>
           <div
             v-if="!articleData.has_password"
-            class="zy-article-card-text pt-8 xs:pt-10 sm:pt-12 md:pt-14 lg:pt-16 px-8 xs:px-10 sm:px-12 md:px-14 lg:px-16"
+            class="zy-article-card-text py-8 px-8 portrait:px-0 portrait:-mt-8"
           >
-            <h1
-              class="text-2xl xs:text-2xl sm:text-3xl md:text-3xl lg:text-3xl mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16 mt-0"
+            <UCard
+              class="pt-8 xs:pt-10 sm:pt-12 md:pt-14 lg:pt-16 px-4 xs:px-10 sm:px-12 md:px-14 lg:px-16 portrait:rounded-none"
             >
-              {{ articleData.article_title }}
-            </h1>
-            <v-md-preview
-              v-if="!articleData.has_password"
-              class="text-lg xs:text-lg sm:text-xl md:text-xl lg:text-xl pb-40 !leading-10"
-              ref="preview"
-              :text="articleData.article_text"
-            ></v-md-preview>
+              <h1
+                class="text-2xl xs:text-2xl sm:text-3xl md:text-3xl lg:text-3xl mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16 mt-0"
+              >
+                {{ articleData.article_title }}
+              </h1>
+              <v-md-preview
+                v-if="!articleData.has_password"
+                class="text-lg xs:text-lg sm:text-xl md:text-xl lg:text-xl pb-40 !leading-10"
+                ref="preview"
+                :text="articleData.article_text"
+              ></v-md-preview>
+            </UCard>
           </div>
           <div
             v-else
@@ -46,6 +50,7 @@
         </template>
       </ZyFetchLoading>
     </div>
+    <Toolbar>789789 </Toolbar>
   </div>
 </template>
 <script setup lang="ts">

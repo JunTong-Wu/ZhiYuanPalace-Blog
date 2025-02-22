@@ -66,7 +66,10 @@
                           <p
                             class="m-0 mt-2 portrait:text-sm landscape:text-base portrait:line-clamp-1 landscape:line-clamp-3 text-text-2"
                           >
-                            {{ item.article_text.replace(/\r\n/g, '') }}
+                            <span v-if="!item.has_password">{{
+                              item.article_text.replace(/\r\n/g, '')
+                            }}</span>
+                            <span v-else>文章被密码保护，请输入密码查看。</span>
                           </p>
                         </div>
                       </template>

@@ -1,14 +1,10 @@
 <template>
   <header class="select-none">
     <!-- 顶栏遮蔽 -->
-    <div
-      class="h-header w-full bg-level-b1 portrait:bg-level-1 relative z-10 pointer-events-none"
-    >
+    <div class="h-header w-full bg-level-2 relative z-10 pointer-events-none">
       <div class="h-header reverse-rounded"></div>
     </div>
-    <div
-      class="absolute z-10 top-0 left-0 h-header w-full bg-level-b1 portrait:bg-level-1"
-    ></div>
+    <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-2"></div>
     <div
       class="absolute z-10 portrait:hidden top-0 left-0 w-full h-full pointer-events-none"
     >
@@ -182,8 +178,13 @@
 
             <!-- 收起右侧工具栏按钮 -->
             <div
-              v-if="!disabledLayoutControl && pageHasToolbarDebounceFlag"
-              class="portrait:hidden p-2 -ml-2 h-header w-header"
+              class="portrait:hidden transition-all duration-300"
+              :class="{
+                'w-0 h-0 scale-0 p-0 ml-0':
+                  disabledLayoutControl || !pageHasToolbarDebounceFlag,
+                'h-header w-header p-2 -ml-2':
+                  !disabledLayoutControl && pageHasToolbarDebounceFlag,
+              }"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -475,13 +476,6 @@
 
   const emit = defineEmits(['switchSidebarClick', 'switchToolbarClick']);
 
-  // 使用类型断言来处理 TypeScript 的类型检查
-  declare global {
-    interface Window {
-      ActiveXObject?: any;
-    }
-  }
-
   // 切换全屏
   const fullScreenFlag = ref(false);
   const toggleFullScreen = () => {
@@ -586,7 +580,7 @@
   };
   const switchPageHasToolbarDebounce = debounce(
     switchPageHasToolbarDebounceFunc,
-    500,
+    200,
   );
   onMounted(() => {
     pageHasToolbarDebounceFlag.value = props.pageHasToolbar;
@@ -611,7 +605,7 @@
 </style>
 <style lang="scss" scoped>
   .reverse-rounded {
-    --background: var(--bg-level-b1);
+    --background: var(--bg-level-2);
     --rounded: var(--border-radius-lg);
     position: relative;
     z-index: 10;
@@ -630,20 +624,20 @@
       );
     }
 
-    &::before {
-      position: absolute;
-      content: '';
-      width: var(--rounded);
-      height: var(--rounded);
-      line-height: 100px;
-      bottom: calc(0rem - var(--rounded));
-      right: 0;
-      background-image: radial-gradient(
-        var(--rounded) at 0rem var(--rounded),
-        transparent var(--rounded),
-        var(--background) var(--rounded)
-      );
-    }
+    //&::before {
+    //  position: absolute;
+    //  content: '';
+    //  width: var(--rounded);
+    //  height: var(--rounded);
+    //  line-height: 100px;
+    //  bottom: calc(0rem - var(--rounded));
+    //  right: 0;
+    //  background-image: radial-gradient(
+    //    var(--rounded) at 0rem var(--rounded),
+    //    transparent var(--rounded),
+    //    var(--background) var(--rounded)
+    //  );
+    //}
   }
 
   @media (orientation: portrait) {

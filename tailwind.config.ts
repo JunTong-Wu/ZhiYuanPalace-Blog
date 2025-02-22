@@ -66,6 +66,7 @@ export default <Partial<Config>>{
         hideSidebar: 'var(--hide-side-bar-width)',
         header: 'var(--header-bar-height)',
         toolbar: 'var(--tool-bar-width)',
+        footer: 'var(--footer-bar-height)',
       },
       borderRadius: {
         none: '0',

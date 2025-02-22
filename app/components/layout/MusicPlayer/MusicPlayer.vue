@@ -35,8 +35,8 @@
           alt=""
           srcset=""
           ref="MusicCoverImageRef"
-          @load="createDecoration()"
         />
+        <!--        @load="createDecoration()"-->
         <div
           v-else
           class="h-full w-full relative left-0 rounded-2xs shadow-md bg-theme-500"
@@ -710,7 +710,7 @@
     progressInit();
     watch(MusicCoverImageRef, (newValue: any) => {
       if (newValue.width > 0 && newValue.height > 0) {
-        createDecoration();
+        // createDecoration();
       }
     });
   });
