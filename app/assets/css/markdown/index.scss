@@ -3,7 +3,7 @@
   padding: 0 !important;
   font-size: inherit;
   font-family: inherit;
-  line-height: 2;
+  line-height: 2.5;
   color: var(--text-1);
   background-color: transparent;
   h1,
@@ -20,10 +20,17 @@
   dt,
   dd {
     line-height: inherit;
+    letter-spacing: 1px;
+  }
+  p {
+    line-height: inherit !important;
+    margin-bottom: 2rem;
+    text-indent: 2rem;
   }
   blockquote {
     color: inherit;
     border-left-color: inherit;
     font-size: inherit;
   }
+
 }

@@ -1,11 +1,13 @@
 <template>
   <div :class="{ 'pt-main': !noPaddingMain }">
-    <div>
-      <slot name="fullwidth"></slot>
-    </div>
     <div
-      class="p-6 portrait:p-2 portrait:sm:p-4 portrait:lg:p-6"
-      :class="{ 'pt-0': noPaddingTop }"
+      :class="{
+        '!pt-0': noPaddingTop,
+        'py-6 portrait:py-2 portrait:sm:py-4 portrait:lg:py-6 landscape:py-8':
+          fullWidth,
+        'p-6 portrait:p-2 portrait:sm:p-4 portrait:lg:p-6 landscape:p-8':
+          !fullWidth,
+      }"
     >
       <slot></slot>
     </div>
@@ -18,6 +20,10 @@
       default: false,
     },
     noPaddingMain: {
+      type: Boolean,
+      default: false,
+    },
+    fullWidth: {
       type: Boolean,
       default: false,
     },

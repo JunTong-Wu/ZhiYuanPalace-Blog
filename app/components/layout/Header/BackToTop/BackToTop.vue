@@ -3,8 +3,8 @@
     class="transition-all duration-300"
     :class="{
       'w-0 h-0 scale-0 p-0 ml-0': progress < 1,
-      'h-header w-header p-2 -ml-2': progress >= 1 && progress < 90,
-      'h-header w-32 p-2 -ml-2 is-text-mode': progress >= 90,
+      'h-full w-16 p-2 -ml-2': progress >= 1 && progress < 90,
+      'h-full w-32 p-2 -ml-2 is-text-mode': progress >= 90,
     }"
   >
     <ZyButton
@@ -43,7 +43,7 @@
         >
           <UIcon
             name="i-solar-map-arrow-up-bold"
-            class="w-3 h-3"
+            class="w-5 h-5"
           />
         </span>
       </div>
@@ -86,10 +86,7 @@
     button {
       &:hover {
         div {
-          background-color: var(--theme-color-500);
-          border-color: var(--theme-color-500);
-          color: white;
-          scale: 1.25;
+          border-color: transparent;
 
           .progress,
           .text {

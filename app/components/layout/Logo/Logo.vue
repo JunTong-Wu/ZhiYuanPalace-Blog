@@ -1,7 +1,7 @@
 <template>
-  <div class="zy-header-logo-wrapper">
+  <div class="zy-header-logo-wrapper flex-none">
     <div
-      class="flex items-center h-full w-full justify-start"
+      class="flex items-center h-full w-full"
       :class="{
         'gap-1': size === 'small',
         'gap-2': size === 'default',
@@ -21,17 +21,17 @@
         />
       </div>
       <div
-        class="h-full flex-1 flex items-center justify-start opacity-80 dark:invert"
-        :class="{
-          'w-12': size === 'small',
-          'w-20': size === 'default',
-          'w-36': size === 'large',
-        }"
+        class="h-full flex items-center justify-center opacity-80 dark:invert"
       >
         <img
           src="@/assets/image/logo-text.png"
           alt=""
-          class="logo-text w-full"
+          class="logo-text"
+          :class="{
+            'w-12': size === 'small',
+            'w-20': size === 'default',
+            'w-36': size === 'large',
+          }"
         />
       </div>
     </div>

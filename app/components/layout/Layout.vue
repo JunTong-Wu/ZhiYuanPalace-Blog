@@ -35,11 +35,12 @@
       <Sidebar
         :isAdminSidebar="isAdminLayout"
         :hide="hideSidebar"
-        class="portrait:hidden fixed top-header bottom-0 left-0 z-40 bg-level-2 transition-all"
+        class="portrait:hidden fixed top-0 bottom-0 left-0 z-40 bg-level-2 dark:bg-level-1 transition-all border-r border-borderColor"
         :class="{
           'w-sidebar': !hideSidebar,
           'w-hideSidebar': hideSidebar,
         }"
+        @switchSidebarClick="switchSidebarStyle"
       />
       <!-- 整体顶栏 -->
       <Header
@@ -48,14 +49,13 @@
         :hideToolbar="hideToolbar"
         :isAdminHeader="isAdminLayout"
         :disabledLayoutControl="!isLandscapeMdSizeFlag"
-        class="fixed top-0 left-0 w-full z-30 right-0 transition-all"
+        class="fixed top-0 z-30 right-0 transition-all"
         :class="{
-          'pl-sidebar': !hideSidebar,
-          'pl-hideSidebar': hideSidebar,
+          'left-sidebar': !hideSidebar,
+          'left-hideSidebar': hideSidebar,
           'pr-toolbar portrait:pr-0': !hideToolbar && pageHasToolbar,
           'pr-4 portrait:pr-0': hideToolbar || !pageHasToolbar,
         }"
-        @switchSidebarClick="switchSidebarStyle"
         @switchToolbarClick="switchHideToolbar"
       />
       <!-- 底部导航栏 -->
@@ -76,7 +76,7 @@
       <div
         ref="toolBarRef"
         id="zy-tool-bar"
-        class="absolute rounded bg-level-2 dark:bg-level-1 ring-1 ring-slate-100 dark:ring-slate-800 inset-6 portrait:inset-2 portrait:sm:inset-4 portrait:lg:inset-6 shadow-sm !left-0"
+        class="absolute rounded bg-level-2 dark:bg-level-1 ring-1 ring-slate-100 dark:ring-slate-800 inset-8 !left-0"
       >
         <!-- 在Toolbar组件中，通过Teleport穿越挂载到这里，用于解耦layout和page -->
       </div>

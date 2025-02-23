@@ -16,7 +16,9 @@
           v-for="item in linkList"
           class="rounded-xs h-14 flex hover:bg-background"
           :class="[
-            isActivateRootRouter(route, item.path) ? 'bg-level-1 an-beat' : '',
+            isActivateRootRouter(route, item.path)
+              ? 'bg-level-1 dark:bg-level-2 an-beat'
+              : '',
           ]"
         >
           <ZyLink
@@ -34,16 +36,16 @@
                 class="flex-none"
                 size="1.75rem"
                 :defaultName="item.meta?.defaultIcon"
-                defaultColor="var(&#45;&#45;text-2)"
+                defaultColor="var(--text-2)"
                 :activatedName="item.meta?.activatedIcon"
                 :activated="isActivateRootRouter(route, item.path)"
-                activatedColor="var(&#45;&#45;text-1)"
               />
               <span
-                class="transition-all line-clamp-1"
+                class="transition-all line-clamp-1 text-text-2"
                 :class="{
                   'opacity-100 w-32': !hide,
                   'opacity-0 w-0': hide,
+                  '!text-text-1': isActivateRootRouter(route, item.path),
                 }"
                 >{{ $t(`menu.${String(item.name)}`) }}</span
               >

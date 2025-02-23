@@ -27,6 +27,7 @@ export default defineAppConfig({
       rounded: 'rounded',
       ring: 'ring-slate-100 dark:ring-slate-800',
       background: 'bg-level-2 dark:bg-level-1',
+      shadow: 'shadow-none',
     },
     alert: {
       rounded: 'rounded',

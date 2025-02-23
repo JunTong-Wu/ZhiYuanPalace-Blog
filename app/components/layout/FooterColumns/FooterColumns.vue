@@ -7,7 +7,7 @@
       <UCard class="portrait:mb-footer">
         <div class="container px-8">
           <div
-            class="grid gap-x-7 gap-y-14 pt-24 pb-12 grid-cols-12 portrait:hidden"
+            class="grid gap-x-7 gap-y-14 pt-12 pb-6 grid-cols-12 portrait:hidden"
           >
             <div class="col-span-full md:col-span-8">
               <!-- Logo -->

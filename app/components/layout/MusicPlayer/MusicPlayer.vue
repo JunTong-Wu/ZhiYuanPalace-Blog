@@ -1,10 +1,7 @@
 <template>
-  <aside
-    id="zy-music-bar"
-    class="h-music select-none portrait:rounded-2xs text-white landscape:mr-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl"
-  >
+  <aside id="zy-music-bar">
     <div
-      class="relative z-10 h-full flex items-center landscape:rounded-xs portrait:rounded-2xs overflow-hidden cursor-pointer"
+      class="relative z-10 h-full flex items-center landscape:rounded portrait:rounded-2xs overflow-hidden cursor-pointer"
       @click.prevent="openMusicDrawer"
     >
       <div
@@ -12,14 +9,14 @@
       >
         <img
           v-if="!isLoading"
-          class="h-full w-full object-cover"
+          class="h-full w-full object-cover blur-3xl"
           :src="`${cdnUrl}${musicNowCover}`"
           alt=""
           srcset=""
         />
       </div>
       <div
-        class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.6)] backdrop-blur-3xl"
+        class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.6)]"
       ></div>
       <div class="open:hidden flex flex-none relative h-full aspect-square">
         <img
@@ -35,6 +32,7 @@
           alt=""
           srcset=""
           ref="MusicCoverImageRef"
+          @load="createDecoration()"
         />
         <!--        @load="createDecoration()"-->
         <div
@@ -48,14 +46,14 @@
         class="open:hidden flex h-full w-full items-center pr-2 bottom-0 top-0 relative landscape:xs:hidden landscape:md:flex"
       >
         <p class="flex-1 line-clamp-1 text-xs">
-          {{ musicNowTitle }} - {{ musicNowSinger }}
+          {{ desktopLyrics }}
         </p>
       </div>
 
       <div class="open:hidden flex">
         <div class="flex">
           <ZyButton
-            class="h-music aspect-square"
+            class="h-music aspect-square hover:bg-[rgba(255,255,255,0.2)]"
             title="上一曲"
             type="transparent"
             @click.stop="musicPrev"
@@ -68,7 +66,7 @@
         </div>
         <div class="flex">
           <ZyButton
-            class="h-music aspect-square"
+            class="h-music aspect-square hover:bg-[rgba(255,255,255,0.2)]"
             title="播放"
             type="transparent"
             @click.stop="togglePlay"
@@ -89,7 +87,7 @@
         </div>
         <div class="flex">
           <ZyButton
-            class="h-music aspect-square"
+            class="h-music aspect-square hover:bg-[rgba(255,255,255,0.2)]"
             title="下一曲"
             type="transparent"
             @click.stop="musicNext"
@@ -114,7 +112,7 @@
       <Teleport to="body">
         <ZyTouch
           id="zy-music-drawer"
-          class="hidden cursor-grab will-change-transform fixed landscape:rounded-xs portrait:rounded-2xs overflow-hidden"
+          class="hidden cursor-grab will-change-transform fixed landscape:rounded portrait:rounded-2xs overflow-hidden"
           :init="touchInit"
           @slidingUp="slidingUp"
           @slideEndUp="slideEndUp"
@@ -125,14 +123,14 @@
           >
             <img
               v-if="!isLoading"
-              class="h-full w-full object-cover"
+              class="h-full w-full object-cover blur-3xl"
               :src="`${cdnUrl}${musicNowCover}`"
               alt=""
               srcset=""
             />
           </div>
           <div
-            class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.6)] backdrop-blur-3xl"
+            class="absolute top-0 right-0 -z-1 w-full h-full bg-[rgba(0,0,0,0.4)] dark:bg-[rgba(0,0,0,0.6)]"
           ></div>
 
           <div
@@ -199,7 +197,7 @@
                   <div class="flex justify-between">
                     <div class="flex items-center">
                       <ZyButton
-                        class="h-music aspect-square"
+                        class="h-music aspect-square rounded-xs hover:bg-[rgba(255,255,255,0.2)]"
                         title="播放顺序"
                         type="transparent"
                       >
@@ -212,7 +210,7 @@
                     <div class="flex gap-8 portrait:gap-4">
                       <div class="flex items-center">
                         <ZyButton
-                          class="h-music aspect-square"
+                          class="h-music aspect-square rounded-xs hover:bg-[rgba(255,255,255,0.2)]"
                           title="上一曲"
                           type="transparent"
                           @click.stop="musicPrev"
@@ -225,7 +223,7 @@
                       </div>
                       <div class="flex items-center">
                         <ZyButton
-                          class="!p-4 !rounded-full"
+                          class="h-music aspect-square rounded-xs hover:bg-[rgba(255,255,255,0.2)]"
                           title="播放"
                           type="transparent"
                           @click.stop="togglePlay"
@@ -246,7 +244,7 @@
                       </div>
                       <div class="flex items-center">
                         <ZyButton
-                          class="h-music aspect-square"
+                          class="h-music aspect-square rounded-xs hover:bg-[rgba(255,255,255,0.2)]"
                           title="下一曲"
                           type="transparent"
                           @click.stop="musicNext"
@@ -260,7 +258,7 @@
                     </div>
                     <div class="flex items-center">
                       <ZyButton
-                        class="h-music aspect-square"
+                        class="h-music aspect-square rounded-xs hover:bg-[rgba(255,255,255,0.2)]"
                         title="播放列表"
                         type="transparent"
                       >
@@ -275,7 +273,7 @@
               </div>
               <div
                 id="zy-music-lyric"
-                class="landscape:w-1/2 pt-16 pb-16 portrait:px-12 text-xl portrait:text-lg overflow-y-scroll scrollbar-hiden"
+                class="landscape:w-1/2 pt-16 pb-16 portrait:px-12 text-xl portrait:text-lg overflow-y-scroll scrollbar-hidden"
               >
                 <div
                   class="flex flex-col gap-10 portrait:gap-4 leading-relaxed"
@@ -314,8 +312,6 @@
     musicCardTransitionSlideEndUp,
     musicCardTransitionSlideCancelUp,
   } from './transition';
-
-  const emit = defineEmits(['refreshLyric']);
 
   const isLoading = ref(true);
   const isOpen = ref(false);
@@ -440,6 +436,7 @@
       isPrev: false,
     },
   ]);
+  const desktopLyrics = ref('');
 
   const fetchLRCFile = async (url: string) => {
     if (musicNowLyric.value !== '') {
@@ -569,11 +566,9 @@
             // 滚动到当前歌词
             scrollToNowLyric();
             // 刷新桌面歌词
-            emit('refreshLyric', {
-              lyric: lyricsArray.value[currentIndex]?.text
-                ? lyricsArray.value[currentIndex]?.text
-                : undefined,
-            });
+            desktopLyrics.value =
+              lyricsArray.value[currentIndex]?.text ||
+              `${musicNowTitle} - ${musicNowSinger}`;
           } else {
             // 如果没有找到对应的歌词，将所有歌词的isActivate属性设置为false
             lyricsArray.value.forEach((lyric) => {
@@ -618,9 +613,8 @@
       });
     }
     if (lyricsArray.value[0]) {
-      emit('refreshLyric', {
-        lyric: lyricsArray.value[0].text,
-      });
+      desktopLyrics.value =
+        lyricsArray.value[0]?.text || `${musicNowTitle} - ${musicNowSinger}`;
     }
     displayLyrics();
   };
@@ -665,8 +659,8 @@
     if (img) {
       const imageColor = getImageColor(img);
       const rgb = increaseSaturation(
-        adjustBrightnessWhilePreservingHue(imageColor, 50, 50),
-        3,
+        adjustBrightnessWhilePreservingHue(imageColor, 60, 60),
+        1,
       );
       const themeColor = `rgb(${rgb})`;
       const themeColorRGB = `${rgb}`;
@@ -710,7 +704,7 @@
     progressInit();
     watch(MusicCoverImageRef, (newValue: any) => {
       if (newValue.width > 0 && newValue.height > 0) {
-        // createDecoration();
+        createDecoration();
       }
     });
   });

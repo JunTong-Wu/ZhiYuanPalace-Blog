@@ -30,7 +30,7 @@
               </h1>
               <v-md-preview
                 v-if="!articleData.has_password"
-                class="text-lg xs:text-lg sm:text-xl md:text-xl lg:text-xl pb-40 !leading-10"
+                class="text-lg xs:text-lg sm:text-xl md:text-xl lg:text-xl pb-40"
                 ref="preview"
                 :text="articleData.article_text"
               ></v-md-preview>

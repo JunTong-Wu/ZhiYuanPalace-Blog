@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-header">
+  <CommonMainSection full-width>
     <Welcome />
     <Slogin />
     <AboutMe />
@@ -7,6 +7,6 @@
     <NewPosts />
     <MorePostType />
     <OpenSource />
-  </div>
+  </CommonMainSection>
 </template>
 <script setup lang="ts"></script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-header">
+  <CommonMainSection full-width>
     <img
       src="@/assets/image/banner.jpg"
       alt=""
@@ -90,6 +90,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </CommonMainSection>
 </template>
 <script setup lang="ts"></script>

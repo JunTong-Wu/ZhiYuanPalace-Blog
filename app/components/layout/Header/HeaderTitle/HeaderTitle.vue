@@ -11,14 +11,14 @@
       v-if="
         Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader
       "
-      class="inset-1 absolute bg-[rgba(127,127,127,0.1)] rounded-2xs landscape:rounded-xs overflow-hidden"
+      class="inset-1 absolute bg-level-b1 rounded-2xs landscape:rounded overflow-hidden"
     >
       <div
         id="header-tabs-indicator"
         class="inline-block h-full relative p-1 transition-all opacity-0"
       >
         <div
-          class="h-full bg-level-4 rounded-3xs landscape:rounded-2xs overflow-hidden"
+          class="h-full bg-level-4 rounded-3xs landscape:rounded-sm overflow-hidden landscape:shadow-sm"
         ></div>
       </div>
     </div>
@@ -66,7 +66,9 @@
       "
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
     >
-      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">
+      <h2
+        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-700 landscape:dark:text-theme-100"
+      >
         {{ $t(`menu.${childrenTabs[0].name}`) }}
       </h2>
     </div>
@@ -74,7 +76,9 @@
       v-else-if="isAdminHeader"
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
     >
-      <h2 class="text-xl portrait:text-lg portrait:font-normal text-inherit">
+      <h2
+        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-700 landscape:dark:text-theme-100"
+      >
         {{ $t(`menu.${getSelfTitle(route.path)}`) }}
       </h2>
     </div>

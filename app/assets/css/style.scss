@@ -1,5 +1,6 @@
 @import url('./transition/index.scss');
 @import url('./nprogress/index.scss');
+@import url('./markdown/index.scss');
 
 @import url('../fonts/DFPKingGothicGB.css');
 @import url('../fonts/HarmonyOS.css');
@@ -14,13 +15,18 @@
     'HarmonyOS_Regular', 'Noto Sans SC Regular', 'Helvetica Neue', Helvetica,
     Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC',
     'WenQuanYi Micro Hei', sans-serif;
+  font-variant-numeric: tabular-nums;	/* 使用等宽特性 */
 }
 :root.mobile {
   font-family: sans-serif;
 }
 body {
-  line-height: 1.2;
+  line-height: 1.5;
   font-family: inherit !important;
+}
+p {
+  letter-spacing: 1px;
+  line-height: 2 !important;
 }
 
 html,
@@ -78,15 +84,15 @@ a {
 }
 @media (orientation: landscape) {
   :root {
-    --header-bar-height: 3.75rem;
+    --header-bar-height: 5rem;
     --footer-bar-height: 0rem;
     --centered-width: 86rem;
     --side-bar-width: 14rem;
     --hide-side-bar-width: 5rem;
     --tool-bar-width: 22rem;
     --drawer-width: 20rem;
-    --music-bar-height: calc(var(--header-bar-height) - 0.5rem);
-    --music-bar-width: 24rem;
+    --music-bar-height: calc(var(--header-bar-height) - 1rem);
+    --music-bar-width: 30rem;
     --music-bar-top: 0.5rem;
     --pt-main: var(--header-bar-height);
   }
@@ -122,19 +128,20 @@ a {
 }
 
 :root {
-  --theme-color: rgb(99 102 241);
-  --theme-color-rgb: 99 102 241;
-  --theme-color-50: #eef2ff;
-  --theme-color-100: #e0e7ff;
-  --theme-color-200: #c7d2fe;
-  --theme-color-300: #a5b4fc;
-  --theme-color-400: #818cf8;
-  --theme-color-500: #6366f1;
-  --theme-color-600: #4f46e5;
-  --theme-color-700: #4338ca;
-  --theme-color-800: #3730a3;
-  --theme-color-900: #312e81;
-  --theme-color-950: #1e1b4b;
+  --theme-color: rgb(70,73,157);
+  --theme-color-rgb: 70,73,157;
+  --theme-color-50: #DADBEF;
+  --theme-color-100: #BABCE0;
+  --theme-color-200: #9B9CD2;
+  --theme-color-300: #7B7DC4;
+  --theme-color-400: #5B5EB6;
+  --theme-color-500: #46499D;
+  --theme-color-600: #383A7D;
+  --theme-color-700: #2A2B5E;
+  --theme-color-800: #1C1D3E;
+  --theme-color-900: #0D0E1E;
+  --theme-color-950: #000000;
+
 }
 
 :root {
@@ -168,7 +175,7 @@ a {
   --bg-level-3: var(--gray-50);
   --bg-level-4: var(--gray-50);
   --bg-level-5: var(--gray-50);
-  --text-1: var(--gray-700); //强调/正文标题
+  --text-1: var(--gray-800); //强调/正文标题
   --text-2: var(--gray-500); //次强调/正文标
   --text-3: var(--gray-300); //次要信息
   --text-4: var(--gray-200); //置灰信息
@@ -234,7 +241,7 @@ a {
   }
 }
 
-.scrollbar-hiden {
+.scrollbar-hidden {
   scrollbar-width: none;
   ::-webkit-scrollbar {
     width: 0rem;

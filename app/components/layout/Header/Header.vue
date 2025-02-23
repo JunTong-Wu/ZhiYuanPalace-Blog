@@ -1,66 +1,29 @@
 <template>
   <header class="select-none">
     <!-- 顶栏遮蔽 -->
-    <div class="h-header w-full bg-level-2 relative z-10 pointer-events-none">
+    <div
+      class="h-header w-full relative z-10 pointer-events-none portrait:bg-level-2"
+    >
       <div class="h-header reverse-rounded"></div>
     </div>
-    <div class="absolute z-10 top-0 left-0 h-header w-full bg-level-2"></div>
     <div
-      class="absolute z-10 portrait:hidden top-0 left-0 w-full h-full pointer-events-none"
-    >
-      <img
-        src="@/assets/image/bg.png"
-        alt=""
-        class="h-header w-sidebar object-fill"
-      />
-    </div>
+      class="absolute z-10 top-0 left-0 h-header w-full transition-all backdrop-blur-3xl portrait:bg-level-2"
+      :class="{
+        'bg-background': progress < 1,
+        'bg-headBar shadow-sm': progress > 1,
+      }"
+    ></div>
 
     <!-- 主体区域 -->
     <div
-      class="absolute z-20 top-0 left-0 right-0 h-header flex items-center justify-between landscape:pr-2"
+      class="absolute z-20 top-0 left-0 right-0 h-header portrait:pl-1 landscape:px-8 flex items-center justify-between transition-all"
+      :class="{
+        'landscape:translate-y-4': progress < 1,
+      }"
     >
       <div class="flex items-center h-full">
-        <div
-          class="portrait:hidden flex items-center h-full w-4 sm:w-sidebar relative flex-none"
-        >
-          <!-- 收起侧边导航栏按钮 -->
-          <div
-            v-if="!disabledLayoutControl"
-            class="p-2 h-header w-header flex-none"
-          >
-            <ZyButton
-              class="flex items-center justify-center w-full h-full"
-              @click="switchSidebarClick"
-              title="收起侧边栏"
-              type="transparent"
-            >
-              <UIcon
-                v-if="!hideSidebar"
-                name="i-ph-text-outdent"
-                class="w-5 h-5"
-              />
-              <UIcon
-                v-if="hideSidebar"
-                name="i-ph-text-indent"
-                class="w-5 h-5"
-              />
-            </ZyButton>
-          </div>
-          <!-- 图标区 -->
-          <Logo
-            class="absolute right-8 hidden sm:block portrait:hidden cursor-pointer"
-            :class="{
-              'left-4': disabledLayoutControl,
-              'left-header': !disabledLayoutControl,
-            }"
-            @click="backToHome"
-          />
-        </div>
         <!-- 标题区 -->
-        <div
-          class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4 flex-none"
-        ></div>
-        <div class="flex items-center h-full mx-1 mr-4">
+        <div class="flex items-center h-full mr-4 landscape:py-2">
           <GoBackButton
             class="flex-none"
             v-if="!isAdminHeader"
@@ -74,7 +37,7 @@
           </ClientOnly>
         </div>
       </div>
-      <div class="flex items-center h-full gap-4">
+      <div class="flex items-center h-full gap-4 landscape:py-2">
         <!-- 时钟区 -->
         <!-- <ClientOnly>
           <div class="layout-clock h-full">
@@ -88,37 +51,21 @@
 
         <!-- 音乐播放器 -->
         <div class="flex items-center h-full -mr-2">
-          <!-- 歌词区 -->
-          <div
-            class="hidden landscape:lg:block p-2 py-1 -ml-2 h-header w-72"
-            title="歌词"
-            type="text"
-          >
-            <div
-              class="rounded-xs h-full w-full flex items-center justify-center"
-            >
-              <span class="text-xs text-right text-text-2 w-72 px-4">{{
-                desktopLyrics
-              }}</span>
-            </div>
-          </div>
           <MusicPlayer
-            class="landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50 portrait:bg-headBar portrait:backdrop-blur-3xl"
-            @refresh-lyric="refreshLyric"
+            class="h-music select-none text-white landscape:mr-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50"
           />
         </div>
 
-        <div class="h-full flex items-center">
-          <div
-            class="w-1 h-6 bg-theme-500 inline-block rounded portrait:hidden mr-4 flex-none"
-          ></div>
+        <div
+          class="h-full flex items-center landscape:bg-level-2 landscape:rounded pl-2"
+        >
           <!-- 按键区 -->
           <div class="flex justify-end h-full items-center">
-            <BackToTop class="" />
+            <BackToTop class="-ml-2" />
 
             <div
               v-if="!isAdminHeader"
-              class="portrait:hidden p-2 -ml-2 h-header w-header"
+              class="portrait:hidden p-2 -ml-2 h-16 w-16"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -134,7 +81,7 @@
             </div>
 
             <!-- 多语言抽屉 -->
-            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
+            <div class="portrait:hidden p-2 -ml-2 h-16 w-16">
               <ZyPopover
                 title="切换语言"
                 background="var(--bg-level-1)"
@@ -158,7 +105,7 @@
               </ZyPopover>
             </div>
 
-            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
+            <div class="portrait:hidden p-2 -ml-2 h-16 w-16">
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
                 @click="darkModeSwitch"
@@ -182,7 +129,7 @@
               :class="{
                 'w-0 h-0 scale-0 p-0 ml-0':
                   disabledLayoutControl || !pageHasToolbarDebounceFlag,
-                'h-header w-header p-2 -ml-2':
+                'h-16 w-16 p-2 -ml-2':
                   !disabledLayoutControl && pageHasToolbarDebounceFlag,
               }"
             >
@@ -207,7 +154,7 @@
 
             <div
               v-if="isAdminHeader"
-              class="portrait:hidden p-2 -ml-2 h-header w-header"
+              class="portrait:hidden p-2 -ml-2 h-16 w-16"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -222,7 +169,7 @@
               </ZyButton>
             </div>
 
-            <div class="portrait:hidden p-2 -ml-2 h-header w-header">
+            <div class="portrait:hidden p-2 -ml-2 h-16 w-16">
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
                 @click="toggleFullScreen"
@@ -244,7 +191,7 @@
 
             <div
               v-if="!isAdminHeader"
-              class="p-2 -ml-2 h-header w-header"
+              class="p-2 -ml-2 h-16 w-16"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -261,7 +208,7 @@
 
             <div
               v-if="isAdminHeader"
-              class="landscape:hidden p-2 -ml-2 h-header w-header"
+              class="landscape:hidden p-2 -ml-2 h-16 w-16"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -456,10 +403,6 @@
       type: Boolean,
       default: false,
     },
-    hideSidebar: {
-      type: Boolean,
-      default: false,
-    },
     pageHasToolbar: {
       type: Boolean,
       default: false,
@@ -474,7 +417,7 @@
     },
   });
 
-  const emit = defineEmits(['switchSidebarClick', 'switchToolbarClick']);
+  const emit = defineEmits(['switchToolbarClick']);
 
   // 切换全屏
   const fullScreenFlag = ref(false);
@@ -513,6 +456,28 @@
     adminNavigationDisplay.value = false;
   };
 
+  // 背景变化
+  const progress = ref(0);
+  const calculateProgress = () => {
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight =
+      document.documentElement.scrollHeight || document.body.scrollHeight;
+    const clientHeight =
+      document.documentElement.clientHeight || document.body.clientHeight;
+    const scrollPercent = scrollTop / (scrollHeight - clientHeight);
+    progress.value = Math.round(scrollPercent * 100) || 0;
+  };
+  const backToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+  onMounted(() => {
+    window.addEventListener('scroll', calculateProgress);
+  });
+
   // 时钟
   const time = ref('');
   const updateTime = () => {
@@ -547,21 +512,10 @@
   // 初始化时间
   updateDate();
 
-  // 刷新桌面歌词
-  const desktopLyrics = ref('');
-  const refreshLyric = (result: any) => {
-    desktopLyrics.value = result.lyric;
-  };
-
   const router = useRouter();
   // 管理员回到前台
   const backToHome = () => {
     router.replace('/');
-  };
-
-  // 切换侧边栏
-  const switchSidebarClick = () => {
-    emit('switchSidebarClick');
   };
 
   // 切换右侧工具栏
@@ -611,6 +565,7 @@
     z-index: 10;
 
     &::after {
+      display: none;
       position: absolute;
       content: '';
       width: var(--rounded);
@@ -624,20 +579,21 @@
       );
     }
 
-    //&::before {
-    //  position: absolute;
-    //  content: '';
-    //  width: var(--rounded);
-    //  height: var(--rounded);
-    //  line-height: 100px;
-    //  bottom: calc(0rem - var(--rounded));
-    //  right: 0;
-    //  background-image: radial-gradient(
-    //    var(--rounded) at 0rem var(--rounded),
-    //    transparent var(--rounded),
-    //    var(--background) var(--rounded)
-    //  );
-    //}
+    &::before {
+      display: none;
+      position: absolute;
+      content: '';
+      width: var(--rounded);
+      height: var(--rounded);
+      line-height: 100px;
+      bottom: calc(0rem - var(--rounded));
+      right: 0;
+      background-image: radial-gradient(
+        var(--rounded) at 0rem var(--rounded),
+        transparent var(--rounded),
+        var(--background) var(--rounded)
+      );
+    }
   }
 
   @media (orientation: portrait) {

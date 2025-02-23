@@ -164,6 +164,18 @@
 
   .dark button.ZyButton-default {
     background-color: var(--theme-color-700);
+    border-color: var(--theme-color-700);
+  }
+
+  @media (hover: hover) {
+    .pc button.ZyButton-default:hover {
+      background-color: var(--theme-color-700);
+      border-color: var(--theme-color-700);
+    }
+    .dark.pc button.ZyButton-default:hover {
+      background-color: var(--theme-color);
+      border-color: var(--theme-color);
+    }
   }
 
   /**
@@ -209,24 +221,19 @@
 * Type Icon
 **/
   button.ZyButton-icon {
-    background-color: var(--bg-head-bar);
+    background-color: var(--bg-level-2);
     color: inherit;
-    border-radius: var(--border-radius-full);
+    border-radius: var(--border-radius-xs);
   }
 
   .dark button.ZyButton-icon {
-    background-color: transparent;
     border: none;
   }
 
   @media (hover: hover) {
     .pc button.ZyButton-icon:hover {
-      background-color: rgba(127, 127, 127, 0.2);
-    }
-
-    .pc.dark button.ZyButton-icon:hover {
-      background-color: rgb(255 255 255 / 0.2);
-      border: none;
+      background-color: var(--theme-color-500);
+      color: white;
     }
   }
 
