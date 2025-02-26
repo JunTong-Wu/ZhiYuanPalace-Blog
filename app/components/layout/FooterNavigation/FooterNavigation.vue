@@ -35,7 +35,7 @@
   </footer>
 </template>
 <script setup lang="ts">
-  import './transition.scss';
+  import "./transition.scss";
   const linkList = getNavigationMapForVisitorMenu();
   const route = useRoute();
 </script>

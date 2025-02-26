@@ -1,15 +1,15 @@
 export function musicBarHide() {
-  const musicBar = document.querySelector('#zy-music-bar');
+  const musicBar = document.querySelector("#zy-music-bar");
   if (musicBar) {
-    musicBar.classList.remove('transition-translate-in');
-    musicBar.classList.add('transition-translate-out');
+    musicBar.classList.remove("transition-translate-in");
+    musicBar.classList.add("transition-translate-out");
   }
 }
 export function musicBarShow() {
-  const musicBar = document.querySelector('#zy-music-bar');
+  const musicBar = document.querySelector("#zy-music-bar");
   if (musicBar) {
-    musicBar.classList.remove('transition-translate-out');
-    musicBar.classList.add('transition-translate-in');
+    musicBar.classList.remove("transition-translate-out");
+    musicBar.classList.add("transition-translate-in");
   }
 }
 
@@ -21,7 +21,7 @@ export function musicCardTransitionStart(
   drawer: any,
   callback: () => void,
 ) {
-  console.log('动画：展开音乐抽屉');
+  console.log("动画：展开音乐抽屉");
   // 窗口大小
   let windowWidth = window.innerWidth;
   let windowHeight = window.innerHeight;
@@ -29,33 +29,33 @@ export function musicCardTransitionStart(
   const elementRect = element.getBoundingClientRect();
 
   drawer.style.transition = `all ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
-  drawer.style.display = 'block';
-  drawer.style.top = elementRect.top + 'px';
-  drawer.style.left = elementRect.left + 'px';
-  drawer.style.right = elementRect.right + 'px';
-  drawer.style.bottom = elementRect.bottom + 'px';
-  drawer.style.width = elementRect.width + 'px';
-  drawer.style.height = elementRect.height + 'px';
-  drawer.style.zIndex = '2000';
+  drawer.style.display = "block";
+  drawer.style.top = elementRect.top + "px";
+  drawer.style.left = elementRect.left + "px";
+  drawer.style.right = elementRect.right + "px";
+  drawer.style.bottom = elementRect.bottom + "px";
+  drawer.style.width = elementRect.width + "px";
+  drawer.style.height = elementRect.height + "px";
+  drawer.style.zIndex = "2000";
 
   setTimeout(() => {
-    element.classList.remove('transition-close');
-    drawer.classList.remove('transition-close');
-    element.classList.add('transition-open');
-    drawer.classList.add('transition-open');
+    element.classList.remove("transition-close");
+    drawer.classList.remove("transition-close");
+    element.classList.add("transition-open");
+    drawer.classList.add("transition-open");
     setTimeout(() => {
-      drawer.style.top = 0 + 'px';
-      drawer.style.left = 0 + 'px';
-      drawer.style.right = 0 + 'px';
-      drawer.style.bottom = 0 + 'px';
-      drawer.style.width = windowWidth + 'px';
-      drawer.style.height = windowHeight + 'px';
+      drawer.style.top = 0 + "px";
+      drawer.style.left = 0 + "px";
+      drawer.style.right = 0 + "px";
+      drawer.style.bottom = 0 + "px";
+      drawer.style.width = windowWidth + "px";
+      drawer.style.height = windowHeight + "px";
       setTimeout(() => {
         if (animationEndPlaying) {
           return;
         }
-        drawer.style.width = '100%';
-        drawer.style.height = '100%';
+        drawer.style.width = "100%";
+        drawer.style.height = "100%";
         callback();
       }, ANIMATION_DURATION);
     });
@@ -83,13 +83,13 @@ export function musicCardTransitionSlidingUp(
   const diffLeft = Math.abs(drawerRect.left - elementRect.left);
 
   drawer.style.top =
-    drawerRect.top + (distance / windowHeight) * diffTop * 0.05 + 'px';
+    drawerRect.top + (distance / windowHeight) * diffTop * 0.05 + "px";
   drawer.style.left =
-    drawerRect.left + (distance / windowWidth) * diffLeft * 0.05 + 'px';
+    drawerRect.left + (distance / windowWidth) * diffLeft * 0.05 + "px";
   drawer.style.width =
-    drawerRect.width - (distance / windowWidth) * diffWidth * 0.05 + 'px';
+    drawerRect.width - (distance / windowWidth) * diffWidth * 0.05 + "px";
   drawer.style.height =
-    drawerRect.height - (distance / windowHeight) * diffHeight * 0.05 + 'px';
+    drawerRect.height - (distance / windowHeight) * diffHeight * 0.05 + "px";
 }
 
 export function musicCardTransitionSlideEndUp(
@@ -97,26 +97,26 @@ export function musicCardTransitionSlideEndUp(
   drawer: any,
   callback: () => void,
 ) {
-  console.log('动画：收起音乐抽屉');
+  console.log("动画：收起音乐抽屉");
   animationEndPlaying = true;
 
   drawer.style.transition = `all ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
 
   // 获取元素的位置
   const elementRect = element.getBoundingClientRect();
-  drawer.style.top = elementRect.top + 'px';
-  drawer.style.left = elementRect.left + 'px';
-  drawer.style.right = elementRect.right + 'px';
-  drawer.style.bottom = elementRect.bottom + 'px';
-  drawer.style.width = elementRect.width + 'px';
-  drawer.style.height = elementRect.height + 'px';
+  drawer.style.top = elementRect.top + "px";
+  drawer.style.left = elementRect.left + "px";
+  drawer.style.right = elementRect.right + "px";
+  drawer.style.bottom = elementRect.bottom + "px";
+  drawer.style.width = elementRect.width + "px";
+  drawer.style.height = elementRect.height + "px";
 
-  drawer.classList.remove('transition-open');
-  drawer.classList.add('transition-close');
+  drawer.classList.remove("transition-open");
+  drawer.classList.add("transition-close");
   setTimeout(() => {
-    element.classList.remove('transition-open');
-    element.classList.add('transition-close');
-    drawer.style.display = 'none';
+    element.classList.remove("transition-open");
+    element.classList.add("transition-close");
+    drawer.style.display = "none";
     element.style.opacity = 1;
     animationEndPlaying = false;
     callback();
@@ -128,14 +128,14 @@ export function musicCardTransitionSlideCancelUp(element: any, drawer: any) {
   let windowHeight = window.innerHeight;
 
   drawer.style.transition = `all ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
-  drawer.style.top = 0 + 'px';
-  drawer.style.left = 0 + 'px';
-  drawer.style.right = 0 + 'px';
-  drawer.style.bottom = 0 + 'px';
-  drawer.style.width = windowWidth + 'px';
-  drawer.style.height = windowHeight + 'px';
+  drawer.style.top = 0 + "px";
+  drawer.style.left = 0 + "px";
+  drawer.style.right = 0 + "px";
+  drawer.style.bottom = 0 + "px";
+  drawer.style.width = windowWidth + "px";
+  drawer.style.height = windowHeight + "px";
   setTimeout(() => {
-    drawer.style.width = '100%';
-    drawer.style.height = '100%';
+    drawer.style.width = "100%";
+    drawer.style.height = "100%";
   }, ANIMATION_DURATION / 2);
 }

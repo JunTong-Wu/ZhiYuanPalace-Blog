@@ -18,5 +18,5 @@
   </div>
 </template>
 <script setup lang="ts">
-  const name = '玉淇冰';
+  const name = "玉淇冰";
 </script>

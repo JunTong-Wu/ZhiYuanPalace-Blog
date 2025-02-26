@@ -4,12 +4,12 @@
  * @return {*} [r:number, g:number, b:number]
  */
 export const getImageColor = (img: any): [number, number, number] => {
-  var canvas = document.createElement('canvas');
+  var canvas = document.createElement("canvas");
   canvas.width = img.width;
   canvas.height = img.height;
 
-  var context = canvas.getContext('2d');
-  img.crossOrigin = 'Anonymous';
+  var context = canvas.getContext("2d");
+  img.crossOrigin = "Anonymous";
   context?.drawImage(img, 0, 0, canvas.width, canvas.height);
 
   // 获取像素数据
@@ -257,7 +257,7 @@ const hslToRgb = (
  */
 export const rgbToHex = (rgb: [number, number, number]): string => {
   const [r, g, b] = rgb;
-  const toHex = (n: number) => n.toString(16).padStart(2, '0').toUpperCase();
+  const toHex = (n: number) => n.toString(16).padStart(2, "0").toUpperCase();
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 };
 

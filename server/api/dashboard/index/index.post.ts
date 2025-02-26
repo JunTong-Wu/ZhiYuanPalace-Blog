@@ -1,4 +1,4 @@
-import os from 'os';
+import os from "os";
 
 /**
  * 仪表盘——Post汇总信息
@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     `SELECT COUNT(*) AS count FROM shuoshuos`,
     `SELECT COUNT(*) AS count FROM videos`,
     `SELECT COUNT(*) AS count FROM photos`,
-  ].join(';');
+  ].join(";");
   let dbResults = await getHandledQuery(sql, null);
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     const results = dbResults.data;

@@ -65,11 +65,11 @@
   const backToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
   onMounted(() => {
-    window.addEventListener('scroll', calculateProgress);
+    window.addEventListener("scroll", calculateProgress);
   });
 </script>
 <style lang="scss" scoped>

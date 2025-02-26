@@ -27,7 +27,7 @@
     const nowTimeUTC = today.getTime(); //现在UTC时间戳
     const nowTime = nowTimeUTC + timeZone * 60 * 60 * 1000; //  现在指定时区时间戳
 
-    const myTimeUTC = new Date('2020/02/24 00:00:00').getTime();
+    const myTimeUTC = new Date("2020/02/24 00:00:00").getTime();
     const myTime = myTimeUTC + timeZone * 60 * 60 * 1000; //  当年指定时区时间戳
 
     const time = nowTime - myTime;
@@ -49,7 +49,7 @@
     const e_millisecond = (e_second - second) * 1000; //毫秒数
     const millisecond = Math.floor(e_millisecond); //毫秒数（取整）
 
-    const obj = document.getElementById('time'); //页面插入节点
+    const obj = document.getElementById("time"); //页面插入节点
 
     if (obj) {
       obj.innerHTML = `<span>${days}</span>天<br>

@@ -88,7 +88,7 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { dashboard } from '@@/models';
+  import { dashboard } from "@@/models";
 
   type DashboardModelType = dashboard.Dashboard;
 
@@ -105,45 +105,45 @@
       show: false,
     },
     tooltip: {
-      trigger: 'item',
+      trigger: "item",
     },
     legend: {
-      bottom: '0%',
-      left: 'center',
+      bottom: "0%",
+      left: "center",
       textStyle: {
-        color: 'inherit',
+        color: "inherit",
       },
     },
     series: [
       {
-        name: '帖子类型',
-        type: 'pie',
-        radius: ['40%', '70%'],
+        name: "帖子类型",
+        type: "pie",
+        radius: ["40%", "70%"],
         avoidLabelOverlap: false,
         itemStyle: {
           borderRadius: 10,
-          borderColor: '#fff',
+          borderColor: "#fff",
           borderWidth: 2,
         },
         label: {
           show: false,
-          position: 'center',
+          position: "center",
         },
         emphasis: {
           label: {
             show: true,
             fontSize: 20,
-            fontWeight: 'bold',
+            fontWeight: "bold",
           },
         },
         labelLine: {
           show: false,
         },
         data: [
-          { value: dashboardData.value.posts_number.article, name: '文章' },
-          { value: dashboardData.value.posts_number.shuoshuo, name: '说说' },
-          { value: dashboardData.value.posts_number.video, name: '视频' },
-          { value: dashboardData.value.posts_number.photo, name: '图片' },
+          { value: dashboardData.value.posts_number.article, name: "文章" },
+          { value: dashboardData.value.posts_number.shuoshuo, name: "说说" },
+          { value: dashboardData.value.posts_number.video, name: "视频" },
+          { value: dashboardData.value.posts_number.photo, name: "图片" },
         ],
       },
     ],
@@ -153,16 +153,16 @@
   const cpuUsageOption = computed(() => ({
     series: [
       {
-        name: 'CPU 使用率',
-        type: 'gauge',
+        name: "CPU 使用率",
+        type: "gauge",
         startAngle: 180,
         endAngle: 0,
         min: 0,
         max: 100,
         splitNumber: 12,
         itemStyle: {
-          color: '#58D9F9',
-          shadowColor: 'rgba(0,138,255,0.45)',
+          color: "#58D9F9",
+          shadowColor: "rgba(0,138,255,0.45)",
           shadowBlur: 10,
           shadowOffsetX: 2,
           shadowOffsetY: 2,
@@ -173,10 +173,10 @@
           width: 18,
         },
         pointer: {
-          icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
-          length: '75%',
+          icon: "path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z",
+          length: "75%",
           width: 16,
-          offsetCenter: [0, '5%'],
+          offsetCenter: [0, "5%"],
         },
         axisLine: {
           roundCap: true,
@@ -197,27 +197,27 @@
           show: false,
         },
         detail: {
-          width: '60%',
+          width: "60%",
           lineHeight: 40,
           height: 40,
           borderRadius: 8,
-          offsetCenter: [0, '70%'],
+          offsetCenter: [0, "70%"],
           valueAnimation: true,
           formatter: function (value) {
-            return '{value|' + value + '%}';
+            return "{value|" + value + "%}";
           },
           rich: {
             value: {
               fontSize: 30,
-              fontWeight: 'bolder',
-              color: '#9ca3af',
+              fontWeight: "bolder",
+              color: "#9ca3af",
             },
           },
         },
         data: [
           {
             value: Number(dashboardData.value.os_info.cpu_use * 100).toFixed(2),
-            name: 'CPU 使用率',
+            name: "CPU 使用率",
           },
         ],
       },
@@ -228,16 +228,16 @@
   const memoryUsageOption = computed(() => ({
     series: [
       {
-        name: '内存使用率',
-        type: 'gauge',
+        name: "内存使用率",
+        type: "gauge",
         startAngle: 180,
         endAngle: 0,
         min: 0,
         max: 100,
         splitNumber: 12,
         itemStyle: {
-          color: '#58D9F9',
-          shadowColor: 'rgba(0,138,255,0.45)',
+          color: "#58D9F9",
+          shadowColor: "rgba(0,138,255,0.45)",
           shadowBlur: 10,
           shadowOffsetX: 2,
           shadowOffsetY: 2,
@@ -248,10 +248,10 @@
           width: 18,
         },
         pointer: {
-          icon: 'path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z',
-          length: '75%',
+          icon: "path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z",
+          length: "75%",
           width: 16,
-          offsetCenter: [0, '5%'],
+          offsetCenter: [0, "5%"],
         },
         axisLine: {
           roundCap: true,
@@ -272,20 +272,20 @@
           show: false,
         },
         detail: {
-          width: '60%',
+          width: "60%",
           lineHeight: 40,
           height: 40,
           borderRadius: 8,
-          offsetCenter: [0, '70%'],
+          offsetCenter: [0, "70%"],
           valueAnimation: true,
           formatter: function (value) {
-            return '{value|' + value + '%}';
+            return "{value|" + value + "%}";
           },
           rich: {
             value: {
               fontSize: 30,
-              fontWeight: 'bolder',
-              color: '#9ca3af',
+              fontWeight: "bolder",
+              color: "#9ca3af",
             },
           },
         },
@@ -297,7 +297,7 @@
                 dashboardData.value.os_info.ram_totalmem) *
                 100,
             ).toFixed(2),
-            name: '内存使用率',
+            name: "内存使用率",
           },
         ],
       },

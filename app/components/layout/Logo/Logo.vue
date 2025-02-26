@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
   const props = defineProps({
-    size: { type: String, default: 'default' },
+    size: { type: String, default: "default" },
   });
 </script>
 

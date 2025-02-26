@@ -40,11 +40,11 @@
   const props = defineProps({
     background: {
       type: String,
-      default: '',
+      default: "",
     },
     position: {
       type: String,
-      default: 'bottom', // 指定方向
+      default: "bottom", // 指定方向
     },
     zIndex: { type: Number, default: 2000 }, // 指定显示层级
   });
@@ -63,35 +63,35 @@
       }
       let top, left;
       switch (props.position) {
-        case 'top':
+        case "top":
           top = eventRect.top - innerRect.height;
           left = eventRect.left + eventRect.width / 2 - innerRect.width / 2;
           break;
-        case 'top-left':
+        case "top-left":
           top = eventRect.top - innerRect.height;
           left = eventRect.left;
           break;
-        case 'top-right':
+        case "top-right":
           top = eventRect.top - innerRect.height;
           left = eventRect.left + eventRect.width - innerRect.width;
           break;
-        case 'bottom':
+        case "bottom":
           top = eventRect.top + eventRect.height;
           left = eventRect.left + eventRect.width / 2 - innerRect.width / 2;
           break;
-        case 'bottom-left':
+        case "bottom-left":
           top = eventRect.top + eventRect.height;
           left = eventRect.left;
           break;
-        case 'bottom-right':
+        case "bottom-right":
           top = eventRect.top + eventRect.height;
           left = eventRect.left + eventRect.width - innerRect.width;
           break;
-        case 'left':
+        case "left":
           top = eventRect.top + eventRect.height / 2 - innerRect.height / 2;
           left = eventRect.left - innerRect.width;
           break;
-        case 'right':
+        case "right":
           top = eventRect.top + eventRect.height / 2 - innerRect.height / 2;
           left = eventRect.left + eventRect.width;
           break;
@@ -111,23 +111,23 @@
   const open = ref(false);
   const closeMenu = (e: any) => {
     if (
-      e.target.closest('.language-button') ||
-      e.target.closest('.language-menu-item')
+      e.target.closest(".language-button") ||
+      e.target.closest(".language-menu-item")
     ) {
       return;
     }
     open.value = false;
-    document.removeEventListener('click', closeMenu);
+    document.removeEventListener("click", closeMenu);
   };
   const openMenu = () => {
     if (!open.value) {
       open.value = true;
       setTimeout(() => {
-        document.addEventListener('click', closeMenu);
+        document.addEventListener("click", closeMenu);
       });
     } else {
       open.value = false;
-      document.removeEventListener('click', closeMenu);
+      document.removeEventListener("click", closeMenu);
     }
   };
 </script>

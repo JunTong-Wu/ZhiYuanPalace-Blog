@@ -20,10 +20,10 @@
 </template>
 <script lang="ts">
   export default {
-    name: 'ZySkeleton',
+    name: "ZySkeleton",
     props: {
       row: { type: Number, default: 1 }, // 指定行数
-      type: { type: String, default: 'text' }, // 指定种类
+      type: { type: String, default: "text" }, // 指定种类
       animation: { type: Boolean, default: true }, // 指定是否开启动画
     },
   };
@@ -65,7 +65,7 @@
   .ZySkeleton-text.animation,
   .ZySkeleton-image.animation {
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;

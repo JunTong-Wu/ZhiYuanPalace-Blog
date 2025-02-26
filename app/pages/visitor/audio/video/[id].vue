@@ -34,7 +34,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { video } from '@@/models';
+  import { video } from "@@/models";
   type VideoModelType = video.Video;
 
   const route = useRoute();
@@ -60,14 +60,14 @@
   onMounted(() => {
     const body = document.documentElement;
     if (body) {
-      body.style.overflow = 'hidden';
+      body.style.overflow = "hidden";
     }
   });
 
   onUnmounted(() => {
     const body = document.documentElement;
     if (body) {
-      body.style.overflow = 'auto';
+      body.style.overflow = "auto";
     }
   });
 </script>

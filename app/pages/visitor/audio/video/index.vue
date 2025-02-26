@@ -23,11 +23,11 @@
                   <p
                     class="m-0 mt-2 text-base line-clamp-2 landscape:line-clamp-2"
                   >
-                    {{ item.video_text.replace(/\r\n/g, '') }}
+                    {{ item.video_text.replace(/\r\n/g, "") }}
                   </p>
                   <div class="mt-2 flex justify-between">
                     <span class="text-sm text-text-2">{{
-                      dateFormat(item.video_date, 'YYYY-MM-DD')
+                      dateFormat(item.video_date, "YYYY-MM-DD")
                     }}</span>
                     <div class="flex items-center">
                       <UIcon
@@ -49,7 +49,7 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { video } from '@@/models';
+  import { video } from "@@/models";
   type VideoListModelType = video.VideoList;
 
   // 获取视频列表

@@ -63,15 +63,15 @@
       default: false,
     },
   });
-  const emit = defineEmits(['switchSidebarClick']);
+  const emit = defineEmits(["switchSidebarClick"]);
 
   // 切换侧边栏
   const switchSidebarClick = () => {
-    emit('switchSidebarClick');
+    emit("switchSidebarClick");
   };
 
   const router = useRouter();
   const backToHome = () => {
-    router.replace('/');
+    router.replace("/");
   };
 </script>

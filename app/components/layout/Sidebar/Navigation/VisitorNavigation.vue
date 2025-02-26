@@ -57,7 +57,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import Indicator from './Indicator/Indicator.vue';
+  import Indicator from "./Indicator/Indicator.vue";
 
   const linkList = getNavigationMapForVisitorMenu();
   const route = useRoute();

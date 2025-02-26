@@ -26,7 +26,7 @@
 </template>
 <script lang="ts" setup>
   interface LinearGradient {
-    direction: 'bottom' | 'top' | 'left' | 'right';
+    direction: "bottom" | "top" | "left" | "right";
     from: string;
     to: string;
   }
@@ -34,23 +34,23 @@
   const props = defineProps({
     size: {
       type: String,
-      default: '1rem',
+      default: "1rem",
     },
     defaultName: {
       type: String,
-      default: '',
+      default: "",
     },
     defaultColor: {
       type: String,
-      default: 'inherit',
+      default: "inherit",
     },
     activatedName: {
       type: String,
-      default: '',
+      default: "",
     },
     activatedColor: {
       type: String,
-      default: 'inherit',
+      default: "inherit",
     },
     activated: {
       type: Boolean,

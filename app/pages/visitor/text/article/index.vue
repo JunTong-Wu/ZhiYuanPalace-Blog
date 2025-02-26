@@ -50,7 +50,7 @@
                       class="m-0 mt-2 portrait:text-sm landscape:text-base portrait:line-clamp-1 landscape:line-clamp-3 text-text-2"
                     >
                       <span v-if="!item.has_password">{{
-                        item.article_text.replace(/\r\n/g, '')
+                        item.article_text.replace(/\r\n/g, "")
                       }}</span>
                       <span v-else>文章被密码保护，请输入密码查看。</span>
                     </p>
@@ -65,7 +65,7 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { article } from '@@/models';
+  import { article } from "@@/models";
   type ArticleListModelType = article.ArticleList;
 
   // 获取文章列表

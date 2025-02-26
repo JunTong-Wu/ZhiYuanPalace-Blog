@@ -81,28 +81,28 @@
 <script setup>
   const items = ref([
     {
-      text: 'home.articleModuleSlogan',
-      path: '/text/article',
+      text: "home.articleModuleSlogan",
+      path: "/text/article",
     },
     {
-      text: 'home.shuoshuoModuleSlogan',
-      path: '/text/shuoshuo',
+      text: "home.shuoshuoModuleSlogan",
+      path: "/text/shuoshuo",
     },
     {
-      text: 'home.musicModuleSlogan',
-      path: '/music',
+      text: "home.musicModuleSlogan",
+      path: "/music",
     },
     {
-      text: 'home.photoModuleSlogan',
-      path: '/audio/photo',
+      text: "home.photoModuleSlogan",
+      path: "/audio/photo",
     },
     {
-      text: 'home.videoModuleSlogan',
-      path: '/audio/video',
+      text: "home.videoModuleSlogan",
+      path: "/audio/video",
     },
     {
-      text: 'home.friendModuleSlogan',
-      path: '/about/friend',
+      text: "home.friendModuleSlogan",
+      path: "/about/friend",
     },
   ]);
 
@@ -120,12 +120,12 @@
 
     function onMouseMove(event) {
       if (!isMobileDevice() && !isVertical()) {
-        const cards = document.querySelectorAll('.service-card');
+        const cards = document.querySelectorAll(".service-card");
         for (const card of cards) {
           // 重新获取元素的当前位置
           const center = getElementCenterByElement(card);
-          card.style.setProperty('--x', `${event.clientX - center.x}px`);
-          card.style.setProperty('--y', `${event.clientY - center.y}px`);
+          card.style.setProperty("--x", `${event.clientX - center.x}px`);
+          card.style.setProperty("--y", `${event.clientY - center.y}px`);
         }
         // 更新mouse
         mouse.x = event.clientX;
@@ -135,30 +135,30 @@
 
     function onScroll() {
       if (!isMobileDevice() && !isVertical()) {
-        const cards = document.querySelectorAll('.service-card');
+        const cards = document.querySelectorAll(".service-card");
         for (const card of cards) {
           // 重新获取元素的当前位置
           const center = getElementCenterByElement(card);
-          card.style.setProperty('--x', `${mouse.x - center.x}px`);
-          card.style.setProperty('--y', `${mouse.y - center.y}px`);
+          card.style.setProperty("--x", `${mouse.x - center.x}px`);
+          card.style.setProperty("--y", `${mouse.y - center.y}px`);
         }
       }
     }
 
     // 监听最顶级祖先section标签
-    const root = document.querySelector('#service-grid');
+    const root = document.querySelector("#service-grid");
     getAncestorSectionByElement(root).addEventListener(
-      'mousemove',
+      "mousemove",
       onMouseMove,
     );
     // document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onWindowResize);
+    document.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onWindowResize);
   });
 </script>
 <style lang="scss" scoped>
   .border-layout::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;

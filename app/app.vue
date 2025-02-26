@@ -44,12 +44,12 @@
   </div>
 </template>
 <script setup lang="ts">
-  import '@/assets/css/style.scss';
+  import "@/assets/css/style.scss";
 
   // 多语言
   const head = useLocaleHead({
     addDirAttribute: true,
-    identifierAttribute: 'id',
+    identifierAttribute: "id",
     addSeoAttributes: true,
   });
 
@@ -64,7 +64,7 @@
       if (isAdminRouter(newPath)) {
         isAdminPage.value = true;
         isLoginPage.value = false;
-      } else if (newPath.startsWith('/login')) {
+      } else if (newPath.startsWith("/login")) {
         isAdminPage.value = false;
         isLoginPage.value = true;
       } else {
@@ -72,7 +72,7 @@
         isLoginPage.value = false;
       }
 
-      if (newPath.includes('/audio/video/')) {
+      if (newPath.includes("/audio/video/")) {
         isVideoDetailPage.value = true;
       } else {
         isVideoDetailPage.value = false;
@@ -86,7 +86,7 @@
   useHead({
     titleTemplate: () => {
       const title = t(`menu.${String(route.name)}`);
-      return route.path !== '/' ? `${title} - 知鸢宫` : '知鸢宫';
+      return route.path !== "/" ? `${title} - 知鸢宫` : "知鸢宫";
     },
   });
 

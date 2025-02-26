@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useIntersectionObserver } from '@vueuse/core';
+  import { useIntersectionObserver } from "@vueuse/core";
 
   const props = defineProps({
     src: {
@@ -64,11 +64,11 @@
     },
     alt: {
       type: String,
-      default: '',
+      default: "",
     },
     className: {
       type: String,
-      default: '',
+      default: "",
     },
     style: {
       type: Object,
@@ -85,7 +85,7 @@
   });
 
   const isLoading = ref(true);
-  const lazyUrl = ref('');
+  const lazyUrl = ref("");
   const imageWrapperRef = ref<HTMLImageElement>();
 
   onMounted(() => {

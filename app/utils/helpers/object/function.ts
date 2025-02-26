@@ -4,7 +4,7 @@
  * @return {*} boolean
  */
 export const isObject = (obj: any) => {
-  return obj !== null && typeof obj === 'object';
+  return obj !== null && typeof obj === "object";
 };
 
 /**
@@ -73,11 +73,11 @@ export const looseEqual = function (a: any, b: any): boolean {
  * @param {*} date ISOString
  * @return {*} string
  */
-type FormatType = 'YYYY-MM-DD' | 'YYYY-MM-DD hh:mm:ss' | string;
+type FormatType = "YYYY-MM-DD" | "YYYY-MM-DD hh:mm:ss" | string;
 
 export const dateFormat = (
   utcISOString: string,
-  format: FormatType = 'YYYY-MM-DD hh:mm:ss',
+  format: FormatType = "YYYY-MM-DD hh:mm:ss",
 ): string => {
   // 将 UTC 时间 ISO 字符串转换为 Date 对象
   const utcDate = new Date(utcISOString);
@@ -91,26 +91,26 @@ export const dateFormat = (
 
   // 提取年、月、日、时、分、秒
   const year = beijingDate.getFullYear();
-  const month = String(beijingDate.getMonth() + 1).padStart(2, '0');
-  const day = String(beijingDate.getDate()).padStart(2, '0');
-  const hours = String(beijingDate.getHours()).padStart(2, '0');
-  const minutes = String(beijingDate.getMinutes()).padStart(2, '0');
-  const seconds = String(beijingDate.getSeconds()).padStart(2, '0');
+  const month = String(beijingDate.getMonth() + 1).padStart(2, "0");
+  const day = String(beijingDate.getDate()).padStart(2, "0");
+  const hours = String(beijingDate.getHours()).padStart(2, "0");
+  const minutes = String(beijingDate.getMinutes()).padStart(2, "0");
+  const seconds = String(beijingDate.getSeconds()).padStart(2, "0");
 
   // 替换格式字符串中的占位符
   const replaceTokens = (token: string): string => {
     switch (token) {
-      case 'YYYY':
+      case "YYYY":
         return year.toString();
-      case 'MM':
+      case "MM":
         return month;
-      case 'DD':
+      case "DD":
         return day;
-      case 'hh':
+      case "hh":
         return hours;
-      case 'mm':
+      case "mm":
         return minutes;
-      case 'ss':
+      case "ss":
         return seconds;
       default:
         return token;

@@ -10,15 +10,15 @@
   // Pinia仓库
   const { title, type } = toRefs(store.usePostInfo());
   const postTypeMap = {
-    article: '文章',
-    shuoshuo: '说说',
-    song: '歌曲',
-    album: '相册',
-    video: '视频',
-    site: '站点',
-    unknown: '未知',
+    article: "文章",
+    shuoshuo: "说说",
+    song: "歌曲",
+    album: "相册",
+    video: "视频",
+    site: "站点",
+    unknown: "未知",
   };
-  const titleString = ref('');
+  const titleString = ref("");
 
   const showTitleString = () => {
     if (type.value) {

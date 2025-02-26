@@ -37,22 +37,22 @@
 </template>
 <script lang="ts">
   export default defineComponent({
-    name: 'ZyButton',
+    name: "ZyButton",
     props: {
-      title: { type: String, default: '' },
-      type: { type: String, default: 'default' },
+      title: { type: String, default: "" },
+      type: { type: String, default: "default" },
       loading: { type: Boolean, default: false },
     },
     setup(props) {
       const button = ref();
       const animationStart = () => {
         if (button.value && !props.loading) {
-          button.value.classList.add('animation');
+          button.value.classList.add("animation");
         }
       };
       const animationEnd = () => {
         if (button.value) {
-          button.value.classList.remove('animation');
+          button.value.classList.remove("animation");
         }
       };
       return {

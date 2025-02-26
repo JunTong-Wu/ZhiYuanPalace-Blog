@@ -1,4 +1,4 @@
-import type { DirectiveBinding } from 'vue';
+import type { DirectiveBinding } from "vue";
 
 export const ZyParallaxRotate = {
   mounted(el: HTMLElement) {
@@ -66,7 +66,7 @@ export const ZyParallaxRotate = {
 
       el.style.transform = `translate3d(${xValue}px, ${yValue}px, 0) rotateX(${-yValue}deg) rotateY(${xValue}deg)`;
       const children = el.querySelectorAll<HTMLElement>(
-        '.mb-parallax-move-layer-front',
+        ".mb-parallax-move-layer-front",
       );
       if (children) {
         children.forEach((child) => {
@@ -79,21 +79,21 @@ export const ZyParallaxRotate = {
       requestAnimationFrame(movement);
     }
 
-    el.style.transformStyle = 'preserve-3d';
+    el.style.transformStyle = "preserve-3d";
     // 给父元素添加透视距离
     const parentElement = el.parentElement;
     if (parentElement) {
-      parentElement.style.perspective = '5000px';
+      parentElement.style.perspective = "5000px";
     }
 
     // 监听最顶级祖先section标签
     const ancestorSection = getAncestorSectionByElement(el);
     if (ancestorSection) {
-      ancestorSection.addEventListener('mousemove', onMouseMove);
+      ancestorSection.addEventListener("mousemove", onMouseMove);
     }
     // document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onWindowResize);
+    document.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onWindowResize);
     requestAnimationFrame(movement);
   },
 };

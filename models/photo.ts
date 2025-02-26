@@ -1,12 +1,12 @@
-import type { ResOptions } from './options';
-import { Post, Classify } from './post-common';
+import type { ResOptions } from "./options";
+import { Post, Classify } from "./post-common";
 
 export class Photo extends Post {
   photo_id: number = this.id;
   photo_album_id: number = this.classify_id;
 
-  photo_thumbnail_path: string = '';
-  photo_source_path: string = '';
+  photo_thumbnail_path: string = "";
+  photo_source_path: string = "";
 
   album_has_password: boolean = false;
 }
@@ -21,7 +21,7 @@ export class PhotoAlbum extends Classify {
   album_comments: number = this.comments;
 
   album_private: number = 0;
-  album_password: string = '';
+  album_password: string = "";
 
   has_password: boolean = false;
 }

@@ -1,7 +1,7 @@
 // stores/queue.ts
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
-export const useQueueStore = defineStore('queue', {
+export const useQueueStore = defineStore("queue", {
   state: () => ({
     queue: [] as { key: string; fn: string }[], // 存储key和字符串化的函数
     keysSet: new Set<string>(), // 用于去重的Set

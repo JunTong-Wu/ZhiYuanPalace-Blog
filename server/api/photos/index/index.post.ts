@@ -1,25 +1,25 @@
-import { photo } from '@@/models';
-import { photoPasswordFilter } from '~~/server/utils/helper';
+import { photo } from "@@/models";
+import { photoPasswordFilter } from "~~/server/utils/helper";
 type ApiIndexModelType = photo.ApiIndex;
 
 /**
  * 查询照片列表
  */
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as ApiIndexModelType['params'];
+  const body = (await readBody(event)) as ApiIndexModelType["params"];
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const albumPath = body.album_path || null;
   const albumPassword = body.album_password || null;
 
   const sql =
-    'SELECT * \n' +
-    'FROM photos \n' +
-    'JOIN photo_albums ON photos.photo_album_id = photo_albums.album_id \n' +
-    'WHERE photo_albums.album_private!= 1\n' +
-    (albumPath ? 'AND photo_albums.album_path = ?' : '') +
-    'ORDER BY photos.photo_id DESC\n' +
-    (pageNumer !== -1 && pageSize !== -1 ? 'LIMIT ?,?;' : ';');
+    "SELECT * \n" +
+    "FROM photos \n" +
+    "JOIN photo_albums ON photos.photo_album_id = photo_albums.album_id \n" +
+    "WHERE photo_albums.album_private!= 1\n" +
+    (albumPath ? "AND photo_albums.album_path = ?" : "") +
+    "ORDER BY photos.photo_id DESC\n" +
+    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
 
   let values = [];
   if (albumPath) {
@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
     return setJson(
       { data: { list: dbResults.data, total: total } },
       dbResults,
-    ) as ApiIndexModelType['result'];
+    ) as ApiIndexModelType["result"];
   } else {
     return dbResults;
   }

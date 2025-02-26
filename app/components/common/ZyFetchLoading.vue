@@ -7,7 +7,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { ref, watchEffect } from 'vue';
+  import { ref, watchEffect } from "vue";
 
   // 定义一个泛型类型来表示 fetchData 的类型
   type FetchDataType<T> = LazyAsyncDataRef<ResOptionsModelType<T>>;
@@ -17,12 +17,12 @@
     loading?: boolean;
   }>();
 
-  const emit = defineEmits(['fetchOnload']);
+  const emit = defineEmits(["fetchOnload"]);
 
   const result = ref<ResOptionsModelType<any>>({
     data: undefined,
     code: 0,
-    message: '',
+    message: "",
   });
 
   const localLoading = ref(true);
@@ -48,7 +48,7 @@
       // console.log('客户端获取参数', props.fetchData.data.value.data);
       result.value = props.fetchData.data.value;
       localLoading.value = false;
-      emit('fetchOnload', result.value);
+      emit("fetchOnload", result.value);
     }
   });
 </script>

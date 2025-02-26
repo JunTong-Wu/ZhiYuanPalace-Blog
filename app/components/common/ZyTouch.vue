@@ -19,18 +19,18 @@
 
   const props = defineProps<Props>();
   const emit = defineEmits<{
-    (e: 'slidingLeft', payload: { moveDistanceX: number }): void;
-    (e: 'slidingRight', payload: { moveDistanceX: number }): void;
-    (e: 'slidingUp', payload: { moveDistanceY: number }): void;
-    (e: 'slidingDown', payload: { moveDistanceY: number }): void;
-    (e: 'slideEndLeft', payload: { moveDistanceX: number }): void;
-    (e: 'slideCancelLeft', payload: { moveDistanceX: number }): void;
-    (e: 'slideEndRight', payload: { moveDistanceX: number }): void;
-    (e: 'slideCancelRight', payload: { moveDistanceX: number }): void;
-    (e: 'slideEndUp', payload: { moveDistanceY: number }): void;
-    (e: 'slideCancelUp', payload: { moveDistanceY: number }): void;
-    (e: 'slideEndDown', payload: { moveDistanceY: number }): void;
-    (e: 'slideCancelDown', payload: { moveDistanceY: number }): void;
+    (e: "slidingLeft", payload: { moveDistanceX: number }): void;
+    (e: "slidingRight", payload: { moveDistanceX: number }): void;
+    (e: "slidingUp", payload: { moveDistanceY: number }): void;
+    (e: "slidingDown", payload: { moveDistanceY: number }): void;
+    (e: "slideEndLeft", payload: { moveDistanceX: number }): void;
+    (e: "slideCancelLeft", payload: { moveDistanceX: number }): void;
+    (e: "slideEndRight", payload: { moveDistanceX: number }): void;
+    (e: "slideCancelRight", payload: { moveDistanceX: number }): void;
+    (e: "slideEndUp", payload: { moveDistanceY: number }): void;
+    (e: "slideCancelUp", payload: { moveDistanceY: number }): void;
+    (e: "slideEndDown", payload: { moveDistanceY: number }): void;
+    (e: "slideCancelDown", payload: { moveDistanceY: number }): void;
   }>();
 
   const touchEvent = ref<HTMLElement | null>(null);
@@ -51,7 +51,7 @@
 
   onMounted(() => {
     initViewSize();
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       setTimeout(() => {
         initViewSize();
       }, 100);
@@ -149,15 +149,15 @@
       if (!crossBorder()) {
         if (Math.abs(moveDistanceX) > Math.abs(moveDistanceY)) {
           if (moveDistanceX > 0) {
-            emit('slidingLeft', { moveDistanceX });
+            emit("slidingLeft", { moveDistanceX });
           } else {
-            emit('slidingRight', { moveDistanceX });
+            emit("slidingRight", { moveDistanceX });
           }
         } else {
           if (moveDistanceY > 0) {
-            emit('slidingUp', { moveDistanceY });
+            emit("slidingUp", { moveDistanceY });
           } else {
-            emit('slidingDown', { moveDistanceY });
+            emit("slidingDown", { moveDistanceY });
           }
         }
       } else {
@@ -172,29 +172,29 @@
       if (Math.abs(moveDistanceX) > Math.abs(moveDistanceY)) {
         if (moveDistanceX > 0) {
           if (moveDistanceX > viewWidth / 6) {
-            emit('slideEndLeft', { moveDistanceX });
+            emit("slideEndLeft", { moveDistanceX });
           } else {
-            emit('slideCancelLeft', { moveDistanceX });
+            emit("slideCancelLeft", { moveDistanceX });
           }
         } else {
           if (moveDistanceX < 0 - viewWidth / 6) {
-            emit('slideEndRight', { moveDistanceX });
+            emit("slideEndRight", { moveDistanceX });
           } else {
-            emit('slideCancelRight', { moveDistanceX });
+            emit("slideCancelRight", { moveDistanceX });
           }
         }
       } else {
         if (moveDistanceY > 0) {
           if (moveDistanceY > viewHeight / 6) {
-            emit('slideEndUp', { moveDistanceY });
+            emit("slideEndUp", { moveDistanceY });
           } else {
-            emit('slideCancelUp', { moveDistanceY });
+            emit("slideCancelUp", { moveDistanceY });
           }
         } else {
           if (moveDistanceY < 0 - viewHeight / 6) {
-            emit('slideEndDown', { moveDistanceY });
+            emit("slideEndDown", { moveDistanceY });
           } else {
-            emit('slideCancelDown', { moveDistanceY });
+            emit("slideCancelDown", { moveDistanceY });
           }
         }
       }

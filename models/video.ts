@@ -1,19 +1,19 @@
-import type { ResOptions } from './options';
-import { Post, Classify } from './post-common';
+import type { ResOptions } from "./options";
+import { Post, Classify } from "./post-common";
 
 export class Video extends Post {
   video_id: number = this.id;
   video_coll_id: number = this.classify_id;
   video_text: string = this.title;
-  video_cover: string = '';
-  video_path: string = '';
+  video_cover: string = "";
+  video_path: string = "";
   video_date: string = this.date;
   video_views: number = this.views;
   video_likes: number = this.likes;
   video_comments: number = this.comments;
 
   video_private: number = 0;
-  video_password: string = '';
+  video_password: string = "";
 
   has_password: boolean = false;
 }

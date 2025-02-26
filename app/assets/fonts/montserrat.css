@@ -2,5 +2,5 @@
   font-family: montserrat;
   font-style: normal;
   font-display: swap;
-  src: url('./montserrat.woff2') format('woff2');
+  src: url("./montserrat.woff2") format("woff2");
 }

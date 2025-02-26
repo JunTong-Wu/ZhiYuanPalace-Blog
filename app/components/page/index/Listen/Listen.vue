@@ -130,7 +130,7 @@
 <style lang="scss" scoped>
   .home-section4-image {
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       z-index: 1;
       top: 0;

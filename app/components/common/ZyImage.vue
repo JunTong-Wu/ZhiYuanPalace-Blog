@@ -38,11 +38,11 @@
     },
     alt: {
       type: String,
-      default: '',
+      default: "",
     },
     className: {
       type: String,
-      default: '',
+      default: "",
     },
     style: {
       type: Object,

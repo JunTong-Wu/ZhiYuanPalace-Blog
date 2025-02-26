@@ -31,7 +31,7 @@ export const isMobileDevice = () => {
  * @return : Boolean
  */
 export const isVertical = () => {
-  const mql = window.matchMedia('(orientation: portrait)');
+  const mql = window.matchMedia("(orientation: portrait)");
   return mql.matches;
 };
 /**
@@ -48,8 +48,8 @@ export const getAncestorSectionByElement = (
   while (
     ancestor &&
     ancestor.tagName &&
-    ancestor.tagName.toLowerCase() !== 'section' &&
-    ancestor.tagName.toLowerCase() !== 'body'
+    ancestor.tagName.toLowerCase() !== "section" &&
+    ancestor.tagName.toLowerCase() !== "body"
   ) {
     ancestor = ancestor.parentNode as HTMLElement | null;
   }
@@ -113,8 +113,8 @@ export const fullScreen = () => {
   const element = document.documentElement;
   //IE 10及以下ActiveXObject
   if (window.ActiveXObject) {
-    const WsShell = new window.ActiveXObject('WScript.Shell');
-    WsShell.SendKeys('{F11}');
+    const WsShell = new window.ActiveXObject("WScript.Shell");
+    WsShell.SendKeys("{F11}");
     //写全屏后的执行函数
   }
   //HTML W3C 提议
@@ -137,7 +137,7 @@ export const fullScreen = () => {
     element.mozRequestFullScreen();
     //写全屏后的执行函数
   } else {
-    alert('此设备不支持 Fullscreen API');
+    alert("此设备不支持 Fullscreen API");
   }
 };
 
@@ -150,8 +150,8 @@ export const fullExit = () => {
   const doc = document as Document;
   //IE ActiveXObject
   if (window.ActiveXObject) {
-    const WsShell = new window.ActiveXObject('WScript.Shell');
-    WsShell.SendKeys('{F11}');
+    const WsShell = new window.ActiveXObject("WScript.Shell");
+    WsShell.SendKeys("{F11}");
     //写退出全屏后的执行函数
   }
   //HTML5 W3C 提议
@@ -182,15 +182,15 @@ export const fullExit = () => {
  */
 export const darkModeSwitch = (e: MouseEvent) => {
   // 检查是否支持 startViewTransition API
-  if (typeof document.startViewTransition === 'function') {
+  if (typeof document.startViewTransition === "function") {
     // 支持 startViewTransition API，使用过渡动画
     const transition = document.startViewTransition(() => {
-      if (!document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('light');
-        document.documentElement.classList.add('dark');
+      if (!document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
       }
     });
 
@@ -212,18 +212,18 @@ export const darkModeSwitch = (e: MouseEvent) => {
         },
         {
           duration: 400,
-          pseudoElement: '::view-transition-new(root)',
+          pseudoElement: "::view-transition-new(root)",
         },
       );
     });
   } else {
     // 不支持 startViewTransition API，直接切换暗模式
-    if (!document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
+    if (!document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   }
 };

@@ -69,11 +69,11 @@
     },
     alt: {
       type: String,
-      default: '',
+      default: "",
     },
     className: {
       type: String,
-      default: '',
+      default: "",
     },
     style: {
       type: Object,
@@ -88,12 +88,12 @@
     if (previewOpen.value) {
       const body = document.documentElement;
       if (body) {
-        body.style.overflow = 'hidden';
+        body.style.overflow = "hidden";
       }
     } else {
       const body = document.documentElement;
       if (body) {
-        body.style.overflow = 'auto';
+        body.style.overflow = "auto";
       }
     }
   };
@@ -101,13 +101,13 @@
   const isLoading = ref(true);
 
   const createImgPreviewRoot = () => {
-    const imgPreviewRoot = document.createElement('div');
-    imgPreviewRoot.id = 'zy-image-preview-root';
+    const imgPreviewRoot = document.createElement("div");
+    imgPreviewRoot.id = "zy-image-preview-root";
     document.body.appendChild(imgPreviewRoot);
   };
 
   onBeforeMount(() => {
-    const imgPreviewRoot = document.getElementById('zy-image-preview-root');
+    const imgPreviewRoot = document.getElementById("zy-image-preview-root");
     if (imgPreviewRoot) {
       return;
     } else {

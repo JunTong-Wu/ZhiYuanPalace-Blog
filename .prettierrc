@@ -5,7 +5,7 @@
   "semi": true,
   "bracketSpacing": true,
   "singleAttributePerLine": true,
-  "singleQuote": true,
+  "singleQuote": false,
   "vueIndentScriptAndStyle": true,
   "tabWidth": 2
 }

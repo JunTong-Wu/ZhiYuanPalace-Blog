@@ -211,7 +211,7 @@
         </div>
         <p class="text-sm text-text-3 mt-2">
           {{
-            translate('common.records', [
+            translate("common.records", [
               rowsStartNumber,
               rowsEndNumber,
               pagination.total,
@@ -244,9 +244,9 @@
 </template>
 
 <script lang="ts">
-  import arraySort from 'array-sort';
-  import { useI18n } from 'vue-i18n';
-  import _ from 'lodash';
+  import arraySort from "array-sort";
+  import { useI18n } from "vue-i18n";
+  import _ from "lodash";
 
   interface IPagination {
     page: number;
@@ -275,12 +275,12 @@
   }
 
   export default defineComponent({
-    name: 'zy-datatable',
+    name: "zy-datatable",
     emit: [
-      'current-change',
-      'sort-change',
-      'items-per-page-change',
-      'select-change',
+      "current-change",
+      "sort-change",
+      "items-per-page-change",
+      "select-change",
     ],
     props: {
       // 列标题
@@ -291,7 +291,7 @@
       // 表数据
       tableData: { type: Array, required: true },
       // 空数据提示
-      emptyTableText: { type: String, default: 'No data found' },
+      emptyTableText: { type: String, default: "No data found" },
       // 加载中
       loading: { type: Boolean, default: false },
 
@@ -305,9 +305,9 @@
       enableItemsPerPageDropdown: { type: Boolean, default: true },
 
       // 被排序字段
-      sortLabel: { type: String, default: '' },
+      sortLabel: { type: String, default: "" },
       // 正序/倒序
-      sortOrder: { type: String, default: '' },
+      sortOrder: { type: String, default: "" },
 
       // 开启首列多选框
       selection: { type: Boolean, default: false },
@@ -333,7 +333,7 @@
     components: {},
     setup(props, { emit }) {
       const originData = ref(_.cloneDeep(props.tableData));
-      const currentSort = ref<string>('');
+      const currentSort = ref<string>("");
       const sortOrder = ref(props.sortOrder);
       const sortLabel = ref(props.sortLabel);
       const pagination = ref<IPagination>({
@@ -379,7 +379,7 @@
           item.isChecked = false;
         });
         selectedRows.value = [];
-        emit('select-change', selectedRows.value);
+        emit("select-change", selectedRows.value);
       };
 
       const expandInit = (flag: boolean) => {
@@ -425,7 +425,7 @@
       };
 
       const currentPageChange = () => {
-        emit('current-change', pagination.value.page);
+        emit("current-change", pagination.value.page);
         // 本地分页
         if (!props.remote) {
           rowsDataFormat(originData.value);
@@ -433,7 +433,7 @@
       };
 
       const setItemsPerPage = () => {
-        emit('items-per-page-change', pagination.value.rowsPerPage);
+        emit("items-per-page-change", pagination.value.rowsPerPage);
         // 本地分页
         if (!props.remote) {
           rowsDataFormat(originData.value);
@@ -473,40 +473,40 @@
           return;
         }
         if (props.remote) {
-          emit('sort-change', { columnName: columnName });
+          emit("sort-change", { columnName: columnName });
         } else {
           sortCounter(columnName);
           const resetFlag = onSortCounterThree(columnName);
           if (resetFlag) {
             sortInit();
-            emit('sort-change', {
+            emit("sort-change", {
               columnName: props.sortLabel,
               order: props.sortOrder,
             });
           } else {
-            let thisDirection = '';
+            let thisDirection = "";
             sortCounterFlag.forEach((item) => {
               if (item.columnName === columnName) {
                 if (item.counter === 1) {
-                  thisDirection = 'asc'; //第一次正序
+                  thisDirection = "asc"; //第一次正序
                 }
                 if (item.counter === 2) {
-                  thisDirection = 'desc'; //第二次倒序
+                  thisDirection = "desc"; //第二次倒序
                 }
               }
             });
             sortOrder.value = thisDirection;
             sortLabel.value = columnName;
-            emit('sort-change', {
+            emit("sort-change", {
               columnName: columnName,
               order: thisDirection,
             });
             // 本地排序
             if (!props.remote) {
-              if (thisDirection === 'asc') {
+              if (thisDirection === "asc") {
                 arraySort(originData.value, columnName, { reverse: true });
               }
-              if (thisDirection === 'desc') {
+              if (thisDirection === "desc") {
                 arraySort(originData.value, columnName, { reverse: false });
               }
             }
@@ -530,13 +530,13 @@
           item.isChecked = isAllChecked.value;
         });
         getSelectedRows();
-        emit('select-change', selectedRows.value);
+        emit("select-change", selectedRows.value);
       };
 
       const toggleRowSelect = (i: number) => {
         rowsData.value[i].isChecked = !rowsData.value[i].isChecked;
         getSelectedRows();
-        emit('select-change', selectedRows.value);
+        emit("select-change", selectedRows.value);
       };
 
       const getSelectedRows = () => {

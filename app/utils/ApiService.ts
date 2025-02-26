@@ -1,8 +1,8 @@
-import qs from 'qs';
-import NProgress from 'nprogress';
-import type { AsyncDataRequestStatus } from '#app';
+import qs from "qs";
+import NProgress from "nprogress";
+import type { AsyncDataRequestStatus } from "#app";
 
-import { options } from '@@/models';
+import { options } from "@@/models";
 type ResOptions<T> = options.ResOptions<T>;
 
 interface ResponseMap {
@@ -11,7 +11,7 @@ interface ResponseMap {
   arrayBuffer: ArrayBuffer;
   stream: ReadableStream<Uint8Array>;
 }
-export type ResponseTypes = keyof ResponseMap | 'json';
+export type ResponseTypes = keyof ResponseMap | "json";
 
 export interface RequestOptions {
   method?: any;
@@ -43,8 +43,8 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
   // 拼接请求地址
   const reqUrl = baseUrl + url;
   let headers: Record<string, any> = {};
-  headers['Cache-Control'] = 'no-cache';
-  headers['Content-Type'] = 'application/x-www-form-urlencoded';
+  headers["Cache-Control"] = "no-cache";
+  headers["Content-Type"] = "application/x-www-form-urlencoded";
   if (options.headers) {
     headers = Object.assign({}, headers, options.headers);
   }
@@ -55,10 +55,10 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
 
   return useLazyAsyncData(key, () =>
     $fetch(reqUrl, {
-      method: options.method ?? 'POST',
+      method: options.method ?? "POST",
       query: options.query ?? null,
       body: options.body ?? null,
-      responseType: options.responseType ?? 'json',
+      responseType: options.responseType ?? "json",
       headers: headers,
       key: options.key,
       cache: options.cache,
@@ -72,15 +72,15 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
         // 请求错误处理
         if (process.server) {
           const alertToClient = () => {
-            const message = '无法连接到服务器';
+            const message = "无法连接到服务器";
             window.ZyToast({ title: message });
           };
           store
             .useQueueStore()
-            .enqueue('onApiRequestError', alertToClient.toString());
+            .enqueue("onApiRequestError", alertToClient.toString());
         }
         if (process.client) {
-          const message = '无法连接到服务器';
+          const message = "无法连接到服务器";
           window.ZyToast({ title: message });
         }
       },
@@ -96,12 +96,12 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
           // 后端返回错误
           if (process.server) {
             const alertToClient = () => {
-              const message = 'API发生错误，请查看控制台信息';
+              const message = "API发生错误，请查看控制台信息";
               window.ZyToast({ title: message });
             };
             store
               .useQueueStore()
-              .enqueue('onApiResponse', alertToClient.toString());
+              .enqueue("onApiResponse", alertToClient.toString());
           }
           if (process.client) {
             window.ZyToast({ title: response._data.message });
@@ -132,7 +132,7 @@ export const ApiService = {
     options: RequestOptions = {},
   ): Promise<any> => {
     return request(url, {
-      method: 'GET',
+      method: "GET",
       query: params,
       ...options,
     });

@@ -12,19 +12,19 @@
             selection
           >
             <template v-slot:cell-id="{ row: item }">
-              {{ item.article_id ? item.article_id : '--' }}
+              {{ item.article_id ? item.article_id : "--" }}
             </template>
             <template v-slot:cell-title="{ row: item }">
-              {{ item.article_title ? item.article_title : '--' }}
+              {{ item.article_title ? item.article_title : "--" }}
             </template>
             <template v-slot:cell-classify="{ row: item }">
-              {{ item.classify_title ? item.classify_title : '--' }}
+              {{ item.classify_title ? item.classify_title : "--" }}
             </template>
             <template v-slot:cell-date="{ row: item }">
               {{
                 item.article_date
-                  ? dateFormat(item.article_date, 'YYYY-MM-DD')
-                  : '--'
+                  ? dateFormat(item.article_date, "YYYY-MM-DD")
+                  : "--"
               }}
             </template>
             <template v-slot:cell-actions="{ row: item }">
@@ -49,7 +49,7 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { article } from '@@/models';
+  import { article } from "@@/models";
   type Article = article.Article;
   type ArticleListModelType = article.ArticleList;
 
@@ -72,37 +72,37 @@
   const tableHeader = computed(() => {
     let arr: TableHeader[] = [
       {
-        name: 'ID',
-        key: 'id',
-        sortingField: 'article_id',
+        name: "ID",
+        key: "id",
+        sortingField: "article_id",
       },
       {
-        name: 'Title',
-        key: 'title',
-        sortingField: 'article_title',
+        name: "Title",
+        key: "title",
+        sortingField: "article_title",
       },
       {
-        name: 'Classify',
-        key: 'classify',
+        name: "Classify",
+        key: "classify",
       },
       {
-        name: 'Date',
-        key: 'date',
+        name: "Date",
+        key: "date",
       },
       {
-        name: 'Actions',
-        key: 'actions',
+        name: "Actions",
+        key: "actions",
       },
     ];
     return arr;
   });
 
   const goPath = computed(() => {
-    return '/admin/post-manage/article';
+    return "/admin/post-manage/article";
   });
 
   const getJumpRoutes = (item: Article) => {
     const id = item.article_id;
-    return goPath.value + '/' + id;
+    return goPath.value + "/" + id;
   };
 </script>

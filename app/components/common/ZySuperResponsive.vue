@@ -31,7 +31,7 @@
     }
   }
   export default defineComponent({
-    name: 'ZySuperResponsive',
+    name: "ZySuperResponsive",
     props: {
       baseFontSize: {
         type: Number,
@@ -83,7 +83,7 @@
       // 初始化
       function initZySuperResponsive() {
         const isMobile = () => {
-          const mql = window.matchMedia('(pointer: coarse)');
+          const mql = window.matchMedia("(pointer: coarse)");
           if (mql.matches) {
             return true;
           } else {
@@ -91,7 +91,7 @@
           }
         };
         const isDarkMode = () => {
-          const isDarktheme = window.matchMedia('(prefers-color-scheme: dark)');
+          const isDarktheme = window.matchMedia("(prefers-color-scheme: dark)");
           if (isDarktheme.matches) {
             return true;
           } else {
@@ -105,7 +105,7 @@
           }
         };
         const isVertical = () => {
-          const mql = window.matchMedia('(orientation: portrait)');
+          const mql = window.matchMedia("(orientation: portrait)");
           if (mql.matches) {
             return true;
           } else {
@@ -115,16 +115,16 @@
 
         const classListInit = () => {
           if (isMobile()) {
-            document.documentElement.classList.remove('pc');
-            document.documentElement.classList.add('mobile');
+            document.documentElement.classList.remove("pc");
+            document.documentElement.classList.add("mobile");
           } else {
-            document.documentElement.classList.remove('mobile');
-            document.documentElement.classList.add('pc');
+            document.documentElement.classList.remove("mobile");
+            document.documentElement.classList.add("pc");
           }
           if (isDarkMode()) {
-            document.documentElement.classList.add('dark');
+            document.documentElement.classList.add("dark");
           } else {
-            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.remove("dark");
           }
         };
 
@@ -139,11 +139,11 @@
 
         const classListChange = () => {
           if (isMobile()) {
-            document.documentElement.classList.remove('pc');
-            document.documentElement.classList.add('mobile');
+            document.documentElement.classList.remove("pc");
+            document.documentElement.classList.add("mobile");
           } else {
-            document.documentElement.classList.remove('mobile');
-            document.documentElement.classList.add('pc');
+            document.documentElement.classList.remove("mobile");
+            document.documentElement.classList.add("pc");
           }
         };
 
@@ -203,13 +203,13 @@
                 rem = fontSize * (docEl.clientWidth / designSize.xl_max_h);
               }
             }
-            docEl.style.fontSize = rem + 'px';
+            docEl.style.fontSize = rem + "px";
           }
         };
         fontSizeInit();
 
         // 监听浏览器窗口变化
-        window.addEventListener('resize', () => {
+        window.addEventListener("resize", () => {
           fontSizeInit();
           setTimeout(() => {
             classListChange();
@@ -220,13 +220,13 @@
       // 阻止vivo浏览器手势
       let startX: number, startY: number;
       onMounted(() => {
-        window.addEventListener('touchstart', (e) => {
+        window.addEventListener("touchstart", (e) => {
           if (e.targetTouches[0]) {
             startX = e.targetTouches[0].pageX;
             startY = e.targetTouches[0].pageY;
           }
         });
-        window.addEventListener('touchmove', (e) => {
+        window.addEventListener("touchmove", (e) => {
           if (e.targetTouches[0]) {
             const moveX = e.targetTouches[0].pageX;
             const moveY = e.targetTouches[0].pageY;

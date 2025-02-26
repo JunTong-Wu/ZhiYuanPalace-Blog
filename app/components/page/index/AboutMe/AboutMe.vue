@@ -36,21 +36,21 @@
 <script lang="ts" setup>
   const { locale } = useI18n();
   const cnClass = computed(() => {
-    return locale.value.includes('zh');
+    return locale.value.includes("zh");
   });
 </script>
 <style lang="scss" scoped>
   @media (orientation: landscape) {
     .home-section3-image {
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         z-index: 1;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('@/assets/image/home-section1.jpg') no-repeat
+        background: url("@/assets/image/home-section1.jpg") no-repeat
           center/cover;
         border-radius: var(--border-radius-4xl) 0;
         filter: blur(1.5rem);

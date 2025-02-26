@@ -11,5 +11,5 @@
   </ClientOnly>
 </template>
 <script setup lang="ts">
-  import './transition.scss';
+  import "./transition.scss";
 </script>

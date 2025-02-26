@@ -1,4 +1,4 @@
-import type { DirectiveBinding } from 'vue';
+import type { DirectiveBinding } from "vue";
 
 export const ZyParallaxTranslation = {
   mounted(el: HTMLElement) {
@@ -66,7 +66,7 @@ export const ZyParallaxTranslation = {
 
       el.style.transform = `translate3d(${xValue}px, ${yValue}px, 0)`;
       const children = el.querySelectorAll<HTMLElement>(
-        '.mb-parallax-move-layer-front',
+        ".mb-parallax-move-layer-front",
       );
       if (children) {
         for (let i = 0; i < children.length; i++) {
@@ -80,10 +80,10 @@ export const ZyParallaxTranslation = {
     }
 
     // 监听最顶级祖先section标签
-    getAncestorSectionByElement(el)?.addEventListener('mousemove', onMouseMove);
+    getAncestorSectionByElement(el)?.addEventListener("mousemove", onMouseMove);
     // document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onWindowResize);
+    document.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onWindowResize);
     requestAnimationFrame(movement);
   },
 };

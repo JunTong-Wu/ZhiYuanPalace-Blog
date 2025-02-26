@@ -31,10 +31,10 @@
 </template>
 
 <script setup lang="ts">
-  import { cardTransitionEnd as ArticleCardTransitionEnd } from '~/components/layout/ArticleCard/transition';
-  import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from '~/components/layout/ShuoShuoCard/transition';
-  import { cardTransitionEnd as AlbumCardTransitionEnd } from '~/components/layout/AlbumCard/transition';
-  import { cardTransitionEnd as VideoCardTransitionEnd } from '~/components/layout/VideoCard/transition';
+  import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
+  import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
+  import { cardTransitionEnd as AlbumCardTransitionEnd } from "~/components/layout/AlbumCard/transition";
+  import { cardTransitionEnd as VideoCardTransitionEnd } from "~/components/layout/VideoCard/transition";
 
   const props = defineProps({
     // 接受错误页面传递的错误信息
@@ -54,10 +54,10 @@
     (newValue) => {
       const newPath = newValue.url;
       if (isAdminRouter(newPath)) {
-        console.log('isAdminRouter');
+        console.log("isAdminRouter");
         isAdminPage.value = true;
         isLoginPage.value = false;
-      } else if (newPath.startsWith('/login')) {
+      } else if (newPath.startsWith("/login")) {
         isAdminPage.value = false;
         isLoginPage.value = true;
       } else {
@@ -65,7 +65,7 @@
         isLoginPage.value = false;
       }
 
-      if (newPath.includes('/audio/video/')) {
+      if (newPath.includes("/audio/video/")) {
         isVideoDetailPage.value = true;
       } else {
         isVideoDetailPage.value = false;

@@ -1,5 +1,5 @@
-import { type Directive } from 'vue';
-import * as directives from './directives/export';
+import { type Directive } from "vue";
+import * as directives from "./directives/export";
 
 export default defineNuxtPlugin((nuxtApp) => {
   Object.keys(directives).forEach((key) => {

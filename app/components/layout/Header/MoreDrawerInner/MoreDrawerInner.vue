@@ -53,8 +53,8 @@
   </div>
 </template>
 <script setup lang="ts">
-  const emit = defineEmits(['closeDrawer']);
+  const emit = defineEmits(["closeDrawer"]);
   const closeDrawer = () => {
-    emit('closeDrawer');
+    emit("closeDrawer");
   };
 </script>

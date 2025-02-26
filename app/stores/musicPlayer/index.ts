@@ -1,20 +1,20 @@
-import { defineStore } from 'pinia';
-import { music } from '@@/models';
+import { defineStore } from "pinia";
+import { music } from "@@/models";
 
 const MusicPlayerListItem = music.musicPlayerListItem;
 
 type MusicModelType = music.Music;
 type MusicListModelType = music.MusicList;
 type MusicPlayerListItemType = music.musicPlayerListItem;
-export const useMusicControl = defineStore('musicControl', {
+export const useMusicControl = defineStore("musicControl", {
   state: () => {
     return {
       musicNowId: 0,
-      musicNowTitle: '',
-      musicNowSinger: '',
-      musicNowCover: '',
-      musicNowAudio: '',
-      musicNowLyric: '',
+      musicNowTitle: "",
+      musicNowSinger: "",
+      musicNowCover: "",
+      musicNowAudio: "",
+      musicNowLyric: "",
       musicPlayState: false,
     };
   },
@@ -148,7 +148,7 @@ export const useMusicControl = defineStore('musicControl', {
     },
   },
 });
-export const useMusicList = defineStore('musicList', {
+export const useMusicList = defineStore("musicList", {
   state: () => {
     return {
       musicList: [new MusicPlayerListItem()] as MusicPlayerListItemType[],

@@ -15,14 +15,14 @@
             >嗨！早上好！</span
           >
           <h2 class="text-3xl landscape:sm:text-5xl font-bold">
-            {{ $t('home.welcome') }} <br v-if="!cnClass" /><span
+            {{ $t("home.welcome") }} <br v-if="!cnClass" /><span
               class="text-theme-500"
-              >{{ $t('common.zhiYuanPalace') }}</span
+              >{{ $t("common.zhiYuanPalace") }}</span
             >
           </h2>
           <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
           <p class="text-lg text-text-2 portrait:text-base mb-4">
-            {{ $t('home.briefIntroductionContent') }}
+            {{ $t("home.briefIntroductionContent") }}
           </p>
         </div>
         <div class="w-1/2 portrait:w-full portrait:order-1">
@@ -62,20 +62,20 @@
 <script lang="ts" setup>
   const { locale } = useI18n();
   const cnClass = computed(() => {
-    return locale.value.includes('zh');
+    return locale.value.includes("zh");
   });
 </script>
 <style lang="scss" scoped>
   .home-section1-image {
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       z-index: 1;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('@/assets/image/home-section1.jpg') no-repeat center/cover;
+      background: url("@/assets/image/home-section1.jpg") no-repeat center/cover;
       border-radius: var(--border-radius-4xl) 0 var(--border-radius-4xl)
         var(--border-radius-4xl);
       filter: blur(1.5rem);

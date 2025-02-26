@@ -1,4 +1,4 @@
-import { article } from '@@/models';
+import { article } from "@@/models";
 type ArticleModelType = article.Article;
 
 export const articlePasswordFilter = (
@@ -20,7 +20,7 @@ export const articlePasswordFilter = (
     results.data.forEach((item: any, index: number, array: any) => {
       if (
         item.article_password !== null &&
-        item.article_password !== '' &&
+        item.article_password !== "" &&
         item.article_password !== password
       ) {
         tempArr[index] = {
@@ -28,7 +28,7 @@ export const articlePasswordFilter = (
           article_classify_id: item.article_classify_id,
           article_title: item.article_title,
           article_title_image: item.article_title_image,
-          article_text: '',
+          article_text: "",
           has_password: true,
         };
       } else {
@@ -57,7 +57,7 @@ export const albumPasswordFilter = (
   let tempArr = <Array<any>>[];
   if (results.data && results.data.length > 0) {
     results.data.forEach((item: any, index: number, array: any) => {
-      if (item.album_password !== null && item.album_password !== '') {
+      if (item.album_password !== null && item.album_password !== "") {
         tempArr[index] = {
           album_id: item.album_id,
           album_path: item.album_path,
@@ -94,7 +94,7 @@ export const photoPasswordFilter = (
     results.data.forEach((item: any, index: number, array: any) => {
       if (
         item.album_password !== null &&
-        item.album_password !== '' &&
+        item.album_password !== "" &&
         item.album_password !== password
       ) {
         tempArr[index] = {
@@ -129,7 +129,7 @@ export const videoPasswordFilter = (
     results.data.forEach((item: any, index: number, array: any) => {
       if (
         item.video_password !== null &&
-        item.video_password !== '' &&
+        item.video_password !== "" &&
         item.video_password !== password
       ) {
         tempArr[index] = {

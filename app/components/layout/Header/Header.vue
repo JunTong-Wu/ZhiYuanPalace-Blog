@@ -396,7 +396,7 @@
   </header>
 </template>
 <script setup lang="ts">
-  import './transition.scss';
+  import "./transition.scss";
 
   const props = defineProps({
     isAdminHeader: {
@@ -417,7 +417,7 @@
     },
   });
 
-  const emit = defineEmits(['switchToolbarClick']);
+  const emit = defineEmits(["switchToolbarClick"]);
 
   // 切换全屏
   const fullScreenFlag = ref(false);
@@ -471,20 +471,20 @@
   const backToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
   onMounted(() => {
-    window.addEventListener('scroll', calculateProgress);
+    window.addEventListener("scroll", calculateProgress);
   });
 
   // 时钟
-  const time = ref('');
+  const time = ref("");
   const updateTime = () => {
     const date = new Date();
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    const seconds = date.getSeconds().toString().padStart(2, "0");
     time.value = `${hours}:${minutes}:${seconds}`;
   };
   // 初始化时间
@@ -499,14 +499,14 @@
   });
 
   //日期
-  const todayDate = ref('');
+  const todayDate = ref("");
   const updateDate = () => {
     const date = new Date();
     const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
     const week = date.getDay();
-    const weekStr = ['日', '一', '二', '三', '四', '五', '六'];
+    const weekStr = ["日", "一", "二", "三", "四", "五", "六"];
     todayDate.value = `${year}-${month}-${day} 星期${weekStr[week]}`;
   };
   // 初始化时间
@@ -515,12 +515,12 @@
   const router = useRouter();
   // 管理员回到前台
   const backToHome = () => {
-    router.replace('/');
+    router.replace("/");
   };
 
   // 切换右侧工具栏
   const switchToolbarClick = () => {
-    emit('switchToolbarClick');
+    emit("switchToolbarClick");
   };
 
   // 用于删除右侧工具栏按钮的防抖
@@ -567,7 +567,7 @@
     &::after {
       display: none;
       position: absolute;
-      content: '';
+      content: "";
       width: var(--rounded);
       height: var(--rounded);
       line-height: 100px;
@@ -582,7 +582,7 @@
     &::before {
       display: none;
       position: absolute;
-      content: '';
+      content: "";
       width: var(--rounded);
       height: var(--rounded);
       line-height: 100px;

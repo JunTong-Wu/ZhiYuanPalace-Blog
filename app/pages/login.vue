@@ -43,7 +43,7 @@
             <ZyButton
               class="w-full"
               @click="login"
-              >{{ $t('common.login') }}</ZyButton
+              >{{ $t("common.login") }}</ZyButton
             >
           </div>
         </div>
@@ -53,8 +53,8 @@
 </template>
 <script setup lang="ts">
   const router = useRouter();
-  const username = ref('');
-  const password = ref('');
+  const username = ref("");
+  const password = ref("");
 
   // 登录
   const login = async () => {
@@ -72,7 +72,7 @@
         avatar: data.value.data.user_avatar,
         nickname: data.value.data.user_nick_name,
       });
-      await router.replace('/admin');
+      await router.replace("/admin");
     }
   };
 </script>

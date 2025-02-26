@@ -43,7 +43,7 @@
                   </template>
                   <template #title>
                     <p>
-                      {{ item.shuoshuo_text.replace(/\r\n/g, '') }}
+                      {{ item.shuoshuo_text.replace(/\r\n/g, "") }}
                     </p>
                   </template>
                 </ShuoShuoCard>
@@ -56,7 +56,7 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { shuoshuo } from '@@/models';
+  import { shuoshuo } from "@@/models";
   type ShuoshuoListModelType = shuoshuo.ShuoshuoList;
 
   // 获取说说列表

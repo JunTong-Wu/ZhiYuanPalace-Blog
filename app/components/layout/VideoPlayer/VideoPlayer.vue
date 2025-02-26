@@ -69,7 +69,7 @@
           <h2 class="text-xl font-bold portrait:text-base">
             @玉淇冰Mebius ·
             <span class="font-normal text-base portrait:text-xs">
-              {{ dateFormat(videoData.video_date, 'YYYY-MM-DD') }}
+              {{ dateFormat(videoData.video_date, "YYYY-MM-DD") }}
             </span>
           </h2>
           <p class="text-base drop-shadow-lg portrait:text-sm">
@@ -150,7 +150,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { video } from '@@/models';
+  import { video } from "@@/models";
   type VideoModelType = video.Video;
 
   const props = defineProps({
@@ -201,24 +201,24 @@
 
   // 控制audio进度条
   const progressBar = ref(0);
-  const currentTime = ref('00:00');
-  const duration = ref('--:--');
+  const currentTime = ref("00:00");
+  const duration = ref("--:--");
 
   const formatTime = (time: number) => {
     if (Number.isNaN(time)) {
-      return '--:--';
+      return "--:--";
     }
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
 
-    return `${minutes < 10 ? '0' : ''}${minutes}:${
-      seconds < 10 ? '0' : ''
+    return `${minutes < 10 ? "0" : ""}${minutes}:${
+      seconds < 10 ? "0" : ""
     }${seconds}`;
   };
 
   const progressInit = () => {
     if (videoElement.value) {
-      videoElement.value.addEventListener('timeupdate', () => {
+      videoElement.value.addEventListener("timeupdate", () => {
         if (videoElement.value) {
           const progress =
             (videoElement.value.currentTime / videoElement.value.duration) *

@@ -1,5 +1,5 @@
-import enLang from '@/language/en';
-import zhLang from '@/language/zh';
+import enLang from "@/language/en";
+import zhLang from "@/language/zh";
 
 const messages = {
   en: enLang,
@@ -8,8 +8,8 @@ const messages = {
 
 export default defineI18nConfig(() => ({
   legacy: false,
-  locale: 'zh',
-  fallbackLocale: 'zh',
+  locale: "zh",
+  fallbackLocale: "zh",
   globalInjection: true,
   messages,
 }));

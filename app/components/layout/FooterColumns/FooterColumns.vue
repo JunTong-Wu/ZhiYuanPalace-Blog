@@ -19,7 +19,7 @@
               </NuxtLink>
               <div class="max-w-96">
                 <p class="mb-12 text-text-2">
-                  {{ $t('home.briefIntroductionContent') }}
+                  {{ $t("home.briefIntroductionContent") }}
                 </p>
               </div>
 
@@ -110,7 +110,7 @@
             class="flex flex-col items-center justify-between landscape:flex-row landscape:space-y-2 py-8 portrait:py-0"
           >
             <span class="text-sm portrait:hidden"
-              >©2024 {{ $t('common.zhiYuanPalace') }}</span
+              >©2024 {{ $t("common.zhiYuanPalace") }}</span
             >
             <ul
               class="flex flex-wrap landscape:space-x-4 portrait:flex-col portrait:items-center portrait:text-text-3"
@@ -137,103 +137,103 @@
   </section>
 </template>
 <script setup lang="ts">
-  import './transition.scss';
-  import { ApiFriend } from '~/utils';
+  import "./transition.scss";
+  import { ApiFriend } from "~/utils";
 
   const router = useRouter();
 
   const socialLinks = [
     {
-      name: 'WeChat',
-      icon: 'i-cib-wechat',
-      href: '',
+      name: "WeChat",
+      icon: "i-cib-wechat",
+      href: "",
       onclick: () => {
         // window.open('https://wechats.deothemes.com')
-        console.log('wechat');
+        console.log("wechat");
       },
     },
     {
-      name: 'QQ',
-      icon: 'i-cib-qq',
-      href: '',
+      name: "QQ",
+      icon: "i-cib-qq",
+      href: "",
       onclick: () => {
         // window.open('https://wechats.deothemes.com')
-        console.log('qq');
+        console.log("qq");
       },
     },
     {
-      name: 'douyin',
-      icon: 'i-cib-tiktok',
-      href: '',
+      name: "douyin",
+      icon: "i-cib-tiktok",
+      href: "",
       onclick: () => {
         // window.open('https://qzone.deothemes.com')
-        console.log('douyin');
+        console.log("douyin");
       },
     },
   ];
 
   const thanksLinks = [
     {
-      name: '腾讯云',
-      href: 'https://cloud.tencent.com/',
+      name: "腾讯云",
+      href: "https://cloud.tencent.com/",
       onclick: () => {
-        window.open('https://cloud.tencent.com/');
+        window.open("https://cloud.tencent.com/");
       },
     },
     {
-      name: 'Nuxt',
-      href: 'https://nuxt.com/',
+      name: "Nuxt",
+      href: "https://nuxt.com/",
       onclick: () => {
-        window.open('https://nuxt.com/');
+        window.open("https://nuxt.com/");
       },
     },
     {
-      name: 'QQ音乐',
-      href: 'https://y.qq.com/',
+      name: "QQ音乐",
+      href: "https://y.qq.com/",
       onclick: () => {
-        window.open('https://y.qq.com/');
+        window.open("https://y.qq.com/");
       },
     },
     {
-      name: '混元大模型',
-      href: 'https://hunyuan.tencent.com/',
+      name: "混元大模型",
+      href: "https://hunyuan.tencent.com/",
       onclick: () => {
-        window.open('https://hunyuan.tencent.com/');
+        window.open("https://hunyuan.tencent.com/");
       },
     },
   ];
 
   const copyrightLinks = [
     {
-      name: '鄂ICP备2022016355号-1',
-      href: 'https://beian.miit.gov.cn/',
+      name: "鄂ICP备2022016355号-1",
+      href: "https://beian.miit.gov.cn/",
       mobileHide: false,
       onclick: () => {
-        window.open('https://beian.miit.gov.cn/');
+        window.open("https://beian.miit.gov.cn/");
       },
     },
     {
-      name: '隐私政策',
-      href: '',
+      name: "隐私政策",
+      href: "",
       mobileHide: true,
       onclick: () => {
-        console.log('隐私政策');
+        console.log("隐私政策");
       },
     },
     {
-      name: '条款和条件',
-      href: '',
+      name: "条款和条件",
+      href: "",
       mobileHide: true,
       onclick: () => {
-        console.log('条款和条件');
+        console.log("条款和条件");
       },
     },
     {
-      name: '开源文档',
-      href: '',
+      name: "开源文档",
+      href: "",
       mobileHide: true,
       onclick: () => {
-        console.log('开源文档');
+        console.log("开源文档");
       },
     },
   ];
@@ -243,13 +243,13 @@
   const friendsListData = ref<ResOptionsModelType<any>>({
     data: [],
     code: 0,
-    message: '',
+    message: "",
   });
   const showFriendList = (result: ResOptionsModelType<any>) => {
     friendsListData.value = result;
   };
 
   const showMoreFriends = () => {
-    router.push('/about/friend');
+    router.push("/about/friend");
   };
 </script>

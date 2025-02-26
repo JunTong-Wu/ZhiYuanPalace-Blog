@@ -1,12 +1,12 @@
 // Styles
-import './ZyRipple.css';
+import "./ZyRipple.css";
 
 // Utilities
-const stopSymbol = Symbol('rippleStop');
+const stopSymbol = Symbol("rippleStop");
 const DELAY_RIPPLE = 80;
 
 function isObject(obj) {
-  return obj !== null && typeof obj === 'object' && !Array.isArray(obj);
+  return obj !== null && typeof obj === "object" && !Array.isArray(obj);
 }
 const keyCodes = Object.freeze({
   enter: 13,
@@ -32,10 +32,10 @@ function transform(el, value) {
   el.style.webkitTransform = value;
 }
 function isTouchEvent(e) {
-  return e.constructor.name === 'TouchEvent';
+  return e.constructor.name === "TouchEvent";
 }
 function isKeyboardEvent(e) {
-  return e.constructor.name === 'KeyboardEvent';
+  return e.constructor.name === "KeyboardEvent";
 }
 const calculate = function (e, el) {
   let value =
@@ -80,50 +80,50 @@ const ripples = {
     if (!el?._ripple?.enabled) {
       return;
     }
-    const container = document.createElement('span');
-    const animation = document.createElement('span');
+    const container = document.createElement("span");
+    const animation = document.createElement("span");
     container.appendChild(animation);
-    container.className = 'zy-ripple-container';
+    container.className = "zy-ripple-container";
     if (value.class) {
       container.className += ` ${value.class}`;
     }
     const { radius, scale, x, y, centerX, centerY } = calculate(e, el, value);
     const size = `${radius * 2}px`;
-    animation.className = 'zy-ripple-animation';
+    animation.className = "zy-ripple-animation";
     animation.style.width = size;
     animation.style.height = size;
     el.appendChild(container);
     const computed = window.getComputedStyle(el);
-    if (computed && computed.position === 'static') {
-      el.style.position = 'relative';
-      el.dataset.previousPosition = 'static';
+    if (computed && computed.position === "static") {
+      el.style.position = "relative";
+      el.dataset.previousPosition = "static";
     }
-    animation.classList.add('zy-ripple-animation-enter');
+    animation.classList.add("zy-ripple-animation-enter");
     transform(
       animation,
       `translate(${x}, ${y}) scale3d(${scale},${scale},${scale})`,
     );
     animation.dataset.activated = String(performance.now());
     setTimeout(() => {
-      animation.classList.remove('zy-ripple-animation-enter');
-      animation.classList.add('zy-ripple-animation-in');
+      animation.classList.remove("zy-ripple-animation-enter");
+      animation.classList.add("zy-ripple-animation-in");
       transform(animation, `translate(${centerX}, ${centerY}) scale3d(1,1,1)`);
     }, 0);
   },
   hide(el) {
     if (!el?._ripple?.enabled) return;
-    const ripples = el.getElementsByClassName('zy-ripple-animation');
+    const ripples = el.getElementsByClassName("zy-ripple-animation");
     if (ripples.length === 0) return;
     const animation = ripples[ripples.length - 1];
     if (animation.dataset.isHiding) return;
-    else animation.dataset.isHiding = 'true';
+    else animation.dataset.isHiding = "true";
     const diff = performance.now() - Number(animation.dataset.activated);
     const delay = Math.max(250 - diff, 0);
     setTimeout(() => {
-      animation.classList.remove('zy-ripple-animation-in');
-      animation.classList.add('zy-ripple-animation-out');
+      animation.classList.remove("zy-ripple-animation-in");
+      animation.classList.add("zy-ripple-animation-out");
       setTimeout(() => {
-        const ripples = el.getElementsByClassName('zy-ripple-animation');
+        const ripples = el.getElementsByClassName("zy-ripple-animation");
         if (ripples.length === 1 && el.dataset.previousPosition) {
           el.style.position = el.dataset.previousPosition;
           delete el.dataset.previousPosition;
@@ -135,7 +135,7 @@ const ripples = {
   },
 };
 function isRippleEnabled(value) {
-  return typeof value === 'undefined' || !!value;
+  return typeof value === "undefined" || !!value;
 }
 function rippleShow(e) {
   const value = {};
@@ -184,7 +184,7 @@ function rippleHide(e) {
 
   // The touch interaction occurs before the show timer is triggered.
   // We still want to show ripple effect.
-  if (e.type === 'touchend' && element._ripple.showTimerCommit) {
+  if (e.type === "touchend" && element._ripple.showTimerCommit) {
     element._ripple.showTimerCommit();
     element._ripple.showTimerCommit = null;
 
@@ -244,31 +244,31 @@ function updateRipple(el, binding, wasEnabled) {
   }
   if (enabled && !wasEnabled) {
     if (modifiers.stop) {
-      el.addEventListener('touchstart', rippleStop, {
+      el.addEventListener("touchstart", rippleStop, {
         passive: true,
       });
-      el.addEventListener('mousedown', rippleStop);
+      el.addEventListener("mousedown", rippleStop);
       return;
     }
-    el.addEventListener('touchstart', rippleShow, {
+    el.addEventListener("touchstart", rippleShow, {
       passive: true,
     });
-    el.addEventListener('touchend', rippleHide, {
+    el.addEventListener("touchend", rippleHide, {
       passive: true,
     });
-    el.addEventListener('touchmove', rippleCancelShow, {
+    el.addEventListener("touchmove", rippleCancelShow, {
       passive: true,
     });
-    el.addEventListener('touchcancel', rippleHide);
-    el.addEventListener('mousedown', rippleShow);
-    el.addEventListener('mouseup', rippleHide);
-    el.addEventListener('mouseleave', rippleHide);
-    el.addEventListener('keydown', keyboardRippleShow);
-    el.addEventListener('keyup', keyboardRippleHide);
-    el.addEventListener('blur', focusRippleHide);
+    el.addEventListener("touchcancel", rippleHide);
+    el.addEventListener("mousedown", rippleShow);
+    el.addEventListener("mouseup", rippleHide);
+    el.addEventListener("mouseleave", rippleHide);
+    el.addEventListener("keydown", keyboardRippleShow);
+    el.addEventListener("keyup", keyboardRippleHide);
+    el.addEventListener("blur", focusRippleHide);
 
     // Anchor tags can be dragged, causes other hides to fail - #1537
-    el.addEventListener('dragstart', rippleHide, {
+    el.addEventListener("dragstart", rippleHide, {
       passive: true,
     });
   } else if (!enabled && wasEnabled) {
@@ -276,17 +276,17 @@ function updateRipple(el, binding, wasEnabled) {
   }
 }
 function removeListeners(el) {
-  el.removeEventListener('mousedown', rippleShow);
-  el.removeEventListener('touchstart', rippleShow);
-  el.removeEventListener('touchend', rippleHide);
-  el.removeEventListener('touchmove', rippleCancelShow);
-  el.removeEventListener('touchcancel', rippleHide);
-  el.removeEventListener('mouseup', rippleHide);
-  el.removeEventListener('mouseleave', rippleHide);
-  el.removeEventListener('keydown', keyboardRippleShow);
-  el.removeEventListener('keyup', keyboardRippleHide);
-  el.removeEventListener('dragstart', rippleHide);
-  el.removeEventListener('blur', focusRippleHide);
+  el.removeEventListener("mousedown", rippleShow);
+  el.removeEventListener("touchstart", rippleShow);
+  el.removeEventListener("touchend", rippleHide);
+  el.removeEventListener("touchmove", rippleCancelShow);
+  el.removeEventListener("touchcancel", rippleHide);
+  el.removeEventListener("mouseup", rippleHide);
+  el.removeEventListener("mouseleave", rippleHide);
+  el.removeEventListener("keydown", keyboardRippleShow);
+  el.removeEventListener("keyup", keyboardRippleHide);
+  el.removeEventListener("dragstart", rippleHide);
+  el.removeEventListener("blur", focusRippleHide);
 }
 function mounted(el, binding) {
   updateRipple(el, binding, false);

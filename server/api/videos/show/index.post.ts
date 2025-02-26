@@ -1,15 +1,15 @@
-import { video } from '@@/models';
-import { videoPasswordFilter } from '~~/server/utils/helper';
+import { video } from "@@/models";
+import { videoPasswordFilter } from "~~/server/utils/helper";
 type ApiShowModelType = video.ApiShow;
 
 /**
  * 展示单篇视频
  */
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as ApiShowModelType['params'];
+  const body = (await readBody(event)) as ApiShowModelType["params"];
   const id = body.video_id || null;
   const password = body.video_password || null;
-  let sql = 'SELECT * FROM videos WHERE video_id=?';
+  let sql = "SELECT * FROM videos WHERE video_id=?";
   let values = [];
   if (id) {
     values.push(id);
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
     return setJson(
       { data: dbResults.data[0] },
       dbResults,
-    ) as ApiShowModelType['result'];
+    ) as ApiShowModelType["result"];
   } else {
     return dbResults;
   }

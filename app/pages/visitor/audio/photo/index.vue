@@ -60,7 +60,7 @@
   </CommonMainSection>
 </template>
 <script setup lang="ts">
-  import { photo } from '@@/models';
+  import { photo } from "@@/models";
   type AlbumListModelType = photo.PhotoAlbumList;
 
   // 获取相册列表

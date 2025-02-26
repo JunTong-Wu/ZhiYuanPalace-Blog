@@ -17,13 +17,13 @@
   </div>
 </template>
 <script lang="ts">
-  import { cardTransitionStart } from './transition';
-  import './VideoCard.scss';
+  import { cardTransitionStart } from "./transition";
+  import "./VideoCard.scss";
 
   export default {
     props: {
       skeleton: { type: Boolean, default: false }, // 指定是否是骨架屏
-      href: { type: String, default: '' }, // 点击跳转的链接
+      href: { type: String, default: "" }, // 点击跳转的链接
     },
     setup(props) {
       const router = useRouter();

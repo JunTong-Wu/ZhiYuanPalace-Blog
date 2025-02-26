@@ -1,4 +1,4 @@
-import { article } from '@@/models';
+import { article } from "@@/models";
 
 type ArticleModelType = article.Article;
 type ArticleListModelType = article.ArticleList;
@@ -11,15 +11,15 @@ export const ApiArticle = {
    * 查询文章列表
    */
   getArticlesList(
-    params: ApiIndexModelType['params'] | null,
+    params: ApiIndexModelType["params"] | null,
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<ArticleListModelType>>> {
-    return ApiService.post('/articles/index', params);
+    return ApiService.post("/articles/index", params);
   },
   /**
    * 查询单篇文章
    */
   showArticle(
-    params: ApiShowModelType['params'],
+    params: ApiShowModelType["params"],
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<ArticleModelType>>> {
     return ApiService.post(`/articles/show`, params);
   },
@@ -29,6 +29,6 @@ export const ApiArticle = {
   passwordVerify(
     params: any,
   ): Promise<LazyAsyncDataRef<ResOptionsModelType<null>>> {
-    return ApiService.post('/articles/password-verify', params);
+    return ApiService.post("/articles/password-verify", params);
   },
 };

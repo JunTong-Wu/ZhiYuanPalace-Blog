@@ -1,5 +1,5 @@
-import { article } from '@@/models';
-import { articlePasswordFilter } from '~~/server/utils/helper';
+import { article } from "@@/models";
+import { articlePasswordFilter } from "~~/server/utils/helper";
 type ApiIndexModelType = article.ApiIndex;
 type Article = article.Article;
 
@@ -7,19 +7,19 @@ type Article = article.Article;
  * 查询文章列表
  */
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as ApiIndexModelType['params'];
+  const body = (await readBody(event)) as ApiIndexModelType["params"];
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const classifyPath = body.classify_path || null;
 
   const sql =
-    'SELECT * \n' +
-    'FROM articles \n' +
-    'JOIN article_classifys ON articles.article_classify_id = article_classifys.classify_id \n' +
-    'WHERE articles.article_private!= 1\n' +
-    (classifyPath ? 'AND article_classifys.classify_path = ?' : '') +
-    'ORDER BY articles.article_date DESC\n' +
-    (pageNumer !== -1 && pageSize !== -1 ? 'LIMIT ?,?;' : ';');
+    "SELECT * \n" +
+    "FROM articles \n" +
+    "JOIN article_classifys ON articles.article_classify_id = article_classifys.classify_id \n" +
+    "WHERE articles.article_private!= 1\n" +
+    (classifyPath ? "AND article_classifys.classify_path = ?" : "") +
+    "ORDER BY articles.article_date DESC\n" +
+    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
 
   let values = [];
   if (classifyPath) {
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
     dbResults.data.forEach((item: Article) => {
       if (item.article_text.length > 60) {
-        item.article_text = item.article_text.substring(0, 60) + '...';
+        item.article_text = item.article_text.substring(0, 60) + "...";
       }
     });
     dbResults = articlePasswordFilter(dbResults);
@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
     return setJson(
       { data: { list: dbResults.data, total: total } },
       dbResults,
-    ) as ApiIndexModelType['result'];
+    ) as ApiIndexModelType["result"];
   } else {
     return dbResults;
   }

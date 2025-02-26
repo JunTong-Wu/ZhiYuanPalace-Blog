@@ -85,7 +85,7 @@
   </nav>
 </template>
 <script setup lang="ts">
-  import type { RouterOptions } from 'vue-router';
+  import type { RouterOptions } from "vue-router";
 
   const props = defineProps({
     isAdminHeader: {
@@ -98,8 +98,8 @@
   const route = useRoute();
   const router = useRouter();
   const titleDisable = ref(true);
-  const childrenTabs = ref<RouterOptions['routes']>();
-  const activeTab = ref<string>('');
+  const childrenTabs = ref<RouterOptions["routes"]>();
+  const activeTab = ref<string>("");
   const { locale } = useI18n();
 
   childrenTabs.value = getChildrenTabs(route.fullPath);
@@ -137,7 +137,7 @@
 
   const indicatorMove = (index: number) => {
     const allTabs = document.querySelectorAll(
-      '#header-tabs li',
+      "#header-tabs li",
     ) as NodeListOf<HTMLLIElement>;
     const tab = allTabs[index];
     let tabWidth = [];
@@ -145,18 +145,18 @@
       tabWidth.push(allTabs[i]?.getBoundingClientRect().width);
     }
     for (let i = 0; i < allTabs.length; i++) {
-      allTabs[i]?.classList.remove('activate');
+      allTabs[i]?.classList.remove("activate");
     }
     const indicator = document.querySelector(
-      '#header-tabs-indicator',
+      "#header-tabs-indicator",
     ) as HTMLElement | null;
     if (tab && indicator) {
       const width = tab.getBoundingClientRect().width;
       const left = tabWidth.slice(0, index).reduce((acc, cur) => acc + cur, 0);
       indicator.style.left = `${left}px`;
       indicator.style.width = `${width}px`;
-      indicator.style.opacity = '1';
-      tab.classList.add('activate');
+      indicator.style.opacity = "1";
+      tab.classList.add("activate");
     }
   };
 
@@ -191,7 +191,7 @@
     activeTab.value = route.fullPath;
     initIndicator(activeTab.value);
     // 监听浏览器窗口变化
-    window.addEventListener('resize', function () {
+    window.addEventListener("resize", function () {
       initIndicator(activeTab.value);
     });
   });

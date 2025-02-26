@@ -25,7 +25,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { useI18n } from 'vue-i18n';
+  import { useI18n } from "vue-i18n";
 
   const { locale, t, availableLocales } = useI18n();
 

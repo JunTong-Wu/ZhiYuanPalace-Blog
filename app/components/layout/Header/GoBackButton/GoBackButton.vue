@@ -43,12 +43,12 @@
     // 移除路径两端的斜杠，然后分割路径
     const parts = path
       .trim()
-      .replace(/^\/+|\/+$/g, '')
-      .split('/');
+      .replace(/^\/+|\/+$/g, "")
+      .split("/");
 
     // 如果路径是"/"或者分割后的部分数量小于等于2，则返回true
     // 否则返回false
-    return path === '/' || (parts.length <= 2 && parts[0] !== '');
+    return path === "/" || (parts.length <= 2 && parts[0] !== "");
   };
   const gobackFlag = ref(false);
   const gobackInit = (path: string) => {
@@ -65,15 +65,15 @@
   });
   const getParentPath = () => {
     let currentPath = window.location.pathname;
-    let lastIndex = currentPath.lastIndexOf('/');
+    let lastIndex = currentPath.lastIndexOf("/");
     // 如果当前路径已经是根路径，或者只有一个斜杠，则没有上一级路径
     if (lastIndex <= 0) {
-      return '/';
+      return "/";
     }
     // 去掉最后一个路径段
     let parentPath = currentPath.slice(0, lastIndex);
     // 去掉尾部斜杠
-    return parentPath.replace(/\/+$/, '');
+    return parentPath.replace(/\/+$/, "");
   };
   const goback = () => {
     router.replace(getParentPath());

@@ -139,7 +139,7 @@
     },
   });
 
-  const emit = defineEmits(['change']);
+  const emit = defineEmits(["change"]);
 
   const linkList = getNavigationMapForAdminMenu();
   const route = useRoute();
@@ -157,7 +157,7 @@
   watch(
     () => route.path,
     (newVal) => {
-      emit('change');
+      emit("change");
     },
   );
 </script>

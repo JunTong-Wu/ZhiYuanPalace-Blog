@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-  import { music } from '@@/models';
+  import { music } from "@@/models";
   type MusicListModelType = music.MusicList;
   type MusicModelType = music.Music;
 
@@ -61,29 +61,29 @@
 
   const columns = [
     {
-      key: 'index',
-      label: '#',
-      class: 'portrait:hidden',
-      rowClass: 'portrait:hidden',
+      key: "index",
+      label: "#",
+      class: "portrait:hidden",
+      rowClass: "portrait:hidden",
     },
     {
-      key: 'cover',
-      label: '封面',
-      rowClass: 'portrait:w-24',
+      key: "cover",
+      label: "封面",
+      rowClass: "portrait:w-24",
     },
     {
-      key: 'name',
-      label: '歌曲',
+      key: "name",
+      label: "歌曲",
     },
     {
-      key: 'singer',
-      label: '歌手',
-      class: 'portrait:hidden',
-      rowClass: 'portrait:hidden',
+      key: "singer",
+      label: "歌手",
+      class: "portrait:hidden",
+      rowClass: "portrait:hidden",
     },
     {
-      key: 'actions',
-      rowClass: 'portrait:w-12',
+      key: "actions",
+      rowClass: "portrait:w-12",
     },
   ];
   // 获取音乐列表
@@ -118,7 +118,7 @@
   const playThisMusic = (row: any) => {
     const music = musicListData.value.list[row.index - 1] as MusicModelType;
     if (music.song_id !== musicNowId.value) {
-      console.log('切歌');
+      console.log("切歌");
       musicSkipFromOutside.value(music);
       // 切歌生效后，播放
       if (musicNowId.value) {
@@ -128,7 +128,7 @@
         }
       }
     } else {
-      console.log('暂停/播放当前歌曲');
+      console.log("暂停/播放当前歌曲");
       playingId.value = musicNowId.value;
       if (musicPlayState.value) {
         musicPause.value();

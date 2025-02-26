@@ -1,5 +1,5 @@
-import type { ResOptions } from './options';
-import { Post, Classify } from './post-common';
+import type { ResOptions } from "./options";
+import { Post, Classify } from "./post-common";
 
 export class Article extends Post {
   article_id: number = this.id;
@@ -10,13 +10,13 @@ export class Article extends Post {
   article_likes: number = this.likes;
   article_comments: number = this.comments;
 
-  article_title_image: string = '';
-  article_text: string = '';
-  article_copyright: string = '';
-  article_keywords: string = '';
+  article_title_image: string = "";
+  article_text: string = "";
+  article_copyright: string = "";
+  article_keywords: string = "";
 
   article_private: number = 0;
-  article_password: string = '';
+  article_password: string = "";
 
   has_password: boolean = false;
 }

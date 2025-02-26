@@ -1,8 +1,8 @@
-import { article, video } from '@@/models';
+import { article, video } from "@@/models";
 import {
   articlePasswordFilter,
   videoPasswordFilter,
-} from '~~/server/utils/helper';
+} from "~~/server/utils/helper";
 type ApiShowModelType = article.ApiShow;
 type Article = article.Article;
 
@@ -10,10 +10,10 @@ type Article = article.Article;
  * 展示单篇文章
  */
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as ApiShowModelType['params'];
+  const body = (await readBody(event)) as ApiShowModelType["params"];
   const id = body.article_id || null;
   const password = body.article_password || null;
-  let sql = 'SELECT * FROM articles WHERE article_id= ?';
+  let sql = "SELECT * FROM articles WHERE article_id= ?";
   let values = [];
   if (id) {
     values.push(id);
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     return setJson(
       { data: dbResults.data[0] },
       dbResults,
-    ) as ApiShowModelType['result'];
+    ) as ApiShowModelType["result"];
   } else {
     return dbResults;
   }

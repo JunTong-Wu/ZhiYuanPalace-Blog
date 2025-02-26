@@ -72,21 +72,21 @@
 
   const props = defineProps({
     display: { type: Boolean },
-    position: { type: String, default: 'right' },
-    size: { type: String, default: '340px' },
-    title: { type: String, default: '' },
+    position: { type: String, default: "right" },
+    size: { type: String, default: "340px" },
+    title: { type: String, default: "" },
     closable: { type: Boolean, default: true },
     mask: { type: Boolean, default: true },
     maskClosable: { type: Boolean, default: true },
-    maskColor: { type: String, default: 'transparent' },
+    maskColor: { type: String, default: "transparent" },
     maskBlur: { type: Boolean, default: false },
     zIndex: { type: Number, default: 2000 },
     hideHeader: { type: Boolean, default: false },
     dark: { type: Boolean, default: false },
-    background: { type: String, default: '' },
+    background: { type: String, default: "" },
   });
 
-  const emit = defineEmits(['cancel']);
+  const emit = defineEmits(["cancel"]);
 
   const componentsDisplay = ref(false);
   const visible = ref(false);
@@ -95,16 +95,16 @@
   const requestQueue = ref<Function[]>([]); // 用于存储状态变化的请求队列
 
   const maskClass = ref({
-    'opacity-100': false,
-    'opacity-0': true,
-    'backdrop-blur-xl': true,
+    "opacity-100": false,
+    "opacity-0": true,
+    "backdrop-blur-xl": true,
   });
 
   const classInit = () => {
     maskClass.value = {
-      'opacity-100': props.mask && visible.value,
-      'opacity-0': !(props.mask && visible.value),
-      'backdrop-blur-xl': props.mask && props.maskBlur && visible.value,
+      "opacity-100": props.mask && visible.value,
+      "opacity-0": !(props.mask && visible.value),
+      "backdrop-blur-xl": props.mask && props.maskBlur && visible.value,
     };
   };
   classInit();
@@ -114,69 +114,69 @@
   });
 
   const mainStyle = ref({
-    width: 'auto',
-    height: 'auto',
-    top: 'auto',
-    bottom: 'auto',
-    left: 'auto',
-    right: 'auto',
-    transform: '',
-    background: '',
+    width: "auto",
+    height: "auto",
+    top: "auto",
+    bottom: "auto",
+    left: "auto",
+    right: "auto",
+    transform: "",
+    background: "",
   });
 
   const mainStyleInit = () => {
-    let positionTop = 'auto';
-    let positionBottom = 'auto';
-    let positionLeft = 'auto';
-    let positionRight = 'auto';
-    let positionWidth = 'auto';
-    let positionHeight = 'auto';
-    let transform = '';
-    let background = '';
+    let positionTop = "auto";
+    let positionBottom = "auto";
+    let positionLeft = "auto";
+    let positionRight = "auto";
+    let positionWidth = "auto";
+    let positionHeight = "auto";
+    let transform = "";
+    let background = "";
 
-    if (props.position == 'right') {
-      positionRight = '0';
-      positionTop = '0';
-      positionBottom = '0';
+    if (props.position == "right") {
+      positionRight = "0";
+      positionTop = "0";
+      positionBottom = "0";
       positionWidth = props.size;
       if (visible.value) {
-        transform = 'translateX(0px)';
+        transform = "translateX(0px)";
       } else {
         transform = `translateX(calc(0px + ${props.size}))`;
       }
-    } else if (props.position == 'left') {
-      positionLeft = '0';
-      positionTop = '0';
-      positionBottom = '0';
+    } else if (props.position == "left") {
+      positionLeft = "0";
+      positionTop = "0";
+      positionBottom = "0";
       positionWidth = props.size;
       if (visible.value) {
-        transform = 'translateX(0px)';
+        transform = "translateX(0px)";
       } else {
         transform = `translateX(calc(0px - ${props.size}))`;
       }
-    } else if (props.position == 'top') {
-      positionTop = '0';
-      positionLeft = '0';
-      positionRight = '0';
+    } else if (props.position == "top") {
+      positionTop = "0";
+      positionLeft = "0";
+      positionRight = "0";
       positionHeight = props.size;
       if (visible.value) {
-        transform = 'translateY(0px)';
+        transform = "translateY(0px)";
       } else {
         transform = `translateY(calc(0px - ${props.size}))`;
       }
-    } else if (props.position == 'bottom') {
-      positionBottom = '0';
-      positionLeft = '0';
-      positionRight = '0';
+    } else if (props.position == "bottom") {
+      positionBottom = "0";
+      positionLeft = "0";
+      positionRight = "0";
       positionHeight = props.size;
       if (visible.value) {
-        transform = 'translateY(0px)';
+        transform = "translateY(0px)";
       } else {
         transform = `translateY(calc(0px + ${props.size}))`;
       }
     }
 
-    if (props.background && props.background != '') {
+    if (props.background && props.background != "") {
       background = props.background;
     }
     mainStyle.value = {
@@ -196,7 +196,7 @@
 
   const translate = (translate: string | null, transition: boolean) => {
     if (el.value) {
-      const drawerMain = el.value.querySelector('.drawer-main');
+      const drawerMain = el.value.querySelector(".drawer-main");
       if (transition) {
         drawerMain.style.transition = `transform ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
         setTimeout(() => {
@@ -242,17 +242,17 @@
     componentsDisplay.value = false;
     const body = document.documentElement;
     if (body) {
-      body.style.overflow = 'auto';
+      body.style.overflow = "auto";
     }
     if (!byParent) {
-      emit('cancel');
+      emit("cancel");
     }
   };
 
   const open = async () => {
     const body = document.documentElement;
     if (body) {
-      body.style.overflow = 'hidden';
+      body.style.overflow = "hidden";
     }
 
     componentsDisplay.value = true;
@@ -280,42 +280,42 @@
   };
 
   const slidingLeft = (val: any) => {
-    if (props.position == 'left') {
+    if (props.position == "left") {
       translate(`translateX(calc(0px - ${val.moveDistanceX}px))`, false);
     }
   };
   const slidingRight = (val: any) => {
-    if (props.position == 'right') {
+    if (props.position == "right") {
       translate(`translateX(calc(0px - ${val.moveDistanceX}px))`, false);
     }
   };
   const slidingUp = (val: any) => {
-    if (props.position == 'top') {
+    if (props.position == "top") {
       translate(`translateY(calc(0px - ${val.moveDistanceY}px))`, false);
     }
   };
   const slidingDown = (val: any) => {
-    if (props.position == 'bottom') {
+    if (props.position == "bottom") {
       translate(`translateY(calc(0px - ${val.moveDistanceY}px))`, false);
     }
   };
   const slideEndLeft = () => {
-    if (props.position == 'left') {
+    if (props.position == "left") {
       close();
     }
   };
   const slideEndRight = () => {
-    if (props.position == 'right') {
+    if (props.position == "right") {
       close();
     }
   };
   const slideEndUp = () => {
-    if (props.position == 'top') {
+    if (props.position == "top") {
       close();
     }
   };
   const slideEndDown = () => {
-    if (props.position == 'bottom') {
+    if (props.position == "bottom") {
       close();
     }
   };

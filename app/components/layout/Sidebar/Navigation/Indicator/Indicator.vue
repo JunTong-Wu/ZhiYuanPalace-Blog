@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
   export default {
-    props: ['msg'],
+    props: ["msg"],
     data() {
       return {
         pages: this.msg,
@@ -21,7 +21,7 @@
         for (let i in this.pages) {
           if (this.$route.path.match(this.pages[i].path) != null) {
             // 如果当前页面的url包含导航列表的url
-            if (this.$route.path == '/') {
+            if (this.$route.path == "/") {
               // 如果当前页面的url是'/'主页
               order = 0;
             } else {
@@ -31,8 +31,8 @@
           }
         }
 
-        const indicatorWrap = document.getElementById('indicator-layer');
-        const indicator = document.getElementById('side-bar-nav-indicator');
+        const indicatorWrap = document.getElementById("indicator-layer");
+        const indicator = document.getElementById("side-bar-nav-indicator");
         if (indicator) {
           // 盒子高度
           const boxHeight: number = indicatorWrap?.clientHeight as number;
@@ -51,14 +51,14 @@
       },
     },
     mounted() {
-      const indicator = document.getElementById('side-bar-nav-indicator');
+      const indicator = document.getElementById("side-bar-nav-indicator");
       if (indicator) {
-        indicator.style.display = 'block';
+        indicator.style.display = "block";
         this.indicatorInit();
       }
       const th = this;
       // 监听浏览器窗口变化
-      window.addEventListener('resize', function () {
+      window.addEventListener("resize", function () {
         th.indicatorInit();
       });
     },
@@ -69,7 +69,7 @@
         for (let i in this.pages) {
           if (from.path.match(this.pages[i].path) != null) {
             // 如果离开页面的url包含导航列表的url
-            if (from.path == '/') {
+            if (from.path == "/") {
               // 如果离开页面的url是'/'主页
               this.fromOrder = 0;
             } else {
@@ -79,7 +79,7 @@
           }
           if (to.path.match(this.pages[i].path) != null) {
             // 如果进入页面的url包含导航列表的url
-            if (to.path == '/') {
+            if (to.path == "/") {
               // 如果进入页面的url是'/'主页
               this.toOrder = 0;
             } else {
@@ -90,17 +90,17 @@
         }
 
         //如果to索引大于from索引,判断为前进状态,反之则为后退状态
-        let direction = 'unset';
+        let direction = "unset";
         if (this.toOrder > this.fromOrder) {
-          direction = 'next';
+          direction = "next";
         } else {
-          direction = 'prev';
+          direction = "prev";
         }
 
-        const indicatorWrap = document.getElementById('indicator-layer');
-        const indicator = document.getElementById('side-bar-nav-indicator');
+        const indicatorWrap = document.getElementById("indicator-layer");
+        const indicator = document.getElementById("side-bar-nav-indicator");
         if (indicator) {
-          if (direction == 'next') {
+          if (direction == "next") {
             //向下导航，bottom先走，top后走
             indicator.style.transition = `bottom 200ms , top 400ms`;
           } else {

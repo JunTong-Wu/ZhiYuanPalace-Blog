@@ -75,13 +75,13 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { sleep } from '~/utils';
+  import { sleep } from "~/utils";
 
-  type VerifyType = 'article' | 'album' | 'video';
+  type VerifyType = "article" | "album" | "video";
   const props = defineProps({
     type: {
       type: Object as () => VerifyType | null,
-      default: 'article',
+      default: "article",
     },
     id: {
       type: Number,
@@ -93,42 +93,42 @@
     },
   });
 
-  const emit = defineEmits(['validateSuccess']);
+  const emit = defineEmits(["validateSuccess"]);
 
   const loading = ref(false);
   const isOpen = ref(false);
-  const password = ref('');
+  const password = ref("");
 
   const getVerifyApi = computed(() => {
     let params: any = {
       api: undefined,
-      outsideTips: '',
-      failTips: '',
-      successTips: '',
+      outsideTips: "",
+      failTips: "",
+      successTips: "",
     };
     switch (props.type) {
-      case 'article':
+      case "article":
         params = {
           api: ApiArticle.passwordVerify,
-          outsideTips: '该文章被密码保护',
-          failTips: '请输入正确的密码，才能访问这篇文章',
-          successTips: '密码正确，您现在可以访问这篇文章',
+          outsideTips: "该文章被密码保护",
+          failTips: "请输入正确的密码，才能访问这篇文章",
+          successTips: "密码正确，您现在可以访问这篇文章",
         };
         break;
-      case 'album':
+      case "album":
         params = {
           api: ApiPhotos.passwordVerify,
-          outsideTips: '该相册被密码保护',
-          failTips: '请输入正确的密码，才能访问这个相册',
-          successTips: '密码正确，您现在可以访问这个相册',
+          outsideTips: "该相册被密码保护",
+          failTips: "请输入正确的密码，才能访问这个相册",
+          successTips: "密码正确，您现在可以访问这个相册",
         };
         break;
-      case 'video':
+      case "video":
         params = {
           api: ApiVideo.passwordVerify,
-          outsideTips: '该视频被密码保护',
-          failTips: '请输入正确的密码，才能访问这个视频',
-          successTips: '密码正确，您现在可以访问这个视频',
+          outsideTips: "该视频被密码保护",
+          failTips: "请输入正确的密码，才能访问这个视频",
+          successTips: "密码正确，您现在可以访问这个视频",
         };
       default:
         // eslint-disable-next-line no-case-declarations
@@ -141,9 +141,9 @@
   });
 
   const verifyPassword = async () => {
-    if (password.value.trim() === '') {
+    if (password.value.trim() === "") {
       window.ZyToast({
-        title: '密码不能为空',
+        title: "密码不能为空",
         text: getVerifyApi.value.failTips,
       });
       return;
@@ -157,10 +157,10 @@
     loading.value = false;
     if (data.value.code === 0) {
       window.ZyToast({
-        title: '密码正确',
+        title: "密码正确",
         text: getVerifyApi.value.successTips,
       });
-      emit('validateSuccess', { password: password.value });
+      emit("validateSuccess", { password: password.value });
       isOpen.value = false;
     }
   };

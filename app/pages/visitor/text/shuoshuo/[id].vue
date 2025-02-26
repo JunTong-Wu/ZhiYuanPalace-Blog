@@ -10,7 +10,7 @@
           <div class="zy-shuoshuo-card-inner">
             <div class="zy-card-title">
               <p>
-                {{ shuoshuoData.shuoshuo_text.replace(/\r\n/g, '') }}
+                {{ shuoshuoData.shuoshuo_text.replace(/\r\n/g, "") }}
               </p>
             </div>
             <div class="zy-card-image">
@@ -29,12 +29,12 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { shuoshuo } from '@@/models';
+  import { shuoshuo } from "@@/models";
   type ShuoshuoModelType = shuoshuo.Shuoshuo;
 
   const { setPostInfo, clearPostInfo } = toRefs(store.usePostInfo());
   const setHeaderTitle = (id: number, title: string) => {
-    setPostInfo.value(id, 'shuoshuo', title);
+    setPostInfo.value(id, "shuoshuo", title);
   };
 
   const route = useRoute();
@@ -49,7 +49,7 @@
     shuoshuoData.value = result.data;
     setHeaderTitle(
       shuoshuoData.value.shuoshuo_id,
-      shuoshuoData.value.shuoshuo_text.substring(0, 30) + '...',
+      shuoshuoData.value.shuoshuo_text.substring(0, 30) + "...",
     );
   };
   const config = useRuntimeConfig();
@@ -60,5 +60,5 @@
   });
 </script>
 <style lang="scss">
-  @import url('@/components/layout/ShuoShuoCard/ShuoShuoCard.scss');
+  @import url("@/components/layout/ShuoShuoCard/ShuoShuoCard.scss");
 </style>

@@ -89,7 +89,7 @@
   const friendsListData = ref<ResOptionsModelType<any>>({
     data: [],
     code: 0,
-    message: '',
+    message: "",
   });
   const showFriendList = (result: ResOptionsModelType<any>) => {
     friendsListData.value = result;

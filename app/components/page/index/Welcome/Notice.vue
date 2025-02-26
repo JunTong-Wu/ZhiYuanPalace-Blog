@@ -14,6 +14,6 @@
 <script lang="ts" setup>
   const { locale } = useI18n();
   const cnClass = computed(() => {
-    return locale.value.includes('zh');
+    return locale.value.includes("zh");
   });
 </script>

@@ -68,7 +68,7 @@
   </div>
 </template>
 <script setup lang="ts">
-  import { photo } from '@@/models';
+  import { photo } from "@@/models";
   type Photo = photo.Photo;
   type AlbumListModelType = photo.PhotoAlbumList;
   type AlbumModelType = photo.PhotoAlbum;
@@ -76,7 +76,7 @@
 
   const { setPostInfo, clearPostInfo } = toRefs(store.usePostInfo());
   const setHeaderTitle = (id: number, title: string) => {
-    setPostInfo.value(id, 'album', title);
+    setPostInfo.value(id, "album", title);
   };
 
   const route = useRoute();

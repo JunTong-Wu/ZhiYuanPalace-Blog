@@ -1,22 +1,22 @@
-import { music } from '@@/models';
+import { music } from "@@/models";
 type ApiIndexModelType = music.ApiIndex;
 
 /**
  * 查询音乐列表
  */
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as ApiIndexModelType['params'];
+  const body = (await readBody(event)) as ApiIndexModelType["params"];
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const sheetPath = body.sheet_pash || null;
 
   const sql =
-    'SELECT * \n' +
-    'FROM songs \n' +
-    'JOIN song_sheets ON songs.song_sheet_id = song_sheets.sheet_id \n' +
-    (sheetPath ? 'WHERE song_sheets.sheet_pash = ?' : '') +
-    'ORDER BY songs.song_id DESC\n' +
-    (pageNumer !== -1 && pageSize !== -1 ? 'LIMIT ?,?;' : ';');
+    "SELECT * \n" +
+    "FROM songs \n" +
+    "JOIN song_sheets ON songs.song_sheet_id = song_sheets.sheet_id \n" +
+    (sheetPath ? "WHERE song_sheets.sheet_pash = ?" : "") +
+    "ORDER BY songs.song_id DESC\n" +
+    (pageNumer !== -1 && pageSize !== -1 ? "LIMIT ?,?;" : ";");
 
   let values = [];
   if (sheetPath) {
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     return setJson(
       { data: { list: dbResults.data, total: total } },
       dbResults,
-    ) as ApiIndexModelType['result'];
+    ) as ApiIndexModelType["result"];
   } else {
     return dbResults;
   }

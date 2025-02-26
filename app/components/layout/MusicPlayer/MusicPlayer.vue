@@ -305,13 +305,13 @@
   </aside>
 </template>
 <script setup lang="ts">
-  import './transition.scss';
+  import "./transition.scss";
   import {
     musicCardTransitionStart,
     musicCardTransitionSlidingUp,
     musicCardTransitionSlideEndUp,
     musicCardTransitionSlideCancelUp,
-  } from './transition';
+  } from "./transition";
 
   const isLoading = ref(true);
   const isOpen = ref(false);
@@ -325,10 +325,10 @@
   const openMusicDrawer = () => {
     const body = document.documentElement;
     if (body) {
-      body.style.overflow = 'hidden';
+      body.style.overflow = "hidden";
     }
-    const el = document.getElementById('zy-music-bar');
-    const drawer = document.getElementById('zy-music-drawer');
+    const el = document.getElementById("zy-music-bar");
+    const drawer = document.getElementById("zy-music-drawer");
     musicCardTransitionStart(el, drawer, () => {
       isOpen.value = true;
       touchInit.value = Date.now();
@@ -337,28 +337,28 @@
 
   // 关闭音乐卡片
   const slidingUp = (val: any) => {
-    const el = document.getElementById('zy-music-bar');
-    const drawer = document.getElementById('zy-music-drawer');
+    const el = document.getElementById("zy-music-bar");
+    const drawer = document.getElementById("zy-music-drawer");
     const moveDistanceY = val.moveDistanceY;
     musicCardTransitionSlidingUp(el, drawer, moveDistanceY);
   };
 
   const slideEndUp = (val: any) => {
-    const el = document.getElementById('zy-music-bar');
-    const drawer = document.getElementById('zy-music-drawer');
+    const el = document.getElementById("zy-music-bar");
+    const drawer = document.getElementById("zy-music-drawer");
     musicCardTransitionSlideEndUp(el, drawer, () => {
       isOpen.value = false;
       const body = document.documentElement;
       if (body) {
-        body.style.overflow = 'auto';
+        body.style.overflow = "auto";
       }
       touchInit.value = Date.now();
     });
   };
 
   const slideCancelUp = () => {
-    const el = document.getElementById('zy-music-bar');
-    const drawer = document.getElementById('zy-music-drawer');
+    const el = document.getElementById("zy-music-bar");
+    const drawer = document.getElementById("zy-music-drawer");
     musicCardTransitionSlideCancelUp(el, drawer);
     touchInit.value = Date.now();
   };
@@ -380,7 +380,7 @@
   const refreshAudioElement = ref(false);
 
   const playStatusInit = () => {
-    const audioPlayer = document.getElementById('bgMusic') as HTMLMediaElement;
+    const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
     if (audioPlayer) {
       musicPlayState.value = false;
     }
@@ -388,22 +388,22 @@
 
   // 控制audio进度条
   const progressBar = ref(0);
-  const currentTime = ref('00:00');
-  const duration = ref('--:--');
+  const currentTime = ref("00:00");
+  const duration = ref("--:--");
 
   const formatTime = (time: number) => {
     if (Number.isNaN(time)) {
-      return '--:--';
+      return "--:--";
     }
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    return `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
   const progressInit = () => {
-    const audioPlayer = document.getElementById('bgMusic') as HTMLMediaElement;
+    const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
     if (audioPlayer) {
-      audioPlayer.addEventListener('timeupdate', () => {
+      audioPlayer.addEventListener("timeupdate", () => {
         const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         currentTime.value = formatTime(audioPlayer.currentTime);
         duration.value = formatTime(audioPlayer.duration);
@@ -414,7 +414,7 @@
 
   // 进度条拖动时更新音乐播放位置
   const progressBarInput = () => {
-    const audioPlayer = document.getElementById('bgMusic') as HTMLMediaElement;
+    const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
     const newTime = (progressBar.value / 100) * audioPlayer.duration;
     audioPlayer.currentTime = newTime;
   };
@@ -430,16 +430,16 @@
   const lyricsArray = ref<Array<LRC>>([
     {
       time: 0,
-      text: '暂无歌词，享受好音乐',
+      text: "暂无歌词，享受好音乐",
       isActivate: true,
       isNext: false,
       isPrev: false,
     },
   ]);
-  const desktopLyrics = ref('');
+  const desktopLyrics = ref("");
 
   const fetchLRCFile = async (url: string) => {
-    if (musicNowLyric.value !== '') {
+    if (musicNowLyric.value !== "") {
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -448,7 +448,7 @@
         const lrcText = await response.text();
         return lrcText;
       } catch (error) {
-        console.error('Error fetching LRC file:', error);
+        console.error("Error fetching LRC file:", error);
         return null;
       }
     } else {
@@ -456,7 +456,7 @@
     }
   };
   const parseLRC = (lrcText: string) => {
-    const lines = lrcText.split('\n');
+    const lines = lrcText.split("\n");
     const lyrics = <Array<LRC>>[];
     const timeExp = /\[(\d{2}):(\d{2})\.(\d{2})\]/;
     lines.forEach((line) => {
@@ -466,7 +466,7 @@
         const seconds = parseInt(match[2] as string, 10);
         const milliseconds = parseInt(match[3] as string, 10);
         const time = minutes * 60 + seconds + milliseconds / 100; // 转换为秒
-        const text = line.replace(timeExp, '').trim();
+        const text = line.replace(timeExp, "").trim();
         lyrics.push({
           time,
           text,
@@ -477,7 +477,7 @@
       }
     });
     lyrics.forEach((lyric) => {
-      if (lyric.text === '') {
+      if (lyric.text === "") {
         lyrics.splice(lyrics.indexOf(lyric), 1);
       }
     });
@@ -511,35 +511,35 @@
 
   const scrollToNowLyric = () => {
     let lineHeight = 40;
-    const lyricElement = document.getElementById('zy-music-lyric');
+    const lyricElement = document.getElementById("zy-music-lyric");
     if (lyricElement) {
       const audioPlayer = document.getElementById(
-        'bgMusic',
+        "bgMusic",
       ) as HTMLMediaElement;
       const currentIndex = findLyricIndex(
         lyricsArray.value,
         audioPlayer.currentTime,
       );
-      const lyricWrapperDiv = lyricElement.querySelector('div');
+      const lyricWrapperDiv = lyricElement.querySelector("div");
       if (lyricWrapperDiv) {
         lineHeight = lyricWrapperDiv.offsetHeight / lyricsArray.value.length;
       }
       if (currentIndex !== -1) {
         lyricElement.scrollTo({
           top: (currentIndex - 2) * lineHeight,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
       }
     }
   };
 
   const displayLyrics = () => {
-    const audioPlayer = document.getElementById('bgMusic') as HTMLMediaElement;
+    const audioPlayer = document.getElementById("bgMusic") as HTMLMediaElement;
     let currentIndex = -1; // 初始化为-1，表示尚未开始播放
-    const lyricElement = document.getElementById('zy-music-lyric');
+    const lyricElement = document.getElementById("zy-music-lyric");
 
     if (audioPlayer) {
-      audioPlayer.addEventListener('timeupdate', () => {
+      audioPlayer.addEventListener("timeupdate", () => {
         const currentTime = audioPlayer.currentTime;
         const newIndex = findLyricIndex(lyricsArray.value, currentTime);
 
@@ -598,18 +598,18 @@
       lyricsArray.value = [
         {
           time: 0,
-          text: '暂无歌词，享受好音乐',
+          text: "暂无歌词，享受好音乐",
           isActivate: true,
           isNext: false,
           isPrev: false,
         },
       ];
     }
-    const lyricElement = document.getElementById('zy-music-lyric');
+    const lyricElement = document.getElementById("zy-music-lyric");
     if (lyricElement) {
       lyricElement.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
     if (lyricsArray.value[0]) {
@@ -625,7 +625,7 @@
 
   // 控制audio播放，暂停
   watch(musicPlayState, (newValue) => {
-    const audioElement = document.getElementById('bgMusic') as HTMLMediaElement;
+    const audioElement = document.getElementById("bgMusic") as HTMLMediaElement;
     progressInit();
     if (newValue) {
       audioElement.play();
@@ -641,7 +641,7 @@
       refreshAudioElement.value = false;
       setTimeout(() => {
         const audioElement = document.getElementById(
-          'bgMusic',
+          "bgMusic",
         ) as HTMLMediaElement;
         progressInit();
         if (musicPlayState.value) {
@@ -666,7 +666,7 @@
       const themeColorRGB = `${rgb}`;
       const themeColorTailwind = generateTailwindColors(rgb);
       document.body.setAttribute(
-        'style',
+        "style",
         `
       --theme-color: ${themeColor};
       --theme-color-rgb: ${themeColorRGB};
