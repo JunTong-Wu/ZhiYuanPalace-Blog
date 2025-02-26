@@ -1,7 +1,11 @@
 <template>
   <div>
     <ZySuperResponsive>
-      <Layout>
+      <Layout
+        :isLoginLayout="isLoginPage"
+        :isAdminLayout="isAdminPage"
+        :isVideoDetailLayout="isVideoDetailPage"
+      >
         <div class="nuxt-page mx-auto min-h-screen">
           <CommonMainSection>
             <!--            <p>statusCode: {{ error.statusCode }}</p>-->
@@ -26,29 +30,57 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { cardTransitionEnd as ArticleCardTransitionEnd } from '~/components/layout/ArticleCard/transition';
   import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from '~/components/layout/ShuoShuoCard/transition';
   import { cardTransitionEnd as AlbumCardTransitionEnd } from '~/components/layout/AlbumCard/transition';
   import { cardTransitionEnd as VideoCardTransitionEnd } from '~/components/layout/VideoCard/transition';
 
-  export default {
-    name: 'TestError',
-    props: {
-      // 接受错误页面传递的错误信息
-      error: {
-        type: Object,
-        required: true,
-      },
+  const props = defineProps({
+    // 接受错误页面传递的错误信息
+    error: {
+      type: Object,
+      required: true,
     },
-    mounted() {
-      ArticleCardTransitionEnd();
-      ShuoShuoCardTransitionEnd();
-      AlbumCardTransitionEnd();
-      VideoCardTransitionEnd();
-      console.log(this.error);
+  });
+
+  const route = useRoute();
+  const isAdminPage = ref(false);
+  const isLoginPage = ref(false);
+  const isVideoDetailPage = ref(false);
+  // 监听路由变化，切换布局
+  watch(
+    () => props.error,
+    (newValue) => {
+      const newPath = newValue.url;
+      if (isAdminRouter(newPath)) {
+        console.log('isAdminRouter');
+        isAdminPage.value = true;
+        isLoginPage.value = false;
+      } else if (newPath.startsWith('/login')) {
+        isAdminPage.value = false;
+        isLoginPage.value = true;
+      } else {
+        isAdminPage.value = false;
+        isLoginPage.value = false;
+      }
+
+      if (newPath.includes('/audio/video/')) {
+        isVideoDetailPage.value = true;
+      } else {
+        isVideoDetailPage.value = false;
+      }
     },
-  };
+    { immediate: true },
+  );
+
+  onMounted(() => {
+    ArticleCardTransitionEnd();
+    ShuoShuoCardTransitionEnd();
+    AlbumCardTransitionEnd();
+    VideoCardTransitionEnd();
+    console.log(props.error);
+  });
 </script>
 <style>
   .stack.internal {

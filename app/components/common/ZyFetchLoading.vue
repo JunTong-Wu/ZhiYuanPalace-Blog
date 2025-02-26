@@ -40,10 +40,12 @@
   // 客户端获取参数
   watchEffect(() => {
     if (
+      !props.fetchData.pending.value &&
       props.fetchData.data &&
       props.fetchData.data.value &&
       props.fetchData.data.value.code === 0
     ) {
+      // console.log('客户端获取参数', props.fetchData.data.value.data);
       result.value = props.fetchData.data.value;
       localLoading.value = false;
       emit('fetchOnload', result.value);

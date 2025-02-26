@@ -62,7 +62,6 @@
     () => route.path,
     (newPath) => {
       if (isAdminRouter(newPath)) {
-        console.log('isAdminRouter');
         isAdminPage.value = true;
         isLoginPage.value = false;
       } else if (newPath.startsWith('/login')) {

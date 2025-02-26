@@ -1,20 +1,22 @@
 <template>
-  <template v-if="type == 'text'">
-    <div
-      v-for="i in row"
-      :key="`skeleton-text${i}`"
-      class="ZySkeleton-text"
-      :class="{ animation: animation }"
-    ></div>
-  </template>
-  <template v-if="type == 'image'">
-    <div
-      v-for="i in row"
-      :key="`skeleton-image${i}`"
-      class="ZySkeleton-image"
-      :class="{ animation: animation }"
-    ></div>
-  </template>
+  <div>
+    <template v-if="type == 'text'">
+      <div
+        v-for="i in row"
+        :key="`skeleton-text${i}`"
+        class="ZySkeleton-text"
+        :class="{ animation: animation }"
+      ></div>
+    </template>
+    <template v-if="type == 'image'">
+      <div
+        v-for="i in row"
+        :key="`skeleton-image${i}`"
+        class="ZySkeleton-image"
+        :class="{ animation: animation }"
+      ></div>
+    </template>
+  </div>
 </template>
 <script lang="ts">
   export default {

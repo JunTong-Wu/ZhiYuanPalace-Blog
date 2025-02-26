@@ -229,6 +229,10 @@ export const isAdminRouter = (path: string) => {
   if (role === 'admin') {
     return true;
   } else {
+    // 如果路由表没有写，则可能是用户输入错误，尝试从URL字符串判断
+    if (role === '' && getRootPath(path) === '/admin') {
+      return true;
+    }
     return false;
   }
 };

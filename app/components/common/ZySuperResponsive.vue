@@ -91,8 +91,8 @@
           }
         };
         const isDarkMode = () => {
-          const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
-          if (isDarkTheme.matches) {
+          const isDarktheme = window.matchMedia('(prefers-color-scheme: dark)');
+          if (isDarktheme.matches) {
             return true;
           } else {
             return false;

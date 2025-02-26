@@ -48,5 +48,45 @@ export default defineAppConfig({
           '[&::-webkit-slider-runnable-track]:bg-[rgba(255,255,255,0.2)] [&::-moz-range-track]:bg-[rgba(255,255,255,0.2)] [&::-webkit-slider-runnable-track]:dark:bg-[rgba(255,255,255,0.2)] [&::-moz-range-track]:dark:bg-[rgba(255,255,255,0.2)]',
       },
     },
+    pagination: {
+      wrapper: 'flex items-center gap-2',
+      rounded: 'rounded-3xs first:rounded-3xs last:rounded-3xs',
+      base: '!shadow-none !ring-0 min-h-10 min-w-10 justify-center',
+      default: {
+        size: 'md',
+        activeButton: {
+          color: 'theme' as any,
+          class: 'text-white dark:text-white',
+        },
+      },
+    },
+    checkbox: {
+      rounded: 'rounded-3xs',
+      base: 'h-6 w-6',
+      background: 'bg-level-3 dark:bg-level-3',
+      border: 'border-none',
+      default: {
+        color: 'theme',
+      },
+    },
+    select: {
+      rounded: 'rounded-3xs',
+      variant: {
+        none: 'bg-level-3 ring-0 shadow-none',
+      },
+      default: {
+        size: 'lg',
+        color: 'theme',
+        variant: 'none',
+      },
+    },
+    selectMenu: {
+      rounded: 'rounded-3xs',
+      padding: 'p-2',
+      option: {
+        rounded: 'rounded-4xs',
+        active: 'bg-level-4 dark:bg-level-4',
+      },
+    },
   },
 });

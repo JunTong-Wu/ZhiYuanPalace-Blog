@@ -1,5 +1,7 @@
 {
   "empty": "",
   "login": "登录",
-  "zhiYuanPalace": "知鸢宫"
+  "zhiYuanPalace": "知鸢宫",
+
+  "records": "显示 {0} 到 {1} 条记录，共 {2} 条记录"
 }

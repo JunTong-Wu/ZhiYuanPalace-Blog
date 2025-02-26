@@ -1,5 +1,7 @@
 {
   "empty": "",
   "login": "Login",
-  "zhiYuanPalace": "ZhiYuan Palace"
+  "zhiYuanPalace": "ZhiYuan Palace",
+
+  "records": "Show {0} to {1} Records, All {2} Records"
 }

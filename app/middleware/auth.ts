@@ -9,5 +9,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (!store.useAuthStore().token) {
     // If not authenticated, redirect to login page
     return navigateTo('/login');
+    // return;
   }
 });

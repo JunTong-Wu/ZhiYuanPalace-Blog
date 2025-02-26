@@ -15,7 +15,7 @@
     'HarmonyOS_Regular', 'Noto Sans SC Regular', 'Helvetica Neue', Helvetica,
     Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC',
     'WenQuanYi Micro Hei', sans-serif;
-  font-variant-numeric: tabular-nums;	/* 使用等宽特性 */
+  font-variant-numeric: tabular-nums; /* 使用等宽特性 */
 }
 :root.mobile {
   font-family: sans-serif;
@@ -128,20 +128,19 @@ a {
 }
 
 :root {
-  --theme-color: rgb(70,73,157);
-  --theme-color-rgb: 70,73,157;
-  --theme-color-50: #DADBEF;
-  --theme-color-100: #BABCE0;
-  --theme-color-200: #9B9CD2;
-  --theme-color-300: #7B7DC4;
-  --theme-color-400: #5B5EB6;
-  --theme-color-500: #46499D;
-  --theme-color-600: #383A7D;
-  --theme-color-700: #2A2B5E;
-  --theme-color-800: #1C1D3E;
-  --theme-color-900: #0D0E1E;
+  --theme-color: rgb(70, 73, 157);
+  --theme-color-rgb: 70, 73, 157;
+  --theme-color-50: #dadbef;
+  --theme-color-100: #babce0;
+  --theme-color-200: #9b9cd2;
+  --theme-color-300: #7b7dc4;
+  --theme-color-400: #5b5eb6;
+  --theme-color-500: #46499d;
+  --theme-color-600: #383a7d;
+  --theme-color-700: #2a2b5e;
+  --theme-color-800: #1c1d3e;
+  --theme-color-900: #0d0e1e;
   --theme-color-950: #000000;
-
 }
 
 :root {
@@ -172,12 +171,12 @@ a {
   --bg-level-b1: var(--gray-200);
   --bg-level-1: var(--gray-100);
   --bg-level-2: var(--gray-50);
-  --bg-level-3: var(--gray-50);
-  --bg-level-4: var(--gray-50);
+  --bg-level-3: var(--gray-150);
+  --bg-level-4: var(--gray-100);
   --bg-level-5: var(--gray-50);
-  --text-1: var(--gray-800); //强调/正文标题
-  --text-2: var(--gray-500); //次强调/正文标
-  --text-3: var(--gray-300); //次要信息
+  --text-1: var(--gray-850); //强调/正文标题
+  --text-2: var(--gray-550); //次强调/正文标
+  --text-3: var(--gray-400); //次要信息
   --text-4: var(--gray-200); //置灰信息
   --text-5: var(--gray-200); //骨架
   --bg-mask: rgba(221, 225, 233, 0.5); //遮罩层

@@ -88,6 +88,7 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
         // 响应处理
         if (process.client) {
           NProgress.done();
+          // console.log('API response', response._data.data);
         }
         if (response._data.code !== 0) {
           console.log(response._data);
