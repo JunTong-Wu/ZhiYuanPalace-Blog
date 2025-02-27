@@ -1,71 +1,73 @@
 <template>
-  <div class="overflow-hidden">
-    <div class="zy-album-card transition-in">
-      <ZyFetchLoading
-        :fetchData="albumDetailDataLazyFetch"
-        @fetchOnload="showAlbumDetail"
-      >
-        <template #loading></template>
-        <template #onload>
-          <div class="zy-album-card-inner">
-            <div class="zy-card-title">
-              <div class="h-full flex flex-col justify-center">
-                <h4
-                  class="m-0 portrait:text-sm landscape:text-base portrait:font-normal line-clamp-1"
-                >
-                  {{ albumDetailData.album_title }}
-                </h4>
+  <CommonMainSection fullWidth>
+    <div class="overflow-hidden">
+      <div class="zy-album-card transition-in">
+        <ZyFetchLoading
+          :fetchData="albumDetailDataLazyFetch"
+          @fetchOnload="showAlbumDetail"
+        >
+          <template #loading></template>
+          <template #onload>
+            <div class="zy-album-card-inner">
+              <div class="zy-card-title">
+                <div class="h-full flex flex-col justify-center">
+                  <h4
+                    class="m-0 portrait:text-sm landscape:text-base portrait:font-normal line-clamp-1"
+                  >
+                    {{ albumDetailData.album_title }}
+                  </h4>
+                </div>
               </div>
-            </div>
-            <div class="zy-card-image">
-              <ZyImage
-                :src="`${cdnUrl}${albumDetailData.album_cover}`"
-                :locked="albumDetailData.has_password"
-                alt=""
-              />
-            </div>
-          </div>
-        </template>
-      </ZyFetchLoading>
-    </div>
-    <div class="album-data-grid">
-      <ZyFetchLoading
-        :fetchData="photoListLazyFetch"
-        @fetchOnload="showPhotoDetail"
-      >
-        <template #loading>test</template>
-        <template #onload>
-          <div v-if="albumHasPasswordFlag">
-            <PassWordModel
-              type="album"
-              :id="albumDetailData.album_id"
-              @validate-success="getPhotosWithPassword"
-            >
-            </PassWordModel>
-          </div>
-          <ul
-            v-else
-            class="row-photo"
-          >
-            <li
-              class="clo-photo-card"
-              v-for="item in photoList.list"
-            >
-              <div>
-                <ZyLazyImage
-                  className="w-full rounded-none overflow-hidden aspect-square"
-                  :src="`${cdnUrl}${item.photo_thumbnail_path}`"
-                  :sourceSrc="`${cdnUrl}${item.photo_source_path}`"
+              <div class="zy-card-image">
+                <ZyImage
+                  :src="`${cdnUrl}${albumDetailData.album_cover}`"
+                  :locked="albumDetailData.has_password"
                   alt=""
-                  preview
                 />
               </div>
-            </li>
-          </ul>
-        </template>
-      </ZyFetchLoading>
+            </div>
+          </template>
+        </ZyFetchLoading>
+      </div>
+      <div class="album-data-grid">
+        <ZyFetchLoading
+          :fetchData="photoListLazyFetch"
+          @fetchOnload="showPhotoDetail"
+        >
+          <template #loading>test</template>
+          <template #onload>
+            <div v-if="albumHasPasswordFlag">
+              <PassWordModel
+                type="album"
+                :id="albumDetailData.album_id"
+                @validate-success="getPhotosWithPassword"
+              >
+              </PassWordModel>
+            </div>
+            <ul
+              v-else
+              class="row-photo"
+            >
+              <li
+                class="clo-photo-card"
+                v-for="item in photoList.list"
+              >
+                <div>
+                  <ZyLazyImage
+                    className="w-full rounded-none overflow-hidden aspect-square"
+                    :src="`${cdnUrl}${item.photo_thumbnail_path}`"
+                    :sourceSrc="`${cdnUrl}${item.photo_source_path}`"
+                    alt=""
+                    preview
+                  />
+                </div>
+              </li>
+            </ul>
+          </template>
+        </ZyFetchLoading>
+      </div>
     </div>
-  </div>
+  </CommonMainSection>
 </template>
 <script setup lang="ts">
   import { photo } from "@@/models";

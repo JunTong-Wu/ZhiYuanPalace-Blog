@@ -26,7 +26,6 @@
               icon="i-solar-user-bold"
               placeholder="请输入用户名"
               class="w-full"
-              size="xl"
               color="indigo"
             ></UInput>
             <UInput
@@ -35,7 +34,6 @@
               placeholder="请输入密码"
               type="password"
               class="w-full"
-              size="xl"
               color="indigo"
             ></UInput>
           </div>

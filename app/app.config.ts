@@ -3,14 +3,16 @@ export default defineAppConfig({
     primary: "theme",
     gray: "slate",
     input: {
-      default: {
-        color: "theme",
-      },
+      rounded: "!rounded-sm",
       variant: {
-        outline: "bg-level-1 py-4 ring-0 focus:ring-0 rounded-2xs",
+        outline: "bg-level-3 py-4 ring-0 focus:ring-0 rounded-2xs",
       },
       icon: {
-        color: "text-slate-400 dark:text-slate-600",
+        color: "text-{color}-500 dark:text-{color}-300",
+      },
+      default: {
+        color: "theme",
+        size: "lg",
       },
     },
     modal: {
@@ -25,9 +27,19 @@ export default defineAppConfig({
     },
     card: {
       rounded: "rounded",
+      divide: "divide-none",
       ring: "ring-slate-100 dark:ring-slate-800",
       background: "bg-level-2 dark:bg-level-1",
-      shadow: "shadow-none",
+      shadow: "shadow portrait:shadow-none",
+      body: {
+        padding: "p-4 sm:p-6 lg:p-8",
+      },
+      header: {
+        padding: "p-4 sm:p-6 lg:p-8 !pb-0",
+      },
+      footer: {
+        padding: "p-4 sm:p-6 lg:p-8",
+      },
     },
     alert: {
       rounded: "rounded",
@@ -50,7 +62,7 @@ export default defineAppConfig({
     },
     pagination: {
       wrapper: "flex items-center gap-2",
-      rounded: "rounded-3xs first:rounded-3xs last:rounded-3xs",
+      rounded: "rounded-sm first:rounded-sm last:rounded-sm",
       base: "!shadow-none !ring-0 min-h-10 min-w-10 justify-center",
       default: {
         size: "md",
@@ -61,7 +73,7 @@ export default defineAppConfig({
       },
     },
     checkbox: {
-      rounded: "rounded-3xs",
+      rounded: "rounded-xs",
       base: "h-6 w-6",
       background: "bg-level-3 dark:bg-level-3",
       border: "border-none",
@@ -70,7 +82,7 @@ export default defineAppConfig({
       },
     },
     select: {
-      rounded: "rounded-3xs",
+      rounded: "rounded-xs",
       variant: {
         none: "bg-level-3 ring-0 shadow-none",
       },
@@ -81,11 +93,22 @@ export default defineAppConfig({
       },
     },
     selectMenu: {
-      rounded: "rounded-3xs",
+      rounded: "rounded-xs",
       padding: "p-2",
       option: {
-        rounded: "rounded-4xs",
+        rounded: "rounded-2xs",
         active: "bg-level-4 dark:bg-level-4",
+      },
+    },
+    formGroup: {
+      label: {
+        base: "font-bold text-text-2 text-sm my-2",
+      },
+    },
+    toggle: {
+      default: {
+        size: "xl",
+        color: "theme",
       },
     },
   },

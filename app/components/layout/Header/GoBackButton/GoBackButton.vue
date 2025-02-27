@@ -36,26 +36,41 @@
   </div>
 </template>
 <script setup lang="ts">
+  const props = defineProps({
+    isAdminRule: {
+      type: Boolean,
+      default: false,
+    },
+  });
+
   const route = useRoute();
   const router = useRouter();
 
-  const isFirstLayer = (path: string) => {
+  const disableButton = (path: string, level: number) => {
     // 移除路径两端的斜杠，然后分割路径
     const parts = path
       .trim()
       .replace(/^\/+|\/+$/g, "")
       .split("/");
 
-    // 如果路径是"/"或者分割后的部分数量小于等于2，则返回true
+    // 如果路径是"/"或者分割后的部分数量小于等于level+1，则返回true
     // 否则返回false
-    return path === "/" || (parts.length <= 2 && parts[0] !== "");
+    return path === "/" || (parts.length <= level + 1 && parts[0] !== "");
   };
   const gobackFlag = ref(false);
   const gobackInit = (path: string) => {
-    if (isFirstLayer(path)) {
-      gobackFlag.value = false;
+    if (!props.isAdminRule) {
+      if (disableButton(path, 1)) {
+        gobackFlag.value = false;
+      } else {
+        gobackFlag.value = true;
+      }
     } else {
-      gobackFlag.value = true;
+      if (disableButton(path, 2)) {
+        gobackFlag.value = false;
+      } else {
+        gobackFlag.value = true;
+      }
     }
   };
   gobackInit(route.fullPath);
@@ -63,19 +78,19 @@
     gobackInit(to.fullPath);
     next();
   });
-  const getParentPath = () => {
-    let currentPath = window.location.pathname;
-    let lastIndex = currentPath.lastIndexOf("/");
-    // 如果当前路径已经是根路径，或者只有一个斜杠，则没有上一级路径
-    if (lastIndex <= 0) {
-      return "/";
-    }
-    // 去掉最后一个路径段
-    let parentPath = currentPath.slice(0, lastIndex);
-    // 去掉尾部斜杠
-    return parentPath.replace(/\/+$/, "");
-  };
+  // const getParentPath = () => {
+  //   let currentPath = window.location.pathname;
+  //   let lastIndex = currentPath.lastIndexOf("/");
+  //   // 如果当前路径已经是根路径，或者只有一个斜杠，则没有上一级路径
+  //   if (lastIndex <= 0) {
+  //     return "/";
+  //   }
+  //   // 去掉最后一个路径段
+  //   let parentPath = currentPath.slice(0, lastIndex);
+  //   // 去掉尾部斜杠
+  //   return parentPath.replace(/\/+$/, "");
+  // };
   const goback = () => {
-    router.replace(getParentPath());
+    router.go(-1);
   };
 </script>

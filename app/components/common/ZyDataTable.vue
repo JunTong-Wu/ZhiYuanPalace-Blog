@@ -6,11 +6,11 @@
         <thead>
           <!--begin::Table row-->
           <tr
-            class="text-text-2 font-bold uppercase border-b border-dashed border-borderColor"
+            class="text-text-2 landscape:font-bold portrait:text-xs uppercase border-b border-dashed border-borderColor"
           >
             <th
               v-if="selection"
-              class="py-4"
+              class="py-4 pr-4"
             >
               <label @click.stop="toggleAllSelect">
                 <UCheckbox v-model="isAllChecked" />
@@ -41,6 +41,7 @@
                   cell.align == 'right' && 'text-end',
                   cell.key == 'actions' && 'text-end',
                   'py-4',
+                  cell.columnClass && cell.columnClass.split(' '),
                 ]"
                 tabindex="0"
                 rowspan="1"
@@ -64,7 +65,7 @@
         </thead>
         <!--end::Table head-->
         <!--begin::Table body-->
-        <tbody class="font-bold">
+        <tbody class="landscape:font-bold portrait:text-sm">
           <template v-if="rowsData.length">
             <template
               v-for="(item, i) in rowsData"
@@ -73,7 +74,7 @@
               <tr class="border-b border-dashed border-borderColor">
                 <td
                   v-if="selection"
-                  class="text-start py-4"
+                  class="py-4 pr-4"
                 >
                   <label @click.stop="toggleRowSelect(i)">
                     <UCheckbox v-model="item.isChecked" />
@@ -90,6 +91,7 @@
                       cell.align == 'center' && 'text-center',
                       cell.align == 'right' && 'text-end',
                       cell.key == 'actions' && 'text-end',
+                      cell.columnClass && cell.columnClass.split(' '),
                     ]"
                     :style="
                       cell.offset
@@ -198,10 +200,10 @@
     </div>
 
     <div class="mt-8">
-      <div>
+      <div class="flex flex-col portrait:items-center">
         <div
           v-if="enableItemsPerPageDropdown"
-          class="w-36"
+          class="w-36 portrait:w-full"
         >
           <USelectMenu
             v-model="pagination.rowsPerPage"
@@ -219,7 +221,9 @@
           }}
         </p>
       </div>
-      <div class="flex items-center justify-center landscape:justify-end">
+      <div
+        class="flex items-center justify-center landscape:justify-end portrait:mt-12"
+      >
         <UPagination
           v-model="pagination.page"
           :page-count="pagination.rowsPerPage"
@@ -261,6 +265,7 @@
     sortable?: boolean; // 字段允许被排序
     align?: string;
     offset?: string;
+    columnClass?: string;
   }
 
   interface TotalArrayItem {

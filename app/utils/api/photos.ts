@@ -28,7 +28,7 @@ export const ApiPhotos = {
    */
   passwordVerify(
     params: any,
-  ): Promise<LazyAsyncDataRef<ResOptionsModelType<null>>> {
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<any>>> {
     return ApiService.post("/photos/albums/password-verify", params);
   },
 };

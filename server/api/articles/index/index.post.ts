@@ -1,5 +1,6 @@
 import { article } from "@@/models";
 import { articlePasswordFilter } from "~~/server/utils/helper";
+import { loginVerify } from "~~/server/utils/helper/loginVerify";
 type ApiIndexModelType = article.ApiIndex;
 type Article = article.Article;
 
@@ -11,6 +12,9 @@ export default defineEventHandler(async (event) => {
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const classifyPath = body.classify_path || null;
+
+  // 验证 JWT 令牌
+  const isLoggedIn = loginVerify(event);
 
   const sql =
     "SELECT * \n" +
@@ -39,7 +43,7 @@ export default defineEventHandler(async (event) => {
         item.article_text = item.article_text.substring(0, 60) + "...";
       }
     });
-    dbResults = articlePasswordFilter(dbResults);
+    dbResults = articlePasswordFilter(dbResults, null, isLoggedIn);
     total = dbResults.data.length;
     return setJson(
       { data: { list: dbResults.data, total: total } },

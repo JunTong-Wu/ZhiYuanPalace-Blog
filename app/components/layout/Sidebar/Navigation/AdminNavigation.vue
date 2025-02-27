@@ -9,8 +9,8 @@
         v-if="!item.children"
         class="rounded-xs hover:bg-background"
         :class="[
-          isActivateRouter(route, item.path)
-            ? 'bg-level-1 an-beat text-text-1'
+          isActivateRootRouter(route, item.path)
+            ? 'bg-level-1 dark:bg-level-2 an-beat text-text-1'
             : '',
         ]"
         @click.prevent
@@ -21,7 +21,9 @@
           :title="$t(`menu.${String(item.name)}`)"
           class="py-4 rounded-xs w-full flex-col justify-center pl-5"
           :class="[
-            isActivateRouter(route, item.path) ? 'text-text-1' : 'text-text-2',
+            isActivateRootRouter(route, item.path)
+              ? 'text-text-1'
+              : 'text-text-2',
           ]"
         >
           <div class="w-full flex items-center gap-2 relative">
@@ -31,7 +33,7 @@
               :defaultName="item.meta?.defaultIcon"
               defaultColor="var(&#45;&#45;text-2)"
               :activatedName="item.meta?.activatedIcon"
-              :activated="isActivateRouter(route, item.path)"
+              :activated="isActivateRootRouter(route, item.path)"
               activatedColor="var(&#45;&#45;text-1)"
             />
             <span
@@ -51,8 +53,8 @@
         class="py-4 rounded-xs bg-transparent hover:bg-background text-sm pl-5"
         :class="[
           isActivateRootRouter(route, item.path)
-            ? 'text-text-1'
-            : 'text-text-2',
+            ? '!text-text-2'
+            : '!text-text-2',
         ]"
       >
         <template #leading>
@@ -63,7 +65,7 @@
             defaultColor="var(&#45;&#45;text-2)"
             :activatedName="item.meta?.activatedIcon"
             :activated="isActivateRootRouter(route, item.path)"
-            activatedColor="var(&#45;&#45;text-1)"
+            activatedColor="var(&#45;&#45;text-2)"
           />
         </template>
         <span
@@ -92,7 +94,9 @@
           v-for="children in item.children"
           class="rounded-xs h-14 flex hover:bg-background"
           :class="[
-            isActivateRouter(route, children.path) ? 'bg-level-1 an-beat' : '',
+            isActivateRootRouter(route, children.path)
+              ? 'bg-level-1 dark:bg-level-2 an-beat'
+              : '',
           ]"
         >
           <ZyLink
@@ -101,9 +105,9 @@
             :title="$t(`menu.${String(children.name)}`)"
             class="rounded-xs w-full flex-col justify-center pl-5 text-sm"
             :class="[
-              isActivateRouter(route, children.path)
-                ? 'text-text-2'
-                : 'text-text-3',
+              isActivateRootRouter(route, children.path)
+                ? 'text-text-1'
+                : 'text-text-2',
             ]"
           >
             <div class="w-full flex items-center gap-2 relative">
@@ -111,10 +115,10 @@
                 class="flex-none"
                 size="1.5rem"
                 :defaultName="children.meta?.defaultIcon"
-                defaultColor="var(&#45;&#45;text-3)"
+                defaultColor="var(&#45;&#45;text-2)"
                 :activatedName="children.meta?.activatedIcon"
-                :activated="isActivateRouter(route, children.path)"
-                activatedColor="var(&#45;&#45;text-2)"
+                :activated="isActivateRootRouter(route, children.path)"
+                activatedColor="var(&#45;&#45;text-1)"
               />
               <span
                 class="transition-all line-clamp-1"

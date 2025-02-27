@@ -26,16 +26,16 @@
       >
         <NuxtLink
           :to="item.path"
-          class="card-inner h-full relative rounded shadow-sm"
+          class="card-inner h-full relative rounded-lg shadow-sm"
         >
           <div
-            class="border-layout absolute inset-0 overflow-hidden rounded"
+            class="border-layout absolute inset-0 overflow-hidden rounded-lg"
           ></div>
           <div
-            class="content-layout h-full overflow-hidden p-1 relative rounded z-1"
+            class="content-layout h-full overflow-hidden p-1 relative rounded-lg z-1"
           >
             <div
-              class="h-full px-6 portrait:px-2 pt-12 pb-12 rounded-sm text-center bg-level-3"
+              class="h-full px-6 portrait:px-2 pt-12 pb-12 rounded-md text-center bg-level-3"
             >
               <h3
                 class="text-text-1 text-2xl my-2 portrait:text-xl portrait:font-normal"
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div
-            class="absolute h-16 w-16 left-1/2 -ml-8 -top-8 overflow-hidden shadow-xl z-2 rounded-2xs rounded-tr-none"
+            class="absolute h-16 w-16 left-1/2 -ml-8 -top-8 overflow-hidden shadow-xl z-2 rounded rounded-tr-none"
           >
             <div
               class="absolute bg-level-4 flex h-full inset-0 items-center justify-center"
@@ -106,47 +106,47 @@
     },
   ]);
 
+  const mouse = { x: 0, y: 0 };
+
+  function onWindowResize() {
+    setTimeout(() => {
+      if (isMobileDevice()) {
+        mouse.x = 0;
+        mouse.y = 0;
+      }
+    }, 20);
+  }
+
+  function onMouseMove(event) {
+    if (!isMobileDevice() && !isVertical()) {
+      const cards = document.querySelectorAll(".service-card");
+      for (const card of cards) {
+        // 重新获取元素的当前位置
+        const center = getElementCenterByElement(card);
+        card.style.setProperty("--x", `${event.clientX - center.x}px`);
+        card.style.setProperty("--y", `${event.clientY - center.y}px`);
+      }
+      // 更新mouse
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+    }
+  }
+
+  function onScroll() {
+    if (!isMobileDevice() && !isVertical()) {
+      const cards = document.querySelectorAll(".service-card");
+      for (const card of cards) {
+        // 重新获取元素的当前位置
+        const center = getElementCenterByElement(card);
+        card.style.setProperty("--x", `${mouse.x - center.x}px`);
+        card.style.setProperty("--y", `${mouse.y - center.y}px`);
+      }
+    }
+  }
+
   onMounted(() => {
-    const mouse = { x: 0, y: 0 };
-
-    function onWindowResize() {
-      setTimeout(() => {
-        if (isMobileDevice()) {
-          mouse.x = 0;
-          mouse.y = 0;
-        }
-      }, 20);
-    }
-
-    function onMouseMove(event) {
-      if (!isMobileDevice() && !isVertical()) {
-        const cards = document.querySelectorAll(".service-card");
-        for (const card of cards) {
-          // 重新获取元素的当前位置
-          const center = getElementCenterByElement(card);
-          card.style.setProperty("--x", `${event.clientX - center.x}px`);
-          card.style.setProperty("--y", `${event.clientY - center.y}px`);
-        }
-        // 更新mouse
-        mouse.x = event.clientX;
-        mouse.y = event.clientY;
-      }
-    }
-
-    function onScroll() {
-      if (!isMobileDevice() && !isVertical()) {
-        const cards = document.querySelectorAll(".service-card");
-        for (const card of cards) {
-          // 重新获取元素的当前位置
-          const center = getElementCenterByElement(card);
-          card.style.setProperty("--x", `${mouse.x - center.x}px`);
-          card.style.setProperty("--y", `${mouse.y - center.y}px`);
-        }
-      }
-    }
-
-    // 监听最顶级祖先section标签
     const root = document.querySelector("#service-grid");
+    // 监听最顶级祖先section标签
     getAncestorSectionByElement(root).addEventListener(
       "mousemove",
       onMouseMove,
@@ -154,6 +154,16 @@
     // document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("scroll", onScroll);
     window.addEventListener("resize", onWindowResize);
+  });
+
+  onUnmounted(() => {
+    const root = document.querySelector("#service-grid");
+    getAncestorSectionByElement(root).removeEventListener(
+      "mousemove",
+      onMouseMove,
+    );
+    document.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", onWindowResize);
   });
 </script>
 <style lang="scss" scoped>

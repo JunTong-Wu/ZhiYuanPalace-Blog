@@ -68,8 +68,13 @@
       behavior: "smooth",
     });
   };
+
   onMounted(() => {
     window.addEventListener("scroll", calculateProgress);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener("scroll", calculateProgress);
   });
 </script>
 <style lang="scss" scoped>

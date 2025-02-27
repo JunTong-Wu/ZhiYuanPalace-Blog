@@ -25,8 +25,8 @@
         <!-- 标题区 -->
         <div class="flex items-center h-full mr-4 landscape:py-2">
           <GoBackButton
+            :isAdminRule="isAdminHeader"
             class="flex-none"
-            v-if="!isAdminHeader"
           />
           <HeaderTitle
             class="flex-none"
@@ -474,8 +474,13 @@
       behavior: "smooth",
     });
   };
+
   onMounted(() => {
     window.addEventListener("scroll", calculateProgress);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener("scroll", calculateProgress);
   });
 
   // 时钟
@@ -560,7 +565,7 @@
 <style lang="scss" scoped>
   .reverse-rounded {
     --background: var(--bg-level-2);
-    --rounded: var(--border-radius-lg);
+    --rounded: var(--border-radius-base);
     position: relative;
     z-index: 10;
 
@@ -597,9 +602,9 @@
   }
 
   @media (orientation: portrait) {
-    .reverse-rounded {
-      --background: var(--bg-level-1);
-      --rounded: var(--border-radius-xs);
+    .reverse-rounded::after,
+    .reverse-rounded::before {
+      display: block;
     }
   }
 

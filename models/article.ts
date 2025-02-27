@@ -53,3 +53,34 @@ export interface ApiShow {
   };
   result: ResOptions<Article>;
 }
+
+export interface ApiUpdate {
+  params: {
+    article_classify_id: number;
+    article_title: string;
+    article_title_image: string;
+    article_text: string;
+    article_date: string;
+    article_copyright: string;
+    article_keywords: string;
+    article_private: number;
+    article_password: string;
+    article_id: number;
+  };
+  result: ResOptions<null>;
+}
+
+export interface ApiAdd {
+  params: {
+    article_classify_id: number;
+    article_title: string;
+    article_title_image: string;
+    article_text: string;
+    article_date: string;
+    article_copyright: string;
+    article_keywords: string;
+    article_private: number;
+    article_password: string;
+  };
+  result: ResOptions<null>;
+}

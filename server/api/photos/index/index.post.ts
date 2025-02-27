@@ -1,5 +1,6 @@
 import { photo } from "@@/models";
 import { photoPasswordFilter } from "~~/server/utils/helper";
+import { loginVerify } from "~~/server/utils/helper/loginVerify";
 type ApiIndexModelType = photo.ApiIndex;
 
 /**
@@ -11,6 +12,9 @@ export default defineEventHandler(async (event) => {
   const pageSize = Number(body.page_size || -1);
   const albumPath = body.album_path || null;
   const albumPassword = body.album_password || null;
+
+  // 验证 JWT 令牌
+  const isLoggedIn = loginVerify(event);
 
   const sql =
     "SELECT * \n" +
@@ -34,7 +38,7 @@ export default defineEventHandler(async (event) => {
   let total = 0;
 
   if (dbResults.code === 0 && dbResults.data && dbResults.data.length > 0) {
-    dbResults = photoPasswordFilter(dbResults, albumPassword);
+    dbResults = photoPasswordFilter(dbResults, albumPassword, isLoggedIn);
     total = dbResults.data.length;
     return setJson(
       { data: { list: dbResults.data, total: total } },

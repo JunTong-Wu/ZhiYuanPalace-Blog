@@ -39,11 +39,13 @@
         :class="{
           'w-sidebar': !hideSidebar,
           'w-hideSidebar': hideSidebar,
+          dark: isAdminLayout,
         }"
         @switchSidebarClick="switchSidebarStyle"
       />
       <!-- 整体顶栏 -->
       <Header
+        id="zy-head-bar"
         :pageHasToolbar="pageHasToolbar"
         :hideSidebar="hideSidebar"
         :hideToolbar="hideToolbar"
@@ -76,7 +78,7 @@
       <div
         ref="toolBarRef"
         id="zy-tool-bar"
-        class="absolute rounded bg-level-2 dark:bg-level-1 ring-1 ring-slate-100 dark:ring-slate-800 inset-8 !left-0"
+        class="absolute inset-8 !left-0"
       >
         <!-- 在Toolbar组件中，通过Teleport穿越挂载到这里，用于解耦layout和page -->
       </div>

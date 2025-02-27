@@ -1,6 +1,3 @@
-import { article } from "@@/models";
-type ArticleModelType = article.Article;
-
 export const articlePasswordFilter = (
   results:
     | {
@@ -14,6 +11,7 @@ export const articlePasswordFilter = (
         data: null;
       },
   password?: string | null,
+  isLoggedIn?: boolean, // 用户是否已登录
 ) => {
   let tempArr = <Array<any>>[];
   if (results.data && results.data.length > 0) {
@@ -21,7 +19,8 @@ export const articlePasswordFilter = (
       if (
         item.article_password !== null &&
         item.article_password !== "" &&
-        item.article_password !== password
+        item.article_password !== password &&
+        !isLoggedIn // 如果用户未登录且密码不匹配
       ) {
         tempArr[index] = {
           article_id: item.article_id,
@@ -33,8 +32,10 @@ export const articlePasswordFilter = (
         };
       } else {
         tempArr[index] = item;
-        delete tempArr[index].article_password;
-        delete tempArr[index].article_private;
+        if (!isLoggedIn) {
+          delete tempArr[index].article_password;
+          delete tempArr[index].article_private;
+        }
       }
     });
   }
@@ -43,21 +44,18 @@ export const articlePasswordFilter = (
 
 export const albumPasswordFilter = (
   results:
-    | {
-        code: number;
-        message: string;
-        data: any[];
-      }
-    | {
-        code: number;
-        message: string;
-        data: null;
-      },
+    | { code: number; message: string; data: any[] }
+    | { code: number; message: string; data: null },
+  isLoggedIn?: boolean,
 ) => {
   let tempArr = <Array<any>>[];
   if (results.data && results.data.length > 0) {
     results.data.forEach((item: any, index: number, array: any) => {
-      if (item.album_password !== null && item.album_password !== "") {
+      if (
+        item.album_password !== null &&
+        item.album_password !== "" &&
+        !isLoggedIn // 如果用户未登录且密码不匹配
+      ) {
         tempArr[index] = {
           album_id: item.album_id,
           album_path: item.album_path,
@@ -67,8 +65,10 @@ export const albumPasswordFilter = (
         };
       } else {
         tempArr[index] = item;
-        delete tempArr[index].album_password;
-        delete tempArr[index].album_private;
+        if (!isLoggedIn) {
+          delete tempArr[index].album_password;
+          delete tempArr[index].album_private;
+        }
       }
     });
   }
@@ -87,6 +87,7 @@ export const photoPasswordFilter = (
         data: null;
       },
   password?: string | null,
+  isLoggedIn?: boolean,
 ) => {
   let tempArr = <Array<any>>[];
 
@@ -95,7 +96,8 @@ export const photoPasswordFilter = (
       if (
         item.album_password !== null &&
         item.album_password !== "" &&
-        item.album_password !== password
+        item.album_password !== password &&
+        !isLoggedIn // 如果用户未登录且密码不匹配
       ) {
         tempArr[index] = {
           photo_id: item.photo_id,
@@ -103,8 +105,10 @@ export const photoPasswordFilter = (
         };
       } else {
         tempArr[index] = item;
-        delete tempArr[index].album_password;
-        delete tempArr[index].album_private;
+        if (!isLoggedIn) {
+          delete tempArr[index].album_password;
+          delete tempArr[index].album_private;
+        }
       }
     });
   }
@@ -123,6 +127,7 @@ export const videoPasswordFilter = (
         data: null;
       },
   password?: string | null,
+  isLoggedIn?: boolean,
 ) => {
   let tempArr = <Array<any>>[];
   if (results.data && results.data.length > 0) {
@@ -130,7 +135,8 @@ export const videoPasswordFilter = (
       if (
         item.video_password !== null &&
         item.video_password !== "" &&
-        item.video_password !== password
+        item.video_password !== password &&
+        !isLoggedIn // 如果用户未登录且密码不匹配
       ) {
         tempArr[index] = {
           video_id: item.video_id,
@@ -142,8 +148,10 @@ export const videoPasswordFilter = (
         };
       } else {
         tempArr[index] = item;
-        delete tempArr[index].video_password;
-        delete tempArr[index].video_private;
+        if (!isLoggedIn) {
+          delete tempArr[index].video_password;
+          delete tempArr[index].video_private;
+        }
       }
     });
   }

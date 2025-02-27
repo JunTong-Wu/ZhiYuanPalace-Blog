@@ -25,11 +25,81 @@
   p {
     line-height: inherit !important;
     margin-bottom: 2rem;
-    text-indent: 2rem;
+    //text-indent: 2rem;
   }
   blockquote {
     color: inherit;
     border-left-color: inherit;
     font-size: inherit;
+  }
+}
+
+.v-md-editor {
+  background-color: var(--bg-level-3);
+  box-shadow: none;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  &.v-md-editor--fullscreen {
+    top:calc(var(--pt-main) + 2rem);
+  }
+  .v-md-editor__left-area {
+    background-color: var(--bg-level-4);
+    border-color: var(--border-color);
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    .v-md-editor__left-area-title {
+      color: var(--text-1);
+      &::after {
+        border-color: var(--border-color);
+      }
+    }
+  }
+  .v-md-editor__right-area {
+    .v-md-editor__toolbar{
+      background-color: var(--bg-level-4);
+      border-color: var(--border-color);
+      .v-md-editor__toolbar-right-wrapper,
+      .v-md-editor__toolbar-left {
+        .v-md-editor__toolbar-item {
+          color: var(--text-1);
+          height: 2.5rem;
+          width: 2.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: var(--border-radius-sm);
+          &.v-md-editor__toolbar-item--active {
+            background-color: var(--theme-color-500);
+            color: white;
+          }
+          &:hover {
+            color: white;
+            background-color: var(--theme-color-500);
+          }
+        }
+        [class*=v-md-icon-] {
+          font-size: 1.25rem;
+        }
+
+      }
+    }
+    .v-md-editor__main {
+      .v-md-editor__editor-wrapper {
+        border-color: var(--border-color);
+        textarea {
+          background-color: var(--bg-level-3);
+          color: var(--text-1);
+          padding: 1rem;
+          font-size: 1rem;
+        }
+      }
+      .v-md-editor__preview-wrapper {
+        .v-md-editor-preview {
+          background-color: var(--bg-level-4);
+          padding: 1rem;
+        }
+      }
+    }
   }
 }

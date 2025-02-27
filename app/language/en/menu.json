@@ -17,6 +17,8 @@
   "dashboard": "Dashboard",
   "post-manage": "Post Manage",
   "article-manage": "Article Manage",
+  "article-manage-edit": "Edit Article",
+  "article-manage-add": "Add Article",
   "shuoshuo-manage": "Microblog Manage",
   "music-manage": "Music Manage",
   "photo-manage": "Photo Manage",

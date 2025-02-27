@@ -1,8 +1,7 @@
 <template>
   <div
     ref="imageWrapperRef"
-    class="relative"
-    :class="[isLoading ? 'w-full h-full' : '', className]"
+    class="relative w-full h-full"
   >
     <div
       v-if="!isLoading && lazyUrl"
@@ -21,15 +20,27 @@
           />
         </p>
       </div>
-      <img
-        v-if="!preview"
-        :src="lazyUrl"
-        :alt="alt"
-        :style="style"
-        :class="{
-          '!blur-3xl !scale-150 !saturate-200': locked,
-        }"
-      />
+      <div v-if="!preview">
+        <img
+          v-if="!imageError"
+          ref="imageElementRef"
+          :src="lazyUrl"
+          :alt="alt"
+          :style="style"
+          :class="imageClassList"
+        />
+        <div
+          v-else
+          class="flex flex-col items-center justify-center gap-2"
+          :class="imageClassList"
+        >
+          <UIcon
+            name="i-solar-gallery-bold-duotone"
+            class="w-16 h-16 opacity-20"
+          />
+          <span class="text-text-3 font-bold text-xs">无图片</span>
+        </div>
+      </div>
       <ZyImagePreview
         v-else
         :thumbnailSrc="lazyUrl"
@@ -40,7 +51,7 @@
     </div>
     <div
       v-else
-      class="loading"
+      :class="imageClassList"
     >
       <ZySkeleton
         type="image"
@@ -87,6 +98,20 @@
   const isLoading = ref(true);
   const lazyUrl = ref("");
   const imageWrapperRef = ref<HTMLImageElement>();
+  const imageElementRef = ref<HTMLImageElement>();
+
+  const imageError = ref(false);
+
+  const imageClassList = computed(() => {
+    let classList = [];
+    if (props.locked) {
+      classList.push("!blur-3xl", "!scale-150", "!saturate-200");
+    }
+    if (props.className) {
+      classList.push(props.className.split(" "));
+    }
+    return classList;
+  });
 
   onMounted(() => {
     isLoading.value = true;
@@ -95,7 +120,14 @@
 
     imgElement.onload = () => {
       isLoading.value = false;
+      imageError.value = false;
     };
+
+    imgElement.onerror = () => {
+      isLoading.value = false;
+      imageError.value = true;
+    };
+
     useIntersectionObserver(
       imageWrapperRef,
       ([{ isIntersecting }], observerElement) => {

@@ -1,10 +1,6 @@
 <template>
-  <div
-    ref="imageWrapperRef"
-    class="relative"
-    :class="className"
-  >
-    <div class="relative">
+  <div class="relative">
+    <div class="relative h-full w-full">
       <div
         v-if="locked"
         class="absolute top-0 left-0 z-10 w-full h-full bg-mask flex items-center justify-center"
@@ -19,13 +15,24 @@
         </p>
       </div>
       <img
+        v-if="!imageError"
+        ref="imageElementRef"
         :src="src"
         :alt="alt"
         :style="style"
-        :class="{
-          '!blur-3xl !scale-150 !saturate-200': locked,
-        }"
+        :class="imageClassList"
       />
+      <div
+        v-else
+        class="flex flex-col items-center justify-center gap-2"
+        :class="imageClassList"
+      >
+        <UIcon
+          name="i-solar-gallery-bold-duotone"
+          class="w-16 h-16 opacity-20"
+        />
+        <span class="text-text-3 font-bold text-xs">无图片</span>
+      </div>
     </div>
   </div>
 </template>
@@ -53,7 +60,31 @@
       default: false,
     },
   });
-  const imageWrapperRef = ref<HTMLImageElement>();
+  const imageElementRef = ref<HTMLImageElement>();
+  const imageClassList = computed(() => {
+    let classList = [];
+    if (props.locked) {
+      classList.push("!blur-3xl", "!scale-150", "!saturate-200");
+    }
+    if (props.className) {
+      classList.push(props.className.split(" "));
+    }
+    return classList;
+  });
+  const imageError = ref(false);
+
+  onMounted(() => {
+    const imgElement = new Image();
+    imgElement.src = props.src;
+
+    imgElement.onload = () => {
+      imageError.value = false;
+    };
+
+    imgElement.onerror = () => {
+      imageError.value = true;
+    };
+  });
 </script>
 
 <style scoped>

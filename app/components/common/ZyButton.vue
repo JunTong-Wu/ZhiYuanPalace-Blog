@@ -12,7 +12,7 @@
     ref="button"
     type="button"
     :title="title"
-    :disabled="loading"
+    :disabled="loading || disabled"
     @mousedown="animationStart()"
     @mouseup="animationEnd()"
     @touchstart.passive="animationStart()"
@@ -42,6 +42,8 @@
       title: { type: String, default: "" },
       type: { type: String, default: "default" },
       loading: { type: Boolean, default: false },
+      disabled: { type: Boolean, default: false },
+      color: { type: String, default: "" },
     },
     setup(props) {
       const button = ref();
@@ -145,8 +147,8 @@
   button.ZyButton-default {
     position: relative;
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
+    padding: 0.55rem 1rem;
+    border-radius: var(--border-radius-sm);
     background-color: var(--theme-color);
     box-shadow: 0 0.5rem 1rem rgba(var(--theme-color-rgb), 0.3);
     border: 2px solid var(--theme-color);
@@ -223,7 +225,7 @@
   button.ZyButton-icon {
     background-color: var(--bg-level-2);
     color: inherit;
-    border-radius: var(--border-radius-xs);
+    border-radius: var(--border-radius-sm);
   }
 
   .dark button.ZyButton-icon {

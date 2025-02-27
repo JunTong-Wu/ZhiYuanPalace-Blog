@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true, // 路由是否可以被导航
       defaultIcon: "i-solar-home-smile-linear", // 路由的默认图标
       activatedIcon: "i-solar-home-smile-bold", // 路由的激活图标
-      order: 100, // 路由的排序
+      order: 1000, // 路由的排序
     },
   },
   {
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-document-text-linear",
       activatedIcon: "i-solar-document-text-bold",
-      order: 200,
+      order: 2000,
     },
     children: [
       {
@@ -41,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-text-square-linear",
           activatedIcon: "i-solar-text-square-bold",
-          order: 210,
+          order: 2100,
         },
       },
       {
@@ -49,7 +49,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "article-id",
         component: () => import("@/pages/visitor/text/article/[id].vue"),
         meta: {
-          order: 211,
+          order: 2110,
         },
       },
       {
@@ -60,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-stars-minimalistic-linear",
           activatedIcon: "i-solar-stars-minimalistic-bold",
-          order: 220,
+          order: 2200,
         },
       },
       {
@@ -68,7 +68,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "shuoshuo-id",
         component: () => import("@/pages/visitor/text/shuoshuo/[id].vue"),
         meta: {
-          order: 221,
+          order: 2210,
         },
       },
     ],
@@ -81,7 +81,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-music-note-3-linear",
       activatedIcon: "i-solar-music-note-3-bold",
-      order: 300,
+      order: 3000,
     },
   },
   {
@@ -92,7 +92,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-chat-round-video-linear",
       activatedIcon: "i-solar-chat-round-video-bold",
-      order: 400,
+      order: 4000,
     },
     children: [
       {
@@ -103,7 +103,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-gallery-round-linear",
           activatedIcon: "i-solar-gallery-round-bold",
-          order: 410,
+          order: 4100,
         },
       },
       {
@@ -112,7 +112,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import("@/pages/visitor/audio/photo/[album]/index.vue"),
         meta: {
-          order: 411,
+          order: 4110,
         },
       },
       {
@@ -123,7 +123,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-videocamera-linear",
           activatedIcon: "i-solar-videocamera-bold",
-          order: 420,
+          order: 4200,
         },
       },
       {
@@ -131,7 +131,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "video-id",
         component: () => import("@/pages/visitor/audio/video/[id].vue"),
         meta: {
-          order: 421,
+          order: 4210,
         },
       },
     ],
@@ -144,7 +144,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-user-circle-linear",
       activatedIcon: "i-solar-user-circle-bold",
-      order: 500,
+      order: 5000,
     },
     children: [
       {
@@ -155,7 +155,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-ghost-smile-linear",
           activatedIcon: "i-solar-ghost-smile-bold",
-          order: 510,
+          order: 5100,
         },
       },
       {
@@ -166,7 +166,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-link-circle-linear",
           activatedIcon: "i-solar-link-circle-linear",
-          order: 520,
+          order: 5200,
         },
       },
     ],
@@ -179,7 +179,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-pie-chart-2-linear",
       activatedIcon: "i-solar-pie-chart-2-bold",
-      order: 600,
+      order: 6000,
       role: "admin",
     },
   },
@@ -191,7 +191,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-archive-linear",
       activatedIcon: "i-solar-archive-bold",
-      order: 610,
+      order: 6100,
       role: "admin",
     },
     children: [
@@ -203,8 +203,24 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-text-square-linear",
           activatedIcon: "i-solar-text-square-bold",
-          order: 611,
+          order: 6110,
           role: "admin",
+        },
+      },
+      {
+        path: "/admin/post-manage/article/:id/edit",
+        name: "article-manage-edit",
+        component: () => import("@/pages/admin/post-manage/article/[id].vue"),
+        meta: {
+          order: 6111,
+        },
+      },
+      {
+        path: "/admin/post-manage/article/add",
+        name: "article-manage-add",
+        component: () => import("@/pages/admin/post-manage/article/[id].vue"),
+        meta: {
+          order: 6112,
         },
       },
       {
@@ -215,7 +231,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-stars-minimalistic-linear",
           activatedIcon: "i-solar-stars-minimalistic-bold",
-          order: 612,
+          order: 6120,
           role: "admin",
         },
       },
@@ -227,7 +243,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-music-note-3-linear",
           activatedIcon: "i-solar-music-note-3-bold",
-          order: 613,
+          order: 6130,
           role: "admin",
         },
       },
@@ -239,7 +255,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-gallery-round-linear",
           activatedIcon: "i-solar-gallery-round-bold",
-          order: 614,
+          order: 6140,
           role: "admin",
         },
       },
@@ -251,7 +267,7 @@ const routes: Array<RouteRecordRaw> = [
           navigate: true,
           defaultIcon: "i-solar-videocamera-linear",
           activatedIcon: "i-solar-videocamera-bold",
-          order: 615,
+          order: 6150,
           role: "admin",
         },
       },
@@ -265,7 +281,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-ghost-smile-linear",
       activatedIcon: "i-solar-ghost-smile-bold",
-      order: 620,
+      order: 6200,
       role: "admin",
     },
   },
@@ -277,7 +293,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-dialog-2-linear",
       activatedIcon: "i-solar-dialog-2-bold",
-      order: 630,
+      order: 6300,
       role: "admin",
     },
   },
@@ -289,7 +305,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-link-circle-linear",
       activatedIcon: "i-solar-link-circle-linear",
-      order: 640,
+      order: 6400,
       role: "admin",
     },
   },
@@ -301,7 +317,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-magic-stick-3-linear",
       activatedIcon: "i-solar-magic-stick-3-bold",
-      order: 650,
+      order: 6500,
       role: "admin",
     },
   },
@@ -313,7 +329,7 @@ const routes: Array<RouteRecordRaw> = [
       navigate: true,
       defaultIcon: "i-solar-server-minimalistic-linear",
       activatedIcon: "i-solar-server-minimalistic-bold",
-      order: 650,
+      order: 6600,
       role: "admin",
     },
   },

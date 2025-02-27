@@ -9,7 +9,7 @@
           'left-0': !hide,
         }"
       >
-        <Indicator :msg="getVisitorNavigationMap()" />
+        <Indicator :msg="getNavigationMapForVisitorMenu()" />
       </div>
       <ul class="flex flex-col gap-2 py-1">
         <li
@@ -23,7 +23,7 @@
         >
           <ZyLink
             v-zy-ripple
-            :to="`${item.path}`"
+            :to="`${item.meta.childrenPath ? item.meta.childrenPath : item.path}`"
             :title="$t(`menu.${String(item.name)}`)"
             class="rounded-xs w-full flex-col justify-center text-text-1 transition-all"
             :class="{
@@ -57,9 +57,26 @@
   </div>
 </template>
 <script setup lang="ts">
-  import Indicator from "./Indicator/Indicator.vue";
+  import type { RouteRecordRaw } from "vue-router";
+  type IRouteRecordRaw = RouteRecordRaw & {
+    meta: {
+      childrenPath?: any;
+      defaultIcon: string;
+      activatedIcon: string;
+    };
+  };
 
-  const linkList = getNavigationMapForVisitorMenu();
+  const linkList = computed((): IRouteRecordRaw[] => {
+    const navigationList =
+      getNavigationMapForVisitorMenu() as IRouteRecordRaw[];
+    navigationList.forEach((route) => {
+      if (route.children && route.children[0]) {
+        route.meta.childrenPath = route.children[0].path;
+      }
+    });
+    return navigationList;
+  });
+
   const route = useRoute();
 
   const props = defineProps({

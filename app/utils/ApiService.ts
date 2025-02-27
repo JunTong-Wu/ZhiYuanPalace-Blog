@@ -45,6 +45,11 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
   let headers: Record<string, any> = {};
   headers["Cache-Control"] = "no-cache";
   headers["Content-Type"] = "application/x-www-form-urlencoded";
+  // 携带JWT令牌
+  if (store.useAuthStore().token) {
+    const token = store.useAuthStore().token;
+    headers["Authorization"] = `Bearer ${token}`;
+  }
   if (options.headers) {
     headers = Object.assign({}, headers, options.headers);
   }
@@ -104,7 +109,11 @@ const request = (url: string, options: RequestOptions): Promise<any> => {
               .enqueue("onApiResponse", alertToClient.toString());
           }
           if (process.client) {
-            window.ZyToast({ title: response._data.message });
+            window.ZyToast({
+              title: response._data.message,
+              text: response._data.errorMessages.sqlMessage,
+            });
+            console.error(response._data);
           }
         }
       },

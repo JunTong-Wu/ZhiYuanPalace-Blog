@@ -70,7 +70,6 @@ export default <Partial<Config>>{
       },
       borderRadius: {
         none: "0",
-        "4xs": "var(--border-radius-4xs)",
         "3xs": "var(--border-radius-3xs)",
         "2xs": "var(--border-radius-2xs)",
         xs: "var(--border-radius-xs)",
@@ -81,11 +80,6 @@ export default <Partial<Config>>{
         xl: "var(--border-radius-xl)",
         "2xl": "var(--border-radius-2xl)",
         "3xl": "var(--border-radius-3xl)",
-        "4xl": "var(--border-radius-4xl)",
-        "5xl": "var(--border-radius-5xl)",
-        "6xl": "var(--border-radius-6xl)",
-        "7xl": "var(--border-radius-7xl)",
-        "8xl": "var(--border-radius-8xl)",
         full: "var(--border-radius-full)",
       },
       colors: {

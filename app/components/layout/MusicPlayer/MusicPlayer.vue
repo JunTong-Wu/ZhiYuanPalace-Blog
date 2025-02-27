@@ -1,7 +1,7 @@
 <template>
   <aside id="zy-music-bar">
     <div
-      class="relative z-10 h-full flex items-center landscape:rounded portrait:rounded-2xs overflow-hidden cursor-pointer"
+      class="relative z-10 h-full flex items-center rounded overflow-hidden cursor-pointer"
       @click.prevent="openMusicDrawer"
     >
       <div
@@ -112,7 +112,7 @@
       <Teleport to="body">
         <ZyTouch
           id="zy-music-drawer"
-          class="hidden cursor-grab will-change-transform fixed landscape:rounded portrait:rounded-2xs overflow-hidden"
+          class="hidden cursor-grab will-change-transform fixed rounded overflow-hidden"
           :init="touchInit"
           @slidingUp="slidingUp"
           @slideEndUp="slideEndUp"
@@ -659,7 +659,7 @@
     if (img) {
       const imageColor = getImageColor(img);
       const rgb = increaseSaturation(
-        adjustBrightnessWhilePreservingHue(imageColor, 60, 60),
+        adjustBrightnessWhilePreservingHue(imageColor, 40, 40),
         1,
       );
       const themeColor = `rgb(${rgb})`;

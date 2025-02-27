@@ -15,9 +15,7 @@ export const _getNavigationMap = (): Array<RouteRecordRaw> => {
  */
 export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
-  linkList = linkList.filter(
-    (item) => item.meta?.role !== "admin" && item.meta?.navigate !== false,
-  );
+  linkList = linkList.filter((route) => route.meta?.role !== "admin");
   return linkList;
 };
 
@@ -27,9 +25,7 @@ export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
  */
 export const getAdminNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
-  linkList = linkList.filter(
-    (item) => item.meta?.role === "admin" && item.meta?.navigate !== false,
-  );
+  linkList = linkList.filter((route) => route.meta?.role === "admin");
   return linkList;
 };
 
@@ -39,11 +35,14 @@ export const getAdminNavigationMap = (): Array<RouteRecordRaw> => {
  */
 export const getNavigationMapForVisitorMenu = () => {
   let linkList = getVisitorNavigationMap();
-  for (const route of linkList) {
-    if (route.children && route.children[0]) {
-      route.path = route.children[0].path;
+  linkList = linkList.filter((route) => route.meta?.navigate === true);
+  linkList.forEach((route) => {
+    if (route.children && route.children.length > 0) {
+      route.children = route.children.filter(
+        (childrenRoute) => childrenRoute.meta?.navigate === true,
+      );
     }
-  }
+  });
   return linkList;
 };
 
@@ -53,11 +52,14 @@ export const getNavigationMapForVisitorMenu = () => {
  */
 export const getNavigationMapForAdminMenu = () => {
   let linkList = getAdminNavigationMap();
-  for (const route of linkList) {
-    if (route.children && route.children[0]) {
-      route.path = route.children[0].path;
+  linkList = linkList.filter((route) => route.meta?.navigate === true);
+  linkList.forEach((route) => {
+    if (route.children && route.children.length > 0) {
+      route.children = route.children.filter(
+        (childrenRoute) => childrenRoute.meta?.navigate === true,
+      );
     }
-  }
+  });
   return linkList;
 };
 
@@ -348,21 +350,6 @@ export const getChildrenTabs = (path: string) => {
 };
 
 /**
- * 判断是否是激活路由
- * @returns boolean
- */
-export const isActivateRouter = (
-  route: RouteLocationNormalizedLoaded,
-  path: string,
-) => {
-  if (route.fullPath == path) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-/**
  * 判断是否是激活路由的根路由
  * @returns boolean
  */
@@ -370,14 +357,14 @@ export const isActivateRootRouter = (
   route: RouteLocationNormalizedLoaded,
   path: string,
 ) => {
-  if (path != "/" && route.path != "/admin") {
-    if (getRootPath(route.fullPath) == getRootPath(path)) {
+  if (route.path != "/" && route.path != "/admin") {
+    if (path != "/" && path != "/admin" && route.path.includes(path)) {
       return true;
     } else {
       return false;
     }
   } else {
-    if (route.path == "/") {
+    if (path === route.path) {
       return true;
     }
   }

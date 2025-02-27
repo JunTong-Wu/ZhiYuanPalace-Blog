@@ -56,7 +56,6 @@
             placeholder="请输入密码"
             type="password"
             class="w-full"
-            size="xl"
             color="theme"
           ></UInput>
         </div>

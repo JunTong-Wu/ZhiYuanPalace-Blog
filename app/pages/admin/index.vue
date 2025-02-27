@@ -27,7 +27,7 @@
               <!-- 饼图：帖子类型分布 -->
               <UCard class="clo-dashboard">
                 <template #header>
-                  <h3>帖子类型分布</h3>
+                  <h3 class="font-bold text-lg">帖子类型分布</h3>
                 </template>
 
                 <v-chart
@@ -39,7 +39,7 @@
               <!-- 仪表盘：CPU 使用率 -->
               <UCard class="clo-dashboard">
                 <template #header>
-                  <h3>CPU 使用率</h3>
+                  <h3 class="font-bold text-lg">CPU 使用率</h3>
                 </template>
 
                 <v-chart
@@ -51,7 +51,7 @@
               <!-- 仪表盘：内存使用率 -->
               <UCard class="clo-dashboard">
                 <template #header>
-                  <h3>内存使用率</h3>
+                  <h3 class="font-bold text-lg">内存使用率</h3>
                 </template>
 
                 <v-chart
@@ -63,7 +63,7 @@
               <!-- 系统信息 -->
               <UCard class="info-container clo-dashboard">
                 <template #header>
-                  <h3>系统信息</h3>
+                  <h3 class="font-bold text-lg">系统信息</h3>
                 </template>
 
                 <ul>

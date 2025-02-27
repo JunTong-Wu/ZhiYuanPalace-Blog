@@ -37,6 +37,7 @@
                     :locked="item.has_password"
                     :src="`${cdnUrl}${item.article_title_image}`"
                     alt=""
+                    className="bg-level-2"
                   />
                 </template>
                 <template #title>

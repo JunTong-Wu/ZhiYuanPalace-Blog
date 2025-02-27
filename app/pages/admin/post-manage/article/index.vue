@@ -1,6 +1,20 @@
 <template>
   <CommonMainSection>
     <UCard>
+      <template #header>
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold text-lg portrait:text-base">所有文章列表</h3>
+          <div>
+            <ZyButton @click="router.push('/admin/post-manage/article/add')">
+              <UIcon
+                name="i-solar-add-circle-bold"
+                class="w-7 h-7 mr-2"
+              />
+              添加文章
+            </ZyButton>
+          </div>
+        </div>
+      </template>
       <ZyFetchLoading
         :fetchData="articleListDataLazyFetch"
         @fetchOnload="showArticleList"
@@ -28,9 +42,12 @@
               }}
             </template>
             <template v-slot:cell-actions="{ row: item }">
-              <ZyLink :to="getJumpRoutes(item)">
+              <ZyLink
+                :to="getJumpRoutes(item)"
+                type="push"
+              >
                 <div
-                  class="w-10 h-10 p-2.5 my-4 bg-level-3 text-text-2 dark:text-text-1 rounded-3xs hover:bg-theme-500 hover:text-white transition-all"
+                  class="w-10 h-10 p-2.5 my-4 bg-level-3 text-text-2 dark:text-text-1 rounded-sm hover:bg-theme-500 hover:text-white transition-all"
                 >
                   <UIcon
                     name="i-solar-pen-bold"
@@ -56,6 +73,8 @@
   const config = useRuntimeConfig();
   const cdnUrl = config.public.CDN_URL;
 
+  const router = useRouter();
+
   // 获取文章列表
   const articleListDataLazyFetch = await ApiArticle.getArticlesList(null);
   const tableData = ref<Array<Article>>([]);
@@ -75,6 +94,7 @@
         name: "ID",
         key: "id",
         sortingField: "article_id",
+        columnClass: "portrait:hidden",
       },
       {
         name: "Title",
@@ -84,10 +104,12 @@
       {
         name: "Classify",
         key: "classify",
+        columnClass: "portrait:hidden",
       },
       {
         name: "Date",
         key: "date",
+        columnClass: "portrait:hidden",
       },
       {
         name: "Actions",
@@ -103,6 +125,6 @@
 
   const getJumpRoutes = (item: Article) => {
     const id = item.article_id;
-    return goPath.value + "/" + id;
+    return goPath.value + "/" + id + "/edit";
   };
 </script>

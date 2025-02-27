@@ -5,6 +5,8 @@ type ArticleListModelType = article.ArticleList;
 
 type ApiIndexModelType = article.ApiIndex;
 type ApiShowModelType = article.ApiShow;
+type ApiUpdateModelType = article.ApiUpdate;
+type ApiAddModelType = article.ApiAdd;
 
 export const ApiArticle = {
   /**
@@ -28,7 +30,23 @@ export const ApiArticle = {
    */
   passwordVerify(
     params: any,
-  ): Promise<LazyAsyncDataRef<ResOptionsModelType<null>>> {
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<any>>> {
     return ApiService.post("/articles/password-verify", params);
+  },
+  /**
+   * 编辑单篇文章
+   */
+  updateArticle(
+    params: ApiUpdateModelType["params"],
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<any>>> {
+    return ApiService.post(`/articles/update`, params);
+  },
+  /**
+   * 添加单篇文章
+   */
+  addArticle(
+    params: ApiAddModelType["params"],
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<any>>> {
+    return ApiService.post(`/articles/add`, params);
   },
 };

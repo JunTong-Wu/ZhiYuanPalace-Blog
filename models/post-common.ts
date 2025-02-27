@@ -10,7 +10,7 @@ export class VisitorTernary {
 // Posts
 export class Post extends VisitorTernary {
   protected id: number = 0;
-  protected classify_id: number = 0;
+  protected classify_id: number = 1;
   protected title: string = "";
   protected date: string = "";
 }

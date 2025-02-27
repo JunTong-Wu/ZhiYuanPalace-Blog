@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading || localLoading">
+  <div v-if="loading || (localLoading && fetchData)">
     <slot name="loading"></slot>
   </div>
   <div v-else>
@@ -13,7 +13,7 @@
   type FetchDataType<T> = LazyAsyncDataRef<ResOptionsModelType<T>>;
 
   const props = defineProps<{
-    fetchData: FetchDataType<any>;
+    fetchData?: FetchDataType<any> | undefined;
     loading?: boolean;
   }>();
 
@@ -29,6 +29,7 @@
 
   // 服务端获取参数
   if (
+    props.fetchData &&
     props.fetchData.data &&
     props.fetchData.data.value &&
     props.fetchData.data.value.code === 0
@@ -40,6 +41,7 @@
   // 客户端获取参数
   watchEffect(() => {
     if (
+      props.fetchData &&
       !props.fetchData.pending.value &&
       props.fetchData.data &&
       props.fetchData.data.value &&

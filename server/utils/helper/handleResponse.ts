@@ -19,9 +19,17 @@ export const setJson = (
   option?: { code?: number; message?: string; data?: any },
   originalResults?: { code: number; message: string; data: any },
 ) => {
-  return {
-    code: option?.code || originalResults?.code || 0,
-    message: option?.message || originalResults?.message || "查询成功",
-    data: option?.data || originalResults?.data || null,
-  };
+  if (option?.data === null) {
+    return {
+      code: option?.code || originalResults?.code || 0,
+      message: option?.message || originalResults?.message || "查询成功",
+      data: null,
+    };
+  } else {
+    return {
+      code: option?.code || originalResults?.code || 0,
+      message: option?.message || originalResults?.message || "查询成功",
+      data: option?.data || originalResults?.data || null,
+    };
+  }
 };

@@ -5,4 +5,5 @@ export interface TableHeader {
   sortable?: boolean; // 字段允许被排序
   align?: string;
   offset?: string;
+  columnClass?: string;
 }

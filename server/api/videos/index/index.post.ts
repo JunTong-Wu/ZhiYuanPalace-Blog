@@ -1,5 +1,6 @@
 import { video } from "@@/models";
 import { videoPasswordFilter } from "~~/server/utils/helper";
+import { loginVerify } from "~~/server/utils/helper/loginVerify";
 type ApiIndexModelType = video.ApiIndex;
 type Video = video.Video;
 
@@ -11,6 +12,9 @@ export default defineEventHandler(async (event) => {
   const pageNumer = Number(body.page_numer || -1);
   const pageSize = Number(body.page_size || -1);
   const collectionPath = body.vi_coll_path || null;
+
+  // 验证 JWT 令牌
+  const isLoggedIn = loginVerify(event);
 
   const sql =
     "SELECT * \n" +
@@ -39,7 +43,7 @@ export default defineEventHandler(async (event) => {
         item.video_text = item.video_text.substring(0, 60) + "...";
       }
     });
-    dbResults = videoPasswordFilter(dbResults);
+    dbResults = videoPasswordFilter(dbResults, null, isLoggedIn);
     total = dbResults.data.length;
     return setJson(
       { data: { list: dbResults.data, total: total } },

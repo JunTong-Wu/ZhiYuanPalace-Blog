@@ -21,23 +21,19 @@
               v-for="(item, index) in friendsListData.data"
             >
               <div
-                class="rounded border border-borderColor bg-level-1 p-4 sm:p-6 h-full flex flex-col justify-between"
+                class="rounded border border-borderColor bg-level-3 p-4 sm:p-6 h-full flex flex-col justify-between"
               >
                 <div class="flex sm:flex-col gap-4 sm:gap-0">
-                  <figure class="relative">
-                    <ZyLink
-                      :to="item.friend_path"
-                      type="outside"
-                    >
-                      <img
-                        :src="item.friend_icon"
-                        :alt="item.friend_title"
-                        width="230"
-                        height="230"
-                        class="w-16 sm:w-full rounded-2xs"
-                      />
-                    </ZyLink>
-                  </figure>
+                  <ZyLink
+                    :to="item.friend_path"
+                    type="outside"
+                  >
+                    <ZyLazyImage
+                      :src="item.friend_icon"
+                      :alt="item.friend_title"
+                      className="bg-level-4 w-16 h-16 sm:w-full sm:h-full aspect-square rounded-2xs object-cover"
+                    />
+                  </ZyLink>
                   <div class="flex-1">
                     <div class="mt-4 flex items-center justify-between">
                       <ZyLink

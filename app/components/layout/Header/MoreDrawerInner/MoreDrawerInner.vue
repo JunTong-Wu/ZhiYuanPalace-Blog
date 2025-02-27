@@ -1,12 +1,12 @@
 <template>
   <div class="p-4">
-    <div class="bg-level-3 rounded text-text-1 p-4">
+    <div class="bg-level-3 rounded text-text-1">
       <ul>
         <li class="">
           <ZyLink
             to="/admin"
             type="push"
-            class="flex items-center justify-between"
+            class="flex items-center justify-between w-full p-4"
             @click="closeDrawer"
           >
             <div class="flex items-center gap-4">

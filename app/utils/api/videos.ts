@@ -28,7 +28,7 @@ export const ApiVideo = {
    */
   passwordVerify(
     params: any,
-  ): Promise<LazyAsyncDataRef<ResOptionsModelType<null>>> {
+  ): Promise<LazyAsyncDataRef<ResOptionsModelType<any>>> {
     return ApiService.post("/videos/password-verify", params);
   },
 };
