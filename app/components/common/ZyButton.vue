@@ -186,8 +186,8 @@
   button.ZyButton-linear {
     position: relative;
     color: var(--theme-color);
-    padding: 1rem 2rem;
-    border-radius: 1rem;
+    padding: 0.55rem 1rem;
+    border-radius: var(--border-radius-sm);
     /* background-color: var(--theme-color); */
 
     border: 2px solid var(--theme-color);

@@ -53,6 +53,7 @@
     </div>
     <Toolbar header-background>
       <template #header>
+        <div class="hidden pl-1 pl-2 pl-3 pl-4 pl-0"></div>
         <ul
           v-if="titles.length"
           class="flex flex-col gap-4"
@@ -62,8 +63,11 @@
             :key="anchor.id"
             :class="[
               'text-text-1 text-base transition-all duration-300 cursor-pointer',
-              { '!text-indigo-500': activeAnchor === anchor.id },
-              `pl-[${anchor.indent * 2}rem]`, // 动态设置缩进，每个层级缩进 10px
+              {
+                '!text-indigo-500 scale-110 origin-left':
+                  activeAnchor === anchor.id,
+              },
+              `pl-${anchor.indent * 1}`, // 动态设置缩进，每个层级缩进 10px
             ]"
             @click="scrollTo(anchor.id)"
           >
@@ -87,7 +91,6 @@
 
           <span class="text-text-3 text-sm">这篇文章没有多级标题</span>
         </div>
-        <div class="hidden pl-[0rem] pl-[2rem] pl-[4rem]"></div>
       </template>
     </Toolbar>
   </div>
