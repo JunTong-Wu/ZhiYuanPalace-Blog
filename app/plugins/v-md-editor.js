@@ -14,6 +14,8 @@ import "@kangc/v-md-editor/lib/theme/style/github.css";
 
 // 代码高亮
 import Prism from "prismjs";
+import "prismjs/themes/prism.css"; // 可选主题样式
+import "prismjs/components/prism-bash"; // 根据需要引入语言支持
 // import hljs from "highlight.js";
 
 VueMarkdownEditor.use(githubTheme, {

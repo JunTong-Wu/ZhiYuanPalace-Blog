@@ -63,7 +63,7 @@
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
     >
       <h2
-        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-700 landscape:dark:text-theme-100"
+        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-500 landscape:dark:text-theme-100"
       >
         {{ $t(`menu.${String(route.name)}`) }}
       </h2>
@@ -73,7 +73,7 @@
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4 landscape:ml-4"
     >
       <h2
-        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-700 landscape:dark:text-theme-100"
+        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-500 landscape:dark:text-theme-100"
       >
         {{ $t(`menu.${String(route.name)}`) }}
       </h2>

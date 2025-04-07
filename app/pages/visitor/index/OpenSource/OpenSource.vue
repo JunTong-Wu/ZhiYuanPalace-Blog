@@ -4,11 +4,13 @@
   >
     <div class="flex flex-col justify-center items-center">
       <span
-        class="text-theme-500 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
+        class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
         >开源</span
       >
       <h2 class="text-3xl landscape:sm:text-5xl font-bold">知鸢宫开放源代码</h2>
-      <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
+      <div
+        class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
+      ></div>
       <p class="text-lg text-text-2 portrait:text-base mb-4 text-center">
         『知鸢宫』使用 NUXT3 框架全栈开发，使用腾讯云全家桶部署。<br />
         『知鸢宫』遵循 MIT 协议开源全部代码，开放 API

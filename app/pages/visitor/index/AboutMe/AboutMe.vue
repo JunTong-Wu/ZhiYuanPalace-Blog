@@ -5,11 +5,13 @@
         class="w-1/2 px-16 landscape:py-16 landscape:sm:py-32 portrait:px-8 portrait:py-16 flex flex-col justify-center portrait:w-full portrait:order-2"
       >
         <span
-          class="text-theme-500 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
+          class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
           >关于我</span
         >
         <h2 class="text-3xl landscape:sm:text-5xl font-bold">玉淇冰-Mebius</h2>
-        <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
+        <div
+          class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
+        ></div>
         <p class="text-lg text-text-2 portrait:text-base mb-4">
           射手座 男 24岁<br />ENFP快乐小狗<br />前端开发者<br />腾讯音乐人<br />纯爱战士<br />
         </p>

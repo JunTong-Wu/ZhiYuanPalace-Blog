@@ -26,7 +26,7 @@
         <div class="flex items-center h-full mr-4 landscape:py-2">
           <GoBackButton
             :isAdminRule="isAdminHeader || isDocumentHeader"
-            class="flex-none"
+            class="flex-none landscape:mr-4"
           />
           <HeaderTitle
             class="flex-none"

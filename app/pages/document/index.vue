@@ -16,17 +16,25 @@
             这里是知鸢宫的配套开发文档，帮助你快速上手和了解项目的各个方面。
           </p>
 
-          <div class="flex mb-24 gap-8">
+          <div
+            class="grid portrait:grid-cols-1 landscape:grid-cols-3 gap-8 mb-24"
+          >
             <ZyButton
               size="large"
-              @click="$router.push('/doc')"
+              @click="$router.push('/doc/guide/getting-started')"
               >快速上手</ZyButton
             >
             <ZyButton
               size="large"
               type="linear"
               class=""
-              >项目简介</ZyButton
+              >组件库</ZyButton
+            >
+            <ZyButton
+              size="large"
+              type="linear"
+              class=""
+              >API</ZyButton
             >
           </div>
         </div>

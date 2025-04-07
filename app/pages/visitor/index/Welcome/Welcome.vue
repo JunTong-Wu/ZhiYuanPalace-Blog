@@ -11,16 +11,18 @@
           class="w-1/2 px-16 landscape:py-16 landscape:sm:py-32 portrait:px-8 portrait:py-16 flex flex-col justify-center portrait:w-full portrait:order-2"
         >
           <span
-            class="text-theme-500 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
+            class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
             >嗨！早上好！</span
           >
           <h2 class="text-3xl landscape:sm:text-5xl font-bold">
             {{ $t("home.welcome") }} <br v-if="!cnClass" /><span
-              class="text-theme-500"
+              class="text-theme-500 dark:text-theme-100"
               >{{ $t("common.zhiYuanPalace") }}</span
             >
           </h2>
-          <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
+          <div
+            class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
+          ></div>
           <p class="text-lg text-text-2 portrait:text-base mb-4">
             {{ $t("home.briefIntroductionContent") }}
           </p>
@@ -60,9 +62,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import TimeKeeping from "./TimeKeeping.vue";
-import Sticker from "./Sticker.vue";
-import Notice from "./Notice.vue";
+  import TimeKeeping from "./TimeKeeping.vue";
+  import Sticker from "./Sticker.vue";
+  import Notice from "./Notice.vue";
 
   const { locale } = useI18n();
   const cnClass = computed(() => {
@@ -79,7 +81,8 @@ import Notice from "./Notice.vue";
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("@/assets/image/home-section1.jpeg") no-repeat center/cover;
+      background: url("@/assets/image/home-section1.jpeg") no-repeat
+        center/cover;
       border-radius: var(--border-radius-4xl) 0 var(--border-radius-4xl)
         var(--border-radius-4xl);
       filter: blur(1.5rem);

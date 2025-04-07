@@ -37,7 +37,7 @@
         <!--        @load="createDecoration()"-->
         <div
           v-else
-          class="h-full w-full relative left-0 rounded-2xs shadow-md bg-theme-500"
+          class="h-full w-full relative left-0 rounded-2xs shadow-md bg-theme-500 dark:bg-theme-100"
         ></div>
       </div>
 

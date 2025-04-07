@@ -47,7 +47,7 @@
                 type="push"
               >
                 <div
-                  class="w-10 h-10 p-2.5 my-4 bg-level-3 text-text-2 dark:text-text-1 rounded-sm hover:bg-theme-500 hover:text-white transition-all"
+                  class="w-10 h-10 p-2.5 my-4 bg-level-3 text-text-2 dark:text-text-1 rounded-sm hover:bg-theme-500 dark:hover:bg-theme-100 hover:text-white transition-all"
                 >
                   <UIcon
                     name="i-solar-pen-bold"

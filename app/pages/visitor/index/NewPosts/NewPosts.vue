@@ -4,11 +4,13 @@
       class="flex flex-col justify-center items-center pt-16 landscape:sm:pt-24"
     >
       <span
-        class="text-theme-500 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
+        class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
         >文章</span
       >
       <h2 class="text-3xl landscape:sm:text-5xl font-bold">阅读最新文章</h2>
-      <div class="h-1 w-16 bg-theme-500 my-4 landscape:sm:my-8"></div>
+      <div
+        class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
+      ></div>
     </div>
     <div class="container px-4 pt-8">
       <div

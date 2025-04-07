@@ -357,8 +357,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/document/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-solar-atom-linear",
-      activatedIcon: "i-solar-atom-bold",
+      defaultIcon: "i-solar-chat-square-code-linear",
+      activatedIcon: "i-solar-chat-square-code-bold",
       order: 7,
       type: "doc",
     },
@@ -369,12 +369,25 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/document/guide/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-solar-atom-linear",
-      activatedIcon: "i-solar-atom-bold",
+      defaultIcon: "i-solar-map-linear",
+      activatedIcon: "i-solar-map-bold",
       order: 7.1,
       type: "doc",
     },
     children: [
+      {
+        path: "/doc/guide/introduction",
+        name: "introduction",
+        component: () =>
+          import("@/pages/document/guide/introduction/index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-solar-info-circle-linear",
+          activatedIcon: "i-solar-info-circle-bold",
+          order: 7.11,
+          type: "doc",
+        },
+      },
       {
         path: "/doc/guide/getting-started",
         name: "getting-started",
@@ -382,9 +395,9 @@ const routes: Array<RouteRecordRaw> = [
           import("@/pages/document/guide/getting-started/index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-solar-atom-linear",
-          activatedIcon: "i-solar-atom-bold",
-          order: 7.11,
+          defaultIcon: "i-solar-bolt-circle-linear",
+          activatedIcon: "i-solar-bolt-circle-bold",
+          order: 7.12,
           type: "doc",
         },
       },

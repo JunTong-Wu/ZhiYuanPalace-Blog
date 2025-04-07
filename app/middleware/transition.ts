@@ -1,4 +1,3 @@
-import NProgress from "nprogress";
 import { cardTransitionEnd as ArticleCardTransitionEnd } from "~/components/layout/ArticleCard/transition";
 import { cardTransitionEnd as ShuoShuoCardTransitionEnd } from "~/components/layout/ShuoShuoCard/transition";
 import { cardTransitionEnd as AlbumCardTransitionEnd } from "~/components/layout/AlbumCard/transition";
@@ -63,12 +62,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (from.meta.type === "visitor" && to.meta.type === "visitor") {
       //  一级页面切换
       if (getPageLevelByRoute(from) == 1 && getPageLevelByRoute(to) == 1) {
-        if (process.client) {
-          NProgress.start();
-          setTimeout(() => {
-            NProgress.done();
-          }, 100);
-        }
         if (getRootOrderByRoute(from) > getRootOrderByRoute(to)) {
           // console.log("动画：一级页面切换（向前切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
@@ -92,12 +85,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
         (getPageLevelByRoute(from) == 1 && getPageLevelByRoute(to) == 2) ||
         (getPageLevelByRoute(from) == 2 && getPageLevelByRoute(to) == 1)
       ) {
-        if (process.client) {
-          NProgress.start();
-          setTimeout(() => {
-            NProgress.done();
-          }, 100);
-        }
         if (getRootOrderByRoute(from) > getRootOrderByRoute(to)) {
           // console.log("动画：一级和二级页面切换（向前切换）");
           if (from.meta.pageTransition && to.meta.pageTransition) {
@@ -118,12 +105,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }
       //  二级页面切换
       if (getPageLevelByRoute(from) == 2 && getPageLevelByRoute(to) == 2) {
-        if (process.client) {
-          NProgress.start();
-          setTimeout(() => {
-            NProgress.done();
-          }, 100);
-        }
         if (getRootPathByRoute(from) == getRootPathByRoute(to)) {
           if (getSelfOrderByRoute(from) > getSelfOrderByRoute(to)) {
             // console.log("动画：二级相同根路径页面切换（向前切换）");
