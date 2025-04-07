@@ -61,6 +61,11 @@
         </div>
         <div class="h-full overflow-auto flex flex-col">
           <slot />
+          <div
+            class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-end"
+          >
+            <slot name="footer" />
+          </div>
         </div>
       </ZyTouch>
     </aside>
@@ -197,13 +202,13 @@
   const translate = (translate: string | null, transition: boolean) => {
     if (el.value) {
       const drawerMain = el.value.querySelector(".drawer-main");
-      if (transition) {
+      if (transition && drawerMain && drawerMain instanceof HTMLElement) {
         drawerMain.style.transition = `transform ${ANIMATION_DURATION}ms cubic-bezier(0.165, 0.84, 0.44, 1)`;
         setTimeout(() => {
           drawerMain.style.transition = `none`;
         }, ANIMATION_DURATION);
       }
-      if (translate) {
+      if (translate && drawerMain && drawerMain instanceof HTMLElement) {
         drawerMain.style.transform = translate;
       }
     }

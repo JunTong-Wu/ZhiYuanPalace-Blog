@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/", // 路由的路径
     name: "home", // 路由的名称
-    component: () => import("@/pages/visitor/index.vue"), // 路由的组件
+    component: () => import("@/pages/visitor/index/index.vue"), // 路由的组件
     meta: {
       navigate: true, // 路由是否可以被导航
       defaultIcon: "i-solar-home-smile-linear", // 路由的默认图标
@@ -331,6 +331,18 @@ const routes: Array<RouteRecordRaw> = [
       activatedIcon: "i-solar-server-minimalistic-bold",
       order: 6600,
       role: "admin",
+    },
+  },
+  {
+    path: "/doc",
+    name: "document",
+    component: () => import("@/pages/document/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-solar-pie-chart-2-linear",
+      activatedIcon: "i-solar-pie-chart-2-bold",
+      order: 6000,
+      type: "doc",
     },
   },
 ];

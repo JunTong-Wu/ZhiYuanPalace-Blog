@@ -9,7 +9,7 @@
   >
     <div
       v-if="
-        Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader
+        Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminRule
       "
       class="inset-1 absolute bg-level-b1 portrait:bg-background rounded overflow-hidden"
     >
@@ -24,7 +24,7 @@
     </div>
     <ul
       v-if="
-        Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminHeader
+        Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminRule
       "
       class="headerbar-tabs flex h-full relative z-10"
     >
@@ -62,7 +62,7 @@
       v-else-if="
         Array.isArray(childrenTabs) &&
         childrenTabs.length === 1 &&
-        !isAdminHeader
+        !isAdminRule
       "
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
     >
@@ -73,7 +73,7 @@
       </h2>
     </div>
     <div
-      v-else-if="isAdminHeader"
+      v-else-if="isAdminRule"
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4 landscape:ml-4"
     >
       <h2
@@ -88,7 +88,7 @@
   import type { RouterOptions } from "vue-router";
 
   const props = defineProps({
-    isAdminHeader: {
+    isAdminRule: {
       type: Boolean,
       default: false,
     },
@@ -152,7 +152,9 @@
     ) as HTMLElement | null;
     if (tab && indicator) {
       const width = tab.getBoundingClientRect().width;
-      const left = tabWidth.slice(0, index).reduce((acc, cur) => acc + cur, 0);
+      // 确保 tabWidth 数组中的元素都是有效的数值
+      const validTabWidth = tabWidth.filter((width) => typeof width === 'number' && !isNaN(width));
+      const left = validTabWidth.slice(0, index).reduce((acc, cur) => (typeof acc === 'number' ? acc : 0) + (typeof cur === 'number' ? cur : 0), 0);
       indicator.style.left = `${left}px`;
       indicator.style.width = `${width}px`;
       indicator.style.opacity = "1";

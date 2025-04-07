@@ -40,12 +40,17 @@
 
     <!-- 上层 -->
     <div class="mb-8"></div>
-    <VisitorNavigation
-      v-if="!isAdminSidebar"
+    <AdminNavigation
+      v-if="isAdminSidebar"
       :hide="hide"
       class="relative z-10"
     />
-    <AdminNavigation
+    <DocumentNavigation
+      v-if="isDocumentSidebar"
+      :hide="hide"
+      class="relative z-10"
+    />
+    <VisitorNavigation
       v-else
       :hide="hide"
       class="relative z-10"
@@ -55,6 +60,10 @@
 <script setup lang="ts">
   const props = defineProps({
     isAdminSidebar: {
+      type: Boolean,
+      default: false,
+    },
+    isDocumentSidebar: {
       type: Boolean,
       default: false,
     },

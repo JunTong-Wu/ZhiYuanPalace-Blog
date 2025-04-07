@@ -34,12 +34,13 @@
         :isLoginLayout="isLoginPage"
         :isAdminLayout="isAdminPage"
         :isVideoDetailLayout="isVideoDetailPage"
+        :isDocumentLayout="isDocumentPage"
       >
         <NuxtPage class="nuxt-page mx-auto min-h-screen" />
       </Layout>
     </ZySuperResponsive>
     <ClientOnly>
-      <Live2D :hide="isAdminPage || isLoginPage || isVideoDetailPage" />
+      <Live2D :hide="isAdminPage || isLoginPage || isVideoDetailPage || isDocumentPage" />
     </ClientOnly>
   </div>
 </template>
@@ -57,6 +58,7 @@
   const isAdminPage = ref(false);
   const isLoginPage = ref(false);
   const isVideoDetailPage = ref(false);
+  const isDocumentPage = ref(false);
   // 监听路由变化，切换布局
   watch(
     () => route.path,
@@ -64,12 +66,19 @@
       if (isAdminRouter(newPath)) {
         isAdminPage.value = true;
         isLoginPage.value = false;
+        isDocumentPage.value = false;
       } else if (newPath.startsWith("/login")) {
         isAdminPage.value = false;
         isLoginPage.value = true;
+        isDocumentPage.value = false;
+      } else if (newPath.startsWith("/doc")) {
+        isAdminPage.value = false;
+        isLoginPage.value = false;
+        isDocumentPage.value = true;
       } else {
         isAdminPage.value = false;
         isLoginPage.value = false;
+        isDocumentPage.value = false;
       }
 
       if (newPath.includes("/audio/video/")) {

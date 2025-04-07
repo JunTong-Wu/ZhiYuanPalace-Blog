@@ -25,12 +25,12 @@
         <!-- 标题区 -->
         <div class="flex items-center h-full mr-4 landscape:py-2">
           <GoBackButton
-            :isAdminRule="isAdminHeader"
+            :isAdminRule="isAdminHeader || isDocumentHeader"
             class="flex-none"
           />
           <HeaderTitle
             class="flex-none"
-            :isAdminHeader="isAdminHeader"
+            :isAdminRule="isAdminHeader || isDocumentHeader"
           />
           <ClientOnly>
             <PostTitle class="flex-1" />
@@ -50,7 +50,7 @@
         </ClientOnly> -->
 
         <!-- 音乐播放器 -->
-        <div class="flex items-center h-full -mr-2">
+        <div v-if="!isAdminHeader && !isDocumentHeader" class="flex items-center h-full -mr-2">
           <MusicPlayer
             class="h-music select-none text-white landscape:mr-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50"
           />
@@ -64,7 +64,7 @@
             <BackToTop class="-ml-2" />
 
             <div
-              v-if="!isAdminHeader"
+              v-if="!isAdminHeader && !isDocumentHeader"
               class="portrait:hidden p-2 -ml-2 h-16 w-16"
             >
               <ZyButton
@@ -153,8 +153,8 @@
             </div>
 
             <div
-              v-if="isAdminHeader"
-              class="portrait:hidden p-2 -ml-2 h-16 w-16"
+              v-if="isAdminHeader || isDocumentHeader"
+              class="p-2 -ml-2 h-16 w-16"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -190,7 +190,7 @@
             </div>
 
             <div
-              v-if="!isAdminHeader"
+              v-if="!isAdminHeader && !isDocumentHeader"
               class="p-2 -ml-2 h-16 w-16"
             >
               <ZyButton
@@ -213,6 +213,23 @@
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
                 @click="openAdminNavigationDrawer()"
+                title="菜单"
+                type="icon"
+              >
+                <UIcon
+                  name="i-solar-hamburger-menu-linear"
+                  class="w-5 h-5"
+                />
+              </ZyButton>
+            </div>
+
+            <div
+              v-if="isDocumentHeader"
+              class="landscape:hidden p-2 -ml-2 h-16 w-16"
+            >
+              <ZyButton
+                class="flex items-center justify-center w-full h-full"
+                @click="openDocumentNavigationDrawer()"
                 title="菜单"
                 type="icon"
               >
@@ -248,8 +265,10 @@
       maskColor="rgba(0,0,0,0.4)"
       background="var(--bg-level-1)"
     >
-      <MoreDrawerInner @closeDrawer="closeMoreDrawer">
-        <template #footer>
+      <template #default>
+        <MoreDrawerInner @closeDrawer="closeMoreDrawer" />
+      </template>
+      <template #footer>
           <div
             class="flex justify-end h-full items-center gap-2 landscape:hidden"
           >
@@ -308,7 +327,6 @@
             </ZyPopover>
           </div>
         </template>
-      </MoreDrawerInner>
     </ZyDrawer>
     <!-- 管理员移动端导航抽屉 -->
     <ZyDrawer
@@ -319,14 +337,16 @@
       size="100%"
       background="var(--bg-background)"
     >
-      <AdminNavigationDrawerInner @closeDrawer="closeAdminNavigationDrawer">
-        <template #footer>
+      <template #default>
+        <AdminNavigationDrawerInner @closeDrawer="closeAdminNavigationDrawer" />
+      </template>
+      <template #footer>
           <div
             class="flex justify-end h-full items-center gap-4 landscape:hidden"
           >
             <ZyButton
               v-if="isAdminHeader"
-              class="flex items-center justify-center"
+              class="flex items-center justify-center p-2"
               @click="backToHome"
               title="回到前台"
               type="icon"
@@ -337,7 +357,7 @@
               />
             </ZyButton>
             <ZyButton
-              class="flex items-center justify-center"
+              class="flex items-center justify-center p-2"
               @click="toggleFullScreen"
               title="全屏/退出全屏"
               type="icon"
@@ -354,7 +374,7 @@
               />
             </ZyButton>
             <ZyButton
-              class="flex items-center justify-center"
+              class="flex items-center justify-center p-2"
               @click="darkModeSwitch"
               title="日间/夜间"
               type="icon"
@@ -375,7 +395,7 @@
             >
               <template #reference>
                 <ZyButton
-                  class="flex items-center justify-center"
+                  class="flex items-center justify-center p-2"
                   title="切换语言"
                   type="icon"
                 >
@@ -391,7 +411,90 @@
             </ZyPopover>
           </div>
         </template>
-      </AdminNavigationDrawerInner>
+    </ZyDrawer>
+    <!-- 开发文档导航抽屉 -->
+    <ZyDrawer
+      title="导航"
+      :display="documentNavigationDisplay"
+      @cancel="closeDocumentNavigationDrawer"
+      position="top"
+      size="100%"
+      background="var(--bg-background)"
+    >
+      <template #default>
+        <DocumentNavigationDrawerInner @closeDrawer="closeDocumentNavigationDrawer" />
+      </template>
+      <template #footer>
+          <div
+            class="flex justify-end h-full items-center gap-4 landscape:hidden"
+          >
+            <ZyButton
+              v-if="isAdminHeader"
+              class="flex items-center justify-center p-2"
+              @click="backToHome"
+              title="回到前台"
+              type="icon"
+            >
+              <UIcon
+                name="i-solar-home-smile-linear"
+                class="w-5 h-5"
+              />
+            </ZyButton>
+            <ZyButton
+              class="flex items-center justify-center p-2"
+              @click="toggleFullScreen"
+              title="全屏/退出全屏"
+              type="icon"
+            >
+              <UIcon
+                v-if="!fullScreenFlag"
+                name="i-solar-maximize-linear"
+                class="w-5 h-5"
+              />
+              <UIcon
+                v-else
+                name="i-solar-minimize-linear"
+                class="w-5 h-5"
+              />
+            </ZyButton>
+            <ZyButton
+              class="flex items-center justify-center p-2"
+              @click="darkModeSwitch"
+              title="日间/夜间"
+              type="icon"
+            >
+              <UIcon
+                name="i-solar-sun-linear"
+                class="w-5 h-5 hidden dark:inline-block"
+              />
+              <UIcon
+                name="i-solar-moon-linear"
+                class="w-5 h-5 dark:hidden"
+              />
+            </ZyButton>
+            <ZyPopover
+              title="切换语言"
+              background="var(--bg-level-1)"
+              position="top-right"
+            >
+              <template #reference>
+                <ZyButton
+                  class="flex items-center justify-center p-2"
+                  title="切换语言"
+                  type="icon"
+                >
+                  <UIcon
+                    name="i-solar-planet-linear"
+                    class="w-5 h-5"
+                  />
+                </ZyButton>
+              </template>
+              <template #actions>
+                <LanguagePopoverInner />
+              </template>
+            </ZyPopover>
+          </div>
+        </template>
     </ZyDrawer>
   </header>
 </template>
@@ -400,6 +503,10 @@
 
   const props = defineProps({
     isAdminHeader: {
+      type: Boolean,
+      default: false,
+    },
+    isDocumentHeader: {
       type: Boolean,
       default: false,
     },
@@ -454,6 +561,14 @@
   };
   const closeAdminNavigationDrawer = () => {
     adminNavigationDisplay.value = false;
+  };
+
+  const documentNavigationDisplay = ref(false);
+  const openDocumentNavigationDrawer = () => {
+    documentNavigationDisplay.value = true;
+  };
+  const closeDocumentNavigationDrawer = () => {
+    documentNavigationDisplay.value = false;
   };
 
   // 背景变化
@@ -538,6 +653,7 @@
     }
   };
   const switchPageHasToolbarDebounce = debounce(
+    //@ts-ignore
     switchPageHasToolbarDebounceFunc,
     200,
   );
@@ -549,8 +665,10 @@
     () => props.pageHasToolbar,
     () => {
       if (props.pageHasToolbar) {
+        //@ts-ignore
         switchPageHasToolbarDebounce(true);
       } else {
+        //@ts-ignore
         switchPageHasToolbarDebounce(false);
       }
     },

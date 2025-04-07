@@ -5,4 +5,6 @@
     </UCard>
   </CommonMainSection>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MusicTable from "./MusicTable/MusicTable.vue";
+</script>

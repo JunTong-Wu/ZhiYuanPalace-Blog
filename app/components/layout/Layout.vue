@@ -34,12 +34,13 @@
       <!-- 侧边导航栏 -->
       <Sidebar
         :isAdminSidebar="isAdminLayout"
+        :isDocumentSidebar="isDocumentLayout"
         :hide="hideSidebar"
         class="portrait:hidden fixed top-0 bottom-0 left-0 z-40 bg-level-2 dark:bg-level-1 transition-all border-r border-borderColor"
         :class="{
           'w-sidebar': !hideSidebar,
           'w-hideSidebar': hideSidebar,
-          dark: isAdminLayout,
+          dark: isAdminLayout || isDocumentLayout,
         }"
         @switchSidebarClick="switchSidebarStyle"
       />
@@ -50,6 +51,7 @@
         :hideSidebar="hideSidebar"
         :hideToolbar="hideToolbar"
         :isAdminHeader="isAdminLayout"
+        :isDocumentHeader="isDocumentLayout"
         :disabledLayoutControl="!isLandscapeMdSizeFlag"
         class="fixed top-0 z-30 right-0 transition-all"
         :class="{
@@ -62,7 +64,7 @@
       />
       <!-- 底部导航栏 -->
       <FooterNavigation
-        v-if="!isAdminLayout && !isLoginLayout && !isVideoDetailLayout"
+        v-if="!isAdminLayout && !isLoginLayout && !isVideoDetailLayout &&!isDocumentLayout"
         class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-headBar backdrop-blur-3xl"
       />
     </section>
@@ -101,6 +103,10 @@
       type: Boolean,
       default: false,
     },
+    isDocumentLayout: {
+      type: Boolean,
+      default: false,
+    }
   });
 
   // 布局切换

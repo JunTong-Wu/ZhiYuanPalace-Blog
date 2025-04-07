@@ -27,5 +27,6 @@
   "comment-manage": "评论管理",
   "friends-manage": "友链管理",
   "site-setting": "站点设置",
-  "server-manage": "服务器管理"
+  "server-manage": "服务器管理",
+  "document": "开发文档"
 }

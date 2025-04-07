@@ -15,7 +15,7 @@ export const _getNavigationMap = (): Array<RouteRecordRaw> => {
  */
 export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
-  linkList = linkList.filter((route) => route.meta?.role !== "admin");
+  linkList = linkList.filter((route) => route.meta?.role !== "admin" && route.meta?.type!== "doc");
   return linkList;
 };
 
@@ -26,6 +26,16 @@ export const getVisitorNavigationMap = (): Array<RouteRecordRaw> => {
 export const getAdminNavigationMap = (): Array<RouteRecordRaw> => {
   let linkList = _getNavigationMap();
   linkList = linkList.filter((route) => route.meta?.role === "admin");
+  return linkList;
+};
+
+/**
+ * 获取文档路由结构
+ * @returns Array<RouteRecordRaw>
+ */
+export const getDocNavigationMap = (): Array<RouteRecordRaw> => {
+  let linkList = _getNavigationMap();
+  linkList = linkList.filter((route) => route.meta?.type === "doc");
   return linkList;
 };
 
@@ -52,6 +62,23 @@ export const getNavigationMapForVisitorMenu = () => {
  */
 export const getNavigationMapForAdminMenu = () => {
   let linkList = getAdminNavigationMap();
+  linkList = linkList.filter((route) => route.meta?.navigate === true);
+  linkList.forEach((route) => {
+    if (route.children && route.children.length > 0) {
+      route.children = route.children.filter(
+        (childrenRoute) => childrenRoute.meta?.navigate === true,
+      );
+    }
+  });
+  return linkList;
+};
+
+/**
+ * 获取文档可导航列表
+ * @returns Array<RouteRecordRaw>
+ */
+export const getNavigationMapForDocMenu = () => {
+  let linkList = getDocNavigationMap();
   linkList = linkList.filter((route) => route.meta?.navigate === true);
   linkList.forEach((route) => {
     if (route.children && route.children.length > 0) {

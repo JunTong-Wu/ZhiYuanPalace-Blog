@@ -27,5 +27,6 @@
   "comment-manage": "Comment Manage",
   "friends-manage": "Friends Manage",
   "site-setting": "Site Setting",
-  "server-manage": "Server Manage"
+  "server-manage": "Server Manage",
+  "document": "Develop Document"
 }
