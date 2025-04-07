@@ -28,5 +28,7 @@
   "friends-manage": "Friends Manage",
   "site-setting": "Site Setting",
   "server-manage": "Server Manage",
-  "document": "Develop Document"
+  "document": "Develop Document",
+  "guide": "Guide",
+  "getting-started": "Getting Started"
 }

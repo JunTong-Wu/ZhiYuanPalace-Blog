@@ -40,7 +40,11 @@
       </Layout>
     </ZySuperResponsive>
     <ClientOnly>
-      <Live2D :hide="isAdminPage || isLoginPage || isVideoDetailPage || isDocumentPage" />
+      <Live2D
+        :hide="
+          isAdminPage || isLoginPage || isVideoDetailPage || isDocumentPage
+        "
+      />
     </ClientOnly>
   </div>
 </template>
@@ -63,7 +67,7 @@
   watch(
     () => route.path,
     (newPath) => {
-      if (isAdminRouter(newPath)) {
+      if (newPath.startsWith("/admin")) {
         isAdminPage.value = true;
         isLoginPage.value = false;
         isDocumentPage.value = false;

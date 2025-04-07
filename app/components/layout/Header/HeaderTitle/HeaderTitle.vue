@@ -59,17 +59,13 @@
       </li>
     </ul>
     <div
-      v-else-if="
-        Array.isArray(childrenTabs) &&
-        childrenTabs.length === 1 &&
-        !isAdminRule
-      "
+      v-else-if="childrenTabs === null && !isAdminRule"
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
     >
       <h2
         class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-700 landscape:dark:text-theme-100"
       >
-        {{ $t(`menu.${childrenTabs[0].name}`) }}
+        {{ $t(`menu.${String(route.name)}`) }}
       </h2>
     </div>
     <div
@@ -86,6 +82,7 @@
 </template>
 <script setup lang="ts">
   import type { RouterOptions } from "vue-router";
+  import type { RouteLocationNormalized } from "#vue-router";
 
   const props = defineProps({
     isAdminRule: {
@@ -98,7 +95,7 @@
   const route = useRoute();
   const router = useRouter();
   const titleDisable = ref(true);
-  const childrenTabs = ref<RouterOptions["routes"]>();
+  const childrenTabs = ref<RouterOptions["routes"] | null>();
   const activeTab = ref<string>("");
   const { locale } = useI18n();
 
@@ -153,8 +150,17 @@
     if (tab && indicator) {
       const width = tab.getBoundingClientRect().width;
       // 确保 tabWidth 数组中的元素都是有效的数值
-      const validTabWidth = tabWidth.filter((width) => typeof width === 'number' && !isNaN(width));
-      const left = validTabWidth.slice(0, index).reduce((acc, cur) => (typeof acc === 'number' ? acc : 0) + (typeof cur === 'number' ? cur : 0), 0);
+      const validTabWidth = tabWidth.filter(
+        (width) => typeof width === "number" && !isNaN(width),
+      );
+      const left = validTabWidth
+        .slice(0, index)
+        .reduce(
+          (acc, cur) =>
+            (typeof acc === "number" ? acc : 0) +
+            (typeof cur === "number" ? cur : 0),
+          0,
+        );
       indicator.style.left = `${left}px`;
       indicator.style.width = `${width}px`;
       indicator.style.opacity = "1";
@@ -164,13 +170,13 @@
 
   router.beforeEach(
     (
-      to: { fullPath: string },
-      from: { fullPath: string },
+      to: RouteLocationNormalized,
+      from: RouteLocationNormalized,
       next: () => void,
     ) => {
       if (
-        getRootPath(from.fullPath) != getRootPath(to.fullPath) ||
-        getPageLevel(from.fullPath) != getPageLevel(to.fullPath)
+        getRootPathByRoute(from) != getRootPathByRoute(to) ||
+        getPageLevelByRoute(from) != getPageLevelByRoute(to)
       ) {
         titleDisable.value = false;
         next();

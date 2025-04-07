@@ -51,7 +51,7 @@
       class="relative z-10"
     />
     <VisitorNavigation
-      v-else
+      v-if="!isDocumentSidebar && !isAdminSidebar"
       :hide="hide"
       class="relative z-10"
     />

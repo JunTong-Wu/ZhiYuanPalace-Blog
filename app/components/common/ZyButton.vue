@@ -45,10 +45,8 @@
     name: "ZyButton",
     props: {
       title: { type: String, default: "" },
-      type: { type: String as () => Type, default: "default",
-      validator: (value: string) => ["default", "linear", "text", "icon", "none"].includes(value) },
-      size: { type: String as () => Size, default: "medium",
-      validator: (value: string) => ["large", "medium", "small"].includes(value) },
+      type: { type: String as () => Type, default: "default" },
+      size: { type: String as () => Size, default: "medium" },
       loading: { type: Boolean, default: false },
       disabled: { type: Boolean, default: false },
       color: { type: String, default: "" },

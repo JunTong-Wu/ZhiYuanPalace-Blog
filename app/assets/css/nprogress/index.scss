@@ -3,8 +3,8 @@
   pointer-events: none;
   --progress-color: linear-gradient(
     to right,
-    var(--theme-color-400),
-    var(--theme-color-600)
+    var(--theme-color-100),
+    var(--theme-color-300)
   );
   --shadow-color: rgba(var(--theme-color-rgb), 0.5);
 }

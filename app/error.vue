@@ -53,22 +53,23 @@
     () => props.error,
     (newValue) => {
       const newPath = newValue.url;
-      if (isAdminRouter(newPath)) {
-        console.log("isAdminRouter");
-        isAdminPage.value = true;
-        isLoginPage.value = false;
-      } else if (newPath.startsWith("/login")) {
-        isAdminPage.value = false;
-        isLoginPage.value = true;
-      } else {
-        isAdminPage.value = false;
-        isLoginPage.value = false;
-      }
+      if (newPath) {
+        if (newPath.startsWith("/admin")) {
+          isAdminPage.value = true;
+          isLoginPage.value = false;
+        } else if (newPath.startsWith("/login")) {
+          isAdminPage.value = false;
+          isLoginPage.value = true;
+        } else {
+          isAdminPage.value = false;
+          isLoginPage.value = false;
+        }
 
-      if (newPath.includes("/audio/video/")) {
-        isVideoDetailPage.value = true;
-      } else {
-        isVideoDetailPage.value = false;
+        if (newPath.includes("/audio/video/")) {
+          isVideoDetailPage.value = true;
+        } else {
+          isVideoDetailPage.value = false;
+        }
       }
     },
     { immediate: true },

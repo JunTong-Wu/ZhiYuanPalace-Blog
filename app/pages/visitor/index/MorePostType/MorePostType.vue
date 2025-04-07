@@ -40,7 +40,7 @@
               <h3
                 class="text-text-1 text-2xl my-2 portrait:text-xl portrait:font-normal"
               >
-                {{ $t(`menu.${getSelfTitle(item.path)}`) }}
+                {{ $t(`menu.${item.name}`) }}
               </h3>
               <p
                 class="text-text-2 text-base portrait:text-xs whitespace-pre-line"
@@ -57,7 +57,7 @@
             >
               <div class="flex h-16 items-center justify-center w-full">
                 <ZyIcon
-                  :default-name="getSelfIcon(item.path).activatedIcon"
+                  :default-name="getSelfIconByName(item.name).activatedIcon"
                   size="1.5rem"
                 />
               </div>
@@ -66,7 +66,7 @@
               <div class="flex h-16 items-center justify-center w-full">
                 <ZyIcon
                   :activated="true"
-                  :activated-name="getSelfIcon(item.path).activatedIcon"
+                  :activated-name="getSelfIconByName(item.name).activatedIcon"
                   activated-color="white"
                   size="1.5rem"
                 />
@@ -83,26 +83,32 @@
     {
       text: "home.articleModuleSlogan",
       path: "/text/article",
+      name: "article",
     },
     {
       text: "home.shuoshuoModuleSlogan",
       path: "/text/shuoshuo",
+      name: "shuoshuo",
     },
     {
       text: "home.musicModuleSlogan",
       path: "/music",
+      name: "music",
     },
     {
       text: "home.photoModuleSlogan",
       path: "/audio/photo",
+      name: "photo",
     },
     {
       text: "home.videoModuleSlogan",
       path: "/audio/video",
+      name: "video",
     },
     {
       text: "home.friendModuleSlogan",
       path: "/about/friend",
+      name: "friend",
     },
   ]);
 

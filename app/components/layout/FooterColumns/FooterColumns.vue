@@ -86,7 +86,7 @@
                     <li v-for="(item, index) in friendsListData.data">
                       <ZyLink
                         v-if="index < 3"
-                        :href="item.friend_path"
+                        :to="item.friend_path"
                         type="outside"
                       >
                         <ZyButton

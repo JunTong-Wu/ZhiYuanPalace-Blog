@@ -28,5 +28,7 @@
   "friends-manage": "友链管理",
   "site-setting": "站点设置",
   "server-manage": "服务器管理",
-  "document": "开发文档"
+  "document": "开发文档",
+  "guide": "指南",
+  "getting-started": "快速上手"
 }
