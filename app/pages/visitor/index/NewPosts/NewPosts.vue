@@ -87,6 +87,7 @@
     >
       <ZyButton
         class="mt-12"
+        size="large"
         @click="$router.push('/text/article')"
         >查看更多</ZyButton
       >

@@ -39,27 +39,45 @@
       </div>
       <div class="flex items-center h-full gap-4 landscape:py-2">
         <!-- 时钟区 -->
-        <!-- <ClientOnly>
-          <div class="layout-clock h-full">
-            <div
-              class="bg-background w-72 flex flex-col items-center px-4 rounded-full h-[70%] relative top-[15%] justify-center">
-              <span class="time text-sm text-text-1">{{ time }}</span>
-              <div class="date text-xs text-text-3">{{ todayDate }}</div>
-            </div>
+        <!--        <ClientOnly>-->
+        <!--          <div class="layout-clock h-full">-->
+        <!--            <div-->
+        <!--              class="bg-level-2 w-72 flex flex-col items-center px-4 rounded h-[90%] relative top-[5%] justify-center"-->
+        <!--            >-->
+        <!--              <span class="time text-sm text-text-1">{{ time }}</span>-->
+        <!--              <div class="date text-xs text-text-3">{{ todayDate }}</div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </ClientOnly>-->
+
+        <!-- 链接区 -->
+        <div
+          v-if="isDocumentHeader"
+          class="h-full flex items-center mr-2"
+        >
+          <div class="flex justify-end h-full items-center">
+            <ZyLink
+              to="#"
+              type="outside"
+              >GitHub</ZyLink
+            >
           </div>
-        </ClientOnly> -->
+        </div>
 
         <!-- 音乐播放器 -->
-        <div v-if="!isAdminHeader && !isDocumentHeader" class="flex items-center h-full -mr-2">
+        <div
+          v-if="!isAdminHeader && !isDocumentHeader"
+          class="flex items-center h-full -mr-2"
+        >
           <MusicPlayer
             class="h-music select-none text-white landscape:mr-2 landscape:-ml-2 portrait:fixed left-0 top-music w-music landscape:xs:w-72 landscape:md:w-music z-50"
           />
         </div>
 
+        <!-- 按键区 -->
         <div
           class="h-full flex items-center landscape:bg-level-2 landscape:rounded pl-2"
         >
-          <!-- 按键区 -->
           <div class="flex justify-end h-full items-center">
             <BackToTop class="-ml-2" />
 
@@ -269,64 +287,64 @@
         <MoreDrawerInner @closeDrawer="closeMoreDrawer" />
       </template>
       <template #footer>
-          <div
-            class="flex justify-end h-full items-center gap-2 landscape:hidden"
+        <div
+          class="flex justify-end h-full items-center gap-2 landscape:hidden"
+        >
+          <ZyButton
+            class="flex items-center justify-center p-2"
+            @click="toggleFullScreen"
+            title="全屏/退出全屏"
+            type="icon"
           >
-            <ZyButton
-              class="flex items-center justify-center p-2"
-              @click="toggleFullScreen"
-              title="全屏/退出全屏"
-              type="icon"
-            >
-              <UIcon
-                v-if="!fullScreenFlag"
-                name="i-solar-maximize-linear"
-                class="w-5 h-5"
-              />
-              <UIcon
-                v-else
-                name="i-solar-minimize-linear"
-                class="w-5 h-5"
-              />
-            </ZyButton>
-            <ZyButton
-              class="flex items-center justify-center p-2"
-              @click="darkModeSwitch"
-              title="日间/夜间"
-              type="icon"
-            >
-              <UIcon
-                name="i-solar-sun-linear"
-                class="w-5 h-5 hidden dark:inline-block"
-              />
-              <UIcon
-                name="i-solar-moon-linear"
-                class="w-5 h-5 dark:hidden"
-              />
-            </ZyButton>
-            <ZyPopover
-              title="切换语言"
-              background="var(--bg-level-1)"
-              position="top-right"
-            >
-              <template #reference>
-                <ZyButton
-                  class="flex items-center justify-center p-2"
-                  title="切换语言"
-                  type="icon"
-                >
-                  <UIcon
-                    name="i-solar-planet-linear"
-                    class="w-5 h-5"
-                  />
-                </ZyButton>
-              </template>
-              <template #actions>
-                <LanguagePopoverInner />
-              </template>
-            </ZyPopover>
-          </div>
-        </template>
+            <UIcon
+              v-if="!fullScreenFlag"
+              name="i-solar-maximize-linear"
+              class="w-5 h-5"
+            />
+            <UIcon
+              v-else
+              name="i-solar-minimize-linear"
+              class="w-5 h-5"
+            />
+          </ZyButton>
+          <ZyButton
+            class="flex items-center justify-center p-2"
+            @click="darkModeSwitch"
+            title="日间/夜间"
+            type="icon"
+          >
+            <UIcon
+              name="i-solar-sun-linear"
+              class="w-5 h-5 hidden dark:inline-block"
+            />
+            <UIcon
+              name="i-solar-moon-linear"
+              class="w-5 h-5 dark:hidden"
+            />
+          </ZyButton>
+          <ZyPopover
+            title="切换语言"
+            background="var(--bg-level-1)"
+            position="top-right"
+          >
+            <template #reference>
+              <ZyButton
+                class="flex items-center justify-center p-2"
+                title="切换语言"
+                type="icon"
+              >
+                <UIcon
+                  name="i-solar-planet-linear"
+                  class="w-5 h-5"
+                />
+              </ZyButton>
+            </template>
+            <template #actions>
+              <LanguagePopoverInner />
+            </template>
+          </ZyPopover>
+        </div>
+      </template>
     </ZyDrawer>
     <!-- 管理员移动端导航抽屉 -->
     <ZyDrawer
@@ -341,76 +359,76 @@
         <AdminNavigationDrawerInner @closeDrawer="closeAdminNavigationDrawer" />
       </template>
       <template #footer>
-          <div
-            class="flex justify-end h-full items-center gap-4 landscape:hidden"
+        <div
+          class="flex justify-end h-full items-center gap-4 landscape:hidden"
+        >
+          <ZyButton
+            v-if="isAdminHeader"
+            class="flex items-center justify-center p-2"
+            @click="backToHome"
+            title="回到前台"
+            type="icon"
           >
-            <ZyButton
-              v-if="isAdminHeader"
-              class="flex items-center justify-center p-2"
-              @click="backToHome"
-              title="回到前台"
-              type="icon"
-            >
-              <UIcon
-                name="i-solar-home-smile-linear"
-                class="w-5 h-5"
-              />
-            </ZyButton>
-            <ZyButton
-              class="flex items-center justify-center p-2"
-              @click="toggleFullScreen"
-              title="全屏/退出全屏"
-              type="icon"
-            >
-              <UIcon
-                v-if="!fullScreenFlag"
-                name="i-solar-maximize-linear"
-                class="w-5 h-5"
-              />
-              <UIcon
-                v-else
-                name="i-solar-minimize-linear"
-                class="w-5 h-5"
-              />
-            </ZyButton>
-            <ZyButton
-              class="flex items-center justify-center p-2"
-              @click="darkModeSwitch"
-              title="日间/夜间"
-              type="icon"
-            >
-              <UIcon
-                name="i-solar-sun-linear"
-                class="w-5 h-5 hidden dark:inline-block"
-              />
-              <UIcon
-                name="i-solar-moon-linear"
-                class="w-5 h-5 dark:hidden"
-              />
-            </ZyButton>
-            <ZyPopover
-              title="切换语言"
-              background="var(--bg-level-1)"
-              position="top-right"
-            >
-              <template #reference>
-                <ZyButton
-                  class="flex items-center justify-center p-2"
-                  title="切换语言"
-                  type="icon"
-                >
-                  <UIcon
-                    name="i-solar-planet-linear"
-                    class="w-5 h-5"
-                  />
-                </ZyButton>
-              </template>
-              <template #actions>
-                <LanguagePopoverInner />
-              </template>
-            </ZyPopover>
-          </div>
-        </template>
+            <UIcon
+              name="i-solar-home-smile-linear"
+              class="w-5 h-5"
+            />
+          </ZyButton>
+          <ZyButton
+            class="flex items-center justify-center p-2"
+            @click="toggleFullScreen"
+            title="全屏/退出全屏"
+            type="icon"
+          >
+            <UIcon
+              v-if="!fullScreenFlag"
+              name="i-solar-maximize-linear"
+              class="w-5 h-5"
+            />
+            <UIcon
+              v-else
+              name="i-solar-minimize-linear"
+              class="w-5 h-5"
+            />
+          </ZyButton>
+          <ZyButton
+            class="flex items-center justify-center p-2"
+            @click="darkModeSwitch"
+            title="日间/夜间"
+            type="icon"
+          >
+            <UIcon
+              name="i-solar-sun-linear"
+              class="w-5 h-5 hidden dark:inline-block"
+            />
+            <UIcon
+              name="i-solar-moon-linear"
+              class="w-5 h-5 dark:hidden"
+            />
+          </ZyButton>
+          <ZyPopover
+            title="切换语言"
+            background="var(--bg-level-1)"
+            position="top-right"
+          >
+            <template #reference>
+              <ZyButton
+                class="flex items-center justify-center p-2"
+                title="切换语言"
+                type="icon"
+              >
+                <UIcon
+                  name="i-solar-planet-linear"
+                  class="w-5 h-5"
+                />
+              </ZyButton>
+            </template>
+            <template #actions>
+              <LanguagePopoverInner />
+            </template>
+          </ZyPopover>
+        </div>
+      </template>
     </ZyDrawer>
     <!-- 开发文档导航抽屉 -->
     <ZyDrawer
@@ -422,79 +440,81 @@
       background="var(--bg-background)"
     >
       <template #default>
-        <DocumentNavigationDrawerInner @closeDrawer="closeDocumentNavigationDrawer" />
+        <DocumentNavigationDrawerInner
+          @closeDrawer="closeDocumentNavigationDrawer"
+        />
       </template>
       <template #footer>
-          <div
-            class="flex justify-end h-full items-center gap-4 landscape:hidden"
+        <div
+          class="flex justify-end h-full items-center gap-4 landscape:hidden"
+        >
+          <ZyButton
+            v-if="isAdminHeader"
+            class="flex items-center justify-center p-2"
+            @click="backToHome"
+            title="回到前台"
+            type="icon"
           >
-            <ZyButton
-              v-if="isAdminHeader"
-              class="flex items-center justify-center p-2"
-              @click="backToHome"
-              title="回到前台"
-              type="icon"
-            >
-              <UIcon
-                name="i-solar-home-smile-linear"
-                class="w-5 h-5"
-              />
-            </ZyButton>
-            <ZyButton
-              class="flex items-center justify-center p-2"
-              @click="toggleFullScreen"
-              title="全屏/退出全屏"
-              type="icon"
-            >
-              <UIcon
-                v-if="!fullScreenFlag"
-                name="i-solar-maximize-linear"
-                class="w-5 h-5"
-              />
-              <UIcon
-                v-else
-                name="i-solar-minimize-linear"
-                class="w-5 h-5"
-              />
-            </ZyButton>
-            <ZyButton
-              class="flex items-center justify-center p-2"
-              @click="darkModeSwitch"
-              title="日间/夜间"
-              type="icon"
-            >
-              <UIcon
-                name="i-solar-sun-linear"
-                class="w-5 h-5 hidden dark:inline-block"
-              />
-              <UIcon
-                name="i-solar-moon-linear"
-                class="w-5 h-5 dark:hidden"
-              />
-            </ZyButton>
-            <ZyPopover
-              title="切换语言"
-              background="var(--bg-level-1)"
-              position="top-right"
-            >
-              <template #reference>
-                <ZyButton
-                  class="flex items-center justify-center p-2"
-                  title="切换语言"
-                  type="icon"
-                >
-                  <UIcon
-                    name="i-solar-planet-linear"
-                    class="w-5 h-5"
-                  />
-                </ZyButton>
-              </template>
-              <template #actions>
-                <LanguagePopoverInner />
-              </template>
-            </ZyPopover>
-          </div>
-        </template>
+            <UIcon
+              name="i-solar-home-smile-linear"
+              class="w-5 h-5"
+            />
+          </ZyButton>
+          <ZyButton
+            class="flex items-center justify-center p-2"
+            @click="toggleFullScreen"
+            title="全屏/退出全屏"
+            type="icon"
+          >
+            <UIcon
+              v-if="!fullScreenFlag"
+              name="i-solar-maximize-linear"
+              class="w-5 h-5"
+            />
+            <UIcon
+              v-else
+              name="i-solar-minimize-linear"
+              class="w-5 h-5"
+            />
+          </ZyButton>
+          <ZyButton
+            class="flex items-center justify-center p-2"
+            @click="darkModeSwitch"
+            title="日间/夜间"
+            type="icon"
+          >
+            <UIcon
+              name="i-solar-sun-linear"
+              class="w-5 h-5 hidden dark:inline-block"
+            />
+            <UIcon
+              name="i-solar-moon-linear"
+              class="w-5 h-5 dark:hidden"
+            />
+          </ZyButton>
+          <ZyPopover
+            title="切换语言"
+            background="var(--bg-level-1)"
+            position="top-right"
+          >
+            <template #reference>
+              <ZyButton
+                class="flex items-center justify-center p-2"
+                title="切换语言"
+                type="icon"
+              >
+                <UIcon
+                  name="i-solar-planet-linear"
+                  class="w-5 h-5"
+                />
+              </ZyButton>
+            </template>
+            <template #actions>
+              <LanguagePopoverInner />
+            </template>
+          </ZyPopover>
+        </div>
+      </template>
     </ZyDrawer>
   </header>
 </template>

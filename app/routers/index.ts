@@ -339,8 +339,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/pages/document/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-solar-pie-chart-2-linear",
-      activatedIcon: "i-solar-pie-chart-2-bold",
+      defaultIcon: "i-solar-atom-linear",
+      activatedIcon: "i-solar-atom-bold",
       order: 6000,
       type: "doc",
     },

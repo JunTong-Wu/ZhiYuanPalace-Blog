@@ -40,6 +40,7 @@
           <div class="w-full flex justify-center">
             <ZyButton
               class="w-full"
+              size="large"
               @click="login"
               >{{ $t("common.login") }}</ZyButton
             >

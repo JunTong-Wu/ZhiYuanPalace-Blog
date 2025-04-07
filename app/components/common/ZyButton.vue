@@ -7,6 +7,9 @@
       'ZyButton-icon': type == 'icon',
       'ZyButton-none': type == 'none',
       'ZyButton-loading': loading,
+      large: size == 'large',
+      medium: size == 'medium',
+      small: size == 'small',
     }"
     class="min-h-4 min-w-4 p-0 m-0 flex items-center justify-center relative"
     ref="button"
@@ -36,11 +39,16 @@
   </button>
 </template>
 <script lang="ts">
+  type Type = "default" | "linear" | "text" | "icon" | "none";
+  type Size = "large" | "medium" | "small";
   export default defineComponent({
     name: "ZyButton",
     props: {
       title: { type: String, default: "" },
-      type: { type: String, default: "default" },
+      type: { type: String as () => Type, default: "default",
+      validator: (value: string) => ["default", "linear", "text", "icon", "none"].includes(value) },
+      size: { type: String as () => Size, default: "medium",
+      validator: (value: string) => ["large", "medium", "small"].includes(value) },
       loading: { type: Boolean, default: false },
       disabled: { type: Boolean, default: false },
       color: { type: String, default: "" },
@@ -162,6 +170,10 @@
       border-color: var(--text-5);
       cursor: not-allowed;
     }
+
+    &.large {
+      padding: 1rem 2rem;
+    }
   }
 
   .dark button.ZyButton-default {
@@ -188,21 +200,7 @@
     color: var(--theme-color);
     padding: 0.55rem 1rem;
     border-radius: var(--border-radius-sm);
-    /* background-color: var(--theme-color); */
-
     border: 2px solid var(--theme-color);
-    /* &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to bottom, var(--theme-color-500), transparent);
-    mix-blend-mode: multiply;
-    opacity: 1;
-    border-radius: 1rem;
-  } */
 
     span {
       position: relative;
@@ -212,6 +210,10 @@
     &.ZyButton-loading {
       border-color: var(--text-5);
       cursor: not-allowed;
+    }
+
+    &.large {
+      padding: 1rem 2rem;
     }
   }
 

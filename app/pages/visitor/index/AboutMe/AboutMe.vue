@@ -15,6 +15,7 @@
         </p>
         <ZyButton
           class="mt-12"
+          size="large"
           @click="$router.push('/about/information')"
           >了解更多</ZyButton
         >

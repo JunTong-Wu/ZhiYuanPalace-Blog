@@ -18,10 +18,16 @@
       <div
         class="flex gap-8 justify-center items-center pb-16 landscape:sm:pb-24"
       >
-        <ZyButton class="mt-12" @click="$router.push('/doc')">开发文档</ZyButton>
+        <ZyButton
+          class="mt-12"
+          size="large"
+          @click="$router.push('/doc')"
+          >开发文档</ZyButton
+        >
         <ZyButton
           type="linear"
           class="mt-12"
+          size="large"
           >开源地址</ZyButton
         >
       </div>
@@ -30,5 +36,5 @@
   </div>
 </template>
 <script setup>
-import Marquee from "./Marquee/Marquee.vue";
+  import Marquee from "./Marquee/Marquee.vue";
 </script>

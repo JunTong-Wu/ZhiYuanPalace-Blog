@@ -11,12 +11,12 @@
           >
             <div class="col-span-full md:col-span-8">
               <!-- Logo -->
-              <NuxtLink
+              <ZyLink
                 to="/"
                 class="flex items-center mb-8"
               >
                 <Logo class="block portrait:hidden cursor-pointer" />
-              </NuxtLink>
+              </ZyLink>
               <div class="max-w-96">
                 <p class="mb-12 text-text-2">
                   {{ $t("home.briefIntroductionContent") }}
@@ -48,8 +48,9 @@
               <h3 class="mb-6 text-lg">鸣谢</h3>
               <ul>
                 <li v-for="thanksLink in thanksLinks">
-                  <a
-                    :href="thanksLink.href"
+                  <ZyLink
+                    :to="thanksLink.href"
+                    type="outside"
                     @click.prevent="thanksLink.onclick()"
                   >
                     <ZyButton
@@ -57,7 +58,7 @@
                       class="py-2"
                       >{{ thanksLink.name }}</ZyButton
                     >
-                  </a>
+                  </ZyLink>
                 </li>
               </ul>
             </div>
@@ -83,26 +84,26 @@
                 <template #onload>
                   <ul>
                     <li v-for="(item, index) in friendsListData.data">
-                      <a
+                      <ZyLink
                         v-if="index < 3"
                         :href="item.friend_path"
-                        target="_blank"
+                        type="outside"
                       >
                         <ZyButton
                           type="text"
                           class="py-2"
                           >{{ item.friend_title }}</ZyButton
                         >
-                      </a>
+                      </ZyLink>
                     </li>
                   </ul>
                 </template>
               </ZyFetchLoading>
-              <ZyButton
-                type="text"
+              <ZyLink
+                type="push"
                 class="py-2"
-                @click.prevent="showMoreFriends()"
-                >更多</ZyButton
+                to="/about/friend"
+                >更多</ZyLink
               >
             </div>
           </div>
