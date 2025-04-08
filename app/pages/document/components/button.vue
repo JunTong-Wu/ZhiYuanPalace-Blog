@@ -2,7 +2,7 @@
   <CommonMainSection>
     <div class="document-card">
       <div class="container github-markdown-body">
-        <h1>按钮 Button</h1>
+        <h1>按钮 ZyButton</h1>
         <p>按钮是一种命令组件，可发起一个即时操作。</p>
         <h2>基本用法</h2>
         <p>
@@ -151,7 +151,7 @@
           </div>
         </ZyCompDemo>
         <h2>API</h2>
-        <h3><code>&lt;button&gt;</code> Props</h3>
+        <h3><code>&lt;ZyButton&gt;</code> Props</h3>
         <table>
           <colgroup>
             <col style="min-width: 120px" />
@@ -197,7 +197,7 @@
             </tr>
           </tbody>
         </table>
-        <h3><code>&lt;button&gt;</code> Events</h3>
+        <h3><code>&lt;ZyButton&gt;</code> Events</h3>
         <table>
           <colgroup>
             <col style="min-width: 120px" />

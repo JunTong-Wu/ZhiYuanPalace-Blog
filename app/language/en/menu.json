@@ -34,5 +34,6 @@
   "introduction": "Introduction",
   "getting-started": "Getting Started",
   "components": "Components",
-  "button": "Button"
+  "button": "Button",
+  "data-table": "Data Table"
 }

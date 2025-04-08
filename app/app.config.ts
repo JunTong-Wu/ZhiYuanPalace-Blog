@@ -94,7 +94,7 @@ export default defineAppConfig({
     },
     selectMenu: {
       rounded: "rounded-xs",
-      padding: "p-2",
+      padding: "!p-2",
       option: {
         rounded: "rounded-2xs",
         active: "bg-level-4 dark:bg-level-4",

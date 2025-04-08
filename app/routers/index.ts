@@ -428,6 +428,19 @@ const routes: Array<RouteRecordRaw> = [
           type: "doc",
         },
       },
+      {
+        path: "/doc/components/data-table",
+        name: "data-table",
+        component: () =>
+          import("@/pages/document/components/data-table.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-octicon-dot-24",
+          activatedIcon: "i-oui-dot",
+          order: 3.22,
+          type: "doc",
+        },
+      },
     ],
   },
 ];

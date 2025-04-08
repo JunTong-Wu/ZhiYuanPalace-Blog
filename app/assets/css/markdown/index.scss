@@ -27,10 +27,9 @@
     margin-bottom: 2rem;
     //text-indent: 2rem;
   }
-  table {
-    display: table;
-    width: 100%;
-    min-width: 100%;
+  h1,
+  h2 {
+    border-bottom: 1px solid var(--border-color);
   }
   blockquote {
     color: inherit;
@@ -59,6 +58,37 @@
     .language-css .token.string,
     .style .token.string {
       background: none;
+    }
+  }
+  table {
+    display: table;
+    width: 100%;
+    min-width: 100%;
+    tr {
+      background-color: var(--bg-level-2);
+      border-top: 1px solid var(--border-color);
+      &:nth-child(2n) {
+        background-color: var(--bg-level-3);
+      }
+    }
+    td,
+    th {
+      border: 1px solid var(--border-color);
+    }
+  }
+  table.zy-data-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    td,
+    th {
+      padding: 1rem 0;
+      border: none;
+      font-weight: unset;
+    }
+    tr {
+      background-color: unset;
+      border-top: none;
     }
   }
 }

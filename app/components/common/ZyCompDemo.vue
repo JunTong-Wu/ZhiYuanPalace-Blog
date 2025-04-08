@@ -2,7 +2,7 @@
   <div class="">
     <!-- 待演示的组件 -->
     <div
-      class="text-sm border border-borderColor p-8 rounded bg-level-2 text-text-1"
+      class="text-base border border-borderColor p-8 rounded bg-level-2 text-text-1"
       :class="{ dark: isNightMode }"
     >
       <slot></slot>

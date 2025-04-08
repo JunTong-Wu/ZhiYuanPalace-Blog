@@ -34,5 +34,6 @@
   "introduction": "介绍",
   "getting-started": "快速上手",
   "components": "组件",
-  "button": "按钮 Button"
+  "button": "按钮",
+  "data-table": "数据表格"
 }
