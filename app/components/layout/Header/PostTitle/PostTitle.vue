@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="type != 'unknown'"
-    class="post-title line-clamp-1 landscape:ml-4"
+    class="post-title line-clamp-1 text-sm"
   >
     {{ titleString }}
   </div>

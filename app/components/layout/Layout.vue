@@ -19,7 +19,7 @@
       }"
     >
       <main class="flex-1">
-        <div class="main-view text-base relative overflow-hidden">
+        <div class="main-view text-sm relative overflow-hidden">
           <div class="main-view-inner">
             <slot />
           </div>
@@ -64,7 +64,12 @@
       />
       <!-- 底部导航栏 -->
       <FooterNavigation
-        v-if="!isAdminLayout && !isLoginLayout && !isVideoDetailLayout &&!isDocumentLayout"
+        v-if="
+          !isAdminLayout &&
+          !isLoginLayout &&
+          !isVideoDetailLayout &&
+          !isDocumentLayout
+        "
         class="fixed z-40 bottom-0 left-0 right-0 z-60 bg-headBar backdrop-blur-3xl"
       />
     </section>
@@ -106,7 +111,7 @@
     isDocumentLayout: {
       type: Boolean,
       default: false,
-    }
+    },
   });
 
   // 布局切换

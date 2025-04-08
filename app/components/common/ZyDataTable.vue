@@ -207,7 +207,7 @@
         >
           <USelectMenu
             v-model="pagination.rowsPerPage"
-            :options="[10, 30, 50, 100, 200]"
+            :options="['10', '30', '50', '100', '200']"
             @update:model-value="setItemsPerPage"
           />
         </div>
@@ -247,10 +247,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
   import arraySort from "array-sort";
   import { useI18n } from "vue-i18n";
   import _ from "lodash";
+  import {
+    ref,
+    computed,
+    watch,
+    onMounted,
+    defineEmits,
+    defineProps,
+  } from "vue";
 
   interface IPagination {
     page: number;
@@ -279,385 +287,360 @@
     counter: number;
   }
 
-  export default defineComponent({
-    name: "zy-datatable",
-    emit: [
-      "current-change",
-      "sort-change",
-      "items-per-page-change",
-      "select-change",
-    ],
-    props: {
-      // 列标题
-      tableHeader: {
-        type: Array as () => Array<IHeaderConfiguration>,
-        required: true,
-      },
-      // 表数据
-      tableData: { type: Array, required: true },
-      // 空数据提示
-      emptyTableText: { type: String, default: "No data found" },
-      // 加载中
-      loading: { type: Boolean, default: false },
-
-      // 第几页
-      currentPage: { type: Number, default: 1 },
-      // 分页大小
-      rowsPerPage: { type: Number, default: 10 },
-      // 数据总数
-      total: { type: Number, default: 0 },
-      // 开启分页大小调整菜单
-      enableItemsPerPageDropdown: { type: Boolean, default: true },
-
-      // 被排序字段
-      sortLabel: { type: String, default: "" },
-      // 正序/倒序
-      sortOrder: { type: String, default: "" },
-
-      // 开启首列多选框
-      selection: { type: Boolean, default: false },
-
-      // 开启展开按钮 （展开内容插槽位置：sub）
-      showExpandBtn: { type: Boolean, default: false },
-      // 展开所有数据
-      expandAll: { type: Boolean, default: false },
-      // 展开表在主表的tr内（若为false将不符合HTML规范，仅用于特殊视觉效果或临时占位符）
-      expandInTable: { type: Boolean, default: true },
-
-      // 绑定到index的小计行
-      totalArray: {
-        type: Array as () => TotalArrayItem[],
-        default: () => {
-          return [];
-        },
-      },
-
-      // 是否为远程（后端）控制分页、排序
-      remote: { type: Boolean, default: false },
+  const props = defineProps({
+    // 列标题
+    tableHeader: {
+      type: Array as () => Array<IHeaderConfiguration>,
+      required: true,
     },
-    components: {},
-    setup(props, { emit }) {
-      const originData = ref(_.cloneDeep(props.tableData));
-      const currentSort = ref<string>("");
-      const sortOrder = ref(props.sortOrder);
-      const sortLabel = ref(props.sortLabel);
-      const pagination = ref<IPagination>({
-        page: 1,
-        total: props.total,
-        rowsPerPage: props.rowsPerPage,
-      });
-      const rowsData = ref<any>([]);
-      const isAllExpand = ref<boolean>(props.expandAll);
-      const isAllChecked = ref<boolean>(false);
-      const selectedRows = ref<any>([]);
-      const sortCounterFlag = [] as SortCounter[];
+    // 表数据
+    tableData: { type: Array, required: true },
+    // 空数据提示
+    emptyTableText: { type: String, default: "No data found" },
+    // 加载中
+    loading: { type: Boolean, default: false },
 
-      const { t, te } = useI18n();
+    // 第几页
+    currentPage: { type: Number, default: 1 },
+    // 分页大小
+    rowsPerPage: { type: Number, default: 10 },
+    // 数据总数
+    total: { type: Number, default: 0 },
+    // 开启分页大小调整菜单
+    enableItemsPerPageDropdown: { type: Boolean, default: true },
 
-      const rowsStartNumber = computed(() => {
-        return pagination.value.total == 0
-          ? 0
-          : (pagination.value.page - 1) * pagination.value.rowsPerPage + 1;
-      });
+    // 被排序字段
+    sortLabel: { type: String, default: "" },
+    // 正序/倒序
+    sortOrder: { type: String, default: "" },
 
-      const rowsEndNumber = computed(() => {
-        return pagination.value.page * pagination.value.rowsPerPage >=
-          pagination.value.total
-          ? pagination.value.total
-          : pagination.value.page * pagination.value.rowsPerPage;
-      });
+    // 开启首列多选框
+    selection: { type: Boolean, default: false },
 
-      const colspanNumber = computed(() => {
-        let total = props.tableHeader.length;
-        if (props.selection) {
-          total += 1;
+    // 开启展开按钮 （展开内容插槽位置：sub）
+    showExpandBtn: { type: Boolean, default: false },
+    // 展开所有数据
+    expandAll: { type: Boolean, default: false },
+    // 展开表在主表的tr内（若为false将不符合HTML规范，仅用于特殊视觉效果或临时占位符）
+    expandInTable: { type: Boolean, default: true },
+
+    // 绑定到index的小计行
+    totalArray: {
+      type: Array as () => TotalArrayItem[],
+      default: () => {
+        return [];
+      },
+    },
+
+    // 是否为远程（后端）控制分页、排序
+    remote: { type: Boolean, default: false },
+  });
+
+  const emit = defineEmits([
+    "current-change",
+    "sort-change",
+    "items-per-page-change",
+    "select-change",
+  ]);
+
+  const originData = ref(_.cloneDeep(props.tableData));
+  const currentSort = ref<string>("");
+  const sortOrder = ref(props.sortOrder);
+  const sortLabel = ref(props.sortLabel);
+  const pagination = ref<IPagination>({
+    page: 1,
+    total: props.total,
+    rowsPerPage: props.rowsPerPage,
+  });
+  const rowsData = ref<any>([]);
+  const isAllExpand = ref<boolean>(props.expandAll);
+  const isAllChecked = ref<boolean>(false);
+  const selectedRows = ref<any>([]);
+  const sortCounterFlag = [] as SortCounter[];
+
+  const { t, te } = useI18n();
+
+  const rowsStartNumber = computed(() => {
+    return pagination.value.total == 0
+      ? 0
+      : (pagination.value.page - 1) * pagination.value.rowsPerPage + 1;
+  });
+
+  const rowsEndNumber = computed(() => {
+    return pagination.value.page * pagination.value.rowsPerPage >=
+      pagination.value.total
+      ? pagination.value.total
+      : pagination.value.page * pagination.value.rowsPerPage;
+  });
+
+  const colspanNumber = computed(() => {
+    let total = props.tableHeader.length;
+    if (props.selection) {
+      total += 1;
+    }
+    if (props.showExpandBtn) {
+      total += 1;
+    }
+    return total;
+  });
+
+  const selectInit = () => {
+    isAllChecked.value = false;
+    rowsData.value.forEach((item: any) => {
+      item.isChecked = false;
+    });
+    selectedRows.value = [];
+    emit("select-change", selectedRows.value);
+  };
+
+  const expandInit = (flag: boolean) => {
+    rowsData.value.forEach((item: any) => {
+      item.isExpand = flag;
+    });
+  };
+
+  const sortInit = () => {
+    sortOrder.value = props.sortOrder;
+    sortLabel.value = props.sortLabel;
+    originData.value.splice(0, originData.value.length, ...props.tableData);
+  };
+
+  const rowsDataFormat = (data: Array<any>) => {
+    let tempArray: any = _.cloneDeep(data);
+    tempArray.forEach((item: Object) => {
+      return Object.assign(item, { isChecked: false, isExpand: false });
+    });
+    rowsData.value.splice(0, rowsData.value.length, ...tempArray);
+
+    let tempData = rowsData.value.slice();
+    const startIndex =
+      pagination.value.page * pagination.value.rowsPerPage -
+      pagination.value.rowsPerPage;
+    const length = pagination.value.rowsPerPage;
+
+    if (pagination.value.total >= startIndex) {
+      rowsData.value.splice(
+        0,
+        rowsData.value.length,
+        ...tempData.splice(startIndex, length),
+      );
+    } else {
+      pagination.value.page = Math.ceil(
+        pagination.value.total / pagination.value.rowsPerPage,
+      );
+      rowsDataFormat(originData.value);
+    }
+
+    selectInit();
+    expandInit(isAllExpand.value);
+  };
+
+  const currentPageChange = () => {
+    emit("current-change", pagination.value.page);
+    // 本地分页
+    if (!props.remote) {
+      rowsDataFormat(originData.value);
+    }
+  };
+
+  const setItemsPerPage = () => {
+    emit("items-per-page-change", pagination.value.rowsPerPage);
+    // 本地分页
+    if (!props.remote) {
+      rowsDataFormat(originData.value);
+    }
+  };
+
+  const sortCounter = (columnName: string) => {
+    if (sortCounterFlag.some((item) => item.columnName === columnName)) {
+      sortCounterFlag.forEach((item) => {
+        if (item.columnName === columnName) {
+          item.counter = item.counter + 1;
         }
-        if (props.showExpandBtn) {
-          total += 1;
-        }
-        return total;
       });
+    } else {
+      sortCounterFlag.splice(0, sortCounterFlag.length, {
+        columnName: columnName,
+        counter: 1,
+      });
+    }
+  };
 
-      const selectInit = () => {
-        isAllChecked.value = false;
-        rowsData.value.forEach((item: any) => {
-          item.isChecked = false;
+  const onSortCounterThree = (columnName: string) => {
+    let resetFlag = false;
+    sortCounterFlag.forEach((item) => {
+      if (item.columnName === columnName) {
+        if (item.counter === 3) {
+          sortCounterFlag.splice(0, sortCounterFlag.length);
+          resetFlag = true;
+        }
+      }
+    });
+    return resetFlag;
+  };
+
+  const sort = (columnName: string, sortable: boolean | undefined) => {
+    if (sortable === false) {
+      return;
+    }
+    if (props.remote) {
+      emit("sort-change", { columnName: columnName });
+    } else {
+      sortCounter(columnName);
+      const resetFlag = onSortCounterThree(columnName);
+      if (resetFlag) {
+        sortInit();
+        emit("sort-change", {
+          columnName: props.sortLabel,
+          order: props.sortOrder,
         });
-        selectedRows.value = [];
-        emit("select-change", selectedRows.value);
-      };
-
-      const expandInit = (flag: boolean) => {
-        rowsData.value.forEach((item: any) => {
-          item.isExpand = flag;
-        });
-      };
-
-      const sortInit = () => {
-        sortOrder.value = props.sortOrder;
-        sortLabel.value = props.sortLabel;
-        originData.value.splice(0, originData.value.length, ...props.tableData);
-      };
-
-      const rowsDataFormat = (data: Array<any>) => {
-        let tempArray: any = _.cloneDeep(data);
-        tempArray.forEach((item: Object) => {
-          return Object.assign(item, { isChecked: false, isExpand: false });
-        });
-        rowsData.value.splice(0, rowsData.value.length, ...tempArray);
-
-        let tempData = rowsData.value.slice();
-        const startIndex =
-          pagination.value.page * pagination.value.rowsPerPage -
-          pagination.value.rowsPerPage;
-        const length = pagination.value.rowsPerPage;
-
-        if (pagination.value.total >= startIndex) {
-          rowsData.value.splice(
-            0,
-            rowsData.value.length,
-            ...tempData.splice(startIndex, length),
-          );
-        } else {
-          pagination.value.page = Math.ceil(
-            pagination.value.total / pagination.value.rowsPerPage,
-          );
-          rowsDataFormat(originData.value);
-        }
-
-        selectInit();
-        expandInit(isAllExpand.value);
-      };
-
-      const currentPageChange = () => {
-        emit("current-change", pagination.value.page);
-        // 本地分页
-        if (!props.remote) {
-          rowsDataFormat(originData.value);
-        }
-      };
-
-      const setItemsPerPage = () => {
-        emit("items-per-page-change", pagination.value.rowsPerPage);
-        // 本地分页
-        if (!props.remote) {
-          rowsDataFormat(originData.value);
-        }
-      };
-
-      const sortCounter = (columnName: string) => {
-        if (sortCounterFlag.some((item) => item.columnName === columnName)) {
-          sortCounterFlag.forEach((item) => {
-            if (item.columnName === columnName) {
-              item.counter = item.counter + 1;
-            }
-          });
-        } else {
-          sortCounterFlag.splice(0, sortCounterFlag.length, {
-            columnName: columnName,
-            counter: 1,
-          });
-        }
-      };
-
-      const onSortCounterThree = (columnName: string) => {
-        let resetFlag = false;
+      } else {
+        let thisDirection = "";
         sortCounterFlag.forEach((item) => {
           if (item.columnName === columnName) {
-            if (item.counter === 3) {
-              sortCounterFlag.splice(0, sortCounterFlag.length);
-              resetFlag = true;
+            if (item.counter === 1) {
+              thisDirection = "asc"; //第一次正序
+            }
+            if (item.counter === 2) {
+              thisDirection = "desc"; //第二次倒序
             }
           }
         });
-        return resetFlag;
-      };
-
-      const sort = (columnName: string, sortable: boolean | undefined) => {
-        if (sortable === false) {
-          return;
-        }
-        if (props.remote) {
-          emit("sort-change", { columnName: columnName });
-        } else {
-          sortCounter(columnName);
-          const resetFlag = onSortCounterThree(columnName);
-          if (resetFlag) {
-            sortInit();
-            emit("sort-change", {
-              columnName: props.sortLabel,
-              order: props.sortOrder,
-            });
-          } else {
-            let thisDirection = "";
-            sortCounterFlag.forEach((item) => {
-              if (item.columnName === columnName) {
-                if (item.counter === 1) {
-                  thisDirection = "asc"; //第一次正序
-                }
-                if (item.counter === 2) {
-                  thisDirection = "desc"; //第二次倒序
-                }
-              }
-            });
-            sortOrder.value = thisDirection;
-            sortLabel.value = columnName;
-            emit("sort-change", {
-              columnName: columnName,
-              order: thisDirection,
-            });
-            // 本地排序
-            if (!props.remote) {
-              if (thisDirection === "asc") {
-                arraySort(originData.value, columnName, { reverse: true });
-              }
-              if (thisDirection === "desc") {
-                arraySort(originData.value, columnName, { reverse: false });
-              }
-            }
-          }
-        }
-        currentSort.value = columnName + sortOrder.value;
-      };
-
-      const onToggleAllClick = () => {
-        isAllExpand.value = !isAllExpand.value;
-        expandInit(isAllExpand.value);
-      };
-
-      const onToggleBtnClick = (i: number) => {
-        rowsData.value[i].isExpand = !rowsData.value[i].isExpand;
-      };
-
-      const toggleAllSelect = () => {
-        isAllChecked.value = !isAllChecked.value;
-        rowsData.value.forEach((item: any) => {
-          item.isChecked = isAllChecked.value;
+        sortOrder.value = thisDirection;
+        sortLabel.value = columnName;
+        emit("sort-change", {
+          columnName: columnName,
+          order: thisDirection,
         });
-        getSelectedRows();
-        emit("select-change", selectedRows.value);
-      };
-
-      const toggleRowSelect = (i: number) => {
-        rowsData.value[i].isChecked = !rowsData.value[i].isChecked;
-        getSelectedRows();
-        emit("select-change", selectedRows.value);
-      };
-
-      const getSelectedRows = () => {
-        let rows: any = [];
-        rowsData.value.forEach((item: any) => {
-          if (item.isChecked) {
-            rows.push(item);
+        // 本地排序
+        if (!props.remote) {
+          if (thisDirection === "asc") {
+            arraySort(originData.value, columnName, { reverse: true });
           }
-        });
-        selectedRows.value.splice(0, selectedRows.value.length, ...rows);
-        isAllChecked.value = rowsData.value.length == selectedRows.value.length;
-        return selectedRows.value;
-      };
-
-      const translate = (text: string, params?: any) => {
-        if (te(text)) {
-          return t(text, params);
-        } else {
-          return text;
+          if (thisDirection === "desc") {
+            arraySort(originData.value, columnName, { reverse: false });
+          }
         }
-      };
+      }
+    }
+    currentSort.value = columnName + sortOrder.value;
+  };
 
-      watch(
-        props.tableData,
-        (newVal) => {
-          // console.log('watch data', newVal);
-          originData.value = _.cloneDeep(newVal);
-          rowsDataFormat(newVal);
-          pagination.value.total = props.tableData.length;
-        },
-        { immediate: true, deep: true },
-      );
+  const onToggleAllClick = () => {
+    isAllExpand.value = !isAllExpand.value;
+    expandInit(isAllExpand.value);
+  };
 
-      watch(
-        () => props.currentPage,
-        (newVal) => {
-          if (props.remote) {
-            pagination.value.page = newVal;
-          }
-        },
-      );
+  const onToggleBtnClick = (i: number) => {
+    rowsData.value[i].isExpand = !rowsData.value[i].isExpand;
+  };
 
-      watch(
-        () => props.rowsPerPage,
-        (newVal) => {
-          if (props.remote) {
-            pagination.value.rowsPerPage = newVal;
-          }
-        },
-      );
+  const toggleAllSelect = () => {
+    isAllChecked.value = !isAllChecked.value;
+    rowsData.value.forEach((item: any) => {
+      item.isChecked = isAllChecked.value;
+    });
+    getSelectedRows();
+    emit("select-change", selectedRows.value);
+  };
 
-      watch(
-        () => props.total,
-        (newVal) => {
-          if (props.remote) {
-            pagination.value.total = newVal;
-          }
-        },
-      );
+  const toggleRowSelect = (i: number) => {
+    rowsData.value[i].isChecked = !rowsData.value[i].isChecked;
+    getSelectedRows();
+    emit("select-change", selectedRows.value);
+  };
 
-      watch(
-        () => props.expandAll,
-        (newVal) => {
-          isAllExpand.value = newVal;
-          expandInit(newVal);
-        },
-      );
+  const getSelectedRows = () => {
+    let rows: any = [];
+    rowsData.value.forEach((item: any) => {
+      if (item.isChecked) {
+        rows.push(item);
+      }
+    });
+    selectedRows.value.splice(0, selectedRows.value.length, ...rows);
+    isAllChecked.value = rowsData.value.length == selectedRows.value.length;
+    return selectedRows.value;
+  };
 
-      watch(
-        () => props.sortLabel,
-        (newVal) => {
-          if (props.remote) {
-            sortLabel.value = newVal;
-            currentSort.value = newVal + sortOrder.value;
-          }
-        },
-      );
+  const translate = (text: string, params?: any) => {
+    if (te(text)) {
+      return t(text, params);
+    } else {
+      return text;
+    }
+  };
 
-      watch(
-        () => props.sortOrder,
-        (newVal) => {
-          if (props.remote) {
-            sortOrder.value = newVal;
-            currentSort.value = sortLabel.value + newVal;
-          }
-        },
-      );
-
-      onMounted(() => {
-        currentSort.value = sortLabel.value + sortOrder.value;
-        if (props.remote) {
-          pagination.value.total = props.total;
-          pagination.value.rowsPerPage = props.rowsPerPage;
-        }
-      });
-
-      return {
-        pagination,
-        currentPageChange,
-        rowsData,
-        sort,
-        currentSort,
-        setItemsPerPage,
-        rowsStartNumber,
-        rowsEndNumber,
-        colspanNumber,
-        translate,
-        onToggleAllClick,
-        onToggleBtnClick,
-        isAllExpand,
-        isAllChecked,
-        toggleAllSelect,
-        toggleRowSelect,
-        selectInit,
-        getSelectedRows,
-      };
+  watch(
+    () => props.tableData,
+    (newVal) => {
+      // console.log('watch data', newVal);
+      originData.value = _.cloneDeep(newVal);
+      rowsDataFormat(newVal);
+      pagination.value.total = props.tableData.length;
     },
+    { immediate: true, deep: true },
+  );
+
+  watch(
+    () => props.currentPage,
+    (newVal) => {
+      if (props.remote) {
+        pagination.value.page = newVal;
+      }
+    },
+  );
+
+  watch(
+    () => props.rowsPerPage,
+    (newVal) => {
+      if (props.remote) {
+        pagination.value.rowsPerPage = newVal;
+      }
+    },
+  );
+
+  watch(
+    () => props.total,
+    (newVal) => {
+      if (props.remote) {
+        pagination.value.total = newVal;
+      }
+    },
+  );
+
+  watch(
+    () => props.expandAll,
+    (newVal) => {
+      isAllExpand.value = newVal;
+      expandInit(newVal);
+    },
+  );
+
+  watch(
+    () => props.sortLabel,
+    (newVal) => {
+      if (props.remote) {
+        sortLabel.value = newVal;
+        currentSort.value = newVal + sortOrder.value;
+      }
+    },
+  );
+
+  watch(
+    () => props.sortOrder,
+    (newVal) => {
+      if (props.remote) {
+        sortOrder.value = newVal;
+        currentSort.value = sortLabel.value + newVal;
+      }
+    },
+  );
+
+  onMounted(() => {
+    currentSort.value = sortLabel.value + sortOrder.value;
+    if (props.remote) {
+      pagination.value.total = props.total;
+      pagination.value.rowsPerPage = props.rowsPerPage;
+    }
   });
 </script>

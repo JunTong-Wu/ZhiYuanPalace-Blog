@@ -32,13 +32,13 @@ export default defineAppConfig({
       background: "bg-level-2 dark:bg-level-1",
       shadow: "shadow portrait:shadow-none",
       body: {
-        padding: "p-4 sm:p-6 lg:p-8",
+        padding: "p-2 sm:p-4 lg:p-6",
       },
       header: {
-        padding: "p-4 sm:p-6 lg:p-8 !pb-0",
+        padding: "p-2 sm:p-4 lg:p-6 !pb-0",
       },
       footer: {
-        padding: "p-4 sm:p-6 lg:p-8",
+        padding: "p-2 sm:p-4 lg:p-6",
       },
     },
     alert: {

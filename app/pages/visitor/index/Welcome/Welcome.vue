@@ -14,7 +14,7 @@
             class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
             >嗨！早上好！</span
           >
-          <h2 class="text-3xl landscape:sm:text-5xl font-bold">
+          <h2 class="text-2xl landscape:sm:text-4xl font-bold">
             {{ $t("home.welcome") }} <br v-if="!cnClass" /><span
               class="text-theme-500 dark:text-theme-100"
               >{{ $t("common.zhiYuanPalace") }}</span
@@ -23,13 +23,13 @@
           <div
             class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
           ></div>
-          <p class="text-lg text-text-2 portrait:text-base mb-4">
+          <p class="text-lg text-text-2 portrait:text-sm mb-4">
             {{ $t("home.briefIntroductionContent") }}
           </p>
         </div>
         <div class="w-1/2 portrait:w-full portrait:order-1">
           <div
-            class="home-section1-image landscape:relative landscape:-right-8 landscape:-bottom-24 landscape:h-[20rem] landscape:w-[24rem] landscape:sm:-bottom-48 landscape:sm:h-[28rem] landscape:sm:w-[34rem] portrait:relative portrait:top-0 portrait:w-full portrait:h-[24rem]"
+            class="home-section1-image landscape:relative landscape:-right-8 landscape:-bottom-24 landscape:h-[20rem] landscape:w-[24rem] landscape:sm:-bottom-48 landscape:sm:h-[28rem] landscape:sm:w-[34rem] portrait:relative portrait:-top-4 portrait:w-full portrait:h-[24rem]"
           >
             <img
               class="h-full w-full object-cover rounded sm:rounded-lg md:rounded-2xl lg:rounded-4xl portrait:rounded-none"

@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  if (to.meta?.role !== "admin") {
+  if (to.meta?.type !== "admin") {
     return;
   }
   if (to.path === "/login") {

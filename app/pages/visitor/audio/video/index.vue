@@ -16,12 +16,13 @@
                   :src="`${cdnUrl}${item.video_cover}`"
                   :locked="item.has_password"
                   alt=""
+                  className="w-full h-full object-cover"
                 />
               </template>
               <template #title>
                 <div class="h-full flex flex-col justify-center">
                   <p
-                    class="m-0 mt-2 text-base line-clamp-2 landscape:line-clamp-2"
+                    class="m-0 mt-2 text-sm line-clamp-2 landscape:line-clamp-2"
                   >
                     {{ item.video_text.replace(/\r\n/g, "") }}
                   </p>

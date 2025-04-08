@@ -1,6 +1,6 @@
 <template>
   <CommonMainSection>
-    <UCard class="py-12 portrait:py-0">
+    <UCard class="py-8 portrait:py-0">
       <div class="container">
         <UAlert
           color="theme"
@@ -41,7 +41,7 @@
                         type="outside"
                       >
                         <span
-                          class="font-display text-base text-jacarta-700 hover:text-accent dark:text-white"
+                          class="font-display text-sm text-jacarta-700 hover:text-accent dark:text-white"
                           >{{ item.friend_title }}</span
                         >
                       </ZyLink>

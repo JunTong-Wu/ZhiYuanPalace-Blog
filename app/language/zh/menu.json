@@ -7,6 +7,7 @@
   "article": "文章",
   "article-id": "文章详情",
   "shuoshuo": "说说",
+  "shuoshuo-id": "说说详情",
   "photo": "相册",
   "photo-album": "相册详情",
   "video": "视频",
@@ -31,5 +32,7 @@
   "document": "开发文档",
   "guide": "指南",
   "introduction": "介绍",
-  "getting-started": "快速上手"
+  "getting-started": "快速上手",
+  "components": "组件",
+  "button": "按钮 Button"
 }

@@ -19,7 +19,7 @@
       <div class="flex items-center h-20 w-20 p-5 absolute -right-4 flex-none">
         <!-- 收起侧边导航栏按钮 -->
         <ZyButton
-          class="flex items-center justify-center w-full h-full !bg-level-1 dark:!bg-level-2 hover:!bg-theme-500 dark:hover:!bg-theme-100"
+          class="flex items-center justify-center w-full h-full"
           @click="switchSidebarClick"
           title="收起侧边栏"
           type="icon"

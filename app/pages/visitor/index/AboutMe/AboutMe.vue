@@ -8,19 +8,20 @@
           class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
           >关于我</span
         >
-        <h2 class="text-3xl landscape:sm:text-5xl font-bold">玉淇冰-Mebius</h2>
+        <h2 class="text-2xl landscape:sm:text-4xl font-bold">玉淇冰-Mebius</h2>
         <div
           class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
         ></div>
-        <p class="text-lg text-text-2 portrait:text-base mb-4">
+        <p class="text-lg text-text-2 portrait:text-sm mb-4">
           射手座 男 24岁<br />ENFP快乐小狗<br />前端开发者<br />腾讯音乐人<br />纯爱战士<br />
         </p>
-        <ZyButton
-          class="mt-12"
-          size="large"
-          @click="$router.push('/about/information')"
-          >了解更多</ZyButton
-        >
+        <ZyLink :to="'/about/information'">
+          <ZyButton
+            class="mt-12 w-full"
+            size="large"
+            >了解更多</ZyButton
+          >
+        </ZyLink>
       </div>
       <div class="w-1/2 portrait:w-full">
         <div

@@ -14,7 +14,7 @@
       >
         <div
           v-zy-ripple
-          class="px-6 py-2 rounded-full"
+          class="px-5 py-2 rounded-full"
           :class="[
             isActivateRootRouter(route, item.path)
               ? 'bg-theme-50 dark:bg-theme-700'
@@ -22,7 +22,7 @@
           ]"
         >
           <ZyIcon
-            size="1.3rem"
+            size="1rem"
             :defaultName="item.meta?.defaultIcon"
             defaultColor="var(--text-1)"
             :activatedName="item.meta?.activatedIcon"

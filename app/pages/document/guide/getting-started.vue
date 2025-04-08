@@ -1,8 +1,6 @@
 <template>
   <CommonMainSection>
-    <div
-      class="text-lg xs:text-lg sm:text-xl md:text-xl lg:text-xl rounded divide-y divide-gray-200 dark:divide-gray-800 divide-none ring-1 ring-slate-100 dark:ring-slate-800 shadow portrait:shadow-none bg-level-2 dark:bg-level-1 py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 px-4 xs:px-10 sm:px-12 md:px-14 lg:px-16"
-    >
+    <div class="document-card">
       <div class="container github-markdown-body">
         <h2>安装</h2>
         <h3>依赖环境</h3>

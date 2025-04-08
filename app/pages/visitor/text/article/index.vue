@@ -1,6 +1,6 @@
 <template>
   <CommonMainSection>
-    <UCard class="py-12 portrait:py-0">
+    <UCard class="py-8 portrait:py-0">
       <ZyFetchLoading
         :fetchData="articleListDataLazyFetch"
         @fetchOnload="showArticleList"
@@ -43,12 +43,12 @@
                 <template #title>
                   <div class="h-full flex flex-col justify-center">
                     <h4
-                      class="m-0 portrait:text-base landscape:text-xl portrait:font-normal line-clamp-1"
+                      class="m-0 portrait:text-sm landscape:text-lg portrait:font-normal line-clamp-1"
                     >
                       {{ item.article_title }}
                     </h4>
                     <p
-                      class="m-0 mt-2 portrait:text-sm landscape:text-base portrait:line-clamp-1 landscape:line-clamp-3 text-text-2"
+                      class="m-0 portrait:text-xs landscape:text-sm portrait:line-clamp-1 landscape:line-clamp-2 text-text-2"
                     >
                       <span v-if="!item.has_password">{{
                         item.article_text.replace(/\r\n/g, "")

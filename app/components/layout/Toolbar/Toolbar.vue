@@ -3,7 +3,7 @@
     <Teleport to="#zy-tool-bar">
       <div
         id="zy-tool-bar-inner"
-        class="absolute inset-0 flex flex-col items-stretch justify-between w-full gap-8"
+        class="absolute inset-0 flex flex-col items-stretch justify-between w-full gap-4"
       >
         <div
           v-if="$slots['header']"

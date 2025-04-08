@@ -8,11 +8,11 @@
         class="flex items-center justify-center p-2"
         @click="goback()"
         title="返回"
-        type="icon"
+        type="text"
       >
         <ZyIcon
-          size="1.5rem"
-          defaultName="i-solar-alt-arrow-left-linear"
+          size="2rem"
+          defaultName="i-solar-round-alt-arrow-left-line-duotone"
         />
       </ZyButton>
     </div>

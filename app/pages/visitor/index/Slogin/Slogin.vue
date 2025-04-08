@@ -19,19 +19,19 @@
           class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
           >知鸢宫的含义</span
         >
-        <h2 class="text-3xl landscape:sm:text-5xl font-bold">
+        <h2 class="text-2xl landscape:sm:text-4xl font-bold">
           知书达理，鸢飞鱼跃
         </h2>
         <div
           class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
         ></div>
-        <p class="text-lg text-text-2 portrait:text-base mb-4">
+        <p class="text-lg text-text-2 portrait:text-sm mb-4">
           {{ $t("home.nameOriginContent") }}
         </p>
       </div>
     </div>
     <!-- logo-slider -->
-    <!-- <div class="bg-theme-500 dark:bg-theme-100 opacity-50 w-full h-16 absolute bottom-0 flex items-center text-white text-3xl font-vivo">
+    <!-- <div class="bg-theme-500 dark:bg-theme-100 opacity-50 w-full h-16 absolute bottom-0 flex items-center text-white text-2xl font-vivo">
       <div v-for="n in 5" class="inline-block mr-12 -translate-x-16">ZHIYUANPALACE</div>
     </div> -->
   </div>

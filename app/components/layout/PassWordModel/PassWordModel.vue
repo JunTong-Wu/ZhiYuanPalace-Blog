@@ -35,7 +35,7 @@
         <template #header>
           <div class="flex items-center justify-between">
             <h3
-              class="text-base font-semibold leading-6 text-gray-900 dark:text-white"
+              class="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
             >
               访问加密内容
             </h3>

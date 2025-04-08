@@ -46,15 +46,15 @@
           class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
           >音乐</span
         >
-        <h2 class="text-3xl landscape:sm:text-5xl font-bold">播放一首音乐</h2>
+        <h2 class="text-2xl landscape:sm:text-4xl font-bold">播放一首音乐</h2>
         <div
           class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
         ></div>
-        <p class="text-lg text-text-2 portrait:text-base mb-4">
+        <p class="text-lg text-text-2 portrait:text-sm mb-4">
           『知鸢宫』包含了优雅的音乐播放器，欢迎听听我的歌单，通过旋律和声音了解我。
           点击页面上方的『播放器』，可以进入全屏歌词页面。
         </p>
-        <p class="text-lg text-text-2 portrait:text-base mb-4">
+        <p class="text-lg text-text-2 portrait:text-sm mb-4">
           现在『知鸢宫』的全局主题颜色，由音乐封面吸取。
         </p>
         <div
@@ -117,7 +117,7 @@
       </div>
     </div>
     <!-- logo-slider -->
-    <!-- <div class="bg-theme-500 dark:bg-theme-100 opacity-50 w-full h-16 absolute bottom-0 flex items-center text-white text-3xl font-vivo">
+    <!-- <div class="bg-theme-500 dark:bg-theme-100 opacity-50 w-full h-16 absolute bottom-0 flex items-center text-white text-2xl font-vivo">
       <div v-for="n in 5" class="inline-block mr-12 -translate-x-16">ZHIYUANPALACE</div>
     </div> -->
   </div>

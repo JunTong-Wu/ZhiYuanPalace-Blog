@@ -21,12 +21,12 @@
   font-family: sans-serif;
 }
 body {
-  line-height: 1.5;
+  line-height: 1.75;
   font-family: inherit !important;
 }
 p {
   letter-spacing: 1px;
-  line-height: 2 !important;
+  line-height: 1.75 !important;
 }
 
 html,
@@ -66,14 +66,14 @@ a {
 
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 3.25rem;
-    --footer-bar-height: 3.25rem;
+    --header-bar-height: 2.75rem;
+    --footer-bar-height: 2.75rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --hide-side-bar-width: 0rem;
     --tool-bar-width: 0rem;
     --drawer-width: 100vw;
-    --music-bar-height: 3rem;
+    --music-bar-height: 2.75rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));
@@ -84,22 +84,21 @@ a {
 }
 @media (orientation: landscape) {
   :root {
-    --header-bar-height: 5rem;
+    --header-bar-height: 4.5rem;
     --footer-bar-height: 0rem;
-    --centered-width: 86rem;
     --side-bar-width: 14rem;
-    --hide-side-bar-width: 5rem;
+    --hide-side-bar-width: 4.75rem;
     --tool-bar-width: 22rem;
     --drawer-width: 20rem;
     --music-bar-height: calc(var(--header-bar-height) - 1rem);
-    --music-bar-width: 30rem;
+    --music-bar-width: 24rem;
     --music-bar-top: 0.5rem;
     --pt-main: var(--header-bar-height);
   }
 }
 @media (min-width: 1200px) and (orientation: landscape) {
   :root {
-    --centered-width: 85rem;
+    --centered-width: 75rem;
   }
 }
 
@@ -108,12 +107,12 @@ a {
   --border-radius-2xs: 0.375rem;
   --border-radius-xs: 0.5rem;
   --border-radius-sm: 0.625rem;
-  --border-radius-base: 1rem;
-  --border-radius-md: 1.25rem;
-  --border-radius-lg: 1.5rem;
-  --border-radius-xl: 1.75rem;
-  --border-radius-2xl: 2rem;
-  --border-radius-3xl: 2.25rem;
+  --border-radius-base: 0.75rem;
+  --border-radius-md: 1rem;
+  --border-radius-lg: 1.25rem;
+  --border-radius-xl: 1.5rem;
+  --border-radius-2xl: 1.75rem;
+  --border-radius-3xl: 2rem;
   --border-radius-full: 9999px;
 }
 
@@ -269,4 +268,8 @@ a {
   ::selection {
     background-color: var(--theme-color-500);
   }
+}
+
+.document-card {
+  @apply text-base rounded divide-y divide-gray-200 dark:divide-gray-800 divide-none ring-1 ring-slate-100 dark:ring-slate-800 shadow portrait:shadow-none bg-level-2 dark:bg-level-1 py-8 xs:py-10 sm:py-12 md:py-14 lg:py-16 px-4 xs:px-10 sm:px-12 md:px-14 lg:px-16;
 }

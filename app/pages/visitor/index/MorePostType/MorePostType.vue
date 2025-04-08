@@ -1,25 +1,25 @@
 <template>
   <div
-    class="bg-level-1 py-16 px-4 landscape:sm:py-24 landscape:px-16 landscape:sm:px-24"
+    class="bg-level-1 py-16 px-2 landscape:sm:py-24 landscape:px-16 landscape:sm:px-24"
   >
     <div class="flex flex-col justify-center items-center">
       <span
         class="text-theme-500 dark:text-theme-100 landscape:sm:text-2xl font-bold mb-2 landscape:sm:mb-4"
         >更多</span
       >
-      <h2 class="text-3xl landscape:sm:text-5xl font-bold">
+      <h2 class="text-2xl landscape:sm:text-4xl font-bold">
         阅读更多种类的内容
       </h2>
       <div
         class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
       ></div>
-      <p class="text-lg text-text-2 portrait:text-base mb-4">
+      <p class="text-lg text-text-2 portrait:text-sm mb-4">
         『知鸢宫』包含以下内容分类，你可以点击进入查看
       </p>
     </div>
     <div
       id="service-grid"
-      class="container gap-2 grid grid-cols-12 pt-8"
+      class="container gap-2 portrait:gap-0 grid grid-cols-12 pt-8"
     >
       <div
         v-for="(item, i) in items"
@@ -37,37 +37,37 @@
             class="content-layout h-full overflow-hidden p-1 relative rounded-lg z-1"
           >
             <div
-              class="h-full px-6 portrait:px-2 pt-12 pb-12 rounded-md text-center bg-level-3"
+              class="h-full px-6 portrait:px-0 pt-12 pb-12 rounded-md text-center bg-level-3"
             >
               <h3
-                class="text-text-1 text-2xl my-2 portrait:text-xl portrait:font-normal"
+                class="text-text-1 text-2xl my-2 portrait:text-lg portrait:font-normal"
               >
                 {{ $t(`menu.${item.name}`) }}
               </h3>
               <p
-                class="text-text-2 text-base portrait:text-xs whitespace-pre-line"
+                class="text-text-2 text-sm portrait:text-xs whitespace-pre-line"
               >
                 {{ $t(item.text) }}
               </p>
             </div>
           </div>
           <div
-            class="absolute h-16 w-16 left-1/2 -ml-8 -top-8 overflow-hidden shadow-xl z-2 rounded rounded-tr-none"
+            class="absolute h-14 w-14 left-1/2 -ml-7 -top-7 overflow-hidden shadow-xl z-2 rounded rounded-tr-none"
           >
             <div
               class="absolute bg-level-4 flex h-full inset-0 items-center justify-center"
             >
-              <div class="flex h-16 items-center justify-center w-full">
+              <div class="flex h-14 items-center justify-center w-full">
                 <ZyIcon
                   :default-name="getSelfIconByName(item.name).activatedIcon"
-                  size="1.5rem"
+                  size="1.25rem"
                 />
               </div>
             </div>
             <div
               class="active-layout absolute bg-theme-500 dark:bg-theme-100 h-full inset-0"
             >
-              <div class="flex h-16 items-center justify-center w-full">
+              <div class="flex h-14 items-center justify-center w-full">
                 <ZyIcon
                   :activated="true"
                   :activated-name="getSelfIconByName(item.name).activatedIcon"

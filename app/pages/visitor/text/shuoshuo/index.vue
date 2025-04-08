@@ -1,6 +1,6 @@
 <template>
   <CommonMainSection>
-    <UCard class="py-12 portrait:py-0 flex justify-center">
+    <UCard class="py-8 portrait:py-0 flex justify-center">
       <div class="landscape:max-w-[52rem]">
         <ZyFetchLoading
           :fetchData="shuoshuoListDataLazyFetch"

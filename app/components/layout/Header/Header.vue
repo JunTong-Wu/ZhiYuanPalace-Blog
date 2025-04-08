@@ -16,14 +16,14 @@
 
     <!-- 主体区域 -->
     <div
-      class="absolute z-20 top-0 left-0 right-0 h-header portrait:pl-1 landscape:px-8 flex items-center justify-between transition-all"
+      class="absolute z-20 top-0 left-0 right-0 h-header portrait:pl-1 landscape:px-4 flex items-center justify-between transition-all"
       :class="{
         'landscape:translate-y-4': progress < 1,
       }"
     >
       <div class="flex items-center h-full">
         <!-- 标题区 -->
-        <div class="flex items-center h-full mr-4 landscape:py-2">
+        <div class="flex items-center h-full mr-4 landscape:py-1">
           <GoBackButton
             :isAdminRule="isAdminHeader || isDocumentHeader"
             class="flex-none landscape:mr-4"
@@ -37,7 +37,7 @@
           </ClientOnly>
         </div>
       </div>
-      <div class="flex items-center h-full gap-4 landscape:py-2">
+      <div class="flex items-center h-full landscape:gap-4 landscape:py-2">
         <!-- 时钟区 -->
         <!--        <ClientOnly>-->
         <!--          <div class="layout-clock h-full">-->
@@ -59,8 +59,12 @@
             <ZyLink
               to="#"
               type="outside"
-              >GitHub</ZyLink
-            >
+              >GitHub
+              <UIcon
+                name="i-solar-arrow-right-up-linear"
+                class="w-5 h-5 ml-1"
+              />
+            </ZyLink>
           </div>
         </div>
 
@@ -83,7 +87,7 @@
 
             <div
               v-if="!isAdminHeader && !isDocumentHeader"
-              class="portrait:hidden p-2 -ml-2 h-16 w-16"
+              class="portrait:hidden p-2 -ml-2 h-14 w-14"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -99,7 +103,7 @@
             </div>
 
             <!-- 多语言抽屉 -->
-            <div class="portrait:hidden p-2 -ml-2 h-16 w-16">
+            <div class="portrait:hidden p-2 -ml-2 h-14 w-14">
               <ZyPopover
                 title="切换语言"
                 background="var(--bg-level-1)"
@@ -123,7 +127,7 @@
               </ZyPopover>
             </div>
 
-            <div class="portrait:hidden p-2 -ml-2 h-16 w-16">
+            <div class="portrait:hidden p-2 -ml-2 h-14 w-14">
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
                 @click="darkModeSwitch"
@@ -147,7 +151,7 @@
               :class="{
                 'w-0 h-0 scale-0 p-0 ml-0':
                   disabledLayoutControl || !pageHasToolbarDebounceFlag,
-                'h-16 w-16 p-2 -ml-2':
+                'h-14 w-14 p-2 -ml-2':
                   !disabledLayoutControl && pageHasToolbarDebounceFlag,
               }"
             >
@@ -172,7 +176,7 @@
 
             <div
               v-if="isAdminHeader || isDocumentHeader"
-              class="p-2 -ml-2 h-16 w-16"
+              class="p-2 -ml-2 h-14 w-14"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -187,7 +191,7 @@
               </ZyButton>
             </div>
 
-            <div class="portrait:hidden p-2 -ml-2 h-16 w-16">
+            <div class="portrait:hidden p-2 -ml-2 h-14 w-14">
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
                 @click="toggleFullScreen"
@@ -209,7 +213,7 @@
 
             <div
               v-if="!isAdminHeader && !isDocumentHeader"
-              class="p-2 -ml-2 h-16 w-16"
+              class="p-2 -ml-2 h-14 w-14"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -226,7 +230,7 @@
 
             <div
               v-if="isAdminHeader"
-              class="landscape:hidden p-2 -ml-2 h-16 w-16"
+              class="landscape:hidden p-2 -ml-2 h-14 w-14"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -243,7 +247,7 @@
 
             <div
               v-if="isDocumentHeader"
-              class="landscape:hidden p-2 -ml-2 h-16 w-16"
+              class="landscape:hidden p-2 -ml-2 h-14 w-14"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"

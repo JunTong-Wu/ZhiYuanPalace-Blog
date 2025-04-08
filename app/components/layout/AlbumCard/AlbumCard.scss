@@ -22,7 +22,6 @@
       &::before {
         content: "";
         position: absolute;
-        top: 0;
         left: 0;
         right: 0;
         bottom: 0;
@@ -73,6 +72,7 @@
 .zy-album-card.transition-in {
   --card-height: 8rem;
   width: 100%;
+  padding-top: calc(var(--pt-main) + 2rem);
 
   .zy-album-card-inner {
     position: relative;

@@ -6,10 +6,13 @@
       class="absolute inset-0 h-full object-cover"
     />
     <div
-      class="relative p-4 z-1 h-full text-white flex flex-col justify-between bg-[rgba(0,0,0,0.2)] backdrop-blur"
+      class="relative p-4 z-1 h-full text-white flex flex-col justify-between bg-[rgba(0,0,0,0.2)]"
     >
-      <h4 class="text-xl">和可可在一起</h4>
-      <span id="time"></span>
+      <h4 class="text-lg drop-shadow-[0_0_4px_black]">和可可在一起</h4>
+      <span
+        id="time"
+        class="drop-shadow-[0_0_4px_black]"
+      ></span>
     </div>
   </div>
 </template>
@@ -61,7 +64,7 @@
   let timeInterval: NodeJS.Timeout; // 定义一个变量来存储定时器的返回值
 
   onMounted(() => {
-    timeInterval = setInterval(showTime, 1); // 将定时器的返回值存储在 timeInterval 变量中
+    timeInterval = setInterval(showTime, 20); // 将定时器的返回值存储在 timeInterval 变量中
   });
   onBeforeUnmount(() => {
     clearInterval(timeInterval); // 在组件卸载前清除定时器

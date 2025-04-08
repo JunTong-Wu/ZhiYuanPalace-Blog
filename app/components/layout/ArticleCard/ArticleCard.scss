@@ -1,6 +1,6 @@
 .zy-article-card {
-  --card-height: 5.5rem;
-  --image-size: 3.5rem;
+  --card-height: 5rem;
+  --image-size: 3rem;
   height: var(--card-height);
   vertical-align: middle;
   transition: transform 100ms;
@@ -74,7 +74,7 @@
 
 @media (min-width: 600px) or (orientation: landscape) {
   .zy-article-card {
-    --card-height: 12rem;
+    --card-height: 10rem;
     .zy-article-card-inner {
       .zy-card-title {
         width: 60%;

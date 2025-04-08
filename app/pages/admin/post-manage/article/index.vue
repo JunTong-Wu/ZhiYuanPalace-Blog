@@ -3,7 +3,7 @@
     <UCard>
       <template #header>
         <div class="flex justify-between items-center">
-          <h3 class="font-bold text-lg portrait:text-base">所有文章列表</h3>
+          <h3 class="font-bold text-lg portrait:text-sm">所有文章列表</h3>
           <div>
             <ZyButton @click="router.push('/admin/post-manage/article/add')">
               <UIcon

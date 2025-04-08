@@ -156,14 +156,14 @@
                   </div>
                 </div>
                 <div
-                  class="w-3/4 landscape:md:w-2/3 portrait:w-full inline-block md:p-16 portrait:px-12 portrait:py-8 landscape:pt-0 text-start relative"
+                  class="w-3/4 landscape:md:w-2/3 portrait:w-full inline-block md:p-12 portrait:px-8 portrait:py-4 landscape:pt-0 text-start relative"
                 >
                   <div class="flex w-full justify-between">
                     <div>
                       <p class="flex-1 line-clamp-1 text-2xl">
                         {{ musicNowTitle }}
                       </p>
-                      <p class="flex-1 line-clamp-1 text-xl opacity-50">
+                      <p class="flex-1 line-clamp-1 text-lg opacity-50">
                         {{ musicNowSinger }}
                       </p>
                     </div>
@@ -207,7 +207,7 @@
                         />
                       </ZyButton>
                     </div>
-                    <div class="flex gap-8 portrait:gap-4">
+                    <div class="flex gap-4 portrait:gap-4">
                       <div class="flex items-center">
                         <ZyButton
                           class="h-music aspect-square rounded-xs hover:bg-[rgba(255,255,255,0.2)]"
@@ -273,10 +273,10 @@
               </div>
               <div
                 id="zy-music-lyric"
-                class="landscape:w-1/2 pt-16 pb-16 portrait:px-12 text-xl portrait:text-lg overflow-y-scroll scrollbar-hidden"
+                class="landscape:w-1/2 pt-12 pb-12 portrait:px-8 text-lg portrait:text-lg overflow-y-scroll scrollbar-hidden"
               >
                 <div
-                  class="flex flex-col gap-10 portrait:gap-4 leading-relaxed"
+                  class="flex flex-col gap-6 portrait:gap-2 leading-relaxed"
                   @touchstart.stop
                   @touchmove.stop
                   @touchend.stop
@@ -286,7 +286,7 @@
                     class="transition-all duration-500"
                     :class="[
                       lyric.isPrev ? 'opacity-40' : '',
-                      lyric.isActivate ? 'text-3xl portrait:text-2xl' : '',
+                      lyric.isActivate ? 'text-2xl portrait:text-2xl' : '',
                       lyric.isNext ? 'opacity-40' : '',
                       !lyric.isActivate && !lyric.isNext && !lyric.isPrev
                         ? 'opacity-20'
@@ -659,7 +659,7 @@
     if (img) {
       const imageColor = getImageColor(img);
       const rgb = increaseSaturation(
-        adjustBrightnessWhilePreservingHue(imageColor, 40, 40),
+        adjustBrightnessWhilePreservingHue(imageColor, 50, 50),
         1,
       );
       const themeColor = `rgb(${rgb})`;

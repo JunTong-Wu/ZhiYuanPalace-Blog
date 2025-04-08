@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="to"
-    class="zy-link bg-transparent text-base border-0 text-text-1 inline-flex items-center no-underline px-1"
+    class="zy-link bg-transparent text-sm border-0 text-text-1 inline-flex items-center no-underline px-1"
     :class="{
       outside: type == 'outside',
     }"
@@ -9,51 +9,46 @@
     :title="title"
   >
     <slot />
-    <UIcon
-      v-if="type == 'outside'"
-      name="i-solar-arrow-right-up-linear"
-      class="w-4 h-4 ml-1"
-    />
   </NuxtLink>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
+  import { useRouter } from "vue-router";
+
+  // 定义类型
   type Type = "replace" | "push" | "outside";
-  export default defineComponent({
-    name: "ZyLink",
-    props: {
-      to: {
-        type: String,
-        default: "",
-      },
-      title: { type: String, default: "" },
-      type: {
-        type: String as () => Type,
-        default: "replace",
-        validator: (value: string) =>
-          ["replace", "push", "outside"].includes(value),
-      },
+
+  // 定义 props
+  const props = defineProps({
+    to: {
+      type: String,
+      default: "",
     },
-    setup(props) {
-      const router = useRouter();
-      const swichRouter = (url: string) => {
-        const body = document.documentElement;
-        if (body) {
-          body.style.overflow = "auto";
-        }
-        if (props.type == "replace") {
-          router.replace(url);
-        } else if (props.type == "push") {
-          router.push(url);
-        } else if (props.type == "outside") {
-          window.open(url);
-        }
-      };
-      return {
-        props,
-        swichRouter,
-      };
+    title: { type: String, default: "" },
+    type: {
+      type: String as () => Type,
+      default: "push",
+      validator: (value: string) =>
+        ["replace", "push", "outside"].includes(value),
     },
   });
+
+  // 获取路由实例
+  const router = useRouter();
+
+  // 定义切换路由的函数
+  const swichRouter = (url: string) => {
+    const body = document.documentElement;
+    if (body) {
+      body.style.overflow = "auto";
+    }
+    if (props.type === "replace") {
+      router.replace(url);
+    } else if (props.type === "push") {
+      router.push(url);
+    } else if (props.type === "outside") {
+      window.open(url);
+    }
+  };
 </script>
 <style lang="scss" scoped>
   @media (hover: hover) {

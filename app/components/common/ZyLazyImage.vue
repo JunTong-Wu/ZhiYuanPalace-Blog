@@ -5,7 +5,7 @@
   >
     <div
       v-if="!isLoading && lazyUrl"
-      class="relative"
+      class="relative w-full h-full"
     >
       <div
         v-if="locked"
@@ -20,7 +20,10 @@
           />
         </p>
       </div>
-      <div v-if="!preview">
+      <div
+        v-if="!preview"
+        class="relative w-full h-full"
+      >
         <img
           v-if="!imageError"
           ref="imageElementRef"
@@ -47,6 +50,7 @@
         :sourceSrc="sourceSrc"
         :alt="alt"
         :style="style"
+        :className="imageClassList"
       ></ZyImagePreview>
     </div>
     <div
@@ -72,6 +76,7 @@
     sourceSrc: {
       type: String,
       required: false,
+      default: "",
     },
     alt: {
       type: String,
@@ -110,7 +115,7 @@
     if (props.className) {
       classList.push(props.className.split(" "));
     }
-    return classList;
+    return classList.flat().join(" ");
   });
 
   onMounted(() => {
@@ -130,6 +135,7 @@
 
     useIntersectionObserver(
       imageWrapperRef,
+      // @ts-ignore
       ([{ isIntersecting }], observerElement) => {
         if (isIntersecting) {
           lazyUrl.value = props.src;

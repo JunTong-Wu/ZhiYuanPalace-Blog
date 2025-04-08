@@ -38,7 +38,7 @@
         </figure>
       </div>
       <div class="container text-center px-12">
-        <h2 class="my-4 font-display text-3xl font-medium text-text-1">
+        <h2 class="my-4 font-display text-2xl font-medium text-text-1">
           玉淇冰-Mebius
         </h2>
         <div
@@ -62,7 +62,7 @@
         >
           <ZyButton
             type="icon"
-            class="p-4 !bg-level-3 !rounded-xs border border-borderColor"
+            class="p-4 border border-borderColor"
           >
             <UIcon
               name="i-solar-heart-linear"
@@ -71,7 +71,7 @@
           </ZyButton>
           <ZyButton
             type="icon"
-            class="p-4 !bg-level-3 !rounded-xs border border-borderColor"
+            class="p-4 border border-borderColor"
           >
             <UIcon
               name="i-solar-share-bold"
@@ -80,7 +80,7 @@
           </ZyButton>
           <ZyButton
             type="icon"
-            class="p-4 !bg-level-3 !rounded-xs border border-borderColor"
+            class="p-4 border border-borderColor"
           >
             <UIcon
               name="i-solar-menu-dots-bold"

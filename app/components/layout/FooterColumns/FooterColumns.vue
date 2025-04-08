@@ -26,20 +26,16 @@
               <!-- Socials -->
               <ul class="flex space-x-2">
                 <li v-for="socialLink in socialLinks">
-                  <a
-                    :href="socialLink.href"
-                    @click.prevent="socialLink.onclick()"
+                  <ZyButton
+                    type="icon"
+                    class="p-2"
+                    @click="socialLink.onclick()"
                   >
-                    <ZyButton
-                      type="icon"
-                      class="p-2"
-                    >
-                      <UIcon
-                        :name="socialLink.icon"
-                        class="w-5 h-5"
-                      />
-                    </ZyButton>
-                  </a>
+                    <UIcon
+                      :name="socialLink.icon"
+                      class="w-5 h-5"
+                    />
+                  </ZyButton>
                 </li>
               </ul>
             </div>
@@ -51,13 +47,16 @@
                   <ZyLink
                     :to="thanksLink.href"
                     type="outside"
-                    @click.prevent="thanksLink.onclick()"
                   >
                     <ZyButton
                       type="text"
                       class="py-2"
-                      >{{ thanksLink.name }}</ZyButton
-                    >
+                      >{{ thanksLink.name }}
+                      <UIcon
+                        name="i-solar-arrow-right-up-linear"
+                        class="w-4 h-4 ml-1"
+                      />
+                    </ZyButton>
                   </ZyLink>
                 </li>
               </ul>
@@ -92,8 +91,12 @@
                         <ZyButton
                           type="text"
                           class="py-2"
-                          >{{ item.friend_title }}</ZyButton
-                        >
+                          >{{ item.friend_title }}
+                          <UIcon
+                            name="i-solar-arrow-right-up-linear"
+                            class="w-4 h-4 ml-1"
+                          />
+                        </ZyButton>
                       </ZyLink>
                     </li>
                   </ul>
@@ -108,7 +111,7 @@
             </div>
           </div>
           <div
-            class="flex flex-col items-center justify-between landscape:flex-row landscape:space-y-2 py-8 portrait:py-0"
+            class="flex flex-col items-center justify-between landscape:flex-row"
           >
             <span class="text-sm portrait:hidden"
               >©2024 {{ $t("common.zhiYuanPalace") }}</span
@@ -117,17 +120,17 @@
               class="flex flex-wrap landscape:space-x-4 portrait:flex-col portrait:items-center portrait:text-text-3"
             >
               <template v-for="copyrightLink in copyrightLinks">
-                <li :class="{ 'portrait:hidden': copyrightLink.mobileHide }">
-                  <a
-                    :href="copyrightLink.href"
-                    @click.prevent="copyrightLink.onclick()"
+                <li>
+                  <ZyLink
+                    :to="copyrightLink.href"
+                    type="outside"
                   >
                     <ZyButton
                       type="text"
-                      class="text-sm portrait:text-xs"
+                      class="!text-sm portrait:!text-xs"
                       >{{ copyrightLink.name }}</ZyButton
                     >
-                  </a>
+                  </ZyLink>
                 </li>
               </template>
             </ul>
@@ -147,7 +150,6 @@
     {
       name: "WeChat",
       icon: "i-cib-wechat",
-      href: "",
       onclick: () => {
         // window.open('https://wechats.deothemes.com')
         console.log("wechat");
@@ -156,7 +158,6 @@
     {
       name: "QQ",
       icon: "i-cib-qq",
-      href: "",
       onclick: () => {
         // window.open('https://wechats.deothemes.com')
         console.log("qq");
@@ -165,7 +166,6 @@
     {
       name: "douyin",
       icon: "i-cib-tiktok",
-      href: "",
       onclick: () => {
         // window.open('https://qzone.deothemes.com')
         console.log("douyin");
@@ -177,30 +177,18 @@
     {
       name: "腾讯云",
       href: "https://cloud.tencent.com/",
-      onclick: () => {
-        window.open("https://cloud.tencent.com/");
-      },
     },
     {
       name: "Nuxt",
       href: "https://nuxt.com/",
-      onclick: () => {
-        window.open("https://nuxt.com/");
-      },
     },
     {
       name: "QQ音乐",
       href: "https://y.qq.com/",
-      onclick: () => {
-        window.open("https://y.qq.com/");
-      },
     },
     {
       name: "混元大模型",
       href: "https://hunyuan.tencent.com/",
-      onclick: () => {
-        window.open("https://hunyuan.tencent.com/");
-      },
     },
   ];
 
@@ -208,34 +196,6 @@
     {
       name: "鄂ICP备2022016355号-1",
       href: "https://beian.miit.gov.cn/",
-      mobileHide: false,
-      onclick: () => {
-        window.open("https://beian.miit.gov.cn/");
-      },
-    },
-    {
-      name: "隐私政策",
-      href: "",
-      mobileHide: true,
-      onclick: () => {
-        console.log("隐私政策");
-      },
-    },
-    {
-      name: "条款和条件",
-      href: "",
-      mobileHide: true,
-      onclick: () => {
-        console.log("条款和条件");
-      },
-    },
-    {
-      name: "开源文档",
-      href: "",
-      mobileHide: true,
-      onclick: () => {
-        console.log("开源文档");
-      },
     },
   ];
 

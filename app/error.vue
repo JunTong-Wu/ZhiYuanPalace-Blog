@@ -11,7 +11,7 @@
             <!--            <p>statusCode: {{ error.statusCode }}</p>-->
             <!--            <p>statusMessage: {{ error.statusMessage || "&#45;&#45;" }}</p>-->
 
-            <h1 class="text-center text-3xl font-bold mb-8">
+            <h1 class="text-center text-2xl font-bold mb-8">
               Error {{ error.statusCode }}
             </h1>
             <UCard>

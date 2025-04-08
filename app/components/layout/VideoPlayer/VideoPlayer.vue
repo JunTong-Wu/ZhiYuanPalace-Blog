@@ -66,13 +66,13 @@
           />
         </div>
         <div>
-          <h2 class="text-xl font-bold portrait:text-base">
+          <h2 class="text-lg font-bold portrait:text-sm">
             @玉淇冰Mebius ·
-            <span class="font-normal text-base portrait:text-xs">
+            <span class="font-normal text-sm portrait:text-xs">
               {{ dateFormat(videoData.video_date, "YYYY-MM-DD") }}
             </span>
           </h2>
-          <p class="text-base drop-shadow-lg portrait:text-sm">
+          <p class="text-sm drop-shadow-lg portrait:text-sm">
             {{ videoData.video_text }}
           </p>
         </div>
@@ -125,7 +125,7 @@
           </div>
         </div>
         <!-- 点赞评论 -->
-        <div class="flex items-center gap-8 portrait:gap-4">
+        <div class="flex items-center gap-4 portrait:gap-4">
           <ZyButton
             title="点赞"
             type="transparent"

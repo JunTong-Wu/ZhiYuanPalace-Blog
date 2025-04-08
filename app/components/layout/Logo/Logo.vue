@@ -15,7 +15,7 @@
           class="logo-img"
           :class="{
             'w-4': size === 'small',
-            'w-10': size === 'default',
+            'w-8': size === 'default',
             'w-16': size === 'large',
           }"
         />

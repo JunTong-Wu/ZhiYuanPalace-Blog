@@ -112,6 +112,7 @@
           >
             <div class="w-full flex items-center gap-2 relative">
               <ZyIcon
+                v-if="children.meta?.defaultIcon"
                 class="flex-none"
                 size="1.5rem"
                 :defaultName="children.meta?.defaultIcon"

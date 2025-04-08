@@ -7,6 +7,7 @@
   "article": "Article",
   "article-id": "Article Details",
   "shuoshuo": "Microblog",
+  "shuoshuo-id": "Microblog Details",
   "photo": "Photo",
   "photo-album": "Photo Details",
   "video": "Video",
@@ -31,5 +32,7 @@
   "document": "Develop Document",
   "guide": "Guide",
   "introduction": "Introduction",
-  "getting-started": "Getting Started"
+  "getting-started": "Getting Started",
+  "components": "Components",
+  "button": "Button"
 }

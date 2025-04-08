@@ -45,7 +45,7 @@
                 <template #title>
                   <div class="h-full flex flex-col justify-center">
                     <h4
-                      class="m-0 portrait:text-sm landscape:text-base portrait:font-normal line-clamp-1"
+                      class="m-0 portrait:text-xs landscape:text-sm portrait:font-normal line-clamp-1"
                     >
                       {{ item.album_title }}
                     </h4>

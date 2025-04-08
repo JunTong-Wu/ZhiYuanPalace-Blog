@@ -5,20 +5,24 @@
     v-if="titleDisable"
     :class="{
       'p-1 -mx-1': Array.isArray(childrenTabs) && childrenTabs.length > 1,
+      'w-0':
+        childrenTabs === null &&
+        !isAdminRule &&
+        (route.params.id || route.params.album),
     }"
   >
     <div
       v-if="
         Array.isArray(childrenTabs) && childrenTabs.length > 1 && !isAdminRule
       "
-      class="inset-1 absolute bg-level-b1 portrait:bg-background rounded overflow-hidden"
+      class="inset-1 absolute bg-level-b1 portrait:bg-background rounded portrait:rounded-sm overflow-hidden"
     >
       <div
         id="header-tabs-indicator"
         class="inline-block h-full relative p-1 landscape:p-2 transition-all opacity-0"
       >
         <div
-          class="h-full bg-level-4 portrait:bg-level-2 rounded-sm overflow-hidden landscape:shadow-sm"
+          class="h-full bg-level-4 portrait:bg-level-2 rounded-sm portrait:rounded-xs overflow-hidden landscape:shadow-sm"
         ></div>
       </div>
     </div>
@@ -37,7 +41,7 @@
           class="h-full flex items-center justify-center px-8 portrait:px-6 portrait:text-inherit landscape:text-theme-600 landscape:dark:text-theme-100"
         >
           <div
-            class="flex items-center text-base gap-2 portrait:text-sm select-none"
+            class="flex items-center text-sm gap-2 portrait:text-sm select-none"
           >
             <ZyIcon
               class="landscape:hidden"
@@ -63,7 +67,8 @@
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4"
     >
       <h2
-        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-500 landscape:dark:text-theme-100"
+        v-if="!route.params.id && !route.params.album"
+        class="text-xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-500 landscape:dark:text-theme-100"
       >
         {{ $t(`menu.${String(route.name)}`) }}
       </h2>
@@ -73,7 +78,7 @@
       class="headerbar-title text-inherit flex gap-4 items-center portrait:pl-4 landscape:ml-4"
     >
       <h2
-        class="text-2xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-500 landscape:dark:text-theme-100"
+        class="text-xl portrait:text-lg portrait:font-normal text-inherit landscape:font-bold landscape:tracking-wider landscape:text-theme-500 landscape:dark:text-theme-100"
       >
         {{ $t(`menu.${String(route.name)}`) }}
       </h2>

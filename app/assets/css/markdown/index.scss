@@ -3,7 +3,7 @@
   padding: 0 !important;
   font-size: inherit;
   font-family: inherit;
-  line-height: 2.5;
+  line-height: 2;
   color: var(--text-1);
   background-color: transparent;
   h1,
@@ -27,10 +27,39 @@
     margin-bottom: 2rem;
     //text-indent: 2rem;
   }
+  table {
+    display: table;
+    width: 100%;
+    min-width: 100%;
+  }
   blockquote {
     color: inherit;
     border-left-color: inherit;
     font-size: inherit;
+  }
+  code,
+  tt {
+    font-size: inherit;
+    background-color: var(--bg-level-3);
+    border-radius: var(--border-radius-2xs);
+  }
+  pre {
+    font-size: inherit;
+    background-color: var(--bg-level-3);
+    border-radius: var(--border-radius-base);
+    color: inherit;
+    code[class*="language-"],
+    pre[class*="language-"] {
+      text-shadow: none;
+      color: inherit;
+    }
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string {
+      background: none;
+    }
   }
 }
 
@@ -40,7 +69,7 @@
   border-radius: var(--border-radius-sm);
   overflow: hidden;
   &.v-md-editor--fullscreen {
-    top:calc(var(--pt-main) + 2rem);
+    top: calc(var(--pt-main) + 2rem);
   }
   .v-md-editor__left-area {
     background-color: var(--bg-level-4);
@@ -56,7 +85,7 @@
     }
   }
   .v-md-editor__right-area {
-    .v-md-editor__toolbar{
+    .v-md-editor__toolbar {
       background-color: var(--bg-level-4);
       border-color: var(--border-color);
       .v-md-editor__toolbar-right-wrapper,
@@ -78,10 +107,9 @@
             background-color: var(--theme-color-500);
           }
         }
-        [class*=v-md-icon-] {
+        [class*="v-md-icon-"] {
           font-size: 1.25rem;
         }
-
       }
     }
     .v-md-editor__main {

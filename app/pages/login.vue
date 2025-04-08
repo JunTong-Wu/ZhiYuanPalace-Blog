@@ -19,8 +19,8 @@
         >
           Sign in to ZhiYuanPalace
         </h1>
-        <div class="flex flex-col items-center gap-8 w-full mt-4 p-4">
-          <div class="flex flex-col items-center gap-8 w-full mb-8">
+        <div class="flex flex-col items-center gap-4 w-full mt-4 p-4">
+          <div class="flex flex-col items-center gap-4 w-full mb-8">
             <UInput
               v-model="username"
               icon="i-solar-user-bold"

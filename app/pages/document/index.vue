@@ -11,19 +11,17 @@
               alt=""
             />
           </div>
-          <h1 class="text-3xl font-bold text-text-1 mb-4">知鸢宫开发文档</h1>
+          <h1 class="text-2xl font-bold text-text-1 mb-4">知鸢宫开发文档</h1>
           <p class="text-text-2 mb-8">
             这里是知鸢宫的配套开发文档，帮助你快速上手和了解项目的各个方面。
           </p>
 
           <div
-            class="grid portrait:grid-cols-1 landscape:grid-cols-3 gap-8 mb-24"
+            class="grid portrait:grid-cols-1 landscape:grid-cols-3 gap-4 mb-24"
           >
-            <ZyButton
-              size="large"
-              @click="$router.push('/doc/guide/getting-started')"
-              >快速上手</ZyButton
-            >
+            <ZyLink :to="'/doc/guide/getting-started'">
+              <ZyButton size="large">快速上手</ZyButton>
+            </ZyLink>
             <ZyButton
               size="large"
               type="linear"
@@ -39,9 +37,9 @@
           </div>
         </div>
         <!-- 主要内容区域 -->
-        <div class="grid portrait:grid-cols-1 landscape:grid-cols-3 gap-8">
+        <div class="grid portrait:grid-cols-1 landscape:grid-cols-3 gap-4">
           <div class="bg-level-2 rounded-lg p-6">
-            <h2 class="text-xl font-bold text-text-1 mb-2">
+            <h2 class="text-lg font-bold text-text-1 mb-2">
               Nuxt3 全栈 SSR 框架
             </h2>
             <p class="text-text-2 mb-4">
@@ -49,7 +47,7 @@
             </p>
           </div>
           <div class="bg-level-2 rounded-lg p-6">
-            <h2 class="text-xl font-bold text-text-1 mb-2">
+            <h2 class="text-lg font-bold text-text-1 mb-2">
               TypeScript 统一类型定义
             </h2>
             <p class="text-text-2 mb-4">
@@ -58,25 +56,25 @@
             </p>
           </div>
           <div class="bg-level-2 rounded-lg p-6">
-            <h2 class="text-xl font-bold text-text-1 mb-2">超级响应式</h2>
+            <h2 class="text-lg font-bold text-text-1 mb-2">超级响应式</h2>
             <p class="text-text-2 mb-4">
               多达12种屏幕尺寸的响应样式，达到所有屏幕宽度最佳显示效果
             </p>
           </div>
           <div class="bg-level-2 rounded-lg p-6">
-            <h2 class="text-xl font-bold text-text-1 mb-2">同步移动交互</h2>
+            <h2 class="text-lg font-bold text-text-1 mb-2">同步移动交互</h2>
             <p class="text-text-2 mb-4">
               封装交互逻辑，部分组件手势功能优异，按住、拖动、松手一气呵成
             </p>
           </div>
           <div class="bg-level-2 rounded-lg p-6">
-            <h2 class="text-xl font-bold text-text-1 mb-2">CardOpen 动画</h2>
+            <h2 class="text-lg font-bold text-text-1 mb-2">CardOpen 动画</h2>
             <p class="text-text-2 mb-4">
               攻克 web 卡片展开动画难题，实现了仿 App Store 的卡片展开效果
             </p>
           </div>
           <div class="bg-level-2 rounded-lg p-6">
-            <h2 class="text-xl font-bold text-text-1 mb-2">Music Player</h2>
+            <h2 class="text-lg font-bold text-text-1 mb-2">Music Player</h2>
             <p class="text-text-2 mb-4">
               美观且强大的音乐播放器，支持歌词同步显示，支持多种播放模式
             </p>
@@ -86,13 +84,3 @@
     </div>
   </CommonMainSection>
 </template>
-
-<script>
-  export default {
-    name: "DocumentHomePage",
-  };
-</script>
-
-<style scoped>
-  /* 可以在这里添加自定义样式 */
-</style>

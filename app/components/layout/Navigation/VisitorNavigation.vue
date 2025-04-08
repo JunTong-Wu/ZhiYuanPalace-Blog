@@ -34,7 +34,7 @@
             <div class="w-full flex items-center gap-4 relative">
               <ZyIcon
                 class="flex-none"
-                size="1.75rem"
+                size="1.5rem"
                 :defaultName="item.meta?.defaultIcon"
                 defaultColor="var(--text-2)"
                 :activatedName="item.meta?.activatedIcon"

@@ -25,14 +25,14 @@
               class="pt-8 xs:pt-10 sm:pt-12 md:pt-14 lg:pt-16 px-4 xs:px-10 sm:px-12 md:px-14 lg:px-16 portrait:rounded-none"
             >
               <h1
-                class="font-bold text-3xl mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16 mt-0"
+                class="font-bold text-2xl mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16 mt-0"
               >
                 {{ articleData.article_title }}
               </h1>
               <v-md-preview
                 ref="previewRef"
                 v-if="!articleData.has_password"
-                class="text-lg xs:text-lg sm:text-xl md:text-xl lg:text-xl pb-40"
+                class="text-base pb-40"
                 :text="articleData.article_text"
               ></v-md-preview>
             </UCard>
@@ -62,7 +62,7 @@
             v-for="anchor in titles"
             :key="anchor.id"
             :class="[
-              'text-text-1 text-base transition-all duration-300 cursor-pointer',
+              'text-text-1 text-sm transition-all duration-300 cursor-pointer',
               {
                 '!text-indigo-500 scale-110 origin-left':
                   activeAnchor === anchor.id,
