@@ -1,12 +1,16 @@
 <template>
   <!-- 表格容器 -->
-  <div>
+  <div class="relative">
     <!-- 表格区域 -->
     <div>
       <!-- 表格元素，使用了 Tailwind CSS 类进行样式设置 -->
       <table class="zy-data-table table w-full mb-4 border-collapse">
         <!--begin::Table head-->
-        <thead>
+        <thead
+          :class="{
+            'opacity-20': loading,
+          }"
+        >
           <!--begin::Table row-->
           <!-- 表格头部行，设置了文本样式、字体加粗、大小写转换和边框样式 -->
           <tr
@@ -50,6 +54,8 @@
                   cell.align == 'right' && 'text-end',
                   cell.key == 'actions' && 'text-end',
                   'py-4',
+                  i === 0 && 'pl-4',
+                  i === tableHeader.length - 1 && 'pr-4',
                   cell.columnClass && cell.columnClass.split(' '),
                 ]"
                 tabindex="0"
@@ -76,7 +82,12 @@
         <!--end::Table head-->
         <!--begin::Table body-->
         <!-- 表格主体，设置了字体样式 -->
-        <tbody class="landscape:font-bold portrait:text-sm">
+        <tbody
+          class="landscape:font-bold portrait:text-sm"
+          :class="{
+            'opacity-0': loading,
+          }"
+        >
           <!-- 如果有数据，则循环渲染表格行 -->
           <template v-if="rowsData.length">
             <!-- 循环渲染表格数据行 -->
@@ -111,6 +122,8 @@
                       cell.key == 'actions' && 'text-end',
                       cell.columnClass && cell.columnClass.split(' '),
                       'py-4',
+                      i === 0 && 'pl-4',
+                      i === tableHeader.length - 1 && 'pr-4',
                     ]"
                     :style="
                       cell.offset
@@ -287,12 +300,12 @@
     <!-- 如果处于加载中状态，则显示加载层 -->
     <div
       v-if="loading"
-      class="overlay-layer card-rounded bg-dark bg-opacity-5"
+      class="absolute top-0 left-0 w-full h-full"
     >
       <!-- 加载图标 -->
       <div
-        class="spinner-border text-theme"
-        role="status"
+        v-loading="loading"
+        class="w-full h-full"
       >
         <!-- 屏幕阅读器可见的加载提示 -->
         <span class="visually-hidden">Loading...</span>
@@ -380,7 +393,7 @@
       required: true,
     },
     // 表数据
-    tableData: { type: Array, required: true },
+    tableData: { type: Array, default: [], required: false },
     // 空数据提示
     emptyTableText: { type: String, default: "No data found" },
     // 加载中
@@ -879,6 +892,18 @@
   });
 </script>
 <style scoped>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   /* 可排序列样式 */
   .sorting {
     &::after {

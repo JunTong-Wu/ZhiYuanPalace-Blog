@@ -85,6 +85,12 @@
       padding: 1rem 0;
       border: none;
       font-weight: unset;
+      &:first-child {
+        padding-left: 1rem;
+      }
+      &:last-child {
+        padding-right: 1rem;
+      }
     }
     tr {
       background-color: unset;
