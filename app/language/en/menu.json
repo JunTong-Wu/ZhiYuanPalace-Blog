@@ -33,6 +33,11 @@
   "guide": "Guide",
   "introduction": "Introduction",
   "getting-started": "Getting Started",
+  "feature": "Feature",
+  "unified-type": "Unified Type",
+  "super-responsive": "Super Responsive",
+  "touch-interaction": "Touch Interaction",
+  "card-animation": "Card Animation",
   "components": "Components",
   "button": "Button",
   "data-table": "Data Table"

@@ -404,14 +404,80 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: "/doc/feature",
+    name: "feature",
+    component: () => import("@/pages/document/feature/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-solar-stars-linear",
+      activatedIcon: "i-solar-stars-bold",
+      order: 3.2,
+      type: "doc",
+    },
+    children: [
+      {
+        path: "/doc/feature/unified-type",
+        name: "unified-type",
+        component: () =>
+          import("@/pages/document/feature/unified-type.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-code-ts-rectangle-16-regular",
+          activatedIcon: "i-fluent-code-ts-rectangle-16-filled",
+          order: 3.21,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/feature/super-responsive",
+        name: "super-responsive",
+        component: () =>
+          import("@/pages/document/feature/super-responsive.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-layer-diagonal-sparkle-16-regular",
+          activatedIcon: "i-fluent-layer-diagonal-sparkle-16-filled",
+          order: 3.22,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/feature/touch-interaction",
+        name: "touch-interaction",
+        component: () =>
+          import("@/pages/document/feature/touch-interaction.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-hand-draw-16-regular",
+          activatedIcon: "i-fluent-hand-draw-16-filled",
+          order: 3.23,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/feature/card-animation",
+        name: "card-animation",
+        component: () =>
+          import("@/pages/document/feature/card-animation.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-rectangle-landscape-sparkle-16-regular",
+          activatedIcon: "i-fluent-rectangle-landscape-sparkle-16-filled",
+          order: 3.24,
+          type: "doc",
+        },
+      },
+    ],
+  },
+  {
     path: "/doc/components",
     name: "components",
     component: () => import("@/pages/document/components/index.vue"),
     meta: {
       navigate: true,
-      defaultIcon: "i-solar-palette-round-linear",
-      activatedIcon: "i-solar-palette-round-bold",
-      order: 3.2,
+      defaultIcon: "i-fluent-puzzle-piece-16-regular",
+      activatedIcon: "i-fluent-puzzle-piece-16-filled",
+      order: 3.3,
       type: "doc",
     },
     children: [
@@ -422,9 +488,9 @@ const routes: Array<RouteRecordRaw> = [
           import("@/pages/document/components/button.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-octicon-dot-24",
-          activatedIcon: "i-oui-dot",
-          order: 3.21,
+          defaultIcon: "i-fluent-button-16-regular",
+          activatedIcon: "i-fluent-button-16-filled",
+          order: 3.31,
           type: "doc",
         },
       },
@@ -435,9 +501,9 @@ const routes: Array<RouteRecordRaw> = [
           import("@/pages/document/components/data-table.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-octicon-dot-24",
-          activatedIcon: "i-oui-dot",
-          order: 3.22,
+          defaultIcon: "i-fluent-table-16-regular",
+          activatedIcon: "i-fluent-table-16-filled",
+          order: 3.32,
           type: "doc",
         },
       },

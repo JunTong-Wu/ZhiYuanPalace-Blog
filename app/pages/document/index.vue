@@ -62,7 +62,7 @@
             </p>
           </div>
           <div class="bg-level-2 rounded-lg p-6">
-            <h2 class="text-lg font-bold text-text-1 mb-2">同步移动交互</h2>
+            <h2 class="text-lg font-bold text-text-1 mb-2">手势交互</h2>
             <p class="text-text-2 mb-4">
               封装交互逻辑，部分组件手势功能优异，按住、拖动、松手一气呵成
             </p>

@@ -138,57 +138,36 @@
       const fontSize = window.ZyFontSize;
       const breakPoints = window.ZyBreakPoints;
       const designSize = window.ZyDesignSize;
+
       if (docEl) {
+        const width = docEl.clientWidth;
+        const isVert = isVertical();
+
+        // 定义尺寸映射对象
+        const sizeMap = {
+          xs: isVert ? designSize.min_xs_v : designSize.min_xs_h,
+          sm: isVert ? designSize.xs_sm_v : designSize.xs_sm_h,
+          md: isVert ? designSize.sm_md_v : designSize.sm_md_h,
+          lg: isVert ? designSize.md_lg_v : designSize.md_lg_h,
+          xl: isVert ? designSize.lg_xl_v : designSize.lg_xl_h,
+          max: isVert ? designSize.xl_max_v : designSize.xl_max_h,
+        };
+
         let rem;
-        if (docEl.clientWidth <= breakPoints.xs) {
-          if (isVertical()) {
-            rem = fontSize * (docEl.clientWidth / designSize.min_xs_v);
-          } else {
-            rem = fontSize * (docEl.clientWidth / designSize.min_xs_h);
-          }
-        } else if (
-          breakPoints.xs < docEl.clientWidth &&
-          docEl.clientWidth <= breakPoints.sm
-        ) {
-          if (isVertical()) {
-            rem = fontSize * (docEl.clientWidth / designSize.xs_sm_v);
-          } else {
-            rem = fontSize * (docEl.clientWidth / designSize.xs_sm_h);
-          }
-        } else if (
-          breakPoints.sm < docEl.clientWidth &&
-          docEl.clientWidth <= breakPoints.md
-        ) {
-          if (isVertical()) {
-            rem = fontSize * (docEl.clientWidth / designSize.sm_md_v);
-          } else {
-            rem = fontSize * (docEl.clientWidth / designSize.sm_md_h);
-          }
-        } else if (
-          breakPoints.md < docEl.clientWidth &&
-          docEl.clientWidth <= breakPoints.lg
-        ) {
-          if (isVertical()) {
-            rem = fontSize * (docEl.clientWidth / designSize.md_lg_v);
-          } else {
-            rem = fontSize * (docEl.clientWidth / designSize.md_lg_h);
-          }
-        } else if (
-          breakPoints.lg < docEl.clientWidth &&
-          docEl.clientWidth <= breakPoints.xl
-        ) {
-          if (isVertical()) {
-            rem = fontSize * (docEl.clientWidth / designSize.lg_xl_v);
-          } else {
-            rem = fontSize * (docEl.clientWidth / designSize.lg_xl_h);
-          }
-        } else if (breakPoints.xl < docEl.clientWidth) {
-          if (isVertical()) {
-            rem = fontSize * (docEl.clientWidth / designSize.xl_max_v);
-          } else {
-            rem = fontSize * (docEl.clientWidth / designSize.xl_max_h);
-          }
+        if (width <= breakPoints.xs) {
+          rem = fontSize * (width / sizeMap.xs);
+        } else if (width <= breakPoints.sm) {
+          rem = fontSize * (width / sizeMap.sm);
+        } else if (width <= breakPoints.md) {
+          rem = fontSize * (width / sizeMap.md);
+        } else if (width <= breakPoints.lg) {
+          rem = fontSize * (width / sizeMap.lg);
+        } else if (width <= breakPoints.xl) {
+          rem = fontSize * (width / sizeMap.xl);
+        } else {
+          rem = fontSize * (width / sizeMap.max);
         }
+
         docEl.style.fontSize = rem + "px";
       }
     };
