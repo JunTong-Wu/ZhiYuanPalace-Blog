@@ -22,4 +22,5 @@ logs
 !.env.example
 
 # Lock file
-# yarn.lock
+yarn.lock
+package-lock.json
