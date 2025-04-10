@@ -23,11 +23,9 @@
     "array-sort": "^1.0.0",
     "crypto-js": "^4.2.0",
     "gsap": "^3.12.5",
-    "highlight.js": "^11.11.1",
     "jsonwebtoken": "^9.0.2",
     "katex": "0.16.22",
     "lodash": "^4.17.21",
-    "marked": "^15.0.7",
     "md5": "^2.3.0",
     "mysql2": "^3.11.4",
     "nprogress": "^0.2.0",
@@ -46,14 +44,12 @@
     "@iconify-json/solar": "^1.2.1",
     "@nuxtjs/i18n": "^8.0.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
-    "@types/marked": "^6.0.0",
     "@types/md5": "^2.3.5",
     "@types/nprogress": "^0.2.3",
     "@types/prismjs": "^1.26.5",
     "nuxt-echarts": "^0.2.4",
     "nuxt-headlessui": "^1.2.0",
     "prettier": "3.5.1",
-    "sass": "^1.70.0",
-    "vite-plugin-md": "^0.21.5"
+    "sass": "^1.70.0"
   }
 }
