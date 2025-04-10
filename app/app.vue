@@ -51,6 +51,22 @@
 <script setup lang="ts">
   import "@/assets/css/style.scss";
 
+  useHead({
+    link: [
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css",
+      },
+    ],
+    script: [
+      {
+        src: "https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js",
+        // 有效选项为：'head' | 'bodyClose' | 'bodyOpen'
+        tagPosition: "head",
+      },
+    ],
+  });
+
   // 多语言
   const head = useLocaleHead({
     addDirAttribute: true,

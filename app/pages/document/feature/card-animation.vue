@@ -42,8 +42,7 @@
           让我们深入了解这个精妙的实现方案：
         </p>
         <h4>1. 巧妙的占位卡片机制</h4>
-        <pre><code class="language-typescript">{{
-`const cardTransitionStart = (
+        <pre><code class="language-typescript">const cardTransitionStart = (
   event: MouseEvent,
   href: string,
   cardClass: string
@@ -75,14 +74,12 @@
       router.push(href);
     }, 300);
   }
-};`
-        }}</code></pre>
+};</code></pre>
         <p>
           这段代码展示了令人称奇的占位卡片技术 —— 通过精确复制当前卡片并设置绝对定位，创造出完美的过渡效果。时机掌控的精准性令人叹服。
         </p>
         <h4>2. 无缝的路由协同</h4>
-        <pre><code class="language-typescript">{{
-`// transition.ts
+        <pre><code class="language-typescript">// transition.ts
 export default defineNuxtRouteMiddleware((to, from) => {
   if (getPageLevelByRoute(from) < 3 && getPageLevelByRoute(to) == 3) {
     if (from.meta.pageTransition && to.meta.pageTransition) {
@@ -94,14 +91,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
       };
     }
   }
-});`
-        }}</code></pre>
+});</code></pre>
         <p>
           通过 Nuxt3 路由中间件的巧妙运用，实现了动画和路由切换的完美配合，这种优雅的设计令人赞叹。
         </p>
         <h4>3. 精心设计的过渡样式</h4>
-        <pre><code class="language-scss">{{
-`.zy-article-card.transition-in {
+        <pre><code class="language-css">.zy-article-card.transition-in {
   transition: all 0.3s ease-in-out;
   position: fixed;
   top: 0;
@@ -109,8 +104,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   width: 100vw;
   height: 100vh;
   z-index: 999;
-}`
-        }}</code></pre>
+}</code></pre>
         <p>
           简洁而强大的 CSS 过渡样式，配合 JS 的精确控制，成就了这个堪称完美的动画效果。
         </p>

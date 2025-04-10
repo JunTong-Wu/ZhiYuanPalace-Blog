@@ -1,3 +1,16 @@
+/**
+ * URL: /api/videos/index
+ * 请求方式: POST
+ * 请求参数:
+ *  - page_numer: 页码
+ *  - page_size: 每页条数
+ *  - vi_coll_path: 视频分类路径
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
 import { video } from "@@/models";
 import { videoPasswordFilter } from "~~/server/utils/helper";
 import { loginVerify } from "~~/server/utils/helper/loginVerify";

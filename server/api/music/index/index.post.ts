@@ -1,3 +1,16 @@
+/**
+ * URL: /api/music/index
+ * 请求方式: POST
+ * 请求参数:
+ *  - page_numer: 页码
+ *  - page_size: 每页条数
+ *  - sheet_pash: 歌单路径
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
 import { music } from "@@/models";
 type ApiIndexModelType = music.ApiIndex;
 

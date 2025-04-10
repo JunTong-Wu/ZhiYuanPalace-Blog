@@ -1,3 +1,16 @@
+/**
+ * URL: /api/articles/index
+ * 请求方式: POST
+ * 请求参数:
+ *  - page_numer: 页码
+ *  - page_size: 每页条数
+ *  - classify_path: 分类路径
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
 import { article } from "@@/models";
 import { articlePasswordFilter } from "~~/server/utils/helper";
 import { loginVerify } from "~~/server/utils/helper/loginVerify";

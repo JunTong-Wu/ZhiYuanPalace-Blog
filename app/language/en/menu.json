@@ -43,5 +43,19 @@
   "data-table": "Data Table",
   "api": "API",
   "articles-index": "Articles Index",
-  "articles-show": "Articles Show"
+  "articles-show": "Articles Show",
+  "articles-add": "Articles Add",
+  "articles-update": "Articles Update",
+  "shuoshuos-index": "Microblogs Index",
+  "shuoshuos-show": "Microblogs Show",
+  "photos-index": "Photos Index",
+  "photos-albums-index": "Photo Albums Index",
+  "photos-albums-password-verify": "Photo Albums Password Verify",
+  "videos-index": "Videos Index",
+  "videos-show": "Videos Show",
+  "videos-password-verify": "Videos Password Verify",
+  "music-index": "Music Index",
+  "friends-index": "Friends Index",
+  "users-login": "Users Login",
+  "dashboard-index": "Dashboard Overview"
 }

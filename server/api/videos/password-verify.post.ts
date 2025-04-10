@@ -1,4 +1,16 @@
 /**
+ * URL: /api/videos/password-verify
+ * 请求方式: POST
+ * 请求参数:
+ *  - id: 视频ID
+ *  - password: 视频密码
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
+/**
  * 视频密码验证
  */
 export default defineEventHandler(async (event) => {

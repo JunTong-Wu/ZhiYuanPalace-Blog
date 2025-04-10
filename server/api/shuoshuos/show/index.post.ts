@@ -1,6 +1,16 @@
+/**
+ * URL: /api/shuoshuos/show
+ * 请求方式: POST
+ * 请求参数:
+ *  - shuoshuo_id: 说说ID
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
 import { shuoshuo } from "@@/models";
 type ApiShowModelType = shuoshuo.ApiShow;
-
 /**
  * 展示单篇说说
  */

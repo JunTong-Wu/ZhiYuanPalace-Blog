@@ -1,3 +1,22 @@
+/**
+ * URL: /api/articles/add
+ * 请求方式: POST
+ * 请求参数:
+ *  - article_classify_id: 文章分类ID
+ *  - article_title: 文章标题
+ *  - article_title_image: 文章标题图片
+ *  - article_text: 文章内容
+ *  - article_date: 文章日期
+ *  - article_copyright: 文章版权
+ *  - article_keywords: 文章关键词
+ *  - article_private: 是否私有
+ *  - article_password: 文章密码
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
 import { article } from "@@/models";
 import { loginVerify } from "~~/server/utils/helper/loginVerify";
 

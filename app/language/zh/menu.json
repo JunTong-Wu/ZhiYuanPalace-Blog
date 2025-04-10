@@ -42,6 +42,20 @@
   "button": "按钮",
   "data-table": "数据表格",
   "api": "接口",
-  "articles-index": "文章列表",
-  "articles-show": "文章详情"
+  "articles-index": "文章—列表",
+  "articles-show": "文章—详情",
+  "articles-add": "文章—新增",
+  "articles-update": "文章—更新",
+  "shuoshuos-index": "说说—列表",
+  "shuoshuos-show": "说说—详情",
+  "photos-index": "相册—列表",
+  "photos-albums-index": "相册—专辑列表",
+  "photos-albums-password-verify": "相册—密码验证",
+  "videos-index": "视频—列表",
+  "videos-show": "视频—详情",
+  "videos-password-verify": "视频—密码验证",
+  "music-index": "音乐—列表",
+  "friends-index": "友链—列表",
+  "users-login": "用户—登录",
+  "dashboard-index": "仪表盘—概览"
 }

@@ -1,3 +1,17 @@
+/**
+ * URL: /api/photos/index
+ * 请求方式: POST
+ * 请求参数:
+ *  - page_numer: 页码
+ *  - page_size: 每页条数
+ *  - album_path: 相册路径
+ *  - album_password: 相册密码
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
 import { photo } from "@@/models";
 import { photoPasswordFilter } from "~~/server/utils/helper";
 import { loginVerify } from "~~/server/utils/helper/loginVerify";

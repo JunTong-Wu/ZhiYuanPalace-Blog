@@ -522,9 +522,9 @@ const routes: Array<RouteRecordRaw> = [
           import("@/pages/document/api/articles/articles-index.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-divider-tall-16-regular",
-          activatedIcon: "i-fluent-divider-tall-16-filled",
-          order: 3.41,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.401,
           type: "doc",
         },
       },
@@ -535,9 +535,188 @@ const routes: Array<RouteRecordRaw> = [
           import("@/pages/document/api/articles/articles-show.vue"),
         meta: {
           navigate: true,
-          defaultIcon: "i-fluent-diamond-16-regular",
-          activatedIcon: "i-fluent-diamond-16-filled",
-          order: 3.42,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.402,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/articles/add",
+        name: "articles-add",
+        component: () =>
+          import("@/pages/document/api/articles/articles-add.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.403,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/articles/update",
+        name: "articles-update",
+        component: () =>
+          import("@/pages/document/api/articles/articles-update.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.404,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/shuoshuos/index",
+        name: "shuoshuos-index",
+        component: () =>
+          import("@/pages/document/api/shuoshuos/shuoshuos-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.405,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/shuoshuos/show",
+        name: "shuoshuos-show",
+        component: () =>
+          import("@/pages/document/api/shuoshuos/shuoshuos-show.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.406,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/photos/index",
+        name: "photos-index",
+        component: () => import("@/pages/document/api/photos/photos-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.407,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/photos/albums/index",
+        name: "photos-albums-index",
+        component: () =>
+          import("@/pages/document/api/photos/photos-albums-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.408,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/photos/albums/password/verify",
+        name: "photos-albums-password-verify",
+        component: () =>
+          import(
+            "@/pages/document/api/photos/photos-albums-password-verify.vue"
+          ),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.409,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/videos/index",
+        name: "videos-index",
+        component: () => import("@/pages/document/api/videos/videos-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.41,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/videos/show",
+        name: "videos-show",
+        component: () => import("@/pages/document/api/videos/videos-show.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.411,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/videos/password/verify",
+        name: "videos-password-verify",
+        component: () =>
+          import("@/pages/document/api/videos/videos-password-verify.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.412,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/music/index",
+        name: "music-index",
+        component: () => import("@/pages/document/api/music/music-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.413,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/friends/index",
+        name: "friends-index",
+        component: () =>
+          import("@/pages/document/api/friends/friends-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.414,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/users/login",
+        name: "users-login",
+        component: () => import("@/pages/document/api/users/users-login.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.415,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/dashboard/index",
+        name: "dashboard-index",
+        component: () =>
+          import("@/pages/document/api/dashboard/dashboard-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-radix-icons-dot",
+          activatedIcon: "i-radix-icons-dot-filled",
+          order: 3.416,
           type: "doc",
         },
       },

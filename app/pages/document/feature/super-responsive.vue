@@ -304,8 +304,7 @@
           在项目开发时，可以结合 Tailwind CSS 的 <code>responsive modifiers</code> 响应修饰符特性，结合 <code>rem</code> 单位，实现页面的响应式布局。<br />
           例如一个完整的文章列表的 Grid 布局，具体的 Tailwind ClassName 实现方式如下：<br />
         </p>
-        <pre><code class="language-css">{{ 
-`.row-article {
+        <pre><code class="language-css">.row-article {
   @apply grid grid-cols-12 portrait:gap-0 portrait:xs:gap-4 gap-4 xs:gap-4 sm:gap-4 md:gap-5 lg:gap-6;
 }
 .clo-article-card {
@@ -315,13 +314,11 @@
           portrait:md:col-span-6 landscape:md:col-span-6
           portrait:lg:col-span-6 landscape:lg:col-span-6
           portrait:xl:col-span-6 landscape:xl:col-span-6;
-}` 
-        }} </code></pre><br/>
+}</code></pre><br/>
         <p>像这样结合使用 <code>portrait:</code> 方向断点前缀和 <code>xs:</code> 宽度断点前缀，即可分别设置12种屏的样式。</p>
         <p>而对于自适应字号，知鸢宫的超级响应式组件 <code>ZySuperResponsive</code> ，已经自动处理了通过 JavaScipt 实现动态 HTML 根元素字号大小的设计。只需要开发者编写CSS样式时使用 <code>rem</code> 单位，或者直接使用 TailWind CSS 。因为它默认就是采用的 <code>rem</code> 单位。</p>
         <P><code>ZySuperResponsive</code> 组件中，自适应字号的核心代码：</P>
-        <pre><code class="language-typescript">{{
-`const isVertical = () => {
+        <pre><code class="language-typescript">const isVertical = () => {
   const mql = window.matchMedia("(orientation: portrait)");
   return mql.matches;
 };
@@ -363,8 +360,7 @@ const fontSizeInit = () => {
 
     docEl.style.fontSize = rem + "px";
   }
-};`
-        }} </code></pre><br />
+};</code></pre><br />
 
         <h3>兼容 SSR 服务端渲染的实现方法</h3>
         <p>
@@ -374,8 +370,7 @@ const fontSizeInit = () => {
           为了在页面元素及其他页面样式加载之前，就提前自动初始化该样式，并且兼容 SSR 服务端渲染，<code>ZySuperResponsive</code> 组件在服务端渲染时，通过 NUXT3 的 <code>useHead()</code> 方法，在 html 头部插入标签，包括 <code>window.ZyFontSize</code> 和 <code>window.ZyDesignSize</code> 等全局变量，以及一些需要客户端优先加载的样式类脚本，来动态设置 HTML 根元素的字体大小。<br />
           具体的实现方法如下：<br />
         </p>
-        <pre><code class="language-typescript">{{
-`useHead({
+        <pre><code class="language-typescript">useHead({
   script: [
     {
       innerHTML: \`
@@ -388,9 +383,7 @@ const fontSizeInit = () => {
       innerHTML: \`\${initZySuperResponsive.toString()};initZySuperResponsive();\`,
     },
   ],
-});
-`
-        }}</code></pre><br />
+})</code></pre><br />
         <p>该标签在浏览器环境会被同步加载，且在 Node.js 环境不会运行。</p>
       </div>
     </div>

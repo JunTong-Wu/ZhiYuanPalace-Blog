@@ -1,3 +1,13 @@
+/**
+ * URL: /api/dashboard/index
+ * 请求方式: POST
+ * 请求参数: 无
+ * 返回参数:
+ *  - code: 状态码
+ *  - message: 消息
+ *  - data: 数据
+ */
+
 import os from "os";
 
 /**
