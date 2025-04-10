@@ -33,7 +33,7 @@
         source: `${cdnUrl}/live2d/`,
         models: {
           path: "/草神/草神.model3.json",
-          scale: 0.8,
+          scale: 1,
         },
 
         tips: {
@@ -100,7 +100,7 @@
 </script>
 <style lang="scss">
   #oml-stage {
-    left: -3.5% !important;
+    left: -6% !important;
     right: auto;
     bottom: -2% !important;
     z-index: 60 !important;

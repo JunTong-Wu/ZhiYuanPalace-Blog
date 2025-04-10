@@ -13,7 +13,9 @@
           class="h-1 w-16 bg-theme-500 dark:bg-theme-100 my-4 landscape:sm:my-8"
         ></div>
         <p class="text-lg text-text-2 portrait:text-sm mb-4">
-          射手座 男 24岁<br />ENFP快乐小狗<br />前端开发者<br />腾讯音乐人<br />纯爱战士<br />
+          射手座 男
+          {{ age }}
+          岁<br />ENFP快乐小狗<br />前端开发者<br />腾讯音乐人<br />纯爱战士<br />
         </p>
         <ZyLink :to="'/about/information'">
           <ZyButton
@@ -41,6 +43,27 @@
   const { locale } = useI18n();
   const cnClass = computed(() => {
     return locale.value.includes("zh");
+  });
+
+  const age = computed(() => {
+    const birthDate = new Date("1999-11-28");
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    // 获取今年生日的日期
+    const birthDateThisYear = new Date(
+      today.getFullYear(),
+      birthDate.getMonth(),
+      birthDate.getDate(),
+    );
+
+    // 如果今年的生日还没到，年龄减1
+    if (today < birthDateThisYear) {
+      age--;
+    }
+
+    return age;
   });
 </script>
 <style lang="scss" scoped>
