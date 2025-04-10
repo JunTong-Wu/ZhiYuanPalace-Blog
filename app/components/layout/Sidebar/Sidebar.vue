@@ -16,7 +16,10 @@
           'w-0 opacity-0 blur -translate-x-12': hide,
         }"
       />
-      <div class="flex items-center h-20 w-20 p-5 absolute -right-4 flex-none">
+      <div
+        v-if="!isDocumentSidebar"
+        class="flex items-center h-20 w-20 p-5 absolute -right-4 flex-none"
+      >
         <!-- 收起侧边导航栏按钮 -->
         <ZyButton
           class="flex items-center justify-center w-full h-full"
@@ -38,7 +41,7 @@
       </div>
     </div>
     <div
-      class="overflow-y-auto absolute top-28 left-0 w-full bottom-0"
+      class="overflow-y-auto absolute top-20 pt-8 left-0 w-full bottom-0"
       :class="{
         'px-4': !hide,
         'px-2': hide,

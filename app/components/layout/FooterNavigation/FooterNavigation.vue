@@ -22,7 +22,7 @@
           ]"
         >
           <ZyIcon
-            size="1rem"
+            size="1.2rem"
             :defaultName="item.meta?.defaultIcon"
             defaultColor="var(--text-1)"
             :activatedName="item.meta?.activatedIcon"

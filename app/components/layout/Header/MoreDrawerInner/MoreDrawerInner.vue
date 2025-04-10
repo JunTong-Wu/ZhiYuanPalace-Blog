@@ -6,7 +6,7 @@
           <ZyLink
             to="/admin"
             type="push"
-            class="flex items-center justify-between w-full p-4"
+            class="flex items-center justify-between w-full !p-4"
             @click="closeDrawer"
           >
             <div class="flex items-center gap-4">

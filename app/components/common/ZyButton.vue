@@ -252,10 +252,10 @@
         filter: brightness(1);
       }
     }
-    .dark button.ZyButton-linear {
-      color: var(--text-1);
-      border-color: var(--text-1);
-    }
+  }
+  .dark button.ZyButton-linear {
+    color: var(--text-1);
+    border-color: var(--text-1);
   }
 
   /**

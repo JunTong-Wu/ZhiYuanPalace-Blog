@@ -10,7 +10,7 @@
       class="absolute z-10 top-0 left-0 h-header w-full transition-all backdrop-blur-3xl portrait:bg-level-2"
       :class="{
         'bg-background': progress < 1,
-        'bg-headBar shadow-sm': progress > 1,
+        'bg-headBar landscape:shadow-sm': progress > 1,
       }"
     ></div>
 
@@ -176,7 +176,7 @@
 
             <div
               v-if="isAdminHeader || isDocumentHeader"
-              class="p-2 -ml-2 h-14 w-14"
+              class="portrait:hidden p-2 -ml-2 h-14 w-14"
             >
               <ZyButton
                 class="flex items-center justify-center w-full h-full"
@@ -453,7 +453,7 @@
           class="flex justify-end h-full items-center gap-4 landscape:hidden"
         >
           <ZyButton
-            v-if="isAdminHeader"
+            v-if="isDocumentHeader"
             class="flex items-center justify-center p-2"
             @click="backToHome"
             title="回到前台"

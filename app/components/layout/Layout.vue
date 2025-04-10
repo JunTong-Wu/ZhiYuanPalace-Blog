@@ -40,7 +40,7 @@
         :class="{
           'w-sidebar': !hideSidebar,
           'w-hideSidebar': hideSidebar,
-          dark: isAdminLayout || isDocumentLayout,
+          dark: isAdminLayout,
         }"
         @switchSidebarClick="switchSidebarStyle"
       />
@@ -114,6 +114,8 @@
     },
   });
 
+  const route = useRoute();
+
   // 布局切换
   const hideSidebar = ref(false);
   const switchSidebarStyle = () => {
@@ -179,6 +181,9 @@
           isLandscapeMdSizeFlag.value = false;
           hideSidebar.value = true;
           hideToolbar.value = true;
+          if (route.path.startsWith("/doc")) {
+            hideSidebar.value = false;
+          }
         } else {
           isLandscapeMdSizeFlag.value = true;
           hideSidebar.value = false;
@@ -187,6 +192,15 @@
       }, 20);
     });
   });
+  // 监听路由变化，切换布局
+  watch(
+    () => route.path,
+    (newPath) => {
+      if (newPath.startsWith("/doc")) {
+        hideSidebar.value = false;
+      }
+    },
+  );
 
   onBeforeUnmount(() => {
     if (observer) {

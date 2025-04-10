@@ -66,14 +66,14 @@ a {
 
 @media (orientation: portrait) {
   :root {
-    --header-bar-height: 2.75rem;
-    --footer-bar-height: 2.75rem;
+    --header-bar-height: 3rem;
+    --footer-bar-height: 3rem;
     --centered-width: 100%;
     --side-bar-width: 0rem;
     --hide-side-bar-width: 0rem;
     --tool-bar-width: 0rem;
     --drawer-width: 100vw;
-    --music-bar-height: 2.75rem;
+    --music-bar-height: 2.5rem;
     --music-bar-width: 100%;
     --music-bar-top: var(--header-bar-height);
     --pt-main: calc(var(--header-bar-height) + var(--music-bar-height));

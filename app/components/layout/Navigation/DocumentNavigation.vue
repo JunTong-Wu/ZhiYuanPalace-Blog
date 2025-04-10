@@ -1,6 +1,5 @@
 <template>
   <UAccordion
-    multiple
     :items="linkList"
     :ui="{ wrapper: 'flex flex-col w-full gap-2' }"
   >
@@ -153,8 +152,10 @@
     for (let i = 0; i < linkList.length; i++) {
       const link = linkList[i];
       if (link?.children) {
-        (link as any).defaultOpen = true;
-        return;
+        if (isActivateRootRouter(route, link.path)) {
+          (link as any).defaultOpen = true;
+          return;
+        }
       }
     }
   };

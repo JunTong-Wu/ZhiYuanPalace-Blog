@@ -59,10 +59,10 @@
             />
           </span>
         </div>
-        <div class="h-full overflow-auto flex flex-col">
+        <div class="h-full overflow-hidden flex flex-col">
           <slot />
           <div
-            class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-end"
+            class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-end h-16"
           >
             <slot name="footer" />
           </div>
