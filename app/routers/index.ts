@@ -378,8 +378,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/doc/guide/introduction",
         name: "introduction",
-        component: () =>
-          import("@/pages/document/guide/introduction.vue"),
+        component: () => import("@/pages/document/guide/introduction.vue"),
         meta: {
           navigate: true,
           defaultIcon: "i-solar-info-circle-linear",
@@ -391,8 +390,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/doc/guide/getting-started",
         name: "getting-started",
-        component: () =>
-          import("@/pages/document/guide/getting-started.vue"),
+        component: () => import("@/pages/document/guide/getting-started.vue"),
         meta: {
           navigate: true,
           defaultIcon: "i-solar-bolt-circle-linear",
@@ -418,8 +416,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/doc/feature/unified-type",
         name: "unified-type",
-        component: () =>
-          import("@/pages/document/feature/unified-type.vue"),
+        component: () => import("@/pages/document/feature/unified-type.vue"),
         meta: {
           navigate: true,
           defaultIcon: "i-fluent-code-ts-rectangle-16-regular",
@@ -457,8 +454,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/doc/feature/card-animation",
         name: "card-animation",
-        component: () =>
-          import("@/pages/document/feature/card-animation.vue"),
+        component: () => import("@/pages/document/feature/card-animation.vue"),
         meta: {
           navigate: true,
           defaultIcon: "i-fluent-rectangle-landscape-sparkle-16-regular",
@@ -484,8 +480,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/doc/components/button",
         name: "button",
-        component: () =>
-          import("@/pages/document/components/button.vue"),
+        component: () => import("@/pages/document/components/button.vue"),
         meta: {
           navigate: true,
           defaultIcon: "i-fluent-button-16-regular",
@@ -497,13 +492,52 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/doc/components/data-table",
         name: "data-table",
-        component: () =>
-          import("@/pages/document/components/data-table.vue"),
+        component: () => import("@/pages/document/components/data-table.vue"),
         meta: {
           navigate: true,
           defaultIcon: "i-fluent-table-16-regular",
           activatedIcon: "i-fluent-table-16-filled",
           order: 3.32,
+          type: "doc",
+        },
+      },
+    ],
+  },
+  {
+    path: "/doc/api",
+    name: "api",
+    component: () => import("@/pages/document/api/index.vue"),
+    meta: {
+      navigate: true,
+      defaultIcon: "i-fluent-plug-connected-16-regular",
+      activatedIcon: "i-fluent-plug-connected-16-filled",
+      order: 3.4,
+      type: "doc",
+    },
+    children: [
+      {
+        path: "/doc/api/articles/index",
+        name: "articles-index",
+        component: () =>
+          import("@/pages/document/api/articles/articles-index.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-divider-tall-16-regular",
+          activatedIcon: "i-fluent-divider-tall-16-filled",
+          order: 3.41,
+          type: "doc",
+        },
+      },
+      {
+        path: "/doc/api/articles/show",
+        name: "articles-show",
+        component: () =>
+          import("@/pages/document/api/articles/articles-show.vue"),
+        meta: {
+          navigate: true,
+          defaultIcon: "i-fluent-diamond-16-regular",
+          activatedIcon: "i-fluent-diamond-16-filled",
+          order: 3.42,
           type: "doc",
         },
       },

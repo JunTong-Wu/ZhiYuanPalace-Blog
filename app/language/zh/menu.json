@@ -33,12 +33,15 @@
   "guide": "指南",
   "introduction": "介绍",
   "getting-started": "快速上手",
-  "feature": "特性",
+  "feature": "创新",
   "unified-type": "统一类型",
   "super-responsive": "超级响应式",
   "touch-interaction": "手势交互",
   "card-animation": "卡片动画",
   "components": "组件",
   "button": "按钮",
-  "data-table": "数据表格"
+  "data-table": "数据表格",
+  "api": "接口",
+  "articles-index": "文章列表",
+  "articles-show": "文章详情"
 }

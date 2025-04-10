@@ -40,5 +40,8 @@
   "card-animation": "Card Animation",
   "components": "Components",
   "button": "Button",
-  "data-table": "Data Table"
+  "data-table": "Data Table",
+  "api": "API",
+  "articles-index": "Articles Index",
+  "articles-show": "Articles Show"
 }

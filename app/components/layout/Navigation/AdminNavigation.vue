@@ -149,12 +149,13 @@
   const route = useRoute();
 
   const setDefaultOpen = () => {
-    linkList.forEach((item: any) => {
-      if (item.children) {
-        item.defaultOpen = true;
+    for (let i = 0; i < linkList.length; i++) {
+      const link = linkList[i];
+      if (link?.children) {
+        (link as any).defaultOpen = true;
         return;
       }
-    });
+    }
   };
   setDefaultOpen();
 

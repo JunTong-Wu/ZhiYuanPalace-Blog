@@ -37,24 +37,29 @@
         </ZyButton>
       </div>
     </div>
-
-    <!-- 上层 -->
-    <div class="mb-8"></div>
-    <AdminNavigation
-      v-if="isAdminSidebar"
-      :hide="hide"
-      class="relative z-10"
-    />
-    <DocumentNavigation
-      v-if="isDocumentSidebar"
-      :hide="hide"
-      class="relative z-10"
-    />
-    <VisitorNavigation
-      v-if="!isDocumentSidebar && !isAdminSidebar"
-      :hide="hide"
-      class="relative z-10"
-    />
+    <div
+      class="overflow-y-auto absolute top-28 left-0 w-full bottom-0"
+      :class="{
+        'px-4': !hide,
+        'px-2': hide,
+      }"
+    >
+      <AdminNavigation
+        v-if="isAdminSidebar"
+        :hide="hide"
+        class="relative z-10"
+      />
+      <DocumentNavigation
+        v-if="isDocumentSidebar"
+        :hide="hide"
+        class="relative z-10"
+      />
+      <VisitorNavigation
+        v-if="!isDocumentSidebar && !isAdminSidebar"
+        :hide="hide"
+        class="relative z-10"
+      />
+    </div>
   </aside>
 </template>
 <script setup lang="ts">
