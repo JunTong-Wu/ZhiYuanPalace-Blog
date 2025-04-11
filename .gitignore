@@ -24,3 +24,7 @@ logs
 # Lock file
 yarn.lock
 package-lock.json
+
+# Sensitive Data
+.env.production
+.gitlab-ci.yml
