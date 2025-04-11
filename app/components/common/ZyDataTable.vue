@@ -318,7 +318,7 @@
   import arraySort from "array-sort";
   import { useI18n } from "vue-i18n";
   import _ from "lodash";
-  import { ref, computed, watch, onMounted, defineProps } from "vue";
+  import { ref, computed, watch, onMounted } from "vue";
 
   /**
    * 分页信息接口
