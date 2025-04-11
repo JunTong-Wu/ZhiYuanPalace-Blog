@@ -71,5 +71,9 @@ export default defineNuxtConfig({
       }),
     ],
   },
+  sourcemap: false, // 关闭 Sourcemap
+  nitro: {
+    preset: 'node-server'  // 指定轻量级预设
+  },
   compatibilityDate: "2024-08-12",
 });
